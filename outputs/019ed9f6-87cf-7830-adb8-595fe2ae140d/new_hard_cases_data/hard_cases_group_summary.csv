@@ -1,0 +1,5 @@
+﻿group_id,group_theme,case_count,bug_classes,temporal_types,expected_trace_effect,overfit_lure_true_count
+A,trace 应该有帮助的多周期时序类,5,temporal_cross_cycle,"multi_cycle_handshake, pipeline_latency, delayed_grant, hold_valid_until_ready, sticky_interrupt",should_help,0
+B,trace 容易诱导过拟合的具体数值类,5,"combination_same_cycle, temporal_cross_cycle","address_stride, counter_boundary, fifo_depth_boundary, fixed_threshold_filter, specific_state_encoding",may_hurt,5
+C,trace 容易导致 vacuity 的稀有触发类,5,temporal_cross_cycle,"rare_interrupt, error_flag_clear, debug_mode_transition, one_shot_pulse, timeout_event",may_cause_vacuity,0
+D,trace summary 容易丢信息的复杂关系类,5,temporal_cross_cycle,"fifo_pointer_wrap, round_robin_arbiter, fsm_multi_step_transition, burst_transaction, overlapping_sequence_detector",summary_may_lose_info,0

@@ -1,0 +1,59 @@
+{
+  "thread_id": "019ed9f6-87cf-7830-adb8-595fe2ae140d",
+  "model_label": "GPT",
+  "provider": "openai",
+  "model_name": "gpt-5.4",
+  "representative_case_ids": [
+    "case101_prim_onehot_multihot_suppressed",
+    "case104_prim_fifo_full_early",
+    "case112_prim_intr_test_pulse_dropped",
+    "case125_prim_fifo_wrap_late",
+    "case135_prim_intr_enable_mask_ignored"
+  ],
+  "active_method_specs": [
+    {
+      "method": "spec_rtl_only",
+      "trace_input_label": "No waveform trace"
+    },
+    {
+      "method": "spec_rtl_raw_trace",
+      "trace_input_label": "Raw good/bad trace"
+    },
+    {
+      "method": "spec_rtl_trace_summary",
+      "trace_input_label": "Normal trace summary"
+    },
+    {
+      "method": "spec_rtl_abstracted_trace_summary",
+      "trace_input_label": "Abstracted trace summary"
+    }
+  ],
+  "candidates_per_cell": 2,
+  "use_property_compile_mode": false,
+  "write_mode": "upsert_append_by_unique_key",
+  "result_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method",
+    "candidate_index"
+  ],
+  "prompt_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method"
+  ],
+  "summary_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "method"
+  ],
+  "slug": "GPT__openai__gpt-5.4",
+  "argv": [
+    "src\\run_multi_model_small_eval.py"
+  ]
+}

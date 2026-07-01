@@ -1,0 +1,57 @@
+case_name,source_module,bug_class,tb_name,compile_ok,first_log_line
+case101_prim_onehot_multihot_suppressed,prim_onehot_check,combination_same_cycle,tb.v,True,
+case101_prim_onehot_multihot_suppressed,prim_onehot_check,combination_same_cycle,tb_holdout.v,True,
+case102_prim_onehot_enable_mismatch_suppressed,prim_onehot_check,combination_same_cycle,tb.v,True,
+case102_prim_onehot_enable_mismatch_suppressed,prim_onehot_check,combination_same_cycle,tb_holdout.v,True,
+case103_prim_onehot_addr_mismatch_suppressed,prim_onehot_check,combination_same_cycle,tb.v,True,
+case103_prim_onehot_addr_mismatch_suppressed,prim_onehot_check,combination_same_cycle,tb_holdout.v,True,
+case104_prim_fifo_full_early,prim_fifo_sync_cnt,combination_same_cycle,tb.v,True,
+case104_prim_fifo_full_early,prim_fifo_sync_cnt,combination_same_cycle,tb_holdout.v,True,
+case105_prim_fifo_empty_late,prim_fifo_sync_cnt,combination_same_cycle,tb.v,True,
+case105_prim_fifo_empty_late,prim_fifo_sync_cnt,combination_same_cycle,tb_holdout.v,True,
+case106_prim_fifo_depth_off_by_one,prim_fifo_sync_cnt,combination_same_cycle,tb.v,True,
+case106_prim_fifo_depth_off_by_one,prim_fifo_sync_cnt,combination_same_cycle,tb_holdout.v,True,
+case107_prim_arbiter_priority_reversed,prim_arbiter_fixed,combination_same_cycle,tb.v,False,./correct.v:189: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+case107_prim_arbiter_priority_reversed,prim_arbiter_fixed,combination_same_cycle,tb_holdout.v,False,./correct.v:189: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+case108_prim_arbiter_grant_without_ready,prim_arbiter_fixed,combination_same_cycle,tb.v,False,./correct.v:189: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+case108_prim_arbiter_grant_without_ready,prim_arbiter_fixed,combination_same_cycle,tb_holdout.v,False,./correct.v:189: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+case109_prim_arbiter_valid_depends_on_ready,prim_arbiter_fixed,combination_same_cycle,tb.v,False,./correct.v:189: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+case109_prim_arbiter_valid_depends_on_ready,prim_arbiter_fixed,combination_same_cycle,tb_holdout.v,False,./correct.v:189: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+case110_prim_intr_event_overwrite,prim_intr_hw,temporal_cross_cycle,tb.v,True,
+case110_prim_intr_event_overwrite,prim_intr_hw,temporal_cross_cycle,tb_holdout.v,True,
+case111_prim_intr_output_or_mask,prim_intr_hw,combination_same_cycle,tb.v,True,
+case111_prim_intr_output_or_mask,prim_intr_hw,combination_same_cycle,tb_holdout.v,True,
+case112_prim_intr_test_pulse_dropped,prim_intr_hw,temporal_cross_cycle,tb.v,True,
+case112_prim_intr_test_pulse_dropped,prim_intr_hw,temporal_cross_cycle,tb_holdout.v,True,
+case113_prim_edge_posedge_misdecoded,prim_edge_detector,temporal_cross_cycle,tb.v,True,
+case113_prim_edge_posedge_misdecoded,prim_edge_detector,temporal_cross_cycle,tb_holdout.v,True,
+case114_prim_edge_negedge_misdecoded,prim_edge_detector,temporal_cross_cycle,tb.v,True,
+case114_prim_edge_negedge_misdecoded,prim_edge_detector,temporal_cross_cycle,tb_holdout.v,True,
+case115_prim_edge_both_edges_collapsed,prim_edge_detector,temporal_cross_cycle,tb.v,True,
+case115_prim_edge_both_edges_collapsed,prim_edge_detector,temporal_cross_cycle,tb_holdout.v,True,
+case116_prim_filter_late_accept,prim_filter,temporal_cross_cycle,tb.v,True,
+case116_prim_filter_late_accept,prim_filter,temporal_cross_cycle,tb_holdout.v,True,
+case117_prim_filter_bypass_stale,prim_filter,temporal_cross_cycle,tb.v,True,
+case117_prim_filter_bypass_stale,prim_filter,temporal_cross_cycle,tb_holdout.v,True,
+case118_prim_filter_ctr_early_accept,prim_filter_ctr,temporal_cross_cycle,tb.v,True,
+case118_prim_filter_ctr_early_accept,prim_filter_ctr,temporal_cross_cycle,tb_holdout.v,True,
+case119_prim_filter_ctr_late_accept,prim_filter_ctr,temporal_cross_cycle,tb.v,True,
+case119_prim_filter_ctr_late_accept,prim_filter_ctr,temporal_cross_cycle,tb_holdout.v,True,
+case120_prim_filter_ctr_bypass_stale,prim_filter_ctr,temporal_cross_cycle,tb.v,True,
+case120_prim_filter_ctr_bypass_stale,prim_filter_ctr,temporal_cross_cycle,tb_holdout.v,True,
+case121_prim_count_commit_ignored,prim_count,temporal_cross_cycle,tb.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case121_prim_count_commit_ignored,prim_count,temporal_cross_cycle,tb_holdout.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case122_prim_count_incdec_not_cancelled,prim_count,temporal_cross_cycle,tb.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case122_prim_count_incdec_not_cancelled,prim_count,temporal_cross_cycle,tb_holdout.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case123_prim_count_saturation_wraps,prim_count,temporal_cross_cycle,tb.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case123_prim_count_saturation_wraps,prim_count,temporal_cross_cycle,tb_holdout.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case124_prim_fifo_clear_ignored,prim_fifo_sync_cnt,temporal_cross_cycle,tb.v,True,
+case124_prim_fifo_clear_ignored,prim_fifo_sync_cnt,temporal_cross_cycle,tb_holdout.v,True,
+case125_prim_fifo_wrap_late,prim_fifo_sync_cnt,temporal_cross_cycle,tb.v,True,
+case125_prim_fifo_wrap_late,prim_fifo_sync_cnt,temporal_cross_cycle,tb_holdout.v,True,
+case126_prim_regwe_enable_gap,prim_reg_we_check,combination_same_cycle,tb.v,True,
+case126_prim_regwe_enable_gap,prim_reg_we_check,combination_same_cycle,tb_holdout.v,True,
+case127_prim_count_set_secondary_mismatch,prim_count,temporal_cross_cycle,tb.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case127_prim_count_set_secondary_mismatch,prim_count,temporal_cross_cycle,tb_holdout.v,False,./correct.v:254: assert: netmisc.cc:1821: failed assertion packed_dims.size() == 1
+case128_prim_intr_event_mask_stall,prim_intr_hw,temporal_cross_cycle,tb.v,True,
+case128_prim_intr_event_mask_stall,prim_intr_hw,temporal_cross_cycle,tb_holdout.v,True,

@@ -1,0 +1,2 @@
+case_name,bug_type,compile_ok,pass_on_correct,fail_on_buggy,non_vacuous,antecedent_triggered,correct_antecedent_hits,buggy_antecedent_hits,correct_fail_count,buggy_fail_count,non_trivial,non_trivial_reason,golden_ok,status,failure_reason,compile_error,assertion_line
+case126_prim_regwe_enable_gap,write-enable checker ignores enable mismatch,True,True,True,True,True,1,1,0,1,True,,True,pass,,,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && !$past(en_i) && (oh_i == 4'b0100) && ($past(oh_i) == 4'b0100)) |-> err_o);

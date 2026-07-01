@@ -1,0 +1,51 @@
+You are a formal verification engineer.
+Generate exactly one SystemVerilog Assertion in this strict format:
+assert property (@(posedge clk) disable iff (!rst_n) (<ANTECEDENT>) |-> (<CONSEQUENT>));
+
+Rules:
+1) Output only one assertion line. No explanation. No markdown.
+2) Use only allowed signals listed below.
+3) Keep antecedent and consequent purely boolean (no ##, no $past, no sequence operators).
+4) No helper/internal names such as next_state, count_next, count_prev, old(...), S_*.
+5) Do not concatenate multiple assertions. Exactly one assert property statement.
+6) For register-update behavior, prefer next-cycle implication (|=>) instead of same-cycle check.
+7) Target a meaningful safety property (not vacuous).
+8) Internal RTL names may appear below for understanding only. Never reference any name that is not in Allowed signals.
+9) If the full intent cannot be expressed under these restrictions, emit the strongest single implication over Allowed signals that still captures the bug.
+10) The final assertion line must contain exactly one implication operator total: either one |-> or one |=>.
+
+Allowed signals:
+clk, rst_n, wr_en, rd_en, count, full, empty
+
+Specification:
+FIFO count increases on write when not full and decreases on read when not empty. full is true only when count equals 4.
+
+Additional guidance:
+- Waveform naming hints: count appears in waveforms as column 'count[2:0]'.
+
+RTL:
+module dut_case07 (
+    input  wire       clk,
+    input  wire       rst_n,
+    input  wire       wr_en,
+    input  wire       rd_en,
+    output reg  [2:0] count,
+    output wire       full,
+    output wire       empty
+);
+assign full  = (count == 3'd4);
+assign empty = (count == 3'd0);
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        count <= 3'd0;
+    end else begin
+        case ({wr_en, rd_en})
+            2'b10: if (!full)  count <= count + 3'd1;
+            2'b01: if (!empty) count <= count - 3'd1;
+            default:           count <= count;
+        endcase
+    end
+end
+endmodule
+

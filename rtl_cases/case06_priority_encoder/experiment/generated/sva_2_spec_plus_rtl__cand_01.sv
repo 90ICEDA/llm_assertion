@@ -1,0 +1,1 @@
+assert property (@(posedge clk) disable iff (!rst_n) (($past(req) == 4'b1010) || ($past(req) == 4'b1100) || ($past(req) == 4'b1001)) |-> (((($past(req) == 4'b1010) && ((grant == 4'b1000) || (grant == 4'b0100))) || ((($past(req) == 4'b1100) || ($past(req) == 4'b1001)) && (grant == 4'b1000)))));

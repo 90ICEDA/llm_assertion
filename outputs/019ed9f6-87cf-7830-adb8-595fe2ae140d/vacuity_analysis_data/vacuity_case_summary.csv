@@ -1,0 +1,20 @@
+case_id,module,bug_name,bug_class,fail_assertion_count,vacuous_miss_count,non_vacuous_miss_count,too_weak_count,trace_overfit_count,semantic_wrong_count,unsupported_analysis_count,buggy_antecedent_zero_count,vacuous_dominant,vacuous_share
+case103_prim_onehot_addr_mismatch_suppressed,prim_onehot_check,address mismatch error suppressed,combination_same_cycle,9,9,0,0,0,0,0,9,True,1.0
+case130_prim_fifo_empty_early,prim_fifo_sync_cnt,empty asserts one slot early,combination_same_cycle,8,7,0,1,0,0,0,7,True,0.875
+case114_prim_edge_negedge_misdecoded,prim_edge_detector,negedge output decodes posedge,temporal_cross_cycle,7,7,0,0,0,0,0,7,True,1.0
+case132_prim_edge_posedge_missing,prim_edge_detector,posedge pulse is dropped entirely,temporal_cross_cycle,7,6,0,0,0,0,1,7,True,0.8571
+case133_prim_edge_negedge_missing,prim_edge_detector,negedge pulse is dropped entirely,temporal_cross_cycle,7,6,0,0,0,0,1,7,True,0.8571
+case134_prim_intr_event_not_sticky,prim_intr_hw,event interrupt state drops when the source pulse goes away,temporal_cross_cycle,6,6,0,0,0,0,0,6,True,1.0
+case125_prim_fifo_wrap_late,prim_fifo_sync_cnt,write pointer wraps one cycle late,temporal_cross_cycle,7,3,0,2,2,0,0,5,True,0.4286
+case101_prim_onehot_multihot_suppressed,prim_onehot_check,multihot error suppressed,combination_same_cycle,5,3,0,0,2,0,0,5,True,0.6
+case102_prim_onehot_enable_mismatch_suppressed,prim_onehot_check,enable mismatch error suppressed,combination_same_cycle,5,3,0,0,0,0,2,5,True,0.6
+case112_prim_intr_test_pulse_dropped,prim_intr_hw,interrupt test write pulse is lost,temporal_cross_cycle,5,5,0,0,0,0,0,5,True,1.0
+case115_prim_edge_both_edges_collapsed,prim_edge_detector,posedge output fires on both edges,temporal_cross_cycle,6,4,0,2,0,0,0,4,True,0.6667
+case113_prim_edge_posedge_misdecoded,prim_edge_detector,posedge output decodes negedge,temporal_cross_cycle,5,4,0,1,0,0,0,4,True,0.8
+case124_prim_fifo_clear_ignored,prim_fifo_sync_cnt,clear pulse does not reset FIFO pointers,temporal_cross_cycle,4,4,0,0,0,0,0,4,True,1.0
+case111_prim_intr_output_or_mask,prim_intr_hw,interrupt enable mask turned into OR,combination_same_cycle,6,3,3,0,0,0,0,3,True,0.5
+case104_prim_fifo_full_early,prim_fifo_sync_cnt,full asserted one slot early,combination_same_cycle,3,2,0,0,1,0,0,3,True,0.6667
+case137_prim_onehot_addr_false_positive,prim_onehot_check,legal onehot request spuriously flags address error,combination_same_cycle,3,3,0,0,0,0,0,3,True,1.0
+case118_prim_filter_ctr_early_accept,prim_filter_ctr,counter-based filter accepts one cycle early,temporal_cross_cycle,6,2,0,4,0,0,0,2,True,0.3333
+case105_prim_fifo_empty_late,prim_fifo_sync_cnt,empty asserted one cycle late,combination_same_cycle,2,2,0,0,0,0,0,2,True,1.0
+case135_prim_intr_enable_mask_ignored,prim_intr_hw,interrupt output ignores the enable mask,combination_same_cycle,1,1,0,0,0,0,0,1,True,1.0

@@ -1,0 +1,819 @@
+{
+    "cases":  [
+                  {
+                      "name":  "case104_prim_fifo_full_early",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_fifo_sync_cnt",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "fifo_boundary_flag",
+                      "bug_type":  "full asserted one slot early",
+                      "spec":  "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "clr_i",
+                                          "incr_wptr_i",
+                                          "incr_rptr_i",
+                                          "full_o",
+                                          "empty_o",
+                                          "depth_o",
+                                          "wptr_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ((wptr_o == 2\u0027d3) \u0026\u0026 !incr_rptr_i \u0026\u0026 !empty_o \u0026\u0026 !clr_i) |-\u003e !full_o);",
+                                         "expected_behavior":  "At the last legal pre-wrap write pointer position, the FIFO is not yet full and full_o must remain low.",
+                                         "temporal_type":  "same-cycle boundary flag check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "full_implies_max_depth",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) full_o |-\u003e (depth_o == 3\u0027d4));",
+                                                          "why_it_should_miss":  "It may stay vacuous if the bug avoids asserting full under the sampled corner or if the depth output is also misleading."
+                                                      },
+                                                      {
+                                                          "name":  "eventual_full_after_writes",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) incr_wptr_i |-\u003e !empty_o);",
+                                                          "why_it_should_miss":  "It does not constrain the exact boundary cycle where full must remain low."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "This is a classic tight boundary bug. A hand-wavy FIFO assertion can pass while missing the exact Depth-1 cycle.",
+                      "overfit_lure":  "Use Depth=4 and primary trace values 0,1,2,3,4 so trace-informed methods are tempted to memorize the literal boundary.",
+                      "stimulus_notes":  "Fill the FIFO to 3 entries without reads, sample full_o at depth 3, then push once more. Held-out should use an interleaved read/write prelude before reaching depth 3 again.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case104_prim_fifo_full_early"
+                  },
+                  {
+                      "name":  "case105_prim_fifo_empty_late",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_fifo_sync_cnt",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "fifo_boundary_flag",
+                      "bug_type":  "empty asserted one cycle late",
+                      "spec":  "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "clr_i",
+                                          "incr_wptr_i",
+                                          "incr_rptr_i",
+                                          "full_o",
+                                          "empty_o",
+                                          "depth_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3\u0027d0) |-\u003e empty_o);",
+                                         "expected_behavior":  "Whenever occupancy is zero, empty_o must be high immediately.",
+                                         "temporal_type":  "same-cycle combinational boundary check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "empty_after_clear_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) clr_i |=\u003e empty_o);",
+                                                          "why_it_should_miss":  "It checks reset-like clearing but not the normal read-to-empty transition."
+                                                      },
+                                                      {
+                                                          "name":  "no_full_when_empty",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) empty_o |-\u003e !full_o);",
+                                                          "why_it_should_miss":  "The buggy design can satisfy this while still delaying empty_o."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "The bug only appears at the exact zero-occupancy return point. Loose assertions about mutual exclusion of full/empty are not enough.",
+                      "overfit_lure":  "Use explicit depth values 2,1,0 in the primary trace so a trace-guided model can be baited into literal matching.",
+                      "stimulus_notes":  "Write two entries, read them out, and sample the final read-to-empty transition. Held-out should empty after a write/read/write/read pattern.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case105_prim_fifo_empty_late"
+                  },
+                  {
+                      "name":  "case106_prim_fifo_depth_off_by_one",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_fifo_sync_cnt",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "fifo_boundary_flag",
+                      "bug_type":  "depth output biased high by one",
+                      "spec":  "depth_o shall equal the exact FIFO occupancy in every cycle.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "clr_i",
+                                          "incr_wptr_i",
+                                          "incr_rptr_i",
+                                          "full_o",
+                                          "empty_o",
+                                          "depth_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (empty_o) |-\u003e (depth_o == 3\u0027d0));",
+                                         "expected_behavior":  "When the FIFO is empty, the occupancy output must report zero rather than a biased nonzero value.",
+                                         "temporal_type":  "same-cycle combinational boundary check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "nonempty_has_depth",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!empty_o) |-\u003e (depth_o != 3\u0027d0));",
+                                                          "why_it_should_miss":  "A depth output biased high by one can still satisfy a coarse nonzero-when-nonempty check."
+                                                      },
+                                                      {
+                                                          "name":  "full_empty_exclusive",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) !(full_o \u0026\u0026 empty_o));",
+                                                          "why_it_should_miss":  "It ignores the numeric correctness of depth_o itself."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "This bug is subtle because the control flags can look mostly plausible. Only a precise occupancy relation catches it.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Exercise empty, single-entry, and two-entry states. Held-out should revisit zero occupancy after a clear pulse.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case106_prim_fifo_depth_off_by_one"
+                  },
+                  {
+                      "name":  "case111_prim_intr_output_or_mask",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_intr_hw",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "interrupt_masking",
+                      "bug_type":  "interrupt enable mask turned into OR",
+                      "spec":  "The outgoing interrupt shall assert only when both the interrupt status and enable are high.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "event_intr_i",
+                                          "reg2hw_intr_enable_q_i",
+                                          "reg2hw_intr_state_q_i",
+                                          "intr_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_enable_q_i \u0026\u0026 !$past(reg2hw_intr_enable_q_i) \u0026\u0026 reg2hw_intr_state_q_i \u0026\u0026 $past(reg2hw_intr_state_q_i)) |-\u003e !intr_o);",
+                                         "expected_behavior":  "Masking the interrupt must suppress intr_o regardless of stored status.",
+                                         "temporal_type":  "same-cycle masked-output check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "event_implies_event_detect",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) event_intr_i |-\u003e hw2reg_intr_state_de_o);",
+                                                          "why_it_should_miss":  "It ignores the mask/output relation entirely."
+                                                      },
+                                                      {
+                                                          "name":  "status_can_raise_interrupt",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i \u0026\u0026 $past(reg2hw_intr_enable_q_i) \u0026\u0026 reg2hw_intr_state_q_i \u0026\u0026 $past(reg2hw_intr_state_q_i)) |-\u003e intr_o);",
+                                                          "why_it_should_miss":  "It checks only the enabled visibility case and ignores the masked-state corner where the OR bug leaks through."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "The internal event machinery can still look healthy while the externally visible mask logic is wrong.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Keep reg2hw_intr_state_q_i high while toggling enable. Held-out should build status via event feedback first, then mask it.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case111_prim_intr_output_or_mask"
+                  },
+                  {
+                      "name":  "case112_prim_intr_test_pulse_dropped",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_intr_hw",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "test_pulse_capture",
+                      "bug_type":  "interrupt test write pulse is lost",
+                      "spec":  "In Status mode, a software test pulse written through reg2hw_intr_test_qe_i shall be captured and reflected in the stored test_q state on the next cycle.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "event_intr_i",
+                                          "reg2hw_intr_test_q_i",
+                                          "reg2hw_intr_test_qe_i",
+                                          "reg2hw_intr_enable_q_i",
+                                          "hw2reg_intr_state_d_o",
+                                          "intr_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i \u0026\u0026 $past(reg2hw_intr_test_qe_i) \u0026\u0026 reg2hw_intr_test_q_i \u0026\u0026 $past(reg2hw_intr_test_q_i) \u0026\u0026 reg2hw_intr_enable_q_i \u0026\u0026 $past(reg2hw_intr_enable_q_i)) |-\u003e hw2reg_intr_state_d_o);",
+                                         "expected_behavior":  "A test write must drive the next-state interrupt bit high immediately so the pulse is captured on the following cycle.",
+                                         "temporal_type":  "next-state capture check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "event_path_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) event_intr_i |-\u003e intr_o || !intr_o);",
+                                                          "why_it_should_miss":  "It ignores the software-injected test path completely."
+                                                      },
+                                                      {
+                                                          "name":  "qe_seen",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) reg2hw_intr_test_qe_i |-\u003e reg2hw_intr_test_qe_i);",
+                                                          "why_it_should_miss":  "It is vacuous and does not check the captured effect."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "The test path is easy to overlook if assertions focus only on hardware events.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Instantiate Status mode, enable the interrupt, pulse reg2hw_intr_test_qe_i for one cycle, and watch the next-cycle output. Held-out should combine a test pulse with inactive event_intr_i.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case112_prim_intr_test_pulse_dropped"
+                  },
+                  {
+                      "name":  "case113_prim_edge_posedge_misdecoded",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_edge_detector",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "edge_direction",
+                      "bug_type":  "posedge output decodes negedge",
+                      "spec":  "q_posedge_pulse_o shall pulse for exactly the sampled 0-\u003e1 transition and not for 1-\u003e0 transitions.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "d_i",
+                                          "q_sync_o",
+                                          "q_posedge_pulse_o",
+                                          "q_negedge_pulse_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!$past(q_sync_o) \u0026\u0026 q_sync_o) |-\u003e q_posedge_pulse_o);",
+                                         "expected_behavior":  "A sampled rising input edge must create a posedge pulse rather than a negedge pulse.",
+                                         "temporal_type":  "cross-cycle edge relation"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "some_event_on_change",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (d_i != q_sync_o) |-\u003e (q_posedge_pulse_o || q_negedge_pulse_o));",
+                                                          "why_it_should_miss":  "The buggy design still produces an event pulse, just on the wrong output."
+                                                      },
+                                                      {
+                                                          "name":  "pulse_is_onehot",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) !(q_posedge_pulse_o \u0026\u0026 q_negedge_pulse_o));",
+                                                          "why_it_should_miss":  "Wrong polarity can still satisfy one-hot pulse exclusivity."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "A broad \u0027signal changes cause a pulse\u0027 assertion is too loose; only exact edge polarity catches this mutation.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Use EnSync=0 in wrapper and toggle d_i 0-\u003e1 and 1-\u003e0 on separate cycles. Held-out should repeat with longer high/low runs between edges.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case113_prim_edge_posedge_misdecoded"
+                  },
+                  {
+                      "name":  "case114_prim_edge_negedge_misdecoded",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_edge_detector",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "edge_direction",
+                      "bug_type":  "negedge output decodes posedge",
+                      "spec":  "q_negedge_pulse_o shall pulse for exactly the sampled 1-\u003e0 transition and not for 0-\u003e1 transitions.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "d_i",
+                                          "q_sync_o",
+                                          "q_posedge_pulse_o",
+                                          "q_negedge_pulse_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ($past(q_sync_o) \u0026\u0026 !q_sync_o) |-\u003e q_negedge_pulse_o);",
+                                         "expected_behavior":  "A sampled falling input edge must create a negedge pulse rather than a posedge pulse.",
+                                         "temporal_type":  "cross-cycle edge relation"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "event_exists",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (d_i != q_sync_o) |-\u003e (q_posedge_pulse_o || q_negedge_pulse_o));",
+                                                          "why_it_should_miss":  "It ignores which edge output is supposed to fire."
+                                                      },
+                                                      {
+                                                          "name":  "stable_no_pulse",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (d_i == q_sync_o) |-\u003e !(q_posedge_pulse_o || q_negedge_pulse_o));",
+                                                          "why_it_should_miss":  "The bug occurs only on transitions, not on stable cycles."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "Like the posedge case, this forces exact polarity rather than generic \u0027edge activity\u0027 checking.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Toggle d_i through both rising and falling transitions with clean holds in between. Held-out should use a different ordering of edges.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case114_prim_edge_negedge_misdecoded"
+                  },
+                  {
+                      "name":  "case115_prim_edge_both_edges_collapsed",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_edge_detector",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "edge_direction",
+                      "bug_type":  "posedge output fires on both edges",
+                      "spec":  "q_posedge_pulse_o shall remain low on falling edges and assert only on rising edges.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "d_i",
+                                          "q_sync_o",
+                                          "q_posedge_pulse_o",
+                                          "q_negedge_pulse_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ($past(q_sync_o) \u0026\u0026 !q_sync_o) |-\u003e !q_posedge_pulse_o);",
+                                         "expected_behavior":  "A falling edge must not leak into the posedge pulse output.",
+                                         "temporal_type":  "cross-cycle edge suppression check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "pulse_occurs_on_rise",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!q_sync_o \u0026\u0026 d_i) |-\u003e q_posedge_pulse_o);",
+                                                          "why_it_should_miss":  "The buggy implementation still pulses on rises; the problem is the extra pulses on falls."
+                                                      },
+                                                      {
+                                                          "name":  "negedge_output_correct",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (q_sync_o \u0026\u0026 !d_i) |-\u003e q_negedge_pulse_o);",
+                                                          "why_it_should_miss":  "The negedge output can stay correct while the posedge output spuriously fires too."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "This is a good \u0027conservative assertion misses the false positives\u0027 case: one can verify positive behavior and still miss illegal extra pulses.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Include at least one clean falling edge where only q_negedge_pulse_o should assert. Held-out should vary the time spent high before falling.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case115_prim_edge_both_edges_collapsed"
+                  },
+                  {
+                      "name":  "case118_prim_filter_ctr_early_accept",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_filter_ctr",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "filter_threshold",
+                      "bug_type":  "counter-based filter accepts one cycle early",
+                      "spec":  "With filtering enabled, filter_o shall not switch until thresh_i consecutive agreeing samples have been observed.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "enable_i",
+                                          "filter_i",
+                                          "thresh_i",
+                                          "filter_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (enable_i \u0026\u0026 filter_i \u0026\u0026 !$past(filter_i)) |-\u003e !filter_o);",
+                                         "expected_behavior":  "The first opposite sample must not switch the filtered output early.",
+                                         "temporal_type":  "cross-cycle minimum-hold threshold check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "eventual_accept",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (enable_i \u0026\u0026 filter_i) |-\u003e (filter_o || !$past(filter_o)));",
+                                                          "why_it_should_miss":  "It allows the switch to happen too soon."
+                                                      },
+                                                      {
+                                                          "name":  "disabled_bypass_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!enable_i) |-\u003e (filter_o == filter_i));",
+                                                          "why_it_should_miss":  "It says nothing about the threshold timing while enabled."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "An \u0027eventually filters the input\u0027 assertion is exactly the wrong abstraction here; the boundary cycle matters.",
+                      "overfit_lure":  "Use thresh_i values like 2 and 3 in primary traces to tempt constant pinning.",
+                      "stimulus_notes":  "Start from low, drive high for one cycle less than threshold and confirm no switch, then hit threshold. Held-out should exercise a different threshold literal.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case118_prim_filter_ctr_early_accept"
+                  },
+                  {
+                      "name":  "case119_prim_filter_ctr_late_accept",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_filter_ctr",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "filter_threshold",
+                      "bug_type":  "counter-based filter accepts one cycle late",
+                      "spec":  "With filtering enabled, filter_o shall switch by the exact threshold cycle rather than lagging by one extra sample.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "enable_i",
+                                          "filter_i",
+                                          "thresh_i",
+                                          "filter_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (enable_i \u0026\u0026 filter_i \u0026\u0026 $past(filter_i) \u0026\u0026 (thresh_i == 2\u0027d2)) |-\u003e filter_o);",
+                                         "expected_behavior":  "At the exact threshold boundary, the filtered output must already have changed.",
+                                         "temporal_type":  "multi-cycle exact-length threshold check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "two_or_more_highs_eventually_high",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (enable_i \u0026\u0026 filter_i) |-\u003e (filter_o || $past(filter_o)));",
+                                                          "why_it_should_miss":  "It permits an unspecified extra cycle of latency."
+                                                      },
+                                                      {
+                                                          "name":  "no_glitch_when_disabled",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!enable_i) |-\u003e (filter_o == filter_i));",
+                                                          "why_it_should_miss":  "The bug is in enabled threshold timing, not in bypass mode."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "This is a clean exact-threshold bug with a natural trace-summary overfit lure around the threshold literal.",
+                      "overfit_lure":  "Use primary trace threshold 2 and held-out threshold 3 so literal hard-coding can be detected.",
+                      "stimulus_notes":  "Run one case with thresh_i=2 in the prompt trace and another hidden held-out check with thresh_i=3.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case119_prim_filter_ctr_late_accept"
+                  },
+                  {
+                      "name":  "case124_prim_fifo_clear_ignored",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_fifo_sync_cnt",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "clear_semantics",
+                      "bug_type":  "clear pulse does not reset FIFO pointers",
+                      "spec":  "A clear pulse shall reset the FIFO occupancy and pointers on the next cycle.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "clr_i",
+                                          "incr_wptr_i",
+                                          "incr_rptr_i",
+                                          "full_o",
+                                          "empty_o",
+                                          "depth_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (clr_i \u0026\u0026 $past(clr_i)) |-\u003e (empty_o \u0026\u0026 (depth_o == 3\u0027d0)));",
+                                         "expected_behavior":  "A clear pulse must reset occupancy and empty state by the next sampled cycle.",
+                                         "temporal_type":  "next-cycle clear effect check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "eventual_empty_after_reads",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) incr_rptr_i |-\u003e !full_o);",
+                                                          "why_it_should_miss":  "Reads can still eventually drain the FIFO without proving clear works."
+                                                      },
+                                                      {
+                                                          "name":  "reset_path_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) !rst_n |-\u003e empty_o);",
+                                                          "why_it_should_miss":  "It checks asynchronous reset rather than operational clear."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "The bug hides in an operational control path distinct from reset. Loose FIFO assertions rarely distinguish the two.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Fill the FIFO, pulse clr_i, and sample the next cycle. Held-out should clear from a different occupancy level.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case124_prim_fifo_clear_ignored"
+                  },
+                  {
+                      "name":  "case125_prim_fifo_wrap_late",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_fifo_sync_cnt",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "pointer_wrap",
+                      "bug_type":  "write pointer wraps one cycle late",
+                      "spec":  "When the write pointer is at Depth-1 and a write occurs, the internal write pointer shall wrap on the next cycle rather than stepping to an out-of-range state.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "clr_i",
+                                          "incr_wptr_i",
+                                          "incr_rptr_i",
+                                          "full_o",
+                                          "empty_o",
+                                          "depth_o",
+                                          "wptr_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ($past(full_o) \u0026\u0026 incr_rptr_i \u0026\u0026 !$past(clr_i)) |-\u003e (depth_o == 3\u0027d3));",
+                                         "expected_behavior":  "Reading one item from a full FIFO must reduce occupancy from 4 to 3 on the next sampled cycle.",
+                                         "temporal_type":  "next-cycle post-full read check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "full_implies_not_empty",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) full_o |-\u003e !empty_o);",
+                                                          "why_it_should_miss":  "The FIFO can still avoid the contradictory full-and-empty state while the post-wrap read depth is corrupted."
+                                                      },
+                                                      {
+                                                          "name":  "full_eventually_asserts",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3\u0027d3 \u0026\u0026 incr_wptr_i) |-\u003e full_o || $past(full_o));",
+                                                          "why_it_should_miss":  "It does not require the exact pointer wrap relation."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "Boundary pointer semantics are much tighter than generic occupancy checks.",
+                      "overfit_lure":  "Use visible pointer sequence 0,1,2,3,0 in the primary trace and a different prelude in held-out.",
+                      "stimulus_notes":  "Drive four writes from reset and sample wptr_o at the wrap. Held-out should include a read before the final wrap sequence.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case125_prim_fifo_wrap_late"
+                  },
+                  {
+                      "name":  "case126_prim_regwe_enable_gap",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_reg_we_check",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "register_write_enable_consistency",
+                      "bug_type":  "write-enable checker ignores enable mismatch",
+                      "spec":  "When en_i is low, any nonzero onehot write-enable vector shall trigger err_o in the same cycle.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "oh_i",
+                                          "en_i",
+                                          "err_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!en_i \u0026\u0026 !$past(en_i) \u0026\u0026 (oh_i == 4\u0027b0100) \u0026\u0026 ($past(oh_i) == 4\u0027b0100)) |-\u003e err_o);",
+                                         "expected_behavior":  "A spurious write-enable vector must be rejected when the enable gate is low.",
+                                         "temporal_type":  "same-cycle combinational check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "multihot_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (((oh_i == 4\u0027b0011) || (oh_i == 4\u0027b0101) || (oh_i == 4\u0027b0110) || (oh_i == 4\u0027b0111) || (oh_i == 4\u0027b1001) || (oh_i == 4\u0027b1010) || (oh_i == 4\u0027b1011) || (oh_i == 4\u0027b1100) || (oh_i == 4\u0027b1101) || (oh_i == 4\u0027b1110) || (oh_i == 4\u0027b1111)) |-\u003e err_o);",
+                                                          "why_it_should_miss":  "A legal onehot vector with en_i low is still illegal for this module but passes this looser check."
+                                                      },
+                                                      {
+                                                          "name":  "zero_ok_when_disabled",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!en_i \u0026\u0026 !(|oh_i)) |-\u003e !err_o);",
+                                                          "why_it_should_miss":  "It only checks the easy disabled-zero corner."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "This module is a good same-cycle \u0027context matters\u0027 case: onehot legality alone is not enough; enable gating is part of correctness.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Drive legal onehot oh_i values while toggling en_i low. Held-out should use different bit positions and include an all-zero disabled control sample.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case126_prim_regwe_enable_gap"
+                  },
+                  {
+                      "name":  "case129_prim_onehot_zero_enabled_suppressed",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_onehot_check",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "enable_consistency",
+                      "bug_type":  "zero-hot while enabled is no longer rejected",
+                      "spec":  "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "oh_i",
+                                          "addr_i",
+                                          "en_i",
+                                          "err_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (((oh_i == 4\u0027b0000) \u0026\u0026 ($past(oh_i) == 4\u0027b0000) \u0026\u0026 en_i \u0026\u0026 $past(en_i))) |-\u003e err_o);",
+                                         "expected_behavior":  "Strict onehot checking must reject the all-zero request vector while enabled.",
+                                         "temporal_type":  "same-cycle combinational check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "request_implies_enable",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ((oh_i == 4\u0027b0001) || (oh_i == 4\u0027b0010) || (oh_i == 4\u0027b0100) || (oh_i == 4\u0027b1000)) |-\u003e en_i);",
+                                                          "why_it_should_miss":  "It constrains only active-request cases and says nothing about enabled-zero."
+                                                      },
+                                                      {
+                                                          "name":  "multihot_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (((oh_i == 4\u0027b0011) || (oh_i == 4\u0027b0101) || (oh_i == 4\u0027b0110) || (oh_i == 4\u0027b0111) || (oh_i == 4\u0027b1001) || (oh_i == 4\u0027b1010) || (oh_i == 4\u0027b1011) || (oh_i == 4\u0027b1100) || (oh_i == 4\u0027b1101) || (oh_i == 4\u0027b1110) || (oh_i == 4\u0027b1111)) |-\u003e err_o);",
+                                                          "why_it_should_miss":  "The mutation leaves multihot detection intact and only breaks the strict zero-hot corner."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "A broad \u0027onehot or enabled\u0027 check can still pass here. The useful assertion has to name the strict zero-hot-while-enabled corner explicitly.",
+                      "overfit_lure":  "Primary trace should include a tempting enabled-zero literal like 4\u0027b0000 between valid onehot patterns.",
+                      "stimulus_notes":  "Drive a legal onehot first, then hold en_i high while forcing oh_i to 4\u0027b0000. Held-out should reuse a different surrounding onehot pattern before the same strict zero-hot corner.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case129_prim_onehot_zero_enabled_suppressed"
+                  },
+                  {
+                      "name":  "case130_prim_fifo_empty_early",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_fifo_sync_cnt",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "fifo_boundary_flag",
+                      "bug_type":  "empty asserts one slot early",
+                      "spec":  "empty_o shall remain low while the FIFO still contains exactly one entry.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "clr_i",
+                                          "incr_wptr_i",
+                                          "incr_rptr_i",
+                                          "full_o",
+                                          "empty_o",
+                                          "depth_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3\u0027d1) |-\u003e !empty_o);",
+                                         "expected_behavior":  "Single-entry occupancy must not be mistaken for empty.",
+                                         "temporal_type":  "same-cycle combinational boundary check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "no_full_when_empty",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) empty_o |-\u003e !full_o);",
+                                                          "why_it_should_miss":  "The buggy FIFO can still avoid asserting full while empty_o rises too early."
+                                                      },
+                                                      {
+                                                          "name":  "reads_reduce_depth",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) incr_rptr_i |-\u003e !full_o);",
+                                                          "why_it_should_miss":  "It never checks the exact one-entry boundary where empty_o must stay low."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "This is the mirror image of the classic empty-late bug: only the exact occupancy-1 boundary distinguishes correct from buggy.",
+                      "overfit_lure":  "The primary trace should visibly walk through depth 2,1,0 so literal-matching methods have a tempting shortcut.",
+                      "stimulus_notes":  "Write entries, drain down to one remaining item, and sample empty_o before the final read. Held-out should revisit the one-entry boundary after a clear pulse and refill.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case130_prim_fifo_empty_early"
+                  },
+                  {
+                      "name":  "case132_prim_edge_posedge_missing",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_edge_detector",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "edge_presence",
+                      "bug_type":  "posedge pulse is dropped entirely",
+                      "spec":  "A sampled 0-\u003e1 transition shall generate a one-cycle pulse on q_posedge_pulse_o.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "d_i",
+                                          "q_sync_o",
+                                          "q_posedge_pulse_o",
+                                          "q_negedge_pulse_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!$past(q_sync_o) \u0026\u0026 q_sync_o) |-\u003e q_posedge_pulse_o);",
+                                         "expected_behavior":  "Every sampled rising edge must create a visible posedge pulse.",
+                                         "temporal_type":  "cross-cycle edge presence check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "pulse_onehot_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) !(q_posedge_pulse_o \u0026\u0026 q_negedge_pulse_o));",
+                                                          "why_it_should_miss":  "A completely missing posedge pulse still satisfies exclusivity."
+                                                      },
+                                                      {
+                                                          "name":  "negedge_path_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ($past(q_sync_o) \u0026\u0026 !q_sync_o) |-\u003e q_negedge_pulse_o);",
+                                                          "why_it_should_miss":  "The falling-edge path can remain correct while the rising-edge pulse disappears."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "A generic \u0027there is some pulse activity\u0027 statement is too weak; the exact rise-to-pulse contract matters.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Toggle d_i low-to-high between clock edges and sample the next posedge. Held-out should include a longer low dwell before the rise.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case132_prim_edge_posedge_missing"
+                  },
+                  {
+                      "name":  "case133_prim_edge_negedge_missing",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_edge_detector",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "edge_presence",
+                      "bug_type":  "negedge pulse is dropped entirely",
+                      "spec":  "A sampled 1-\u003e0 transition shall generate a one-cycle pulse on q_negedge_pulse_o.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "d_i",
+                                          "q_sync_o",
+                                          "q_posedge_pulse_o",
+                                          "q_negedge_pulse_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ($past(q_sync_o) \u0026\u0026 !q_sync_o) |-\u003e q_negedge_pulse_o);",
+                                         "expected_behavior":  "Every sampled falling edge must create a visible negedge pulse.",
+                                         "temporal_type":  "cross-cycle edge presence check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "pulse_onehot_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) !(q_posedge_pulse_o \u0026\u0026 q_negedge_pulse_o));",
+                                                          "why_it_should_miss":  "A missing negedge pulse still satisfies exclusivity."
+                                                      },
+                                                      {
+                                                          "name":  "posedge_path_only",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!$past(q_sync_o) \u0026\u0026 q_sync_o) |-\u003e q_posedge_pulse_o);",
+                                                          "why_it_should_miss":  "The rising-edge path can stay correct while the falling-edge pulse disappears."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "Like the posedge variant, this needs the exact boundary relation rather than a vague pulse-exists check.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Drive a clean high interval first, then force a falling edge between sampled clocks. Held-out should interleave extra rises between the fall checks.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case133_prim_edge_negedge_missing"
+                  },
+                  {
+                      "name":  "case134_prim_intr_event_not_sticky",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_intr_hw",
+                      "bug_class":  "temporal_cross_cycle",
+                      "bug_family":  "event_latching",
+                      "bug_type":  "event interrupt state drops when the source pulse goes away",
+                      "spec":  "In Event mode, a captured event shall remain latched in the interrupt state until software clears it.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "event_intr_i",
+                                          "reg2hw_intr_enable_q_i",
+                                          "reg2hw_intr_state_q_i",
+                                          "intr_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ($past(reg2hw_intr_state_q_i) \u0026\u0026 reg2hw_intr_state_q_i \u0026\u0026 reg2hw_intr_enable_q_i) |-\u003e intr_o);",
+                                         "expected_behavior":  "Once event state is latched and remains high, the enabled interrupt output must stay asserted on the next sampled cycle.",
+                                         "temporal_type":  "cross-cycle latched-visibility check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "event_sets_state_next_cycle",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) event_intr_i |-\u003e reg2hw_intr_enable_q_i);",
+                                                          "why_it_should_miss":  "It checks only that the sampled hardware event arrived while enabled, not whether the interrupt stayed latched afterward."
+                                                      },
+                                                      {
+                                                          "name":  "masked_interrupt_low",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_enable_q_i) |-\u003e !intr_o);",
+                                                          "why_it_should_miss":  "The bug is about event retention while enabled, not masked behavior."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "A momentary event makes this easy to miss with generic \u0027event seen\u0027 wording. The contract is specifically about retention across cycles.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Pulse event_intr_i high for one cycle under enable, then keep it low without clearing state. Held-out should insert an extra idle cycle before the pulse.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case134_prim_intr_event_not_sticky"
+                  },
+                  {
+                      "name":  "case135_prim_intr_enable_mask_ignored",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_intr_hw",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "interrupt_masking",
+                      "bug_type":  "interrupt output ignores the enable mask",
+                      "spec":  "Even if interrupt state is set, intr_o shall be low in any sampled cycle where reg2hw_intr_enable_q_i is low.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "event_intr_i",
+                                          "reg2hw_intr_enable_q_i",
+                                          "reg2hw_intr_state_q_i",
+                                          "intr_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_enable_q_i \u0026\u0026 !$past(reg2hw_intr_enable_q_i) \u0026\u0026 reg2hw_intr_state_q_i \u0026\u0026 $past(reg2hw_intr_state_q_i)) |-\u003e !intr_o);",
+                                         "expected_behavior":  "The output mask must suppress interrupt visibility immediately when enable is low.",
+                                         "temporal_type":  "same-cycle mask gating check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "event_updates_state",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) event_intr_i |-\u003e hw2reg_intr_state_de_o);",
+                                                          "why_it_should_miss":  "State-update correctness says nothing about whether the mask is applied at the outgoing interrupt pin."
+                                                      },
+                                                      {
+                                                          "name":  "enabled_event_visible",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i \u0026\u0026 $past(reg2hw_intr_enable_q_i) \u0026\u0026 reg2hw_intr_state_q_i \u0026\u0026 $past(reg2hw_intr_state_q_i)) |-\u003e intr_o);",
+                                                          "why_it_should_miss":  "The buggy design still satisfies enabled visibility while failing masked suppression after enable drops."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "Many loose interrupt assertions check only that enabled events become visible. The hard part is checking the exact masked corner after state has already gone high.",
+                      "overfit_lure":  "",
+                      "stimulus_notes":  "Raise interrupt state first, then drop reg2hw_intr_enable_q_i while holding state high. Held-out should do the same after a different event prelude.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case135_prim_intr_enable_mask_ignored"
+                  },
+                  {
+                      "name":  "case137_prim_onehot_addr_false_positive",
+                      "source_project":  "opentitan",
+                      "source_module":  "prim_onehot_check",
+                      "bug_class":  "combination_same_cycle",
+                      "bug_family":  "decoded_index_consistency",
+                      "bug_type":  "legal onehot request spuriously flags address error",
+                      "spec":  "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+                      "key_signals":  [
+                                          "clk",
+                                          "rst_n",
+                                          "oh_i",
+                                          "addr_i",
+                                          "en_i",
+                                          "err_o"
+                                      ],
+                      "golden_sva":  {
+                                         "sva":  "assert property (@(posedge clk) disable iff (!rst_n) (((((oh_i == 4\u0027b0001) \u0026\u0026 ($past(oh_i) == 4\u0027b0001) \u0026\u0026 (addr_i == 2\u0027d0) \u0026\u0026 ($past(addr_i) == 2\u0027d0)) || ((oh_i == 4\u0027b0010) \u0026\u0026 ($past(oh_i) == 4\u0027b0010) \u0026\u0026 (addr_i == 2\u0027d1) \u0026\u0026 ($past(addr_i) == 2\u0027d1))) \u0026\u0026 en_i \u0026\u0026 $past(en_i))) |-\u003e !err_o);",
+                                         "expected_behavior":  "A legal onehot/address match must not raise a spurious checker error.",
+                                         "temporal_type":  "same-cycle combinational legality check"
+                                     },
+                      "loose_negative_controls":  [
+                                                      {
+                                                          "name":  "illegal_must_error",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ((((oh_i == 4\u0027b0100) \u0026\u0026 (addr_i == 2\u0027d0)) || ((oh_i == 4\u0027b1000) \u0026\u0026 (addr_i == 2\u0027d1))) \u0026\u0026 en_i) |-\u003e err_o);",
+                                                          "why_it_should_miss":  "It constrains only obviously illegal address mismatches and says nothing about false positives on legal requests."
+                                                      },
+                                                      {
+                                                          "name":  "multihot_implies_enable",
+                                                          "sva":  "assert property (@(posedge clk) disable iff (!rst_n) ((oh_i == 4\u0027b1010) || (oh_i == 4\u0027b1100)) |-\u003e en_i);",
+                                                          "why_it_should_miss":  "It only checks that an unrelated multihot stimulus was presented while enabled, so it says nothing about false positives on legal onehot requests."
+                                                      }
+                                                  ],
+                      "hard_case_rationale":  "This is a good negative-correctness case: generic assertions about illegal inputs still pass, but only an exact legal-corner assertion exposes the spurious error.",
+                      "overfit_lure":  "Use exact legal pairs like (4\u0027b0001, 2\u0027d0) and (4\u0027b0010, 2\u0027d1) so trace-conditioned methods are tempted to memorize the seen constants.",
+                      "stimulus_notes":  "Exercise both legal and illegal onehot/address pairs. Held-out should use a different legal bit/index match than the primary trace.",
+                      "dataset_phase":  "real_rtl_mutation_scaffold",
+                      "status":  "needs_tb_and_waveforms",
+                      "dut_top_module":  "dut_case137_prim_onehot_addr_false_positive"
+                  }
+              ]
+}

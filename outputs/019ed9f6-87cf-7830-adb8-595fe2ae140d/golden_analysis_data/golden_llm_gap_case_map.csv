@@ -1,0 +1,31 @@
+case_id,temporal_type,strict_check_all_true,failure_reason,llm_case_present,any_llm_robust_success,best_llm_methods,spec_only_has_robust_success,spec_plus_rtl_has_robust_success,spec_rtl_raw_trace_has_robust_success,spec_rtl_trace_summary_has_robust_success
+case101_prim_onehot_multihot_suppressed,onehot,True,,True,False,,,,,
+case102_prim_onehot_enable_mismatch_suppressed,onehot,True,,True,False,,,,,
+case103_prim_onehot_addr_mismatch_suppressed,onehot,True,,True,False,,,,,
+case104_prim_fifo_full_early,fifo_boundary,True,,True,False,,,,,
+case105_prim_fifo_empty_late,fifo_boundary,True,,True,True,spec only,True,True,False,True
+case106_prim_fifo_depth_off_by_one,fifo_boundary,True,,True,False,,,,,
+case110_prim_intr_event_overwrite,throughout_hold,True,,False,False,,,,,
+case111_prim_intr_output_or_mask,same_cycle,True,,True,False,,,,,
+case112_prim_intr_test_pulse_dropped,same_cycle,True,,True,True,spec + RTL + raw trace,True,True,True,True
+case113_prim_edge_posedge_misdecoded,same_cycle,True,,True,False,,,,,
+case114_prim_edge_negedge_misdecoded,same_cycle,True,,True,False,,,,,
+case115_prim_edge_both_edges_collapsed,same_cycle,True,,True,True,"spec only, spec + RTL + trace summary",True,False,False,True
+case116_prim_filter_late_accept,same_cycle,True,,False,False,,,,,
+case117_prim_filter_bypass_stale,same_cycle,True,,False,False,,,,,
+case118_prim_filter_ctr_early_accept,counter_boundary,True,,True,False,,,,,
+case119_prim_filter_ctr_late_accept,counter_boundary,True,,True,False,,,,,
+case120_prim_filter_ctr_bypass_stale,counter_boundary,True,,False,False,,,,,
+case124_prim_fifo_clear_ignored,fifo_boundary,True,,True,True,"spec only, spec + RTL + raw trace",True,False,True,False
+case125_prim_fifo_wrap_late,fifo_boundary,True,,True,False,,,,,
+case126_prim_regwe_enable_gap,onehot,True,,True,False,,,,,
+case128_prim_intr_event_mask_stall,next_cycle,True,,False,False,,,,,
+case129_prim_onehot_zero_enabled_suppressed,onehot,True,,True,False,,,,,
+case130_prim_fifo_empty_early,fifo_boundary,True,,True,True,spec + RTL + raw trace,False,False,True,False
+case131_prim_filter_disabled_bypass_stale_alt,same_cycle,True,,False,False,,,,,
+case132_prim_edge_posedge_missing,same_cycle,True,,True,False,,,,,
+case133_prim_edge_negedge_missing,same_cycle,True,,True,False,,,,,
+case134_prim_intr_event_not_sticky,throughout_hold,True,,True,False,,,,,
+case135_prim_intr_enable_mask_ignored,same_cycle,True,,True,False,,,,,
+case136_prim_filter_ctr_disabled_bypass_stale_alt,counter_boundary,True,,False,False,,,,,
+case137_prim_onehot_addr_false_positive,onehot,True,,True,False,,,,,

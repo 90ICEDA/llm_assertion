@@ -1,0 +1,9 @@
+﻿case_id,candidate_index,repaired_antecedent,compile_ok,correct_pass,fail_on_buggy,antecedent_hit,heldout_correct_pass,heldout_buggy_fail,false_positive_introduced,heldout_failure_introduced
+case102_prim_onehot_enable_mismatch_suppressed,2,oh_i == 4'b0 && en_i == 1,True,False,True,True,False,True,True,True
+case102_prim_onehot_enable_mismatch_suppressed,3,oh_i != 4'b0 && en_i == 1,True,False,True,True,True,False,True,False
+case102_prim_onehot_enable_mismatch_suppressed,4,oh_i == 4'b0 && en_i != 1,True,False,True,True,False,True,True,True
+case102_prim_onehot_enable_mismatch_suppressed,5,en_i != |oh_i,True,False,True,True,False,True,True,True
+case124_prim_fifo_clear_ignored,1,clr_i && !empty_o,True,True,True,True,True,True,False,False
+case124_prim_fifo_clear_ignored,5,depth_o != 3'b000,True,False,True,True,False,True,True,True
+case135_prim_intr_enable_mask_ignored,1,reg2hw_intr_state_q_i == 1 && reg2hw_intr_enable_q_i == 0,True,False,True,True,False,True,True,True
+case137_prim_onehot_addr_false_positive,5,(oh_i & ~(1 << addr_i)) == 0,True,False,True,True,False,True,True,True

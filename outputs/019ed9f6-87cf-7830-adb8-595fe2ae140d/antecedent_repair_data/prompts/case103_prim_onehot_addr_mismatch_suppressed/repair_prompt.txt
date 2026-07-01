@@ -1,0 +1,48 @@
+You are repairing only the antecedent of a SystemVerilog assertion.
+
+        Output exactly five antecedent expressions, one per line.
+        Do not output assertion syntax.
+        Do not output explanations.
+        Do not number the lines.
+
+        Case: case103_prim_onehot_addr_mismatch_suppressed
+        Original method: spec_only
+        Allowed signals:
+        clk, rst_n, oh_i, addr_i, en_i, err_o
+
+        Specification:
+        If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.
+
+        Original assertion:
+        assert property (@(posedge clk) disable iff (!rst_n) ((| oh_i) && (!rst_n)) |-> (err_o));
+
+        Locked implication operator:
+        |->
+
+        Locked consequent:
+        err_o
+
+        Why the original antecedent failed to trigger:
+        - Original antecedent: (| oh_i) && (!rst_n)
+        - Diagnosis: Original antecedent included !rst_n under disable iff (!rst_n), making the trigger impossible after reset, or otherwise failed to encode the onehot/address mismatch relation.
+
+        Trigger condition extracted from the good/bad traces:
+        - The bug-revealing condition is a legal onehot request whose addr_i points to a different bit in the same cycle. Good trace sweeps matching and mismatching addr_i values while keeping oh_i onehot. Held-out uses different active bits. The repaired antecedent should encode onehot-and-wrong-index consistency, not reset-related or always-true request checks.
+        - First divergence cycle: 2
+        - First divergence values: err_o: good=1 bad=0
+
+        Repair rules:
+        1) Repair only the antecedent. We will reuse the locked implication operator and locked consequent exactly as given.
+        2) Use only allowed signals.
+        3) Do not include !rst_n in the antecedent because the assertion already has disable iff (!rst_n).
+        4) Prefer an antecedent that actually fires on the bug-revealing scenario in the observed buggy trace.
+        5) Preserve correctness on the good trace if possible.
+        6) Do not hardcode one observed literal unless the spec or RTL independently justifies it.
+        7) If the consequent is checked on the next cycle (|->), make the antecedent describe the precondition of that next-cycle effect.
+
+        Observed trace summary extracted for repair guidance:
+Case: case103_prim_onehot_addr_mismatch_suppressed
+First divergence cycle: 2
+Differing signals at first divergence: err_o
+Observed differing signal values (good): err_o=1
+Observed differing signal values (bad): err_o=0

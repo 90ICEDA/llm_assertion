@@ -1,0 +1,240 @@
+// Auto-generated real RTL mutation scaffold.
+// case: case118_prim_filter_ctr_early_accept
+// source_project: opentitan
+// source_module: prim_filter_ctr
+
+`ifndef ASSERT_DEFAULT_CLK
+`define ASSERT_DEFAULT_CLK clk_i
+`endif
+`ifndef ASSERT_DEFAULT_RST
+`define ASSERT_DEFAULT_RST !rst_ni
+`endif
+`ifndef ASSERT_I
+`define ASSERT_I(__name, __prop)
+`endif
+`ifndef ASSERT_INIT
+`define ASSERT_INIT(__name, __prop)
+`endif
+`ifndef ASSERT_INIT_NET
+`define ASSERT_INIT_NET(__name, __prop)
+`endif
+`ifndef ASSERT_FINAL
+`define ASSERT_FINAL(__name, __prop)
+`endif
+`ifndef ASSERT_AT_RESET
+`define ASSERT_AT_RESET(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_AT_RESET_AND_FINAL
+`define ASSERT_AT_RESET_AND_FINAL(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT
+`define ASSERT(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_NEVER
+`define ASSERT_NEVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_KNOWN
+`define ASSERT_KNOWN(__name, __sig, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef COVER
+`define COVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME
+`define ASSUME(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME_I
+`define ASSUME_I(__name, __prop)
+`endif
+`ifndef ASSUME_FPV
+`define ASSUME_FPV(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+
+module dut_case118_prim_filter_ctr_early_accept (
+  input logic clk,
+  input logic rst_n,
+  input logic enable_i,
+  input logic filter_i,
+  input logic [1:0] thresh_i,
+  output logic filter_o
+);
+  prim_filter_ctr #(
+    .AsyncOn(1'b0),
+    .CntWidth(2)
+  ) u_dut (
+    .clk_i(clk),
+    .rst_ni(rst_n),
+    .enable_i(enable_i),
+    .filter_i(filter_i),
+    .thresh_i(thresh_i),
+    .filter_o(filter_o)
+  );
+endmodule
+
+// ----- source: D:/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+module prim_flop #(
+  parameter int               Width      = 1,
+  parameter logic [Width-1:0] ResetValue = 0
+) (
+  input                    clk_i,
+  input                    rst_ni,
+  input        [Width-1:0] d_i,
+  output logic [Width-1:0] q_o
+);
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      q_o <= ResetValue;
+    end else begin
+      q_o <= d_i;
+    end
+  end
+
+endmodule
+
+// ----- source: D:/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop_2sync.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+//
+// Double-flop-based synchronizer
+
+module prim_flop_2sync #(
+  parameter int               Width      = 16,
+  parameter logic [Width-1:0] ResetValue = '0,
+  parameter bit               EnablePrimCdcRand = 1
+) (
+  input                    clk_i,
+  input                    rst_ni,
+  input        [Width-1:0] d_i,
+  output logic [Width-1:0] q_o
+);
+
+  logic [Width-1:0] d_o;
+  logic [Width-1:0] intq;
+
+`ifdef SIMULATION
+
+  prim_cdc_rand_delay #(
+    .DataWidth(Width),
+    .Enable(EnablePrimCdcRand)
+  ) u_prim_cdc_rand_delay (
+    .clk_i,
+    .rst_ni,
+    .src_data_i(d_i),
+    .prev_data_i(intq),
+    .dst_data_o(d_o)
+  );
+`else // !`ifdef SIMULATION
+  logic unused_sig;
+  assign unused_sig = EnablePrimCdcRand;
+  always_comb d_o = d_i;
+`endif // !`ifdef SIMULATION
+
+  prim_flop #(
+    .Width(Width),
+    .ResetValue(ResetValue)
+  ) u_sync_1 (
+    .clk_i,
+    .rst_ni,
+    .d_i(d_o),
+    .q_o(intq)
+  );
+
+  prim_flop #(
+    .Width(Width),
+    .ResetValue(ResetValue)
+  ) u_sync_2 (
+    .clk_i,
+    .rst_ni,
+    .d_i(intq),
+    .q_o
+  );
+
+endmodule : prim_flop_2sync
+
+// ----- mutated source: D:/AssertionForge-main/external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+//
+// Primitive counter-based input filter, with enable.
+// Configurable number of cycles. Cheaper version of filter for
+// large values of #Cycles
+//
+// when in reset, stored value is zero
+// when enable is false, output is input
+// when enable is true, output is stored value,
+//   new input must be opposite value from stored value for
+//   #Cycles before switching to new value.
+
+module prim_filter_ctr #(
+  // If this parameter is set, an additional 2-stage synchronizer will be
+  // added at the input.
+  parameter bit AsyncOn = 0,
+  parameter int unsigned CntWidth = 2
+) (
+  input                clk_i,
+  input                rst_ni,
+  input                enable_i,
+  input                filter_i,
+  input [CntWidth-1:0] thresh_i,
+  output logic         filter_o
+);
+
+  logic [CntWidth-1:0] diff_ctr_q, diff_ctr_d;
+  logic filter_q, stored_value_q, update_stored_value;
+
+  logic filter_synced;
+
+  if (AsyncOn) begin : gen_async
+    // Run this through a 2 stage synchronizer to
+    // prevent metastability.
+    prim_flop_2sync #(
+      .Width(1)
+    ) prim_flop_2sync (
+      .clk_i,
+      .rst_ni,
+      .d_i(filter_i),
+      .q_o(filter_synced)
+    );
+  end else begin : gen_sync
+    assign filter_synced = filter_i;
+  end
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      filter_q <= 1'b0;
+    end else begin
+      filter_q <= filter_synced;
+    end
+  end
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      stored_value_q <= 1'b0;
+    end else if (update_stored_value) begin
+      stored_value_q <= filter_synced;
+    end
+  end
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      diff_ctr_q <= '0;
+    end else begin
+      diff_ctr_q <= diff_ctr_d;
+    end
+  end
+
+  // always look for differences, even if not filter enabled
+  assign update_stored_value = (diff_ctr_d == (thresh_i - 1'b1));
+  assign diff_ctr_d = (filter_synced != filter_q) ? '0       :           // restart
+                      (diff_ctr_q >= thresh_i)    ? thresh_i :           // saturate
+                                                    (diff_ctr_q + 1'b1); // count up
+
+  assign filter_o = enable_i ? stored_value_q : filter_synced;
+
+endmodule

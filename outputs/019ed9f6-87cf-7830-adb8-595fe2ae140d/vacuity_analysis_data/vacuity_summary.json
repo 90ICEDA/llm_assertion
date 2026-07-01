@@ -1,0 +1,80 @@
+{
+  "fail_assertion_count": 102,
+  "fail_case_count": 19,
+  "buggy_antecedent_zero_count": 89,
+  "buggy_antecedent_zero_case_count": 19,
+  "paper_bucket_counts": {
+    "vacuous_miss": 80,
+    "non_vacuous_miss": 3,
+    "too_weak": 10,
+    "trace_overfit": 5,
+    "semantic_wrong": 0,
+    "unsupported_analysis": 4
+  },
+  "method_summary": [
+    {
+      "method": "spec_only",
+      "method_label": "spec only",
+      "fail_assertion_count": 31,
+      "vacuous_miss_count": 23,
+      "non_vacuous_miss_count": 2,
+      "too_weak_count": 5,
+      "trace_overfit_count": 0,
+      "semantic_wrong_count": 0,
+      "unsupported_analysis_count": 1,
+      "buggy_antecedent_zero_count": 24,
+      "fail_case_count": 16,
+      "vacuous_share": 0.7419
+    },
+    {
+      "method": "spec_plus_rtl",
+      "method_label": "spec + RTL",
+      "fail_assertion_count": 27,
+      "vacuous_miss_count": 24,
+      "non_vacuous_miss_count": 1,
+      "too_weak_count": 2,
+      "trace_overfit_count": 0,
+      "semantic_wrong_count": 0,
+      "unsupported_analysis_count": 0,
+      "buggy_antecedent_zero_count": 24,
+      "fail_case_count": 15,
+      "vacuous_share": 0.8889
+    },
+    {
+      "method": "spec_rtl_raw_trace",
+      "method_label": "spec + RTL + raw trace",
+      "fail_assertion_count": 15,
+      "vacuous_miss_count": 11,
+      "non_vacuous_miss_count": 0,
+      "too_weak_count": 1,
+      "trace_overfit_count": 3,
+      "semantic_wrong_count": 0,
+      "unsupported_analysis_count": 0,
+      "buggy_antecedent_zero_count": 14,
+      "fail_case_count": 11,
+      "vacuous_share": 0.7333
+    },
+    {
+      "method": "spec_rtl_trace_summary",
+      "method_label": "spec + RTL + trace summary",
+      "fail_assertion_count": 29,
+      "vacuous_miss_count": 22,
+      "non_vacuous_miss_count": 0,
+      "too_weak_count": 2,
+      "trace_overfit_count": 2,
+      "semantic_wrong_count": 0,
+      "unsupported_analysis_count": 3,
+      "buggy_antecedent_zero_count": 27,
+      "fail_case_count": 16,
+      "vacuous_share": 0.7586
+    }
+  ],
+  "classification_rule": {
+    "unsupported_analysis": "compile_ok == False or analysis_supported == False",
+    "semantic_wrong": "semantic_reasonable == False or semantic-like failure markers",
+    "trace_overfit": "trace_overfit == True or literal_hardcoding == True or trace-only literal reason",
+    "vacuous_miss": "antecedent_hit_buggy == 0 after excluding the above",
+    "too_weak": "antecedent_hit_buggy == 1 and correct_pass == 1 and failure_type == bug_not_detected_on_buggy",
+    "non_vacuous_miss": "remaining antecedent_hit_buggy == 1 misses; correct-side too-strong issue kept in correct_side_issue"
+  }
+}

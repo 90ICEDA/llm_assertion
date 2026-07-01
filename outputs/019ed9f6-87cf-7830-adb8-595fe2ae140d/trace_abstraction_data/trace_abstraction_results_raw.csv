@@ -1,0 +1,961 @@
+﻿case_id,selection_tags,prompt_variant,candidate_index,assertion_text,compile_ok,correct_pass,buggy_fail,antecedent_hit,non_vacuous,heldout_correct_pass,heldout_buggy_fail,trace_overfit,semantic_reasonable,semantic_reason,heldout_antecedent_hit,heldout_non_vacuous,seen_good_ant_hits,seen_bad_ant_hits,heldout_bad_ant_hits,seen_good_fail_hits,seen_bad_fail_hits,heldout_good_fail_hits,heldout_bad_fail_hits,use_property_compile_mode,raw_generation_responses
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1) |-> err_o);,True,True,False,False,False,True,False,False,True,"This candidate checks if more than one bit of oh_i is high and asserts err_o in the same cycle, which directly corresponds to the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && en_i && !oh_i[addr_i]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && en_i && $onehot0(oh_i)) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1 && en_i) |=> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |=> err_o);,False,False,False,False,False,False,False,False,False,This candidate is specific to a particular combination of bits (oh_i[3] && oh_i[2]) and does not generalize to more than one bit being high.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && en_i && !oh_i[addr_i]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && en_i && $onehot0(oh_i)) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1 && en_i) |=> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && en_i && !oh_i[addr_i]) |-> err_o);,False,False,False,False,False,False,False,False,False,This candidate involves an address check and does not relate to the number of high bits in oh_i.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && en_i && !oh_i[addr_i]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && en_i && $onehot0(oh_i)) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1 && en_i) |=> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && en_i && $onehot0(oh_i)) |-> err_o);,False,False,False,False,False,False,False,False,False,"This candidate checks if oh_i is a non-onehot encoded value and asserts err_o, which is unrelated to the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && en_i && !oh_i[addr_i]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && en_i && $onehot0(oh_i)) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1 && en_i) |=> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1 && en_i) |=> err_o);,True,True,False,False,False,True,False,False,True,"This candidate ensures that more than one bit of oh_i is high and en_i is asserted, leading to err_o being asserted in the same cycle, which aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && en_i && !oh_i[addr_i]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && en_i && $onehot0(oh_i)) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b1 && en_i) |=> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b0) |-> (err_o == 1'b1));,True,False,True,True,True,False,True,False,True,This candidate checks if more than one bit of oh_i is high and asserts err_o accordingly. It directly corresponds to the specification.,True,True,1,1,1,1,1,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && |oh_i != en_i) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && oh_i[addr_i] != (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && !en_i && (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (StrictCheck && $onehot0(oh_i) && en_i) |-> (err_o == 1'b1));"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i && |oh_i != en_i) |-> (err_o == 1'b1));,True,False,True,True,True,False,True,False,False,"This candidate involves en_i, which is not mentioned in the specification. It appears to be overfitting to one observed literal.",True,True,3,3,4,1,3,2,4,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && |oh_i != en_i) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && oh_i[addr_i] != (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && !en_i && (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (StrictCheck && $onehot0(oh_i) && en_i) |-> (err_o == 1'b1));"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && oh_i[addr_i] != (|oh_i)) |-> (err_o == 1'b1));,False,False,False,False,False,False,False,False,False,"This candidate involves AddrCheck and addr_i, which are not mentioned in the specification. It appears to be overfitting to one observed literal.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && |oh_i != en_i) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && oh_i[addr_i] != (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && !en_i && (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (StrictCheck && $onehot0(oh_i) && en_i) |-> (err_o == 1'b1));"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && !en_i && (|oh_i)) |-> (err_o == 1'b1));,False,False,False,False,False,False,False,False,False,"This candidate involves EnableCheck and !en_i, which are not mentioned in the specification. It appears to be overfitting to one observed literal.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && |oh_i != en_i) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && oh_i[addr_i] != (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && !en_i && (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (StrictCheck && $onehot0(oh_i) && en_i) |-> (err_o == 1'b1));"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (StrictCheck && $onehot0(oh_i) && en_i) |-> (err_o == 1'b1));,False,False,False,False,False,False,False,False,False,"This candidate involves StrictCheck and $onehot0(oh_i), which are not mentioned in the specification. It appears to be overfitting to one observed literal.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (|oh_i > 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && |oh_i != en_i) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (AddrCheck && oh_i[addr_i] != (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (EnableCheck && !en_i && (|oh_i)) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (StrictCheck && $onehot0(oh_i) && en_i) |-> (err_o == 1'b1));"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i) > 1) |-> err_o);,True,True,False,False,False,True,False,False,True,This candidate checks if more than one bit of oh_i is high and asserts err_o accordingly. It correctly encodes the specification.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i) > 1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[0] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[1] && oh_i[3]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i[2:0]) > 1) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |-> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[0] && oh_i[2]) |=> err_o);,False,False,False,False,False,False,False,False,False,This candidate is trivially related to a specific combination of bits in oh_i (bits 0 and 2) and does not cover all possible cases where more than one bit could be high.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i) > 1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[0] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[1] && oh_i[3]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i[2:0]) > 1) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |-> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[1] && oh_i[3]) |-> err_o);,False,False,False,False,False,False,False,False,False,"Similar to candidate 2, this candidate is specifically tied to a different combination of bits in oh_i (bits 1 and 3), failing to capture the general specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i) > 1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[0] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[1] && oh_i[3]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i[2:0]) > 1) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |-> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i[2:0]) > 1) |=> err_o);,False,False,False,False,False,False,False,False,True,This candidate checks if more than one bit in a specific range of oh_i (bits 2:0) is high and asserts err_o accordingly. It correctly encodes part of the specification.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i) > 1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[0] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[1] && oh_i[3]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i[2:0]) > 1) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |-> err_o);"
+case101_prim_onehot_multihot_suppressed,trace_overfit;raw_vs_summary_opposite;literal_hardcoding,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |-> err_o);,False,False,False,False,False,False,False,False,False,"Like candidates 2 and 3, this candidate is specifically tied to another combination of bits in oh_i (bits 3 and 2), failing to capture the general specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i) > 1) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[0] && oh_i[2]) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[1] && oh_i[3]) |-> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && $countones(oh_i[2:0]) > 1) |=> err_o);
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i && oh_i[3] && oh_i[2]) |-> err_o);"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == Depth));,False,False,False,False,False,False,False,False,True,"This candidate checks that when full_o is asserted, the FIFO depth matches the specified Depth. It also ensures that full_o remains low when the depth is less than Depth.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (~full_o |=> depth_o < Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i |-> depth_o + 1 == depth_o + 1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i |-> depth_o - 1 == depth_o - 1));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> depth_o == 0));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) (~full_o |=> depth_o < Depth));,False,False,False,False,False,False,False,False,True,"This candidate verifies that when full_o is not asserted (i.e., it's low), the FIFO depth is less than the specified Depth. This aligns with the requirement that full_o must remain low at Depth-1.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (~full_o |=> depth_o < Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i |-> depth_o + 1 == depth_o + 1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i |-> depth_o - 1 == depth_o - 1));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> depth_o == 0));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i |-> depth_o + 1 == depth_o + 1));,False,False,False,False,False,False,False,False,False,"This candidate checks for an increment in the write pointer, but it does not directly relate to the assertion of full_o or the FIFO depth. It is trivially unrelated to the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (~full_o |=> depth_o < Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i |-> depth_o + 1 == depth_o + 1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i |-> depth_o - 1 == depth_o - 1));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> depth_o == 0));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i |-> depth_o - 1 == depth_o - 1));,False,False,False,False,False,False,False,False,False,"This candidate checks for a decrement in the read pointer, but it does not directly relate to the assertion of full_o or the FIFO depth. It is trivially unrelated to the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (~full_o |=> depth_o < Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i |-> depth_o + 1 == depth_o + 1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i |-> depth_o - 1 == depth_o - 1));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> depth_o == 0));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> depth_o == 0));,False,False,False,False,False,False,False,False,True,"This candidate ensures that when the clear signal (clr_i) is asserted, the FIFO depth resets to 0. This aligns with the requirement that full_o should be low at Depth-1 and reset conditions.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (~full_o |=> depth_o < Depth));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i |-> depth_o + 1 == depth_o + 1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i |-> depth_o - 1 == depth_o - 1));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> depth_o == 0));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && ~full_o) |-> (~incr_wptr_i));,False,False,False,False,False,False,False,False,False,"This candidate checks if the FIFO is not full when the depth equals the maximum capacity, which is trivially true and does not address the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && ~full_o) |-> (~incr_wptr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0) |-> (~empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && depth_o > 0) |-> (full_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i && depth_o > 0) |-> (depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |-> (~empty_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0) |-> (~empty_o));,True,False,True,True,True,False,True,False,False,"This candidate checks if the FIFO is empty when the depth is zero, which is trivially true and does not address the specification.",True,True,11,14,11,4,4,3,3,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && ~full_o) |-> (~incr_wptr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0) |-> (~empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && depth_o > 0) |-> (full_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i && depth_o > 0) |-> (depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |-> (~empty_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && depth_o > 0) |-> (full_o == 0));,True,True,False,True,True,True,False,False,True,"This candidate ensures that if the read pointer increments and the depth is greater than zero, the FIFO should not be full. This aligns with the specification that full_o shall assert only when the FIFO contains Depth entries.",False,False,2,1,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && ~full_o) |-> (~incr_wptr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0) |-> (~empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && depth_o > 0) |-> (full_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i && depth_o > 0) |-> (depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |-> (~empty_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (clr_i && depth_o > 0) |-> (depth_o == 0));,True,True,False,False,False,False,True,False,True,"This candidate ensures that if the clear signal is asserted and the depth is greater than zero, the depth should eventually reach zero. This indirectly supports the specification by ensuring that the FIFO can be emptied.",True,True,0,0,1,0,0,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && ~full_o) |-> (~incr_wptr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0) |-> (~empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && depth_o > 0) |-> (full_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i && depth_o > 0) |-> (depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |-> (~empty_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |-> (~empty_o));,False,False,False,False,False,False,False,False,False,"This candidate checks if the FIFO is not empty when the depth equals Depth - 1, which is trivially true and does not address the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && ~full_o) |-> (~incr_wptr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0) |-> (~empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && depth_o > 0) |-> (full_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i && depth_o > 0) |-> (depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |-> (~empty_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |=> (full_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate checks if the FIFO is full when the write pointer is at Depth-1, which does not align with the specification that full_o should assert only when the FIFO contains exactly Depth entries.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !full_o) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (wptr_o < Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o && incr_wptr_i) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && !empty_o) |=> (depth_o - 1 == depth_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !full_o) |-> (depth_o + 1 == depth_o));,True,False,True,True,True,False,True,False,False,This candidate checks a trivial condition where incrementing the write pointer and the FIFO not being full implies no change in depth. This is unrelated to the specification.,True,True,10,8,7,10,8,8,7,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !full_o) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (wptr_o < Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o && incr_wptr_i) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && !empty_o) |=> (depth_o - 1 == depth_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (wptr_o < Depth - 1) |=> (full_o == 0));,False,False,False,False,False,False,False,False,True,"This candidate correctly states that if the write pointer is less than Depth-1, then the FIFO cannot be full, which aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !full_o) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (wptr_o < Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o && incr_wptr_i) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && !empty_o) |=> (depth_o - 1 == depth_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (empty_o && incr_wptr_i) |-> (depth_o + 1 == depth_o));,True,False,True,True,True,False,True,False,False,This candidate checks a condition where incrementing the read pointer and the FIFO not being empty implies no change in depth. This is unrelated to the specification.,True,True,3,3,2,3,3,2,2,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !full_o) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (wptr_o < Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o && incr_wptr_i) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && !empty_o) |=> (depth_o - 1 == depth_o));"
+case104_prim_fifo_full_early,raw_vs_summary_opposite;tradeoff;summary_loses_info,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && !empty_o) |=> (depth_o - 1 == depth_o));,True,False,True,True,True,False,True,False,False,This candidate checks a trivial condition where decrementing the read pointer and the FIFO not being empty implies no change in depth. This is unrelated to the specification.,True,True,4,4,3,4,4,3,3,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !full_o) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (wptr_o < Depth - 1) |=> (full_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o && incr_wptr_i) |-> (depth_o + 1 == depth_o));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i && !empty_o) |=> (depth_o - 1 == depth_o));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that in Status mode, a software test pulse written through reg2hw_intr_test_qe_i shall be captured and reflected in the stored test_q state on the next cycle. The property checks that if reg2hw_intr_test_qe_i is asserted (i.e., a test pulse is written), then hw2reg_intr_state_d_o should equal reg2hw_intr_test_q_i on the following clock edge, which aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == event_intr_i)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i & reg2hw_intr_test_qe_i |-> (intr_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & ~reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == 0)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_de_o == 1)));
+```"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == event_intr_i)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that in Status mode, a software test pulse written through reg2hw_intr_test_qe_i shall be captured and reflected in the stored test_q state on the next cycle. The property checks that if both event_intr_i and reg2hw_intr_test_qe_i are asserted, then hw2reg_intr_state_d_o should reflect the value of event_intr_i on the next cycle.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == event_intr_i)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i & reg2hw_intr_test_qe_i |-> (intr_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & ~reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == 0)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_de_o == 1)));
+```"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i & reg2hw_intr_test_qe_i |-> (intr_o == reg2hw_intr_test_q_i)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that in Status mode, a software test pulse written through reg2hw_intr_test_qe_i shall be captured and reflected in the stored test_q state on the next cycle. The property checks that if both reg2hw_intr_enable_q_i and reg2hw_intr_test_qe_i are asserted, then intr_o should equal reg2hw_intr_test_qi on the next cycle.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == event_intr_i)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i & reg2hw_intr_test_qe_i |-> (intr_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & ~reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == 0)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_de_o == 1)));
+```"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & ~reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == 0)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that in Status mode, a software test pulse written through reg2hw_intr_test_qe_i shall be captured and reflected in the stored test_q state on the next cycle. The property checks that if an interrupt event occurs without the corresponding test pulse being set (event_intr_i & ~reg2hw_intr_test_qe_i), then the hardware-to-register interface should reflect this by setting hw2reg_intr_state_d_o to 0.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == event_intr_i)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i & reg2hw_intr_test_qe_i |-> (intr_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & ~reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == 0)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_de_o == 1)));
+```"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_de_o == 1)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that in Status mode, a software test pulse written through reg2hw_intr_test_qe_i shall be captured and reflected in the stored test_q state on the next cycle. The property checks that if reg2hw_intr_test_qe_i is asserted, then hw2reg_intr_state_de_o should be 1 on the following clock edge.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == event_intr_i)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i & reg2hw_intr_test_qe_i |-> (intr_o == reg2hw_intr_test_q_i)));
+assert property (@(posedge clk) disable iff (!rst_n) ((event_intr_i & ~reg2hw_intr_test_qe_i) |-> (hw2reg_intr_state_d_o == 0)));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i |-> (hw2reg_intr_state_de_o == 1)));
+```"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !intr_o) |-> (hw2reg_intr_state_d_o == 1));,True,False,True,True,True,False,True,False,False,This candidate checks if the interrupt output is low when a test pulse is written and the interrupt state is not set. It does not address the requirement of capturing and reflecting the test pulse in the stored test_q state.,True,True,2,2,2,1,2,1,2,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !intr_o) |-> (hw2reg_intr_state_d_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i && !hw2reg_intr_state_d_o) |-> (hw2reg_intr_state_d_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && !intr_o) |-> (hw2reg_intr_state_d_o == 0));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));,True,False,False,False,False,False,True,False,True,"This candidate ensures that when the interrupt enable signal is high and the interrupt state is set, the interrupt output should be high. This aligns with the specification's requirement for Status mode behavior.",True,True,5,0,1,1,0,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !intr_o) |-> (hw2reg_intr_state_d_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i && !hw2reg_intr_state_d_o) |-> (hw2reg_intr_state_d_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && !intr_o) |-> (hw2reg_intr_state_d_o == 0));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i && !hw2reg_intr_state_d_o) |-> (hw2reg_intr_state_d_o == 0));,True,True,False,False,False,True,False,False,False,This candidate checks if the interrupt state is low when an event occurs and it is not already set. It does not address the requirement of capturing and reflecting a test pulse in the stored test_q state.,True,True,0,0,1,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !intr_o) |-> (hw2reg_intr_state_d_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i && !hw2reg_intr_state_d_o) |-> (hw2reg_intr_state_d_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && !intr_o) |-> (hw2reg_intr_state_d_o == 0));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));,True,False,False,False,False,False,False,False,True,"This candidate ensures that when a test pulse is written and the interrupt state is set, the interrupt output should be high. This aligns with the specification's requirement for Status mode behavior.",False,False,1,0,0,1,0,1,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !intr_o) |-> (hw2reg_intr_state_d_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i && !hw2reg_intr_state_d_o) |-> (hw2reg_intr_state_d_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && !intr_o) |-> (hw2reg_intr_state_d_o == 0));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && !intr_o) |-> (hw2reg_intr_state_d_o == 0));,True,False,False,True,True,False,True,False,False,This candidate checks if the interrupt state is low when the interrupt enable signal is high but the interrupt output is not set. It does not address the requirement of capturing and reflecting a test pulse in the stored test_q state.,True,True,3,7,7,1,0,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !intr_o) |-> (hw2reg_intr_state_d_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i && !hw2reg_intr_state_d_o) |-> (hw2reg_intr_state_d_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && hw2reg_intr_state_d_o) |-> (intr_o == 1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i && !intr_o) |-> (hw2reg_intr_state_d_o == 0));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));,True,False,True,True,True,False,True,False,True,"This candidate checks that when a test pulse is written and the interrupt is enabled, the stored state reflects the test pulse. This aligns with the specification.",True,True,2,2,2,1,2,1,2,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |=> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (intr_o == reg2hw_intr_test_q_i));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |=> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));,False,False,False,False,False,False,False,False,False,"This candidate asserts that when a test pulse is written and the interrupt is enabled, the stored state does not reflect the test pulse. This contradicts the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |=> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (intr_o == reg2hw_intr_test_q_i));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));,True,True,False,False,False,True,False,False,True,"This candidate checks that when a test pulse is written but the interrupt is disabled, the stored state reflects the test pulse. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |=> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (intr_o == reg2hw_intr_test_q_i));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));,False,False,False,False,False,False,False,False,False,"This candidate asserts that when a test pulse is not written but the interrupt is enabled, the stored state does not reflect the test pulse. This contradicts the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |=> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (intr_o == reg2hw_intr_test_q_i));"
+case112_prim_intr_test_pulse_dropped,antecedent_not_triggered;tradeoff;summary_weakened_trigger,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (intr_o == reg2hw_intr_test_q_i));,True,False,True,True,True,False,True,False,False,"This candidate checks that when a test pulse is written and the interrupt is enabled, the output signal reflects the test pulse. The specification only mentions the stored state, not the output signal.",True,True,2,2,2,2,2,2,2,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |=> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && !reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o == reg2hw_intr_test_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (hw2reg_intr_state_d_o != reg2hw_intr_test_qi));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i && reg2hw_intr_enable_q_i) |-> (intr_o == reg2hw_intr_test_q_i));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (full_o == 0 && empty_o == 1)));,False,False,False,False,False,False,False,False,False,"This candidate checks if the clear pulse sets the FIFO to be both empty and full, which is not consistent with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (full_o == 0 && empty_o == 1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0 |=> depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (wptr_o == 0 && rptr_o == 0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> empty_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o |-> full_o == 0));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0 |=> depth_o == 0));,False,False,False,False,False,False,False,False,True,"This candidate ensures that if the depth of the FIFO is zero, it remains zero on the next cycle, which is a reasonable check for the occupancy reset.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (full_o == 0 && empty_o == 1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0 |=> depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (wptr_o == 0 && rptr_o == 0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> empty_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o |-> full_o == 0));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (wptr_o == 0 && rptr_o == 0)));,False,False,False,False,False,False,False,False,True,"This candidate checks if the clear pulse resets both the write and read pointers to zero, which aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (full_o == 0 && empty_o == 1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0 |=> depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (wptr_o == 0 && rptr_o == 0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> empty_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o |-> full_o == 0));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> empty_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate checks if the FIFO being full implies that it is not empty, which contradicts the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (full_o == 0 && empty_o == 1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0 |=> depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (wptr_o == 0 && rptr_o == 0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> empty_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o |-> full_o == 0));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (empty_o |-> full_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate checks if the FIFO being empty implies that it is not full, which contradicts the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (full_o == 0 && empty_o == 1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 0 |=> depth_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (wptr_o == 0 && rptr_o == 0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> empty_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o |-> full_o == 0));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (empty_o == 1'b1)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that a clear pulse should reset the FIFO occupancy and pointers on the next cycle. It uses the property that when `clr_i` is asserted, the output `empty_o` should be high (indicating an empty FIFO) on the following clock edge.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (empty_o == 1'b1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (depth_o == 3'b000)));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b1) & (depth_o == 3'b000)) |-> clr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b0) & (depth_o != 3'b000)) |-> !clr_i);"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (depth_o == 3'b000)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly encodes the specification that a clear pulse shall reset the FIFO occupancy and pointers on the next cycle. The property checks that when clr_i is asserted, depth_o should be zero on the following clock edge, which aligns with the requirement.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (empty_o == 1'b1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (depth_o == 3'b000)));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b1) & (depth_o == 3'b000)) |-> clr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b0) & (depth_o != 3'b000)) |-> !clr_i);"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b1) & (depth_o == 3'b000)) |-> clr_i));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly encodes the specification that a clear pulse should reset the FIFO occupancy and pointers on the next cycle. It checks if the FIFO is empty (empty_o == 1'b1) and has zero depth (depth_o == 3'b000), which indicates an idle state, and then asserts that the clear signal (clr_i) will be asserted in the next cycle.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (empty_o == 1'b1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (depth_o == 3'b000)));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b1) & (depth_o == 3'b000)) |-> clr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b0) & (depth_o != 3'b000)) |-> !clr_i);"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> !full_o));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly encodes the specification that a clear pulse shall reset the FIFO occupancy and pointers on the next cycle. The property checks that when clr_i is asserted, full_o will be deasserted at the next clock edge, which aligns with the expected behavior of a FIFO being cleared.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (empty_o == 1'b1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (depth_o == 3'b000)));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b1) & (depth_o == 3'b000)) |-> clr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b0) & (depth_o != 3'b000)) |-> !clr_i);"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b0) & (depth_o != 3'b000)) |-> !clr_i);,True,False,True,True,True,True,True,False,True,"The candidate SVA correctly captures the requirement that a clear pulse should reset the FIFO occupancy and pointers on the next cycle. It checks that if the FIFO is not empty (empty_o == 1'b0) and the depth is non-zero (depth_o != 3'b000), then the clear signal (clr_i) should be asserted in the next cycle.",True,True,14,17,11,1,2,0,2,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |-> (empty_o == 1'b1)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> (depth_o == 3'b000)));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b1) & (depth_o == 3'b000)) |-> clr_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) ((empty_o == 1'b0) & (depth_o != 3'b000)) |-> !clr_i);"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> depth_o == 3'b0));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly encodes the specification that a clear pulse shall reset the FIFO occupancy and pointers on the next cycle. The property checks that when clr_i is asserted, depth_o should be zero on the following clock edge, which aligns with the requirement.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> depth_o == 3'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> wptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> rptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> full_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> empty_o == 1'b1));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> wptr_o == 2'b0));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly encodes the specification that a clear pulse shall reset the FIFO occupancy and pointers on the next cycle. The property checks that when the clear signal (clr_i) is asserted, the write pointer (wptr_o) should be equal to 2'b0 on the following clock edge.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> depth_o == 3'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> wptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> rptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> full_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> empty_o == 1'b1));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> rptr_o == 2'b0));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly encodes the specification that a clear pulse shall reset the FIFO occupancy and pointers on the next cycle. The property checks that when clr_i is asserted, rptr_o should be equal to 2'b0 on the following clock edge.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> depth_o == 3'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> wptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> rptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> full_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> empty_o == 1'b1));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> full_o == 1'b0));,False,False,False,False,False,False,False,False,True,"The candidate SVA asserts that when the clear pulse (clr_i) is asserted, the FIFO should not be full on the next cycle. This aligns with the specification that a clear pulse shall reset the FIFO occupancy and pointers on the next cycle. The condition `depth_o > 3'b0` ensures that there are elements in the FIFO before the clear pulse is considered, and `full_o == 1'b0` checks that the FIFO is not full after the clear pulse. This SVA captures the intended behavior of the FIFO reset mechanism.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> depth_o == 3'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> wptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> rptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> full_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> empty_o == 1'b1));"
+case124_prim_fifo_clear_ignored,antecedent_not_triggered;raw_better;summary_loses_info,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> empty_o == 1'b1));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly encodes the specification that a clear pulse shall reset the FIFO occupancy and pointers on the next cycle. It checks that when the clear signal (clr_i) is asserted, the output empty_o becomes high on the following clock edge, assuming the FIFO depth is greater than zero.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> depth_o == 3'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> wptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i |=> rptr_o == 2'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> full_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o > 3'b0 && clr_i |=> empty_o == 1'b1));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o == Depth-1) |-> (wptr_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate checks if the write pointer wraps when it is at Depth-1 and a write occurs. However, it does not ensure that the internal write pointer wraps on the next cycle rather than stepping to an out-of-range state.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o == Depth-1) |-> (wptr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && incr_wptr_i) |-> (depth_o == Depth));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == rptr_o ? full_o : !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && incr_rptr_i) |-> (empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == depth_o ? full_o : !full_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) (full_o && incr_wptr_i) |-> (depth_o == Depth));,False,False,False,False,False,False,False,False,False,This candidate checks if the FIFO is full when the write pointer increments and the FIFO is already full. It does not address the specific behavior of wrapping the write pointer at Depth-1.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o == Depth-1) |-> (wptr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && incr_wptr_i) |-> (depth_o == Depth));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == rptr_o ? full_o : !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && incr_rptr_i) |-> (empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == depth_o ? full_o : !full_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == rptr_o ? full_o : !full_o));,False,False,False,False,False,False,False,False,True,"This candidate ensures that if the write pointer increments and is not at Depth-1, it either wraps to the next state or remains unchanged based on whether the FIFO is full. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o == Depth-1) |-> (wptr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && incr_wptr_i) |-> (depth_o == Depth));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == rptr_o ? full_o : !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && incr_rptr_i) |-> (empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == depth_o ? full_o : !full_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && incr_rptr_i) |-> (empty_o));,False,False,False,False,False,False,False,False,False,This candidate checks if the FIFO is empty when the read pointer increments and the FIFO is already empty. It does not address the specific behavior of wrapping the write pointer at Depth-1.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o == Depth-1) |-> (wptr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && incr_wptr_i) |-> (depth_o == Depth));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == rptr_o ? full_o : !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && incr_rptr_i) |-> (empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == depth_o ? full_o : !full_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == depth_o ? full_o : !full_o));,False,False,False,False,False,False,False,False,False,"This candidate checks if the write pointer wraps to the next state when it increments and is not at Depth-1, based on whether the FIFO depth equals Depth. It does not address the specific behavior of wrapping the write pointer at Depth-1.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o == Depth-1) |-> (wptr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && incr_wptr_i) |-> (depth_o == Depth));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == rptr_o ? full_o : !full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == Depth && incr_rptr_i) |-> (empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && wptr_o != Depth-1) |-> (wptr_o + 1 == depth_o ? full_o : !full_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != 2'b00));,True,True,False,False,False,True,False,False,False,"This candidate checks if the write pointer is not equal to 2'b00 when the depth is 3'b111, which does not directly address the requirement that the write pointer should wrap on the next cycle.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |-> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |=> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |=> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != wptr_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |-> (wptr_o == 2'b00));,True,True,False,False,False,True,False,False,True,"This candidate asserts that when the increment signal (incr_wptr_i) is asserted and the depth is at its maximum (3'b111), the write pointer should wrap to 2'b00. This directly addresses the specification requirement.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |-> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |=> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |=> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != wptr_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |=> (wptr_o != 2'b00));,True,True,False,False,False,True,False,False,False,"This candidate uses a modal operator (|=>) instead of an implication operator (|->). While it checks that if the depth is at its maximum, the write pointer should not be 2'b00, it does not ensure that the write pointer will wrap on the next cycle.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |-> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |=> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |=> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != wptr_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |=> (wptr_o == 2'b00));,True,True,False,False,False,True,False,False,True,"This candidate uses a modal operator (|=>) to assert that when the increment signal (incr_wptr_i) is asserted and the depth is at its maximum (3'b111), the write pointer should wrap to 2'b00. This directly addresses the specification requirement.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |-> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |=> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |=> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != wptr_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != wptr_o));,True,True,False,False,False,True,False,False,False,"This candidate asserts that if the depth is at its maximum (3'b111), the write pointer should not be equal to itself, which is a trivial and unrelated condition that does not address the specification requirement.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |-> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |=> (wptr_o != 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && depth_o == 3'b111) |=> (wptr_o == 2'b00));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111) |-> (wptr_o != wptr_o));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (wptr_o == PtrW'(Depth-1)) |-> (wptr_o == PtrW'(0)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that when the write pointer is at Depth-1 and a write occurs, it should wrap to 0 on the next cycle. The assertion checks if the write pointer remains at 0 after wrapping, which aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (wptr_o == PtrW'(Depth-1)) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == DepthW'(Depth)) |-> (depth_o == DepthW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & (wptr_o == PtrW'(Depth-1))) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & incr_wptr_i) |-> (depth_o == DepthW'(Depth)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o & incr_rptr_i) |-> (depth_o == DepthW'(0)));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == DepthW'(Depth)) |-> (depth_o == DepthW'(0)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that when the write pointer is at Depth-1 and a write occurs, the internal write pointer shall wrap to 0 on the next cycle. The assertion checks if the output depth `depth_o` remains within the valid range (0 to Depth) after a potential wrap.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (wptr_o == PtrW'(Depth-1)) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == DepthW'(Depth)) |-> (depth_o == DepthW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & (wptr_o == PtrW'(Depth-1))) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & incr_wptr_i) |-> (depth_o == DepthW'(Depth)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o & incr_rptr_i) |-> (depth_o == DepthW'(0)));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & (wptr_o == PtrW'(Depth-1))) |-> (wptr_o == PtrW'(0)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the specification that when the write pointer is at Depth-1 and a write occurs, it should wrap to 0 on the next cycle. The property checks if the increment of the write pointer (`incr_wptr_i`) and the current write pointer being at `Depth-1` (`wptr_o == PtrW'(Depth-1)`) leads to the write pointer wrapping to `0` (`wptr_o == PtrW'(0)`). This is a meaningful relation that aligns with the given specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (wptr_o == PtrW'(Depth-1)) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == DepthW'(Depth)) |-> (depth_o == DepthW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & (wptr_o == PtrW'(Depth-1))) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & incr_wptr_i) |-> (depth_o == DepthW'(Depth)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o & incr_rptr_i) |-> (depth_o == DepthW'(0)));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (full_o & incr_wptr_i) |-> (depth_o == DepthW'(Depth)));,False,False,False,False,False,False,False,False,True,"The candidate SVA correctly captures the requirement that when the write pointer is at Depth-1 and a write occurs, the internal write pointer should wrap to zero rather than stepping out of range. The property checks that if the FIFO is full (full_o) and there is an increment to the write pointer (incr_wptr_i), then the depth output (depth_o) remains equal to the maximum depth (Depth). This ensures that the write pointer wraps correctly when it reaches the end of its valid range.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (wptr_o == PtrW'(Depth-1)) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == DepthW'(Depth)) |-> (depth_o == DepthW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & (wptr_o == PtrW'(Depth-1))) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & incr_wptr_i) |-> (depth_o == DepthW'(Depth)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o & incr_rptr_i) |-> (depth_o == DepthW'(0)));"
+case125_prim_fifo_wrap_late,trace_overfit;raw_vs_summary_opposite;summary_improves_bug_detection,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (empty_o & incr_rptr_i) |-> (depth_o == DepthW'(0)));,False,False,False,False,False,False,False,False,True,"The candidate SVA checks that when the FIFO is empty (empty_o) and a write pointer increment occurs (incr_rptr_i), the depth output (depth_o) remains at zero. This aligns with the specification requirement that the internal write pointer wraps rather than stepping to an out-of-range state when it reaches Depth-1.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (wptr_o == PtrW'(Depth-1)) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == DepthW'(Depth)) |-> (depth_o == DepthW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & (wptr_o == PtrW'(Depth-1))) |-> (wptr_o == PtrW'(0)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & incr_wptr_i) |-> (depth_o == DepthW'(Depth)));
+
+assert property (@(posedge clk) disable iff (!rst_n) (empty_o & incr_rptr_i) |-> (depth_o == DepthW'(0)));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 0) |-> (err_o == 1));,True,True,False,False,False,False,True,False,True,"This candidate checks that when en_i is low and oh_i is nonzero, err_o is asserted in the same cycle. It correctly captures the requirement of the specification.",True,True,0,0,1,0,0,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 0) |-> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i != 0) |=> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (oh_i != 0 |-> en_i != 0));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 0) |-> (err_o == 0));,True,False,False,True,True,False,False,False,False,"This candidate checks a trivial condition where both en_i and oh_i are zero, which does not relate to the specification at all.",True,True,4,4,3,1,0,1,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 0) |-> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i != 0) |=> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (oh_i != 0 |-> en_i != 0));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i == 0) |-> (err_o == 0));,True,False,False,True,True,False,False,False,False,"This candidate checks a condition where en_i is high and oh_i is zero, which is irrelevant to the specification since it does not trigger an error when en_i is low.",True,True,1,1,2,1,0,1,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 0) |-> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i != 0) |=> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (oh_i != 0 |-> en_i != 0));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i != 0) |=> (err_o == 1));,True,False,True,True,True,True,False,False,True,"This candidate uses a stronger implication (|=>) instead of a regular implication (|->), but it still correctly captures that if oh_i is nonzero, en_i must be high to avoid asserting err_o. This is a valid way to express the same requirement.",False,False,1,1,0,1,1,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 0) |-> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i != 0) |=> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (oh_i != 0 |-> en_i != 0));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (oh_i != 0 |-> en_i != 0));,False,False,False,False,False,False,False,False,False,"This candidate checks a condition that is always true because if oh_i is nonzero, en_i cannot be zero (it would violate the specification). It does not capture the requirement of the specification at all.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 0) |-> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i == 0) |-> (err_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1 && oh_i != 0) |=> (err_o == 1));
+assert property (@(posedge clk) disable iff (!rst_n) (oh_i != 0 |-> en_i != 0));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && oh_i != 4'b0) |-> (err_o == 1'b1));,True,True,False,False,False,False,True,False,True,"This candidate checks that when en_i is low and any nonzero onehot write-enable vector is present, err_o is asserted in the same cycle. It correctly captures the specification.",True,True,0,0,1,0,0,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && oh_i != 4'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && !|oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[3] != 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && !oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[2:0] != 4'b000) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && !|oh_i) |-> (err_o == 1'b0));,False,False,False,False,False,False,False,False,False,"This candidate checks a condition where en_i is high and no onehot write-enable vector is present, asserting that err_o should be 0. This does not relate to the specification at all.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && oh_i != 4'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && !|oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[3] != 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && !oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[2:0] != 4'b000) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[3] != 1'b0) |-> (err_o == 1'b1));,False,False,False,False,False,False,False,False,False,This candidate checks a specific bit of the onehot vector (oh_i[3]) being non-zero when en_i is high and asserts err_o. It is too specific and does not cover all cases as per the specification.,False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && oh_i != 4'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && !|oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[3] != 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && !oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[2:0] != 4'b000) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && !oh_i) |-> (err_o == 1'b0));,True,False,False,True,True,False,False,False,False,"This candidate checks that when en_i is low and no onehot write-enable vector is present, err_o should be 0. This does not relate to the specification at all.",True,True,4,4,3,1,0,1,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && oh_i != 4'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && !|oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[3] != 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && !oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[2:0] != 4'b000) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[2:0] != 4'b000) |-> (err_o == 1'b1));,False,False,False,False,False,False,False,False,False,"This candidate checks a condition where en_i is high and any nonzero three-bit subset of the onehot vector is present, asserting that err_o should be 1. It is too specific and does not cover all cases as per the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && oh_i != 4'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && !|oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[3] != 1'b0) |-> (err_o == 1'b1));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b0 && !oh_i) |-> (err_o == 1'b0));
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 1'b1 && oh_i[2:0] != 4'b000) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 4'b0000) |-> (err_o == 1'b1));,True,True,False,False,False,False,True,False,True,"This candidate checks that when en_i is low and any nonzero onehot write-enable vector is asserted, err_o is set to 1. It covers all possible nonzero onehot vectors.",True,True,0,0,1,0,0,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 4'b0000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b1000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0100) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0010) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0001) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b1000) |-> (err_o == 1'b1));,True,True,False,False,False,True,False,False,False,"This candidate is trivially true because it only checks for a specific onehot vector (4'b1000), which does not cover the general specification of any nonzero onehot vector.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 4'b0000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b1000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0100) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0010) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0001) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0100) |-> (err_o == 1'b1));,True,True,False,False,False,True,False,False,False,"This candidate is trivially true because it only checks for a specific onehot vector (4'b0100), which does not cover the general specification of any nonzero onehot vector.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 4'b0000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b1000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0100) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0010) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0001) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0010) |-> (err_o == 1'b1));,True,True,False,False,False,True,False,False,False,"This candidate is trivially true because it only checks for a specific onehot vector (4'b0010), which does not cover the general specification of any nonzero onehot vector.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 4'b0000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b1000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0100) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0010) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0001) |-> (err_o == 1'b1));"
+case126_prim_regwe_enable_gap,trace_overfit;raw_vs_summary_opposite;same_cycle_context_case,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0001) |-> (err_o == 1'b1));,True,True,False,False,False,False,True,False,False,"This candidate is trivially true because it only checks for a specific onehot vector (4'b0001), which does not cover the general specification of any nonzero onehot vector.",True,True,0,0,1,0,0,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i != 4'b0000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b1000) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0100) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0010) |-> (err_o == 1'b1));
+
+assert property (@(posedge clk) disable iff (!rst_n) (en_i == 0 && oh_i == 4'b0001) |-> (err_o == 1'b1));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b001 |=> !empty_o));,False,False,False,False,False,False,False,False,True,"This candidate checks that when the FIFO depth is exactly one entry (3'b001), the empty output remains low. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b001 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+assert property (@(posedge clk) disable iff (!rst_n) (!incr_wptr_i & incr_rptr_i |-> empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b010 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+```
+
+===== NEXT RESPONSE =====
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & !empty_o |-> depth_o == 3'b100));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !incr_rptr_i |-> depth_o == 3'b001));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111 |=> full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!empty_o & ~full_o |-> depth_o != 3'b000));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !incr_wptr_i |-> depth_o == 3'b101));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));,False,False,False,False,False,False,False,False,False,"This candidate checks that when the FIFO is full, the depth is 3'b100. It does not address the condition of having exactly one entry in the FIFO.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b001 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+assert property (@(posedge clk) disable iff (!rst_n) (!incr_wptr_i & incr_rptr_i |-> empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b010 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+```
+
+===== NEXT RESPONSE =====
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & !empty_o |-> depth_o == 3'b100));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !incr_rptr_i |-> depth_o == 3'b001));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111 |=> full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!empty_o & ~full_o |-> depth_o != 3'b000));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !incr_wptr_i |-> depth_o == 3'b101));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (!incr_wptr_i & incr_rptr_i |-> empty_o));,False,False,False,False,False,False,False,False,True,"This candidate checks that if the write pointer increments and the read pointer decrements without an increment to the write pointer (indicating only one entry), the empty output remains low. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b001 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+assert property (@(posedge clk) disable iff (!rst_n) (!incr_wptr_i & incr_rptr_i |-> empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b010 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+```
+
+===== NEXT RESPONSE =====
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & !empty_o |-> depth_o == 3'b100));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !incr_rptr_i |-> depth_o == 3'b001));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111 |=> full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!empty_o & ~full_o |-> depth_o != 3'b000));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !incr_wptr_i |-> depth_o == 3'b101));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b010 |=> !empty_o));,False,False,False,False,False,False,False,False,True,"This candidate checks that when the FIFO depth is exactly two entries (3'b010), the empty output remains low. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b001 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+assert property (@(posedge clk) disable iff (!rst_n) (!incr_wptr_i & incr_rptr_i |-> empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b010 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+```
+
+===== NEXT RESPONSE =====
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & !empty_o |-> depth_o == 3'b100));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !incr_rptr_i |-> depth_o == 3'b001));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111 |=> full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!empty_o & ~full_o |-> depth_o != 3'b000));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !incr_wptr_i |-> depth_o == 3'b101));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (full_o & !empty_o |-> depth_o == 3'b100));,False,False,False,False,False,False,False,False,False,"This candidate checks that if the FIFO is full and not empty, the depth is 3'b100. It does not address the condition of having exactly one entry in the FIFO.",False,False,0,0,0,0,0,0,0,False,"```systemverilog
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b001 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+assert property (@(posedge clk) disable iff (!rst_n) (!incr_wptr_i & incr_rptr_i |-> empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b010 |=> !empty_o));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o |-> depth_o == 3'b100));
+```
+
+===== NEXT RESPONSE =====
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & !empty_o |-> depth_o == 3'b100));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !incr_rptr_i |-> depth_o == 3'b001));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b111 |=> full_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (!empty_o & ~full_o |-> depth_o != 3'b000));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !incr_wptr_i |-> depth_o == 3'b101));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !empty_o) |-> (depth_o == 3'd1));,True,False,True,True,True,False,True,False,False,"This candidate checks that when the write pointer is incremented and the FIFO is not empty, the depth is exactly one. This does not directly address the specification that the output should remain low while the FIFO contains exactly one entry.",True,True,7,4,3,2,2,2,2,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !empty_o) |-> (depth_o == 3'd1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & empty_o) |-> 0);
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'd1) |=> !empty_o);"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !empty_o) |-> (depth_o == 3'd0));,True,False,True,True,True,False,True,False,False,"This candidate checks that when the read pointer is incremented and the FIFO is not empty, the depth becomes zero. This is unrelated to the specification about the output remaining low when there is exactly one entry in the FIFO.",True,True,4,3,3,2,1,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !empty_o) |-> (depth_o == 3'd1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & empty_o) |-> 0);
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'd1) |=> !empty_o);"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (clr_i & !empty_o) |-> (depth_o == 3'd0));,True,True,False,True,True,False,False,False,False,"This candidate checks that when the clear signal is asserted and the FIFO is not empty, the depth becomes zero. This does not address the specification about the output remaining low while the FIFO contains exactly one entry.",False,False,1,1,0,0,0,1,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !empty_o) |-> (depth_o == 3'd1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & empty_o) |-> 0);
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'd1) |=> !empty_o);"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (full_o & empty_o) |-> 0);,True,True,False,False,False,True,False,False,False,"This candidate checks that if the FIFO is full and empty at the same time, it leads to a contradiction. This is unrelated to the specification about the output remaining low when there is exactly one entry in the FIFO.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !empty_o) |-> (depth_o == 3'd1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & empty_o) |-> 0);
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'd1) |=> !empty_o);"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'd1) |=> !empty_o);,True,False,True,True,True,False,True,False,True,"This candidate states that if the depth is exactly one, then the output should be low. This directly addresses the specification and encodes a meaningful relation consistent with it.",True,True,7,7,6,1,1,1,1,False,"assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i & !empty_o) |-> (depth_o == 3'd1));
+assert property (@(posedge clk) disable iff (!rst_n) (incr_rptr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (clr_i & !empty_o) |-> (depth_o == 3'd0));
+assert property (@(posedge clk) disable iff (!rst_n) (full_o & empty_o) |-> 0);
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'd1) |=> !empty_o);"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 1'b0) |-> (!empty_o));,True,False,True,True,True,False,True,False,True,"This candidate checks that when the FIFO depth is zero, the empty output remains low. This aligns with the specification.",True,True,11,11,9,4,4,3,3,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 1'b0) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !incr_rptr_i) |-> (empty_o == 1'b0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 2'b10) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && !incr_rptr_i) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b110) |-> (!empty_o));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !incr_rptr_i) |-> (empty_o == 1'b0));,True,False,True,True,True,False,True,False,False,This candidate checks a specific condition related to pointer increments but does not directly relate to the FIFO depth or the empty state.,True,True,10,10,8,3,6,2,5,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 1'b0) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !incr_rptr_i) |-> (empty_o == 1'b0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 2'b10) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && !incr_rptr_i) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b110) |-> (!empty_o));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 2'b10) |-> (!empty_o));,True,True,False,False,False,True,False,False,True,"This candidate checks that when the FIFO depth is two (binary 10), the empty output remains low. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 1'b0) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !incr_rptr_i) |-> (empty_o == 1'b0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 2'b10) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && !incr_rptr_i) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b110) |-> (!empty_o));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (full_o && !incr_rptr_i) |-> (!empty_o));,True,True,False,True,True,True,False,False,False,This candidate checks a condition related to the full state and pointer increments but does not directly relate to the FIFO depth or the empty state.,True,True,2,2,2,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 1'b0) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !incr_rptr_i) |-> (empty_o == 1'b0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 2'b10) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && !incr_rptr_i) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b110) |-> (!empty_o));"
+case130_prim_fifo_empty_early,antecedent_not_triggered;raw_better;summary_more_conservative,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b110) |-> (!empty_o));,True,True,False,False,False,True,False,False,True,"This candidate checks that when the FIFO depth is three (binary 110), the empty output remains low. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 1'b0) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !incr_rptr_i) |-> (empty_o == 1'b0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 2'b10) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (full_o && !incr_rptr_i) |-> (!empty_o));
+
+assert property (@(posedge clk) disable iff (!rst_n) (depth_o == 3'b110) |-> (!empty_o));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,raw_trace,1,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));,True,False,True,True,True,False,True,False,True,"The candidate SVA correctly encodes the specification. It asserts that if the interrupt enable register (reg2hw_intr_enable_q_i) is low, then the output signal intr_o should also be low in any sampled cycle. This aligns with the given specification and ensures that the hardware behaves as expected when interrupts are disabled.",True,True,4,4,4,1,2,2,4,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i != 0) |=> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 && reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && intr_o != 0) |=> (reg2hw_intr_state_q_i == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 && reg2hw_intr_enable_q_i == 0) |-> (reg2hw_intr_state_q_i == 0));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,raw_trace,2,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i != 0) |=> (intr_o == 0));,True,False,True,True,True,False,True,False,True,"The candidate SVA correctly encodes the specification. It asserts that if the interrupt state (reg2hw_intr_state_q_i) is not zero, then the output intr_o should be low in any sampled cycle where the interrupt enable register (reg2hw_intr_enable_q_i) is low.",True,True,5,5,6,3,5,2,5,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i != 0) |=> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 && reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && intr_o != 0) |=> (reg2hw_intr_state_q_i == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 && reg2hw_intr_enable_q_i == 0) |-> (reg2hw_intr_state_q_i == 0));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,raw_trace,3,assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 && reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));,True,True,False,False,False,True,False,False,True,"The candidate SVA correctly captures the requirement that if the interrupt state is set (event_intr_i == 1) and the interrupt enable mask is low (reg2hw_intr_enable_q_i == 0), then the output intr_o should be low. This aligns with the specification provided.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i != 0) |=> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 && reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && intr_o != 0) |=> (reg2hw_intr_state_q_i == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 && reg2hw_intr_enable_q_i == 0) |-> (reg2hw_intr_state_q_i == 0));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,raw_trace,4,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && intr_o != 0) |=> (reg2hw_intr_state_q_i == 0));,True,False,True,True,True,False,True,False,True,"The candidate SVA correctly captures the requirement that if the interrupt enable register (reg2hw_intr_enable_q_i) is low, then the interrupt output (intr_o) should also be low. The property uses a disable iff (!rst_n) clause to ensure it only checks in valid clock cycles, and the implication ensures that when the interrupt enable is disabled, the interrupt output must be low.",True,True,1,2,4,1,2,2,3,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i != 0) |=> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 && reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && intr_o != 0) |=> (reg2hw_intr_state_q_i == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 && reg2hw_intr_enable_q_i == 0) |-> (reg2hw_intr_state_q_i == 0));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,raw_trace,5,assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 && reg2hw_intr_enable_q_i == 0) |-> (reg2hw_intr_state_q_i == 0));,True,False,True,True,True,False,True,False,True,"The candidate SVA correctly captures the requirement that if the interrupt enable mask (reg2hw_intr_enable_q_i) is low, then the output intr_o should be low regardless of the interrupt state (reg2hw_intr_state_q_i). The property uses a disable iff (!rst_n) clause to ensure it only applies when the reset is not active, and it correctly checks that if both intr_o is high and reg2hw_intr_enable_q_i is low, then reg2hw_intr_state_q_i must be low.",True,True,1,2,4,1,2,2,4,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i != 0) |=> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 && reg2hw_intr_enable_q_i == 0) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && intr_o != 0) |=> (reg2hw_intr_state_q_i == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 && reg2hw_intr_enable_q_i == 0) |-> (reg2hw_intr_state_q_i == 0));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,normal_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));,False,False,False,False,False,False,False,False,True,"This candidate checks that if the interrupt enable register is low, then the output intr_o must also be low. This aligns with the specification.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i == 1 & reg2hw_intr_test_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 & reg2hw_intr_enable_q_i == 0 |=> reg2hw_intr_state_q_i != 1));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,normal_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate checks a condition involving reg2hw_intr_state_q_i being set to 1, which is not mentioned in the specification. It is unrelated to the given spec.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i == 1 & reg2hw_intr_test_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 & reg2hw_intr_enable_q_i == 0 |=> reg2hw_intr_state_q_i != 1));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,normal_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate checks a condition involving event_intr_i being set to 1, which is not mentioned in the specification. It is unrelated to the given spec.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i == 1 & reg2hw_intr_test_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 & reg2hw_intr_enable_q_i == 0 |=> reg2hw_intr_state_q_i != 1));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,normal_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i == 1 & reg2hw_intr_test_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate involves multiple conditions on reg2hw_intr_test_qe_i and reg2hw_intr_test_q_i, which are not mentioned in the specification. It is overfit to one observed literal and unrelated to the given spec.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i == 1 & reg2hw_intr_test_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 & reg2hw_intr_enable_q_i == 0 |=> reg2hw_intr_state_q_i != 1));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,normal_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 & reg2hw_intr_enable_q_i == 0 |=> reg2hw_intr_state_q_i != 1));,False,False,False,False,False,False,False,False,True,"This candidate checks that if intr_o is high and the interrupt enable register is low, then the interrupt state register must not be set to 1. This aligns with the specification by ensuring that an active interrupt cannot occur when interrupts are disabled.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (event_intr_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qe_i == 1 & reg2hw_intr_test_q_i == 1 & reg2hw_intr_enable_q_i == 0 |-> intr_o == 0));
+assert property (@(posedge clk) disable iff (!rst_n) (intr_o == 1 & reg2hw_intr_enable_q_i == 0 |=> reg2hw_intr_state_q_i != 1));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,abstracted_trace_summary,1,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_state_q_i == 1) |-> (intr_o == 0));,True,False,True,True,True,False,True,False,True,"This candidate checks that when the interrupt enable is low and the interrupt state is high, the output intr_o remains low. This aligns with the specification.",True,True,2,2,4,1,2,2,4,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_state_q_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && event_intr_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_test_qi == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1) |=> (intr_o == reg2hw_intr_enable_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qi == 1) |=> (intr_o == reg2hw_intr_enable_q_i));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,abstracted_trace_summary,2,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && event_intr_i == 1) |-> (intr_o == 0));,True,True,False,False,False,True,False,False,False,"This candidate checks a condition involving an event_intr_i signal, which is not mentioned in the specification. It is unrelated to the given requirement.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_state_q_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && event_intr_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_test_qi == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1) |=> (intr_o == reg2hw_intr_enable_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qi == 1) |=> (intr_o == reg2hw_intr_enable_q_i));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,abstracted_trace_summary,3,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_test_qi == 1) |-> (intr_o == 0));,False,False,False,False,False,False,False,False,False,"This candidate checks a condition involving reg2hw_intr_test_qi, which is also not mentioned in the specification. It is unrelated to the given requirement.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_state_q_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && event_intr_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_test_qi == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1) |=> (intr_o == reg2hw_intr_enable_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qi == 1) |=> (intr_o == reg2hw_intr_enable_q_i));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,abstracted_trace_summary,4,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1) |=> (intr_o == reg2hw_intr_enable_q_i));,True,False,True,True,True,False,True,False,False,"This candidate states that if the interrupt state is high, then intr_o should be equal to reg2hw_intr_enable_q_i. This does not align with the specification, which requires intr_o to be low when the interrupt enable is low and the interrupt state is high.",True,True,5,5,6,2,2,3,4,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_state_q_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && event_intr_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_test_qi == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1) |=> (intr_o == reg2hw_intr_enable_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qi == 1) |=> (intr_o == reg2hw_intr_enable_q_i));"
+case135_prim_intr_enable_mask_ignored,tradeoff;raw_vs_summary_opposite;antecedent_not_triggered,abstracted_trace_summary,5,assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qi == 1) |=> (intr_o == reg2hw_intr_enable_q_i));,False,False,False,False,False,False,False,False,False,"This candidate states that if reg2hw_intr_test_qi is high, then intr_o should be equal to reg2hw_intr_enable_q_i. This does not align with the specification, which requires intr_o to be low when the interrupt enable is low and the interrupt state is high.",False,False,0,0,0,0,0,0,0,False,"assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_state_q_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && event_intr_i == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_enable_q_i == 0 && reg2hw_intr_test_qi == 1) |-> (intr_o == 0));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_state_q_i == 1) |=> (intr_o == reg2hw_intr_enable_q_i));
+
+assert property (@(posedge clk) disable iff (!rst_n) (reg2hw_intr_test_qi == 1) |=> (intr_o == reg2hw_intr_enable_q_i));"
