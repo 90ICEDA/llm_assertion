@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "schema_version": 1,
+  "visible_policy_count": 6,
+  "oracle_excluded_from_invariance_hash": true,
+  "selection_feature_allowlist": [
+    "compile_ok",
+    "seen_good_pass",
+    "seen_bad_fail",
+    "seen_antecedent_hit",
+    "non_vacuous",
+    "signal_legal",
+    "reset_valid",
+    "no_hardcoding",
+    "representation_agreement"
+  ],
+  "hard_gate_allowlist": [
+    "compile_ok",
+    "seen_good_pass",
+    "seen_bad_fail",
+    "seen_antecedent_hit",
+    "non_vacuous",
+    "signal_legal",
+    "reset_valid",
+    "no_hardcoding"
+  ],
+  "forbidden_heldout_columns": [
+    "heldout_correct_pass",
+    "heldout_buggy_fail",
+    "heldout_antecedent_hit",
+    "heldout_non_vacuous",
+    "trace_overfit",
+    "heldout_bad_ant_hits",
+    "heldout_good_fail_hits",
+    "heldout_bad_fail_hits"
+  ],
+  "selection_join_timing": "held-out fields joined only after visible features and candidate pools are locked",
+  "original_visible_selection_sha256": "8efabdd8858c39e595896a472ee51f287ed4485001839b8147ed6bd9b9365929",
+  "heldout_deleted_selection_sha256": "8efabdd8858c39e595896a472ee51f287ed4485001839b8147ed6bd9b9365929",
+  "heldout_shuffled_selection_sha256": "8efabdd8858c39e595896a472ee51f287ed4485001839b8147ed6bd9b9365929",
+  "heldout_deletion_hash_identical": true,
+  "heldout_shuffle_hash_identical": true,
+  "pool_budget_all_four": true,
+  "pool_distinct_candidates_all_four": true,
+  "canonical_parent_count": 40,
+  "case_count": 120,
+  "models": [
+    "Claude",
+    "GPT"
+  ],
+  "no_implicit_fallback": true,
+  "zero_pass_behavior": {
+    "hard_filter": "abstain_no_hard_pass",
+    "abstain": "abstain_no_hard_pass",
+    "fallback": "explicit_fallback_first",
+    "repair": "not run in this experiment",
+    "first_random_score_ranking": "explicit abstain when the pool has zero hard-pass candidates"
+  }
+}
