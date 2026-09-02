@@ -1,0 +1,175 @@
+{
+  "review_id": "review_021",
+  "pair_id": "793546162a7d3905765d39eb",
+  "parent_id": "case457_cc_delta_counter_load_enable_priority",
+  "probe_id": "case457_cc_delta_counter_load_enable_priority__probe_002",
+  "source_stimulus_sha256": "2e650ef5c38577caef23fd108620ae9fb742c7eca76045c4c12486b6fb641b3d",
+  "candidate_a_id": "case457_cc_delta_counter_load_enable_priority__v3_slot_02",
+  "candidate_b_id": "case457_cc_delta_counter_load_enable_priority__v3_slot_08",
+  "candidate_a_verdict": [
+    true,
+    false,
+    2,
+    2
+  ],
+  "candidate_b_verdict": [
+    false,
+    false,
+    0,
+    0
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/correct.v",
+        "rtl_sha256": "76bf7a239e312b2702bdc21cfd412451724aba4d63a47788f705763c4c1a2b18",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_02/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_02/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.028587635999997474
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_02/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 q=x ov=x en=0 load=0\nT=5000 q=0 ov=0 en=0 load=0\nT=25000 q=2 ov=0 en=1 load=0\nT=35000 q=4 ov=0 en=1 load=0\nT=45000 q=4 ov=0 en=0 load=0\nT=55000 q=7 ov=0 en=1 load=1\nT=65000 q=7 ov=0 en=0 load=0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v:2: $finish called at 115000 (1ps)\nV3_PROBE_METRIC ant_hits=10 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01921605100000079
+        },
+        "antecedent_hits": 10,
+        "fail_hits": 2
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/buggy.v",
+        "rtl_sha256": "dc91a3fe1dc91d33892d4303eb1c6326d0c416ee6b770daf4a403404db9c6f0f",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_02/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_02/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03236342299999251
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_02/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 q=x ov=x en=0 load=0\nT=5000 q=0 ov=0 en=0 load=0\nT=25000 q=2 ov=0 en=1 load=0\nT=35000 q=4 ov=0 en=1 load=0\nT=45000 q=4 ov=0 en=0 load=0\nT=55000 q=6 ov=0 en=1 load=1\nT=65000 q=6 ov=0 en=0 load=0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v:2: $finish called at 115000 (1ps)\nV3_PROBE_METRIC ant_hits=10 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.018305306999991444
+        },
+        "antecedent_hits": 10,
+        "fail_hits": 2
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/correct.v",
+        "rtl_sha256": "76bf7a239e312b2702bdc21cfd412451724aba4d63a47788f705763c4c1a2b18",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_08/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_08/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03026029599999447
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_08/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 q=x ov=x en=0 load=0\nT=5000 q=0 ov=0 en=0 load=0\nT=25000 q=2 ov=0 en=1 load=0\nT=35000 q=4 ov=0 en=1 load=0\nT=45000 q=4 ov=0 en=0 load=0\nT=55000 q=7 ov=0 en=1 load=1\nT=65000 q=7 ov=0 en=0 load=0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v:2: $finish called at 115000 (1ps)\nV3_PROBE_METRIC ant_hits=0 fail_hits=0\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01742452099995262
+        },
+        "antecedent_hits": 0,
+        "fail_hits": 0
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/buggy.v",
+        "rtl_sha256": "dc91a3fe1dc91d33892d4303eb1c6326d0c416ee6b770daf4a403404db9c6f0f",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_08/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case457_cc_delta_counter_load_enable_priority/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_08/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03069903499999782
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/runs/case457_cc_delta_counter_load_enable_priority__probe_002/case457_cc_delta_counter_load_enable_priority__v3_slot_08/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 q=x ov=x en=0 load=0\nT=5000 q=0 ov=0 en=0 load=0\nT=25000 q=2 ov=0 en=1 load=0\nT=35000 q=4 ov=0 en=1 load=0\nT=45000 q=4 ov=0 en=0 load=0\nT=55000 q=6 ov=0 en=1 load=1\nT=65000 q=6 ov=0 en=0 load=0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case457_cc_delta_counter_load_enable_priority/stimuli/case457_cc_delta_counter_load_enable_priority__probe_002.v:2: $finish called at 115000 (1ps)\nV3_PROBE_METRIC ant_hits=0 fail_hits=0\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01869672099996933
+        },
+        "antecedent_hits": 0,
+        "fail_hits": 0
+      }
+    }
+  }
+}

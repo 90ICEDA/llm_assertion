@@ -1,0 +1,175 @@
+{
+  "review_id": "review_017",
+  "pair_id": "ba13b83ea53844a9a2c402f6",
+  "parent_id": "case133_prim_edge_negedge_missing",
+  "probe_id": "case133_prim_edge_negedge_missing__probe_000",
+  "source_stimulus_sha256": "36cf8b1071d95ee1ed31fce929199257ed12568aa05b9d4c8754484cfe928a06",
+  "candidate_a_id": "case133_prim_edge_negedge_missing__v3_slot_01",
+  "candidate_b_id": "case133_prim_edge_negedge_missing__v3_slot_03",
+  "candidate_a_verdict": [
+    true,
+    false,
+    1,
+    2
+  ],
+  "candidate_b_verdict": [
+    true,
+    false,
+    5,
+    5
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case133_prim_edge_negedge_missing/correct.v",
+        "rtl_sha256": "f7e777162d8f2c86a1fdfc2751e6b962085a1828408ea491afd83ece8db9679d",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_01/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_01/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.029316589000000448
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_01/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v:37: $finish called at 75000 (1ps)\nV3_PROBE_METRIC ant_hits=2 fail_hits=1\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02153726699999936
+        },
+        "antecedent_hits": 2,
+        "fail_hits": 1
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case133_prim_edge_negedge_missing/buggy.v",
+        "rtl_sha256": "762407b6e9366a38cd7782d1f865a52e766f8243a3946770a059ef8c713451c9",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_01/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_01/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02917458499999981
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_01/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v:37: $finish called at 75000 (1ps)\nV3_PROBE_METRIC ant_hits=2 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02321973600000149
+        },
+        "antecedent_hits": 2,
+        "fail_hits": 2
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case133_prim_edge_negedge_missing/correct.v",
+        "rtl_sha256": "f7e777162d8f2c86a1fdfc2751e6b962085a1828408ea491afd83ece8db9679d",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_03/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_03/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03159326499999793
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_03/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v:37: $finish called at 75000 (1ps)\nV3_PROBE_METRIC ant_hits=5 fail_hits=5\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.019119575999997807
+        },
+        "antecedent_hits": 5,
+        "fail_hits": 5
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case133_prim_edge_negedge_missing/buggy.v",
+        "rtl_sha256": "762407b6e9366a38cd7782d1f865a52e766f8243a3946770a059ef8c713451c9",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_03/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case133_prim_edge_negedge_missing/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_03/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02766708799999762
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/runs/case133_prim_edge_negedge_missing__probe_000/case133_prim_edge_negedge_missing__v3_slot_03/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case133_prim_edge_negedge_missing/stimuli/case133_prim_edge_negedge_missing__probe_000.v:37: $finish called at 75000 (1ps)\nV3_PROBE_METRIC ant_hits=5 fail_hits=5\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.018304564000001022
+        },
+        "antecedent_hits": 5,
+        "fail_hits": 5
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "review_id": "review_073",
+  "pair_id": "f4e5f6baea9aecf19226d579",
+  "parent_id": "case109_prim_arbiter_valid_depends_on_ready",
+  "probe_id": "case109_prim_arbiter_valid_depends_on_ready__probe_000",
+  "source_stimulus_sha256": "d0bf60b18553405d22224fb3d822840683a0786eb57bf11336ed6ea353223822",
+  "candidate_a_id": "case109_prim_arbiter_valid_depends_on_ready__v3_slot_02",
+  "candidate_b_id": "case109_prim_arbiter_valid_depends_on_ready__v3_slot_07",
+  "candidate_a_verdict": [
+    true,
+    false,
+    2,
+    2
+  ],
+  "candidate_b_verdict": [
+    true,
+    false,
+    2,
+    0
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/correct.v",
+        "rtl_sha256": "589db7ff6188413717e86c04ac7dd4c2a80c2bca44e01f2ef04273897167e0a8",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_02/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_02/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/correct.v:64: warning: @* found no sensitivities so it will never trigger.\n",
+          "timeout": false,
+          "wall_clock_seconds": 0.036305252000001786
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_02/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v:40: $finish called at 85000 (1ps)\nV3_PROBE_METRIC ant_hits=2 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.021599871999999465
+        },
+        "antecedent_hits": 2,
+        "fail_hits": 2
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/buggy.v",
+        "rtl_sha256": "40b393e284004f092d4a15511278587614066b71cf6eb4bda9006dbde90edc4a",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_02/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_02/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/buggy.v:64: warning: @* found no sensitivities so it will never trigger.\n",
+          "timeout": false,
+          "wall_clock_seconds": 0.032545944999998966
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_02/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v:40: $finish called at 85000 (1ps)\nV3_PROBE_METRIC ant_hits=2 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.022962873999997413
+        },
+        "antecedent_hits": 2,
+        "fail_hits": 2
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/correct.v",
+        "rtl_sha256": "589db7ff6188413717e86c04ac7dd4c2a80c2bca44e01f2ef04273897167e0a8",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_07/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_07/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/correct.v:64: warning: @* found no sensitivities so it will never trigger.\n",
+          "timeout": false,
+          "wall_clock_seconds": 0.029609586999999493
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_07/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v:40: $finish called at 85000 (1ps)\nV3_PROBE_METRIC ant_hits=2 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.020731018999999407
+        },
+        "antecedent_hits": 2,
+        "fail_hits": 2
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/buggy.v",
+        "rtl_sha256": "40b393e284004f092d4a15511278587614066b71cf6eb4bda9006dbde90edc4a",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_07/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_07/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case109_prim_arbiter_valid_depends_on_ready/buggy.v:64: warning: @* found no sensitivities so it will never trigger.\n",
+          "timeout": false,
+          "wall_clock_seconds": 0.031799914999997014
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/runs/case109_prim_arbiter_valid_depends_on_ready__probe_000/case109_prim_arbiter_valid_depends_on_ready__v3_slot_07/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case109_prim_arbiter_valid_depends_on_ready/stimuli/case109_prim_arbiter_valid_depends_on_ready__probe_000.v:40: $finish called at 85000 (1ps)\nV3_PROBE_METRIC ant_hits=2 fail_hits=0\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02133051099999861
+        },
+        "antecedent_hits": 2,
+        "fail_hits": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "review_id": "review_048",
+  "pair_id": "027df408343cbb456e95768e",
+  "parent_id": "case438_cc_fifo_protocol_suppress_2",
+  "probe_id": "case438_cc_fifo_protocol_suppress_2__probe_000",
+  "source_stimulus_sha256": "2279ccbb2a82eb18e2ae1342e8586253a31a1d537e4a1c84b14be9012548e4c1",
+  "candidate_a_id": "case438_cc_fifo_protocol_suppress_2__v3_slot_01",
+  "candidate_b_id": "case438_cc_fifo_protocol_suppress_2__v3_slot_07",
+  "candidate_a_verdict": [
+    true,
+    false,
+    4,
+    4
+  ],
+  "candidate_b_verdict": [
+    true,
+    false,
+    3,
+    2
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_correct.v",
+        "rtl_sha256": "e85a94142f68b5b9e654325a88e8681368c07ad4b8cef01092b5248eb57d1ba5",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_01/correct.out",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_01/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02870225300000584
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_01/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v:1: $finish called at 65 (1s)\nV3_PROBE_METRIC ant_hits=4 fail_hits=4\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02171518300001196
+        },
+        "antecedent_hits": 4,
+        "fail_hits": 4
+      },
+      "buggy": {
+        "rtl_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_buggy.v",
+        "rtl_sha256": "611f58dce6de3f204d7879fd9ed1dfad31dac1fff7159946f28c5359f8e722a1",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_01/buggy.out",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_01/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03003546899999776
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_01/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v:1: $finish called at 65 (1s)\nV3_PROBE_METRIC ant_hits=4 fail_hits=4\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.020560639999999353
+        },
+        "antecedent_hits": 4,
+        "fail_hits": 4
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_correct.v",
+        "rtl_sha256": "e85a94142f68b5b9e654325a88e8681368c07ad4b8cef01092b5248eb57d1ba5",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_07/correct.out",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_07/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.030497517000000585
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_07/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v:1: $finish called at 65 (1s)\nV3_PROBE_METRIC ant_hits=4 fail_hits=3\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.020618140999999923
+        },
+        "antecedent_hits": 4,
+        "fail_hits": 3
+      },
+      "buggy": {
+        "rtl_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_buggy.v",
+        "rtl_sha256": "611f58dce6de3f204d7879fd9ed1dfad31dac1fff7159946f28c5359f8e722a1",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_07/buggy.out",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_07/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02958552399999803
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/runs/case438_cc_fifo_protocol_suppress_2__probe_000/case438_cc_fifo_protocol_suppress_2__v3_slot_07/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case438_cc_fifo_protocol_suppress_2/stimuli/case438_cc_fifo_protocol_suppress_2__probe_000.v:1: $finish called at 65 (1s)\nV3_PROBE_METRIC ant_hits=4 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.020549938000002044
+        },
+        "antecedent_hits": 4,
+        "fail_hits": 2
+      }
+    }
+  }
+}

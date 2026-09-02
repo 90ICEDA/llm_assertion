@@ -1,0 +1,175 @@
+{
+  "review_id": "review_006",
+  "pair_id": "f10c8abce6c710b9b0e0c326",
+  "parent_id": "case139_prim_regwe_addr_check_false_positive",
+  "probe_id": "case139_prim_regwe_addr_check_false_positive__probe_004",
+  "source_stimulus_sha256": "737e95d2f1a1729ccc43c789dfd872e68489fb9d45aac572ad8187f5d2a91515",
+  "candidate_a_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_03",
+  "candidate_b_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_05",
+  "candidate_a_verdict": [
+    true,
+    false,
+    6,
+    6
+  ],
+  "candidate_b_verdict": [
+    true,
+    false,
+    5,
+    5
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/correct.v",
+        "rtl_sha256": "2f978cbf818fbf6708d0981531417b00957c21ee81be6211a3873a4167d02174",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_03/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_03/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03231263800000761
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_03/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_004.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v:34: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=6 fail_hits=6\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02191701699999271
+        },
+        "antecedent_hits": 6,
+        "fail_hits": 6
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/buggy.v",
+        "rtl_sha256": "5a34adfe47d6dc0279fa2541ea13a40410b779891fd5dc01ae954c0bea1dd4f3",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_03/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_03/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.030281841000004306
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_03/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_004.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v:34: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=6 fail_hits=6\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.023729379000002382
+        },
+        "antecedent_hits": 6,
+        "fail_hits": 6
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/correct.v",
+        "rtl_sha256": "2f978cbf818fbf6708d0981531417b00957c21ee81be6211a3873a4167d02174",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_05/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_05/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03219079199999442
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_05/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_004.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v:34: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=6 fail_hits=5\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.023147284000003765
+        },
+        "antecedent_hits": 6,
+        "fail_hits": 5
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/buggy.v",
+        "rtl_sha256": "5a34adfe47d6dc0279fa2541ea13a40410b779891fd5dc01ae954c0bea1dd4f3",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_05/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case139_prim_regwe_addr_check_false_positive/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_05/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03225935699998672
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/runs/case139_prim_regwe_addr_check_false_positive__probe_004/case139_prim_regwe_addr_check_false_positive__v3_slot_05/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_004.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case139_prim_regwe_addr_check_false_positive/stimuli/case139_prim_regwe_addr_check_false_positive__probe_004.v:34: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=6 fail_hits=5\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.0264222719999907
+        },
+        "antecedent_hits": 6,
+        "fail_hits": 5
+      }
+    }
+  }
+}

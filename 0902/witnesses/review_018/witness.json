@@ -1,0 +1,175 @@
+{
+  "review_id": "review_018",
+  "pair_id": "e95c29d369e675342204b7a4",
+  "parent_id": "case134_prim_intr_event_not_sticky",
+  "probe_id": "case134_prim_intr_event_not_sticky__probe_000",
+  "source_stimulus_sha256": "9ab536d4035be5d706735f90bec735f7df6664c8c0d136316384c942e5ac1024",
+  "candidate_a_id": "case134_prim_intr_event_not_sticky__v3_slot_07",
+  "candidate_b_id": "case134_prim_intr_event_not_sticky__v3_slot_08",
+  "candidate_a_verdict": [
+    true,
+    false,
+    1,
+    1
+  ],
+  "candidate_b_verdict": [
+    false,
+    false,
+    0,
+    0
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/correct.v",
+        "rtl_sha256": "958b64b0180c051e267a7b3c6f072279ebee81902695a59509300c1e422af128",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_07/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_07/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.028845881999998824
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_07/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v:67: $finish called at 125000 (1ps)\nV3_PROBE_METRIC ant_hits=10 fail_hits=1\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01994755300000861
+        },
+        "antecedent_hits": 10,
+        "fail_hits": 1
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/buggy.v",
+        "rtl_sha256": "f038d47fd45ba5eae46c7b2fbf50cef13e3c81ced9c71d243294a39707b39194",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_07/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_07/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.031104905999995935
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_07/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v:67: $finish called at 125000 (1ps)\nV3_PROBE_METRIC ant_hits=10 fail_hits=1\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.022618550000004234
+        },
+        "antecedent_hits": 10,
+        "fail_hits": 1
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/correct.v",
+        "rtl_sha256": "958b64b0180c051e267a7b3c6f072279ebee81902695a59509300c1e422af128",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_08/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_08/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.028249986000005833
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_08/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v:67: $finish called at 125000 (1ps)\nV3_PROBE_METRIC ant_hits=0 fail_hits=0\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02040667999999357
+        },
+        "antecedent_hits": 0,
+        "fail_hits": 0
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/buggy.v",
+        "rtl_sha256": "f038d47fd45ba5eae46c7b2fbf50cef13e3c81ced9c71d243294a39707b39194",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_08/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale120/case134_prim_intr_event_not_sticky/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_08/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.030186522999997578
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/runs/case134_prim_intr_event_not_sticky__probe_000/case134_prim_intr_event_not_sticky__v3_slot_08/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case134_prim_intr_event_not_sticky/stimuli/case134_prim_intr_event_not_sticky__probe_000.v:67: $finish called at 125000 (1ps)\nV3_PROBE_METRIC ant_hits=0 fail_hits=0\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01972918900000309
+        },
+        "antecedent_hits": 0,
+        "fail_hits": 0
+      }
+    }
+  }
+}

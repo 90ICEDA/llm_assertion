@@ -1,0 +1,175 @@
+{
+  "review_id": "review_012",
+  "pair_id": "7c42abc274adab76072c74c5",
+  "parent_id": "case484_cc_exp_backoff_clear_set_priority",
+  "probe_id": "case484_cc_exp_backoff_clear_set_priority__probe_000",
+  "source_stimulus_sha256": "49c371b8c5ee0c17d75d72a7516d2a2780b03fa4388619bb91b28108b8bea7fe",
+  "candidate_a_id": "case484_cc_exp_backoff_clear_set_priority__v3_slot_04",
+  "candidate_b_id": "case484_cc_exp_backoff_clear_set_priority__v3_slot_08",
+  "candidate_a_verdict": [
+    true,
+    false,
+    9,
+    9
+  ],
+  "candidate_b_verdict": [
+    false,
+    false,
+    0,
+    0
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/correct.v",
+        "rtl_sha256": "cb224a138ad8068b778cc0d6397b1c1222290f85d364bd6ca0609d5a46a04de7",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_04/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_04/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.03246103399999356
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_04/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 set=0 clear=0 zero=x count= x\nT=5000 set=0 clear=0 zero=1 count= 0\nT=25000 set=1 clear=0 zero=0 count= 1\nT=35000 set=0 clear=0 zero=1 count= 0\nT=55000 set=1 clear=1 zero=1 count= 0\nT=65000 set=0 clear=0 zero=1 count= 0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v:17: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=10 fail_hits=9\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01708919700001843
+        },
+        "antecedent_hits": 10,
+        "fail_hits": 9
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/buggy.v",
+        "rtl_sha256": "da075648260692c5a2f795cadb78d9ee576bd5a3bc204546376b930775752a61",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_04/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_04/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.030893853000065974
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_04/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 set=0 clear=0 zero=x count= x\nT=5000 set=0 clear=0 zero=1 count= 0\nT=25000 set=1 clear=0 zero=0 count= 1\nT=35000 set=0 clear=0 zero=1 count= 0\nT=55000 set=1 clear=1 zero=0 count= 3\nT=65000 set=0 clear=0 zero=0 count= 2\nT=75000 set=0 clear=0 zero=0 count= 1\nT=85000 set=0 clear=0 zero=1 count= 0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v:17: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=10 fail_hits=9\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.019165427000075397
+        },
+        "antecedent_hits": 10,
+        "fail_hits": 9
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/correct.v",
+        "rtl_sha256": "cb224a138ad8068b778cc0d6397b1c1222290f85d364bd6ca0609d5a46a04de7",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_08/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_08/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02991026500001226
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_08/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 set=0 clear=0 zero=x count= x\nT=5000 set=0 clear=0 zero=1 count= 0\nT=25000 set=1 clear=0 zero=0 count= 1\nT=35000 set=0 clear=0 zero=1 count= 0\nT=55000 set=1 clear=1 zero=1 count= 0\nT=65000 set=0 clear=0 zero=1 count= 0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v:17: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=0 fail_hits=0\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01667282799996883
+        },
+        "antecedent_hits": 0,
+        "fail_hits": 0
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/buggy.v",
+        "rtl_sha256": "da075648260692c5a2f795cadb78d9ee576bd5a3bc204546376b930775752a61",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_08/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case484_cc_exp_backoff_clear_set_priority/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_08/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.029199068000025363
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/runs/case484_cc_exp_backoff_clear_set_priority__probe_000/case484_cc_exp_backoff_clear_set_priority__v3_slot_08/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "T=0 set=0 clear=0 zero=x count= x\nT=5000 set=0 clear=0 zero=1 count= 0\nT=25000 set=1 clear=0 zero=0 count= 1\nT=35000 set=0 clear=0 zero=1 count= 0\nT=55000 set=1 clear=1 zero=0 count= 3\nT=65000 set=0 clear=0 zero=0 count= 2\nT=75000 set=0 clear=0 zero=0 count= 1\nT=85000 set=0 clear=0 zero=1 count= 0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case484_cc_exp_backoff_clear_set_priority/stimuli/case484_cc_exp_backoff_clear_set_priority__probe_000.v:17: $finish called at 105000 (1ps)\nV3_PROBE_METRIC ant_hits=0 fail_hits=0\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.016087548999962564
+        },
+        "antecedent_hits": 0,
+        "fail_hits": 0
+      }
+    }
+  }
+}

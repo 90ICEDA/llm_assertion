@@ -1,0 +1,8 @@
+flowchart LR
+  U["60 proposed parents<br/>cases 451-510"] -->|"acceptance gates"| A["46 admitted parents"]
+  U -->|"14 rejected; golden/weak gate evidence"| R["14 rejected parents"]
+  S["scale120 formal universe<br/>variants grouped to parents"] -->|"canonical case_id = parent_bug_id"| Q["40-parent selection asset"]
+  S --> T["scale120 members used in Pilot train"]
+  A -->|"partial overlap, not a filter"| T
+  N["scale210 admitted pools"] --> T["30-parent balanced Pilot train<br/>10/project"]
+  T --> L["latest behavioral preference / closed loop"]

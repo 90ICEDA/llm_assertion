@@ -1,0 +1,86 @@
+{
+  "candidate_id": "case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05",
+  "probe_id": "case459_cc_trip_counter_trip_one_cycle_late__probe_001",
+  "checker_path": "outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/runs/case459_cc_trip_counter_trip_one_cycle_late__probe_001/case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05/checker.sv",
+  "checker_sha256": "03fb17f09814b6a24cac2ae6d5f1953022738a66ecbd34f6445875e8e555030e",
+  "rtl": {
+    "correct": {
+      "rtl_path": "rtl_cases_real_scale210_independent_next/case459_cc_trip_counter_trip_one_cycle_late/correct.v",
+      "rtl_sha256": "f163279ff552b728a27f8ace57e82622bcdfff4779c7b79005a2efeb70f73725",
+      "compile_command": [
+        "iverilog",
+        "-g2012",
+        "-I",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case459_cc_trip_counter_trip_one_cycle_late",
+        "-I",
+        "/mnt/d/AssertionForge-main1/external/common_cells/include",
+        "-o",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/runs/case459_cc_trip_counter_trip_one_cycle_late__probe_001/case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05/correct.out",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case459_cc_trip_counter_trip_one_cycle_late/correct.v",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/stimuli/case459_cc_trip_counter_trip_one_cycle_late__probe_001.v",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/runs/case459_cc_trip_counter_trip_one_cycle_late__probe_001/case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05/checker.sv"
+      ],
+      "compile": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false,
+        "wall_clock_seconds": 0.027720799999997325
+      },
+      "simulation_command": [
+        "vvp",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/runs/case459_cc_trip_counter_trip_one_cycle_late__probe_001/case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05/correct.out"
+      ],
+      "simulation": {
+        "returncode": 0,
+        "stdout": "T=0 q=x last=x trip=0\nT=5000 q=0 last=0 trip=0\nT=25000 q=3 last=0 trip=0\nT=35000 q=6 last=0 trip=0\nT=55000 q=9 last=1 trip=1\nT=65000 q=0 last=0 trip=0\nT=75000 q=3 last=0 trip=0\nT=85000 q=6 last=0 trip=0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/stimuli/case459_cc_trip_counter_trip_one_cycle_late__probe_001.v:2: $finish called at 135000 (1ps)\nV3_PROBE_METRIC ant_hits=7 fail_hits=6\n",
+        "stderr": "",
+        "timeout": false,
+        "wall_clock_seconds": 0.01751733499997954
+      },
+      "antecedent_hits": 7,
+      "fail_hits": 6
+    },
+    "buggy": {
+      "rtl_path": "rtl_cases_real_scale210_independent_next/case459_cc_trip_counter_trip_one_cycle_late/buggy.v",
+      "rtl_sha256": "17b06a6b7a92b7b3afec890ce3439fcac69dde1a6105e79c5a0917f70003cbc0",
+      "compile_command": [
+        "iverilog",
+        "-g2012",
+        "-I",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case459_cc_trip_counter_trip_one_cycle_late",
+        "-I",
+        "/mnt/d/AssertionForge-main1/external/common_cells/include",
+        "-o",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/runs/case459_cc_trip_counter_trip_one_cycle_late__probe_001/case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05/buggy.out",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case459_cc_trip_counter_trip_one_cycle_late/buggy.v",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/stimuli/case459_cc_trip_counter_trip_one_cycle_late__probe_001.v",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/runs/case459_cc_trip_counter_trip_one_cycle_late__probe_001/case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05/checker.sv"
+      ],
+      "compile": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "",
+        "timeout": false,
+        "wall_clock_seconds": 0.029541526000002705
+      },
+      "simulation_command": [
+        "vvp",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/runs/case459_cc_trip_counter_trip_one_cycle_late__probe_001/case459_cc_trip_counter_trip_one_cycle_late__v3_slot_05/buggy.out"
+      ],
+      "simulation": {
+        "returncode": 0,
+        "stdout": "T=0 q=x last=x trip=x\nT=5000 q=0 last=0 trip=0\nT=25000 q=3 last=0 trip=0\nT=35000 q=6 last=0 trip=0\nT=55000 q=9 last=1 trip=0\nT=65000 q=12 last=0 trip=1\nT=75000 q=0 last=0 trip=0\nT=85000 q=3 last=0 trip=0\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case459_cc_trip_counter_trip_one_cycle_late/stimuli/case459_cc_trip_counter_trip_one_cycle_late__probe_001.v:2: $finish called at 135000 (1ps)\nV3_PROBE_METRIC ant_hits=7 fail_hits=6\n",
+        "stderr": "",
+        "timeout": false,
+        "wall_clock_seconds": 0.015587633999984973
+      },
+      "antecedent_hits": 7,
+      "fail_hits": 6
+    }
+  },
+  "executable": true,
+  "fp": true,
+  "tp": false,
+  "distinguishing": false
+}

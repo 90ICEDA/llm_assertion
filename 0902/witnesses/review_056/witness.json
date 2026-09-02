@@ -1,0 +1,175 @@
+{
+  "review_id": "review_056",
+  "pair_id": "ab5d6ebb6f570245824e6c94",
+  "parent_id": "case498_cc_serial_deglitch_qualification_short",
+  "probe_id": "case498_cc_serial_deglitch_qualification_short__probe_000",
+  "source_stimulus_sha256": "12bf0d1d43dcb9d9412c00a5e896a3633e2c2eb18f60f7af706e1de65be1bf07",
+  "candidate_a_id": "case498_cc_serial_deglitch_qualification_short__v3_slot_01",
+  "candidate_b_id": "case498_cc_serial_deglitch_qualification_short__v3_slot_05",
+  "candidate_a_verdict": [
+    true,
+    false,
+    3,
+    2
+  ],
+  "candidate_b_verdict": [
+    true,
+    false,
+    2,
+    1
+  ],
+  "replay_commands": {
+    "candidate_a": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/correct.v",
+        "rtl_sha256": "13ed4df1a385e24fa7d15cd88348a74d47d7bf7de81abadc4c23a9601a988fa1",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_01/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_01/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.028955415999917022
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_01/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v:17: $finish called at 165000 (1ps)\nV3_PROBE_METRIC ant_hits=3 fail_hits=3\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.01969398699998237
+        },
+        "antecedent_hits": 3,
+        "fail_hits": 3
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/buggy.v",
+        "rtl_sha256": "4280f1d7e804fe782f1a813b741d52f51f5942344e470f4b12a232190c4cc0bb",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_01/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_01/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.027422443999967072
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_01/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v:17: $finish called at 165000 (1ps)\nV3_PROBE_METRIC ant_hits=3 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.020919380999998793
+        },
+        "antecedent_hits": 3,
+        "fail_hits": 2
+      }
+    },
+    "candidate_b": {
+      "correct": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/correct.v",
+        "rtl_sha256": "13ed4df1a385e24fa7d15cd88348a74d47d7bf7de81abadc4c23a9601a988fa1",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_05/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/correct.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_05/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.02862898800003677
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_05/correct.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v:17: $finish called at 165000 (1ps)\nV3_PROBE_METRIC ant_hits=3 fail_hits=2\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.022895607000009477
+        },
+        "antecedent_hits": 3,
+        "fail_hits": 2
+      },
+      "buggy": {
+        "rtl_path": "rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/buggy.v",
+        "rtl_sha256": "4280f1d7e804fe782f1a813b741d52f51f5942344e470f4b12a232190c4cc0bb",
+        "compile_command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_05/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case498_cc_serial_deglitch_qualification_short/buggy.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_05/checker.sv"
+        ],
+        "compile": {
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.027934661000017513
+        },
+        "simulation_command": [
+          "vvp",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/runs/case498_cc_serial_deglitch_qualification_short__probe_000/case498_cc_serial_deglitch_qualification_short__v3_slot_05/buggy.out"
+        ],
+        "simulation": {
+          "returncode": 0,
+          "stdout": "VCD info: dumpfile probe_000.vcd opened for output.\n/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/case498_cc_serial_deglitch_qualification_short/stimuli/case498_cc_serial_deglitch_qualification_short__probe_000.v:17: $finish called at 165000 (1ps)\nV3_PROBE_METRIC ant_hits=3 fail_hits=1\n",
+          "stderr": "",
+          "timeout": false,
+          "wall_clock_seconds": 0.021552711000026648
+        },
+        "antecedent_hits": 3,
+        "fail_hits": 1
+      }
+    }
+  }
+}
