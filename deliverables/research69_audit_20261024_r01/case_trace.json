@@ -1,0 +1,282 @@
+{
+  "initial": {
+    "assertions": [
+      {
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected",
+        "reason": "Ensures that at an accepted output, with an outstanding input, the output payload equals the oldest accepted input payload at that same sample.",
+        "obligations": [
+          "order_payload"
+        ],
+        "id": "a0",
+        "derived_antecedent": "mvalid && mready && ref_count > 0",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "mdata == ref_expected"
+      },
+      {
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected",
+        "reason": "Ensures that at a fair-drain checkpoint, if there are outstanding accepted inputs, the last output must match the oldest outstanding input. This complements the existing property by focusing on the condition where the drain is due and there are outstanding inputs.",
+        "obligations": [
+          "drain_no_loss"
+        ],
+        "id": "a1",
+        "derived_antecedent": "drain_due && ref_count > 0",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "$past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)",
+        "reason": "Ensures that the output data (mdata) remains stable during backpressure (mready is low) across consecutive cycles, as required by the stall_stability obligation.",
+        "obligations": [
+          "stall_stability"
+        ],
+        "id": "a2",
+        "derived_antecedent": "mvalid && !mready && $past(mvalid && !mready)",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "mdata == $past(mdata)"
+      },
+      {
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)",
+        "obligations": [
+          "no_unsolicited_output",
+          "reset_cancellation"
+        ],
+        "reason": "The new assertion checks that every accepted output corresponds to the current oldest accepted, uncancelled input. It ensures that reset cancels all pending inputs and that a cancelled payload does not reappear. The assertion is triggered on the output acceptance edge and checks the existence and identity of the output.",
+        "id": "a3",
+        "derived_antecedent": "mready && mvalid",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "(ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "property": "(mvalid && !mready) |=> mdata == $past(mdata)",
+        "reason": "The existing property checks that if an output is valid but not accepted at sample t, it must still be valid with the same payload at t+1, regardless of ready at t+1. However, it does not account for the possibility that the output might be valid and not accepted due to backpressure, which can cause the output to remain valid with the same payload until the next edge.",
+        "obligations": [
+          "stall_stability"
+        ],
+        "id": "a4",
+        "derived_antecedent": "(mvalid && !mready)",
+        "implication": "|=>",
+        "derived_delay": 1,
+        "consequent": "mdata == $past(mdata)"
+      }
+    ],
+    "syntax_profile": "qualified_sampled_multi_v2",
+    "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+  },
+  "real_model_candidate": {
+    "assertions": [
+      {
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected",
+        "reason": "Ensures that at an accepted output, with an outstanding input, the output payload equals the oldest accepted input payload at that same sample.",
+        "obligations": [
+          "order_payload"
+        ],
+        "id": "a0",
+        "derived_antecedent": "mvalid && mready && ref_count > 0",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "mdata == ref_expected"
+      },
+      {
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected",
+        "reason": "Ensures that at a fair-drain checkpoint, if there are outstanding accepted inputs, the last output must match the oldest outstanding input. This complements the existing property by focusing on the condition where the drain is due and there are outstanding inputs.",
+        "obligations": [
+          "drain_no_loss"
+        ],
+        "id": "a1",
+        "derived_antecedent": "drain_due && ref_count > 0",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "$past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)",
+        "reason": "Ensures that the output data (mdata) remains stable during backpressure (mready is low) across consecutive cycles, as required by the stall_stability obligation.",
+        "obligations": [
+          "stall_stability"
+        ],
+        "id": "a2",
+        "derived_antecedent": "mvalid && !mready && $past(mvalid && !mready)",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "mdata == $past(mdata)"
+      },
+      {
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)",
+        "obligations": [
+          "no_unsolicited_output",
+          "reset_cancellation"
+        ],
+        "reason": "The new assertion checks that every accepted output corresponds to the current oldest accepted, uncancelled input. It ensures that reset cancels all pending inputs and that a cancelled payload does not reappear. The assertion is triggered on the output acceptance edge and checks the existence and identity of the output.",
+        "id": "a3",
+        "derived_antecedent": "mready && mvalid",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "(ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "property": "((mvalid && (!(mready)))) |=> (((mdata == $past(mdata)) && (mvalid == $past(mvalid))))",
+        "obligations": [
+          "stall_stability"
+        ],
+        "reason": "The existing a4 assertion does not fully capture the requirement that both mdata and mvalid should remain stable during backpressure. The new assertion ensures that both mdata and mvalid remain stable during backpressure, addressing the observed violations.",
+        "id": "a4",
+        "derived_antecedent": "((mvalid && (!(mready))))",
+        "implication": "|=>",
+        "derived_delay": 1,
+        "consequent": "(((mdata == $past(mdata)) && (mvalid == $past(mvalid))))"
+      }
+    ],
+    "syntax_profile": "qualified_sampled_reset_v3",
+    "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+  },
+  "examples": [
+    {
+      "native_check": {
+        "evidence_id": "fifo:44c2b402dfcda624d739b5829628689cfa3946fdf5362489ea237dd8390eac20",
+        "check_cycle": 7,
+        "native_antecedent_cycle": 6,
+        "edited_assertion": {
+          "id": "a4",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": true
+        },
+        "correct_side_trigger": true
+      },
+      "prior_evidence": {
+        "evidence_id": "fifo:44c2b402dfcda624d739b5829628689cfa3946fdf5362489ea237dd8390eac20",
+        "obligation": "stall_stability",
+        "stimulus_sha256": "0b701aed2da467ac96cde922c5649c319a06be735f51ec9fa60120011c68ceda",
+        "split": "development",
+        "scenario_id": "search67:s6703:0:reset_pending:None:valid_withdraw_stalled",
+        "variant": "valid_withdraw_stalled",
+        "cycle": 7,
+        "epoch": 1,
+        "oracle": {
+          "legality": "legal",
+          "verdict": "violated",
+          "validator": "independent_fifo_port_history_queue",
+          "paired_control_pass": true,
+          "identical_input_handshakes": true,
+          "first_violation_in_epoch": true
+        },
+        "native": {
+          "compile": "ok",
+          "support": "supported",
+          "execution": "ok",
+          "attribution_status": "confirmed",
+          "trigger_source": "property_antecedent_cover",
+          "assertions": [
+            {
+              "id": "a2",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            {
+              "id": "a4",
+              "trigger": true,
+              "failed": false,
+              "causal_detection": false
+            }
+          ]
+        },
+        "source_directory": "/mnt/d/AssertionForge-main1/deliverables/research67_controlled_20261024_r01/prepared_v4/s6703/core/native/search/case_0/valid_withdraw_stalled",
+        "oracle_violation": [
+          {
+            "cycle": 7,
+            "obligation": "stall_stability",
+            "passed": false,
+            "transaction_id": null
+          }
+        ]
+      }
+    },
+    {
+      "native_check": {
+        "evidence_id": "fifo:79e16bbf6afcc7e2e841a7773712c92f990b7748d909fbc78c07fdf3a0b08851",
+        "check_cycle": 17,
+        "native_antecedent_cycle": 16,
+        "edited_assertion": {
+          "id": "a4",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": true
+        },
+        "correct_side_trigger": true
+      },
+      "prior_evidence": {
+        "evidence_id": "fifo:79e16bbf6afcc7e2e841a7773712c92f990b7748d909fbc78c07fdf3a0b08851",
+        "obligation": "stall_stability",
+        "stimulus_sha256": "b935bd54c9fedddf1dd694cd58d9bd05ef905c79a7c1cbf7e71d1e9cfa700967",
+        "split": "development",
+        "scenario_id": "public67:1:backpressure:1:valid_withdraw_release",
+        "variant": "valid_withdraw_release",
+        "cycle": 17,
+        "epoch": 1,
+        "oracle": {
+          "legality": "legal",
+          "verdict": "violated",
+          "validator": "independent_fifo_port_history_queue",
+          "paired_control_pass": true,
+          "identical_input_handshakes": true,
+          "first_violation_in_epoch": true
+        },
+        "native": {
+          "compile": "ok",
+          "support": "supported",
+          "execution": "ok",
+          "attribution_status": "confirmed",
+          "trigger_source": "property_antecedent_cover",
+          "assertions": [
+            {
+              "id": "a2",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            {
+              "id": "a4",
+              "trigger": true,
+              "failed": false,
+              "causal_detection": false
+            }
+          ]
+        },
+        "source_directory": "/mnt/d/AssertionForge-main1/deliverables/research67_controlled_20261024_r01/prepared_v4/s6703/core/native/common/case_9/valid_withdraw_release",
+        "oracle_violation": [
+          {
+            "cycle": 17,
+            "obligation": "stall_stability",
+            "passed": false,
+            "transaction_id": null
+          }
+        ]
+      }
+    }
+  ],
+  "history_counts": {
+    "before": {
+      "rows": 69124,
+      "unknown": 0,
+      "triggers": 16469,
+      "false_positives": 0,
+      "detections": 214,
+      "misses": 0
+    },
+    "after": {
+      "rows": 69124,
+      "unknown": 0,
+      "triggers": 16469,
+      "false_positives": 0,
+      "detections": 214,
+      "misses": 0
+    }
+  },
+  "accepted": true,
+  "independent_pass": true
+}

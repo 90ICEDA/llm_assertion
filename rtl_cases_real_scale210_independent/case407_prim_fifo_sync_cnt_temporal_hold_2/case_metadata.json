@@ -1,0 +1,116 @@
+{
+  "name": "case407_prim_fifo_sync_cnt_temporal_hold_2",
+  "parent_bug_id": "case407_prim_fifo_sync_cnt_temporal_hold_2",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_fifo_sync_cnt",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "wptr_wrap_cnt_q state update is suppressed",
+  "spec": "When clr_i is sampled high, both FIFO pointer state and the reported occupancy return to zero on the following sampled cycle, with empty asserted.",
+  "mutation_edits": [
+    {
+      "line": 122,
+      "search": "        wptr_wrap_cnt_q <= {WrapPtrW{1'b0}};",
+      "replace": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "wptr_wrap_cnt_q",
+  "relevant_signals": [
+    "rst_ni",
+    "clk_i",
+    "clr_i",
+    "wptr_o",
+    "rptr_o",
+    "depth_o",
+    "empty_o",
+    "depth_o[2:0]",
+    "wptr_o[1:0]"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+  "buggy_sha256": "33d5b6868928cc8213dad5fe7b3c70512c4b1f78171a1fd86ba5cf4e606d024b",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete",
+  "golden_sva": {
+    "name": "FifoClear_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) clr_i |=> ((wptr_o == '0) && (depth_o == '0) && empty_o));",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) clr_i |=> ((wptr_o == '0) && (depth_o == '0) && empty_o));",
+    "temporal_type": "one-cycle synchronous clear"
+  },
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 115000,
+      "cycle_index": 11,
+      "sample_index": 23,
+      "clock_phase": "rising edge",
+      "signals": [
+        "depth_o[2:0]",
+        "empty_o",
+        "wptr_o[1:0]"
+      ],
+      "good_values": {
+        "depth_o[2:0]": "000",
+        "empty_o": "1",
+        "wptr_o[1:0]": "00"
+      },
+      "bad_values": {
+        "depth_o[2:0]": "101",
+        "empty_o": "0",
+        "wptr_o[1:0]": "01"
+      }
+    },
+    "heldout": {
+      "time_ps": 145000,
+      "cycle_index": 14,
+      "sample_index": 29,
+      "clock_phase": "rising edge",
+      "signals": [
+        "depth_o[2:0]",
+        "empty_o",
+        "wptr_o[1:0]"
+      ],
+      "good_values": {
+        "depth_o[2:0]": "000",
+        "empty_o": "1",
+        "wptr_o[1:0]": "00"
+      },
+      "bad_values": {
+        "depth_o[2:0]": "110",
+        "empty_o": "0",
+        "wptr_o[1:0]": "10"
+      }
+    },
+    "decoy": {
+      "time_ps": 175000,
+      "cycle_index": 17,
+      "sample_index": 35,
+      "clock_phase": "rising edge",
+      "signals": [
+        "depth_o[2:0]",
+        "empty_o",
+        "wptr_o[1:0]"
+      ],
+      "good_values": {
+        "depth_o[2:0]": "000",
+        "empty_o": "1",
+        "wptr_o[1:0]": "00"
+      },
+      "bad_values": {
+        "depth_o[2:0]": "111",
+        "empty_o": "0",
+        "wptr_o[1:0]": "11"
+      }
+    }
+  }
+}

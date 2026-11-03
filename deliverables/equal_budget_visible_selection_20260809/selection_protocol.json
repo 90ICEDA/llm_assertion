@@ -1,0 +1,21 @@
+{
+  "candidate_budget": 4,
+  "pools": {
+    "raw_k4": "raw candidates 1-4",
+    "temporal_k4": "temporal candidates 1-4",
+    "raw2_temporal2": "raw candidates 1-2 plus temporal candidates 1-2",
+    "four_rep_one_each": "candidate 1 from raw, naive summary, event abstraction, temporal abstraction"
+  },
+  "policies": {
+    "first": "pool slot 1 when any hard-pass candidate exists; otherwise explicit abstain",
+    "random": "deterministic SHA-256 random choice when any hard-pass exists; otherwise explicit abstain",
+    "hard_filter": "first hard-pass candidate; otherwise explicit abstain",
+    "score_ranking": "highest visible-only score when any hard-pass exists; otherwise explicit abstain",
+    "abstain": "highest-scoring hard-pass candidate; otherwise explicit abstain",
+    "fallback": "highest-scoring hard-pass candidate; otherwise explicit fallback to slot 1",
+    "oracle_upper_bound": "first held-out strict-success candidate; evaluation ceiling only"
+  },
+  "visible_score": "unweighted sum of the nine allow-listed binary features",
+  "heldout_strict_success": "heldout correct pass AND buggy fail AND antecedent hit AND non-vacuous",
+  "primary_scope": "40 canonical parents where case_id == parent_bug_id"
+}

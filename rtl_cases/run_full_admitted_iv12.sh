@@ -17,6 +17,7 @@ MAX_ATTEMPTS="${MAX_ATTEMPTS:-4}"
 NUM_CANDIDATES="${NUM_CANDIDATES:-5}"
 
 STRICT_REPORT_BASENAME="${STRICT_REPORT_BASENAME:-strict_eval_report_iv12.csv}"
+SUMMARY_BASENAME="${SUMMARY_BASENAME:-strict_eval_by_method_and_bug_class_iv12.csv}"
 
 echo "[INFO] Repo root: $REPO_ROOT"
 echo "[INFO] Data root: $DATA_ROOT"
@@ -58,5 +59,11 @@ python3 "$REPO_ROOT/rtl_cases/evaluate_generated_sva.py" \
   --iverilog "$IVERILOG_BIN" \
   --vvp "$VVP_BIN"
 
+python3 "$REPO_ROOT/rtl_cases/summarize_strict_eval_by_method_and_bug_class.py" \
+  --root "$DATA_ROOT" \
+  --report "$DATA_ROOT/$STRICT_REPORT_BASENAME" \
+  --output-csv "$DATA_ROOT/$SUMMARY_BASENAME"
+
 echo "[DONE] Full admitted rerun complete."
 echo "[DONE] Strict report: $DATA_ROOT/$STRICT_REPORT_BASENAME"
+echo "[DONE] Summary: $DATA_ROOT/$SUMMARY_BASENAME"

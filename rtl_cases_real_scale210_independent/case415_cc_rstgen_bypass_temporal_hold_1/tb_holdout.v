@@ -1,0 +1,2 @@
+module tc_clk_mux2(input logic clk0_i,clk1_i,clk_sel_i,output logic clk_o);assign clk_o=clk_sel_i?clk1_i:clk0_i;endmodule
+module tb;logic clk_i=0,rst_ni,rst_test_mode_ni,test_mode_i,rst_no,init_no;string vcd;always #4 clk_i=~clk_i;cc_rstgen_bypass #(.NumRegs(4))dut(.*);initial begin if(!$value$plusargs("VCD=%s",vcd))vcd="wave.vcd";$dumpfile(vcd);$dumpvars(0,tb);test_mode_i=0;rst_test_mode_ni=1;rst_ni=0;#11;rst_ni=1;#43;rst_ni=0;#7;rst_ni=1;#40;$finish;end endmodule

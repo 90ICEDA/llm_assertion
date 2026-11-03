@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "population": {
+    "case_count": 40,
+    "independent_parent_bug_count": 40,
+    "parent_bugs_with_seen_trace_variants": 19,
+    "seen_trace_stability_comparable_parent_bugs": 10,
+    "comparable_parent_model_groups": 60
+  },
+  "main_result_scope": {
+    "unit": "independent_parent_bug",
+    "deduplicated": true,
+    "overlap": false,
+    "models": {
+      "Claude": {
+        "raw": {"successes": 26, "parents": 40, "rate": 0.65},
+        "summary": {"successes": 24, "parents": 40, "rate": 0.60},
+        "temporal_abstraction": {"successes": 27, "parents": 40, "rate": 0.675}
+      },
+      "GPT": {
+        "raw": {"successes": 25, "parents": 40, "rate": 0.625},
+        "summary": {"successes": 23, "parents": 40, "rate": 0.575},
+        "temporal_abstraction": {"successes": 27, "parents": 40, "rate": 0.675}
+      }
+    }
+  },
+  "seen_trace_stability": {
+    "unit": "independent_parent_bug",
+    "raw": {"stable": 6, "comparable": 10, "rate": 0.60},
+    "summary": {"stable": 6, "comparable": 10, "rate": 0.60},
+    "temporal_abstraction": {"stable": 7, "comparable": 10, "rate": 0.70},
+    "parent_model_group": {
+      "raw": {"stable": 14, "comparable": 20, "rate": 0.70},
+      "summary": {"stable": 15, "comparable": 20, "rate": 0.75},
+      "temporal_abstraction": {"stable": 15, "comparable": 20, "rate": 0.75}
+    }
+  },
+  "detail_workbook": "temporal40_parent_bug_reorganized.xlsx",
+  "note": "Rates are reproduced from the workbook Overview, Main Results and Stability Summary sheets. Seen-trace stability only includes parents with comparable outcomes under multiple seen-trace variants."
+}

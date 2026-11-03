@@ -1,0 +1,32 @@
+{
+  "reason": "The bit 0 of the real axis_fifo RTL output is flipped on every output, which violates the order_payload obligation.",
+  "assertions": [
+    {
+      "property": "mdata[0] == $past(mdata[0])",
+      "trigger": "svalid && sready && mvalid && mready",
+      "obligations": [
+        "order_payload"
+      ],
+      "reason": "This assertion ensures that the bit 0 of the output data remains stable across consecutive clock cycles, thus protecting the order_payload obligation.",
+      "id": "a0"
+    },
+    {
+      "property": "mdata[0] == $past(mdata[0])",
+      "trigger": "svalid && sready && mvalid && mready",
+      "obligations": [
+        "order_payload"
+      ],
+      "reason": "This assertion ensures that the bit 0 of the output data remains stable across consecutive clock cycles, thus protecting the order_payload obligation.",
+      "id": "a1"
+    },
+    {
+      "property": "mdata[0] == $past(mdata[0])",
+      "trigger": "svalid && sready && mvalid && mready",
+      "obligations": [
+        "order_payload"
+      ],
+      "reason": "This assertion ensures that the bit 0 of the output data remains stable across consecutive clock cycles, thus protecting the order_payload obligation.",
+      "id": "a2"
+    }
+  ]
+}

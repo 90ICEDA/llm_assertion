@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: A one-sample endpoint check does not establish modulo wrap.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) incr_wptr_i |-> (wptr_o != 2'd3));
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Observes only that the endpoint changes, not that it wraps to zero under an accepted write.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) (wptr_o == 2'd3) |=> (wptr_o != 2'd3));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Removes the required next-cycle wrap transition.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (incr_wptr_i && (wptr_o == 2'd3)) |-> (wptr_o == 2'd0));
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops both increment and terminal-pointer triggers.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) wptr_o == 2'd0);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: Range checking cannot distinguish correct modulo update.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) wptr_o <= 2'd3);

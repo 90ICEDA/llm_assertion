@@ -1,0 +1,237 @@
+{
+  "version": "3.0",
+  "frozen_at": "2026-10-09T17:33:52Z",
+  "cases": [
+    {
+      "case": "onehot",
+      "parent_bug_id": "case101_prim_onehot_multihot_suppressed",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "filter",
+      "parent_bug_id": "case122_prim_filter_ctr_streak_reset_ignored",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "fifo",
+      "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "spill",
+      "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+      "spec_status": "spec_unresolved",
+      "views": [
+        "validity_gated",
+        "raw_payload"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "regenerate_due_to_contract_revision"
+    },
+    {
+      "case": "stat",
+      "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "intr",
+      "parent_bug_id": "case135_prim_intr_enable_mask_ignored",
+      "spec_status": "spec_unresolved",
+      "views": [
+        "registered_mask",
+        "same_sample_mask"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "regenerate_due_to_contract_revision"
+    }
+  ],
+  "model": "qwen2.5-coder:7b-instruct",
+  "model_digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+  "options": {
+    "seed": 20261009,
+    "temperature": 0.2,
+    "num_predict": 192,
+    "num_ctx": 4096,
+    "num_gpu": 0,
+    "num_thread": 8
+  },
+  "seed": 20261009,
+  "model_access": {
+    "messages": 2,
+    "tools": [],
+    "files": [],
+    "conversation_history": false,
+    "server_side_context_ids": false,
+    "rtl_or_comments": false,
+    "waveforms": "only projected allowed interface values",
+    "diagnostics": "normalized category only; raw compiler diagnostics not sent",
+    "candidate_history": "current accepted property only if its identifiers are permitted",
+    "independent_evaluator": "full trace, independent contract labels, hidden scenarios; never sent wholesale"
+  },
+  "arms": [
+    "first",
+    "equal_budget_select",
+    "existing_feedback",
+    "obligation_loop",
+    "generic_diff",
+    "no_fp_check",
+    "no_observation_refinement",
+    "equal_information_control"
+  ],
+  "primary_budget": "effective simulation: one candidate x RTL x scenario x parameter x exact input/window, exit zero plus complete TRACE and all active-cycle CHECK records without unknowns. Nontrigger remains effective and a semantic result.",
+  "budget_limits": {
+    "pool_slots": 3,
+    "repair_calls": 2,
+    "max_compile_attempts": 12,
+    "max_effective_simulations": 12,
+    "model_timeout_seconds": 180,
+    "num_predict": 192,
+    "retries": 0
+  },
+  "checkpoints": {
+    "effective_simulations": [
+      2,
+      4,
+      6,
+      8,
+      12
+    ],
+    "effective_cycles": [
+      48,
+      96,
+      144,
+      192,
+      288
+    ],
+    "rule": "first completed candidate evaluation at EXACT cumulative resource checkpoint; no interpolation, padding, or after-budget lookahead. Missing checkpoints explicitly unreached. Additional cycle/transaction/parameter workloads and all costs reported. no_fp skips fixed and therefore has different workload mix, disclosed."
+  },
+  "validation": "each proposed candidate rechecked on all train/held witnesses; no_fp arm does not simulate fixed RTL or compute legal FP during method decisions; independent final evaluator does",
+  "acceptance": "same lexicographic (unknown, FP unless no_fp, miss, missing per-obligation branch triggers); generic_diff changes ONLY serialized feedback, not rank/update/refinement/budget. Existing_feedback uses its sealed v1 fixed/buggy fail-hit rule with unknown first.",
+  "existing_feedback_identity": "the prior sealed experiment existing_feedback arm in scripts/run_repair_contract.py lines 333-364, adapted to enforce the corrected whitelist; not claimed equivalent to every historical repository repair pipeline",
+  "refinement": "same strict training collision criterion as v2, starting at max(authorized_depth,2) because delay=2 is now base memory; minimum resolving p depth <=3; equal-information from first repair",
+  "pool_cost": "old unpolluted initial generation charged logically by original request/response token counts; copied evidence has zero new physical inference cost. New spill/intr pool physical cost shared once and charged per consumed slot logically.",
+  "hidden_access": "v3 schedules frozen before new calls. Only train/held are loaded by methods; all v1/v2 inputs/results considered investigator-seen and excluded from model requests. Hidden runner after global method freeze. No hidden feedback into methods.",
+  "acceptance_scope": "finite frozen scenarios; exercise all declared scenario branches, but require assertion antecedent witnesses only on required_assertion_trigger_branches. Negative/legal controls and reset cancellation need not trigger a target antecedent. All target components activated, no misses/FP, no unknown/spec ambiguity for complete pass.",
+  "unknowns": [
+    "unsupported_syntax",
+    "tool_error",
+    "timeout",
+    "unknown_values_or_incomplete_trace",
+    "incomplete_or_unknown_checker",
+    "spec_unresolved",
+    "missing_required_witness",
+    "pending_out_of_window"
+  ],
+  "controlled_mutants": "same independent component definitions, new scenario bytes; attached to their original parent",
+  "reuse": "same v2 initial candidate expressions and provenance; direct replay old outputs separately from fresh 72 repair requests; no new pool generation",
+  "versions": {
+    "python3": {
+      "argv": [
+        "python3",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v3_20261010",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v3_20261010/version_python3.stdout",
+      "stderr": "deliverables/repair_contract_v3_20261010/version_python3.stderr",
+      "wall_seconds": 0.00960649300031946
+    },
+    "iverilog": {
+      "argv": [
+        "iverilog",
+        "-V"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v3_20261010",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v3_20261010/version_iverilog.stdout",
+      "stderr": "deliverables/repair_contract_v3_20261010/version_iverilog.stderr",
+      "wall_seconds": 0.01822459699906176
+    },
+    "vvp": {
+      "argv": [
+        "vvp",
+        "-V"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v3_20261010",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v3_20261010/version_vvp.stdout",
+      "stderr": "deliverables/repair_contract_v3_20261010/version_vvp.stderr",
+      "wall_seconds": 0.010959252002066933
+    },
+    "ollama": {
+      "argv": [
+        "ollama",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v3_20261010",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v3_20261010/version_ollama.stdout",
+      "stderr": "deliverables/repair_contract_v3_20261010/version_ollama.stderr",
+      "wall_seconds": 0.11944013200263726
+    }
+  },
+  "AGENTS": "rg search of repository outside caches plus parent/root checks found no applicable AGENTS.md",
+  "git": "no valid HEAD; content hashes pin code and design",
+  "preexecution_amendment": {
+    "time": "2026-10-09T14:45:25Z",
+    "reason": "static protocol review distinguishes negative controls from necessary antecedent branches, and accounts for the one-bit delay=1 memory before declaring an observation collision; no model calls or supplemental outcomes observed"
+  },
+  "hidden_seed": 2026101003,
+  "capabilities": {
+    "version": "3.0",
+    "delay": [
+      0,
+      1,
+      2
+    ],
+    "popcount": "popcount(unsigned_declared_signal), width 1..256, returns unsigned 32-bit count; X/Z propagates",
+    "expressions": "native SV integer literals, unsigned declared ports/history, arithmetic, bitwise, logical, comparison, ternary, constant indexing/concatenation; elaborator rejects malformed expressions",
+    "signedness": "ports/history and popcount return unsigned; other operators and sized/unsized integer literals use Icarus SystemVerilog sizing and signedness; no real/string/cast/user functions",
+    "sampling": "posedge pre-NBA; delay d checks consequent(t) iff antecedent(t-d); overlapping triggers independently queued",
+    "reset": "active-low asynchronous reset clears pending antecedents; no checks while reset; observer pN values zero-filled on sampled reset as legacy, qualification includes sampled reset",
+    "history": "no inherited antecedents before initialization; pending at end is recorded, not silently passed; pN explicit zero-initialized copies, not native $past",
+    "disable": "only supplied reset; enable is an ordinary signal; custom disable iff unsupported",
+    "unknown": "four-state SV computes CHECK; X/Z in active trace or CHECK yields unknown and is not an effective simulation",
+    "unsupported": [
+      "delay outside 0..2",
+      "unpermitted identifiers/history",
+      "popcount of general expressions, slices or signed values",
+      "system functions",
+      "hierarchical names",
+      "assignment/statements",
+      "temporal operators inside expressions"
+    ]
+  },
+  "qualification": "qualification.json",
+  "previous": "deliverables/repair_contract_v2_20261009",
+  "additional_parents": "none this round: resources prioritized to all six existing parents/eight arms plus exhaustive saved-run replay; no outcome-dependent additions",
+  "specification": "unchanged independent v2 obligations; spill and intr remain spec_unresolved"
+}

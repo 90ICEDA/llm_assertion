@@ -1,0 +1,23 @@
+`timescale 1ns/1ps
+module cc_isochronous_4phase_handshake(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire ack_i,
+  input wire start_i,
+  
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg ack_meta,ack_sync,req;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin ack_meta<=0; ack_sync<=0; req<=0; end
+    else begin
+      ack_meta <= ack_i;
+      ack_sync <= ack_meta;
+      if (start_i) req <= 1'b1;
+      else if (ack_sync) req <= 1'b0;
+    end
+  end
+  assign q_o = req;
+  assign state_o = {5'b0,ack_sync,ack_meta,req};
+endmodule

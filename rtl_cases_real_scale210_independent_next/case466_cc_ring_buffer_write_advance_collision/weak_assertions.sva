@@ -1,0 +1,10 @@
+// single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) (wvalid_i && wready_o |-> !full_o));
+// final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) (!$isunknown(wptr_o)));
+// delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (advance_i |-> rptr_o==rptr_o));
+// antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (wready_o || full_o));
+// simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) (empty_o |-> !full_o));

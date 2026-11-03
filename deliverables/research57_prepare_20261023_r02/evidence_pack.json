@@ -1,0 +1,354 @@
+{
+  "counts": {
+    "history": {
+      "rows": 2748,
+      "triggers": 1410,
+      "detections": 423,
+      "misses": 0,
+      "false_positives": 226,
+      "unknown": 0
+    },
+    "search": {
+      "rows": 1248,
+      "triggers": 672,
+      "detections": 267,
+      "misses": 0,
+      "false_positives": 84,
+      "unknown": 0
+    }
+  },
+  "target_detection_to_preserve": {
+    "op_bit28_illegal": 420,
+    "illegal_branch_persists": 270
+  },
+  "false_alarm_total": 310,
+  "representative_false_alarms": [
+    {
+      "cohort": "history",
+      "evidence_id": "71a66e05bee90c656b19bbb597c6307c00a6c0848801e48840d4711c45806c5f",
+      "sample": {
+        "sample_id": 272,
+        "transaction_id": 69,
+        "phase": 0,
+        "instruction": 1075839539,
+        "instr_new": 1,
+        "family": "op_control",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 1
+      },
+      "revision": "after",
+      "instruction_hex": "0x40200233",
+      "decoded": {
+        "opcode": 51,
+        "funct3": 0,
+        "funct7": 32,
+        "bit28": 0,
+        "bit31": 0
+      },
+      "expected": 0,
+      "observed": 0,
+      "oracle": {
+        "legality": "legal",
+        "verdict": "satisfied",
+        "validator": "research15_history.oracle ISA encoding rules"
+      },
+      "assertions": [
+        {
+          "id": "a0",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a1",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": false
+        },
+        {
+          "id": "a2",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a3",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        }
+      ]
+    },
+    {
+      "cohort": "history",
+      "evidence_id": "205becce7b3c9ce4970249161074a2cd83098c773e409b443d32b912e724dcdb",
+      "sample": {
+        "sample_id": 313,
+        "transaction_id": 78,
+        "phase": 0,
+        "instruction": 1124275,
+        "instr_new": 1,
+        "family": "op_control",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 1
+      },
+      "revision": "after",
+      "instruction_hex": "0x001127b3",
+      "decoded": {
+        "opcode": 51,
+        "funct3": 2,
+        "funct7": 0,
+        "bit28": 0,
+        "bit31": 0
+      },
+      "expected": 0,
+      "observed": 0,
+      "oracle": {
+        "legality": "legal",
+        "verdict": "satisfied",
+        "validator": "research15_history.oracle ISA encoding rules"
+      },
+      "assertions": [
+        {
+          "id": "a0",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a1",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a2",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": false
+        },
+        {
+          "id": "a3",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        }
+      ]
+    },
+    {
+      "cohort": "history",
+      "evidence_id": "30bfe78df2829e1d8343804e065361c040c9330320e7bc3755a26cf10f497e12",
+      "sample": {
+        "sample_id": 343,
+        "transaction_id": 84,
+        "phase": 0,
+        "instruction": 8762291,
+        "instr_new": 1,
+        "family": "op_control",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 1
+      },
+      "revision": "after",
+      "instruction_hex": "0x0085b3b3",
+      "decoded": {
+        "opcode": 51,
+        "funct3": 3,
+        "funct7": 0,
+        "bit28": 0,
+        "bit31": 0
+      },
+      "expected": 0,
+      "observed": 0,
+      "oracle": {
+        "legality": "legal",
+        "verdict": "satisfied",
+        "validator": "research15_history.oracle ISA encoding rules"
+      },
+      "assertions": [
+        {
+          "id": "a0",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a1",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a2",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a3",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": false
+        }
+      ]
+    }
+  ],
+  "representative_targets": [
+    {
+      "cohort": "history",
+      "evidence_id": "bf1a61e0de95254c2e0af8db6f36f71962a4c9ce719b4607e537a86a2ae51b08",
+      "sample": {
+        "sample_id": 1,
+        "transaction_id": 0,
+        "phase": 1,
+        "instruction": 2098246499,
+        "instr_new": 0,
+        "family": "issue_163_illegal_branch",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 1
+      },
+      "revision": "before",
+      "instruction_hex": "0x7d10b363",
+      "decoded": {
+        "opcode": 99,
+        "funct3": 3,
+        "funct7": 62,
+        "bit28": 1,
+        "bit31": 0
+      },
+      "expected": 1,
+      "observed": 0,
+      "oracle": {
+        "legality": "legal",
+        "verdict": "violated",
+        "validator": "research15_history.oracle ISA encoding rules"
+      },
+      "assertions": [
+        {
+          "id": "a0",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": true
+        }
+      ]
+    },
+    {
+      "cohort": "history",
+      "evidence_id": "f27220771f105ae74950c3d616213e46b0af98f13c5a245faf83230fd32fdc1c",
+      "sample": {
+        "sample_id": 5,
+        "transaction_id": 1,
+        "phase": 0,
+        "instruction": 370221491,
+        "instr_new": 1,
+        "family": "benchmark_illegal_alu",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 1
+      },
+      "revision": "before",
+      "instruction_hex": "0x161121b3",
+      "decoded": {
+        "opcode": 51,
+        "funct3": 2,
+        "funct7": 11,
+        "bit28": 1,
+        "bit31": 0
+      },
+      "expected": 1,
+      "observed": 0,
+      "oracle": {
+        "legality": "legal",
+        "verdict": "violated",
+        "validator": "research15_history.oracle ISA encoding rules"
+      },
+      "assertions": [
+        {
+          "id": "a1",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": true
+        },
+        {
+          "id": "a2",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a3",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        }
+      ]
+    },
+    {
+      "cohort": "history",
+      "evidence_id": "cfe903b5a9ac64fcfbee4e262ea7907eb6f9287d4b9b268938334f2ddc4af7be",
+      "sample": {
+        "sample_id": 6,
+        "transaction_id": 1,
+        "phase": 1,
+        "instruction": 370221491,
+        "instr_new": 0,
+        "family": "benchmark_illegal_alu",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 1
+      },
+      "revision": "before",
+      "instruction_hex": "0x161121b3",
+      "decoded": {
+        "opcode": 51,
+        "funct3": 2,
+        "funct7": 11,
+        "bit28": 1,
+        "bit31": 0
+      },
+      "expected": 1,
+      "observed": 0,
+      "oracle": {
+        "legality": "legal",
+        "verdict": "violated",
+        "validator": "research15_history.oracle ISA encoding rules"
+      },
+      "assertions": [
+        {
+          "id": "a1",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": true
+        },
+        {
+          "id": "a2",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a3",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        }
+      ]
+    }
+  ],
+  "scope": "Real model research56/v0, original RTL development data only. All required690 detections and zero false alarms checked on full151 transactions."
+}

@@ -1,0 +1,1 @@
+module cc_fifo #(parameter integer DataWidth=8, parameter integer Depth=0)(input clk_i,rst_ni,clr_i,flush_i,output full_o,empty_o,output usage_o,input [DataWidth-1:0] data_i,input push_i,output [DataWidth-1:0] data_o,input pop_i); assign full_o=~pop_i; assign usage_o=1'b0; assign data_o=data_i; assign empty_o=~push_i; endmodule

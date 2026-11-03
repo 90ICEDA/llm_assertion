@@ -1,0 +1,150 @@
+{
+  "sequence": [
+    {
+      "run": "research61_ast_20261023_r01",
+      "individual_cap": 1,
+      "calls": [
+        {
+          "version": "v0",
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "options": {
+            "seed": 6001,
+            "temperature": 0,
+            "num_predict": 1024,
+            "num_ctx": 12288,
+            "num_gpu": 0,
+            "num_thread": 8
+          },
+          "prompt_tokens": 5410,
+          "completion_tokens": 161,
+          "response_format_sha256": "f54cc1210e498ff77f3849520a2a6b22f52752e78a32ffa7a0db9b28259c5dc5",
+          "reason_kinds": [
+            "new_legal_false_positive",
+            "full_scope_target_legal_trigger_or_unknown_failure",
+            "all_property_false_alarm_or_unknown"
+          ]
+        }
+      ],
+      "native_compiles": 6,
+      "native_executions": 6,
+      "scope": "research61_local_ast",
+      "changes": "One real local model AST generation, syntax-only rendering via research17. All32 bit selections available; fixed BRANCH omitted from prompt but copied unchanged into native candidate. Full original9/151 acceptance retained."
+    },
+    {
+      "run": "research61_history_refine_20261023_r01",
+      "individual_cap": 1,
+      "calls": [
+        {
+          "version": "v0",
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "options": {
+            "seed": 6001,
+            "temperature": 0,
+            "num_predict": 1024,
+            "num_ctx": 12288,
+            "num_gpu": 0,
+            "num_thread": 8
+          },
+          "prompt_tokens": 5983,
+          "completion_tokens": 157,
+          "response_format_sha256": "f54cc1210e498ff77f3849520a2a6b22f52752e78a32ffa7a0db9b28259c5dc5",
+          "reason_kinds": [
+            "previously_rejected_op_set"
+          ]
+        }
+      ],
+      "native_compiles": 0,
+      "native_executions": 0,
+      "scope": "research61_local_ast",
+      "changes": "One real local AST refinement from actual full151 false alarms; all original acceptance checks retained. No independent test used."
+    },
+    {
+      "run": "research62_local_20261023_r01",
+      "individual_cap": 2,
+      "calls": [
+        {
+          "version": "v0",
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "options": {
+            "seed": 6001,
+            "temperature": 0,
+            "num_predict": 768,
+            "num_ctx": 12288,
+            "num_gpu": 0,
+            "num_thread": 8
+          },
+          "prompt_tokens": 4467,
+          "completion_tokens": 79,
+          "response_format_sha256": "ddf42cd88e82d2d365c6c8eb8e7bc1b37de53c0fdeb152ecf145ad07f0305e30",
+          "reason_kinds": [
+            "interface_rejected"
+          ]
+        },
+        {
+          "version": "v1",
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "options": {
+            "seed": 6002,
+            "temperature": 0,
+            "num_predict": 768,
+            "num_ctx": 12288,
+            "num_gpu": 0,
+            "num_thread": 8
+          },
+          "prompt_tokens": 4768,
+          "completion_tokens": 79,
+          "response_format_sha256": "ddf42cd88e82d2d365c6c8eb8e7bc1b37de53c0fdeb152ecf145ad07f0305e30",
+          "reason_kinds": [
+            "interface_rejected"
+          ]
+        }
+      ],
+      "native_compiles": 0,
+      "native_executions": 0,
+      "scope": "research62_category_component",
+      "changes": "Category AST and connective are new actual model outputs. Retained bit check/consequent come unchanged from research61 actual model AST. Independent category check precedes unchanged native9/full151 acceptance. Not unrestricted whole-property generation."
+    },
+    {
+      "run": "research62_comparison_20261023_r01",
+      "individual_cap": 1,
+      "calls": [
+        {
+          "version": "v0",
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "options": {
+            "seed": 6001,
+            "temperature": 0,
+            "num_predict": 768,
+            "num_ctx": 12288,
+            "num_gpu": 0,
+            "num_thread": 8
+          },
+          "prompt_tokens": 4214,
+          "completion_tokens": 86,
+          "response_format_sha256": "fed83310b833590f9869c8145f8a45b1a619fa741b333e01adb1ffae878fe007",
+          "reason_kinds": []
+        }
+      ],
+      "native_compiles": 6,
+      "native_executions": 6,
+      "scope": "research62_explicit_category_comparison",
+      "changes": "One real model-selected field/comparator/integer/connective. Syntax-only conversion to category AST and composition with existing real model bit-check. Original category/native9/full151 gates unchanged. No semantic operand completion."
+    }
+  ],
+  "from_proposal_generation_calls": 5,
+  "after_rejection_generation_calls": 4,
+  "prompt_tokens": 24842,
+  "completion_tokens": 562,
+  "local_management_calls": 4,
+  "native_compiles": 12,
+  "native_executions": 12,
+  "prospective_common_cap": null,
+  "uniform_budget_success": false,
+  "reason": "Separate 1+1+2+1 call caps; adaptation from unrestricted OP AST to component category AST to explicit comparison. No jointly frozen matched arm budget. Sum is retrospective accounting, not authorization or prospective cap.",
+  "exclusion": "Two earlier research61 text attempts precede chosen AST proposal; excluded from this bounded suffix, not omitted from total research61/62 project cost. Whole research61+62 has7 generation calls."
+}

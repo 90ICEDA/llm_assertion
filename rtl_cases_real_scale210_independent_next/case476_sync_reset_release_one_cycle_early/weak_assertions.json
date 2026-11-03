@@ -1,0 +1,53 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case476_sync_reset_release_one_cycle_early",
+  "source_project": "verilog_axis",
+  "overall_verification_status": "pending",
+  "candidates": [
+    {
+      "id": "weak_single_cycle_implication",
+      "weakening_type": "single_cycle_implication",
+      "expression": "assert property (@(posedge clk) disable iff (rst) ((!rst && sync_out) |-> sync_out));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_final_output_only",
+      "weakening_type": "final_output_only",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (sync_out |-> !$isunknown(sync_out)));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_delay_removed",
+      "weakening_type": "delay_removed",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (!rst |-> !$isunknown(rst)));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_antecedent_removed",
+      "weakening_type": "antecedent_removed",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(sync_out)));",
+      "nonempty_antecedent": false,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_simple_invariant",
+      "weakening_type": "simple_invariant",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(clk)));",
+      "nonempty_antecedent": false,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    }
+  ]
+}

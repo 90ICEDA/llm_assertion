@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -117,7 +117,7 @@
+   end else begin : gen_normal_ptrs
+     always_ff @(posedge clk_i or negedge rst_ni) begin
+       if (!rst_ni) begin
+-        wptr_wrap_cnt_q <= {WrapPtrW{1'b0}};
++        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed
+       end else if (clr_i) begin
+         wptr_wrap_cnt_q <= {WrapPtrW{1'b0}};
+       end else if (wptr_wrap_set) begin

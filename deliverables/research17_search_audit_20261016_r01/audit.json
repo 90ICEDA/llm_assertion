@@ -1,0 +1,189 @@
+{
+  "witness": {
+    "valid": true,
+    "conditions": {
+      "legal_inputs": true,
+      "accepted_transactions_aligned": true,
+      "buggy_violates_confirmed_obligation": true,
+      "fixed_satisfies_same_obligation": true,
+      "candidate_misses_with_accepted_legal_control": true
+    },
+    "native_and_oracle_healthy": true,
+    "native_health": {
+      "correct": {
+        "compile": "passed",
+        "support": "supported_for_compiled_constructs",
+        "execution": "completed",
+        "native_cover": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+        "oracle_unknown": [],
+        "oracle_matches_archive": true
+      },
+      "drop": {
+        "compile": "passed",
+        "support": "supported_for_compiled_constructs",
+        "execution": "completed",
+        "native_cover": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+        "oracle_unknown": [],
+        "oracle_matches_archive": true
+      }
+    },
+    "obligation": "drain_no_loss",
+    "fault_mode": "drop",
+    "cycle": 111,
+    "miss_subtype": "no_assertion_mapped_to_obligation",
+    "mapped_assertions": [],
+    "all_candidate_trigger_counts": {
+      "a0": 3
+    },
+    "aligned_transactions": [
+      {
+        "buggy": {
+          "transaction_id": "e1:t3",
+          "epoch": 1,
+          "accept_cycle": 29,
+          "data": 2410504788,
+          "response_cycle": null,
+          "cancel_cycle": null,
+          "outcome": "pending"
+        },
+        "fixed": {
+          "transaction_id": "e1:t3",
+          "epoch": 1,
+          "accept_cycle": 29,
+          "data": 2410504788,
+          "response_cycle": 31,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 2410504788
+        },
+        "matched_accept": true
+      }
+    ],
+    "same_accepted_inputs": true,
+    "source_query": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00",
+    "source_hashes": {
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/execute.log": "1d8821e43f0439c43e34ddbd9639f1222c0488130b2134ae73a92301c30da10f",
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/replay.json": "0df07892fb527227fb5077f45d22410e668b6ac8962a258ab34fb336bc5b553c",
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/independent_oracle.json": "534fa0336605618cad88218284bfda2015cd7b9a35a7b98719d6e0b68db60314",
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/wave.vcd": "81b58fd26928e30fbe48d0e6f4016b78ca31dc5aae114666f3d7b71615212d21",
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/execute.log": "cda15cae2a46001bd630d7ed519d3a282a6f30ce3d17f059c389532090446d56",
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/replay.json": "0cf3583e9f681e46ec1f58d7541bedc0bfeb7b21603c98448ac627330201160e",
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/independent_oracle.json": "cd8b66bdf9e3e8f286f96d2c1e909d338b1f64806186502610b48bef6ce726d2",
+      "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/wave.vcd": "c7e4c1203a42655b72f174d6a3d713e27bedae02cf2e9ccec47db139dc3744f1"
+    },
+    "scope": "Finite native replay of artificial FIFO boundary fault; no original FIFO presented bug claim or formal proof."
+  },
+  "comparison": {
+    "methods": {
+      "ordinary": {
+        "queries": 12,
+        "native_replays": 60,
+        "unique_gap_keys": [
+          "reset_residue/no_unsolicited_output",
+          "reset_residue/reset_cancellation"
+        ],
+        "unique_gap_count": 2,
+        "archived_duplicate_gap_observations": 2,
+        "recomputed_cross_seed_duplicate_gap_observations": 4,
+        "unknown_queries": 0,
+        "contract_additional_gap_keys_vs_this_method": [
+          "drop/drain_no_loss"
+        ]
+      },
+      "candidate_disagreement": {
+        "queries": 12,
+        "native_replays": 60,
+        "unique_gap_keys": [
+          "drop/drain_no_loss",
+          "reset_residue/no_unsolicited_output",
+          "reset_residue/reset_cancellation"
+        ],
+        "unique_gap_count": 3,
+        "archived_duplicate_gap_observations": 0,
+        "recomputed_cross_seed_duplicate_gap_observations": 0,
+        "unknown_queries": 0,
+        "contract_additional_gap_keys_vs_this_method": []
+      },
+      "raw_difference": {
+        "queries": 12,
+        "native_replays": 60,
+        "unique_gap_keys": [
+          "reset_residue/no_unsolicited_output",
+          "reset_residue/reset_cancellation"
+        ],
+        "unique_gap_count": 2,
+        "archived_duplicate_gap_observations": 4,
+        "recomputed_cross_seed_duplicate_gap_observations": 4,
+        "unknown_queries": 0,
+        "contract_additional_gap_keys_vs_this_method": [
+          "drop/drain_no_loss"
+        ]
+      },
+      "contract_coverage": {
+        "queries": 12,
+        "native_replays": 60,
+        "unique_gap_keys": [
+          "drop/drain_no_loss",
+          "reset_residue/no_unsolicited_output",
+          "reset_residue/reset_cancellation"
+        ],
+        "unique_gap_count": 3,
+        "archived_duplicate_gap_observations": 3,
+        "recomputed_cross_seed_duplicate_gap_observations": 4,
+        "unknown_queries": 0,
+        "contract_additional_gap_keys_vs_this_method": []
+      }
+    },
+    "candidate_disagreement_eligible": false,
+    "same_candidate_sha256": "974a16c4f7d8f4627023d3574671ff50b9701cc485a50958e743aa64e084d5bf",
+    "declared_specs": [
+      {
+        "seed": 2026101507,
+        "depth": 2,
+        "pipeline": 0
+      },
+      {
+        "seed": 2026101531,
+        "depth": 5,
+        "pipeline": 1
+      }
+    ],
+    "planned_queries": 48,
+    "planned_replays": 240,
+    "dedup": "one independent gap per artificial fault mode and violated obligation; repeated cycles, seeds, families and configurations are replications",
+    "audit_findings": [
+      "Per-query duplicate tracking resets each seed. Unique gap totals union seeds correctly, but archived duplicate totals omit cross-seed repetitions; corrected counts supplied.",
+      "Single-property disagreement has no genuine candidate pair. It consumes random decisions differently from ordinary, so a different result is exploration variance, not disagreement efficacy.",
+      "Search classifications do not themselves gate every native/unknown condition. New witness admission must call strict validation before exporting treatment.",
+      "Obligation labels are declared proxies. Missing declared mapping is distinct from mapped-property vacuity, and neither proves a semantic entailment theorem."
+    ]
+  },
+  "scope_status": {
+    "stat": "local_synthetic_pipeline_with_unverified_upstream_mapping",
+    "stat_historical_pass": false,
+    "fifo_presented": "unknown; no confirmed original defect witness",
+    "ibex": "Archived original RTL module-level reproduction; not full-chip or LLM refinement validation",
+    "original_parent_denominator": 6
+  },
+  "acceptance_gate_audit": {
+    "existing_checks": [
+      "unknown replay rejected",
+      "historical identity/rows preserved",
+      "new FP rejected",
+      "lost detections rejected",
+      "lost obligation triggers rejected",
+      "current gap repair required"
+    ],
+    "integration_requirements": [
+      "Pass a non-empty target_keys list for new-gap refinement.",
+      "If starting qualification is clean, require zero total FP on accepted set, not only zero newly introduced FP.",
+      "Ledger only projects explicitly declared obligations; preserve an all-property native failure check on legal controls.",
+      "Keep later oracle violations as unknown, do not discard them from whole-case denominators."
+    ],
+    "scope": "Historical replay only; trigger preservation per evidence row is conservative and does not establish global non-regression"
+  },
+  "new_model_calls": 0,
+  "new_rtl_executions": 0,
+  "independent_test_files_read": false
+}

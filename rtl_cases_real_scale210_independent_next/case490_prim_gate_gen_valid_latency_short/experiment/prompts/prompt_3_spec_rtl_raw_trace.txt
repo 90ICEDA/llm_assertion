@@ -1,0 +1,74 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, valid_i, data_i, valid_o, data_o
+
+Specification:
+
+For the three-round gate-generator extraction, each accepted `valid_i` sample produces `valid_o` exactly three rising edges later, aligned with the final registered data round. Reset clears all pending valid tokens.
+
+RTL:
+
+`timescale 1ns/1ps
+module prim_gate_gen_case (
+  input wire clk_i,
+  input wire rst_ni,
+  input wire valid_i,
+  input wire [7:0] data_i,
+  output wire valid_o,
+  output wire [7:0] data_o
+);
+  reg [2:0] valid_q;
+  reg [7:0] data_q0;
+  reg [7:0] data_q1;
+  reg [7:0] data_q2;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      valid_q <= 3'b000;
+      data_q0 <= 8'h00;
+      data_q1 <= 8'h00;
+      data_q2 <= 8'h00;
+    end else begin
+      valid_q <= {valid_q[1:0], valid_i};
+      if (valid_i)
+        data_q0 <= {data_i[5:0], data_i[7:6]} ^ 8'hb7;
+      if (valid_q[0])
+        data_q1 <= {data_q0[2:0], data_q0[7:3]} ^ 8'h3c;
+      if (valid_q[1])
+        data_q2 <= {data_q1[6:0], data_q1[7]} ^ 8'ha5;
+    end
+  end
+  assign valid_o = valid_q[2];
+  assign data_o = data_q2;
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=0
+cycle 1: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=0
+cycle 2: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=0
+cycle 3: rst_ni=1, clk_i=1, data_i[7:0]=00111100, data_o[7:0]=00000000, valid_i=1, valid_o=0
+cycle 4: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=0
+cycle 5: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=1
+cycle 6: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+cycle 7: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+cycle 8: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+cycle 9: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=0
+cycle 1: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=0
+cycle 2: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=0
+cycle 3: rst_ni=1, clk_i=1, data_i[7:0]=00111100, data_o[7:0]=00000000, valid_i=1, valid_o=0
+cycle 4: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, valid_i=0, valid_o=1
+cycle 5: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+cycle 6: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+cycle 7: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+cycle 8: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0
+cycle 9: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00001100, valid_i=0, valid_o=0

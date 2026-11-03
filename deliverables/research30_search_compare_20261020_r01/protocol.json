@@ -1,0 +1,42 @@
+{
+  "methods": [
+    "ordinary",
+    "candidate_disagreement",
+    "raw_difference",
+    "contract_coverage"
+  ],
+  "seeds": [
+    3113,
+    3119,
+    3121
+  ],
+  "queries_per_method_seed": 4,
+  "depth": 4,
+  "pipeline": 1,
+  "cycles_per_query": 112,
+  "frozen_candidates": {
+    "initial": {
+      "source": "/mnt/d/AssertionForge-main1/deliverables/research27_closed_loop_20261020_r06/core",
+      "hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1"
+    },
+    "repaired": {
+      "source": "/mnt/d/AssertionForge-main1/deliverables/research28_valid_closed_loop_20261020_r01/core",
+      "hash": "2607e416ed0bf4a96b55af757352c2ec63e1d4131fea5235dfbbef300efb67c8"
+    }
+  },
+  "candidate_disagreement": "XOR of whole-set native failure-cycle sets on identical runs of TWO frozen complete candidates, never between assertions inside one set.",
+  "common_information": "Same two frozen candidates, RTL, specification, stimulus grammar, known fault modes and initial overlap query.",
+  "observations": {
+    "ordinary": "family only",
+    "candidate_disagreement": "family and whole-candidate native fail XOR count",
+    "raw_difference": "family and correct/faulty output mismatch count",
+    "contract_coverage": "family and own observed independent obligation checks, effective triggers, detected violations and confirmed gap keys"
+  },
+  "schedule": "q0 identical overlap schedule charged to each method. Later families chosen only from own permitted observations by existing Policy.",
+  "accounting": "One query=one 112-cycle schedule, both candidates, correct+7 existing artificial faults: 16 native executions, even when no witness. No caching/retries. Shared 2 compiles charged once as common setup.",
+  "dedup": "Primary candidate hash, FP/FN, obligation, fault mechanism; parameter/seed/cycle/data variants are duplicates. Gap examples retain full transaction traces.",
+  "exposure": "All outputs development. Known historical repair pair deliberately chosen; no blind evaluation, no independent/general superiority claim.",
+  "legacy_11_pairs": "Not reclassified as native: legacy six-parent/11-pair procedural studies remain separate. This pilot uses one true FIFO candidate pair.",
+  "model_calls": 0,
+  "formal_calls": 0
+}

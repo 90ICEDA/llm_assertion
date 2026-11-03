@@ -1,0 +1,2 @@
+// PersistentInputCommits_A
+assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && $stable(filter_i))[*4] |-> (filter_o == filter_i));

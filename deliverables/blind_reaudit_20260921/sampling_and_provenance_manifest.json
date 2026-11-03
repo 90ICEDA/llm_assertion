@@ -1,0 +1,26 @@
+{
+  "seed": 20260921,
+  "random_method": "PowerShell System.Random Fisher-Yates shuffle",
+  "sampling_frame": "outputs/behavioral_preference_pilot_v1/selected_train_parents.csv",
+  "sampling_frame_sha256": "d4450102e950abc187cc0a3dc6c96aef97fb3ce265d9792556cfcbb8fa01ae9f",
+  "excluded_previously_inspected_parents": [
+    "case115_prim_edge_both_edges_collapsed",
+    "case505_axis_stat_counter_frame_pulse_early",
+    "case463_axis_frame_join_port_skip",
+    "case506_axis_crosspoint_simultaneous_source_priority",
+    "case457_cc_delta_counter_load_enable_priority",
+    "case478_axis_srl_register_ready_recovery"
+  ],
+  "eligible_after_exclusion": 24,
+  "selected": [
+    "case508_cc_stream_fork_partial_ready_accept",
+    "case461_axis_adapter_segment_boundary_early",
+    "case510_cc_spill_register_flush_push_priority",
+    "case459_cc_trip_counter_trip_one_cycle_late"
+  ],
+  "natural_candidates": 28,
+  "synthetic_controls": 4,
+  "feedback_access": "forbidden_until_judgment_freeze",
+  "pre_feedback_clean_definition": "source model response parses under frozen request schema; rendered assertion is present and no synthetic antecedent; runtime compile validated only after freeze",
+  "provenance_note": "All AST responses originate from model; slot 8 rendered assertion is synthetic because renderer injects contradictory antecedent."
+}

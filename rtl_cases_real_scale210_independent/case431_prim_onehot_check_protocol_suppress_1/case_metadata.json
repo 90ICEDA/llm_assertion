@@ -1,0 +1,92 @@
+{
+  "name": "case431_prim_onehot_check_protocol_suppress_1",
+  "parent_bug_id": "case431_prim_onehot_check_protocol_suppress_1",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_onehot_check",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_onehot_check.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_onehot_check.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "or_tree[Pa] combinational/protocol output is forced low",
+  "spec": "With checking enabled, an input vector containing exactly one asserted bit is a valid one-hot code and must not raise err_o; zero-hot and multi-hot values are rejected according to the configured check mode.",
+  "mutation_edits": [
+    {
+      "line": 86,
+      "search": "          assign or_tree[Pa]  = oh_i[offset];",
+      "replace": "          assign or_tree[Pa] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "or_tree[Pa]",
+  "relevant_signals": [
+    "rst_ni",
+    "oh_i",
+    "err_o"
+  ],
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "97aefa2e7ebd26e12ea9fc691908a62315e2135bdbb127f3c3d640eeb15096ca",
+  "buggy_sha256": "ddc7baa354d24d4f6b0dea0b4e45f305466bfc4d54d55722a749a08326e2936a",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete",
+  "golden_sva": {
+    "name": "ValidOneHotAccepted_A",
+    "clock": "@(oh_i or rst_ni)",
+    "disable_iff": "!rst_ni",
+    "sva": "assert property (@(oh_i or rst_ni) disable iff (!rst_ni) $onehot(oh_i) |-> !err_o);",
+    "assertion": "assert property (@(oh_i or rst_ni) disable iff (!rst_ni) $onehot(oh_i) |-> !err_o);",
+    "temporal_type": "same-cycle protocol validation"
+  },
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 1000,
+      "cycle_index": null,
+      "sample_index": 1,
+      "clock_phase": "combinational sample",
+      "signals": [
+        "err_o"
+      ],
+      "good_values": {
+        "err_o": "0"
+      },
+      "bad_values": {
+        "err_o": "1"
+      }
+    },
+    "heldout": {
+      "time_ps": 1000,
+      "cycle_index": null,
+      "sample_index": 1,
+      "clock_phase": "combinational sample",
+      "signals": [
+        "err_o"
+      ],
+      "good_values": {
+        "err_o": "0"
+      },
+      "bad_values": {
+        "err_o": "1"
+      }
+    },
+    "decoy": {
+      "time_ps": 1000,
+      "cycle_index": null,
+      "sample_index": 1,
+      "clock_phase": "combinational sample",
+      "signals": [
+        "err_o"
+      ],
+      "good_values": {
+        "err_o": "0"
+      },
+      "bad_values": {
+        "err_o": "1"
+      }
+    }
+  }
+}

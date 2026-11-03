@@ -1,0 +1,4505 @@
+[
+  {
+    "id": 0,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 3,
+      "ready_delay": 19,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 0
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3,
+          7
+        ],
+        "output_acceptance_cycles": [
+          19
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 11,
+          "stall_payload": 11
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3,
+          7
+        ],
+        "output_acceptance_cycles": [
+          19
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 11,
+          "stall_payload": 11
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 1,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        13
+      ],
+      "gap": 3,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 1
+    },
+    "passed": false,
+    "issues": [
+      "unexposed_backpressure",
+      "unexposed_release"
+    ],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          99,
+          103,
+          107,
+          111,
+          115,
+          119,
+          123,
+          127,
+          131,
+          135,
+          139,
+          143,
+          147
+        ],
+        "output_acceptance_cycles": [
+          112,
+          128,
+          144,
+          148
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 0,
+          "stall_payload": 0
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 0,
+        "release_edges": 0,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          99,
+          103,
+          107,
+          111,
+          115,
+          119,
+          123,
+          127,
+          131,
+          135,
+          139,
+          143,
+          147
+        ],
+        "output_acceptance_cycles": [
+          112,
+          128,
+          144,
+          148
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 0,
+          "stall_payload": 0
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 0,
+        "release_edges": 0,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 2,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        13
+      ],
+      "gap": 3,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 2
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          195,
+          199,
+          203,
+          207,
+          211,
+          215,
+          219,
+          223,
+          227,
+          231,
+          235,
+          239,
+          243
+        ],
+        "output_acceptance_cycles": [
+          214,
+          224,
+          241,
+          244
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 214,
+            "sid": 2,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 224,
+            "sid": 2,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 241,
+            "sid": 2,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 244,
+            "sid": 2,
+            "obligation": "keep_mask",
+            "expected": 1,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 7,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          195,
+          199,
+          203,
+          207,
+          211,
+          215,
+          219,
+          223,
+          227,
+          231,
+          235,
+          239,
+          243
+        ],
+        "output_acceptance_cycles": [
+          214,
+          224,
+          241,
+          244
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 3,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 3,
+      "ready_delay": 40,
+      "keep": 1,
+      "reset_at": 24,
+      "stall_period": 2,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 3
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          291,
+          295,
+          299,
+          303,
+          307
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 8,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 312,
+            "sid": 3,
+            "cancelled_requests": [
+              {
+                "id": "3:2:291",
+                "cycle": 291,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 58,
+                "last": 0
+              },
+              {
+                "id": "3:2:295",
+                "cycle": 295,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 59,
+                "last": 0
+              },
+              {
+                "id": "3:2:299",
+                "cycle": 299,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 60,
+                "last": 0
+              },
+              {
+                "id": "3:2:303",
+                "cycle": 303,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 61,
+                "last": 0
+              },
+              {
+                "id": "3:2:307",
+                "cycle": 307,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 62,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 9
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          291,
+          295,
+          299,
+          303,
+          307
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 8,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 312,
+            "sid": 3,
+            "cancelled_requests": [
+              {
+                "id": "3:2:291",
+                "cycle": 291,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 58,
+                "last": 0
+              },
+              {
+                "id": "3:2:295",
+                "cycle": 295,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 59,
+                "last": 0
+              },
+              {
+                "id": "3:2:299",
+                "cycle": 299,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 60,
+                "last": 0
+              },
+              {
+                "id": "3:2:303",
+                "cycle": 303,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 61,
+                "last": 0
+              },
+              {
+                "id": "3:2:307",
+                "cycle": 307,
+                "sid": 3,
+                "epoch": 2,
+                "byte": 62,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 9
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 4,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        13
+      ],
+      "gap": 2,
+      "ready_delay": 19,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 4
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          387,
+          390,
+          393,
+          396,
+          399,
+          404,
+          407,
+          410,
+          413,
+          416,
+          419,
+          422,
+          425
+        ],
+        "output_acceptance_cycles": [
+          403,
+          412,
+          424,
+          427
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 9,
+          "stall_payload": 9
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 9,
+        "release_edges": 4,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          387,
+          390,
+          393,
+          396,
+          399,
+          404,
+          407,
+          410,
+          413,
+          416,
+          419,
+          422,
+          425
+        ],
+        "output_acceptance_cycles": [
+          403,
+          412,
+          424,
+          427
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 9,
+          "stall_payload": 9
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 9,
+        "release_edges": 4,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 5,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 3,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 5
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          483,
+          487,
+          491,
+          495,
+          499,
+          503,
+          507,
+          511,
+          515,
+          519,
+          523,
+          527,
+          531,
+          535
+        ],
+        "output_acceptance_cycles": [
+          502,
+          512,
+          529,
+          536
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 502,
+            "sid": 5,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 512,
+            "sid": 5,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 529,
+            "sid": 5,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 536,
+            "sid": 5,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 7,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          483,
+          487,
+          491,
+          495,
+          499,
+          503,
+          507,
+          511,
+          515,
+          519,
+          523,
+          527,
+          531,
+          535
+        ],
+        "output_acceptance_cycles": [
+          502,
+          512,
+          529,
+          536
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 6,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 2,
+      "ready_delay": 40,
+      "keep": 0,
+      "reset_at": 24,
+      "stall_period": 3,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 6
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          579,
+          582,
+          585,
+          588,
+          591
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 600,
+            "sid": 6,
+            "cancelled_requests": [
+              {
+                "id": "6:2:579",
+                "cycle": 579,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 115,
+                "last": 0
+              },
+              {
+                "id": "6:2:582",
+                "cycle": 582,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 116,
+                "last": 0
+              },
+              {
+                "id": "6:2:585",
+                "cycle": 585,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 117,
+                "last": 0
+              },
+              {
+                "id": "6:2:588",
+                "cycle": 588,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 118,
+                "last": 0
+              },
+              {
+                "id": "6:2:591",
+                "cycle": 591,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 119,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 18
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          579,
+          582,
+          585,
+          588,
+          591
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 600,
+            "sid": 6,
+            "cancelled_requests": [
+              {
+                "id": "6:2:579",
+                "cycle": 579,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 115,
+                "last": 0
+              },
+              {
+                "id": "6:2:582",
+                "cycle": 582,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 116,
+                "last": 0
+              },
+              {
+                "id": "6:2:585",
+                "cycle": 585,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 117,
+                "last": 0
+              },
+              {
+                "id": "6:2:588",
+                "cycle": 588,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 118,
+                "last": 0
+              },
+              {
+                "id": "6:2:591",
+                "cycle": 591,
+                "sid": 6,
+                "epoch": 2,
+                "byte": 119,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 18
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 7,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        7
+      ],
+      "gap": 3,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 7
+    },
+    "passed": false,
+    "issues": [
+      "unexposed_backpressure",
+      "unexposed_release"
+    ],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          675,
+          679,
+          683,
+          687,
+          691,
+          695,
+          699
+        ],
+        "output_acceptance_cycles": [
+          688,
+          700
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 0,
+          "stall_payload": 0
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 0,
+        "release_edges": 0,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          675,
+          679,
+          683,
+          687,
+          691,
+          695,
+          699
+        ],
+        "output_acceptance_cycles": [
+          688,
+          700
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 0,
+          "stall_payload": 0
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 0,
+        "release_edges": 0,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 8,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        10
+      ],
+      "gap": 2,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 8
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          771,
+          774,
+          777,
+          780,
+          783,
+          786,
+          789,
+          792,
+          795,
+          798
+        ],
+        "output_acceptance_cycles": [
+          782,
+          794,
+          799
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 2,
+          "stall_payload": 2
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 2,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          771,
+          774,
+          777,
+          780,
+          783,
+          786,
+          789,
+          792,
+          795,
+          798
+        ],
+        "output_acceptance_cycles": [
+          782,
+          794,
+          799
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 2,
+          "stall_payload": 2
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 2,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 9,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 4,
+      "ready_delay": 19,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 2,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 9
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          867,
+          872
+        ],
+        "output_acceptance_cycles": [
+          883
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 883,
+            "sid": 9,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 10,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          867,
+          872
+        ],
+        "output_acceptance_cycles": [
+          883
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 10,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 10,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 5,
+      "ready_delay": 19,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 10
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          963,
+          969
+        ],
+        "output_acceptance_cycles": [
+          979
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 9,
+          "stall_payload": 9
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 979,
+            "sid": 10,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 9,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          963,
+          969
+        ],
+        "output_acceptance_cycles": [
+          979
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 9,
+          "stall_payload": 9
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 9,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 11,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        12
+      ],
+      "gap": 2,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 2,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 11
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1059,
+          1062,
+          1065,
+          1068,
+          1071,
+          1074,
+          1077,
+          1080,
+          1083,
+          1086,
+          1089,
+          1092
+        ],
+        "output_acceptance_cycles": [
+          1071,
+          1081,
+          1093
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 2,
+          "stall_payload": 2
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 2,
+        "release_edges": 1,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1059,
+          1062,
+          1065,
+          1068,
+          1071,
+          1074,
+          1077,
+          1080,
+          1083,
+          1086,
+          1089,
+          1092
+        ],
+        "output_acceptance_cycles": [
+          1071,
+          1081,
+          1093
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 2,
+          "stall_payload": 2
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 2,
+        "release_edges": 1,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 12,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 3,
+      "ready_delay": 40,
+      "keep": 0,
+      "reset_at": 24,
+      "stall_period": 2,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 12
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1155,
+          1159,
+          1163,
+          1167,
+          1171
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 8,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 1176,
+            "sid": 12,
+            "cancelled_requests": [
+              {
+                "id": "12:2:1155",
+                "cycle": 1155,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 229,
+                "last": 0
+              },
+              {
+                "id": "12:2:1159",
+                "cycle": 1159,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 230,
+                "last": 0
+              },
+              {
+                "id": "12:2:1163",
+                "cycle": 1163,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 231,
+                "last": 0
+              },
+              {
+                "id": "12:2:1167",
+                "cycle": 1167,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 232,
+                "last": 0
+              },
+              {
+                "id": "12:2:1171",
+                "cycle": 1171,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 233,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 29
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1155,
+          1159,
+          1163,
+          1167,
+          1171
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 8,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 1176,
+            "sid": 12,
+            "cancelled_requests": [
+              {
+                "id": "12:2:1155",
+                "cycle": 1155,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 229,
+                "last": 0
+              },
+              {
+                "id": "12:2:1159",
+                "cycle": 1159,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 230,
+                "last": 0
+              },
+              {
+                "id": "12:2:1163",
+                "cycle": 1163,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 231,
+                "last": 0
+              },
+              {
+                "id": "12:2:1167",
+                "cycle": 1167,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 232,
+                "last": 0
+              },
+              {
+                "id": "12:2:1171",
+                "cycle": 1171,
+                "sid": 12,
+                "epoch": 2,
+                "byte": 233,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 29
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 13,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 5,
+      "ready_delay": 14,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 13
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1251,
+          1257
+        ],
+        "output_acceptance_cycles": [
+          1262
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 4,
+          "stall_payload": 4
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 1262,
+            "sid": 13,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 4,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1251,
+          1257
+        ],
+        "output_acceptance_cycles": [
+          1262
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 4,
+          "stall_payload": 4
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 4,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 14,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        12
+      ],
+      "gap": 3,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 14
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1347,
+          1351,
+          1355,
+          1359,
+          1363,
+          1367,
+          1371,
+          1375,
+          1379,
+          1383,
+          1387,
+          1391
+        ],
+        "output_acceptance_cycles": [
+          1360,
+          1376,
+          1393
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 1,
+          "stall_payload": 1
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 1,
+        "release_edges": 1,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1347,
+          1351,
+          1355,
+          1359,
+          1363,
+          1367,
+          1371,
+          1375,
+          1379,
+          1383,
+          1387,
+          1391
+        ],
+        "output_acceptance_cycles": [
+          1360,
+          1376,
+          1393
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 1,
+          "stall_payload": 1
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 1,
+        "release_edges": 1,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 15,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 3,
+      "ready_delay": 40,
+      "keep": 0,
+      "reset_at": 20,
+      "stall_period": 2,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 15
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1443,
+          1447,
+          1451,
+          1455,
+          1459
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 4,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 1460,
+            "sid": 15,
+            "cancelled_requests": [
+              {
+                "id": "15:2:1443",
+                "cycle": 1443,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 30,
+                "last": 0
+              },
+              {
+                "id": "15:2:1447",
+                "cycle": 1447,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 31,
+                "last": 0
+              },
+              {
+                "id": "15:2:1451",
+                "cycle": 1451,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 32,
+                "last": 0
+              },
+              {
+                "id": "15:2:1455",
+                "cycle": 1455,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 33,
+                "last": 0
+              },
+              {
+                "id": "15:2:1459",
+                "cycle": 1459,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 34,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 34
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1443,
+          1447,
+          1451,
+          1455,
+          1459
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 4,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 1460,
+            "sid": 15,
+            "cancelled_requests": [
+              {
+                "id": "15:2:1443",
+                "cycle": 1443,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 30,
+                "last": 0
+              },
+              {
+                "id": "15:2:1447",
+                "cycle": 1447,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 31,
+                "last": 0
+              },
+              {
+                "id": "15:2:1451",
+                "cycle": 1451,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 32,
+                "last": 0
+              },
+              {
+                "id": "15:2:1455",
+                "cycle": 1455,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 33,
+                "last": 0
+              },
+              {
+                "id": "15:2:1459",
+                "cycle": 1459,
+                "sid": 15,
+                "epoch": 2,
+                "byte": 34,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 34
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 16,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        12
+      ],
+      "gap": 2,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 16
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1539,
+          1542,
+          1545,
+          1548,
+          1551,
+          1559,
+          1562,
+          1565,
+          1568,
+          1571,
+          1574,
+          1577
+        ],
+        "output_acceptance_cycles": [
+          1558,
+          1567,
+          1579
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 11,
+          "stall_payload": 11
+        },
+        "target_exposure": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 1558,
+            "sid": 16,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 1567,
+            "sid": 16,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 1579,
+            "sid": 16,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 11,
+        "release_edges": 3,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1539,
+          1542,
+          1545,
+          1548,
+          1551,
+          1559,
+          1562,
+          1565,
+          1568,
+          1571,
+          1574,
+          1577
+        ],
+        "output_acceptance_cycles": [
+          1558,
+          1567,
+          1579
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 11,
+          "stall_payload": 11
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 3,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 17,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 3,
+      "ready_delay": 19,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 17
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1635,
+          1639
+        ],
+        "output_acceptance_cycles": [
+          1651
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 11,
+          "stall_payload": 11
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 1651,
+            "sid": 17,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 11,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1635,
+          1639
+        ],
+        "output_acceptance_cycles": [
+          1651
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 11,
+          "stall_payload": 11
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 18,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 2,
+      "ready_delay": 40,
+      "keep": 1,
+      "reset_at": 20,
+      "stall_period": 2,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 18
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1731,
+          1734,
+          1737,
+          1740,
+          1743
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 1748,
+            "sid": 18,
+            "cancelled_requests": [
+              {
+                "id": "18:2:1731",
+                "cycle": 1731,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 87,
+                "last": 0
+              },
+              {
+                "id": "18:2:1734",
+                "cycle": 1734,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 88,
+                "last": 0
+              },
+              {
+                "id": "18:2:1737",
+                "cycle": 1737,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 89,
+                "last": 0
+              },
+              {
+                "id": "18:2:1740",
+                "cycle": 1740,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 90,
+                "last": 0
+              },
+              {
+                "id": "18:2:1743",
+                "cycle": 1743,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 91,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 39
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1731,
+          1734,
+          1737,
+          1740,
+          1743
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 1748,
+            "sid": 18,
+            "cancelled_requests": [
+              {
+                "id": "18:2:1731",
+                "cycle": 1731,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 87,
+                "last": 0
+              },
+              {
+                "id": "18:2:1734",
+                "cycle": 1734,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 88,
+                "last": 0
+              },
+              {
+                "id": "18:2:1737",
+                "cycle": 1737,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 89,
+                "last": 0
+              },
+              {
+                "id": "18:2:1740",
+                "cycle": 1740,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 90,
+                "last": 0
+              },
+              {
+                "id": "18:2:1743",
+                "cycle": 1743,
+                "sid": 18,
+                "epoch": 2,
+                "byte": 91,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 39
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 19,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        10
+      ],
+      "gap": 3,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 19
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1827,
+          1831,
+          1835,
+          1839,
+          1843,
+          1847,
+          1851,
+          1855,
+          1859,
+          1863
+        ],
+        "output_acceptance_cycles": [
+          1846,
+          1856,
+          1864
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 1846,
+            "sid": 19,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 1856,
+            "sid": 19,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 1864,
+            "sid": 19,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1827,
+          1831,
+          1835,
+          1839,
+          1843,
+          1847,
+          1851,
+          1855,
+          1859,
+          1863
+        ],
+        "output_acceptance_cycles": [
+          1846,
+          1856,
+          1864
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 20,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        6
+      ],
+      "gap": 2,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 20
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1923,
+          1926,
+          1929,
+          1932,
+          1935,
+          1943
+        ],
+        "output_acceptance_cycles": [
+          1942,
+          1945
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 1942,
+            "sid": 20,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 1945,
+            "sid": 20,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 10,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          1923,
+          1926,
+          1929,
+          1932,
+          1935,
+          1943
+        ],
+        "output_acceptance_cycles": [
+          1942,
+          1945
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 10,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 21,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 2,
+      "ready_delay": 40,
+      "keep": 1,
+      "reset_at": 24,
+      "stall_period": 3,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 21
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2019,
+          2022,
+          2025,
+          2028,
+          2031
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 2040,
+            "sid": 21,
+            "cancelled_requests": [
+              {
+                "id": "21:2:2019",
+                "cycle": 2019,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 144,
+                "last": 0
+              },
+              {
+                "id": "21:2:2022",
+                "cycle": 2022,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 145,
+                "last": 0
+              },
+              {
+                "id": "21:2:2025",
+                "cycle": 2025,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 146,
+                "last": 0
+              },
+              {
+                "id": "21:2:2028",
+                "cycle": 2028,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 147,
+                "last": 0
+              },
+              {
+                "id": "21:2:2031",
+                "cycle": 2031,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 148,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 45
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2019,
+          2022,
+          2025,
+          2028,
+          2031
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 10,
+          "stall_payload": 10
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 11,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 2040,
+            "sid": 21,
+            "cancelled_requests": [
+              {
+                "id": "21:2:2019",
+                "cycle": 2019,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 144,
+                "last": 0
+              },
+              {
+                "id": "21:2:2022",
+                "cycle": 2022,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 145,
+                "last": 0
+              },
+              {
+                "id": "21:2:2025",
+                "cycle": 2025,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 146,
+                "last": 0
+              },
+              {
+                "id": "21:2:2028",
+                "cycle": 2028,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 147,
+                "last": 0
+              },
+              {
+                "id": "21:2:2031",
+                "cycle": 2031,
+                "sid": 21,
+                "epoch": 2,
+                "byte": 148,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 45
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 22,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        6
+      ],
+      "gap": 3,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 22
+    },
+    "passed": false,
+    "issues": [
+      "unexposed_backpressure",
+      "unexposed_release"
+    ],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2115,
+          2119,
+          2123,
+          2127,
+          2131,
+          2135
+        ],
+        "output_acceptance_cycles": [
+          2128,
+          2136
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 0,
+          "stall_payload": 0
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 0,
+        "release_edges": 0,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2115,
+          2119,
+          2123,
+          2127,
+          2131,
+          2135
+        ],
+        "output_acceptance_cycles": [
+          2128,
+          2136
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 0,
+          "stall_payload": 0
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 0,
+        "release_edges": 0,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 23,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 2,
+      "ready_delay": 19,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 2,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 23
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2211,
+          2214
+        ],
+        "output_acceptance_cycles": [
+          2227
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 12,
+          "stall_payload": 12
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 2227,
+            "sid": 23,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 12,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2211,
+          2214
+        ],
+        "output_acceptance_cycles": [
+          2227
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 12,
+          "stall_payload": 12
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 12,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 24,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        7
+      ],
+      "gap": 3,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 24
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2307,
+          2311,
+          2315,
+          2319,
+          2323,
+          2327,
+          2331
+        ],
+        "output_acceptance_cycles": [
+          2325,
+          2332
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 5,
+          "stall_payload": 5
+        },
+        "target_exposure": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 2325,
+            "sid": 24,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 2332,
+            "sid": 24,
+            "obligation": "keep_mask",
+            "expected": 7,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 5,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2307,
+          2311,
+          2315,
+          2319,
+          2323,
+          2327,
+          2331
+        ],
+        "output_acceptance_cycles": [
+          2325,
+          2332
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 5,
+          "stall_payload": 5
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 5,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 25,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 2,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 25
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2403,
+          2406
+        ],
+        "output_acceptance_cycles": [
+          2414
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2403,
+          2406
+        ],
+        "output_acceptance_cycles": [
+          2414
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 26,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 3,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 26
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2499,
+          2503,
+          2507,
+          2511,
+          2515,
+          2519,
+          2523,
+          2527,
+          2531,
+          2535,
+          2539,
+          2543,
+          2547,
+          2551
+        ],
+        "output_acceptance_cycles": [
+          2512,
+          2528,
+          2545,
+          2552
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 1,
+          "stall_payload": 1
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 1,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2499,
+          2503,
+          2507,
+          2511,
+          2515,
+          2519,
+          2523,
+          2527,
+          2531,
+          2535,
+          2539,
+          2543,
+          2547,
+          2551
+        ],
+        "output_acceptance_cycles": [
+          2512,
+          2528,
+          2545,
+          2552
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 1,
+          "stall_payload": 1
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 1,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 27,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        6
+      ],
+      "gap": 2,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 27
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2595,
+          2598,
+          2601,
+          2604,
+          2607,
+          2610
+        ],
+        "output_acceptance_cycles": [
+          2606,
+          2611
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 1,
+          "stall_payload": 1
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 1,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2595,
+          2598,
+          2601,
+          2604,
+          2607,
+          2610
+        ],
+        "output_acceptance_cycles": [
+          2606,
+          2611
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 1,
+          "stall_payload": 1
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 1,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 28,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 3,
+      "ready_delay": 40,
+      "keep": 1,
+      "reset_at": 20,
+      "stall_period": 5,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 28
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2691,
+          2695,
+          2699,
+          2703,
+          2707
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 4,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 2708,
+            "sid": 28,
+            "cancelled_requests": [
+              {
+                "id": "28:2:2691",
+                "cycle": 2691,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 21,
+                "last": 0
+              },
+              {
+                "id": "28:2:2695",
+                "cycle": 2695,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 22,
+                "last": 0
+              },
+              {
+                "id": "28:2:2699",
+                "cycle": 2699,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 23,
+                "last": 0
+              },
+              {
+                "id": "28:2:2703",
+                "cycle": 2703,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 24,
+                "last": 0
+              },
+              {
+                "id": "28:2:2707",
+                "cycle": 2707,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 25,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 58
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2691,
+          2695,
+          2699,
+          2703,
+          2707
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 4,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 2708,
+            "sid": 28,
+            "cancelled_requests": [
+              {
+                "id": "28:2:2691",
+                "cycle": 2691,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 21,
+                "last": 0
+              },
+              {
+                "id": "28:2:2695",
+                "cycle": 2695,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 22,
+                "last": 0
+              },
+              {
+                "id": "28:2:2699",
+                "cycle": 2699,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 23,
+                "last": 0
+              },
+              {
+                "id": "28:2:2703",
+                "cycle": 2703,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 24,
+                "last": 0
+              },
+              {
+                "id": "28:2:2707",
+                "cycle": 2707,
+                "sid": 28,
+                "epoch": 2,
+                "byte": 25,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 58
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 29,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 3,
+      "ready_delay": 14,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 29
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2787,
+          2791
+        ],
+        "output_acceptance_cycles": [
+          2798
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 2798,
+            "sid": 29,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2787,
+          2791
+        ],
+        "output_acceptance_cycles": [
+          2798
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 30,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 4,
+      "ready_delay": 14,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 2,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 30
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2883,
+          2888
+        ],
+        "output_acceptance_cycles": [
+          2895
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 2895,
+            "sid": 30,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2883,
+          2888
+        ],
+        "output_acceptance_cycles": [
+          2895
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 31,
+    "stratum": "short_target",
+    "configuration": {
+      "frames": [
+        2
+      ],
+      "gap": 2,
+      "ready_delay": 14,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "short_target",
+      "scope": "public",
+      "id": 31
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2979,
+          2982
+        ],
+        "output_acceptance_cycles": [
+          2990
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 2990,
+            "sid": 31,
+            "obligation": "keep_mask",
+            "expected": 3,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 7,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          2979,
+          2982
+        ],
+        "output_acceptance_cycles": [
+          2990
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 1,
+          "stall_valid": 7,
+          "stall_payload": 7
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 32,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        11
+      ],
+      "gap": 3,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 3,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 32
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3075,
+          3079,
+          3083,
+          3087,
+          3091,
+          3095,
+          3099,
+          3103,
+          3107,
+          3111,
+          3115
+        ],
+        "output_acceptance_cycles": [
+          3094,
+          3104,
+          3116
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 3094,
+            "sid": 32,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 3104,
+            "sid": 32,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 3116,
+            "sid": 32,
+            "obligation": "keep_mask",
+            "expected": 7,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3075,
+          3079,
+          3083,
+          3087,
+          3091,
+          3095,
+          3099,
+          3103,
+          3107,
+          3111,
+          3115
+        ],
+        "output_acceptance_cycles": [
+          3094,
+          3104,
+          3116
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 33,
+    "stratum": "reset_cancel",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 2,
+      "ready_delay": 40,
+      "keep": 0,
+      "reset_at": 20,
+      "stall_period": 5,
+      "stratum": "reset_cancel",
+      "scope": "public",
+      "id": 33
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3171,
+          3174,
+          3177,
+          3180,
+          3183
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 3188,
+            "sid": 33,
+            "cancelled_requests": [
+              {
+                "id": "33:2:3171",
+                "cycle": 3171,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 116,
+                "last": 0
+              },
+              {
+                "id": "33:2:3174",
+                "cycle": 3174,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 117,
+                "last": 0
+              },
+              {
+                "id": "33:2:3177",
+                "cycle": 3177,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 118,
+                "last": 0
+              },
+              {
+                "id": "33:2:3180",
+                "cycle": 3180,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 119,
+                "last": 0
+              },
+              {
+                "id": "33:2:3183",
+                "cycle": 3183,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 120,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 65
+          }
+        ],
+        "postreset_no_request_no_output": true
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3171,
+          3174,
+          3177,
+          3180,
+          3183
+        ],
+        "output_acceptance_cycles": [],
+        "applicable_cycles": {
+          "nonfinal_keep": 0,
+          "final_nonempty": 0,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 7,
+        "release_edges": 0,
+        "partial_final_outputs": 0,
+        "reset_cancellations": [
+          {
+            "cycle": 3188,
+            "sid": 33,
+            "cancelled_requests": [
+              {
+                "id": "33:2:3171",
+                "cycle": 3171,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 116,
+                "last": 0
+              },
+              {
+                "id": "33:2:3174",
+                "cycle": 3174,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 117,
+                "last": 0
+              },
+              {
+                "id": "33:2:3177",
+                "cycle": 3177,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 118,
+                "last": 0
+              },
+              {
+                "id": "33:2:3180",
+                "cycle": 3180,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 119,
+                "last": 0
+              },
+              {
+                "id": "33:2:3183",
+                "cycle": 3183,
+                "sid": 33,
+                "epoch": 2,
+                "byte": 120,
+                "last": 0
+              }
+            ],
+            "cancelled_episode": 65
+          }
+        ],
+        "postreset_no_request_no_output": true
+      }
+    }
+  },
+  {
+    "id": 34,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        7
+      ],
+      "gap": 2,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 2,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 34
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3267,
+          3270,
+          3273,
+          3276,
+          3279,
+          3282,
+          3285
+        ],
+        "output_acceptance_cycles": [
+          3279,
+          3287
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 3,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3267,
+          3270,
+          3273,
+          3276,
+          3279,
+          3282,
+          3285
+        ],
+        "output_acceptance_cycles": [
+          3279,
+          3287
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 1,
+          "final_nonempty": 1,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 3,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 35,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        11
+      ],
+      "gap": 3,
+      "ready_delay": 19,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 35
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3363,
+          3367,
+          3371,
+          3375,
+          3379,
+          3383,
+          3387,
+          3391,
+          3395,
+          3399,
+          3403
+        ],
+        "output_acceptance_cycles": [
+          3379,
+          3392,
+          3404
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 3,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3363,
+          3367,
+          3371,
+          3375,
+          3379,
+          3383,
+          3387,
+          3391,
+          3395,
+          3399,
+          3403
+        ],
+        "output_acceptance_cycles": [
+          3379,
+          3392,
+          3404
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 3,
+          "stall_payload": 3
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 3,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 36,
+    "stratum": "long_target",
+    "configuration": {
+      "frames": [
+        15
+      ],
+      "gap": 2,
+      "ready_delay": 21,
+      "keep": 0,
+      "reset_at": -1,
+      "stall_period": 2,
+      "stratum": "long_target",
+      "scope": "history",
+      "id": 36
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3459,
+          3462,
+          3465,
+          3468,
+          3471,
+          3478,
+          3481,
+          3484,
+          3487,
+          3490,
+          3493,
+          3496,
+          3499,
+          3502,
+          3505
+        ],
+        "output_acceptance_cycles": [
+          3477,
+          3485,
+          3497,
+          3507
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 9,
+          "stall_payload": 9
+        },
+        "target_exposure": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1
+        },
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [
+          {
+            "cycle": 3477,
+            "sid": 36,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 3485,
+            "sid": 36,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 3497,
+            "sid": 36,
+            "obligation": "keep_mask",
+            "expected": 15,
+            "observed": 0,
+            "passed": false
+          },
+          {
+            "cycle": 3507,
+            "sid": 36,
+            "obligation": "keep_mask",
+            "expected": 7,
+            "observed": 0,
+            "passed": false
+          }
+        ],
+        "backpressure_cycles": 9,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3459,
+          3462,
+          3465,
+          3468,
+          3471,
+          3478,
+          3481,
+          3484,
+          3487,
+          3490,
+          3493,
+          3496,
+          3499,
+          3502,
+          3505
+        ],
+        "output_acceptance_cycles": [
+          3477,
+          3485,
+          3497,
+          3507
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 9,
+          "stall_payload": 9
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 9,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 37,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        10
+      ],
+      "gap": 3,
+      "ready_delay": 19,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 37
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3555,
+          3559,
+          3563,
+          3567,
+          3571,
+          3575,
+          3579,
+          3583,
+          3587,
+          3591
+        ],
+        "output_acceptance_cycles": [
+          3571,
+          3584,
+          3593
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 4,
+          "stall_payload": 4
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 4,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3555,
+          3559,
+          3563,
+          3567,
+          3571,
+          3575,
+          3579,
+          3583,
+          3587,
+          3591
+        ],
+        "output_acceptance_cycles": [
+          3571,
+          3584,
+          3593
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 4,
+          "stall_payload": 4
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 4,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 38,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        14
+      ],
+      "gap": 2,
+      "ready_delay": 19,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 2,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 38
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3651,
+          3654,
+          3657,
+          3660,
+          3663,
+          3668,
+          3671,
+          3674,
+          3677,
+          3680,
+          3683,
+          3686,
+          3689,
+          3692
+        ],
+        "output_acceptance_cycles": [
+          3667,
+          3675,
+          3687,
+          3693
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3651,
+          3654,
+          3657,
+          3660,
+          3663,
+          3668,
+          3671,
+          3674,
+          3677,
+          3680,
+          3683,
+          3686,
+          3689,
+          3692
+        ],
+        "output_acceptance_cycles": [
+          3667,
+          3675,
+          3687,
+          3693
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 3,
+          "final_nonempty": 1,
+          "stall_valid": 6,
+          "stall_payload": 6
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 6,
+        "release_edges": 1,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  },
+  {
+    "id": 39,
+    "stratum": "legal_transfer",
+    "configuration": {
+      "frames": [
+        11
+      ],
+      "gap": 2,
+      "ready_delay": 14,
+      "keep": 1,
+      "reset_at": -1,
+      "stall_period": 5,
+      "stratum": "legal_transfer",
+      "scope": "public",
+      "id": 39
+    },
+    "passed": true,
+    "issues": [],
+    "revision": {
+      "before": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3747,
+          3750,
+          3753,
+          3756,
+          3759,
+          3762,
+          3765,
+          3768,
+          3771,
+          3774,
+          3777
+        ],
+        "output_acceptance_cycles": [
+          3758,
+          3770,
+          3778
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 2,
+          "stall_payload": 2
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 2,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      },
+      "after": {
+        "novel": true,
+        "accepted_input_cycles": [
+          3747,
+          3750,
+          3753,
+          3756,
+          3759,
+          3762,
+          3765,
+          3768,
+          3771,
+          3774,
+          3777
+        ],
+        "output_acceptance_cycles": [
+          3758,
+          3770,
+          3778
+        ],
+        "applicable_cycles": {
+          "nonfinal_keep": 2,
+          "final_nonempty": 1,
+          "stall_valid": 2,
+          "stall_payload": 2
+        },
+        "target_exposure": {},
+        "target_misses": 0,
+        "necessary_untriggered": 0,
+        "false_positive_cycles": [],
+        "reference_failures": [],
+        "backpressure_cycles": 2,
+        "release_edges": 2,
+        "partial_final_outputs": 1,
+        "reset_cancellations": [],
+        "postreset_no_request_no_output": false
+      }
+    }
+  }
+]

@@ -1,0 +1,446 @@
+{
+  "case101_prim_onehot_multihot_suppressed": {
+    "trigger": "more than one oh_i bit high",
+    "trigger_signals": [
+      "oh_i"
+    ],
+    "check": "err_o asserted",
+    "check_signals": [
+      "err_o"
+    ],
+    "timing": "same cycle",
+    "essential_detail": "multihot predicate, not merely nonzero oh_i",
+    "required_level_on_named_phase": {
+      "err_o": "high"
+    }
+  },
+  "case109_prim_arbiter_valid_depends_on_ready": {
+    "trigger": "pending request while ready_i is low",
+    "trigger_signals": [
+      "ready_i",
+      "req_i"
+    ],
+    "check": "valid_o remains asserted independently of ready_i",
+    "check_signals": [
+      "valid_o"
+    ],
+    "timing": "same cycle",
+    "essential_detail": "pending request is needed; low ready alone does not imply valid",
+    "required_level_on_named_phase": {
+      "valid_o": "high"
+    }
+  },
+  "case115_prim_edge_both_edges_collapsed": {
+    "trigger": "sampled falling transition of d_i",
+    "trigger_signals": [
+      "d_i"
+    ],
+    "check": "q_posedge_pulse_o remains low",
+    "check_signals": [
+      "q_posedge_pulse_o"
+    ],
+    "timing": "edge-qualified sample",
+    "essential_detail": "transition direction requires prior sample",
+    "required_level_on_named_phase": {
+      "q_posedge_pulse_o": "low"
+    }
+  },
+  "case133_prim_edge_negedge_missing": {
+    "trigger": "sampled 1-to-0 transition of d_i",
+    "trigger_signals": [
+      "d_i"
+    ],
+    "check": "q_negedge_pulse_o asserts for one cycle",
+    "check_signals": [
+      "q_negedge_pulse_o"
+    ],
+    "timing": "transition-aligned pulse",
+    "essential_detail": "low d_i level alone is not a falling edge",
+    "required_level_on_named_phase": {
+      "q_negedge_pulse_o": "high"
+    }
+  },
+  "case134_prim_intr_event_not_sticky": {
+    "trigger": "event captured in Event mode and not software-cleared",
+    "trigger_signals": [
+      "event_intr_i"
+    ],
+    "check": "interrupt state remains latched after source pulse ends",
+    "check_signals": [
+      "reg2hw_intr_state_q_i"
+    ],
+    "timing": "across following cycles until clear",
+    "essential_detail": "mode, capture history, and clear condition",
+    "required_level_on_named_phase": {
+      "reg2hw_intr_state_q_i": "high"
+    }
+  },
+  "case135_prim_intr_enable_mask_ignored": {
+    "trigger": "reg2hw_intr_enable_q_i low",
+    "trigger_signals": [
+      "reg2hw_intr_enable_q_i"
+    ],
+    "check": "intr_o low",
+    "check_signals": [
+      "intr_o"
+    ],
+    "timing": "same cycle",
+    "essential_detail": "masking applies even with interrupt state set",
+    "required_level_on_named_phase": {
+      "intr_o": "low"
+    }
+  },
+  "case139_prim_regwe_addr_check_false_positive": {
+    "trigger": "enabled legal onehot write-enable position",
+    "trigger_signals": [
+      "en_i",
+      "oh_i"
+    ],
+    "check": "err_o low",
+    "check_signals": [
+      "err_o"
+    ],
+    "timing": "same cycle",
+    "essential_detail": "write-enable legality, including nonzero onehot positions",
+    "required_level_on_named_phase": {
+      "err_o": "low"
+    }
+  },
+  "case438_cc_fifo_protocol_suppress_2": {
+    "trigger": "zero-depth FIFO with active push_i",
+    "trigger_signals": [
+      "push_i"
+    ],
+    "check": "empty_o low",
+    "check_signals": [
+      "empty_o"
+    ],
+    "timing": "same cycle",
+    "essential_detail": "combinational empty equals inverse push across both push values",
+    "required_level_on_named_phase": {
+      "empty_o": "low"
+    }
+  },
+  "case441_cc_stream_mux_protocol_suppress_1": {
+    "trigger": "any inp_sel_i lane selection",
+    "trigger_signals": [
+      "inp_sel_i"
+    ],
+    "check": "oup_data_o equals selected input data",
+    "check_signals": [
+      "word_t"
+    ],
+    "timing": "same cycle",
+    "essential_detail": "data selection must ignore unselected lanes"
+  },
+  "case452_prim_clock_timeout_clear_condition": {
+    "trigger": "acknowledgement or monitor disable",
+    "trigger_signals": [
+      "ack",
+      "run_chk"
+    ],
+    "check": "timeout counter clears",
+    "check_signals": [
+      "cnt",
+      "timeout_o"
+    ],
+    "timing": "following reference edge",
+    "essential_detail": "both clear alternatives; timeout_o alone is not counter state"
+  },
+  "case454_prim_count_simultaneous_command": {
+    "trigger": "incr_en_i and decr_en_i together",
+    "trigger_signals": [
+      "incr_en_i",
+      "decr_en_i"
+    ],
+    "check": "counter retains previous value",
+    "check_signals": [
+      "cnt_o"
+    ],
+    "timing": "following sample",
+    "essential_detail": "simultaneous command and previous counter value"
+  },
+  "case455_prim_crc32_set_enable_coupling": {
+    "trigger": "set_crc_i regardless of data_valid_i",
+    "trigger_signals": [
+      "set_crc_i",
+      "data_valid_i"
+    ],
+    "check": "crc_out_o equals sampled crc_in_i",
+    "check_signals": [
+      "crc_out_o",
+      "crc_in_i"
+    ],
+    "timing": "next cycle",
+    "essential_detail": "complemented seed and independence from data_valid_i"
+  },
+  "case457_cc_delta_counter_load_enable_priority": {
+    "trigger": "load_i and en_i together",
+    "trigger_signals": [
+      "load_i",
+      "en_i"
+    ],
+    "check": "loaded state takes priority",
+    "check_signals": [
+      "q_o",
+      "d_i"
+    ],
+    "timing": "next state",
+    "essential_detail": "simultaneous controls and loaded value"
+  },
+  "case459_cc_trip_counter_trip_one_cycle_late": {
+    "trigger": "en_i asserted at count bound",
+    "trigger_signals": [
+      "en_i",
+      "q_o",
+      "bound_i"
+    ],
+    "check": "trip_o asserted and counter clears",
+    "check_signals": [
+      "trip_o",
+      "q_o"
+    ],
+    "timing": "trip same cycle; clear following edge",
+    "essential_detail": "bound condition and two distinct timing obligations",
+    "required_level_on_named_phase": {
+      "trip_o": "high"
+    }
+  },
+  "case461_axis_adapter_segment_boundary_early": {
+    "trigger": "narrow-to-wide conversion before last segment and without input tlast",
+    "trigger_signals": [
+      "sd",
+      "sl"
+    ],
+    "check": "mv stays low until segment boundary",
+    "check_signals": [
+      "mv"
+    ],
+    "timing": "ready/valid transaction aligned",
+    "essential_detail": "last-segment or tlast and backpressure",
+    "required_level_on_named_phase": {
+      "mv": "low"
+    }
+  },
+  "case463_axis_frame_join_port_skip": {
+    "trigger": "accepted end of input frame",
+    "trigger_signals": [
+      "sr",
+      "sl"
+    ],
+    "check": "port selection advances exactly once",
+    "check_signals": [
+      "busy",
+      "md"
+    ],
+    "timing": "after accepted frame end",
+    "essential_detail": "frame end, handshake, and single port advance"
+  },
+  "case465_axis_srl_fifo_simultaneous_occupancy": {
+    "trigger": "simultaneous accepted push and pop",
+    "trigger_signals": [
+      "sd",
+      "sr",
+      "mr"
+    ],
+    "check": "occupancy and ordering preserved",
+    "check_signals": [
+      "count",
+      "md"
+    ],
+    "timing": "next state after accepted transfers",
+    "essential_detail": "both handshakes, occupancy, and data order"
+  },
+  "case476_sync_reset_release_one_cycle_early": {
+    "trigger": "asynchronous reset assertion then release",
+    "trigger_signals": [
+      "sync_out"
+    ],
+    "check": "sync_out deasserts only after N active edges",
+    "check_signals": [
+      "sync_out"
+    ],
+    "timing": "exact N-edge sequence",
+    "essential_detail": "edge count since reset release",
+    "required_level_on_named_phase": {
+      "sync_out": "low"
+    }
+  },
+  "case478_axis_srl_register_ready_recovery": {
+    "trigger": "accepted downstream transfer frees capacity",
+    "trigger_signals": [
+      "m_valid",
+      "m_ready"
+    ],
+    "check": "s_ready recovers",
+    "check_signals": [
+      "s_ready"
+    ],
+    "timing": "next cycle",
+    "essential_detail": "downstream handshake and capacity history",
+    "required_level_on_named_phase": {
+      "s_ready": "high"
+    }
+  },
+  "case480_axis_cobs_decode_ff_zero_suppression": {
+    "trigger": "COBS code byte 255 versus 254",
+    "trigger_signals": [
+      "s_data",
+      "s_valid"
+    ],
+    "check": "implicit zero omitted only for 255",
+    "check_signals": [
+      "m_data",
+      "m_valid"
+    ],
+    "timing": "decoded segment boundary",
+    "essential_detail": "literal code value and implicit zero behavior"
+  },
+  "case484_cc_exp_backoff_clear_set_priority": {
+    "trigger": "clear and failed-trial set together",
+    "trigger_signals": [
+      "clr_i",
+      "set_cnt_i"
+    ],
+    "check": "next state zero with reset mask",
+    "check_signals": [
+      "count_o"
+    ],
+    "timing": "next state",
+    "essential_detail": "simultaneous priority and both state components"
+  },
+  "case492_axis_async_fifo_gray_visibility": {
+    "trigger": "write-toggle change entering read domain",
+    "trigger_signals": [
+      "write_toggle_i"
+    ],
+    "check": "q_o changes only after third synchronizer stage",
+    "check_signals": [
+      "q_o"
+    ],
+    "timing": "three read-domain samples",
+    "essential_detail": "synchronizer stage history"
+  },
+  "case494_axis_ram_switch_response_pipeline": {
+    "trigger": "granted RAM-switch command",
+    "trigger_signals": [
+      "grant_i"
+    ],
+    "check": "response valid remains low at two-cycle observation",
+    "check_signals": [
+      "q_o"
+    ],
+    "timing": "three arbitration stages",
+    "essential_detail": "registered pipeline delay, not output_ready_i",
+    "required_level_on_named_phase": {
+      "q_o": "low"
+    }
+  },
+  "case498_cc_serial_deglitch_qualification_short": {
+    "trigger": "three consecutive enabled high samples",
+    "trigger_signals": [
+      "noisy_i",
+      "sample_enable_i"
+    ],
+    "check": "q_o rises only after qualification",
+    "check_signals": [
+      "q_o"
+    ],
+    "timing": "three enabled samples",
+    "essential_detail": "two high samples must be insufficient",
+    "required_level_on_named_phase": {
+      "q_o": "low"
+    }
+  },
+  "case499_cc_shift_reg_gated_stage_bypass": {
+    "trigger": "new serial bit and enabled sampling",
+    "trigger_signals": [
+      "enable_i",
+      "data_i"
+    ],
+    "check": "q_o receives bit only after all three stages",
+    "check_signals": [
+      "q_o"
+    ],
+    "timing": "three enabled edges",
+    "essential_detail": "new-bit history and full stage delay"
+  },
+  "case504_cc_cdc_fifo_gray_pointer_visible_early": {
+    "trigger": "changed wr_gray_i sampled into read domain",
+    "trigger_signals": [
+      "wr_gray_i"
+    ],
+    "check": "q_o retains old pointer until third stage",
+    "check_signals": [
+      "q_o"
+    ],
+    "timing": "three read-domain samples",
+    "essential_detail": "old pointer comparison and stage history"
+  },
+  "case505_axis_stat_counter_frame_pulse_early": {
+    "trigger": "frame_done_i and captured length",
+    "trigger_signals": [
+      "frame_done_i"
+    ],
+    "check": "stat_valid_o absent next cycle, present one cycle later, original length retained",
+    "check_signals": [
+      "stat_valid_o",
+      "stat_len_o"
+    ],
+    "timing": "two-cycle sequence",
+    "essential_detail": "both valid phases and captured length",
+    "required_level_on_named_phase": {
+      "stat_valid_o": "low"
+    }
+  },
+  "case506_axis_crosspoint_simultaneous_source_priority": {
+    "trigger": "both sources target same ready output",
+    "trigger_signals": [
+      "s0_valid",
+      "s1_valid",
+      "m_ready"
+    ],
+    "check": "exactly one beat from source zero",
+    "check_signals": [
+      "m_valid",
+      "m_data",
+      "s0_ready"
+    ],
+    "timing": "accepted transfer",
+    "essential_detail": "simultaneous request, source priority, and payload identity"
+  },
+  "case508_cc_stream_fork_partial_ready_accept": {
+    "trigger": "input valid with one ready and one stalled branch",
+    "trigger_signals": [
+      "valid_i",
+      "ready_i"
+    ],
+    "check": "ready_o low and no partial atomic transfer",
+    "check_signals": [
+      "ready_o",
+      "valid_o"
+    ],
+    "timing": "same transfer",
+    "essential_detail": "conjunction of every branch-ready bit",
+    "required_level_on_named_phase": {
+      "ready_o": "low"
+    }
+  },
+  "case510_cc_spill_register_flush_push_priority": {
+    "trigger": "flush_i and push_i together",
+    "trigger_signals": [
+      "flush_i",
+      "push_i"
+    ],
+    "check": "valid_o low and pushed data not exposed",
+    "check_signals": [
+      "valid_o",
+      "data_o"
+    ],
+    "timing": "next sampled cycle",
+    "essential_detail": "collision trigger, empty state, and hidden payload",
+    "required_level_on_named_phase": {
+      "valid_o": "low"
+    }
+  }
+}

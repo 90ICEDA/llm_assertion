@@ -1,0 +1,94 @@
+{
+  "name": "case403_prim_filter_temporal_hold_3",
+  "parent_bug_id": "case403_prim_filter_temporal_hold_3",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_filter",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_filter.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "stored_vector_q state update is suppressed",
+  "spec": "Reset clears the complete input-history vector. On each active clock after reset, the history shifts by one sample and appends filter_i, providing the configured observation window used by the filter.",
+  "mutation_edits": [
+    {
+      "line": 60,
+      "search": "      stored_vector_q <= '0;",
+      "replace": "      stored_vector_q <= stored_vector_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "stored_vector_q",
+  "relevant_signals": [
+    "rst_ni",
+    "clk_i",
+    "filter_i",
+    "stored_vector_q",
+    "stored_vector_q[3:0]"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "a93454041ca882103395f8b1ce418591368de67b6e60edd395a8a158494c554a",
+  "buggy_sha256": "c9c1238abb6b47a67e1aa9ffe1989000c6071f59db166d2661626ded1bf113f5",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete",
+  "golden_sva": {
+    "name": "HistoryReset_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": null,
+    "sva": "assert property (@(posedge clk_i) (!rst_ni) |-> (stored_vector_q == '0));",
+    "assertion": "assert property (@(posedge clk_i) (!rst_ni) |=> (stored_vector_q == '0));",
+    "temporal_type": "reset state initialization"
+  },
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 5000,
+      "cycle_index": 0,
+      "sample_index": 1,
+      "clock_phase": "rising edge",
+      "signals": [
+        "stored_vector_q[3:0]"
+      ],
+      "good_values": {
+        "stored_vector_q[3:0]": "0000"
+      },
+      "bad_values": {
+        "stored_vector_q[3:0]": "xxxx"
+      }
+    },
+    "heldout": {
+      "time_ps": 5000,
+      "cycle_index": 0,
+      "sample_index": 1,
+      "clock_phase": "rising edge",
+      "signals": [
+        "stored_vector_q[3:0]"
+      ],
+      "good_values": {
+        "stored_vector_q[3:0]": "0000"
+      },
+      "bad_values": {
+        "stored_vector_q[3:0]": "xxxx"
+      }
+    },
+    "decoy": {
+      "time_ps": 5000,
+      "cycle_index": 0,
+      "sample_index": 1,
+      "clock_phase": "rising edge",
+      "signals": [
+        "stored_vector_q[3:0]"
+      ],
+      "good_values": {
+        "stored_vector_q[3:0]": "0000"
+      },
+      "bad_values": {
+        "stored_vector_q[3:0]": "xxxx"
+      }
+    }
+  }
+}

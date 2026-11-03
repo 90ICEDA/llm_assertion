@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "status": "frozen_formal_four_trace_representation_reports",
+  "models": {
+    "GPT": "gpt-5.4",
+    "Claude": "claude-opus-4-8"
+  },
+  "k": 2,
+  "candidate_count": 1920,
+  "case_count": 120,
+  "parent_bug_count": 40,
+  "methods": [
+    "spec_rtl_event_level_abstraction",
+    "spec_rtl_naive_summary",
+    "spec_rtl_raw_trace",
+    "spec_rtl_temporal_relation_abstraction"
+  ],
+  "selection_scopes": [
+    "candidate_level",
+    "first_candidate",
+    "case_any_of_k"
+  ],
+  "aggregation_units": [
+    "candidate",
+    "case",
+    "parent_bug"
+  ],
+  "overlap_status": "overlap",
+  "overlap_definition": "all eight model-by-method cells contain the exact same 40 parent_bug_id values",
+  "parent_bug_id_backfill": "missing raw values derived from case_id suffix after _from_; base cases map to themselves",
+  "bootstrap_unit": "parent_bug_id",
+  "bootstrap_repetitions": 10000,
+  "bootstrap_confidence_level": 0.95,
+  "paired_test": "exact two-sided McNemar",
+  "effect_sizes": [
+    "paired risk difference",
+    "matched odds ratio with Haldane correction"
+  ],
+  "parent_outcome_rule": "all_observations",
+  "input_sha256": {
+    "D:\\AssertionForge-main1\\outputs\\scale120_trace_representation_ablation_data\\multi_model_results_raw.csv": "ee3e096050e56774336c1674999b36924c7a7305822e35276843dedb6d5f1469"
+  },
+  "contract_audit_sha256": "153b591e4bce1a65566212c8cf326c2a771d19bf5ead8a092700cef74cbcd3c0",
+  "output_sha256": {
+    "D:\\AssertionForge-main1\\outputs\\scale120_trace_representation_ablation_data\\unified_three_scope_report.csv": "c64ee18b6a0fabd5201fe936f9a17d5ddd116b1b8e3836ddbb18abf44af33d16",
+    "D:\\AssertionForge-main1\\outputs\\scale120_trace_representation_ablation_data\\parent_statistics\\method_results_with_parent_bootstrap_ci.csv": "f0b526709dda43cab11983766f1784d09f04d64cb2a129a42107a7eb3028efa5",
+    "D:\\AssertionForge-main1\\outputs\\scale120_trace_representation_ablation_data\\parent_statistics\\paired_mcnemar_effect_sizes.csv": "a95a8f5337b5f0943521294ed766d1ba8528aece764b6a17d7ba350dddfd8b53"
+  },
+  "row_counts": {
+    "unified_three_scope": 72,
+    "confidence_intervals": 72,
+    "paired_comparisons": 36
+  },
+  "parent_sets_sha256": "a729e2b76880b83136424df8a9ea16284fbdb4744e2c5a371936107f54df99ac"
+}

@@ -247,13 +247,18 @@ endmodule : prim_edge_detector
 
 Trace divergence summary:
 Case: case133_prim_edge_negedge_missing
-First divergence cycle: none
-Differing signals at first divergence: (none)
+First divergence cycle: 4
+Differing signals at first divergence: q_negedge_pulse_o
+Observed differing signal values (good): q_negedge_pulse_o=1
+Observed differing signal values (bad): q_negedge_pulse_o=0
 
 Structured trace summary:
-- first_divergence_cycle: none
-- differing_signals: (none)
-- divergence_snapshot: (none)
+- first_divergence_cycle: 4
+- differing_signals: q_negedge_pulse_o
+- first_divergence_time_ps: 45000
+- divergence_observation: posedge_cycle
+- divergence_snapshot:
+  - q_negedge_pulse_o: good=1, bad=0
 
 Summary-driven construction checklist:
 - Identify the first divergence cycle and the listed differing signal(s).

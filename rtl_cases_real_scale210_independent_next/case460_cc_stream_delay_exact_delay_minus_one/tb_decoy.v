@@ -1,0 +1,2 @@
+`timescale 1ns/1ps
+module tb; reg clk_i=0,rst_ni=0,clr_i=0; always #5 clk_i=~clk_i; reg [7:0] payload_i=0;reg valid_i=0,ready_i=1;wire ready_o,valid_o;wire [7:0] payload_o; cc_stream_delay #(.Width(8),.FixedDelay(3)) dut(.clk_i,.rst_ni,.clr_i,.payload_i,.valid_i,.ready_o,.payload_o,.valid_o,.ready_i); initial begin $monitor("T=%0t vin=%b rin=%b vout=%b data=%h",$time,valid_i,ready_o,valid_o,payload_o); #2 rst_ni=0; #10 rst_ni=1; #13 payload_i=8'h11;valid_i=1;#10 valid_i=0;#60 payload_i=8'hE7;valid_i=1;#10 valid_i=0; #30 $finish; end endmodule

@@ -1,0 +1,45 @@
+{
+  "case_id": "overfit07_103_onehot_addr_mismatch_suppressed",
+  "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+  "primary_source_case": "case230_onehot_addr_bad_v6_from_case103_prim_onehot_addr_mismatch_suppressed",
+  "heldout_source_cases": [
+    "case226_onehot_addr_bad_v2_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "case227_onehot_addr_bad_v3_from_case103_prim_onehot_addr_mismatch_suppressed"
+  ],
+  "bait_kind": "legal fixed address",
+  "bait_signal": "addr_i[1:0]",
+  "primary_bait_value": "00",
+  "heldout_bait_values": [
+    "01",
+    "10",
+    "11"
+  ],
+  "heldout_count": 3,
+  "first_divergence_rows": {
+    "primary": 5,
+    "heldout_1": 5,
+    "heldout_2": 5,
+    "heldout_3": 5
+  },
+  "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+  "buggy_rtl_sha256": "74a1e2b28f881f505e257cc6bd2f72129a479802df20221c4e8dcbc9cc43718e",
+  "bug_value_independence_evidence": "The exact same correct and buggy RTL binaries are exercised at four distinct legal bait values, and every trace pair diverges.",
+  "candidate_generalization_rule": "A candidate generalizes only if it passes correct and detects buggy behavior on primary and all three held-outs; regex hardcoding labels are auxiliary only.",
+  "artifact_sha256": {
+    "correct.v": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+    "buggy.v": "74a1e2b28f881f505e257cc6bd2f72129a479802df20221c4e8dcbc9cc43718e",
+    "tb.v": "48985c5ea5c459fac07ebf166c68ed2447aecae0f19f9607af576f8cecbf2530",
+    "waveform_good.csv": "6ccfe074b78ed7daac8104f118c767a6dfc3f1a3dfe6f9c595206b13ff944606",
+    "waveform_bad.csv": "a7eedb1979f28785b0b5961fbf2693e8470ad34ea9664dd825a83c46b89e25db",
+    "tb_holdout_1.v": "6411da7673d9fbe22126f505b2b82be621ce78c4cbdb802e521a9528179d878e",
+    "waveform_good_holdout_1.csv": "710e7a9a6e80444104563080fabea7c7fa8dfc7b6f41029e1d5138a0214819eb",
+    "waveform_bad_holdout_1.csv": "4bf42a9cdd8ade5c077b896f05d0c5e93d0187896538b2d6a43d309179209fab",
+    "tb_holdout_2.v": "1aa55e2225422833052ba8c394f56e85a8f4794c3b23e5d57c0f605145993330",
+    "waveform_good_holdout_2.csv": "19db1cc3f29a8ba0193c408e03928ae37c915020fa252baf14f4d994546e2999",
+    "waveform_bad_holdout_2.csv": "c28ac5a595efd1439b61cca79eea6a17d74f9caba6c46e4a9398ba4ed4e37741",
+    "tb_holdout_3.v": "9a386009d9057bd08e049e061b577f7a61d0b26b5ab767430fe2d97ac5209365",
+    "waveform_good_holdout_3.csv": "d4c61d255edc1c18d16335e25d0b684f7f276a7bc8c699b6088112c6dbcb9ae5",
+    "waveform_bad_holdout_3.csv": "3ba28945bd568c5da6678b4a9850e8e8e8c47aa7f02e3078b12951793f8a829e"
+  }
+}

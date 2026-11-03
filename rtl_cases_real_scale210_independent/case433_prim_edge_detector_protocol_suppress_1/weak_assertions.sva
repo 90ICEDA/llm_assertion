@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Checks only the high polarity and not continuous equality or edge pulses.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) d_i |-> q_sync_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Only checks output knownness.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(q_sync_o));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Adds a cycle to a no-synchronizer path and loses same-cycle tracking.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) d_i |=> q_sync_o);
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the input condition and observes only a fixed output polarity.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) q_sync_o);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: Pulse mutual exclusion does not establish the data path.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) !(q_posedge_pulse_o && q_negedge_pulse_o));

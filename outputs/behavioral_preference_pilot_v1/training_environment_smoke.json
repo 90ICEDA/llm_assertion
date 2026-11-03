@@ -1,0 +1,44 @@
+{
+  "status": "pass",
+  "seed": 20260815,
+  "model_path": "outputs/checkpoints/Qwen3-8B",
+  "versions": {
+    "torch": "2.5.1+cu121",
+    "cuda": "12.1",
+    "transformers": "4.53.2",
+    "trl": "0.19.1",
+    "peft": "0.15.2",
+    "datasets": "3.6.0",
+    "bitsandbytes": "0.46.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+  "quantization": {
+    "bits": 4,
+    "type": "nf4",
+    "double_quant": true,
+    "compute_dtype": "float16"
+  },
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "down_proj",
+      "gate_proj",
+      "k_proj",
+      "o_proj",
+      "q_proj",
+      "up_proj",
+      "v_proj"
+    ]
+  },
+  "sequence_tokens": 19,
+  "loss": 4.207079887390137,
+  "grad_finite": true,
+  "optimizer_changed_trainable_parameter": true,
+  "trainable_parameters": 43646976,
+  "total_parameters_reported": 4761498624,
+  "cuda_allocated_peak_mib": 9356.8,
+  "cuda_reserved_peak_mib": 12786.0,
+  "wall_clock_seconds": 217.14746829
+}

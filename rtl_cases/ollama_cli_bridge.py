@@ -138,7 +138,7 @@ if (-not $ollamaCmd) {{
 }}
 if (-not $ollamaCmd) {{
     $candidates = @(
-        "C:\\Users\\没有惊喜\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+        "C:\\Users\\USER\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
         "$env:LOCALAPPDATA\\Programs\\Ollama\\ollama.exe",
         "$env:LOCALAPPDATA\\Programs\\Ollama\\resources\\ollama.exe",
         "$env:ProgramFiles\\Ollama\\ollama.exe",

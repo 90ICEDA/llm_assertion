@@ -1,0 +1,33 @@
+{
+  "seed": 8107,
+  "maximum_calls": 4,
+  "per_arm_maximum": 2,
+  "arms": [
+    "P",
+    "D"
+  ],
+  "order": [
+    "P",
+    "D"
+  ],
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "temperature": 0.2,
+  "max_output_tokens": 2048,
+  "input_character_cap": 64000,
+  "timeout_seconds": 300,
+  "retries": 0,
+  "slot_transfer": false,
+  "automatic_expansion": false,
+  "P": "One complete plan; only actual full pass permits one SVA call. Failed plan stops P.",
+  "D": "One direct SVA; only native/interface rejection permits one evidence-based refinement. No plan prerequisite.",
+  "common_information_sha256": "f8a71b01eedd0496e27762489a7bdb76c4588d901fb78f9a4c7a772babefbd08",
+  "acceptance": "Identical 5 native window cases,14 public cases,105 history,required triggers,causal targets,no legal FP or critical unknown. No acceptance based on model prose.",
+  "estimand": "Bounded two-call helper WORKFLOW comparison, not pure gate causality, not core mechanism ablation. D has up to two SVA opportunities; P spends one slot planning. Report calls/tokens/native costs and opportunity differences.",
+  "scope": "One fixed seed and selected observed FIFO recovery task. No stable/general effect estimate.",
+  "repeat": "Within-arm executable hash repetition including baseline rejects before compilation.",
+  "feedback": "Only own actual call and native development diagnostics; no cross-arm response,corrected plan,archived success or independent tests.",
+  "holdout": "After BOTH arms freeze and any new acceptance,generate one fresh56-case batch,depths2/4/8,five actual exposures;replay each distinct frozen hash once. Never refine using holdout.",
+  "stop": "Transport/execution/size exception stops all calls. Failed gate stops P. Accepted candidate stops its arm. No new accepted independent-pass means stop; no automatic seed or prompt changes.",
+  "authorization": "Requires new explicit <=4 calls for this protocol. Research80 unused slots remain restricted."
+}

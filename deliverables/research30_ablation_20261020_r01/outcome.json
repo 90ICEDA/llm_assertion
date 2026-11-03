@@ -1,0 +1,197 @@
+{
+  "status": "four_real_model_arms_completed",
+  "decisions": {
+    "A": {
+      "accepted": false,
+      "reasons": [
+        "model_or_interface_failure"
+      ],
+      "gate": false
+    },
+    "B": {
+      "accepted": true,
+      "reasons": [],
+      "gate": false,
+      "call": {
+        "status": "response_received",
+        "model": "qwen/qwen-2.5-72b-instruct",
+        "digest": null,
+        "model_calls": 1,
+        "retries": 0,
+        "prompt_tokens": 11965,
+        "completion_tokens": 210,
+        "token_budget_reservation": 41707,
+        "provider": "openai_compatible",
+        "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+        "candidate_status": "assembled_without_semantic_rewrite",
+        "wall_seconds": 33.626697969,
+        "partial_response_characters": 876,
+        "done_reason": "stop",
+        "stream_terminal_received": true,
+        "actual_server_model": "qwen/qwen-2.5-72b-instruct",
+        "response_id": "538de48597c7dc77a43819ef49db03b3",
+        "usage_available": true,
+        "raw_credential_echo_redactions": 0,
+        "phase": "controlled_stall_review",
+        "requested_obligation": "stall_stability",
+        "operation": "replace_one",
+        "model_owns_predicates_and_timing": true,
+        "syntax_assembly_only": true
+      },
+      "before": {
+        "rows": 1930,
+        "unknown": 0,
+        "triggers": 586,
+        "false_positives": 0,
+        "detections": 3,
+        "misses": 2,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 103
+      },
+      "after": {
+        "rows": 1930,
+        "unknown": 0,
+        "triggers": 586,
+        "false_positives": 0,
+        "detections": 5,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 103
+      },
+      "target_keys": [
+        "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+        "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb"
+      ]
+    },
+    "C": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "lost_obligation_trigger",
+          "evidence_keys": [
+            "fifo:285fc3ae8de4b96e30494cb77acd29e81a76e5569b609ef99d9a55a105fb3ed9",
+            "fifo:f13c743b3b9fbfdb492af77d22342afd572b77aad457d52f027c810b62b286b4"
+          ]
+        }
+      ],
+      "gate": true,
+      "call": {
+        "status": "response_received",
+        "model": "qwen/qwen-2.5-72b-instruct",
+        "digest": null,
+        "model_calls": 1,
+        "retries": 0,
+        "prompt_tokens": 9460,
+        "completion_tokens": 169,
+        "token_budget_reservation": 36176,
+        "provider": "openai_compatible",
+        "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+        "candidate_status": "assembled_without_semantic_rewrite",
+        "wall_seconds": 25.430865587,
+        "partial_response_characters": 740,
+        "done_reason": "stop",
+        "stream_terminal_received": true,
+        "actual_server_model": "qwen/qwen-2.5-72b-instruct",
+        "response_id": "5e555223bb3e803929d06dd9ec0fd74f",
+        "usage_available": true,
+        "raw_credential_echo_redactions": 0,
+        "phase": "controlled_stall_review",
+        "requested_obligation": "stall_stability",
+        "operation": "replace_one",
+        "model_owns_predicates_and_timing": true,
+        "syntax_assembly_only": true
+      },
+      "before": {
+        "rows": 69124,
+        "unknown": 0,
+        "triggers": 16469,
+        "false_positives": 0,
+        "detections": 214,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1177
+      },
+      "after": {
+        "rows": 69124,
+        "unknown": 0,
+        "triggers": 16467,
+        "false_positives": 0,
+        "detections": 214,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1177
+      },
+      "target_keys": []
+    },
+    "D": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "lost_obligation_trigger",
+          "evidence_keys": [
+            "fifo:285fc3ae8de4b96e30494cb77acd29e81a76e5569b609ef99d9a55a105fb3ed9",
+            "fifo:f13c743b3b9fbfdb492af77d22342afd572b77aad457d52f027c810b62b286b4"
+          ]
+        },
+        {
+          "kind": "current_gap_not_confirmed_repaired",
+          "evidence_keys": [
+            "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+            "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb"
+          ]
+        }
+      ],
+      "gate": true,
+      "call": {
+        "status": "response_received",
+        "model": "qwen/qwen-2.5-72b-instruct",
+        "digest": null,
+        "model_calls": 1,
+        "retries": 0,
+        "prompt_tokens": 11965,
+        "completion_tokens": 215,
+        "token_budget_reservation": 41707,
+        "provider": "openai_compatible",
+        "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+        "candidate_status": "assembled_without_semantic_rewrite",
+        "wall_seconds": 18.410789910999995,
+        "partial_response_characters": 864,
+        "done_reason": "stop",
+        "stream_terminal_received": true,
+        "actual_server_model": "qwen/qwen-2.5-72b-instruct",
+        "response_id": "049b01a341809abdad0523f2d804f5cf",
+        "usage_available": true,
+        "raw_credential_echo_redactions": 0,
+        "phase": "controlled_stall_review",
+        "requested_obligation": "stall_stability",
+        "operation": "replace_one",
+        "model_owns_predicates_and_timing": true,
+        "syntax_assembly_only": true
+      },
+      "before": {
+        "rows": 70256,
+        "unknown": 0,
+        "triggers": 16817,
+        "false_positives": 0,
+        "detections": 214,
+        "misses": 2,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1224
+      },
+      "after": {
+        "rows": 70256,
+        "unknown": 0,
+        "triggers": 16815,
+        "false_positives": 0,
+        "detections": 214,
+        "misses": 2,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1224
+      },
+      "target_keys": [
+        "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+        "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb"
+      ]
+    }
+  }
+}

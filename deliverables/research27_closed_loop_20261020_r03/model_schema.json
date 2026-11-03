@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "operation",
+    "assertions",
+    "reason"
+  ],
+  "properties": {
+    "operation": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "add",
+        "replace"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "assertions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "antecedent",
+          "consequent",
+          "timing",
+          "obligation"
+        ],
+        "properties": {
+          "antecedent": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[a-zA-Z0-9_ ()!<>=&$.'\\[\\],:+*/%?-]+$"
+          },
+          "consequent": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[a-zA-Z0-9_ ()!<>=&$.'\\[\\],:+*/%?-]+$"
+          },
+          "timing": {
+            "type": "string",
+            "enum": [
+              "same_sample",
+              "next_sample"
+            ]
+          },
+          "obligation": {
+            "type": "string",
+            "enum": [
+              "order_payload",
+              "drain_no_loss",
+              "no_unsolicited_output",
+              "stall_stability",
+              "reset_cancellation"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

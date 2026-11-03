@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+  "parent_bug_id": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "weakness_class": "single_cycle_implication",
+      "property": "incr_wptr_i |-> (wptr_o != 2'd3)",
+      "antecedent": "incr_wptr_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "A one-sample endpoint check does not establish modulo wrap.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W1_single_cycle_implication"
+    },
+    {
+      "weakness_class": "final_output_only",
+      "property": "(wptr_o == 2'd3) |=> (wptr_o != 2'd3)",
+      "antecedent": "wptr_o == 2'd3",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Observes only that the endpoint changes, not that it wraps to zero under an accepted write.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W2_final_output_only"
+    },
+    {
+      "weakness_class": "delay_removed",
+      "property": "(incr_wptr_i && (wptr_o == 2'd3)) |-> (wptr_o == 2'd0)",
+      "antecedent": "incr_wptr_i && (wptr_o == 2'd3)",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Removes the required next-cycle wrap transition.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W3_delay_removed"
+    },
+    {
+      "weakness_class": "antecedent_removed",
+      "property": "wptr_o == 2'd0",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Drops both increment and terminal-pointer triggers.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W4_antecedent_removed"
+    },
+    {
+      "weakness_class": "simple_invariant",
+      "property": "wptr_o <= 2'd3",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Range checking cannot distinguish correct modulo update.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W5_simple_invariant"
+    }
+  ]
+}

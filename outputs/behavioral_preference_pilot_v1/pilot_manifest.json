@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "experiment_id": "behavioral_preference_pilot_v1",
+  "status": "pilot_initialized_generation_not_run",
+  "config_path": "configs/behavioral_preference_pilot_v1.json",
+  "config_sha256": "53da62f6f647300ae131bf743364cd56919d3e4be15bdf5b0d4e5bc1884aa92f",
+  "split_source": "outputs/formal_group_heldout_splits_v1/parent_held_out.csv",
+  "split_source_sha256": "64a733aa9b402e57bc9adab70c4446b968a62d17ef6d0936878e38d574acdc4f",
+  "parent_count": 30,
+  "project_counts": {
+    "common_cells": 10,
+    "opentitan": 10,
+    "verilog_axis": 10
+  },
+  "bug_class_counts": {
+    "combination_protocol": 8,
+    "combination_same_cycle": 4,
+    "temporal_cross_cycle": 18
+  },
+  "bug_family_count": 29,
+  "observed_candidate_failure_modes": {
+    "required_minimum": 4,
+    "allowed_vocabulary": [
+      "compile_fail",
+      "signal_illegal",
+      "fixed_false_positive",
+      "target_miss",
+      "vacuous",
+      "timeout"
+    ],
+    "status": "pending_candidate_validation"
+  },
+  "parents": [
+    {
+      "case_id": "case510_cc_spill_register_flush_push_priority",
+      "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+      "source_project": "common_cells",
+      "source_module": "cc_spill_register_flushable",
+      "bug_family": "flush_over_push_priority",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case510_cc_spill_register_flush_push_priority"
+    },
+    {
+      "case_id": "case452_prim_clock_timeout_clear_condition",
+      "parent_bug_id": "case452_prim_clock_timeout_clear_condition",
+      "source_project": "opentitan",
+      "source_module": "prim_clock_timeout",
+      "bug_family": "timeout_clear_condition_conjunction",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case452_prim_clock_timeout_clear_condition"
+    },
+    {
+      "case_id": "case476_sync_reset_release_one_cycle_early",
+      "parent_bug_id": "case476_sync_reset_release_one_cycle_early",
+      "source_project": "verilog_axis",
+      "source_module": "sync_reset",
+      "bug_family": "reset_release_latency",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case476_sync_reset_release_one_cycle_early"
+    },
+    {
+      "case_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "parent_bug_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_fifo_gray",
+      "bug_family": "gray_pointer_synchronizer_depth",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case504_cc_cdc_fifo_gray_pointer_visible_early"
+    },
+    {
+      "case_id": "case115_prim_edge_both_edges_collapsed",
+      "parent_bug_id": "case115_prim_edge_both_edges_collapsed",
+      "source_project": "opentitan",
+      "source_module": "prim_edge_detector",
+      "bug_family": "edge_direction",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "admission_source": "formal scale120 universe; variants grouped by frozen parent map",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case115_prim_edge_both_edges_collapsed"
+    },
+    {
+      "case_id": "case494_axis_ram_switch_response_pipeline",
+      "parent_bug_id": "case494_axis_ram_switch_response_pipeline",
+      "source_project": "verilog_axis",
+      "source_module": "axis_ram_switch",
+      "bug_family": "response_pipeline_stage_skipped",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case494_axis_ram_switch_response_pipeline"
+    },
+    {
+      "case_id": "case438_cc_fifo_protocol_suppress_2",
+      "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_module": "cc_fifo",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case438_cc_fifo_protocol_suppress_2"
+    },
+    {
+      "case_id": "case139_prim_regwe_addr_check_false_positive",
+      "parent_bug_id": "case139_prim_regwe_addr_check_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_reg_we_check",
+      "bug_family": "write_enable_position_legality",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "admission_source": "formal scale120 universe; variants grouped by frozen parent map",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case139_prim_regwe_addr_check_false_positive"
+    },
+    {
+      "case_id": "case461_axis_adapter_segment_boundary_early",
+      "parent_bug_id": "case461_axis_adapter_segment_boundary_early",
+      "source_project": "verilog_axis",
+      "source_module": "axis_adapter",
+      "bug_family": "segment_boundary_early",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case461_axis_adapter_segment_boundary_early"
+    },
+    {
+      "case_id": "case441_cc_stream_mux_protocol_suppress_1",
+      "parent_bug_id": "case441_cc_stream_mux_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_mux",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case441_cc_stream_mux_protocol_suppress_1"
+    },
+    {
+      "case_id": "case454_prim_count_simultaneous_command",
+      "parent_bug_id": "case454_prim_count_simultaneous_command",
+      "source_project": "opentitan",
+      "source_module": "prim_count",
+      "bug_family": "simultaneous_increment_decrement_not_suppressed",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case454_prim_count_simultaneous_command"
+    },
+    {
+      "case_id": "case506_axis_crosspoint_simultaneous_source_priority",
+      "parent_bug_id": "case506_axis_crosspoint_simultaneous_source_priority",
+      "source_project": "verilog_axis",
+      "source_module": "axis_crosspoint",
+      "bug_family": "simultaneous_contender_priority",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case506_axis_crosspoint_simultaneous_source_priority"
+    },
+    {
+      "case_id": "case498_cc_serial_deglitch_qualification_short",
+      "parent_bug_id": "case498_cc_serial_deglitch_qualification_short",
+      "source_project": "common_cells",
+      "source_module": "cc_serial_deglitch",
+      "bug_family": "qualification_count_reduced",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case498_cc_serial_deglitch_qualification_short"
+    },
+    {
+      "case_id": "case135_prim_intr_enable_mask_ignored",
+      "parent_bug_id": "case135_prim_intr_enable_mask_ignored",
+      "source_project": "opentitan",
+      "source_module": "prim_intr_hw",
+      "bug_family": "interrupt_masking",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "admission_source": "formal scale120 universe; variants grouped by frozen parent map",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case135_prim_intr_enable_mask_ignored"
+    },
+    {
+      "case_id": "case463_axis_frame_join_port_skip",
+      "parent_bug_id": "case463_axis_frame_join_port_skip",
+      "source_project": "verilog_axis",
+      "source_module": "axis_frame_join",
+      "bug_family": "frame_join_port_order",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case463_axis_frame_join_port_skip"
+    },
+    {
+      "case_id": "case499_cc_shift_reg_gated_stage_bypass",
+      "parent_bug_id": "case499_cc_shift_reg_gated_stage_bypass",
+      "source_project": "common_cells",
+      "source_module": "cc_shift_register_gated",
+      "bug_family": "enabled_shift_stage_bypassed",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case499_cc_shift_reg_gated_stage_bypass"
+    },
+    {
+      "case_id": "case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed",
+      "parent_bug_id": "case101_prim_onehot_multihot_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "onehot_violation_masked",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "admission_source": "formal scale120 universe; variants grouped by frozen parent map",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case101_prim_onehot_multihot_suppressed"
+    },
+    {
+      "case_id": "case478_axis_srl_register_ready_recovery",
+      "parent_bug_id": "case478_axis_srl_register_ready_recovery",
+      "source_project": "verilog_axis",
+      "source_module": "axis_srl_register",
+      "bug_family": "backpressure_ready_recovery",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case478_axis_srl_register_ready_recovery"
+    },
+    {
+      "case_id": "case459_cc_trip_counter_trip_one_cycle_late",
+      "parent_bug_id": "case459_cc_trip_counter_trip_one_cycle_late",
+      "source_project": "common_cells",
+      "source_module": "cc_trip_counter",
+      "bug_family": "trip_pulse_and_clear_timing",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case459_cc_trip_counter_trip_one_cycle_late"
+    },
+    {
+      "case_id": "case133_prim_edge_negedge_missing",
+      "parent_bug_id": "case133_prim_edge_negedge_missing",
+      "source_project": "opentitan",
+      "source_module": "prim_edge_detector",
+      "bug_family": "edge_presence",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "admission_source": "formal scale120 universe; variants grouped by frozen parent map",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case133_prim_edge_negedge_missing"
+    },
+    {
+      "case_id": "case505_axis_stat_counter_frame_pulse_early",
+      "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+      "source_project": "verilog_axis",
+      "source_module": "axis_stat_counter",
+      "bug_family": "frame_status_pipeline_latency",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case505_axis_stat_counter_frame_pulse_early"
+    },
+    {
+      "case_id": "case508_cc_stream_fork_partial_ready_accept",
+      "parent_bug_id": "case508_cc_stream_fork_partial_ready_accept",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_fork",
+      "bug_family": "fork_atomic_ready_conjunction",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case508_cc_stream_fork_partial_ready_accept"
+    },
+    {
+      "case_id": "case109_prim_arbiter_valid_depends_on_ready",
+      "parent_bug_id": "case109_prim_arbiter_valid_depends_on_ready",
+      "source_project": "opentitan",
+      "source_module": "prim_arbiter_fixed",
+      "bug_family": "ready_valid_handshake",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "admission_source": "formal scale120 universe; variants grouped by frozen parent map",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case109_prim_arbiter_valid_depends_on_ready"
+    },
+    {
+      "case_id": "case492_axis_async_fifo_gray_visibility",
+      "parent_bug_id": "case492_axis_async_fifo_gray_visibility",
+      "source_project": "verilog_axis",
+      "source_module": "axis_async_fifo",
+      "bug_family": "gray_pointer_sync_stage_removed",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case492_axis_async_fifo_gray_visibility"
+    },
+    {
+      "case_id": "case484_cc_exp_backoff_clear_set_priority",
+      "parent_bug_id": "case484_cc_exp_backoff_clear_set_priority",
+      "source_project": "common_cells",
+      "source_module": "cc_exp_backoff",
+      "bug_family": "simultaneous_clear_set_priority",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case484_cc_exp_backoff_clear_set_priority"
+    },
+    {
+      "case_id": "case455_prim_crc32_set_enable_coupling",
+      "parent_bug_id": "case455_prim_crc32_set_enable_coupling",
+      "source_project": "opentitan",
+      "source_module": "prim_crc32",
+      "bug_family": "crc_set_update_enable_coupled",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case455_prim_crc32_set_enable_coupling"
+    },
+    {
+      "case_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "parent_bug_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "source_project": "verilog_axis",
+      "source_module": "axis_srl_fifo",
+      "bug_family": "simultaneous_push_pop_occupancy",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case465_axis_srl_fifo_simultaneous_occupancy"
+    },
+    {
+      "case_id": "case457_cc_delta_counter_load_enable_priority",
+      "parent_bug_id": "case457_cc_delta_counter_load_enable_priority",
+      "source_project": "common_cells",
+      "source_module": "cc_delta_counter",
+      "bug_family": "load_enable_priority",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case457_cc_delta_counter_load_enable_priority"
+    },
+    {
+      "case_id": "case134_prim_intr_event_not_sticky",
+      "parent_bug_id": "case134_prim_intr_event_not_sticky",
+      "source_project": "opentitan",
+      "source_module": "prim_intr_hw",
+      "bug_family": "event_latching",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "admission_source": "formal scale120 universe; variants grouped by frozen parent map",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case134_prim_intr_event_not_sticky"
+    },
+    {
+      "case_id": "case480_axis_cobs_decode_ff_zero_suppression",
+      "parent_bug_id": "case480_axis_cobs_decode_ff_zero_suppression",
+      "source_project": "verilog_axis",
+      "source_module": "axis_cobs_decode",
+      "bug_family": "cobs_max_run_zero_suppression",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "admission_source": "D:\\AssertionForge-main1\\rtl_cases_real_scale210_independent_next\\hardness_admission_report.csv",
+      "split": "train",
+      "heldout_group_type": "parent_bug_id",
+      "heldout_group_value": "case480_axis_cobs_decode_ff_zero_suppression"
+    }
+  ],
+  "frozen_asset_hashes": [
+    {
+      "path": "deliverables/final46_main_experiment_20260806/SHA256SUMS.txt",
+      "file_count": 1,
+      "sha256": "9601362f7a9c733697906e23de007d44cc0bf309e0ae4b24891cf2fe84689fef"
+    },
+    {
+      "path": "deliverables/final46_main_experiment_20260806/unified_main_table.csv",
+      "file_count": 1,
+      "sha256": "9228dfdfe1a29d841ec960e9aa4da3c860437806feab648069124c22fa648eee"
+    },
+    {
+      "path": "deliverables/final46_main_experiment_20260806/parent_deduplicated_results.csv",
+      "file_count": 1,
+      "sha256": "b90620b2b54c11ff1747ae4da288fbe81a25f75d1e6692dbb97ae41d452d6af7"
+    },
+    {
+      "path": "outputs/temporal40_parent_bug_reorg/temporal40_parent_bug_summary.json",
+      "file_count": 1,
+      "sha256": "4a4085b7e26caa6ebf34233df91394748a54c8e3a98b9598972290307e780ea4"
+    },
+    {
+      "path": "outputs/temporal40_parent_bug_reorg/temporal40_parent_bug_reorganized.xlsx",
+      "file_count": 1,
+      "sha256": "9a2a060c494019bc9593ea3ddc09a00549b670f8a42a036739e6231da02a1b72"
+    }
+  ],
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13"
+  },
+  "joint_ood_feasibility_note": {
+    "all_frozen_universe_projects": [
+      "common_cells",
+      "opentitan",
+      "verilog_axis"
+    ],
+    "pilot_train_projects": [
+      "common_cells",
+      "opentitan",
+      "verilog_axis"
+    ],
+    "unseen_projects_remaining": [],
+    "status": "not_a_go_no_go_condition",
+    "reason": "Parent-, project-, and bug-family-OOD are evaluated as separate frozen dimensions. No joint three-way unseen requirement is imposed."
+  }
+}

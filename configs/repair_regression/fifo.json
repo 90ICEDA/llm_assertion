@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "kind": "CaseInput",
+  "case_id": "fifo",
+  "bug_description": "Depth=0: empty_o == !push_i in the same cycle, including idle push_i=0. Data is combinational passthrough and full_o == !pop_i. The target obligation is both polarities of empty. Hold presented data while push=1 and pop=0. DataWidth may change; the compatibility adapter is ONLY valid for Depth=0.",
+  "top_module": "cc_fifo",
+  "rtl": {
+    "fixed": {
+      "sources": [
+        "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_correct.v"
+      ],
+      "include_dirs": [
+        "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01",
+        "external/common_cells/include"
+      ],
+      "defines": []
+    },
+    "buggy": {
+      "sources": [
+        "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_buggy.v"
+      ],
+      "include_dirs": [
+        "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01",
+        "external/common_cells/include"
+      ],
+      "defines": []
+    }
+  },
+  "existing_tests": [
+    "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb.v",
+    "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb_decoy.v",
+    "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb_holdout.v"
+  ],
+  "parameters": {
+    "DataWidth": 8,
+    "Depth": 0
+  },
+  "clock": {
+    "signal": "clk_i",
+    "event": "posedge_pre_NBA",
+    "input_drive": "negedge"
+  },
+  "reset": {
+    "signal": "rst_ni",
+    "active": 0,
+    "cancel_pending": true,
+    "initial_samples": 2
+  },
+  "signals": {
+    "inputs": {
+      "clr_i": 1,
+      "flush_i": 1,
+      "push_i": 1,
+      "pop_i": 1,
+      "data_i": 8
+    },
+    "outputs": {
+      "full_o": 1,
+      "empty_o": 1,
+      "usage_o": 1,
+      "data_o": 8
+    },
+    "mapping": {
+      "clr_i": {
+        "buggy": "clr_i",
+        "fixed": "clr_i",
+        "width": 1
+      },
+      "flush_i": {
+        "buggy": "flush_i",
+        "fixed": "flush_i",
+        "width": 1
+      },
+      "push_i": {
+        "buggy": "push_i",
+        "fixed": "push_i",
+        "width": 1
+      },
+      "pop_i": {
+        "buggy": "pop_i",
+        "fixed": "pop_i",
+        "width": 1
+      },
+      "data_i": {
+        "buggy": "data_i",
+        "fixed": "data_i",
+        "width": 8
+      },
+      "full_o": {
+        "buggy": "full_o",
+        "fixed": "full_o",
+        "width": 1
+      },
+      "empty_o": {
+        "buggy": "empty_o",
+        "fixed": "empty_o",
+        "width": 1
+      },
+      "usage_o": {
+        "buggy": "usage_o",
+        "fixed": "usage_o",
+        "width": 1
+      },
+      "data_o": {
+        "buggy": "data_o",
+        "fixed": "data_o",
+        "width": 8
+      },
+      "clk_i": {
+        "buggy": "clk_i",
+        "fixed": "clk_i",
+        "width": 1
+      },
+      "rst_ni": {
+        "buggy": "rst_ni",
+        "fixed": "rst_ni",
+        "width": 1
+      }
+    }
+  },
+  "environment": [
+    {
+      "path": "scripts/contract_v2_spec.py",
+      "sha256": "637ebe13f81dd65c4162833e450bbf4229c7ff0e2ec52176658f911adbfbccfa",
+      "location": "contract(): legal_inputs, reset_cancellation",
+      "basis": "Imported confirmed experiment interface: unsigned samples; FIFO must hold push/data while stalled until acceptance or reset."
+    }
+  ],
+  "tool_config": {
+    "backend": "iverilog",
+    "timeout_seconds": 30,
+    "iverilog": "iverilog",
+    "vvp": "vvp",
+    "jasper": "jg",
+    "model_url": "http://127.0.0.1:11434"
+  },
+  "input_hashes": {
+    "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_correct.v": "e85a94142f68b5b9e654325a88e8681368c07ad4b8cef01092b5248eb57d1ba5",
+    "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_buggy.v": "611f58dce6de3f204d7879fd9ed1dfad31dac1fff7159946f28c5359f8e722a1",
+    "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/spec.md": "130a1923a32e81e3129affcbb0a0ca5cd2b7494b4d721e24ca474cd7b4826789",
+    "scripts/contract_v2_spec.py": "637ebe13f81dd65c4162833e450bbf4229c7ff0e2ec52176658f911adbfbccfa",
+    "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb.v": "aa82a4ed20f75d51412fd31070fb28e063b7463f17e590d07cc6ce9432d5088b",
+    "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb_decoy.v": "3f6359432ffa7849371116d54a9f1e2d5251fba85a46a64b72aded455e0d6301",
+    "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb_holdout.v": "3c2506e3760ce360afbf054e17345e06aa463885c909ff971a233c9ef6ae036b"
+  },
+  "obligation_source": "rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/spec.md",
+  "limitations": [
+    "Existing artificial RTL mutation; no historical repair commit or universal correctness claim.",
+    "Restricted sampled monitor, not native concurrent SVA or formal proof.",
+    "Depth=0 compatibility RTL only; upstream parameter-type RTL not executed; no occupancy/storage/overlap claims.",
+    "Upstream full_write/empty_read and Depth>0 assertions are not the selected adapter interface.",
+    "Data/full/usage are observed, not newly asserted DUT obligations."
+  ]
+}

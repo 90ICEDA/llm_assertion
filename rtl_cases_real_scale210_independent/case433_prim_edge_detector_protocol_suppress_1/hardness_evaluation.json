@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "evaluator_revision": 5,
+  "case_name": "case433_prim_edge_detector_protocol_suppress_1",
+  "input_hashes": {
+    "correct.v": "a4df5485f3f07427990b672a3745a9d94581479371b98f60903bf9805907fb22",
+    "buggy.v": "c36b543d3ba20073e24c84c344e43b262563115ccb9bde7916d631699493dceb",
+    "tb.v": "64a92d1869252e6e10916b273cb7d5888fe04f8171aa3b0dbb7d3a5e0153c237",
+    "tb_holdout.v": "061b33e2300b1ed920293f8ec6e187528f207d55ba141e27b2765040b95058ea",
+    "golden.sva": "efa01d51a8d5a27bf9d23fc02520763f3bdf97943eac56fd067f7def9d53bb04",
+    "weak_assertions.sva": "393efa93557bc75f7658316380938a9ff7e16d9019f8a527dcd5e1c067080b95",
+    "weak_assertions.json": "eef24c58cb2c9b391a8934ba48360e2332c79a7dc8d218d3fd8a70b6564d1461"
+  },
+  "monitor_definitions": [
+    {
+      "name": "golden",
+      "kind": "golden",
+      "declared_nonempty": true,
+      "property": "@(posedge clk_i) disable iff (!rst_ni) (q_sync_o == d_i)",
+      "supported": true,
+      "parsed": {
+        "event": "posedge clk_i",
+        "disable": "!rst_ni",
+        "antecedent": "1'b1",
+        "consequent": "q_sync_o == d_i",
+        "implication": "invariant"
+      }
+    },
+    {
+      "name": "W1_single_cycle_implication",
+      "kind": "single_cycle_implication",
+      "declared_nonempty": true,
+      "property": "@(posedge clk_i) disable iff (!rst_ni) d_i |-> q_sync_o",
+      "supported": true,
+      "parsed": {
+        "event": "posedge clk_i",
+        "disable": "!rst_ni",
+        "antecedent": "d_i",
+        "consequent": "q_sync_o",
+        "implication": "overlap"
+      }
+    },
+    {
+      "name": "W2_final_output_only",
+      "kind": "final_output_only",
+      "declared_nonempty": true,
+      "property": "@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(q_sync_o)",
+      "supported": true,
+      "parsed": {
+        "event": "posedge clk_i",
+        "disable": "!rst_ni",
+        "antecedent": "rst_ni",
+        "consequent": "!$isunknown(q_sync_o)",
+        "implication": "overlap"
+      }
+    },
+    {
+      "name": "W3_delay_removed",
+      "kind": "delay_removed",
+      "declared_nonempty": true,
+      "property": "@(posedge clk_i) disable iff (!rst_ni) d_i |=> q_sync_o",
+      "supported": true,
+      "parsed": {
+        "event": "posedge clk_i",
+        "disable": "!rst_ni",
+        "antecedent": "d_i",
+        "consequent": "q_sync_o",
+        "implication": "nonoverlap"
+      }
+    },
+    {
+      "name": "W4_antecedent_removed",
+      "kind": "antecedent_removed",
+      "declared_nonempty": false,
+      "property": "@(posedge clk_i) disable iff (!rst_ni) q_sync_o",
+      "supported": true,
+      "parsed": {
+        "event": "posedge clk_i",
+        "disable": "!rst_ni",
+        "antecedent": "1'b1",
+        "consequent": "q_sync_o",
+        "implication": "invariant"
+      }
+    },
+    {
+      "name": "W5_simple_invariant",
+      "kind": "simple_invariant",
+      "declared_nonempty": false,
+      "property": "@(posedge clk_i) disable iff (!rst_ni) !(q_posedge_pulse_o && q_negedge_pulse_o)",
+      "supported": true,
+      "parsed": {
+        "event": "posedge clk_i",
+        "disable": "!rst_ni",
+        "antecedent": "1'b1",
+        "consequent": "!(q_posedge_pulse_o && q_negedge_pulse_o)",
+        "implication": "invariant"
+      }
+    }
+  ],
+  "golden": {
+    "name": "golden",
+    "kind": "golden",
+    "declared_nonempty_antecedent": true,
+    "supported": true,
+    "primary": {
+      "compile_ok": true,
+      "good_pass": true,
+      "bad_fail": true,
+      "antecedent_hit_good": true,
+      "antecedent_hit_bad": true,
+      "non_vacuous_bad": true,
+      "good_antecedent_hits": 6,
+      "bad_antecedent_hits": 6,
+      "good_failure_count": 0,
+      "bad_failure_count": 2
+    },
+    "heldout": {
+      "compile_ok": true,
+      "good_pass": true,
+      "bad_fail": true,
+      "antecedent_hit_good": true,
+      "antecedent_hit_bad": true,
+      "non_vacuous_bad": true,
+      "good_antecedent_hits": 7,
+      "bad_antecedent_hits": 7,
+      "good_failure_count": 0,
+      "bad_failure_count": 2
+    }
+  },
+  "weak_assertions": [
+    {
+      "name": "W1_single_cycle_implication",
+      "kind": "single_cycle_implication",
+      "declared_nonempty_antecedent": true,
+      "supported": true,
+      "primary": {
+        "compile_ok": true,
+        "good_pass": true,
+        "bad_fail": true,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": true,
+        "good_antecedent_hits": 2,
+        "bad_antecedent_hits": 2,
+        "good_failure_count": 0,
+        "bad_failure_count": 2
+      },
+      "heldout": {
+        "compile_ok": true,
+        "good_pass": true,
+        "bad_fail": true,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": true,
+        "good_antecedent_hits": 2,
+        "bad_antecedent_hits": 2,
+        "good_failure_count": 0,
+        "bad_failure_count": 2
+      }
+    },
+    {
+      "name": "W2_final_output_only",
+      "kind": "final_output_only",
+      "declared_nonempty_antecedent": true,
+      "supported": true,
+      "primary": {
+        "compile_ok": true,
+        "good_pass": true,
+        "bad_fail": false,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": true,
+        "good_antecedent_hits": 6,
+        "bad_antecedent_hits": 6,
+        "good_failure_count": 0,
+        "bad_failure_count": 0
+      },
+      "heldout": {
+        "compile_ok": true,
+        "good_pass": true,
+        "bad_fail": false,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": true,
+        "good_antecedent_hits": 7,
+        "bad_antecedent_hits": 7,
+        "good_failure_count": 0,
+        "bad_failure_count": 0
+      }
+    },
+    {
+      "name": "W3_delay_removed",
+      "kind": "delay_removed",
+      "declared_nonempty_antecedent": true,
+      "supported": true,
+      "primary": {
+        "compile_ok": true,
+        "good_pass": false,
+        "bad_fail": true,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": true,
+        "good_antecedent_hits": 2,
+        "bad_antecedent_hits": 2,
+        "good_failure_count": 1,
+        "bad_failure_count": 2
+      },
+      "heldout": {
+        "compile_ok": true,
+        "good_pass": false,
+        "bad_fail": true,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": true,
+        "good_antecedent_hits": 2,
+        "bad_antecedent_hits": 2,
+        "good_failure_count": 1,
+        "bad_failure_count": 2
+      }
+    },
+    {
+      "name": "W4_antecedent_removed",
+      "kind": "antecedent_removed",
+      "declared_nonempty_antecedent": false,
+      "supported": true,
+      "primary": {
+        "compile_ok": true,
+        "good_pass": false,
+        "bad_fail": true,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": false,
+        "good_antecedent_hits": 6,
+        "bad_antecedent_hits": 6,
+        "good_failure_count": 4,
+        "bad_failure_count": 6
+      },
+      "heldout": {
+        "compile_ok": true,
+        "good_pass": false,
+        "bad_fail": true,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": false,
+        "good_antecedent_hits": 7,
+        "bad_antecedent_hits": 7,
+        "good_failure_count": 5,
+        "bad_failure_count": 7
+      }
+    },
+    {
+      "name": "W5_simple_invariant",
+      "kind": "simple_invariant",
+      "declared_nonempty_antecedent": false,
+      "supported": true,
+      "primary": {
+        "compile_ok": true,
+        "good_pass": true,
+        "bad_fail": false,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": false,
+        "good_antecedent_hits": 6,
+        "bad_antecedent_hits": 6,
+        "good_failure_count": 0,
+        "bad_failure_count": 0
+      },
+      "heldout": {
+        "compile_ok": true,
+        "good_pass": true,
+        "bad_fail": false,
+        "antecedent_hit_good": true,
+        "antecedent_hit_bad": true,
+        "non_vacuous_bad": false,
+        "good_antecedent_hits": 7,
+        "bad_antecedent_hits": 7,
+        "good_failure_count": 0,
+        "bad_failure_count": 0
+      }
+    }
+  ],
+  "evaluation_complete": true
+}

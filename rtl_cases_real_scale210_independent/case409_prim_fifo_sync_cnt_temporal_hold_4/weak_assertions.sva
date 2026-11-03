@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Only demands a change and does not constrain its value or clear interaction.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) incr_wptr_i |-> (wptr_o != $past(wptr_o)));
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Checks only the final pointer range.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) incr_wptr_i |=> (wptr_o <= 2'd3));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Uses the update equation in the request sample rather than the next sample.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (incr_wptr_i && !clr_i) |-> (wptr_o == ($past(wptr_o) + 1'b1)));
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the accepted-increment condition.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) wptr_o == ($past(wptr_o) + 1'b1));
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: A pointer-range invariant misses wrong increment timing and direction.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) wptr_o <= 2'd3);

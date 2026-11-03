@@ -1,0 +1,1 @@
+`async_en_i` must pass through both synchronizer stages before `en_o` can enable the gated clock. On a sampled rising asynchronous enable, `en_o` must still be low at the following sample and may rise only after the second stage captures it. `test_en_i` bypasses only the gate, not `en_o`.

@@ -1,0 +1,1 @@
+assert property (@(posedge clk) disable iff (rst) (sv && sr && !sl && dut.upsize.seg_reg == 2) |=> (dut.upsize.seg_reg == 3 && !mv));

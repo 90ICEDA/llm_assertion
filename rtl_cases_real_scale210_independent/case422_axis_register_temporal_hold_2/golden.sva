@@ -1,0 +1,2 @@
+// Temporal type: one-cycle valid propagation
+assert property (@(posedge clk) disable iff (rst) (s_axis_tvalid && s_axis_tready && m_axis_tready) |=> m_axis_tvalid);

@@ -1,0 +1,1332 @@
+{
+  "total": {
+    "model_calls": 0,
+    "prompt_tokens_known_subtotal": 0,
+    "completion_tokens_known_subtotal": 0,
+    "usage_unavailable_calls": 0,
+    "prompt_tokens_total": 0,
+    "completion_tokens_total": 0,
+    "model_wall_seconds_known_subtotal": 0,
+    "model_wall_seconds_unavailable_calls": 0,
+    "model_status": {},
+    "native_compile_calls": 18,
+    "native_execute_calls": 18,
+    "compile_smoke_execute_calls": 18,
+    "native_compile_wall_seconds": 204.21040486800007,
+    "native_execute_wall_seconds": 0.36838249700002024,
+    "native_commands_failed_or_timed_out": 0,
+    "tool_version_query_calls": 18,
+    "formal_calls": 0
+  },
+  "by_phase": {
+    "native_controls": {
+      "model_calls": 0,
+      "prompt_tokens_known_subtotal": 0,
+      "completion_tokens_known_subtotal": 0,
+      "usage_unavailable_calls": 0,
+      "prompt_tokens_total": 0,
+      "completion_tokens_total": 0,
+      "model_wall_seconds_known_subtotal": 0,
+      "model_wall_seconds_unavailable_calls": 0,
+      "model_status": {},
+      "native_compile_calls": 18,
+      "native_execute_calls": 18,
+      "compile_smoke_execute_calls": 18,
+      "native_compile_wall_seconds": 204.21040486800007,
+      "native_execute_wall_seconds": 0.36838249700002024,
+      "native_commands_failed_or_timed_out": 0,
+      "tool_version_query_calls": 18,
+      "formal_calls": 0
+    }
+  },
+  "model_calls": [],
+  "native_commands": [
+    {
+      "path": "native_controls/baseline/native/alignment/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 10.070619076000007
+    },
+    {
+      "path": "native_controls/baseline/native/alignment/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.018995252999999934
+    },
+    {
+      "path": "native_controls/baseline/native/alignment/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11335217999999969
+    },
+    {
+      "path": "native_controls/baseline/native/alignment/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 10.334872217000004
+    },
+    {
+      "path": "native_controls/baseline/native/alignment/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.02035402199999936
+    },
+    {
+      "path": "native_controls/baseline/native/alignment/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/alignment/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.17319047600000204
+    },
+    {
+      "path": "native_controls/baseline/native/history/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 12.447983039000007
+    },
+    {
+      "path": "native_controls/baseline/native/history/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.021598976999996466
+    },
+    {
+      "path": "native_controls/baseline/native/history/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11469871299999568
+    },
+    {
+      "path": "native_controls/baseline/native/history/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 12.453535047000003
+    },
+    {
+      "path": "native_controls/baseline/native/history/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.02212011099999245
+    },
+    {
+      "path": "native_controls/baseline/native/history/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/history/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.1239346600000033
+    },
+    {
+      "path": "native_controls/baseline/native/search/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 11.526814154000007
+    },
+    {
+      "path": "native_controls/baseline/native/search/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.020239648000000443
+    },
+    {
+      "path": "native_controls/baseline/native/search/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11317701299999783
+    },
+    {
+      "path": "native_controls/baseline/native/search/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 10.749874894000001
+    },
+    {
+      "path": "native_controls/baseline/native/search/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.0193968779999949
+    },
+    {
+      "path": "native_controls/baseline/native/search/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/baseline/native/search/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11247500700000046
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 9.949086391999998
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.019220151999974178
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11429705300000137
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 9.875920736000012
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.01848787100001914
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/alignment/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.1135162580000042
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 13.114642195000016
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.02206348900000421
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11859820099999752
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 12.986655506999995
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.023274654999994482
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/history/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11253546199998254
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 11.681629790999978
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.02007842399999049
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.12512005799999315
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 11.193360516000013
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.020705329000008987
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_history_loss/native/search/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11177381400000286
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 9.97221451899999
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.01804922799999531
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11303354700000057
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 9.901944393999997
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.01877968899999871
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/alignment/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11508682800000258
+    },
+    {
+      "path": "native_controls/local_positive/native/history/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 13.26081060200002
+    },
+    {
+      "path": "native_controls/local_positive/native/history/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.022113541000010173
+    },
+    {
+      "path": "native_controls/local_positive/native/history/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11153923599999871
+    },
+    {
+      "path": "native_controls/local_positive/native/history/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 12.834577128999996
+    },
+    {
+      "path": "native_controls/local_positive/native/history/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.022753797000007125
+    },
+    {
+      "path": "native_controls/local_positive/native/history/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/history/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.3366244169999959
+    },
+    {
+      "path": "native_controls/local_positive/native/search/after/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 11.002725982000015
+    },
+    {
+      "path": "native_controls/local_positive/native/search/after/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.020608222000021215
+    },
+    {
+      "path": "native_controls/local_positive/native/search/after/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/after",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11126263399998493
+    },
+    {
+      "path": "native_controls/local_positive/native/search/before/compile.json",
+      "phase": "native_controls",
+      "kind": "compile",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_defines.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 10.853138677999993
+    },
+    {
+      "path": "native_controls/local_positive/native/search/before/execute.json",
+      "phase": "native_controls",
+      "kind": "execute",
+      "smoke": true,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.01954321100001266
+    },
+    {
+      "path": "native_controls/local_positive/native/search/before/tool_version.json",
+      "phase": "native_controls",
+      "kind": "tool_version",
+      "smoke": false,
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research135_qualification_20261026_r01/native_controls/local_positive/native/search/before",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.11566082699999924
+    }
+  ],
+  "native_status_counts": {
+    "compile_status": {
+      "passed": 18
+    },
+    "compile_error_category": {
+      "unavailable": 18
+    },
+    "tool_support_status": {
+      "supported_for_compiled_constructs": 18
+    },
+    "execution_status": {
+      "completed": 18
+    },
+    "trigger_status": {
+      "observed": 18
+    },
+    "property_status": {
+      "no_violation_within_executed_scope": 9,
+      "violation": 9
+    }
+  },
+  "native_records": [
+    {
+      "path": "native_controls/baseline/native/alignment/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/baseline/native/alignment/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/baseline/native/history/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/baseline/native/history/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/baseline/native/search/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/baseline/native/search/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_history_loss/native/alignment/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_history_loss/native/history/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_history_loss/native/search/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_positive/native/alignment/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_positive/native/history/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_positive/native/history/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_positive/native/search/after/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "path": "native_controls/local_positive/native/search/before/result.json",
+      "compile_status": "passed",
+      "compile_error_category": null,
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    }
+  ],
+  "recorded_model_cost": null,
+  "recorded_model_cost_crosscheck": null,
+  "accounting": "Physical attempt/compile/execute records, charged once; compile smoke included. No duplicated copied compile metadata. Search shared by B/D; pilot separate; wall sums are not elapsed makespan. Dollar cost unavailable.",
+  "monetary_cost": null
+}

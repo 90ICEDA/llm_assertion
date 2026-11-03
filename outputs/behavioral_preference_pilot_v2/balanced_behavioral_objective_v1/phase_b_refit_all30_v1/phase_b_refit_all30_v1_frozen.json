@@ -1,0 +1,103 @@
+{
+  "status": "frozen_before_phase_b_training",
+  "version": "balanced_behavioral_phase_b_refit_all30_v1",
+  "selected_variant": "anchor_20",
+  "selection_sha256": "7eceba54bdc5645b1086e1501298fb9c351f0d48c268e4692f77527ab2387678",
+  "objective_sha256": "53402dd41d252afd8953f2ebc197456837657991c1b24b131bb05119aaec9fdb",
+  "dpo_edge_pool_sha256": "f98ba705e5890b87da87726a5e37407ff5a0423812c074afb39ef7ad60d550e3",
+  "anchor_pool_sha256": "feb3afad89e942baffe2fd5512d9dc4efcdb87e2234b040d9e9dde079147be3d",
+  "schedule_sha256": "05dfe1dbe0a9c18309ab66b3193ab76f19efd0c052ecc4c3e4c1e5ab039f1df0",
+  "total_loss_token_budget": 245760,
+  "effective_parent_count": 30,
+  "effective_dpo_parent_count": 30,
+  "anchor_fraction": 0.2,
+  "schedule_audit": {
+    "anchor_fraction": 0.2,
+    "total_loss_tokens": 245760,
+    "bucket_tokens": {
+      "anchor": 49152,
+      "joint_fp_tp": 98304,
+      "fp_only": 49152,
+      "tp_only": 49152
+    },
+    "bucket_records": {
+      "anchor": 1336,
+      "joint_fp_tp": 1368,
+      "fp_only": 678,
+      "tp_only": 676
+    },
+    "cycle_audits": {
+      "anchor": {
+        "eligible_parents": 5,
+        "records_per_parent_per_cycle": 2,
+        "cycle_records": 10,
+        "cycle_max_candidate_degree": 2,
+        "micro_cycles": 2,
+        "rotation_uses_all_eligible_anchors": true
+      },
+      "anchor_schedule": {
+        "target_tokens": 49152,
+        "cycle_tokens": 368,
+        "full_cycles": 132,
+        "tail_records": 16
+      },
+      "joint_fp_tp": {
+        "eligible_parents": 15,
+        "records_per_parent_per_cycle": 2,
+        "cycle_records": 30,
+        "cycle_max_candidate_degree": 2
+      },
+      "joint_fp_tp_schedule": {
+        "target_tokens": 98304,
+        "cycle_tokens": 2156,
+        "full_cycles": 45,
+        "tail_records": 18
+      },
+      "fp_only": {
+        "eligible_parents": 30,
+        "records_per_parent_per_cycle": 2,
+        "cycle_records": 60,
+        "cycle_max_candidate_degree": 2
+      },
+      "fp_only_schedule": {
+        "target_tokens": 49152,
+        "cycle_tokens": 4348,
+        "full_cycles": 11,
+        "tail_records": 18
+      },
+      "tp_only": {
+        "eligible_parents": 9,
+        "records_per_parent_per_cycle": 1,
+        "cycle_records": 9,
+        "cycle_max_candidate_degree": 1
+      },
+      "tp_only_schedule": {
+        "target_tokens": 49152,
+        "cycle_tokens": 654,
+        "full_cycles": 74,
+        "tail_records": 10
+      }
+    },
+    "effective_anchor_count": 7,
+    "effective_anchor_parent_count": 5,
+    "anchor_repetitions": {
+      "case115_prim_edge_both_edges_collapsed__v3_slot_06": 264,
+      "case455_prim_crc32_set_enable_coupling__v3_slot_05": 267,
+      "case498_cc_serial_deglitch_qualification_short__v3_slot_04": 267,
+      "case505_axis_stat_counter_frame_pulse_early__v3_slot_06": 133,
+      "case505_axis_stat_counter_frame_pulse_early__v3_slot_07": 133,
+      "case510_cc_spill_register_flush_push_priority__v3_slot_06": 136,
+      "case510_cc_spill_register_flush_push_priority__v3_slot_07": 136
+    },
+    "unused_anchor_ids": [],
+    "max_anchor_example_token_share": 0.2041015625,
+    "max_anchor_parent_token_share": 0.2041015625,
+    "max_dpo_candidate_degree_in_any_cycle": 2,
+    "exact_budget": true
+  },
+  "forbidden_before_smoke_pass": [
+    "new frozen 48-query OOD generation",
+    "OOD outcome access",
+    "case-specific OOD tuning"
+  ]
+}

@@ -1,0 +1,16 @@
+--- correct.v
++++ buggy.v
+@@ -3,8 +3,10 @@
+   reg locked;
+   always @(posedge clk_i or negedge rst_ni) begin
+     if(!rst_ni) begin gnt_o<=0;locked<=0; end
+-    else if(locked) begin if(ready_i) begin locked<=0;gnt_o<=0;end end
+-    else if(req_i[0]) begin gnt_o<=2'b01;locked<=!ready_i;end
+-    else if(req_i[1]) begin gnt_o<=2'b10;locked<=!ready_i;end else gnt_o<=0;
++    else begin
++      // MUTATION: ignores the locked transaction and recomputes grant every cycle.
++      if(req_i[0]) gnt_o<=2'b01; else if(req_i[1]) gnt_o<=2'b10; else gnt_o<=0;
++      locked<=0;
++    end
+   end
+ endmodule

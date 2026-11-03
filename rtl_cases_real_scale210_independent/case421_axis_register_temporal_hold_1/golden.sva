@@ -1,0 +1,2 @@
+// Temporal type: one-cycle registered readiness
+assert property (@(posedge clk) disable iff (rst) (m_axis_tready && !m_axis_tvalid) |=> s_axis_tready);

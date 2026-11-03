@@ -1,0 +1,32 @@
+{
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "provider": "openai_compatible",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "options": {
+    "seed": 3121,
+    "temperature": 0,
+    "num_predict": 1024,
+    "num_ctx": 16384,
+    "num_gpu": 0,
+    "num_thread": 8
+  },
+  "effective_parameters": {
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "temperature": 0,
+    "max_tokens": 1024,
+    "seed": 3121
+  },
+  "token_budget_reservation": 41714,
+  "tokenizer_preflight": "unavailable",
+  "reservation_basis": "UTF-8 message bytes plus 2048 template margin and maximum output; not actual tokens",
+  "timeout_seconds": 180,
+  "credential_source": "configured_file",
+  "secret_value_logged": false
+}

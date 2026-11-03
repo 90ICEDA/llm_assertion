@@ -60,18 +60,24 @@ def to_cycle_trace(rows: List[Dict[str, str]], key_signals: Sequence[str]) -> Li
 
     if has_clk:
         prev = rows[0].get("clk", "0")
+        interval_start = 1
         for i in range(1, len(rows)):
             curr = rows[i].get("clk", "0")
             if is_rising_edge(prev, curr):
-                entry = {"cycle": str(cycle)}
+                entry = {"cycle": str(cycle), "time_ps": rows[i].get("time_ps", "")}
                 for s in selected:
-                    entry[s] = rows[i].get(s, "")
+                    value = rows[i].get(s, "")
+                    if s.endswith("_pulse_o"):
+                        window = rows[interval_start : i + 1]
+                        value = "1" if any(r.get(s, "") == "1" for r in window) else "0"
+                    entry[s] = value
                 out.append(entry)
                 cycle += 1
+                interval_start = i + 1
             prev = curr
     else:
         for r in rows:
-            entry = {"cycle": str(cycle)}
+            entry = {"cycle": str(cycle), "time_ps": r.get("time_ps", "")}
             for s in selected:
                 entry[s] = r.get(s, "")
             out.append(entry)
@@ -97,6 +103,28 @@ def find_first_divergence(
     return None, []
 
 
+def find_first_raw_divergence(
+    good_rows: List[Dict[str, str]],
+    bad_rows: List[Dict[str, str]],
+    key_signals: Sequence[str],
+) -> Tuple[Optional[int], str, List[str]]:
+    if not good_rows or not bad_rows:
+        return None, "", []
+
+    shared_cols = [col for col in good_rows[0].keys() if col in bad_rows[0]]
+    shared = [
+        col
+        for col in resolve_selected_signals(key_signals, shared_cols)
+        if col not in {"time_ps"}
+    ]
+    count = min(len(good_rows), len(bad_rows))
+    for idx in range(count):
+        diffs = [col for col in shared if good_rows[idx].get(col, "") != bad_rows[idx].get(col, "")]
+        if diffs:
+            return idx, good_rows[idx].get("time_ps", ""), diffs
+    return None, "", []
+
+
 def collect_divergence_snapshot(
     good_row: Dict[str, str],
     bad_row: Dict[str, str],
@@ -118,17 +146,23 @@ def format_signal_pairs(snapshot: Sequence[Dict[str, str]], side: str) -> str:
     return ", ".join(f"{item['signal']}={item[side]}" for item in snapshot)
 
 
-def build_text_summary(
-    case_meta: Dict,
-    first_cycle: Optional[int],
-    differing: Sequence[str],
-    snapshot: Sequence[Dict[str, str]],
-) -> str:
+def build_text_summary(case_meta: Dict, summary: Dict[str, object]) -> str:
+    first_cycle = summary.get("first_divergence_cycle")
+    differing = summary.get("differing_signals") or []
+    snapshot = summary.get("divergence_snapshot") or []
+    observation = str(summary.get("divergence_observation", "") or "")
+    first_time_ps = str(summary.get("first_divergence_time_ps", "") or "")
     lines = [
         f"Case: {case_meta['name']}",
         "First divergence cycle: " + ("none" if first_cycle is None else str(first_cycle)),
         "Differing signals at first divergence: " + (", ".join(differing) if differing else "(none)"),
     ]
+    if observation == "raw_timestamp" and first_time_ps:
+        lines.append(
+            "Observation basis: raw waveform at "
+            + first_time_ps
+            + " ps (the first differing pulse happens between sampled posedges)"
+        )
     if snapshot:
         lines.append("Observed differing signal values (good): " + format_signal_pairs(snapshot, "good"))
         lines.append("Observed differing signal values (bad): " + format_signal_pairs(snapshot, "bad"))
@@ -150,18 +184,42 @@ def summarize_case(root: Path, case_meta: Dict) -> Dict[str, object]:
 
     first_cycle, differing = find_first_divergence(good_cycle, bad_cycle)
     snapshot: List[Dict[str, str]] = []
+    first_divergence_cycle: Optional[object] = first_cycle
+    first_divergence_time_ps = ""
+    divergence_observation = ""
+
     if first_cycle is not None and first_cycle < len(good_cycle) and first_cycle < len(bad_cycle):
         snapshot = collect_divergence_snapshot(
             good_cycle[first_cycle],
             bad_cycle[first_cycle],
             differing,
         )
+        first_divergence_time_ps = good_cycle[first_cycle].get("time_ps", "")
+        divergence_observation = "posedge_cycle"
+    else:
+        raw_idx, raw_time_ps, raw_differing = find_first_raw_divergence(
+            good_rows,
+            bad_rows,
+            case_meta["key_signals"],
+        )
+        if raw_idx is not None and raw_idx < len(good_rows) and raw_idx < len(bad_rows):
+            first_divergence_cycle = f"raw@{raw_time_ps}ps"
+            first_divergence_time_ps = raw_time_ps
+            divergence_observation = "raw_timestamp"
+            differing = raw_differing
+            snapshot = collect_divergence_snapshot(
+                good_rows[raw_idx],
+                bad_rows[raw_idx],
+                differing,
+            )
 
     return {
         "case_name": case_meta["name"],
-        "first_divergence_cycle": first_cycle,
+        "first_divergence_cycle": first_divergence_cycle,
+        "first_divergence_time_ps": first_divergence_time_ps,
         "differing_signals": list(differing),
         "divergence_snapshot": snapshot,
+        "divergence_observation": divergence_observation,
     }
 
 
@@ -183,12 +241,7 @@ def main() -> None:
         summary = summarize_case(root, case_meta)
         case_dir = root / case_meta["name"]
         exp_dir = case_dir / "experiment"
-        text_summary = build_text_summary(
-            case_meta,
-            summary["first_divergence_cycle"],
-            summary["differing_signals"],
-            summary["divergence_snapshot"],
-        )
+        text_summary = build_text_summary(case_meta, summary)
         write_text(exp_dir / "trace_summary.txt", text_summary + "\n")
         write_text(
             exp_dir / "trace_summary.json",

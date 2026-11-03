@@ -1,0 +1,2501 @@
+{
+  "cases": [
+    {
+      "name": "case401_prim_filter_temporal_hold_1",
+      "parent_bug_id": "case401_prim_filter_temporal_hold_1",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_filter",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_filter.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "stored_value_q state update is suppressed",
+      "spec": "Signal stored_value_q shall follow the original prim_filter RTL behavior; the mutation changes the actual RTL implementation at source line 49.",
+      "mutation_edits": [
+        {
+          "line": 49,
+          "search": "      stored_value_q <= 1'b0;",
+          "replace": "      stored_value_q <= stored_value_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "stored_value_q",
+      "relevant_signals": [
+        "stored_value_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a93454041ca882103395f8b1ce418591368de67b6e60edd395a8a158494c554a",
+      "buggy_sha256": "ec6afcf14147f22a30e8f819f487be3e0a91d3bca72be85fd3663b2a7296bc0a",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case402_prim_filter_temporal_hold_2",
+      "parent_bug_id": "case402_prim_filter_temporal_hold_2",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_filter",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_filter.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "stored_value_q state update is suppressed",
+      "spec": "Signal stored_value_q shall follow the original prim_filter RTL behavior; the mutation changes the actual RTL implementation at source line 51.",
+      "mutation_edits": [
+        {
+          "line": 51,
+          "search": "      stored_value_q <= filter_synced;",
+          "replace": "      stored_value_q <= stored_value_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "stored_value_q",
+      "relevant_signals": [
+        "stored_value_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a93454041ca882103395f8b1ce418591368de67b6e60edd395a8a158494c554a",
+      "buggy_sha256": "cefb793c0a593956116f2d7effaefec7a6a0a6863f58f924c1e96df78810904e",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case403_prim_filter_temporal_hold_3",
+      "parent_bug_id": "case403_prim_filter_temporal_hold_3",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_filter",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_filter.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "stored_vector_q state update is suppressed",
+      "spec": "Signal stored_vector_q shall follow the original prim_filter RTL behavior; the mutation changes the actual RTL implementation at source line 60.",
+      "mutation_edits": [
+        {
+          "line": 60,
+          "search": "      stored_vector_q <= '0;",
+          "replace": "      stored_vector_q <= stored_vector_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "stored_vector_q",
+      "relevant_signals": [
+        "stored_vector_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a93454041ca882103395f8b1ce418591368de67b6e60edd395a8a158494c554a",
+      "buggy_sha256": "c9c1238abb6b47a67e1aa9ffe1989000c6071f59db166d2661626ded1bf113f5",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case404_prim_intr_hw_temporal_hold_1",
+      "parent_bug_id": "case404_prim_intr_hw_temporal_hold_1",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_intr_hw",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_intr_hw.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_intr_hw.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "intr_o state update is suppressed",
+      "spec": "Signal intr_o shall follow the original prim_intr_hw RTL behavior; the mutation changes the actual RTL implementation at source line 98.",
+      "mutation_edits": [
+        {
+          "line": 98,
+          "search": "        intr_o <= '0;",
+          "replace": "        intr_o <= intr_o; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "intr_o",
+      "relevant_signals": [
+        "intr_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "2fb312f9db786982dd4c2bb656f9ba7862637b045dd704ea128a4ce6a4a1f8bc",
+      "buggy_sha256": "10a25fe92dbdc5c3b52930d33f07014487ff3c59dc19c3a55c2231cd086975b1",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case405_prim_intr_hw_temporal_hold_2",
+      "parent_bug_id": "case405_prim_intr_hw_temporal_hold_2",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_intr_hw",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_intr_hw.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_intr_hw.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "intr_o state update is suppressed",
+      "spec": "Signal intr_o shall follow the original prim_intr_hw RTL behavior; the mutation changes the actual RTL implementation at source line 100.",
+      "mutation_edits": [
+        {
+          "line": 100,
+          "search": "        intr_o <= status & reg2hw_intr_enable_q_i;",
+          "replace": "        intr_o <= intr_o; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "intr_o",
+      "relevant_signals": [
+        "intr_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "2fb312f9db786982dd4c2bb656f9ba7862637b045dd704ea128a4ce6a4a1f8bc",
+      "buggy_sha256": "e4b831a2f7857d59b7e324f0c7f9e726a25dc8453ee387f1db3b77e0c31bf16f",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case406_prim_fifo_sync_cnt_temporal_hold_1",
+      "parent_bug_id": "case406_prim_fifo_sync_cnt_temporal_hold_1",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_fifo_sync_cnt",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "wptr_wrap_cnt_q state update is suppressed",
+      "spec": "Signal wptr_wrap_cnt_q shall follow the original prim_fifo_sync_cnt RTL behavior; the mutation changes the actual RTL implementation at source line 120.",
+      "mutation_edits": [
+        {
+          "line": 120,
+          "search": "        wptr_wrap_cnt_q <= {WrapPtrW{1'b0}};",
+          "replace": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "wptr_wrap_cnt_q",
+      "relevant_signals": [
+        "wptr_wrap_cnt_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+      "buggy_sha256": "4572c41e84adca0ba549c0bb9d401f76910aa5f730a0530df1dfd126868de818",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case407_prim_fifo_sync_cnt_temporal_hold_2",
+      "parent_bug_id": "case407_prim_fifo_sync_cnt_temporal_hold_2",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_fifo_sync_cnt",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "wptr_wrap_cnt_q state update is suppressed",
+      "spec": "Signal wptr_wrap_cnt_q shall follow the original prim_fifo_sync_cnt RTL behavior; the mutation changes the actual RTL implementation at source line 122.",
+      "mutation_edits": [
+        {
+          "line": 122,
+          "search": "        wptr_wrap_cnt_q <= {WrapPtrW{1'b0}};",
+          "replace": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "wptr_wrap_cnt_q",
+      "relevant_signals": [
+        "wptr_wrap_cnt_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+      "buggy_sha256": "33d5b6868928cc8213dad5fe7b3c70512c4b1f78171a1fd86ba5cf4e606d024b",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+      "parent_bug_id": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_fifo_sync_cnt",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "wptr_wrap_cnt_q state update is suppressed",
+      "spec": "After reset, an accepted write increment advances wptr_o modulo Depth. In particular, when incr_wptr_i is asserted while wptr_o equals Depth-1, the next write-pointer state wraps to zero and the wrap state advances so that depth_o and full_o continue to describe FIFO occupancy correctly.",
+      "mutation_edits": [
+        {
+          "line": 124,
+          "search": "        wptr_wrap_cnt_q <= wptr_wrap_set_cnt;",
+          "replace": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "wptr_wrap_cnt_q",
+      "relevant_signals": [
+        "rst_ni",
+        "clk_i",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "depth_o",
+        "full_o",
+        "empty_o",
+        "wptr_wrap_cnt_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+      "buggy_sha256": "a7bf7cfca81ee48e0226a2b28b19c898ee52b50258fd252fa70665dcce5997b1",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "trace_validated_metadata_complete",
+      "golden_sva": {
+        "name": "WritePointerWraps_A",
+        "clock": "@(posedge clk_i)",
+        "disable_iff": "!rst_ni",
+        "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (incr_wptr_i && (wptr_o == 2'd3)) |=> (wptr_o == 2'd0));",
+        "temporal_type": "one-cycle delayed state transition"
+      },
+      "first_divergence": {
+        "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge in the CSV; sample_index is the zero-based CSV data-row index",
+        "primary": {
+          "time_ps": 85000,
+          "cycle_index": 8,
+          "sample_index": 17,
+          "clock_phase": "rising edge",
+          "signals": [
+            "wptr_o",
+            "depth_o",
+            "full_o"
+          ],
+          "good_values": {
+            "wptr_o": "00",
+            "depth_o": "100",
+            "full_o": "1"
+          },
+          "bad_values": {
+            "wptr_o": "11",
+            "depth_o": "011",
+            "full_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 138000,
+          "cycle_index": 11,
+          "sample_index": 23,
+          "clock_phase": "rising edge",
+          "signals": [
+            "wptr_o",
+            "depth_o",
+            "full_o"
+          ],
+          "good_values": {
+            "wptr_o": "00",
+            "depth_o": "100",
+            "full_o": "1"
+          },
+          "bad_values": {
+            "wptr_o": "11",
+            "depth_o": "011",
+            "full_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 76000,
+          "cycle_index": 9,
+          "sample_index": 19,
+          "clock_phase": "rising edge",
+          "signals": [
+            "wptr_o",
+            "depth_o"
+          ],
+          "good_values": {
+            "wptr_o": "00",
+            "depth_o": "011"
+          },
+          "bad_values": {
+            "wptr_o": "11",
+            "depth_o": "010"
+          }
+        }
+      }
+    },
+    {
+      "name": "case409_prim_fifo_sync_cnt_temporal_hold_4",
+      "parent_bug_id": "case409_prim_fifo_sync_cnt_temporal_hold_4",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_fifo_sync_cnt",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "wptr_wrap_cnt_q state update is suppressed",
+      "spec": "Signal wptr_wrap_cnt_q shall follow the original prim_fifo_sync_cnt RTL behavior; the mutation changes the actual RTL implementation at source line 126.",
+      "mutation_edits": [
+        {
+          "line": 126,
+          "search": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q + {{(WrapPtrW-1){1'b0}}, 1'b1};",
+          "replace": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "wptr_wrap_cnt_q",
+      "relevant_signals": [
+        "wptr_wrap_cnt_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+      "buggy_sha256": "b0540ecfe2944de799422b0348cef0ffa5dfcdbae0d4c7581138bdb497034cfb",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case410_cc_edge_propagator_ack_temporal_hold_1",
+      "parent_bug_id": "case410_cc_edge_propagator_ack_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_edge_propagator_ack",
+      "source_files": [
+        "external/common_cells/src/cc_edge_propagator_ack.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_edge_propagator_ack.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "r_input_reg state update is suppressed",
+      "spec": "An edge request in the transmit clock domain is retained until it crosses into the receive domain. Reset assertion in either domain clears the corresponding protocol state; after transmit reset, no stale request may remain pending. Each retained request produces a receive-domain edge pulse and is acknowledged back to the transmitter.",
+      "mutation_edits": [
+        {
+          "line": 35,
+          "search": "      r_input_reg <= 1'b0;",
+          "replace": "      r_input_reg <= r_input_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "r_input_reg",
+      "relevant_signals": [
+        "clk_tx_i",
+        "rst_tx_ni",
+        "edge_i",
+        "ack_tx_o",
+        "clk_rx_i",
+        "rst_rx_ni",
+        "edge_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "28e1c1b5096b0f98963f27d0e0fbdf2dd204ba453b836e033d2efc87f0e05161",
+      "buggy_sha256": "39dedd8a9784a487e6b9dcb86165ab2087b0b2cb81e9b2d8b88d0f203a8a1f16",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "assert property (@(posedge clk_tx_i or negedge rst_tx_ni) !rst_tx_ni |-> (r_input_reg == 1'b0 && ack_tx_o == 1'b0));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 21,
+          "observation_index": 8,
+          "clock": "clk_rx_i",
+          "clock_cycle": 2,
+          "signals": [
+            "edge_o"
+          ],
+          "good": {
+            "edge_o": "0"
+          },
+          "bad": {
+            "edge_o": "x"
+          }
+        },
+        "decoy": {
+          "time_ps": 15,
+          "observation_index": 6,
+          "clock": "clk_rx_i",
+          "clock_cycle": 2,
+          "signals": [
+            "edge_o"
+          ],
+          "good": {
+            "edge_o": "0"
+          },
+          "bad": {
+            "edge_o": "x"
+          }
+        },
+        "heldout": {
+          "time_ps": 108,
+          "observation_index": 40,
+          "clock": "clk_rx_i",
+          "clock_cycle": 6,
+          "signals": [
+            "ack_tx_o"
+          ],
+          "good": {
+            "ack_tx_o": "0"
+          },
+          "bad": {
+            "ack_tx_o": "1"
+          }
+        }
+      }
+    },
+    {
+      "name": "case411_cc_edge_propagator_ack_temporal_hold_2",
+      "parent_bug_id": "case411_cc_edge_propagator_ack_temporal_hold_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_edge_propagator_ack",
+      "source_files": [
+        "external/common_cells/src/cc_edge_propagator_ack.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_edge_propagator_ack.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "sync_a state update is suppressed",
+      "spec": "Signal sync_a shall follow the original cc_edge_propagator_ack RTL behavior; the mutation changes the actual RTL implementation at source line 36.",
+      "mutation_edits": [
+        {
+          "line": 36,
+          "search": "      sync_a      <= 2'b00;",
+          "replace": "      sync_a <= sync_a; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "sync_a",
+      "relevant_signals": [
+        "sync_a"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "28e1c1b5096b0f98963f27d0e0fbdf2dd204ba453b836e033d2efc87f0e05161",
+      "buggy_sha256": "a55452a7826858503d6211c7305a0a2e4c26a6a9e36014f78a654f0f42caf134",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case412_cc_edge_propagator_tx_temporal_hold_1",
+      "parent_bug_id": "case412_cc_edge_propagator_tx_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_edge_propagator_tx",
+      "source_files": [
+        "external/common_cells/src/cc_edge_propagator_tx.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_edge_propagator_tx.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "r_input_reg state update is suppressed",
+      "spec": "Signal r_input_reg shall follow the original cc_edge_propagator_tx RTL behavior; the mutation changes the actual RTL implementation at source line 30.",
+      "mutation_edits": [
+        {
+          "line": 30,
+          "search": "            r_input_reg <= 1'b0;",
+          "replace": "            r_input_reg <= r_input_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "r_input_reg",
+      "relevant_signals": [
+        "r_input_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "d7322999d9e68f4c6decbf65f644895281b016f11c21864e71ba8b8e178f0409",
+      "buggy_sha256": "773347b6d7b55948f7fa8044fdd8ab99edb566548dc4f3370ea9a725d3f1f661",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case413_cc_edge_propagator_tx_temporal_hold_2",
+      "parent_bug_id": "case413_cc_edge_propagator_tx_temporal_hold_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_edge_propagator_tx",
+      "source_files": [
+        "external/common_cells/src/cc_edge_propagator_tx.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_edge_propagator_tx.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "sync_a state update is suppressed",
+      "spec": "Signal sync_a shall follow the original cc_edge_propagator_tx RTL behavior; the mutation changes the actual RTL implementation at source line 31.",
+      "mutation_edits": [
+        {
+          "line": 31,
+          "search": "            sync_a      <= 2'b00;",
+          "replace": "            sync_a <= sync_a; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "sync_a",
+      "relevant_signals": [
+        "sync_a"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "d7322999d9e68f4c6decbf65f644895281b016f11c21864e71ba8b8e178f0409",
+      "buggy_sha256": "7983da01397d4fa0af59a7f273bbb5b0b950c47cf816557d69f5407a034c8d2a",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case414_cc_edge_propagator_tx_temporal_hold_3",
+      "parent_bug_id": "case414_cc_edge_propagator_tx_temporal_hold_3",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_edge_propagator_tx",
+      "source_files": [
+        "external/common_cells/src/cc_edge_propagator_tx.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_edge_propagator_tx.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "r_input_reg state update is suppressed",
+      "spec": "Signal r_input_reg shall follow the original cc_edge_propagator_tx RTL behavior; the mutation changes the actual RTL implementation at source line 33.",
+      "mutation_edits": [
+        {
+          "line": 33,
+          "search": "            r_input_reg <= s_input_reg_next;",
+          "replace": "            r_input_reg <= r_input_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "r_input_reg",
+      "relevant_signals": [
+        "r_input_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "d7322999d9e68f4c6decbf65f644895281b016f11c21864e71ba8b8e178f0409",
+      "buggy_sha256": "d4ebe7f600d343f965596824b803fa332c1baa8ebc62a02cc22b3ec8e76c4db3",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case415_cc_rstgen_bypass_temporal_hold_1",
+      "parent_bug_id": "case415_cc_rstgen_bypass_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_rstgen_bypass",
+      "source_files": [
+        "external/common_cells/src/cc_rstgen_bypass.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_rstgen_bypass.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "synch_regs_q state update is suppressed",
+      "spec": "In functional mode, asserting the active-low reset must immediately assert both synchronized reset outputs, independently of the clock. The outputs may deassert only after reset release has propagated through the configured synchronization stages. In test mode, the dedicated test reset controls rst_no while init_no remains released.",
+      "mutation_edits": [
+        {
+          "line": 55,
+          "search": "            synch_regs_q <= 0;",
+          "replace": "            synch_regs_q <= synch_regs_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "synch_regs_q",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "rst_test_mode_ni",
+        "test_mode_i",
+        "rst_no",
+        "init_no"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a7dab27285db6aecdb3146c9a34a418504d58f8a84f1e87b345b3fbe597e9712",
+      "buggy_sha256": "79901a7c1d54a912ef9f6628082946489c98b6e893e3c6262454fc01acc78767",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "assert property (@(negedge rst_ni) !test_mode_i |-> (!rst_no && !init_no));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 3,
+          "observation_index": 1,
+          "clock": "clk_i",
+          "clock_cycle": 0,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "0",
+            "init_no": "0"
+          },
+          "bad": {
+            "rst_no": "x",
+            "init_no": "x"
+          }
+        },
+        "decoy": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock": "clk_i",
+          "clock_cycle": 0,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "0",
+            "init_no": "0"
+          },
+          "bad": {
+            "rst_no": "x",
+            "init_no": "x"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock": "clk_i",
+          "clock_cycle": 0,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "0",
+            "init_no": "0"
+          },
+          "bad": {
+            "rst_no": "x",
+            "init_no": "x"
+          }
+        }
+      }
+    },
+    {
+      "name": "case416_cc_rstgen_bypass_temporal_hold_2",
+      "parent_bug_id": "case416_cc_rstgen_bypass_temporal_hold_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_rstgen_bypass",
+      "source_files": [
+        "external/common_cells/src/cc_rstgen_bypass.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_rstgen_bypass.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "synch_regs_q state update is suppressed",
+      "spec": "In functional mode, reset assertion drives rst_no and init_no low asynchronously. After rst_ni is released, both outputs remain low while the release is synchronized and then rise after NumRegs active clock edges; they must not remain asserted indefinitely. Test mode selects the dedicated test reset behavior.",
+      "mutation_edits": [
+        {
+          "line": 57,
+          "search": "            synch_regs_q <= {synch_regs_q[NumRegs-2:0], 1'b1};",
+          "replace": "            synch_regs_q <= synch_regs_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "synch_regs_q",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "rst_test_mode_ni",
+        "test_mode_i",
+        "rst_no",
+        "init_no"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a7dab27285db6aecdb3146c9a34a418504d58f8a84f1e87b345b3fbe597e9712",
+      "buggy_sha256": "c3b6b3e7923b9f58085dd6858d15e2f552f45b94b5aad16d6bbcbe655d905409",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "assert property (@(posedge clk_i) disable iff (!rst_ni || test_mode_i) $rose(rst_ni) |-> ##3 (rst_no && init_no));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45,
+          "observation_index": 10,
+          "clock": "clk_i",
+          "clock_cycle": 5,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "1",
+            "init_no": "1"
+          },
+          "bad": {
+            "rst_no": "0",
+            "init_no": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 63,
+          "observation_index": 11,
+          "clock": "clk_i",
+          "clock_cycle": 5,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "1",
+            "init_no": "1"
+          },
+          "bad": {
+            "rst_no": "0",
+            "init_no": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 27,
+          "observation_index": 10,
+          "clock": "clk_i",
+          "clock_cycle": 5,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "1",
+            "init_no": "1"
+          },
+          "bad": {
+            "rst_no": "0",
+            "init_no": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "case417_cc_clk_mux_glitch_free_temporal_hold_1",
+      "parent_bug_id": "case417_cc_clk_mux_glitch_free_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_clk_mux_glitch_free",
+      "source_files": [
+        "external/common_cells/src/cc_clk_mux_glitch_free.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_clk_mux_glitch_free.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "async_reset_bypass_active_q[i] state update is suppressed",
+      "spec": "When ClockDuringReset is enabled and asynchronous reset is asserted, the clock selected by async_sel_i must be able to propagate to clk_o without waiting for the reset synchronizers. Test enable instead selects test_clk_i. After reset release, the mux transitions to synchronized glitch-free clock selection.",
+      "mutation_edits": [
+        {
+          "line": 200,
+          "search": "          async_reset_bypass_active_q[i] <= 1'b1;",
+          "replace": "          async_reset_bypass_active_q[i] <= async_reset_bypass_active_q[i]; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "async_reset_bypass_active_q[i]",
+      "relevant_signals": [
+        "clks_i",
+        "test_clk_i",
+        "test_en_i",
+        "async_rstn_i",
+        "async_sel_i",
+        "clk_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "44763ddf2f5ce9658499475a79f04c69474ed70d7131d875ccd93cbe422609e0",
+      "buggy_sha256": "ebbdda0e130b62e966dcf216ebd68133583b7e688f7388c2a79cf5c5e47bb3f8",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "assert property (@(posedge clks_i[0] or posedge clks_i[1]) (!async_rstn_i && !test_en_i && clks_i[async_sel_i]) |-> clk_o);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 5,
+          "observation_index": 2,
+          "clock": "selected clks_i",
+          "clock_cycle": 1,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "1"
+          },
+          "bad": {
+            "clk_o": "x"
+          }
+        },
+        "decoy": {
+          "time_ps": 35,
+          "observation_index": 19,
+          "clock": "selected clks_i",
+          "clock_cycle": 3,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "1"
+          },
+          "bad": {
+            "clk_o": "x"
+          }
+        },
+        "heldout": {
+          "time_ps": 9,
+          "observation_index": 5,
+          "clock": "selected clks_i",
+          "clock_cycle": 1,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "1"
+          },
+          "bad": {
+            "clk_o": "x"
+          }
+        }
+      }
+    },
+    {
+      "name": "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+      "parent_bug_id": "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_clk_mux_glitch_free",
+      "source_files": [
+        "external/common_cells/src/cc_clk_mux_glitch_free.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_clk_mux_glitch_free.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "async_reset_bypass_active_q[i] state update is suppressed",
+      "spec": "With ClockDuringReset enabled, reset assertion permits the asynchronously selected input clock to propagate. Once asynchronous reset is released, each input domain must leave reset-bypass mode on its next active edge, so clk_o is controlled by the synchronized glitch-free enable path rather than continuing the reset bypass indefinitely.",
+      "mutation_edits": [
+        {
+          "line": 202,
+          "search": "          async_reset_bypass_active_q[i] <= 1'b0;",
+          "replace": "          async_reset_bypass_active_q[i] <= async_reset_bypass_active_q[i]; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "async_reset_bypass_active_q[i]",
+      "relevant_signals": [
+        "clks_i",
+        "test_clk_i",
+        "test_en_i",
+        "async_rstn_i",
+        "async_sel_i",
+        "clk_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "44763ddf2f5ce9658499475a79f04c69474ed70d7131d875ccd93cbe422609e0",
+      "buggy_sha256": "d3c5b12a4b03109c1233738a5328a25229a8bc7c0d64b26677525218e045c6fb",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "assert property (@(posedge clks_i[0]) $rose(async_rstn_i) |=> !dut.async_reset_bypass_active_q[0]); assert property (@(posedge clks_i[1]) $rose(async_rstn_i) |=> !dut.async_reset_bypass_active_q[1]);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45,
+          "observation_index": 24,
+          "clock": "selected clks_i",
+          "clock_cycle": 5,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "0"
+          },
+          "bad": {
+            "clk_o": "1"
+          }
+        },
+        "decoy": {
+          "time_ps": 56,
+          "observation_index": 30,
+          "clock": "selected clks_i",
+          "clock_cycle": 4,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "0"
+          },
+          "bad": {
+            "clk_o": "1"
+          }
+        },
+        "heldout": {
+          "time_ps": 63,
+          "observation_index": 32,
+          "clock": "selected clks_i",
+          "clock_cycle": 4,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "0"
+          },
+          "bad": {
+            "clk_o": "1"
+          }
+        }
+      }
+    },
+    {
+      "name": "case419_cc_clk_int_div_temporal_hold_1",
+      "parent_bug_id": "case419_cc_clk_int_div_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_clk_int_div",
+      "source_files": [
+        "external/common_cells/src/cc_clk_int_div.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_clk_int_div.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "gate_is_open_q state update is suppressed",
+      "spec": "Signal gate_is_open_q shall follow the original cc_clk_int_div RTL behavior; the mutation changes the actual RTL implementation at source line 365.",
+      "mutation_edits": [
+        {
+          "line": 365,
+          "search": "      gate_is_open_q <= 1'b0;",
+          "replace": "      gate_is_open_q <= gate_is_open_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "gate_is_open_q",
+      "relevant_signals": [
+        "gate_is_open_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "e637e9a59f5651261853105b73d8c801146ae691618c4d490b593bd6d902ddf4",
+      "buggy_sha256": "f42338710829507306f027789bf9306d4fd055cd257e2604cdfd3737ccd08c29",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case420_cc_clk_int_div_temporal_hold_2",
+      "parent_bug_id": "case420_cc_clk_int_div_temporal_hold_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_clk_int_div",
+      "source_files": [
+        "external/common_cells/src/cc_clk_int_div.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_clk_int_div.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "gate_is_open_q state update is suppressed",
+      "spec": "Signal gate_is_open_q shall follow the original cc_clk_int_div RTL behavior; the mutation changes the actual RTL implementation at source line 367.",
+      "mutation_edits": [
+        {
+          "line": 367,
+          "search": "      gate_is_open_q <= gate_en_q & en_i;",
+          "replace": "      gate_is_open_q <= gate_is_open_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "gate_is_open_q",
+      "relevant_signals": [
+        "gate_is_open_q"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "e637e9a59f5651261853105b73d8c801146ae691618c4d490b593bd6d902ddf4",
+      "buggy_sha256": "1e99914b1b37035b33592853086ba172eb3b68a6aa7d0b97c74861a7d37ff6ec",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case421_axis_register_temporal_hold_1",
+      "parent_bug_id": "case421_axis_register_temporal_hold_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_register",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_register.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_register.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "s_axis_tready_reg state update is suppressed",
+      "spec": "After reset is released, when the downstream interface can accept data and the output buffer is not blocking progress, the registered AXI-stream input interface shall advertise ready on the following clock. An accepted input beat shall subsequently be presented on the output while respecting ready/valid backpressure.",
+      "mutation_edits": [
+        {
+          "line": 160,
+          "search": "        s_axis_tready_reg <= s_axis_tready_early;",
+          "replace": "        s_axis_tready_reg <= s_axis_tready_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "s_axis_tready_reg",
+      "relevant_signals": [
+        "rst",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "m_axis_tvalid",
+        "m_axis_tready"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+      "buggy_sha256": "315e03ac970dac1f0ac5e3f66591e75df22190c247c9e3b13a960b9e81a095ba",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (m_axis_tready && !m_axis_tvalid) |=> s_axis_tready);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 25000,
+          "clock_cycle": 3,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "heldout": {
+          "time_ps": 35000,
+          "clock_cycle": 4,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "decoy": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "s_axis_tready"
+          ]
+        }
+      }
+    },
+    {
+      "name": "case422_axis_register_temporal_hold_2",
+      "parent_bug_id": "case422_axis_register_temporal_hold_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_register",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_register.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_register.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "m_axis_tvalid_reg state update is suppressed",
+      "spec": "Signal m_axis_tvalid_reg shall follow the original axis_register RTL behavior; the mutation changes the actual RTL implementation at source line 161.",
+      "mutation_edits": [
+        {
+          "line": 161,
+          "search": "        m_axis_tvalid_reg <= m_axis_tvalid_next;",
+          "replace": "        m_axis_tvalid_reg <= m_axis_tvalid_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "m_axis_tvalid_reg",
+      "relevant_signals": [
+        "m_axis_tvalid_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+      "buggy_sha256": "9a297403bf83dfc069bb3be67c49f8b58263b5d6d3357ffb41085f6f5f93af43",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case423_axis_register_temporal_hold_3",
+      "parent_bug_id": "case423_axis_register_temporal_hold_3",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_register",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_register.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_register.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "temp_m_axis_tvalid_reg state update is suppressed",
+      "spec": "Signal temp_m_axis_tvalid_reg shall follow the original axis_register RTL behavior; the mutation changes the actual RTL implementation at source line 162.",
+      "mutation_edits": [
+        {
+          "line": 162,
+          "search": "        temp_m_axis_tvalid_reg <= temp_m_axis_tvalid_next;",
+          "replace": "        temp_m_axis_tvalid_reg <= temp_m_axis_tvalid_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "temp_m_axis_tvalid_reg",
+      "relevant_signals": [
+        "temp_m_axis_tvalid_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+      "buggy_sha256": "daa6b9186bdd221395e422210a0ff35057ce0c7003d095cee0d4131bb4165f66",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case424_axis_fifo_temporal_hold_1",
+      "parent_bug_id": "case424_axis_fifo_temporal_hold_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_fifo",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_fifo.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_fifo.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "overflow_reg state update is suppressed",
+      "spec": "Signal overflow_reg shall follow the original axis_fifo RTL behavior; the mutation changes the actual RTL implementation at source line 262.",
+      "mutation_edits": [
+        {
+          "line": 262,
+          "search": "    overflow_reg <= 1'b0;",
+          "replace": "    overflow_reg <= overflow_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "overflow_reg",
+      "relevant_signals": [
+        "overflow_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "aefddc67fc3552d919280424606fc6b048e61d7df9ee7ee0f8801c082c1cfc39",
+      "buggy_sha256": "0692c061f7a2041495c7f3905d052c2b5b343b3cce723ce172078e7363dd2693",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case425_axis_fifo_temporal_hold_2",
+      "parent_bug_id": "case425_axis_fifo_temporal_hold_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_fifo",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_fifo.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_fifo.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "bad_frame_reg state update is suppressed",
+      "spec": "In frame-FIFO mode with bad-frame dropping enabled, accepting a final beat whose user marker identifies a bad frame shall raise status_bad_frame for one clock interval. If no new bad frame completes on the next clock, status_bad_frame shall return low.",
+      "mutation_edits": [
+        {
+          "line": 263,
+          "search": "    bad_frame_reg <= 1'b0;",
+          "replace": "    bad_frame_reg <= bad_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "bad_frame_reg",
+      "relevant_signals": [
+        "rst",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "s_axis_tlast",
+        "s_axis_tuser",
+        "status_bad_frame"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "aefddc67fc3552d919280424606fc6b048e61d7df9ee7ee0f8801c082c1cfc39",
+      "buggy_sha256": "3c40b23ec670429cb8991a04a8bfd9323f69d9adac3348bfe0f69143cf96495d",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (!(s_axis_tvalid && s_axis_tready && s_axis_tlast && s_axis_tuser)) |=> !status_bad_frame);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "status_bad_frame"
+          ]
+        },
+        "heldout": {
+          "time_ps": 65000,
+          "clock_cycle": 7,
+          "signals": [
+            "status_bad_frame"
+          ]
+        },
+        "decoy": {
+          "time_ps": 75000,
+          "clock_cycle": 8,
+          "signals": [
+            "status_bad_frame"
+          ]
+        }
+      }
+    },
+    {
+      "name": "case426_axis_fifo_temporal_hold_3",
+      "parent_bug_id": "case426_axis_fifo_temporal_hold_3",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_fifo",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_fifo.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_fifo.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "good_frame_reg state update is suppressed",
+      "spec": "In frame-FIFO mode, accepting the final beat of a frame that is not marked bad shall raise status_good_frame for one clock interval. If no new good frame completes on the next clock, status_good_frame shall return low.",
+      "mutation_edits": [
+        {
+          "line": 264,
+          "search": "    good_frame_reg <= 1'b0;",
+          "replace": "    good_frame_reg <= good_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "good_frame_reg",
+      "relevant_signals": [
+        "rst",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "s_axis_tlast",
+        "s_axis_tuser",
+        "status_good_frame"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "aefddc67fc3552d919280424606fc6b048e61d7df9ee7ee0f8801c082c1cfc39",
+      "buggy_sha256": "8f43797ca67fe891f3a28f1db8f57094999a21cd6f5d2857a8c90ac161af6c12",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (!(s_axis_tvalid && s_axis_tready && s_axis_tlast && !s_axis_tuser)) |=> !status_good_frame);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "status_good_frame"
+          ]
+        },
+        "heldout": {
+          "time_ps": 65000,
+          "clock_cycle": 7,
+          "signals": [
+            "status_good_frame"
+          ]
+        },
+        "decoy": {
+          "time_ps": 75000,
+          "clock_cycle": 8,
+          "signals": [
+            "status_good_frame"
+          ]
+        }
+      }
+    },
+    {
+      "name": "case427_arbiter_temporal_hold_1",
+      "parent_bug_id": "case427_arbiter_temporal_hold_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "arbiter",
+      "source_files": [
+        "external/verilog-axis/rtl/arbiter.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/arbiter.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "grant_reg state update is suppressed",
+      "spec": "Signal grant_reg shall follow the original arbiter RTL behavior; the mutation changes the actual RTL implementation at source line 144.",
+      "mutation_edits": [
+        {
+          "line": 144,
+          "search": "    grant_reg <= grant_next;",
+          "replace": "    grant_reg <= grant_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "grant_reg",
+      "relevant_signals": [
+        "grant_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "d54d337db4812f927b2e9b5788dfa39f9bd578ad01b7846c5fa7f2610b0923fa",
+      "buggy_sha256": "9ee279fea2c35d1ab714f4c3abfb51c4b0140ca74595cffa14bb5d562a62575d",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case428_arbiter_temporal_hold_2",
+      "parent_bug_id": "case428_arbiter_temporal_hold_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "arbiter",
+      "source_files": [
+        "external/verilog-axis/rtl/arbiter.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/arbiter.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "grant_valid_reg state update is suppressed",
+      "spec": "Signal grant_valid_reg shall follow the original arbiter RTL behavior; the mutation changes the actual RTL implementation at source line 145.",
+      "mutation_edits": [
+        {
+          "line": 145,
+          "search": "    grant_valid_reg <= grant_valid_next;",
+          "replace": "    grant_valid_reg <= grant_valid_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "grant_valid_reg",
+      "relevant_signals": [
+        "grant_valid_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "d54d337db4812f927b2e9b5788dfa39f9bd578ad01b7846c5fa7f2610b0923fa",
+      "buggy_sha256": "cf6ffa82fda2c9f911e9379bebdbb2cc58474b9f521c5b026a05904a9f2aac7f",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case429_axis_rate_limit_temporal_hold_1",
+      "parent_bug_id": "case429_axis_rate_limit_temporal_hold_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_rate_limit",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_rate_limit.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_rate_limit.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "acc_reg state update is suppressed",
+      "spec": "Signal acc_reg shall follow the original axis_rate_limit RTL behavior; the mutation changes the actual RTL implementation at source line 148.",
+      "mutation_edits": [
+        {
+          "line": 148,
+          "search": "    acc_reg <= acc_next;",
+          "replace": "    acc_reg <= acc_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "acc_reg",
+      "relevant_signals": [
+        "acc_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "bdfb4e29768c5224c543098765b8d648f3fe774eb42643c289d85b446414d155",
+      "buggy_sha256": "194b4900b8d3b0b59ce1ee9ed1e2d7883ff97e61c4692449b73a3907243b1c63",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case430_axis_rate_limit_temporal_hold_2",
+      "parent_bug_id": "case430_axis_rate_limit_temporal_hold_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_rate_limit",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_rate_limit.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_rate_limit.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "frame_reg state update is suppressed",
+      "spec": "Signal frame_reg shall follow the original axis_rate_limit RTL behavior; the mutation changes the actual RTL implementation at source line 149.",
+      "mutation_edits": [
+        {
+          "line": 149,
+          "search": "    frame_reg <= frame_next;",
+          "replace": "    frame_reg <= frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "frame_reg",
+      "relevant_signals": [
+        "frame_reg"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "bdfb4e29768c5224c543098765b8d648f3fe774eb42643c289d85b446414d155",
+      "buggy_sha256": "d958142d85d7160a01bd1b3dbdfa6b9843201acd2ef5ead0d053dd17b93abb79",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case431_prim_onehot_check_protocol_suppress_1",
+      "parent_bug_id": "case431_prim_onehot_check_protocol_suppress_1",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_onehot_check",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_onehot_check.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_onehot_check.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "or_tree[Pa] combinational/protocol output is forced low",
+      "spec": "Signal or_tree[Pa] shall follow the original prim_onehot_check RTL behavior; the mutation changes the actual RTL implementation at source line 86.",
+      "mutation_edits": [
+        {
+          "line": 86,
+          "search": "          assign or_tree[Pa]  = oh_i[offset];",
+          "replace": "          assign or_tree[Pa] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "or_tree[Pa]",
+      "relevant_signals": [
+        "or_tree[Pa]"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "97aefa2e7ebd26e12ea9fc691908a62315e2135bdbb127f3c3d640eeb15096ca",
+      "buggy_sha256": "ddc7baa354d24d4f6b0dea0b4e45f305466bfc4d54d55722a749a08326e2936a",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case432_prim_onehot_check_protocol_suppress_2",
+      "parent_bug_id": "case432_prim_onehot_check_protocol_suppress_2",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_onehot_check",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_onehot_check.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_onehot_check.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "and_tree[Pa] combinational/protocol output is forced low",
+      "spec": "Signal and_tree[Pa] shall follow the original prim_onehot_check RTL behavior; the mutation changes the actual RTL implementation at source line 87.",
+      "mutation_edits": [
+        {
+          "line": 87,
+          "search": "          assign and_tree[Pa] = oh_i[offset];",
+          "replace": "          assign and_tree[Pa] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "and_tree[Pa]",
+      "relevant_signals": [
+        "and_tree[Pa]"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "97aefa2e7ebd26e12ea9fc691908a62315e2135bdbb127f3c3d640eeb15096ca",
+      "buggy_sha256": "3d23d9f661c9dec51f61768b68e852b5feb9a5a06e7c3b27e0779fd9a54271cd",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case433_prim_edge_detector_protocol_suppress_1",
+      "parent_bug_id": "case433_prim_edge_detector_protocol_suppress_1",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_edge_detector",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_edge_detector.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_edge_detector.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "q_sync_d combinational/protocol output is forced low",
+      "spec": "Signal q_sync_d shall follow the original prim_edge_detector RTL behavior; the mutation changes the actual RTL implementation at source line 42.",
+      "mutation_edits": [
+        {
+          "line": 42,
+          "search": "    assign q_sync_d = d_i;",
+          "replace": "    assign q_sync_d = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "q_sync_d",
+      "relevant_signals": [
+        "q_sync_d"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a4df5485f3f07427990b672a3745a9d94581479371b98f60903bf9805907fb22",
+      "buggy_sha256": "c36b543d3ba20073e24c84c344e43b262563115ccb9bde7916d631699493dceb",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case434_prim_edge_detector_protocol_suppress_2",
+      "parent_bug_id": "case434_prim_edge_detector_protocol_suppress_2",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_edge_detector",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_edge_detector.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_edge_detector.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "q_sync_o combinational/protocol output is forced low",
+      "spec": "Signal q_sync_o shall follow the original prim_edge_detector RTL behavior; the mutation changes the actual RTL implementation at source line 45.",
+      "mutation_edits": [
+        {
+          "line": 45,
+          "search": "  assign q_sync_o = q_sync_d;",
+          "replace": "  assign q_sync_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "q_sync_o",
+      "relevant_signals": [
+        "q_sync_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a4df5485f3f07427990b672a3745a9d94581479371b98f60903bf9805907fb22",
+      "buggy_sha256": "a2a6990e831b0419f989e3212a25a95355d768b42dd6a94ce54eb7cfbf319583",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case435_prim_filter_ctr_protocol_suppress_1",
+      "parent_bug_id": "case435_prim_filter_ctr_protocol_suppress_1",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_filter_ctr",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "filter_synced combinational/protocol output is forced low",
+      "spec": "With AsyncOn disabled, filter_i is the synchronous input sample. While enable_i is low, filter_o shall equal filter_i in the same cycle. While enable_i is high, filter_o changes only after the new input value has remained stable for the configured threshold interval.",
+      "mutation_edits": [
+        {
+          "line": 46,
+          "search": "    assign filter_synced = filter_i;",
+          "replace": "    assign filter_synced = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "filter_synced",
+      "relevant_signals": [
+        "rst_ni",
+        "clk_i",
+        "enable_i",
+        "filter_i",
+        "thresh_i",
+        "filter_o",
+        "filter_synced",
+        "stored_value_q",
+        "diff_ctr_q"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "770a3ae13dc5fc389cb0ab513ab2becc9f1521ea83f55ce4eb517c77b1a7dfde",
+      "buggy_sha256": "b956f9998b57f389ef32c78fc0d995dcdc1092feb92ac0ce0dace5898dc50bf8",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "trace_validated_metadata_complete",
+      "golden_sva": {
+        "name": "FilterBypassTracksInput_A",
+        "clock": "@(posedge clk_i)",
+        "disable_iff": "!rst_ni",
+        "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (!enable_i) |-> (filter_o == filter_i));",
+        "temporal_type": "same-cycle implication"
+      },
+      "first_divergence": {
+        "cycle_definition": "cycle_index is the zero-based ordinal of the most recent rising clk_i edge in the CSV; sample_index is the zero-based CSV data-row index",
+        "primary": {
+          "time_ps": 20000,
+          "cycle_index": 1,
+          "sample_index": 4,
+          "clock_phase": "falling edge / same-cycle combinational response",
+          "signals": [
+            "filter_o"
+          ],
+          "good_values": {
+            "filter_o": "1"
+          },
+          "bad_values": {
+            "filter_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 48000,
+          "cycle_index": 3,
+          "sample_index": 8,
+          "clock_phase": "falling edge / same-cycle combinational response",
+          "signals": [
+            "filter_o"
+          ],
+          "good_values": {
+            "filter_o": "1"
+          },
+          "bad_values": {
+            "filter_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 36000,
+          "cycle_index": 4,
+          "sample_index": 9,
+          "clock_phase": "rising edge",
+          "signals": [
+            "filter_o"
+          ],
+          "good_values": {
+            "filter_o": "1"
+          },
+          "bad_values": {
+            "filter_o": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "case436_prim_filter_ctr_protocol_suppress_2",
+      "parent_bug_id": "case436_prim_filter_ctr_protocol_suppress_2",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_filter_ctr",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "update_stored_value combinational/protocol output is forced low",
+      "spec": "Signal update_stored_value shall follow the original prim_filter_ctr RTL behavior; the mutation changes the actual RTL implementation at source line 74.",
+      "mutation_edits": [
+        {
+          "line": 74,
+          "search": "  assign update_stored_value = (diff_ctr_d == thresh_i);",
+          "replace": "  assign update_stored_value = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "update_stored_value",
+      "relevant_signals": [
+        "update_stored_value"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "770a3ae13dc5fc389cb0ab513ab2becc9f1521ea83f55ce4eb517c77b1a7dfde",
+      "buggy_sha256": "e6879c2e69cad91920986eae00dd9571180f390f200a5862d8cbaebfa546b478",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case437_cc_fifo_protocol_suppress_1",
+      "parent_bug_id": "case437_cc_fifo_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_fifo",
+      "source_files": [
+        "external/common_cells/src/cc_fifo.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_fifo.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "usage_o combinational/protocol output is forced low",
+      "spec": "Signal usage_o shall follow the original cc_fifo RTL behavior; the mutation changes the actual RTL implementation at source line 55.",
+      "mutation_edits": [
+        {
+          "line": 55,
+          "search": "    assign usage_o = status_cnt_q;",
+          "replace": "    assign usage_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "usage_o",
+      "relevant_signals": [
+        "usage_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [
+        {
+          "search": "{FifoDepth{data_t'('0)}}",
+          "replace": "'0",
+          "semantic_change": false
+        }
+      ],
+      "correct_sha256": "630c118b2e513b78456b47f6b0334601679a722ee9dc3a23b5971478441d565c",
+      "buggy_sha256": "06f183f9f8fa38c7c316c98c65ae4ff797ba19477d4439cb608a7adeab81aa6c",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case438_cc_fifo_protocol_suppress_2",
+      "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_fifo",
+      "source_files": [
+        "external/common_cells/src/cc_fifo.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_fifo.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "empty_o combinational/protocol output is forced low",
+      "spec": "Signal empty_o shall follow the original cc_fifo RTL behavior; the mutation changes the actual RTL implementation at source line 58.",
+      "mutation_edits": [
+        {
+          "line": 58,
+          "search": "        assign empty_o     = ~push_i;",
+          "replace": "        assign empty_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "empty_o",
+      "relevant_signals": [
+        "empty_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [
+        {
+          "search": "{FifoDepth{data_t'('0)}}",
+          "replace": "'0",
+          "semantic_change": false
+        }
+      ],
+      "correct_sha256": "630c118b2e513b78456b47f6b0334601679a722ee9dc3a23b5971478441d565c",
+      "buggy_sha256": "379348a1c8cd585b85bdc4df98b246c0c7d73282308b6a10d8d1b417c78d08d7",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case439_cc_onehot_protocol_suppress_1",
+      "parent_bug_id": "case439_cc_onehot_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_onehot",
+      "source_files": [
+        "external/common_cells/src/cc_onehot.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_onehot.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "is_onehot_o combinational/protocol output is forced low",
+      "spec": "For Width=1, is_onehot_o is asserted exactly when the sole input bit is asserted. More generally, is_onehot_o is high if and only if d_i contains exactly one set bit; all-zero and multi-hot inputs produce a low result.",
+      "mutation_edits": [
+        {
+          "line": 26,
+          "search": "    assign is_onehot_o = d_i;",
+          "replace": "    assign is_onehot_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "is_onehot_o",
+      "relevant_signals": [
+        "d_i",
+        "is_onehot_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "e68efe28e677819cd434a32700733b11cb192c935094750a906ceec2041cf19c",
+      "buggy_sha256": "08de5ae122e4e7ef18afdf27232b2f515f452df63af0fa8596b3fbd387072f03",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "always_comb assert (is_onehot_o == $onehot(d_i));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 5,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 2,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "case440_cc_onehot_protocol_suppress_2",
+      "parent_bug_id": "case440_cc_onehot_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_onehot",
+      "source_files": [
+        "external/common_cells/src/cc_onehot.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_onehot.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "sum[0] combinational/protocol output is forced low",
+      "spec": "is_onehot_o must be asserted when d_i contains exactly one set bit and deasserted for zero or for two-or-more set bits. The result is a same-cycle combinational classification and applies to every input bit position.",
+      "mutation_edits": [
+        {
+          "line": 34,
+          "search": "    assign sum[0] = d_i;",
+          "replace": "    assign sum[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "sum[0]",
+      "relevant_signals": [
+        "d_i",
+        "is_onehot_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "e68efe28e677819cd434a32700733b11cb192c935094750a906ceec2041cf19c",
+      "buggy_sha256": "21426056cfa665256c1c83ec3a394ea64a80458be54d4f97728a497ad904d435",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "always_comb assert (is_onehot_o == $onehot(d_i));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 4,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 2,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "case441_cc_stream_mux_protocol_suppress_1",
+      "parent_bug_id": "case441_cc_stream_mux_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_stream_mux",
+      "source_files": [
+        "external/common_cells/src/cc_stream_mux.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_stream_mux.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "oup_data_o combinational/protocol output is forced low",
+      "spec": "The selected input stream is connected combinationally to the output: oup_data_o equals inp_data_i[inp_sel_i], oup_valid_o equals the selected valid bit, and only the selected input receives oup_ready_i on inp_ready_o.",
+      "mutation_edits": [
+        {
+          "line": 37,
+          "search": "  assign oup_data_o   = inp_data_i[inp_sel_i];",
+          "replace": "  assign oup_data_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "oup_data_o",
+      "relevant_signals": [
+        "inp_data_i",
+        "inp_valid_i",
+        "inp_ready_o",
+        "inp_sel_i",
+        "oup_data_o",
+        "oup_valid_o",
+        "oup_ready_i"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a885b7d2314487d07d5122aa0b3d2c0a6371e85f594c1938b1843a3e016efbf4",
+      "buggy_sha256": "43d111f5f47ef06fa9f0229ddcea409806ed0167d1ac6895144e104b272d4915",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "always_comb assert (oup_data_o == inp_data_i[inp_sel_i] && oup_valid_o == inp_valid_i[inp_sel_i] && inp_ready_o[inp_sel_i] == oup_ready_i);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_data_o"
+          ],
+          "good": {
+            "oup_data_o": "00010001"
+          },
+          "bad": {
+            "oup_data_o": "00000000"
+          }
+        },
+        "decoy": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_data_o"
+          ],
+          "good": {
+            "oup_data_o": "10000000"
+          },
+          "bad": {
+            "oup_data_o": "00000000"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_data_o"
+          ],
+          "good": {
+            "oup_data_o": "01111110"
+          },
+          "bad": {
+            "oup_data_o": "00000000"
+          }
+        }
+      }
+    },
+    {
+      "name": "case442_cc_stream_mux_protocol_suppress_2",
+      "parent_bug_id": "case442_cc_stream_mux_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_stream_mux",
+      "source_files": [
+        "external/common_cells/src/cc_stream_mux.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_stream_mux.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "oup_valid_o combinational/protocol output is forced low",
+      "spec": "The output valid signal reflects the valid bit of the input selected by inp_sel_i in the same combinational cycle. Output data comes from that same selected input, and ready is returned only to the selected input.",
+      "mutation_edits": [
+        {
+          "line": 38,
+          "search": "  assign oup_valid_o  = inp_valid_i[inp_sel_i];",
+          "replace": "  assign oup_valid_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "oup_valid_o",
+      "relevant_signals": [
+        "inp_data_i",
+        "inp_valid_i",
+        "inp_ready_o",
+        "inp_sel_i",
+        "oup_data_o",
+        "oup_valid_o",
+        "oup_ready_i"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a885b7d2314487d07d5122aa0b3d2c0a6371e85f594c1938b1843a3e016efbf4",
+      "buggy_sha256": "a5b93f5292f230a317813ffc38f9be06caa4a22b00f3ccfa85d679307288c180",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "always_comb assert (oup_valid_o == inp_valid_i[inp_sel_i] && oup_data_o == inp_data_i[inp_sel_i] && inp_ready_o[inp_sel_i] == oup_ready_i);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_valid_o"
+          ],
+          "good": {
+            "oup_valid_o": "1"
+          },
+          "bad": {
+            "oup_valid_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_valid_o"
+          ],
+          "good": {
+            "oup_valid_o": "1"
+          },
+          "bad": {
+            "oup_valid_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 3,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "oup_valid_o"
+          ],
+          "good": {
+            "oup_valid_o": "1"
+          },
+          "bad": {
+            "oup_valid_o": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "case443_cc_lzc_protocol_suppress_1",
+      "parent_bug_id": "case443_cc_lzc_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_lzc",
+      "source_files": [
+        "external/common_cells/src/cc_lzc.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_lzc.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "cnt_o[0] combinational/protocol output is forced low",
+      "spec": "For a one-bit input, cnt_o and empty_o are both asserted when in_i is zero and both deasserted when in_i is one. The outputs are combinational and represent the zero count and empty indication for the current input.",
+      "mutation_edits": [
+        {
+          "line": 41,
+          "search": "    assign cnt_o[0] = !in_i[0];",
+          "replace": "    assign cnt_o[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "cnt_o[0]",
+      "relevant_signals": [
+        "in_i",
+        "cnt_o",
+        "empty_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "62119065b214b01d98f47d8c2f342e16cae537e3eacfc41bfd5f4b709482f51e",
+      "buggy_sha256": "f903235d83c29e70cf302c12ceb94aafbf8088748eb549ba48d3dd71d9d083f7",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending",
+      "golden_sva": "always_comb assert (cnt_o == !in_i && empty_o == !in_i);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 5,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "cnt_o"
+          ],
+          "good": {
+            "cnt_o": "1"
+          },
+          "bad": {
+            "cnt_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 2,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "cnt_o"
+          ],
+          "good": {
+            "cnt_o": "1"
+          },
+          "bad": {
+            "cnt_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "cnt_o"
+          ],
+          "good": {
+            "cnt_o": "1"
+          },
+          "bad": {
+            "cnt_o": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "case444_cc_lzc_protocol_suppress_2",
+      "parent_bug_id": "case444_cc_lzc_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_lzc",
+      "source_files": [
+        "external/common_cells/src/cc_lzc.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_lzc.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "empty_o combinational/protocol output is forced low",
+      "spec": "Signal empty_o shall follow the original cc_lzc RTL behavior; the mutation changes the actual RTL implementation at source line 42.",
+      "mutation_edits": [
+        {
+          "line": 42,
+          "search": "    assign empty_o = !in_i[0];",
+          "replace": "    assign empty_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "empty_o",
+      "relevant_signals": [
+        "empty_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "62119065b214b01d98f47d8c2f342e16cae537e3eacfc41bfd5f4b709482f51e",
+      "buggy_sha256": "fad6b34ace7599f5ea3986cb70b9e7f64353032454041c915cd70915a3e5d357",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case445_priority_encoder_protocol_suppress_1",
+      "parent_bug_id": "case445_priority_encoder_protocol_suppress_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "priority_encoder",
+      "source_files": [
+        "external/verilog-axis/rtl/priority_encoder.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/priority_encoder.v",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "output_valid combinational/protocol output is forced low",
+      "spec": "Signal output_valid shall follow the original priority_encoder RTL behavior; the mutation changes the actual RTL implementation at source line 86.",
+      "mutation_edits": [
+        {
+          "line": 86,
+          "search": "assign output_valid = stage_valid[LEVELS-1];",
+          "replace": "assign output_valid = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "output_valid",
+      "relevant_signals": [
+        "output_valid"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "buggy_sha256": "4fb3f5bd741dee76a69024b7d5a0987c9a86ececff037613cb741c33a9ac4634",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case446_priority_encoder_protocol_suppress_2",
+      "parent_bug_id": "case446_priority_encoder_protocol_suppress_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "priority_encoder",
+      "source_files": [
+        "external/verilog-axis/rtl/priority_encoder.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/priority_encoder.v",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "output_encoded combinational/protocol output is forced low",
+      "spec": "Signal output_encoded shall follow the original priority_encoder RTL behavior; the mutation changes the actual RTL implementation at source line 87.",
+      "mutation_edits": [
+        {
+          "line": 87,
+          "search": "assign output_encoded = stage_enc[LEVELS-1];",
+          "replace": "assign output_encoded = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "output_encoded",
+      "relevant_signals": [
+        "output_encoded"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+      "buggy_sha256": "d03d4d54492d6588a62ba208b73f735c9be2457e1607c26e8f68508279e82303",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case447_axis_mux_protocol_suppress_1",
+      "parent_bug_id": "case447_axis_mux_protocol_suppress_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_mux",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_mux.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_mux.v",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "s_axis_tready combinational/protocol output is forced low",
+      "spec": "Signal s_axis_tready shall follow the original axis_mux RTL behavior; the mutation changes the actual RTL implementation at source line 110.",
+      "mutation_edits": [
+        {
+          "line": 110,
+          "search": "assign s_axis_tready = s_axis_tready_reg;",
+          "replace": "assign s_axis_tready = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "s_axis_tready",
+      "relevant_signals": [
+        "s_axis_tready"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "599c47b8889b6f22a325b3bb27a38b13b64a7ba08b0f4aefea1e2f550389e68a",
+      "buggy_sha256": "6883eeafe29add214385390b6f00ecaf896f69b6037621faf6e1582903e19f9a",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case448_axis_mux_protocol_suppress_2",
+      "parent_bug_id": "case448_axis_mux_protocol_suppress_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_mux",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_mux.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_mux.v",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "m_axis_tdata combinational/protocol output is forced low",
+      "spec": "Signal m_axis_tdata shall follow the original axis_mux RTL behavior; the mutation changes the actual RTL implementation at source line 188.",
+      "mutation_edits": [
+        {
+          "line": 188,
+          "search": "assign m_axis_tdata  = m_axis_tdata_reg;",
+          "replace": "assign m_axis_tdata = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "m_axis_tdata",
+      "relevant_signals": [
+        "m_axis_tdata"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "599c47b8889b6f22a325b3bb27a38b13b64a7ba08b0f4aefea1e2f550389e68a",
+      "buggy_sha256": "80f05b90f9b484b5994a542f58e87cced682eb9bf6457d96ab5f68301d23b6a8",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case449_axis_demux_protocol_suppress_1",
+      "parent_bug_id": "case449_axis_demux_protocol_suppress_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_demux",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_demux.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_demux.v",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "s_axis_tready combinational/protocol output is forced low",
+      "spec": "When routing is enabled and the demultiplexer has registered capacity to forward toward the selected output, the source-side ready signal shall be asserted. It shall remain deasserted while routing is disabled, and accepted beats shall be directed only to the selected output unless drop is requested.",
+      "mutation_edits": [
+        {
+          "line": 133,
+          "search": "assign s_axis_tready = s_axis_tready_reg && enable;",
+          "replace": "assign s_axis_tready = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "s_axis_tready",
+      "relevant_signals": [
+        "rst",
+        "enable",
+        "drop",
+        "select",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "m_axis_tready",
+        "m_axis_tvalid"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "b3ec5e59baa6b29f9d2bd077c262b8f3e57ea1de1162e19614f93dc866d5ba38",
+      "buggy_sha256": "0a1dd3bcf88a4bcc1b4a6df4d998bcd0a2d1550064b721214d26941bdd51e0ea",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (enable && !drop && !s_axis_tvalid && !(|m_axis_tvalid)) |=> s_axis_tready);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 25000,
+          "clock_cycle": 3,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "heldout": {
+          "time_ps": 36000,
+          "clock_cycle": 4,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "decoy": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "s_axis_tready"
+          ]
+        }
+      }
+    },
+    {
+      "name": "case450_axis_demux_protocol_suppress_2",
+      "parent_bug_id": "case450_axis_demux_protocol_suppress_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_demux",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_demux.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_demux.v",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "m_axis_tdata combinational/protocol output is forced low",
+      "spec": "Signal m_axis_tdata shall follow the original axis_demux RTL behavior; the mutation changes the actual RTL implementation at source line 222.",
+      "mutation_edits": [
+        {
+          "line": 222,
+          "search": "assign m_axis_tdata  = {M_COUNT{m_axis_tdata_reg}};",
+          "replace": "assign m_axis_tdata = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "m_axis_tdata",
+      "relevant_signals": [
+        "m_axis_tdata"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "b3ec5e59baa6b29f9d2bd077c262b8f3e57ea1de1162e19614f93dc866d5ba38",
+      "buggy_sha256": "2acfab1481c901c7efecf2e21b4ad8786548c8ec5f408c832303fa8ee0c757ee",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    }
+  ]
+}

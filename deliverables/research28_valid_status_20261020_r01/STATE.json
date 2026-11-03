@@ -1,0 +1,122 @@
+{
+  "task": "背压期间及解除边界的 valid 保持保护",
+  "status": "accepted_real_model_refinement_and_fresh_independent_replay_passed",
+  "primary_run": "deliverables\\research28_valid_closed_loop_20261020_r01",
+  "frozen_sha256": "2607e416ed0bf4a96b55af757352c2ec63e1d4131fea5235dfbbef300efb67c8",
+  "real_model_calls_this_task": 1,
+  "authorized_additional_calls": 2,
+  "authorized_calls_used": 1,
+  "authorized_calls_remaining": 1,
+  "model_prompt_tokens": 13368,
+  "model_completion_tokens": 151,
+  "generation_work_finished": true,
+  "automatic_refinement_success": true,
+  "candidate_modified": true,
+  "reset_property_unchanged": true,
+  "raw_response_integrity": true,
+  "prompt_samples_integrity": true,
+  "historical_development_unchanged": true,
+  "public_tests_promoted_unchanged": true,
+  "development_scenarios": 131,
+  "development_before": {
+    "rows": 85028,
+    "unknown": 0,
+    "triggers": 20298,
+    "false_positives": 0,
+    "detections": 250,
+    "misses": 8,
+    "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+    "later_attribution_unknown": 1479
+  },
+  "development_after": {
+    "rows": 85028,
+    "unknown": 0,
+    "triggers": 20298,
+    "false_positives": 0,
+    "detections": 258,
+    "misses": 0,
+    "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+    "later_attribution_unknown": 1479
+  },
+  "independent_scenarios": 26,
+  "independent_seed": 523922415,
+  "independent_depth_pipeline": [
+    [
+      4,
+      2
+    ],
+    [
+      8,
+      2
+    ]
+  ],
+  "independent_counts": {
+    "rows": 16087,
+    "unknown": 0,
+    "triggers": 4074,
+    "false_positives": 0,
+    "detections": 52,
+    "misses": 0,
+    "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+    "later_attribution_unknown": 318
+  },
+  "independent_valid_boundaries": {
+    "core": {
+      "valid_withdraw_stalled": {
+        "detections": 4,
+        "misses": 0,
+        "unknown": 0,
+        "false_positives": 0
+      },
+      "valid_withdraw_release": {
+        "detections": 4,
+        "misses": 0,
+        "unknown": 0,
+        "false_positives": 0
+      }
+    },
+    "initial": {
+      "valid_withdraw_stalled": {
+        "detections": 0,
+        "misses": 4,
+        "unknown": 0,
+        "false_positives": 0
+      },
+      "valid_withdraw_release": {
+        "detections": 0,
+        "misses": 4,
+        "unknown": 0,
+        "false_positives": 0
+      }
+    }
+  },
+  "test_separation": {
+    "no_schedule_overlap": true,
+    "frozen_hash_matches": true,
+    "split_created_after_freeze": true,
+    "seed": 523922415,
+    "scenarios": 26
+  },
+  "all_attempt_cost": {
+    "model_calls": 1,
+    "native_compile_calls": 16,
+    "native_execute_calls": 676,
+    "compile_smoke_execute_calls": 16,
+    "formal_calls": 0
+  },
+  "artifact_verification": {
+    "passed": true,
+    "checked_files": 8767,
+    "failures": [],
+    "source_snapshot_hashes_valid": true
+  },
+  "monetary_cost": null,
+  "scope": "Finite native simulation on actual axis_fifo with explicit artificial output-boundary faults. Historical preservation is evidence-scoped; no global proof or original historical-parent success claim.",
+  "still_not_established": [
+    "Full five-obligation protection: drain has no target/trigger exposure in this independent batch.",
+    "Global non-regression or formal proof.",
+    "Fair multi-method comparison and multi-seed ablations.",
+    "Original historical RTL-parent closure."
+  ],
+  "data_rule": "This independent batch is now public. If used for further model refinement or selection, promote it to development and generate a new post-freeze batch."
+}

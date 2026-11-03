@@ -1,0 +1,33 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, s_axis_tvalid, s_axis_tready, m_axis_tvalid, m_axis_tready, m_axis_tdata
+
+Specification:
+
+Once an output beat is valid, a downstream stall must hold both valid and payload until a ready handshake. Repeated stalled cycles cannot create a valid gap or overwrite the buffered beat.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_pipeline_fifo(input wire clk_i,input wire rst_ni,input wire s_axis_tvalid,input wire [7:0] s_axis_tdata,output wire s_axis_tready,output reg m_axis_tvalid,input wire m_axis_tready,output reg [7:0] m_axis_tdata);
+  assign s_axis_tready = !m_axis_tvalid || m_axis_tready;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin m_axis_tvalid<=0; m_axis_tdata<=0; end
+    else if (s_axis_tready) begin m_axis_tvalid<=s_axis_tvalid; if(s_axis_tvalid) m_axis_tdata<=s_axis_tdata; end
+  end
+endmodule
+
+Waveform evidence:
+
+Case: case502_axis_pipeline_fifo_stall_valid_gap
+First divergence cycle: 10
+First divergence time_ps: 45000
+Differing signals at first divergence: m_axis_tvalid, q_o, s_axis_tready
+Observed differing signal values (good): m_axis_tvalid=1, q_o=1, s_axis_tready=0
+Observed differing signal values (bad): m_axis_tvalid=0, q_o=0, s_axis_tready=1

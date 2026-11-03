@@ -1,0 +1,28 @@
+{
+  "case_name": "case502_axis_pipeline_fifo_stall_valid_gap",
+  "first_divergence_cycle": 10,
+  "first_divergence_time_ps": "45000",
+  "differing_signals": [
+    "m_axis_tvalid",
+    "q_o",
+    "s_axis_tready"
+  ],
+  "divergence_snapshot": [
+    {
+      "signal": "m_axis_tvalid",
+      "good": "1",
+      "bad": "0"
+    },
+    {
+      "signal": "q_o",
+      "good": "1",
+      "bad": "0"
+    },
+    {
+      "signal": "s_axis_tready",
+      "good": "0",
+      "bad": "1"
+    }
+  ],
+  "divergence_observation": "sampled_csv_row"
+}

@@ -19,7 +19,7 @@ Rules:
 14) If "First divergence cycle" is "none", fall back to the strongest RTL/spec-based property you can express with allowed signals.
 
 Allowed signals:
-clk, rst_n, enable_i, filter_i, thresh_i, filter_o
+clk, rst_n, enable_i, filter_i, thresh_i, filter_o, pre_accept_hold_dbg
 
 Specification:
 With filtering enabled, filter_o shall not switch until thresh_i consecutive agreeing samples have been observed.
@@ -85,7 +85,8 @@ module dut_case118_prim_filter_ctr_early_accept (
   input logic enable_i,
   input logic filter_i,
   input logic [1:0] thresh_i,
-  output logic filter_o
+  output logic filter_o,
+  output logic pre_accept_hold_dbg
 );
   prim_filter_ctr #(
     .AsyncOn(1'b0),
@@ -98,6 +99,30 @@ module dut_case118_prim_filter_ctr_early_accept (
     .thresh_i(thresh_i),
     .filter_o(filter_o)
   );
+
+  logic ref_stored_value;
+  logic [1:0] ref_agree_count;
+
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      ref_stored_value <= 1'b0;
+      ref_agree_count <= '0;
+      pre_accept_hold_dbg <= 1'b0;
+    end else begin
+      pre_accept_hold_dbg <= 1'b0;
+      if (!enable_i) begin
+        ref_agree_count <= '0;
+      end else if (filter_i == ref_stored_value) begin
+        ref_agree_count <= '0;
+      end else if ((ref_agree_count + 2'd1) < thresh_i) begin
+        ref_agree_count <= ref_agree_count + 2'd1;
+        pre_accept_hold_dbg <= 1'b1;
+      end else begin
+        ref_agree_count <= thresh_i;
+        ref_stored_value <= filter_i;
+      end
+    end
+  end
 endmodule
 
 // ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop.sv -----
@@ -280,6 +305,8 @@ Observed differing signal values (bad): filter_o=1
 Structured trace summary:
 - first_divergence_cycle: 1
 - differing_signals: filter_o
+- first_divergence_time_ps: 15000
+- divergence_observation: posedge_cycle
 - divergence_snapshot:
   - filter_o: good=0, bad=1
 

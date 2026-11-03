@@ -1,0 +1,116 @@
+[
+  {
+    "name": "oracle_fixture_positive_not_model",
+    "decision": {
+      "accepted": true,
+      "reasons": [],
+      "stage": "applicability",
+      "windows": 9,
+      "scope": "These development windows only; no general specification understanding claim."
+    }
+  },
+  {
+    "name": "wrong_anchor",
+    "decision": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "incorrect_anchor_cycle",
+          "id": "w0",
+          "expected": 32,
+          "actual": 33
+        }
+      ],
+      "stage": "applicability",
+      "windows": 9,
+      "scope": "These development windows only; no general specification understanding claim."
+    }
+  },
+  {
+    "name": "all_required",
+    "decision": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "incorrect_applicability",
+          "id": "w4",
+          "expected": "not_required",
+          "actual": "required"
+        },
+        {
+          "kind": "incorrect_applicability",
+          "id": "w5",
+          "expected": "not_required",
+          "actual": "required"
+        },
+        {
+          "kind": "incorrect_applicability",
+          "id": "w7",
+          "expected": "not_required",
+          "actual": "required"
+        },
+        {
+          "kind": "incorrect_applicability",
+          "id": "w8",
+          "expected": "cancelled",
+          "actual": "required"
+        }
+      ],
+      "stage": "applicability",
+      "windows": 9,
+      "scope": "These development windows only; no general specification understanding claim."
+    }
+  },
+  {
+    "name": "unknown",
+    "decision": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "incorrect_applicability",
+          "id": "w0",
+          "expected": "required",
+          "actual": "unknown"
+        },
+        {
+          "kind": "unknown_is_not_a_pass",
+          "id": "w0"
+        }
+      ],
+      "stage": "applicability",
+      "windows": 9,
+      "scope": "These development windows only; no general specification understanding claim."
+    }
+  },
+  {
+    "name": "missing_window",
+    "decision": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "missing_or_extra_windows"
+        }
+      ],
+      "stage": "applicability",
+      "windows": 9,
+      "scope": "These development windows only; no general specification understanding claim."
+    }
+  },
+  {
+    "name": "wrong_reset_label",
+    "decision": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "incorrect_applicability",
+          "id": "w8",
+          "expected": "cancelled",
+          "actual": "required"
+        }
+      ],
+      "stage": "applicability",
+      "windows": 9,
+      "scope": "These development windows only; no general specification understanding claim."
+    }
+  }
+]

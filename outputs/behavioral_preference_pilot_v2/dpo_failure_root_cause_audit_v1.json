@@ -1,0 +1,75 @@
+{
+  "status": "root_cause_confirmed",
+  "immutable_source": "Pilot v1 remains unchanged",
+  "corpora": {
+    "ordinary_sft": {
+      "records": 240,
+      "response_instances": 240,
+      "ast_prompt_sva_response_mismatches": 240,
+      "non_sva_source_responses": 0,
+      "corpus_sha256": "961b598cf00b0af01a98184a09ef849439ae93228b9cc8af310abd75dd480ab7"
+    },
+    "pass_count_dpo": {
+      "records": 535,
+      "response_instances": 1070,
+      "ast_prompt_sva_response_mismatches": 1070,
+      "non_sva_source_responses": 0,
+      "corpus_sha256": "89b8c5d0165a1425a31187701656dd16998c1c178e3191f61bc466c3922d2be1"
+    },
+    "scalar_score_dpo": {
+      "records": 536,
+      "response_instances": 1072,
+      "ast_prompt_sva_response_mismatches": 1072,
+      "non_sva_source_responses": 0,
+      "corpus_sha256": "8b8231ffedb48d05f402d19df844eec563ce6cac372b570e9f26320a04587344"
+    },
+    "random_probe_dominance_dpo": {
+      "records": 483,
+      "response_instances": 966,
+      "ast_prompt_sva_response_mismatches": 966,
+      "non_sva_source_responses": 0,
+      "corpus_sha256": "9ae013bbb2aaa6c5339ddb664908eb8ee7578d1284b0877aff8cc6a2b6fa0bf3"
+    },
+    "full_disagreement_dominance_dpo": {
+      "records": 484,
+      "response_instances": 968,
+      "ast_prompt_sva_response_mismatches": 968,
+      "non_sva_source_responses": 0,
+      "corpus_sha256": "c9b7bd8ce22c1c550ed351c120f01d842e274ff85d3c06d806a1158b9bb58a50"
+    }
+  },
+  "training_implementation_static_checks": {
+    "response_only_mask": true,
+    "reference_uses_adapter_disabled": true,
+    "dpo_margin_sign": true,
+    "chosen_gradient_sign": true,
+    "rejected_gradient_sign": true
+  },
+  "frozen_generation_failure_taxonomy": {
+    "ordinary_sft": {
+      "compile_ok": 44,
+      "extraction_failure": 3,
+      "undeclared_or_unbindable": 1
+    },
+    "pass_count_dpo": {
+      "extraction_failure": 38,
+      "unsupported_assertion_format": 10
+    },
+    "scalar_score_dpo": {
+      "extraction_failure": 33,
+      "unsupported_assertion_format": 15
+    },
+    "random_probe_dominance_dpo": {
+      "extraction_failure": 42,
+      "unsupported_assertion_format": 6
+    },
+    "full_disagreement_dominance_dpo": {
+      "unsupported_assertion_format": 14,
+      "extraction_failure": 34
+    }
+  },
+  "primary_root_cause": "Every supervised training prompt requests JSON AST and forbids SystemVerilog, while every target response is rendered SVA. Frozen inference requests direct SVA, creating a three-way format mismatch.",
+  "secondary_observation": "All DPO outputs reached the 512-token cap; extracted DPO assertions were bare names, missing event controls, malformed expressions, or used pseudo-functions.",
+  "not_supported_by_evidence": "No sign inversion or prompt-token loss masking bug was found in the frozen training implementation.",
+  "required_v2_fix": "Use one canonical JSON AST response for SFT, chosen, rejected, and inference; validate schema and deterministically render SVA outside the model."
+}

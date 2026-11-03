@@ -1,0 +1,110 @@
+{
+  "name": "case453_prim_count_commit_inversion",
+  "parent_bug_id": "case453_prim_count_commit_inversion",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_count",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_count.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_count.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "deferred_commit_polarity_inversion",
+  "bug_type": "commit-gated state transition",
+  "spec": "The counter state changes to cnt_d only on an asserted commit; a deasserted commit retains cnt_o.",
+  "mutation_edits": [
+    {
+      "search": "assign cnt_d_committed = commit_i ? cnt_d : cnt_q;",
+      "replace": "assign cnt_d_committed = commit_i ? cnt_q : cnt_d;"
+    }
+  ],
+  "mutation_signal": "cnt_o",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "commit_i",
+    "incr_en_i",
+    "decr_en_i",
+    "cnt_o",
+    "cnt_after_commit_o"
+  ],
+  "temporal_type": "commit-gated state transition",
+  "mutation_kind": "real_rtl_line_replacement",
+  "dataset_phase": "independent_next_hard_batch1",
+  "status": "final_verified_rejected",
+  "golden_sva": {
+    "name": "Golden_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) commit_i && incr_en_i |=> cnt_o == $past(cnt_after_commit_o));",
+    "temporal_type": "commit-gated state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 15000,
+      "sample_index": 4,
+      "good_row_index": 4,
+      "bad_row_index": 4,
+      "signals": [
+        "cnt_o[3:0]"
+      ],
+      "good_values": {
+        "cnt_o[3:0]": "0100"
+      },
+      "bad_values": {
+        "cnt_o[3:0]": "0000"
+      },
+      "good_trace_sha256": "510abd5dcca41a16810223a79fe6977147bebfb8849ffffdbfa4d8bca463d0df",
+      "bad_trace_sha256": "ce20090a345d79f049893254438ee854685ac1775b045913d1103f6693384aee",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 15000,
+      "sample_index": 4,
+      "good_row_index": 4,
+      "bad_row_index": 4,
+      "signals": [
+        "cnt_o[3:0]"
+      ],
+      "good_values": {
+        "cnt_o[3:0]": "0010"
+      },
+      "bad_values": {
+        "cnt_o[3:0]": "0000"
+      },
+      "good_trace_sha256": "e7beceeacca4160250c9d99475ce6a51cbb0587441fb93ca2b5504d54bcf98dc",
+      "bad_trace_sha256": "5acb968011f51de9248617424f39da7ef82ce45d82c9cea675c2d9b0b5175fcf",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 15000,
+      "sample_index": 4,
+      "good_row_index": 4,
+      "bad_row_index": 4,
+      "signals": [
+        "cnt_o[3:0]"
+      ],
+      "good_values": {
+        "cnt_o[3:0]": "0001"
+      },
+      "bad_values": {
+        "cnt_o[3:0]": "0000"
+      },
+      "good_trace_sha256": "a43c98ab432ccac1f97291921ce1a9d8ea15b57d72adc02191098be1876a0e41",
+      "bad_trace_sha256": "0c419c1369784c65e0bc038bf815b08df111e0303bea5c00d951d1b715d51756",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "5f6d3c50a168e2cbba0c02159754052000b67752d7dc502ca8477fe581d66b2b",
+  "buggy_sha256": "101e084903f949f0a3665e4dfb464b07ed1ae8ba1b69ab548a34fe693ceadea9",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

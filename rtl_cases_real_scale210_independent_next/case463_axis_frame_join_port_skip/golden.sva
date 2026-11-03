@@ -1,0 +1,1 @@
+assert property (@(posedge clk) disable iff (rst) (mv && mr && ml && dut.port_sel_reg < 2) |=> (dut.port_sel_reg == $past(dut.port_sel_reg)+1));

@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case435_prim_filter_ctr_protocol_suppress_1",
+  "parent_bug_id": "case435_prim_filter_ctr_protocol_suppress_1",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "weakness_class": "single_cycle_implication",
+      "property": "(!enable_i && filter_i) |-> filter_o",
+      "antecedent": "!enable_i && filter_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Checks only the high input polarity and misses equality for low input.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W1_single_cycle_implication"
+    },
+    {
+      "weakness_class": "final_output_only",
+      "property": "!enable_i |-> !$isunknown(filter_o)",
+      "antecedent": "!enable_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Only checks output knownness in bypass mode.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W2_final_output_only"
+    },
+    {
+      "weakness_class": "delay_removed",
+      "property": "(!enable_i) |=> (filter_o == filter_i)",
+      "antecedent": "!enable_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Delays a same-cycle bypass relation and can miss the current mismatch.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W3_delay_removed"
+    },
+    {
+      "weakness_class": "antecedent_removed",
+      "property": "filter_o == filter_i",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Drops the disabled-mode guard and does not target the bypass protocol.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W4_antecedent_removed"
+    },
+    {
+      "weakness_class": "simple_invariant",
+      "property": "filter_o == 1'b0 || filter_o == 1'b1",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "A Boolean range invariant contains no filter semantics.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W5_simple_invariant"
+    }
+  ]
+}

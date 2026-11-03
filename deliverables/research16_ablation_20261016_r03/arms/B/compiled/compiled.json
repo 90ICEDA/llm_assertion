@@ -1,0 +1,99 @@
+{
+  "directory": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r03/arms/B/compiled",
+  "candidate": {
+    "assertions": [
+      {
+        "property": "((mvalid && mready)) |-> ((ref_expected == mdata))",
+        "obligations": [
+          "order_payload"
+        ],
+        "reason": "When an output handshake occurs, the full output payload must match the oldest queued input at that same sample.",
+        "id": "a0",
+        "derived_antecedent": "((mvalid && mready))",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "((ref_expected == mdata))"
+      },
+      {
+        "property": "((mvalid && mready) && (ref_count == 0)) |=> ((drain_due))",
+        "obligations": [
+          "drain_no_loss"
+        ],
+        "reason": "If there are no outstanding inputs when an output handshake occurs, the drain condition must be met in the next sample.",
+        "id": "a1",
+        "derived_antecedent": "((mvalid && mready) && (ref_count == 0))",
+        "implication": "|=>",
+        "derived_delay": 1,
+        "consequent": "((drain_due))"
+      },
+      {
+        "property": "((mvalid && mready) && (ref_count > 0)) |-> ((ref_expected == mdata))",
+        "obligations": [
+          "order_payload"
+        ],
+        "reason": "When an output handshake occurs and there are outstanding inputs, the full output payload must match the oldest queued input at that same sample.",
+        "id": "a2",
+        "derived_antecedent": "((mvalid && mready) && (ref_count > 0))",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "((ref_expected == mdata))"
+      }
+    ],
+    "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+  },
+  "native": {
+    "engine": "Verilator native SVA simulation",
+    "formal_proof": false,
+    "source_sha256": "a97d737b68c6bb0261f79f292e52b0d3a115b3810436a00f246942c2d064aea1",
+    "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "compile_status": "passed",
+    "tool_support_status": "supported_for_compiled_constructs",
+    "execution_status": "completed",
+    "trigger_status": "no_trigger_marker_observed",
+    "property_status": "no_violation_within_executed_scope",
+    "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+    "formal_cost": {
+      "calls": 0,
+      "wall_seconds": 0
+    },
+    "native_simulation_calls": 1,
+    "compile": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r03/arms/B/compiled/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r03/arms/B/compiled/tb.sv",
+        "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r03/arms/B/compiled",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 10.381340749998344
+    },
+    "execute": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r03/arms/B/compiled/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r03/arms/B/compiled",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.015635071991709992
+    },
+    "failures": [],
+    "triggers": []
+  }
+}

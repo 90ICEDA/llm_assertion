@@ -19,13 +19,13 @@ Rules:
 14) If "First divergence cycle" is "none", fall back to the strongest RTL/spec-based property you can express with allowed signals.
 
 Allowed signals:
-clk, rst_n, clr_i, incr_wptr_i, incr_rptr_i, full_o, empty_o, depth_o
+clk, rst_n, clr_i, incr_wptr_i, incr_rptr_i, wptr_o, rptr_o, full_o, empty_o, depth_o
 
 Specification:
 A clear pulse shall reset the FIFO occupancy and pointers on the next cycle.
 
 Additional guidance:
-- Waveform naming hints: depth_o appears in waveforms as column 'depth_o[2:0]'.
+- Waveform naming hints: depth_o appears in waveforms as column 'depth_o[2:0]'; rptr_o appears in waveforms as column 'rptr_o[1:0]'; wptr_o appears in waveforms as column 'wptr_o[1:0]'.
 
 RTL:
 // Auto-generated real RTL mutation scaffold.
@@ -341,14 +341,17 @@ endmodule // prim_fifo_sync_cnt
 Trace divergence summary:
 Case: case124_prim_fifo_clear_ignored
 First divergence cycle: 11
-Differing signals at first divergence: empty_o, depth_o[2:0]
-Observed differing signal values (good): empty_o=1, depth_o[2:0]=000
-Observed differing signal values (bad): empty_o=0, depth_o[2:0]=010
+Differing signals at first divergence: wptr_o[1:0], empty_o, depth_o[2:0]
+Observed differing signal values (good): wptr_o[1:0]=00, empty_o=1, depth_o[2:0]=000
+Observed differing signal values (bad): wptr_o[1:0]=10, empty_o=0, depth_o[2:0]=010
 
 Structured trace summary:
 - first_divergence_cycle: 11
-- differing_signals: empty_o, depth_o[2:0]
+- differing_signals: wptr_o[1:0], empty_o, depth_o[2:0]
+- first_divergence_time_ps: 115000
+- divergence_observation: posedge_cycle
 - divergence_snapshot:
+  - wptr_o[1:0]: good=00, bad=10
   - empty_o: good=1, bad=0
   - depth_o[2:0]: good=000, bad=010
 

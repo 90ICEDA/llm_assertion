@@ -1,0 +1,43 @@
+{
+  "protocol": "strict_pareto_dominance_v3",
+  "source_probe_manifest": "outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/probe_manifest.json",
+  "source_probe_manifest_sha256": "35f594d5a90e4f18de23ce57d08fe9389f539f9c35bc30053968da001621352b",
+  "rules": [
+    "FP_chosen subseteq FP_rejected",
+    "TP_chosen superseteq TP_rejected",
+    "at least one strict"
+  ],
+  "cross_parent_comparisons": false,
+  "cross_policy_comparisons": false,
+  "forced_labels_for_incomparable_candidates": false,
+  "policies": {
+    "random_legal": {
+      "pair_count": 483,
+      "minimum_required": 300,
+      "pass": true,
+      "parent_count": 30,
+      "candidate_count": 240,
+      "strict_fp_only": 360,
+      "strict_tp_only": 27,
+      "strict_both": 96,
+      "duplicate_pair_ids": 0,
+      "pair_file": "outputs/behavioral_preference_pilot_v1/dominance_pairs_v3/random_legal_dominance_pairs.jsonl",
+      "pair_file_sha256": "9300b5722bd950dd54bde3ef274f7c3d2e6b3c2fb276be524b5d43ee267c24f3",
+      "ordered_non_dominating_relations_omitted": 1197
+    },
+    "disagreement_guided": {
+      "pair_count": 484,
+      "minimum_required": 300,
+      "pass": true,
+      "parent_count": 30,
+      "candidate_count": 240,
+      "strict_fp_only": 356,
+      "strict_tp_only": 27,
+      "strict_both": 101,
+      "duplicate_pair_ids": 0,
+      "pair_file": "outputs/behavioral_preference_pilot_v1/dominance_pairs_v3/disagreement_guided_dominance_pairs.jsonl",
+      "pair_file_sha256": "a524eeefddca65338a706f67c6e9b3e3fa3a13082511519127041fbb548fcde1",
+      "ordered_non_dominating_relations_omitted": 1196
+    }
+  }
+}

@@ -1,0 +1,33 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, req_i, ack_o
+
+Specification:
+
+A newly sampled request must traverse all three destination-domain synchronization stages. The acknowledgement must remain low at the immediately following sample and assert only after the final stage observes the request.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_cdc_2phase(input wire clk_i,input wire rst_ni,input wire req_i,output wire ack_o);
+  reg [2:0] req_sync;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) req_sync<=3'b000; else req_sync<={req_sync[1:0],req_i};
+  end
+  assign ack_o=req_sync[2];
+endmodule
+
+Waveform evidence:
+
+Case: case503_cc_cdc_2phase_ack_returns_early
+First divergence cycle: 8
+First divergence time_ps: 35000
+Differing signals at first divergence: ack_o, q_o
+Observed differing signal values (good): ack_o=0, q_o=0
+Observed differing signal values (bad): ack_o=1, q_o=1

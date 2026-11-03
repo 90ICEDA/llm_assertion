@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "locked_before_complement_expansion_generation",
+  "reason": "The fixed scale120 formal-compliant population contains only 9 temporal-success/raw-fail model-case cells, below the required review minimum of 10; the threshold is not relaxed.",
+  "selection_source": "previously sealed pristine16 test population",
+  "selection_independent_of_current_quadrant_outcomes": true,
+  "selection_algorithm": "reuse all 16 parents from the pre-existing sealed manifest; no filtering by raw/temporal outcome",
+  "case_count": 16,
+  "parent_bug_count": 16,
+  "models": {
+    "GPT": "gpt-5.4",
+    "Claude": "claude-opus-4-8"
+  },
+  "methods": [
+    "spec_rtl_raw_trace",
+    "spec_rtl_temporal_relation_abstraction"
+  ],
+  "k": 2,
+  "planned_candidate_count": 128,
+  "reuse_prior_router_candidates": false,
+  "policy_refit": false,
+  "post_outcome_case_selection_allowed": false,
+  "stop_rule": "run all 16 sealed parents; do not stop when the deficient quadrant first reaches 10",
+  "sha256": {
+    "outputs/pristine_trace_router_v1/sealed_test_manifest.json": "fc59656c6ac7b67b228ac3fd7cd90f74238eddc9c3ef34c19f2f765c264f7b5d",
+    "outputs/pristine_trace_router_v1/dispatcher_view/case_manifest.json": "26b43e3cd5b4754c1b0d63789e85620e696f95774d27f2b01df6f2c8c80e7506",
+    "outputs/pristine_trace_router_v1/dispatcher_temporal_primary.json": "296503c87854894e3e302f6c17b38ffbb8a763c43555ed0c74be868feaca4286",
+    "outputs/pristine_trace_router_v1/trace_representations.json": "0df917b70fdc79c45c559a7062f0b78424d7348b1b12eb7698d3d37e97bba576"
+  }
+}

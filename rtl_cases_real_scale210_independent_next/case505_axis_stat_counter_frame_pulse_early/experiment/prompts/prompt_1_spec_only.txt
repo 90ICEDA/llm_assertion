@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, frame_done_i, frame_len_i, stat_valid_o, stat_len_o
+
+Specification:
+
+A frame-completion event and its captured length must pass through the two-entry status pipeline. The status-valid pulse must be absent in the cycle immediately following the sampled event and appear one cycle later with the original length.

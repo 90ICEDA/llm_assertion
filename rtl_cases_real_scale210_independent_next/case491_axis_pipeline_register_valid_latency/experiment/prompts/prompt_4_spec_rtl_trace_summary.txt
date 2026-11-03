@@ -1,0 +1,42 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, s_valid_i, ready_i, q_o, state_o
+
+Specification:
+
+An accepted input valid traverses all three registered stages. It must not be observable at q_o after only two sampling edges.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_pipeline_register(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire s_valid_i,
+  input wire ready_i,
+  
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg [2:0] valid_pipe;
+  always @(posedge clk_i or negedge rst_ni)
+    if (!rst_ni) valid_pipe <= 3'b000;
+    else if (ready_i) valid_pipe <= {valid_pipe[1:0],s_valid_i};
+  assign q_o = valid_pipe[2];
+  assign state_o = {5'b0,valid_pipe};
+endmodule
+
+Waveform evidence:
+
+Case: case491_axis_pipeline_register_valid_latency
+First divergence cycle: 10
+First divergence time_ps: 45000
+Differing signals at first divergence: q_o
+Observed differing signal values (good): q_o=0
+Observed differing signal values (bad): q_o=1

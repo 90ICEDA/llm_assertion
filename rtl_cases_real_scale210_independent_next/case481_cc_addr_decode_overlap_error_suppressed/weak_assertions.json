@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case481_cc_addr_decode_overlap_error_suppressed",
+  "parent_bug_id": "case481_cc_addr_decode_overlap_error_suppressed",
+  "source_project": "common_cells",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "id": "W1_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "property": "en_i && addr_i<8'h20 |-> !valid_o",
+      "antecedent": "en_i && addr_i<8'h20",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Checks only an unmapped region.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W2_final_output_only",
+      "weakness_class": "final_output_only",
+      "property": "valid_o |-> $onehot(sel_o)",
+      "antecedent": "valid_o",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Overlap suppresses valid in both designs.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W3_delay_removed",
+      "weakness_class": "delay_removed",
+      "property": "en_i |-> !$isunknown(sel_o)",
+      "antecedent": "en_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Knownness does not require overlap error.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W4_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "property": "!valid_o || $onehot(sel_o)",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Drops overlap antecedent.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W5_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "property": "error_o |-> !valid_o",
+      "antecedent": "error_o",
+      "antecedent_nonempty": true,
+      "expected_weakness": "True only when error is already reported.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    }
+  ]
+}

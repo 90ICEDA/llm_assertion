@@ -1,0 +1,2 @@
+// Pending semantic validation; not admitted.
+assert property (@(posedge clk_i) disable iff (!rst_ni) set_crc_i && !data_valid_i |=> crc_out_o == $past(crc_in_i));

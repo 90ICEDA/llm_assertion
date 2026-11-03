@@ -1,0 +1,28 @@
+{
+  "case_name": "case124_prim_fifo_clear_ignored",
+  "first_divergence_cycle": 11,
+  "first_divergence_time_ps": "115000",
+  "differing_signals": [
+    "wptr_o[1:0]",
+    "empty_o",
+    "depth_o[2:0]"
+  ],
+  "divergence_snapshot": [
+    {
+      "signal": "wptr_o[1:0]",
+      "good": "00",
+      "bad": "10"
+    },
+    {
+      "signal": "empty_o",
+      "good": "1",
+      "bad": "0"
+    },
+    {
+      "signal": "depth_o[2:0]",
+      "good": "000",
+      "bad": "010"
+    }
+  ],
+  "divergence_observation": "posedge_cycle"
+}

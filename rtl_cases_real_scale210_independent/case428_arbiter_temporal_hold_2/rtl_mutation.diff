@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -142,7 +142,7 @@
+ 
+ always @(posedge clk) begin
+     grant_reg <= grant_next;
+-    grant_valid_reg <= grant_valid_next;
++    grant_valid_reg <= grant_valid_reg; // ASSERTIONFORGE_MUTATION: state update suppressed
+     grant_encoded_reg <= grant_encoded_next;
+     mask_reg <= mask_next;
+ 

@@ -1,0 +1,2 @@
+// MatchingOneHotAddressAccepted_A
+assert property (@(oh_i or addr_i or en_i or rst_ni) disable iff (!rst_ni) (en_i && $onehot(oh_i) && oh_i[addr_i]) |-> !err_o);

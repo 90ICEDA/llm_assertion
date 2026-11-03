@@ -1,0 +1,30 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_src_i) disable iff (1'b0).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_src_i, rst_src_ni, src_pulse_i, clk_dst_i, rst_dst_ni, dst_pulse_o
+
+Specification:
+
+Each accepted source pulse toggles the synchronized level, but `dst_pulse_o` must be reconstructed as exactly one destination-clock cycle. It must return low even if no later source pulse arrives.
+
+RTL:
+
+`timescale 1ns/1ps
+module prim_pulse_sync(
+  input wire clk_src_i,rst_src_ni,src_pulse_i,
+  input wire clk_dst_i,rst_dst_ni,
+  output wire dst_pulse_o
+);
+  reg src_level, sync1, dst_level, dst_level_q;
+  always @(posedge clk_src_i or negedge rst_src_ni)
+    if(!rst_src_ni) src_level<=1'b0; else src_level<=src_level^src_pulse_i;
+  always @(posedge clk_dst_i or negedge rst_dst_ni)
+    if(!rst_dst_ni) begin sync1<=0; dst_level<=0; dst_level_q<=0; end
+    else begin sync1<=src_level; dst_level<=sync1; dst_level_q<=dst_level; end
+  assign dst_pulse_o=dst_level_q^dst_level;
+endmodule

@@ -1,0 +1,64 @@
+{
+  "status": "sealed_complete_no_go",
+  "version": "behavioral_preference_closed_loop_final_v1",
+  "core_loop": "executable behavioral preferences -> DPO -> frozen first OOD Top-1",
+  "frozen_scope_assets": {
+    "main_diagnostic_46": {
+      "path": "generated_main_results_strict_success/main_results_strict_success.xlsx",
+      "sha256": "2300b6d374a14496a0beabf7651d1d31ff941a852d30231f5d4656dd1e29e72f",
+      "declared_parent_count": 46,
+      "mutation_policy": "frozen; not modified by Pilot"
+    },
+    "selector_queue_40": {
+      "path": "generated_main_results_strict_success/new_temporal40_manifest.xlsx",
+      "sha256": "c02008c7a1776dcfeb570b215582a61b39ce42ddbbfa879d95bae3ff85d3c1eb",
+      "declared_parent_count": 40,
+      "mutation_policy": "frozen; selector/repair diagnostic upper bound only"
+    }
+  },
+  "bindings": {
+    "phase_b_adapter_sha256": "c1bc4c54f64a50acbdec3288de3325cffb6a05ed61a94a3c7a6df0ffd34bdb3a",
+    "query_manifest_sha256": "7d77ae187a5551aa6978b7a15269db99bdd2696cfc9335ceb02b74e985672f63",
+    "source_48_query_manifest_sha256": "137a58c4b891ff7df1104ac73a7c0e42d39fd3bc856af90c8958fbfcf9fd8aa3",
+    "smoke_summary_sha256": "9e85b4fba34758610ea6df187509599e82c4696efa6e7de71b6f21cededa0390",
+    "metric_definitions_sha256": "0f9ea59e1e6c961daf579fabfb022f2c7965943d19b088fde13b76365c7d8980",
+    "final_metrics_sha256": "10fe241b91d79db3dc1826696674d20f4c944451f4def4625a8da85fef82b8a0",
+    "evaluation_artifact_hashes_sha256": "645262e428c2191e66c869faeb2116bd0452634534f47b19a4821f7cdd426f26",
+    "deletion_audit_sha256": "aba95d829b812a873d17e6a933e1ad558a004dbd5ac3994981fedabfeeeaecf9",
+    "leakage_audit_sha256": "536355702eb9b302978971cac8abdf0fc5ba425013a22634c412a98d17b10164"
+  },
+  "counts": {
+    "train_parents": 30,
+    "projects": 3,
+    "candidates": 240,
+    "random_dominance_pairs": 483,
+    "guided_dominance_pairs": 484,
+    "phase_b_smoke": 24,
+    "frozen_ood_queries": 48,
+    "frozen_ood_evaluations": 48
+  },
+  "project_ood": "structural N/A: all three frozen projects occur in Pilot training",
+  "deletion_audit": {
+    "status": "pass",
+    "manifest_queries": 48,
+    "generation_records": 48,
+    "evaluation_records": 48,
+    "rendered_sva": 48,
+    "unique_evaluated_case_ids": 48,
+    "same_case_set": true,
+    "failures_retained_in_denominator": true
+  },
+  "leakage_audit": {
+    "status": "pass",
+    "prompt_outcome_term_hits": {},
+    "prompt_count_checked": 48,
+    "buggy_rtl_in_generation_input": false,
+    "fp_tp_in_generation_input": false,
+    "heldout_outcomes_in_generation_input": false,
+    "repair": false,
+    "reranker": false,
+    "selector": false
+  },
+  "decision": "NO-GO",
+  "expansion_authorized": false
+}

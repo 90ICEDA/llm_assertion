@@ -1,0 +1,66 @@
+{
+  "model_calls": 0,
+  "formal_calls": 0,
+  "native_compile_budget": 8,
+  "native_execute_budget": 8,
+  "probes": [
+    {
+      "depth": 16,
+      "policy": "ready_first",
+      "excess": 6,
+      "gap_offset": 0,
+      "semantic_key": [
+        16,
+        15,
+        22,
+        9,
+        1
+      ]
+    },
+    {
+      "depth": 16,
+      "policy": "stalled_first",
+      "excess": 6,
+      "gap_offset": 1,
+      "semantic_key": [
+        16,
+        15,
+        22,
+        10,
+        0
+      ]
+    },
+    {
+      "depth": 32,
+      "policy": "ready_first",
+      "excess": 6,
+      "gap_offset": 0,
+      "semantic_key": [
+        32,
+        31,
+        38,
+        17,
+        1
+      ]
+    },
+    {
+      "depth": 32,
+      "policy": "stalled_first",
+      "excess": 6,
+      "gap_offset": 1,
+      "semantic_key": [
+        32,
+        31,
+        38,
+        18,
+        0
+      ]
+    }
+  ],
+  "reserved_pool_count": 60,
+  "planned_independent_count": 32,
+  "per_depth_policy": 8,
+  "no_replacements": true,
+  "note": "Four probes are DEVELOPMENT, excluded before running. Remaining descriptors are uninstantiated capacity only, not independent results. Same root failure; length/overflow phase combinations do not count as independent bugs.",
+  "hypothesis": "Only if all four predefined development probes confirm both original RTL witness and legal controls, and interface/controller checks pass, seal a two-call pilot; otherwise stop. No adaptive probe replacement."
+}

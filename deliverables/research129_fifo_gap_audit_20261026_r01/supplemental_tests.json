@@ -1,0 +1,509 @@
+{
+  "protocol_status": "checklist_only_not_executed_not_an_independent_result",
+  "tasks": [
+    {
+      "id": "d2p0_corrupt",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "order_payload"
+      ],
+      "mode": "corrupt",
+      "recipe": "至少一个输入实际握手接受后输出；错误数据为该复位区间首违例",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_duplicate_payload",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "order_payload"
+      ],
+      "mode": "duplicate_payload",
+      "recipe": "四个唯一数据已实际接受；第4个错误重复第3个，确认队列对应",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_reset_residue",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "no_unsolicited_output",
+        "reset_cancellation"
+      ],
+      "mode": "reset_residue",
+      "recipe": "接受并暂存唯一数据，背压时复位取消；复位释放后不再输入，旧数据被接受时同时曝光两项",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_stall_glitch",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "stall_glitch",
+      "recipe": "前周期valid=1且ready=0；当前数据改变，分别保留合法跨周期对照",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_valid_withdraw_stalled",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "valid_withdraw_stalled",
+      "recipe": "短背压持续阶段撤销valid，数据保持；请求呈现不代替接受",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_valid_withdraw_release",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "valid_withdraw_release",
+      "recipe": "短背压后ready恢复边界撤销valid；检查前周期触发与本周期要求",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_long_valid_withdraw_stalled",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "long_valid_withdraw_stalled",
+      "recipe": "至少8个已呈现输出的连续背压周期后撤销valid",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_long_valid_withdraw_release",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "long_valid_withdraw_release",
+      "recipe": "至少8个背压周期后的ready恢复边界撤销valid",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d2p0_legal_reset_cancel",
+      "depth": 2,
+      "pipeline": 0,
+      "obligations": [
+        "reset_cancellation",
+        "stall_stability",
+        "no_unsolicited_output"
+      ],
+      "mode": "correct",
+      "role": "legal_control",
+      "recipe": "输出背压中复位，取消旧事务后不输出；跨复位的保持要求被取消，新epoch握手另行对应",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_corrupt",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "order_payload"
+      ],
+      "mode": "corrupt",
+      "recipe": "至少一个输入实际握手接受后输出；错误数据为该复位区间首违例",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_duplicate_payload",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "order_payload"
+      ],
+      "mode": "duplicate_payload",
+      "recipe": "四个唯一数据已实际接受；第4个错误重复第3个，确认队列对应",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_reset_residue",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "no_unsolicited_output",
+        "reset_cancellation"
+      ],
+      "mode": "reset_residue",
+      "recipe": "接受并暂存唯一数据，背压时复位取消；复位释放后不再输入，旧数据被接受时同时曝光两项",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_stall_glitch",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "stall_glitch",
+      "recipe": "前周期valid=1且ready=0；当前数据改变，分别保留合法跨周期对照",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_valid_withdraw_stalled",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "valid_withdraw_stalled",
+      "recipe": "短背压持续阶段撤销valid，数据保持；请求呈现不代替接受",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_valid_withdraw_release",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "valid_withdraw_release",
+      "recipe": "短背压后ready恢复边界撤销valid；检查前周期触发与本周期要求",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_long_valid_withdraw_stalled",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "long_valid_withdraw_stalled",
+      "recipe": "至少8个已呈现输出的连续背压周期后撤销valid",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_long_valid_withdraw_release",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "stall_stability"
+      ],
+      "mode": "long_valid_withdraw_release",
+      "recipe": "至少8个背压周期后的ready恢复边界撤销valid",
+      "role": "paired_target",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p1_legal_reset_cancel",
+      "depth": 4,
+      "pipeline": 1,
+      "obligations": [
+        "reset_cancellation",
+        "stall_stability",
+        "no_unsolicited_output"
+      ],
+      "mode": "correct",
+      "role": "legal_control",
+      "recipe": "输出背压中复位，取消旧事务后不输出；跨复位的保持要求被取消，新epoch握手另行对应",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p2_isolated_tail",
+      "depth": 4,
+      "pipeline": 2,
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "mode": "drop",
+      "role": "paired_target",
+      "recipe": "复用research29家族逻辑但显式支持Depth4/Pipeline2；目标为最后第4个已接受输出被隐藏，不能提前出现顺序错误；最终至少18个真实ready=1且input-valid=0周期；合法对照应排空或复位取消。",
+      "implementation_status": "existing_generator_needs_explicit_parameter_option_without_changing_old_defaults",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p2_continuous_tail",
+      "depth": 4,
+      "pipeline": 2,
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "mode": "drop",
+      "role": "paired_target",
+      "recipe": "复用research29家族逻辑但显式支持Depth4/Pipeline2；目标为最后第4个已接受输出被隐藏，不能提前出现顺序错误；最终至少18个真实ready=1且input-valid=0周期；合法对照应排空或复位取消。",
+      "implementation_status": "existing_generator_needs_explicit_parameter_option_without_changing_old_defaults",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p2_parked_tail",
+      "depth": 4,
+      "pipeline": 2,
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "mode": "drop",
+      "role": "paired_target",
+      "recipe": "复用research29家族逻辑但显式支持Depth4/Pipeline2；目标为最后第4个已接受输出被隐藏，不能提前出现顺序错误；最终至少18个真实ready=1且input-valid=0周期；合法对照应排空或复位取消。",
+      "implementation_status": "existing_generator_needs_explicit_parameter_option_without_changing_old_defaults",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p2_reset_then_tail",
+      "depth": 4,
+      "pipeline": 2,
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "mode": "drop",
+      "role": "paired_target",
+      "recipe": "复用research29家族逻辑但显式支持Depth4/Pipeline2；目标为最后第4个已接受输出被隐藏，不能提前出现顺序错误；最终至少18个真实ready=1且input-valid=0周期；合法对照应排空或复位取消。",
+      "implementation_status": "existing_generator_needs_explicit_parameter_option_without_changing_old_defaults",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p2_legal_three",
+      "depth": 4,
+      "pipeline": 2,
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "mode": "drop",
+      "role": "legal_control",
+      "recipe": "复用research29家族逻辑但显式支持Depth4/Pipeline2；目标为最后第4个已接受输出被隐藏，不能提前出现顺序错误；最终至少18个真实ready=1且input-valid=0周期；合法对照应排空或复位取消。",
+      "implementation_status": "existing_generator_needs_explicit_parameter_option_without_changing_old_defaults",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    },
+    {
+      "id": "d4p2_reset_cancels_tail",
+      "depth": 4,
+      "pipeline": 2,
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "mode": "drop",
+      "role": "legal_control",
+      "recipe": "复用research29家族逻辑但显式支持Depth4/Pipeline2；目标为最后第4个已接受输出被隐藏，不能提前出现顺序错误；最终至少18个真实ready=1且input-valid=0周期；合法对照应排空或复位取消。",
+      "implementation_status": "existing_generator_needs_explicit_parameter_option_without_changing_old_defaults",
+      "fixed_candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+      "seed_set": [
+        12907,
+        12919
+      ],
+      "stage": "planned_development_supplement_not_executed",
+      "no_model_calls": true,
+      "no_assertion_edit": true,
+      "acceptance": "Same legal accepted-input streams; fixed control satisfies obligation; fault violates confirmed obligation at first event in epoch; actual native trigger and failure at required edge. Missing exposure or unknown never passes."
+    }
+  ],
+  "minimum_confirmed_exposure": "Each target task/seed at least one first-attributable violation per named obligation; each legal control zero oracle/native failure.",
+  "stop": "Any invalid stimulus, fixed-side violation, sampling failure or attribution unknown stops that cell; record failure and do not change candidate or oracle.",
+  "budget": {
+    "seeds": 2,
+    "designs": 24,
+    "scenario_definitions": 48,
+    "max_native_replays": 96,
+    "parameter_builds": 3,
+    "smoke_runs_separate": 3,
+    "model_calls": 0
+  },
+  "isolation": "All tasks are development after current audit. Future independent inputs exclude all promoted hashes and all supplemental rows; no claim old tests remain unseen."
+}

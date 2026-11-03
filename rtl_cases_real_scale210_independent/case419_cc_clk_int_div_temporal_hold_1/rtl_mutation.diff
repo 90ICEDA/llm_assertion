@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -362,7 +362,7 @@
+   // clock to early
+   always_ff @(posedge ungated_output_clock, negedge rst_ni) begin
+     if (!rst_ni) begin
+-      gate_is_open_q <= 1'b0;
++      gate_is_open_q <= gate_is_open_q; // ASSERTIONFORGE_MUTATION: state update suppressed
+     end else begin
+       gate_is_open_q <= gate_en_q & en_i;
+     end

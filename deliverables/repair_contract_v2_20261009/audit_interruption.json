@@ -1,0 +1,11 @@
+{
+  "reason": "Read-only audit interrupted to replace repeated recursive directory scans with one cached training-trace pass; no experiment/method result changed.",
+  "affected": "contract_v2_audit.py feedback provenance scan",
+  "original_result": {
+    "chunk_id": "a16a5a",
+    "wall_time_seconds": 0.0000098,
+    "exit_code": 1,
+    "original_token_count": 225,
+    "output": "Traceback (most recent call last):\n  File \"/mnt/d/AssertionForge-main1/scripts/contract_v2_audit.py\", line 141, in <module>\n    if __name__=='__main__':audit()\n                            ^^^^^^^\n  File \"/mnt/d/AssertionForge-main1/scripts/contract_v2_audit.py\", line 110, in audit\n    for folder in (OUT/'runs/methods').rglob('trace.json'):\n  File \"/usr/lib/python3.12/pathlib.py\", line 1111, in rglob\n    for p in selector.select_from(self):\n  File \"/usr/lib/python3.12/pathlib.py\", line 235, in _select_from\n    for starting_point in self._iterate_directories(parent_path):\n  File \"/usr/lib/python3.12/pathlib.py\", line 229, in _iterate_directories\n    for dirpath, dirnames, _ in parent_path.walk():\n  File \"/usr/lib/python3.12/pathlib.py\", line 1142, in walk\n    is_dir = entry.is_dir(follow_symlinks=follow_symlinks)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n"
+  }
+}

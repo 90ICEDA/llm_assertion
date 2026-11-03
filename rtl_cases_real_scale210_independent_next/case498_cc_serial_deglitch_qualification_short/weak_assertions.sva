@@ -1,0 +1,5 @@
+assert property (@(posedge clk_i) disable iff (!rst_ni) (noisy_i |-> (noisy_i == noisy_i)));
+assert property (@(posedge clk_i) disable iff (!rst_ni) (1'b1 |-> !$isunknown(q_o)));
+assert property (@(posedge clk_i) disable iff (!rst_ni) (sample_enable_i |-> (q_o == q_o)));
+assert property (@(posedge clk_i) disable iff (!rst_ni) (q_o == q_o));
+assert property (@(posedge clk_i) disable iff (!rst_ni) (state_o <= 8'hff));

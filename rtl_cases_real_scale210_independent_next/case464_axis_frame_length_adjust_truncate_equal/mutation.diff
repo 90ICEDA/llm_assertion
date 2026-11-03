@@ -1,0 +1,20 @@
+--- correct.v
++++ buggy.v
+@@ -235,7 +235,7 @@
+                     long_counter_next = 16'd0;
+                 end
+ 
+-                if (long_counter_reg <= word_cnt) begin
++                if (long_counter_reg < word_cnt) begin // ASSERTIONFORGE_MUTATION
+                     m_axis_tkeep_int = ({KEEP_WIDTH{1'b1}}) >> (KEEP_WIDTH-long_counter_reg);
+                     if (s_axis_tlast) begin
+                         status_valid_next = 1'b1;
+@@ -330,7 +330,7 @@
+                     long_counter_next = 16'd0;
+                 end
+ 
+-                if (long_counter_reg <= word_cnt) begin
++                if (long_counter_reg < word_cnt) begin // ASSERTIONFORGE_MUTATION
+                     m_axis_tkeep_int = ({KEEP_WIDTH{1'b1}}) >> (KEEP_WIDTH-long_counter_reg);
+                     if (s_axis_tlast) begin
+                         status_valid_next = 1'b1;

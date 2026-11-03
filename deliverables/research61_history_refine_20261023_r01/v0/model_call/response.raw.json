@@ -1,0 +1,22 @@
+{
+  "message": {
+    "role": "assistant",
+    "content": "{\n  \"operation\": \"replace_op\",\n  \"reason\": \"The original model incorrectly allowed illegal instructions with bit28 set. The new property ensures that such instructions are always flagged as illegal.\",\n  \"assertions\": [\n    {\n      \"antecedent\": {\n        \"op\": \"==\",\n        \"args\": [\n          { \"signal\": \"instr[28]\" },\n          { \"int\": 1 }\n        ]\n      },\n      \"consequent\": {\n        \"op\": \"==\",\n        \"args\": [\n          { \"signal\": \"illegal_insn\" },\n          { \"int\": 1 }\n        ]\n      },\n      \"timing\": \"same_sample\",\n      \"obligations\": [\"op_bit28_illegal\"]\n    }\n  ]\n}"
+  },
+  "service_done": {
+    "model": "qwen2.5-coder:7b-instruct",
+    "created_at": "2026-10-23T13:57:30.751223505Z",
+    "message": {
+      "role": "assistant",
+      "content": ""
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 320089418048,
+    "load_duration": 168922215,
+    "prompt_eval_count": 5983,
+    "prompt_eval_duration": 293090086000,
+    "eval_count": 157,
+    "eval_duration": 26798744000
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "purpose": "research187_original_sync_fifo_drop_history_pilot",
+  "eligible": true,
+  "model_calls_authorized": 0,
+  "prospective_max_calls": 2,
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "parameters": {
+    "model": "deepseek/deepseek-v3-0324",
+    "temperature": 0.2,
+    "max_tokens": 1024,
+    "seed": 16507
+  },
+  "recovery_seed": 16508,
+  "public_rule": "All ready-first exposed targets triggered/detected, all legal frames in every scene/revision no false alarms, no critical unknown; independent raw port oracle.",
+  "historical_rule": "Same public rule + historical stalled-first exposed targets + retained baseline evidence IDs. H/R equivalent.",
+  "protected_ids": [
+    "16/stalled_first/frame2",
+    "32/stalled_first/frame2"
+  ],
+  "branch": "One shared proposal. Only O accept, H reject, confirmed lost detection/new legal FP and zero critical unknown permits one recovery. Otherwise stop. No retry; no unused budget transfer; transport failure terminal.",
+  "limits": "1200 seconds per controller, <=60000 UTF8-byte reservation per call and <=120000 total plus included output reservations. This is not measured token usage. Development stage<=12 native jobs; independent stage<=64. Count every attempted compile, including failures.",
+  "independent": "Only full recovery accepted: save candidate/RTL/tool/development hashes before selecting32 reserved descriptors, eight per depth/readiness stratum. No replacements, no feedback from tests; report every exposure/FP/FN/trigger/unknown. Shared both-accept outcome stops without tests under THIS protocol.",
+  "unchanged": "research185 failure and research186 diagnostic qualification unchanged; no model recovery inferred from local union.",
+  "remote_dispatch": "NOT EXECUTED. Future invocation requires a purpose/seal/output-bound explicit grant; this CLI cannot invoke any model."
+}

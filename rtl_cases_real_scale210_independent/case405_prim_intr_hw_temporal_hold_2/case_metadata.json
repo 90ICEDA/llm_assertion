@@ -1,0 +1,94 @@
+{
+  "name": "case405_prim_intr_hw_temporal_hold_2",
+  "parent_bug_id": "case405_prim_intr_hw_temporal_hold_2",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_intr_hw",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_intr_hw.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_intr_hw.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "intr_o state update is suppressed",
+  "spec": "For the registered-output configuration, every active clock captures the enabled interrupt status into intr_o; a newly asserted enabled status therefore appears on intr_o on the following sampled cycle.",
+  "mutation_edits": [
+    {
+      "line": 100,
+      "search": "        intr_o <= status & reg2hw_intr_enable_q_i;",
+      "replace": "        intr_o <= intr_o; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "intr_o",
+  "relevant_signals": [
+    "rst_ni",
+    "clk_i",
+    "reg2hw_intr_enable_q_i",
+    "reg2hw_intr_state_q_i",
+    "intr_o"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "2fb312f9db786982dd4c2bb656f9ba7862637b045dd704ea128a4ce6a4a1f8bc",
+  "buggy_sha256": "e4b831a2f7857d59b7e324f0c7f9e726a25dc8453ee387f1db3b77e0c31bf16f",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete",
+  "golden_sva": {
+    "name": "EnabledStatusRegisters_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i) |=> intr_o);",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (event_intr_i && reg2hw_intr_enable_q_i) |=> intr_o);",
+    "temporal_type": "one-cycle registered response"
+  },
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 25000,
+      "cycle_index": 2,
+      "sample_index": 5,
+      "clock_phase": "rising edge",
+      "signals": [
+        "intr_o"
+      ],
+      "good_values": {
+        "intr_o": "1"
+      },
+      "bad_values": {
+        "intr_o": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 45000,
+      "cycle_index": 4,
+      "sample_index": 9,
+      "clock_phase": "rising edge",
+      "signals": [
+        "intr_o"
+      ],
+      "good_values": {
+        "intr_o": "1"
+      },
+      "bad_values": {
+        "intr_o": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "cycle_index": 6,
+      "sample_index": 13,
+      "clock_phase": "rising edge",
+      "signals": [
+        "intr_o"
+      ],
+      "good_values": {
+        "intr_o": "1"
+      },
+      "bad_values": {
+        "intr_o": "0"
+      }
+    }
+  }
+}

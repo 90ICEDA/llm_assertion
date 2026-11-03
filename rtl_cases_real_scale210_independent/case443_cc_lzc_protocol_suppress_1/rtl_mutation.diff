@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -38,7 +38,7 @@
+ 
+   if (Width <= 1) begin : gen_degenerate_lzc
+ 
+-    assign cnt_o[0] = !in_i[0];
++    assign cnt_o[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+     assign empty_o = !in_i[0];
+ 
+   end else begin : gen_lzc

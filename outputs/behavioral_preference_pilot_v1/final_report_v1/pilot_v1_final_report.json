@@ -1,0 +1,568 @@
+{
+  "status": "complete_no_go",
+  "data": {
+    "parents": 30,
+    "projects": {
+      "common_cells": 10,
+      "opentitan": 10,
+      "verilog_axis": 10
+    },
+    "bug_classes": {
+      "combination_protocol": 8,
+      "temporal_cross_cycle": 18,
+      "combination_same_cycle": 4
+    },
+    "candidate_count": 240,
+    "observed_failure_modes": {
+      "fixed_false_positive": 134,
+      "target_miss": 100,
+      "vacuous": 36
+    }
+  },
+  "probe_ablation": {
+    "operational_definitions": {
+      "distinguishing_candidate_query_ratio": "sum candidate-specific distinguishing_probe_ids / (240*32)",
+      "unique_failure_modes": "unique per-parent candidate (FP set, TP set) signatures",
+      "wall_clock": "sum of raw compile/simulation durations for selected candidate-query cells; selector overhead excluded",
+      "joint_end_to_end_wall_clock_seconds": "sum parent_result wall clocks; both policies combined and not attributable separately"
+    },
+    "rows": [
+      {
+        "policy": "random_legal",
+        "parents": 30,
+        "candidates": 240,
+        "queries_per_parent": 32,
+        "unique_selected_queries": 960,
+        "candidate_query_cells": 7680,
+        "distinguishing_candidate_query_cells": 2317,
+        "distinguishing_candidate_query_ratio": 0.30169270833333334,
+        "unique_distinguishing_probes": 615,
+        "unique_distinguishing_probe_ratio": 0.640625,
+        "unique_candidate_fp_tp_signatures": 100,
+        "dominance_pairs": 483,
+        "pairs_per_query": 0.503125,
+        "observed_selected_query_execution_wall_clock_seconds": 691.2658833229978,
+        "wall_clock_observed_cells": 6400,
+        "wall_clock_missing_cells": 1280,
+        "timeout_stage_count_on_observed_cells": 0
+      },
+      {
+        "policy": "disagreement_guided",
+        "parents": 30,
+        "candidates": 240,
+        "queries_per_parent": 32,
+        "unique_selected_queries": 960,
+        "candidate_query_cells": 7680,
+        "distinguishing_candidate_query_cells": 2333,
+        "distinguishing_candidate_query_ratio": 0.30377604166666666,
+        "unique_distinguishing_probes": 618,
+        "unique_distinguishing_probe_ratio": 0.64375,
+        "unique_candidate_fp_tp_signatures": 101,
+        "dominance_pairs": 484,
+        "pairs_per_query": 0.5041666666666667,
+        "observed_selected_query_execution_wall_clock_seconds": 687.0936378209988,
+        "wall_clock_observed_cells": 6400,
+        "wall_clock_missing_cells": 1280,
+        "timeout_stage_count_on_observed_cells": 0
+      }
+    ],
+    "joint_end_to_end_wall_clock_seconds": 3243.8965505970004
+  },
+  "dominance": {
+    "protocol": "strict_pareto_dominance_v3",
+    "source_probe_manifest": "outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/probe_manifest.json",
+    "source_probe_manifest_sha256": "35f594d5a90e4f18de23ce57d08fe9389f539f9c35bc30053968da001621352b",
+    "rules": [
+      "FP_chosen subseteq FP_rejected",
+      "TP_chosen superseteq TP_rejected",
+      "at least one strict"
+    ],
+    "cross_parent_comparisons": false,
+    "cross_policy_comparisons": false,
+    "forced_labels_for_incomparable_candidates": false,
+    "policies": {
+      "random_legal": {
+        "pair_count": 483,
+        "minimum_required": 300,
+        "pass": true,
+        "parent_count": 30,
+        "candidate_count": 240,
+        "strict_fp_only": 360,
+        "strict_tp_only": 27,
+        "strict_both": 96,
+        "duplicate_pair_ids": 0,
+        "pair_file": "outputs/behavioral_preference_pilot_v1/dominance_pairs_v3/random_legal_dominance_pairs.jsonl",
+        "pair_file_sha256": "9300b5722bd950dd54bde3ef274f7c3d2e6b3c2fb276be524b5d43ee267c24f3",
+        "ordered_non_dominating_relations_omitted": 1197
+      },
+      "disagreement_guided": {
+        "pair_count": 484,
+        "minimum_required": 300,
+        "pass": true,
+        "parent_count": 30,
+        "candidate_count": 240,
+        "strict_fp_only": 356,
+        "strict_tp_only": 27,
+        "strict_both": 101,
+        "duplicate_pair_ids": 0,
+        "pair_file": "outputs/behavioral_preference_pilot_v1/dominance_pairs_v3/disagreement_guided_dominance_pairs.jsonl",
+        "pair_file_sha256": "a524eeefddca65338a706f67c6e9b3e3fa3a13082511519127041fbb548fcde1",
+        "ordered_non_dominating_relations_omitted": 1196
+      }
+    }
+  },
+  "training": {
+    "frozen_config": {
+      "status": "frozen_before_formal_training",
+      "version": "pilot_training_v2_full_response",
+      "seed": 20260815,
+      "model": "outputs/checkpoints/Qwen3-8B",
+      "loss_token_budget_per_method": 245760,
+      "budget_epoch_count": 1,
+      "max_sequence_tokens": 512,
+      "sequence_policy": "keep full response; truncate prompt from the left only if prompt+response exceeds 512",
+      "padding_policy": "batch_size_1_no_padding; attention mask covers exactly real tokens",
+      "loss_token_accounting": "SFT=response non-padding tokens; DPO=chosen plus rejected response non-padding tokens",
+      "token_repetition": "forbidden",
+      "ordinary_sft_definition": "all 240 executable candidates; no FP/TP/probe/held-out selection",
+      "shared_qlora": {
+        "bits": 4,
+        "quant": "nf4",
+        "double_quant": true,
+        "lora_r": 8,
+        "lora_alpha": 16,
+        "lora_dropout": 0.05,
+        "targets": [
+          "q_proj",
+          "v_proj"
+        ]
+      },
+      "optimizer": {
+        "name": "AdamW",
+        "lr": 0.0001,
+        "beta": 0.1
+      },
+      "source_hashes": {
+        "probe_manifest": "35f594d5a90e4f18de23ce57d08fe9389f539f9c35bc30053968da001621352b",
+        "baseline_definitions": "469773e40c7a339c702c9d45aa388a016701dada22c648071643f89d65487d41"
+      }
+    },
+    "adapters": {
+      "ordinary_sft": {
+        "sha256": "97b28837673e16fab251a0d57aa46eb36efc5e3e0bd215eb2c846330aa8db775",
+        "checkpoint": "outputs/behavioral_preference_pilot_v1/formal_training_v2/ordinary_sft/checkpoint-008762/adapter_model.safetensors"
+      },
+      "pass_count_dpo": {
+        "sha256": "71429e0a6ec962a0fdedcd279600ff73d1a5d2c87f925d0f9f9415c4049fab22",
+        "checkpoint": "outputs/behavioral_preference_pilot_v1/formal_training_v2/pass_count_dpo/checkpoint-004380/adapter_model.safetensors"
+      },
+      "scalar_score_dpo": {
+        "sha256": "0b0fdcce088f88adcbd820f075ed48ddbe98b7ff339421b3839748e53efa28cf",
+        "checkpoint": "outputs/behavioral_preference_pilot_v1/formal_training_v2/scalar_score_dpo/checkpoint-004380/adapter_model.safetensors"
+      },
+      "random_probe_dominance_dpo": {
+        "sha256": "81c0225f6b0d8978724b86f97ce8f49e30c9ca59d759d4850bb1a4d9e3661031",
+        "checkpoint": "outputs/behavioral_preference_pilot_v1/formal_training_v2/random_probe_dominance_dpo/checkpoint-004371/adapter_model.safetensors"
+      },
+      "full_disagreement_dominance_dpo": {
+        "sha256": "8ee63a43f6851f69f6fe3532e61b0fe4bd2ed2c2f948da2a489e42ede6e4f641",
+        "checkpoint": "outputs/behavioral_preference_pilot_v1/formal_training_v2/full_disagreement_dominance_dpo/checkpoint-004373/adapter_model.safetensors"
+      }
+    }
+  },
+  "frozen_top1": {
+    "extraction": {
+      "full_disagreement_dominance_dpo": {
+        "count": 48,
+        "extracted": 14,
+        "extraction_rate": 0.2916666666666667,
+        "maxed_512": 48
+      },
+      "ordinary_sft": {
+        "count": 48,
+        "extracted": 45,
+        "extraction_rate": 0.9375,
+        "maxed_512": 48
+      },
+      "pass_count_dpo": {
+        "count": 48,
+        "extracted": 10,
+        "extraction_rate": 0.20833333333333334,
+        "maxed_512": 48
+      },
+      "random_probe_dominance_dpo": {
+        "count": 48,
+        "extracted": 6,
+        "extraction_rate": 0.125,
+        "maxed_512": 48
+      },
+      "scalar_score_dpo": {
+        "count": 48,
+        "extracted": 15,
+        "extraction_rate": 0.3125,
+        "maxed_512": 48
+      }
+    },
+    "metrics": {
+      "status": "complete",
+      "metric_definitions_sha256": "0f9ea59e1e6c961daf579fabfb022f2c7965943d19b088fde13b76365c7d8980",
+      "query_manifest_sha256": "4b57a42c1d06d7ea8a967cd7753ca610368f21698e21564c075a02c4fbafe4ec",
+      "record_count": 240,
+      "project_ood": "N/A",
+      "summaries": {
+        "unseen_parent": {
+          "split": "unseen_parent",
+          "methods": {
+            "ordinary_sft": {
+              "query_count": 35,
+              "compile_rate": 0.8857142857142857,
+              "SCS@1": 0.02857142857142857,
+              "Fixed-Safe": 0.22857142857142856,
+              "Target Detect": 0.45714285714285713,
+              "Family Recall": 0.058823529411764705,
+              "Non-vacuity": 0.8857142857142857,
+              "TOR": 0.5,
+              "counts": {
+                "strict_success": 1,
+                "fixed_safe": 8,
+                "target_detect": 16,
+                "recalled_families": 1,
+                "test_families": 17,
+                "non_vacuous": 31,
+                "primary_success": 2,
+                "trace_overfit": 1
+              }
+            },
+            "pass_count_dpo": {
+              "query_count": 35,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 17,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "scalar_score_dpo": {
+              "query_count": 35,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 17,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "random_probe_dominance_dpo": {
+              "query_count": 35,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 17,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "full_disagreement_dominance_dpo": {
+              "query_count": 35,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 17,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            }
+          }
+        },
+        "unseen_bug_family": {
+          "split": "unseen_bug_family",
+          "methods": {
+            "ordinary_sft": {
+              "query_count": 25,
+              "compile_rate": 1.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.32,
+              "Target Detect": 0.56,
+              "Family Recall": 0.0,
+              "Non-vacuity": 1.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 8,
+                "target_detect": 14,
+                "recalled_families": 0,
+                "test_families": 8,
+                "non_vacuous": 25,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "pass_count_dpo": {
+              "query_count": 25,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 8,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "scalar_score_dpo": {
+              "query_count": 25,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 8,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "random_probe_dominance_dpo": {
+              "query_count": 25,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 8,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "full_disagreement_dominance_dpo": {
+              "query_count": 25,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 8,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            }
+          }
+        },
+        "union_overview": {
+          "split": "union_overview",
+          "methods": {
+            "ordinary_sft": {
+              "query_count": 48,
+              "compile_rate": 0.9166666666666666,
+              "SCS@1": 0.020833333333333332,
+              "Fixed-Safe": 0.1875,
+              "Target Detect": 0.5833333333333334,
+              "Family Recall": 0.047619047619047616,
+              "Non-vacuity": 0.9166666666666666,
+              "TOR": 0.5,
+              "counts": {
+                "strict_success": 1,
+                "fixed_safe": 9,
+                "target_detect": 28,
+                "recalled_families": 1,
+                "test_families": 21,
+                "non_vacuous": 44,
+                "primary_success": 2,
+                "trace_overfit": 1
+              }
+            },
+            "pass_count_dpo": {
+              "query_count": 48,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 21,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "scalar_score_dpo": {
+              "query_count": 48,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 21,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "random_probe_dominance_dpo": {
+              "query_count": 48,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 21,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            },
+            "full_disagreement_dominance_dpo": {
+              "query_count": 48,
+              "compile_rate": 0.0,
+              "SCS@1": 0.0,
+              "Fixed-Safe": 0.0,
+              "Target Detect": 0.0,
+              "Family Recall": 0.0,
+              "Non-vacuity": 0.0,
+              "TOR": null,
+              "counts": {
+                "strict_success": 0,
+                "fixed_safe": 0,
+                "target_detect": 0,
+                "recalled_families": 0,
+                "test_families": 21,
+                "non_vacuous": 0,
+                "primary_success": 0,
+                "trace_overfit": 0
+              }
+            }
+          }
+        }
+      },
+      "wall_clock_seconds": 0.23706050001783296
+    }
+  },
+  "project_ood": "N/A: training covers all three frozen projects",
+  "decision": {
+    "status": "no-go",
+    "decision_scope": "Pilot only; do not expand to 3,000-10,000 pairs",
+    "gate": {
+      "required_scs_at_1_gain_percentage_points": 5.0,
+      "required_fixed_false_positive_condition": "must not increase",
+      "comparison_target": "strongest non-behavioral-preference baseline"
+    },
+    "strongest_non_behavioral_preference_baseline": "ordinary_sft",
+    "full_method": "full_disagreement_dominance_dpo",
+    "unseen_parent": {
+      "query_count": 35,
+      "baseline_scs_at_1": 0.02857142857142857,
+      "full_method_scs_at_1": 0.0,
+      "gain_percentage_points": -2.857142857142857,
+      "baseline_fixed_safe": 0.22857142857142856,
+      "full_method_fixed_safe": 0.0,
+      "fixed_false_positives_increased": true,
+      "gate_pass": false
+    },
+    "unseen_bug_family": {
+      "query_count": 25,
+      "baseline_scs_at_1": 0.0,
+      "full_method_scs_at_1": 0.0,
+      "gain_percentage_points": 0.0,
+      "baseline_fixed_safe": 0.32,
+      "full_method_fixed_safe": 0.0,
+      "fixed_false_positives_increased": true,
+      "gate_pass": false
+    },
+    "project_ood": "N/A: Pilot training covers all three frozen projects",
+    "observed_failure": "All four DPO adapters produced zero compilable frozen Top-1 assertions. Extracted examples are malformed or incomplete SVA, including missing event controls, undeclared pseudo-functions, and bare property names.",
+    "prohibited_follow_up": "Do not repair, rerank, regenerate, alter the frozen test queries, or expand the dataset under this Pilot result.",
+    "required_next_action": "Diagnose and revise the training/output protocol in a new explicitly versioned Pilot; preserve this no-go run unchanged."
+  }
+}

@@ -1,0 +1,71 @@
+"""Join all attempts without discarding initialization or frontend failures."""
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import research16_ablation as run
+
+
+def main():
+    root=run.ROOT
+    out=root/'deliverables/research16_ablation_summary_20261016_r01'
+    out.mkdir(exist_ok=False)
+    cohorts={}
+    for name in ('r01','r02','r03'):
+        folder=root/f'deliverables/research16_ablation_20261016_{name}/report'
+        cohorts[name]=dict(status=run.read(folder/'status.json'),costs=run.read(folder/'costs.json')['totals'],
+            arms=run.read(folder/'arms.json'),report=str((folder/'REPORT.md').relative_to(root)))
+    cost_fields=('model_calls','prompt_tokens','completion_tokens','usage_unavailable_calls','model_wall_seconds',
+                 'retries','formal_calls','compile_calls','simulation_calls','compile_seconds','simulation_seconds')
+    costs={key:sum(c['costs'][key] for c in cohorts.values()) for key in cost_fields}
+    search=run.read(root/'deliverables/research16_ablation_20261016_r02/search/summary.json')
+    results=dict(cohorts=cohorts,all_attempts_cost=costs,search=search,
+        accounting='Sum physical calls across the failed initial block, first syntax-failure four-arm block, and uniform prompt-interface correction block. The initial and search acquisition reused by r03 is charged only in r02.',
+        limitations=['One engineering FIFO parent, one generation seed; not a statistical superiority result.',
+            'Candidate-disagreement has a single initial property and falls back to exploration.',
+            'Original FIFO presented bug remains unknown; these are artificial boundary faults.',
+            'Finite native simulation, not formal proof. First-violation attribution leaves later failures unknown.',
+            'All failed blocks remain reported; prompt-interface changes are not benefits of the research mechanisms.'])
+    run.dump(out/'results.json',results)
+    final=cohorts['r03'];families=run.read(root/'deliverables/research16_ablation_20261016_r03/report/holdout_families.json')
+    lines=['# 四组消融交付汇总（2026-10-16）','',
+        f"最终四组及冻结后测试完成：{final['status']['four_arm_experiment_executed']}。局部tail-loss证据链：{final['status'].get('scoped_tail_loss_chain_established',False)}。完整测试范围通过：{final['status']['successful_mechanism_chain_established']}。",'',
+        '| 阶段 | 实际结果 | 模型调用 |', '|---|---|---:|',
+        f"| r01 自由文本初始化 | 两次输出含不支持的延迟序列，均拒绝 | {cohorts['r01']['costs']['model_calls']} |",
+        f"| r02 结构化输出 | 初始候选合格，真实搜索取得见证；四组提案均因布尔字段嵌入时序运算符拒绝 | {cohorts['r02']['costs']['model_calls']} |",
+        f"| r03 统一结构化输入与最终任务提示 | 复用同一初始候选与真实见证，重新实际执行四组 | {cohorts['r03']['costs']['model_calls']} |",'',
+        '## 最终四组结果','',
+        '| 组 | 新搜索 | 防退化门 | 修改接受 | 全测试FP | 检出 | 漏检 | unknown | tail-loss目标漏检 |',
+        '|---|---|---|---|---:|---:|---:|---:|---:|']
+    for a,s in final['arms'].items():
+        h=s['holdout'];primary=families[a]['primary_tail_loss_correct_drop_order_drain']
+        lines.append(f"| {a} | {s['config']['search']} | {s['config']['gate']} | {s['accepted_proposal']} | {h['false_positives']} | {h['detections']} | {h['misses']} | {h['unknown']} | {primary['misses']} |")
+    lines += ['', '这些是义务×采样周期证据行，不是独立Bug；全部目标分母及归因范围见各组report/arms.json。后续违例另存归因unknown，不混入确认检出。','',
+        '## 搜索实际结果','',
+        '| 方法 | 查询 | 原生回放 | 独立漏报义务缺口 |','|---|---:|---:|---:|']
+    for s in search:lines.append(f"| {s['method']} | {s['queries']} | {s['native_replays']} | {s['independent_gap_count']} |")
+    lines += ['', '契约法在Depth2首条查询找到丢失最后响应的drain_no_loss缺口；分歧臂的探索也找到该类缺口。不能声称契约法优于所有基线。搜索成本只实际发生一次，r03复用不重新计费。','',
+        '## 全部尝试成本','',json.dumps(costs,ensure_ascii=False),
+        '', '含被拒绝的初始化与提案、公共资格、搜索、编译附带执行及两轮独立回放。金额不可用。A/C与B/D修改调用预算一致，但搜索组额外获取证据的成本不同，不能宣称总成本严格相等。','',
+        '## 解释与限制','',
+        '如果A/C、B/D分别选择相同版本，本轮没有观察到防退化门的额外效果；历史回放保持不等于全局无退化。局部丢失义务改善不等于整个FIFO案例通过。详见各组义务映射和unknown。',
+        '未在看到独立结果后再次修改模型断言。各轮独立输入在冻结后生成，均保存种子、参数及冻结哈希；同一已知生成语法下的新输入不代表覆盖所有协议行为。', '',
+        '## 未成功环节与具体解决方案（尚未实施的新实验）', '',
+        '原来的两个入口阻塞已经解除：有真实模型生成并通过原生资格的公共初始候选，也有真实搜索取得的合法、可归因丢失见证。当前阻塞位于模型细化：A/C输出不符合布尔字段接口；B/D虽原生可编译，但新增drain断言在正确与故障回放上都0次触发，当前目标仍漏检。历史3条确认检出保持，但没有新增保护。',
+        '1. 将结构约束落实到生成端：先核验本地后端支持的JSON Schema/grammar约束；若只支持JSON模式，改用可表达通用布尔AST的结构化接口，拒绝把时序运算符嵌入布尔节点。谓词、信号、运算与时序仍由模型选择，编译器只作通用语法转换，不填入正确目标断言。不能靠接收后手工纠正输出制造成功。',
+        '2. 完善实际反馈：给参考队列状态增加原生采样日志，将违例检查点的输出握手、drain_due、未完成事务和每条SVA真实cover次数一起交给模型。明确此次问题是缺少输出时断言不触发，而不是输出数据比较错误。保存每次请求与响应。',
+        '3. 预先统一增加反馈预算，例如四组各最多3次调用，逐次按格式错误、原生编译结果、0触发或目标未修复提供反馈。所有已花调用计费，无搜索组仍不得得到搜索见证。保留一调用结果，不能重新命名为新预算成功。',
+        '4. 如果相同本地7B配置在新预算内仍失败，再单列更强模型的整套四组实验，四组统一模型与参数；不能只替换D组模型。本轮没有验证其他模型是否可解决。',
+        '5. 后续若根据本轮独立失败继续修改，这两批测试必须转为开发数据；新断言冻结后重新生成未见输入。当前独立结果作为本轮冻结版本的负结果保留。',
+        '达到成功标准需要：补充断言在实际丢失见证触发并检出，合法对照无误报，历史确认检出/触发未丢失，且新的冻结后测试有效。已有0误报或历史保护未丢失均不能单独算修复成功。', '',
+        '产物：', *[f"- [{n} 完整报告](../research16_ablation_20261016_{n}/report/REPORT.md)" for n in cohorts],
+        '- 最终原始SVA、提案、接受/拒绝、历史回放、独立测试：../research16_ablation_20261016_r03/',
+        '- 真实搜索见证与240回放：../research16_ablation_20261016_r02/search/',
+        '- 机器可读汇总：results.json','']
+    (out/'REPORT.md').write_text('\n'.join(lines),encoding='utf-8')
+    shutil.copy2(__file__,out/'summary_script_snapshot.py')
+    run.dump(out/'manifest.json',{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir() if p.is_file()})
+    print(json.dumps(dict(costs=costs,final_status=final['status']),ensure_ascii=False))
+
+
+if __name__=='__main__':main()

@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -34,7 +34,7 @@
+     inp_ready_o = '0;
+     inp_ready_o[inp_sel_i] = oup_ready_i;
+   end
+-  assign oup_data_o   = inp_data_i[inp_sel_i];
++  assign oup_data_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+   assign oup_valid_o  = inp_valid_i[inp_sel_i];
+ 
+ `ifndef COMMON_CELLS_ASSERTS_OFF

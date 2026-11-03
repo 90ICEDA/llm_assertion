@@ -1,0 +1,15 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge m_ready) disable iff (1'b0).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+m_ready, ll_dst_rdy_n, m_valid, m_data
+
+Specification:
+
+# Behavioral specification
+
+LocalLink destination-ready is active low and is exactly the inverse of AXIS m_axis_tready.

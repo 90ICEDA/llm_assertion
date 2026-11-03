@@ -1,0 +1,1 @@
+For the three-round gate-generator extraction, each accepted `valid_i` sample produces `valid_o` exactly three rising edges later, aligned with the final registered data round. Reset clears all pending valid tokens.

@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "test": "popcount_w1",
+      "pass": true,
+      "samples": 2,
+      "checks": 4,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "popcount_w2",
+      "pass": true,
+      "samples": 4,
+      "checks": 8,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "popcount_w4",
+      "pass": true,
+      "samples": 16,
+      "checks": 32,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "popcount_w8",
+      "pass": true,
+      "samples": 256,
+      "checks": 512,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "popcount_w17",
+      "pass": true,
+      "samples": 7,
+      "checks": 14,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "popcount_w32",
+      "pass": true,
+      "samples": 7,
+      "checks": 14,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "popcount_w65",
+      "pass": true,
+      "samples": 7,
+      "checks": 14,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "popcount_w256",
+      "pass": true,
+      "samples": 7,
+      "checks": 14,
+      "basis": "Python per-bit sum; correct and intentionally false comparison"
+    },
+    {
+      "test": "delay_overlap_reset_boundary",
+      "pass": true,
+      "checks": 45,
+      "delay2_expected_failures": [
+        9,
+        12
+      ],
+      "delay2_pass_due_cycles": [
+        5,
+        6
+      ],
+      "cancelled_trigger_cycle": 14,
+      "basis": "independent due-event map and literal failure cycle assertion"
+    },
+    {
+      "test": "asynchronous_reset_cancel",
+      "pass": true,
+      "checks": 5,
+      "basis": "hand-authored no due failure after between-edge reset"
+    },
+    {
+      "test": "unknown_bits_propagate",
+      "pass": true,
+      "checks": 2,
+      "basis": "X/Z must remain unknown, not counted as zeros"
+    }
+  ],
+  "scope": "sampled unsigned packed popcount, exact delays 0..2; four-state unknown propagation; no SVA engine equivalence claim",
+  "checker_sha256": "4bca11c0c6815b5c0d1ae86718cd542ffa03109cc62eafa1d127a91f01a38134"
+}

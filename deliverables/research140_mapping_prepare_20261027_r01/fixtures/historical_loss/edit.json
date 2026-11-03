@@ -1,0 +1,22 @@
+{
+  "operation": "replace",
+  "reason": "local syntax fixture, never model success",
+  "assertions": [
+    {
+      "antecedent": "(instr[6:0] == 7'h63 && (instr[14:12] == 3'b010 || instr[14:12] == 3'b011)) && (instr == 32'h00402263 || instr == 32'h0044b4e3 || instr == 32'h005621e3 || instr == 32'h0056a263 || instr == 32'h00a5b1e3 || instr == 32'h00c2b4e3 || instr == 32'h00e4b2e3 || instr == 32'h00e4b463 || instr == 32'h00e7a3e3)",
+      "consequent": "illegal_insn",
+      "timing": "same_sample",
+      "obligations": [
+        "illegal_branch_persists"
+      ]
+    },
+    {
+      "antecedent": "instr[6:0]==7'h33 && instr[28]",
+      "consequent": "illegal_insn",
+      "timing": "same_sample",
+      "obligations": [
+        "op_bit28_illegal"
+      ]
+    }
+  ]
+}

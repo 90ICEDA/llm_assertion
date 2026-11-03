@@ -1,0 +1,2 @@
+// Temporal type: same-cycle combinational/protocol relation
+assert property (@(posedge clk_i) disable iff (!rst_ni) (push_i && !pop_i && empty_o) |=> (usage_o != 0));

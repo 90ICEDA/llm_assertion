@@ -1,0 +1,1 @@
+assert property (@(posedge clk_i) disable iff (!rst_ni) (dut.cnt==2 && valid_i && !ready_i) |=> dut.mem[$past(dut.wp)-1'b1]==$past(data_i));

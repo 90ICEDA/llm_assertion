@@ -1,0 +1,49 @@
+{
+  "created": 1793095071.641152,
+  "model_calls": 0,
+  "formal_calls": 0,
+  "dataset": "new development source/specification exposure audit, not learned-candidate independent testing",
+  "fifo": {
+    "configurations": [
+      0,
+      2,
+      4
+    ],
+    "width": 8,
+    "fallthrough": 0,
+    "default_assertions": "Run original and existing mutant at all three depths with upstream assertions enabled. Depth0 initial rejection is an unsupported configuration result, not a functional witness.",
+    "conditional": "Additional Depth0 runs explicitly COMMON_CELLS_ASSERTS_OFF. Presented stalls only legal under separately named passthrough contract; not under upstream full_write precondition.",
+    "oracle": "Depth0 empty=!push, full=!pop, data=data_i; actual accepted=active && push && pop. For depths2/4 independent queue checks old-head data, empty/full/usage; no forbidden full writes/empty reads; clear/reset cancellation.",
+    "target": "presented means push=1; count idle mismatch separately. Existing force-zero mutation algebraically cannot violate nonempty-on-present in two-state Depth0.",
+    "success": "No historical success from artificial mutation or assertions-disabled unsupported parameter. Require distinct original-repair lineage and legal original witness."
+  },
+  "stat_local": {
+    "scope": "Only isolated events under existing local prose; two PRE-NBA samples after event. Overlap deliberately diagnosed but remains specification/provenance unknown.",
+    "status": "Synthetic model only, never original historical stat repair."
+  },
+  "stat_original": {
+    "widths": [
+      8,
+      64
+    ],
+    "frame_beat_lengths": [
+      [
+        2,
+        3
+      ],
+      [
+        1
+      ],
+      [
+        1,
+        2,
+        1
+      ]
+    ],
+    "specification": "Pinned README: count bytes and frames on monitored AXI stream; tlast end-of-frame. Pinned upstream test decodes >HLLL and expects frame/byte counts. Only complete frames before quiet trigger, trigger when not busy, contiguous low tkeep, stable monitor payload through stalls.",
+    "checks": "Independent accepted-beat byte count and accepted-tlast completed-frame count, tick snapshot, tag,14-byte output packet,tlast,output stability through backpressure. No fixed frame_done-to-output latency claim.",
+    "limitation": "Original source only, no repaired revision. Any confirmed discrepancy is a new bounded original-source observation, NOT restored case505 provenance or successful historical repair."
+  },
+  "unknown_policy": "Missing source mapping, unsupported config, absent exposure or no fixed revision cannot count as historical success. No inferred permission from lack of a ready port.",
+  "no_old_independent_reads": true
+}

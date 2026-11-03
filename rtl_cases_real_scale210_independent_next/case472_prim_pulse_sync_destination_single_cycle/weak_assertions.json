@@ -1,0 +1,10 @@
+{
+  "schema_version":"weak-assertions-v1","case_id":"case472_prim_pulse_sync_destination_single_cycle","parent_bug_id":"case472_prim_pulse_sync_destination_single_cycle","source_project":"opentitan","admission_rule":"At least two non-vacuous weak assertions must miss the RTL bug.","overall_validation_status":"pending",
+  "assertions":[
+    {"id":"W1_single_cycle_implication","weakness_class":"single_cycle_implication","property":"src_pulse_i |-> 1'b1","antecedent":"src_pulse_i","antecedent_nonempty":true,"expected_weakness":"Checks only the source trigger cycle.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W2_final_output_only","weakness_class":"final_output_only","property":"1'b1 |-> !$isunknown(q_o)","antecedent":"1'b1","antecedent_nonempty":true,"expected_weakness":"Knownness does not constrain destination pulse duration.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W3_delay_removed","weakness_class":"delay_removed","property":"dst_pulse_o |-> q_o==q_o","antecedent":"dst_pulse_o","antecedent_nonempty":true,"expected_weakness":"Removes the following-cycle low requirement.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W4_antecedent_removed","weakness_class":"antecedent_removed","property":"q_o==q_o","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"No pulse trigger remains.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W5_simple_invariant","weakness_class":"simple_invariant","property":"q_o>=0","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"A Boolean range invariant misses a stretched pulse.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false}
+  ]
+}

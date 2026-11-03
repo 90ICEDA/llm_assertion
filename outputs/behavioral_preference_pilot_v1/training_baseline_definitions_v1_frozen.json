@@ -1,0 +1,34 @@
+{
+  "status": "frozen_before_training_data_materialization",
+  "version": "pilot_baselines_v1",
+  "scope": "30-parent Pilot only",
+  "source_probe_manifest": "outputs/behavioral_preference_pilot_v1/behavioral_probes_v3/probe_manifest.json",
+  "source_probe_manifest_sha256": "35F594D5A90E4F18DE23CE57D08FE9389F539F9C35BC30053968DA001621352B",
+  "probe_policy": "disagreement_guided",
+  "query_budget_per_parent": 32,
+  "comparison_scope": "within the same parent only",
+  "tie_rule": "omit; do not label equal scores",
+  "pass_count_dpo": {
+    "name": "equal-weight executable pass-count",
+    "integer_formula": "pass_count(c) = (32 - |FP_c|) + |TP_c|",
+    "range": [0, 64],
+    "preference_rule": "A > B iff pass_count(A) > pass_count(B)",
+    "interpretation": "one point for each legal query not falsely rejected and one point for each same-root buggy query distinguished without a correct-RTL false positive"
+  },
+  "scalar_score_dpo": {
+    "name": "fixed-safety-weighted scalarization",
+    "integer_formula": "raw_score(c) = |TP_c| - 2*|FP_c|",
+    "normalized_formula": "score(c) = |TP_c|/32 - 2*|FP_c|/32",
+    "preference_rule": "A > B iff raw_score(A) > raw_score(B)",
+    "fp_penalty_to_tp_reward_ratio": 2,
+    "floating_point_used_for_pair_construction": false,
+    "interpretation": "a false positive costs twice one rewarded same-root detection, matching the Pilot requirement that fixed false positives must not increase"
+  },
+  "prohibitions": [
+    "no cross-parent comparisons",
+    "no cross-policy comparisons",
+    "no hidden tie-break",
+    "no held-out or test outcome in scoring",
+    "no dominance predicate used by either scalar baseline"
+  ]
+}

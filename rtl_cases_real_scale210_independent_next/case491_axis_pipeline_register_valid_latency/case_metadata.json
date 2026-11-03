@@ -1,0 +1,94 @@
+{
+  "name": "case491_axis_pipeline_register_valid_latency",
+  "parent_bug_id": "case491_axis_pipeline_register_valid_latency",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_pipeline_register",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_pipeline_register.v"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "three_stage_valid_bypassed",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "s_valid_i",
+    "ready_i",
+    "q_o",
+    "state_o"
+  ],
+  "temporal_type": "exact three-cycle ready/valid pipeline latency",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(s_valid_i) |-> ##2 !q_o));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "good_row_index": 10,
+      "bad_row_index": 10,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "b559e9e57333e499165e050200075413751cec36a2b76491e1a99245a4a4d747",
+      "bad_trace_sha256": "f7ae95b0547ca2fbd0e7adc3a7a4c8eb1e60601843f9faba4ff15b5eec2757b1",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "cba2f07a8a65ef44317bd43e779775cb5bf58254d34bc138a96c61334a56f0bb",
+      "bad_trace_sha256": "4ccbe9cb39378c0b481f22343f249b4cb1791ef72c15be14f581e6a49265b07d",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "3082498fb46ac13f5c70b42c4a92757e1c581257b8b01542d78b34d7c20f3f71",
+      "bad_trace_sha256": "c43a97ca3e0eec3fecf54c5e923acd6e8e336bd6a85c41fe7968203f360555fa",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "fc878062cac92d24582f58ed99739c075028d498a1fb10dd00e22e3292a0e56f",
+  "buggy_sha256": "84970814f8a958461cb87a38ea220957429d5f21608fe6c409f586fe344802df"
+}

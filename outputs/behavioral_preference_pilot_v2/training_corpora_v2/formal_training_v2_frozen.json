@@ -1,0 +1,33 @@
+{
+  "status": "frozen_before_pilot_v2_corrected_training",
+  "version": "pilot_v2_corrected_json_ast_eos_v1",
+  "seed": 20260815,
+  "model": "outputs/checkpoints/Qwen3-8B",
+  "loss_token_budget_per_method": 245760,
+  "budget_epoch_count": 1,
+  "max_sequence_tokens": 512,
+  "loss_token_accounting": "SFT=AST response tokens; DPO=chosen+rejected AST response tokens; no padding or repetition",
+  "canonical_output": "JSON AST only; deterministic renderer outside model",
+  "shared_qlora": {
+    "bits": 4,
+    "quant": "nf4",
+    "double_quant": true,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "targets": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 0.0001,
+    "beta": 0.1
+  },
+  "immutable_v1_probe_manifest_sha256": "35f594d5a90e4f18de23ce57d08fe9389f539f9c35bc30053968da001621352b",
+  "response_eos_required": true,
+  "response_serialization": "canonical compact JSON; exactly five ordered keys; no trailing newline; EOS supervised as final loss token",
+  "inference_constraint": "token trie over complete schema-valid objects; closing brace followed by forced EOS",
+  "formal_training_directory": "formal_training_v3"
+}

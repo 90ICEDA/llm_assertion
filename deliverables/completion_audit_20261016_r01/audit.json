@@ -1,0 +1,445 @@
+{
+  "audit_date": "2026-10-16",
+  "scope": "Existing artifacts and current code inspection; no new model or RTL simulation",
+  "historical_hash_checks": 142,
+  "historical_hash_checks_passed": true,
+  "qualification_checks": 25,
+  "qualifications_passed": true,
+  "native_summary_matches": true,
+  "native_required_files_present": true,
+  "accepted_model_versions": 0,
+  "actual_search_queries": 48,
+  "actual_search_native_replays": 240,
+  "treatment_witness": null,
+  "old_candidate_pairs": 11,
+  "old_pair_method_rows": 44,
+  "expected_missing_execution_artifacts": {
+    "shared_initial.json": true,
+    "all_arms_freeze.json": true,
+    "arms": true,
+    "holdout/summary.json": true
+  },
+  "original_parent_status": {
+    "original_parent_denominator": 6,
+    "complete_native_llm_parent_passes": 0,
+    "unresolved_or_not_fully_verified_parents": 6,
+    "parents": [
+      {
+        "parent": "onehot",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Regression only this round; no new complete native LLM assertion-set acceptance for this parent.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "fifo",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Original FIFO presented defect still lacks confirmed target witness. Depth>=2 artificial boundary mutants are a separate engineering cohort.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "filter",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Previous four-policy candidate diagnostics exist; complete native LLM obligation coverage not established.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 1,
+            "fp_gaps": 1,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 2,
+            "fp_gaps": 1,
+            "fn_gaps": 1,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 2,
+            "fp_gaps": 1,
+            "fn_gaps": 1,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 1,
+            "fp_gaps": 1,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "stat",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Cited upstream module has a different interface from the local two-cycle synthetic example. Upstream timing/overlap provenance unconfirmed.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 6,
+            "fp_gaps": 3,
+            "fn_gaps": 3,
+            "unknown_spec_queries": 35,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "captured_length",
+              "valid_latency"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 6,
+            "fp_gaps": 3,
+            "fn_gaps": 3,
+            "unknown_spec_queries": 24,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "captured_length",
+              "valid_latency"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "spill",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Collision-empty subset has witnesses; invalid-payload obligation specification remains unresolved.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 11,
+            "fp_gaps": 6,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 11,
+            "fp_gaps": 6,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 11,
+            "fp_gaps": 6,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 6,
+            "fn_gaps": 6,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "intr",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Mask/timing specification remains unresolved; cannot claim whole-parent success.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      }
+    ],
+    "separate_cohorts": [
+      {
+        "name": "complex_axis_fifo_boundary_mutants",
+        "historical_original_bug": false,
+        "status_source": "research15_native_20261015_r01/summary.json"
+      },
+      {
+        "name": "Ibex54_original_compressed_decoder",
+        "historical_original_bug": true,
+        "learned_assertion_set": false
+      },
+      {
+        "name": "Ibex166_original_decoder",
+        "historical_original_bug": true,
+        "learned_assertion_set": false
+      }
+    ],
+    "scope": "Do not merge local obligation improvements or engineered fault witnesses into the original six-parent full-success denominator."
+  },
+  "historical_costs": {
+    "attempts": 3,
+    "completed": 3,
+    "known_prompt_tokens": 23274,
+    "known_completion_tokens": 272,
+    "token_unavailable_attempts": 0,
+    "known_wall_seconds": 391.51493178299995
+  },
+  "historical_record_recovery": {
+    "items": [
+      {
+        "id": "historical_python_source",
+        "status": "recovered_and_reproduced",
+        "result": "从原始编辑日志重建2文件7个源码状态；三份原始ledger全JSON一致；启动命令时序与版本相符。",
+        "artifact": "source_history/replay_validation.json",
+        "remaining": "没有旧进程内存转储；结论为有原始编辑链及行为验证的历史源码重建。"
+      },
+      {
+        "id": "fifo_upstream_revision",
+        "status": "recovered_and_verified",
+        "result": "精确提交48ff7a7e2ef782cf778d47910cf85835c64b1bce；本地Git blob与GitHub固定URL下载字节一致；实验源码仅CRLF/LF不同。",
+        "artifact": "git_provenance/result.json",
+        "remaining": "这是使用版本的确认，不证明该文件只存在于此唯一历史提交，也不把人工故障变成上游Bug。"
+      },
+      {
+        "id": "root_experiment_git_commit",
+        "status": "partially_recovered_original_commit_unavailable",
+        "result": "找到相邻旧仓库49da13029efe7d0080866457d75a3a5bf68811c9，但它没有本轮研究代码。为3份关键历史运行补建内容寻址版本清单。",
+        "artifact": "content_versions.json",
+        "remaining": "缺失原工作区Git HEAD/refs/objects或完整当时备份；不能凭相关仓库README相同认定实验提交。"
+      },
+      {
+        "id": "cancelled_call_usage",
+        "status": "partially_recovered_final_usage_unavailable",
+        "result": "补录HTTP服务耗时258秒、截断前18354与截断后16383的日志计数、slot释放值8196；最终usage仍null。",
+        "artifact": "cancelled_usage/recovered_cost_record.json",
+        "remaining": "需要原服务最终task usage或按请求usage回执；重新分词/重跑均不能恢复历史实际消耗。"
+      },
+      {
+        "id": "stat_upstream_derivation",
+        "status": "unrecoverable_from_checked_records_mismatch_confirmed",
+        "result": "官方固定源码再次核验通过，确认与本地8行pipeline接口不同；已追加有效来源更正，历史admission=false。",
+        "artifact": "stat_origin/effective_provenance.json",
+        "remaining": "缺创建脚本/补丁、输入上游blob、约简过程和事件等价映射；旧元数据不能充当证明。"
+      }
+    ],
+    "model_calls": 0,
+    "rtl_simulation_calls": 0,
+    "replay_validation": "Python recomputation of archived actual RTL observations only",
+    "old_experiment_outcomes_changed": false,
+    "scope": "The five historical-record gaps identified in the prior response; future unexecuted experiments are outside this recovery task."
+  },
+  "new_model_calls": 0,
+  "new_native_simulation_calls": 0,
+  "new_formal_calls": 0,
+  "end_to_end_success_chain_established": false
+}

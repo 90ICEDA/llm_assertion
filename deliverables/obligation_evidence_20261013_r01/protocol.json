@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "created_utc": "2026-10-13T06:41:01Z",
+  "seeds": [
+    3113,
+    3119,
+    3121
+  ],
+  "methods": [
+    "ordinary",
+    "disagreement",
+    "obligation"
+  ],
+  "queries_per_parent_seed_method": 12,
+  "cycles_per_query_variant": 24,
+  "query_unit": "One submitted 24-cycle input schedule evaluated on BOTH frozen RTL variants and the entire frozen candidate pool. Every submitted attempt, including invalid/error/timeout, consumes one query; no retries or outcome-dependent stopping.",
+  "charges": "Two physical compiles and simulations per valid query; batched candidate checks separately counted by candidate x variant and active samples. No solver, no cache, no free pre-screen or offline candidate evaluation.",
+  "shared_preflight": "baseline/qualification/old signature replay separately costed, never charged to arm and never used to tune search",
+  "ordinary": "24-cycle seeded random width-correct stimuli, 0.4 hold probability, 0.06 reset probability; only environment legality constraints; four-cycle drain",
+  "disagreement": "same initial ordinary draw; retain input with largest sum of candidate-pair per-cycle fail XOR; six seeded field mutations; explore fresh random at steps divisible by three; no oracle/obligation labels",
+  "obligation": "round-robin public obligation templates, random legal idle spacing, FIFO stable-data backpressure, stat overlapping/captured-data episodes and explicit reset-cancellation subexperiments; no acceptance feedback used",
+  "attribution": "Reference oracle first; FP only on legal reset-to-sample prefixes. FN only when candidate accepts complete prefix to first definite violation. Alarm/violation coincidence never counts as independently attributed detection.",
+  "dedup": "Exact reset-to-evidence input+output prefix, obligation identities, kind, candidate text hash; cross-query ids excluded. Distinct traces are not independent bugs.",
+  "scope": "Finite search on six synthetic parent bugs. Intr results conditional/unknown, spill common collision_empty only. Filter supplemental natural cohort reported separately.",
+  "fair_comparison": "Same frozen candidate pool, input cycle cap, seeds and attempted query budget. CPU/wall costs also reported. No claim algorithms exhaust their design spaces.",
+  "stage3": "not executed by this runner; historical eight arms do not implement requested A/B/C/D exactly",
+  "stage4": "quarantine frozen now; no final revised assertion set yet, not evaluated",
+  "versions": {
+    "python3": {
+      "argv": [
+        "python3",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/obligation_evidence_20261013_r01",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/obligation_evidence_20261013_r01/version_python3.stdout",
+      "stderr": "deliverables/obligation_evidence_20261013_r01/version_python3.stderr",
+      "wall_seconds": 0.010931327000001545
+    },
+    "iverilog": {
+      "argv": [
+        "iverilog",
+        "-V"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/obligation_evidence_20261013_r01",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/obligation_evidence_20261013_r01/version_iverilog.stdout",
+      "stderr": "deliverables/obligation_evidence_20261013_r01/version_iverilog.stderr",
+      "wall_seconds": 0.036591139999998745
+    },
+    "vvp": {
+      "argv": [
+        "vvp",
+        "-V"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/obligation_evidence_20261013_r01",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/obligation_evidence_20261013_r01/version_vvp.stdout",
+      "stderr": "deliverables/obligation_evidence_20261013_r01/version_vvp.stderr",
+      "wall_seconds": 0.01644175399999881
+    },
+    "yosys": {
+      "argv": [
+        "yosys",
+        "-V"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/obligation_evidence_20261013_r01",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/obligation_evidence_20261013_r01/version_yosys.stdout",
+      "stderr": "deliverables/obligation_evidence_20261013_r01/version_yosys.stderr",
+      "wall_seconds": 0.04631433800000018
+    },
+    "ollama": {
+      "argv": [
+        "ollama",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/obligation_evidence_20261013_r01",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/obligation_evidence_20261013_r01/version_ollama.stdout",
+      "stderr": "deliverables/obligation_evidence_20261013_r01/version_ollama.stderr",
+      "wall_seconds": 0.14473978800000076
+    }
+  }
+}

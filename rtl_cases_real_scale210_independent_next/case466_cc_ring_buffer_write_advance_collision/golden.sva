@@ -1,0 +1,1 @@
+assert property (@(posedge clk_i) disable iff (!rst_ni) (wvalid_i&&wready_o&&advance_i) |=> (wptr_o==$past(wptr_o)+1 && rptr_o==$past(rptr_o)+$past(step_i)));

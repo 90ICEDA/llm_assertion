@@ -1,0 +1,5 @@
+assert property (@(posedge clk) disable iff (rst) (s_valid |-> !$isunknown(m_data)));
+assert property (@(posedge clk) disable iff (rst) (m_data |-> !$isunknown(m_data)));
+assert property (@(posedge clk) disable iff (rst) (s_valid |-> !$isunknown(s_valid)));
+assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(m_data)));
+assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(clk)));

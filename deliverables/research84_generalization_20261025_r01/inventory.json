@@ -1,0 +1,301 @@
+[
+  {
+    "executable_hash": "1ea20bdbfb59b34e594a2cb796ae40dcd9f4184c2bd021cca30c22d3f5284cfc",
+    "path": "deliverables/research32_real_20261021_r01/s3203/core/v0/model_call/candidate.json",
+    "candidate_sha256": "7801666de5b3e574858ad3ba97cce1f1f385049e24098ef72784e8a18815c0fd",
+    "sources": [
+      "deliverables/research32_real_20261021_r01/s3203/core/v0/model_call/candidate.json",
+      "deliverables/research32_real_20261021_r01/s3203/core/v1/model_call/candidate.json",
+      "deliverables/research32_real_20261021_r01/s3203/core/v2/model_call/candidate.json",
+      "deliverables/research32_real_20261021_r01/s3217/core/v0/model_call/candidate.json",
+      "deliverables/research32_real_20261021_r01/s3217/core/v1/model_call/candidate.json",
+      "deliverables/research32_real_20261021_r01/s3217/core/v2/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "(mvalid && !mready) |=> (mdata == $past(mdata))"
+      }
+    ],
+    "name": "c00",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "4ca2a1db668387e44e988c35cbf18fdf751510df5094c3954a995ca570dc9e46",
+    "path": "deliverables/research32_real_20261021_r01/s3209/core/v0/model_call/candidate.json",
+    "candidate_sha256": "efce6a9c7de4298bea9f22097d0e90ada9ba9660cde08e855a9a842a6ab5cef6",
+    "sources": [
+      "deliverables/research32_real_20261021_r01/s3209/core/v0/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "(mvalid && !mready) |=> (mvalid && mdata == $past(mdata))"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "(mvalid && !mready) |=> mdata == $past(mdata)"
+      }
+    ],
+    "name": "c01",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "02962d0d6004769b0e790ddb9d681fd2a8a7adbfb78344846b474c7294c3f205",
+    "path": "deliverables/research33_real_20261021_r01/s3203/core/v0/model_call/candidate.json",
+    "candidate_sha256": "27733ac3fe690120c7c7280fcfb3481e4d456d5375008728e3c44bf01b87bd55",
+    "sources": [
+      "deliverables/research33_real_20261021_r01/s3203/core/v0/model_call/candidate.json",
+      "deliverables/research33_real_20261021_r01/s3217/core/v0/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "(svalid && !sready && mvalid && mready) |=> (mvalid && mdata == ref_expected)"
+      }
+    ],
+    "name": "c02",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "be7715213625b40a86abaf6fa323f9f7b42b750f17e7db2d248630a1f12254d3",
+    "path": "deliverables/research36_real_20261022_r01/core/v0/model_call/candidate.json",
+    "candidate_sha256": "032d5c3c3303e20260a07b897ba1f9dc2973fdaa3239bfb4e85f64560f79c193",
+    "sources": [
+      "deliverables/research36_real_20261022_r01/core/v0/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "(svalid && !sready && mvalid && !mready) |=> (mvalid && mdata == ref_expected)"
+      }
+    ],
+    "name": "c03",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "542d086d60f5c7300c1410c52235f25ec5161494b621b90ef0cb58b9beb4219e",
+    "path": "deliverables/research36_real_20261022_r01/core/v1/model_call/candidate.json",
+    "candidate_sha256": "6814b4b0906eaed945b24ba1cd258bb400a6ab6e7ad7a94f5fbf06b7834765ce",
+    "sources": [
+      "deliverables/research36_real_20261022_r01/core/v1/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "(svalid && !mready && mvalid) |=> (mvalid && (mdata == ref_expected))"
+      }
+    ],
+    "name": "c04",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "f86f4e6fea8a77a48a4919908098d7bd39d50fa9f8c5da1893672dbc15c65257",
+    "path": "deliverables/research41_real_20261022_r01/s4103/core/v0/model_call/candidate.json",
+    "candidate_sha256": "155cccc0f802d9559d436c4ae898571c94b32aa8c47edcf7e0f72f31ddd88086",
+    "sources": [
+      "deliverables/research41_real_20261022_r01/s4103/core/v0/model_call/candidate.json",
+      "deliverables/research41_real_20261022_r01/s4111/core/v0/model_call/candidate.json",
+      "deliverables/research41_real_20261022_r01/s4127/core/v0/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "((mvalid && (!(mready)) && (!(rst)))) |=> (($stable(mvalid) && $stable(mdata)))"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "(mvalid && !mready) |=> mdata == $past(mdata)"
+      }
+    ],
+    "name": "c05",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "7d01d7220604822aad82f32e002293966d52460629fc705f4bcba8c10029eff1",
+    "path": "deliverables/research41_real_20261022_r01/s4133/core/v1/model_call/candidate.json",
+    "candidate_sha256": "49fd09d88df99281c508b4dc3f323a7c0341ef537bbcd1020dd0dbaab0c6b91d",
+    "sources": [
+      "deliverables/research41_real_20261022_r01/s4133/core/v1/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "((mvalid && (!(mready)) && (!(rst)))) |=> ((mvalid && (mdata == $past(mdata))))"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "(mvalid && !mready) |=> mdata == $past(mdata)"
+      }
+    ],
+    "name": "c06",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "d221650b8cdc2fe1bbe934a9ca0b55fb2a9595474e49901519ea34024d5bb660",
+    "path": "deliverables/research45_real_20261022_r01/pilot/core/v0/model_call/candidate.json",
+    "candidate_sha256": "e978434509c0a87d1a25aaf97b0a650935fe1df2ed32617c7bb3021f0d1b9b12",
+    "sources": [
+      "deliverables/research45_real_20261022_r01/pilot/core/v0/model_call/candidate.json",
+      "deliverables/research45_real_20261022_r01/pilot/core/v1/model_call/candidate.json",
+      "deliverables/research45_real_20261022_r01/pilot/core/v2/model_call/candidate.json",
+      "deliverables/research48_real_20261022_r01/core/v0/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "((mvalid && (!(mready)) && $past(mvalid) && (!(rst)))) |-> ((mdata == $past(mdata)))"
+      }
+    ],
+    "name": "c07",
+    "already_in_research82": false
+  },
+  {
+    "executable_hash": "8818cc2f4255f516eacd38b4a9a3e7e09d43c16b9fff78b97955ee5dfc240b3d",
+    "path": "deliverables/research48_real_20261022_r01/core/v2/model_call/candidate.json",
+    "candidate_sha256": "5f35fbb4154c524f1573e00459822707e9497d375366f69e4d03bc9cbff095f0",
+    "sources": [
+      "deliverables/research48_real_20261022_r01/core/v2/model_call/candidate.json"
+    ],
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "((mvalid && (!(mready)) && $past((mvalid && (!(mready)))))) |-> ((mdata == $past(mdata)))"
+      }
+    ],
+    "name": "c08",
+    "already_in_research82": false
+  }
+]

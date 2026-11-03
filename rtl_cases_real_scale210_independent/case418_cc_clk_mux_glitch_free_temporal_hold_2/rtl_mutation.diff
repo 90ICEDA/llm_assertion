@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -199,7 +199,7 @@
+         if (!s_reset_synced[i]) begin
+           async_reset_bypass_active_q[i] <= 1'b1;
+         end else begin
+-          async_reset_bypass_active_q[i] <= 1'b0;
++          async_reset_bypass_active_q[i] <= async_reset_bypass_active_q[i]; // ASSERTIONFORGE_MUTATION: state update suppressed
+         end
+       end
+ 

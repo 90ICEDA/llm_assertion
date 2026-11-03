@@ -1,0 +1,112 @@
+{
+  "status": "development_partial",
+  "core": {
+    "resolved": false,
+    "has_acquired_gap": true,
+    "history": [
+      {
+        "iteration": 0,
+        "requested_obligations": [
+          "no_unsolicited_output",
+          "reset_cancellation"
+        ],
+        "coverage_only": false,
+        "call": {
+          "status": "response_received",
+          "model": "qwen/qwen-2.5-72b-instruct",
+          "digest": null,
+          "model_calls": 1,
+          "retries": 0,
+          "prompt_tokens": 11109,
+          "completion_tokens": 177,
+          "token_budget_reservation": 40741,
+          "provider": "openai_compatible",
+          "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+          "candidate_status": "interface_rejected",
+          "wall_seconds": 14.588451662000004,
+          "partial_response_characters": 692,
+          "done_reason": "stop",
+          "stream_terminal_received": true,
+          "actual_server_model": "qwen/qwen-2.5-72b-instruct",
+          "response_id": "103af5fe61a8f9ec341e70f51e3b872d",
+          "usage_available": true,
+          "raw_credential_echo_redactions": 0,
+          "candidate_error": {
+            "type": "AssertionError",
+            "detail": "interface_unknown:rst"
+          },
+          "phase": "core_fresh_progressive",
+          "requested_obligation": "no_unsolicited_output",
+          "operation": "add",
+          "model_owns_predicates_and_timing": true,
+          "syntax_assembly_only": true
+        },
+        "decision": {
+          "accepted": false,
+          "gate_enforced": true,
+          "reasons": [
+            {
+              "kind": "model_or_interface_failure"
+            }
+          ]
+        },
+        "before": {
+          "rows": 7705,
+          "unknown": 0,
+          "triggers": 801,
+          "false_positives": 0,
+          "detections": 11,
+          "misses": 4,
+          "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+          "later_attribution_unknown": 199
+        },
+        "after": null,
+        "target_keys": [
+          "fifo:1da39af606db7e4a9aefbb0f8934a99a29939eea4d1c636e4a0dd6fd8ac436c7",
+          "fifo:482ac7fcafd9729a4af9b25923652f8b52cfa3e8a99e3ade1d524552dfba4d50",
+          "fifo:562a2198326cacbcf00f404e1b8f845844a34321153edb08f53bcbbdf4c299a1",
+          "fifo:b47b5081ef13bb158a4bdef703a2189d79e52b3d13c65f2aeba84bd65d617bb9"
+        ]
+      }
+    ],
+    "stages": [
+      {
+        "obligations": [
+          "no_unsolicited_output",
+          "reset_cancellation"
+        ],
+        "status": "unresolved",
+        "coverage_only": false,
+        "target_keys": [
+          "fifo:1da39af606db7e4a9aefbb0f8934a99a29939eea4d1c636e4a0dd6fd8ac436c7",
+          "fifo:482ac7fcafd9729a4af9b25923652f8b52cfa3e8a99e3ade1d524552dfba4d50",
+          "fifo:562a2198326cacbcf00f404e1b8f845844a34321153edb08f53bcbbdf4c299a1",
+          "fifo:b47b5081ef13bb158a4bdef703a2189d79e52b3d13c65f2aeba84bd65d617bb9"
+        ]
+      }
+    ],
+    "before": {
+      "rows": 7705,
+      "unknown": 0,
+      "triggers": 801,
+      "false_positives": 0,
+      "detections": 11,
+      "misses": 4,
+      "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+      "later_attribution_unknown": 199
+    },
+    "after": {
+      "rows": 7705,
+      "unknown": 0,
+      "triggers": 801,
+      "false_positives": 0,
+      "detections": 11,
+      "misses": 4,
+      "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+      "later_attribution_unknown": 199
+    },
+    "frozen_hash": "26c2af21ac72cc6ae21045ad3ca9c8f2bc4a8ea8ecb6b64dcebc05601f573248",
+    "scope": "Finite development evidence only. Coverage-only acceptance is not demonstrated target detection."
+  },
+  "independent_executed": true
+}

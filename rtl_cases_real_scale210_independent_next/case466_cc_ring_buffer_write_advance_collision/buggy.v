@@ -1,0 +1,25 @@
+`timescale 1ns/1ps
+module cc_ring_buffer #(parameter Depth=4, parameter Width=8) (
+  input clk_i,rst_ni,clr_i,
+  input wvalid_i, output wready_o, input [Width-1:0] wdata_i,
+  input advance_i, input [2:0] step_i,
+  output [2:0] wptr_o,rptr_o, output empty_o,full_o
+);
+  reg [2:0] wp,rp;
+  reg [Width-1:0] mem[0:Depth-1];
+  wire wa=wvalid_i&&wready_o;
+  assign empty_o=wp==rp;
+  assign full_o=(wp[1:0]==rp[1:0])&&(wp[2]!=rp[2]);
+  assign wready_o=!full_o;
+  assign wptr_o=wp;
+  assign rptr_o=rp;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) begin wp<=0;rp<=0; end
+    else if(clr_i) begin wp<=0;rp<=0; end
+    else begin
+      if(wa) begin mem[wp[1:0]]<=wdata_i;wp<=wp+1; end
+      // MUTATION: a write incorrectly suppresses a simultaneous advance.
+      else if(advance_i) rp<=rp+step_i;
+    end
+  end
+endmodule

@@ -1,0 +1,87 @@
+{
+  "experiment": "research67",
+  "sealed_at": 1792780946.6900206,
+  "pilot_seed": 6703,
+  "conditional_seeds": [
+    6711,
+    6719,
+    6733
+  ],
+  "search_methods": [
+    "ordinary",
+    "candidate_disagreement",
+    "raw_difference",
+    "contract_novelty",
+    "ordinary_no_repeat"
+  ],
+  "search_queries_per_method": 4,
+  "candidate_pair": [
+    "bounded",
+    "valid"
+  ],
+  "initial_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+  "depth": 4,
+  "pipeline": 1,
+  "modes": [
+    "correct",
+    "stall_glitch",
+    "valid_withdraw_stalled",
+    "valid_withdraw_release",
+    "long_valid_withdraw_stalled",
+    "long_valid_withdraw_release",
+    "reset_residue",
+    "drop"
+  ],
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "temperature": 0.2,
+  "max_output_tokens": 2048,
+  "retries": 0,
+  "pilot_maximum_calls": 3,
+  "conditional_paired_maximum_calls": 6,
+  "conditional_policy_maximum_calls": 24,
+  "common_helpers": {
+    "interface": "research44 recursive AST, reason metadata unrestricted",
+    "component_generation": "keep or replace exactly one existing stall property; all other components fixed",
+    "model_cycle_planning": "disabled equally in every arm; no archived successful model plan",
+    "native_cycle_check": "same independent sampling qualification and research34 native_target_gate for every visible target",
+    "semantic_rewrite": false,
+    "model_configuration": "same backend, sampler and output bound for all calls"
+  },
+  "public_feedback": "Two schedules: overlap seed67000 and backpressure duration1 seed67001, all eight modes and both candidates. Freeze all public gaps before search. Both candidate correct controls must pass.",
+  "allowed_information": "All search methods share candidates, RTL, grammar, modes, public feedback. Ordinary chooser sees family only; disagreement sees whole-candidate failure XOR; raw difference sees output mismatch; contract sees own independent checks/triggers/protection/gaps; no-repeat sees actions only. Judge results are measurement-only for other choosers.",
+  "acquisition": "research65 fixed contract_novelty. Confirmed gaps queued for refinement; executed actions excluded, including public actions. No parameter adaptation after results. Four queries, 16 real native runs per query.",
+  "stimuli": "Same seed*100+query schedule generator for same chosen action. Public and comparison pools identical across methods.",
+  "dedup": "candidate hash / FN or FP / obligation / mechanism; long/short variants collapsed. Subtract public gaps and own prior discoveries. Previously observed matches stay historically known; absent historical registry entries unknown.",
+  "treatment_selection": "First valid public-unexposed stall FN for each deduplicated mechanism in contract chronological query order, at most two. No comparator results used to choose treatment. All selections remain development data. Stop unqualified if none.",
+  "arms": {
+    "A": {
+      "search": false,
+      "gate": false
+    },
+    "B": {
+      "search": true,
+      "gate": false
+    },
+    "C": {
+      "search": false,
+      "gate": true
+    },
+    "D": {
+      "search": true,
+      "gate": true
+    }
+  },
+  "ordinary_rule": "Same interface, visible legal/native/target detection and required-trigger gates. No hidden105 history. Keep accepted only if visible targets already resolved.",
+  "historical_rule": "Ordinary rule AND native healthy105 replay AND fixed research31 history acceptance. Unknown rejects; compare against shared initial. Reject retains exact last accepted candidate, or qualified partial baseline if none.",
+  "pilot": "At most3 real independent attempts, search+history enabled; no retries. Requires a new accepted executable, then freeze and generate fresh holdout. Any failed qualification, refinement or holdout stops all multi-seed work.",
+  "paired_estimand": "After pilot passes: 3 fixed seeds, ordinary/search one real proposal each. A/C and B/D share exact proposal. Measure extra historical rejection only when ordinary accepts. No multi-round strategy claim.",
+  "policy_estimand": "Separate real calls for all 3x4 trajectories, at most2 calls per arm. First A/C and B/D requests identical but no shared responses. Feedback uses only own visible evidence and, C/D only, history. Stop on acceptance; equal upper limits, unequal actual costs reported.",
+  "seed_scope": "Seeds are model request seeds and search schedule seeds; remote determinism is unverified. One FIFO parent and known artificial faults; not multiple independent hardware bugs.",
+  "isolation": "Pilot and paired outputs never supplied to policy arms. No successful archival SVA or model plan in prompts. Search witnesses only B/D. All planned arms freeze before any group test outcome is read.",
+  "independent": "Fresh holdout generated only after freeze: existing56-case generator includes depths4/8, pipelines and five obligations with causal exposure. Shared post-all-freeze test batch; exact candidate duplicates may share physical evaluation but not statistical sample counts. Failures never select/refine in this protocol.",
+  "exclusions": "Full used-development hashes plus previous FIFO holdout inventories; research63 byte-hash preservation only. Any future use of failed tests requires whole batch promotion and a new protocol.",
+  "accounting": "Physical and logical model/token/native/reference/selector costs separate. Public qualification and audit charged separately. 16 native/query includes measurement oracle for all methods; not an optimized no-oracle baseline.",
+  "acceptance_of_research": "Fair fixed protocol and auditable evidence, not mandatory positive gain. Historical research66 retrospective findings and research65 no-extra-union-gain remain unchanged.",
+  "authorization": "No old budget transferred. Pilot requires new <=3 grant; paired/policy continuation requires separate explicit <=30 grant and recorded pilot pass."
+}

@@ -1,0 +1,2 @@
+// Temporal type: multi-cycle rate-limit accumulation
+assert property (@(posedge clk) disable iff (rst) (!by_frame && s_axis_tvalid && s_axis_tready) |-> ##2 !s_axis_tready);

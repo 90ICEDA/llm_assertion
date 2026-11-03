@@ -1,0 +1,713 @@
+{
+  "cohorts": {
+    "r01": {
+      "status": {
+        "four_arm_experiment_executed": false,
+        "successful_mechanism_chain_established": false,
+        "initial_qualified": false,
+        "treatment_found": false,
+        "actual_completed_arms": 0,
+        "integrity_checks_passed": true,
+        "scope": "One model seed and one artificial FIFO fault family; success or null effects must be read from actual arm outcomes.",
+        "next_action": "See blocked stages and original records; no four-arm success claim."
+      },
+      "costs": {
+        "model_calls": 2,
+        "prompt_tokens": 15078,
+        "completion_tokens": 168,
+        "usage_unavailable_calls": 0,
+        "model_wall_seconds": 316.5634868729976,
+        "retries": 0,
+        "formal_calls": 0,
+        "monetary_cost": null,
+        "compile_calls": 0,
+        "simulation_calls": 0,
+        "compile_seconds": 0,
+        "simulation_seconds": 0
+      },
+      "arms": {},
+      "report": "deliverables/research16_ablation_20261016_r01/report/REPORT.md"
+    },
+    "r02": {
+      "status": {
+        "four_arm_experiment_executed": true,
+        "successful_mechanism_chain_established": false,
+        "initial_qualified": true,
+        "treatment_found": true,
+        "actual_completed_arms": 4,
+        "integrity_checks_passed": true,
+        "scope": "One model seed and one artificial FIFO fault family; success or null effects must be read from actual arm outcomes.",
+        "next_action": "Interpret arm results; do not modify frozen assertions from held-out failures.",
+        "scoped_tail_loss_chain_established": false
+      },
+      "costs": {
+        "model_calls": 5,
+        "prompt_tokens": 38877,
+        "completion_tokens": 1036,
+        "usage_unavailable_calls": 0,
+        "model_wall_seconds": 537.7232052770123,
+        "retries": 0,
+        "formal_calls": 0,
+        "monetary_cost": null,
+        "compile_calls": 8,
+        "simulation_calls": 314,
+        "compile_seconds": 83.46545714698732,
+        "simulation_seconds": 7.074077292025322
+      },
+      "arms": {
+        "A": {
+          "config": {
+            "search": false,
+            "gate": false
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "reasons": [
+              {
+                "kind": "generation_or_interface_failure"
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 798,
+            "unknown": 0,
+            "triggers": 62,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 0,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": null,
+          "proposal_frontend_status": "rejected",
+          "proposal_frontend_error": "AssertionError('expressions_must_not_include_temporal_operators')",
+          "proposal_compile_status": "not_run",
+          "holdout": {
+            "rows": 4014,
+            "unknown": 2,
+            "false_positives": 0,
+            "detections": 9,
+            "misses": 3,
+            "triggers": 132
+          },
+          "holdout_target_rows": 14,
+          "holdout_later_attribution_unknown": 179,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 7761,
+            "completion_tokens": 238,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 65424717073,
+            "done_reason": "stop",
+            "wall_seconds": 65.42744960299751,
+            "partial_response_characters": 927,
+            "candidate_status": "rejected",
+            "candidate_error": "AssertionError('expressions_must_not_include_temporal_operators')"
+          }
+        },
+        "B": {
+          "config": {
+            "search": true,
+            "gate": false
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "reasons": [
+              {
+                "kind": "generation_or_interface_failure"
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 1884,
+            "unknown": 0,
+            "triggers": 69,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 1,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": null,
+          "proposal_frontend_status": "rejected",
+          "proposal_frontend_error": "AssertionError('expressions_must_not_include_temporal_operators')",
+          "proposal_compile_status": "not_run",
+          "holdout": {
+            "rows": 4014,
+            "unknown": 2,
+            "false_positives": 0,
+            "detections": 9,
+            "misses": 3,
+            "triggers": 132
+          },
+          "holdout_target_rows": 14,
+          "holdout_later_attribution_unknown": 179,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 7895,
+            "completion_tokens": 238,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 65692874234,
+            "done_reason": "stop",
+            "wall_seconds": 65.69532039501064,
+            "partial_response_characters": 927,
+            "candidate_status": "rejected",
+            "candidate_error": "AssertionError('expressions_must_not_include_temporal_operators')"
+          }
+        },
+        "C": {
+          "config": {
+            "search": false,
+            "gate": true
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "reasons": [
+              {
+                "kind": "generation_or_interface_failure"
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 798,
+            "unknown": 0,
+            "triggers": 62,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 0,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": null,
+          "proposal_frontend_status": "rejected",
+          "proposal_frontend_error": "AssertionError('expressions_must_not_include_temporal_operators')",
+          "proposal_compile_status": "not_run",
+          "holdout": {
+            "rows": 4014,
+            "unknown": 2,
+            "false_positives": 0,
+            "detections": 9,
+            "misses": 3,
+            "triggers": 132
+          },
+          "holdout_target_rows": 14,
+          "holdout_later_attribution_unknown": 179,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 7761,
+            "completion_tokens": 238,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 58812760239,
+            "done_reason": "stop",
+            "wall_seconds": 58.81529936399602,
+            "partial_response_characters": 927,
+            "candidate_status": "rejected",
+            "candidate_error": "AssertionError('expressions_must_not_include_temporal_operators')"
+          }
+        },
+        "D": {
+          "config": {
+            "search": true,
+            "gate": true
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "reasons": [
+              {
+                "kind": "generation_or_interface_failure"
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 1884,
+            "unknown": 0,
+            "triggers": 69,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 1,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": null,
+          "proposal_frontend_status": "rejected",
+          "proposal_frontend_error": "AssertionError('expressions_must_not_include_temporal_operators')",
+          "proposal_compile_status": "not_run",
+          "holdout": {
+            "rows": 4014,
+            "unknown": 2,
+            "false_positives": 0,
+            "detections": 9,
+            "misses": 3,
+            "triggers": 132
+          },
+          "holdout_target_rows": 14,
+          "holdout_later_attribution_unknown": 179,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 7895,
+            "completion_tokens": 238,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 65787635056,
+            "done_reason": "stop",
+            "wall_seconds": 65.78995680400112,
+            "partial_response_characters": 927,
+            "candidate_status": "rejected",
+            "candidate_error": "AssertionError('expressions_must_not_include_temporal_operators')"
+          }
+        }
+      },
+      "report": "deliverables/research16_ablation_20261016_r02/report/REPORT.md"
+    },
+    "r03": {
+      "status": {
+        "four_arm_experiment_executed": true,
+        "successful_mechanism_chain_established": false,
+        "initial_qualified": true,
+        "treatment_found": true,
+        "actual_completed_arms": 4,
+        "integrity_checks_passed": true,
+        "scope": "One model seed and one artificial FIFO fault family; success or null effects must be read from actual arm outcomes.",
+        "next_action": "Interpret arm results; do not modify frozen assertions from held-out failures.",
+        "scoped_tail_loss_chain_established": false
+      },
+      "costs": {
+        "model_calls": 4,
+        "prompt_tokens": 32592,
+        "completion_tokens": 968,
+        "usage_unavailable_calls": 0,
+        "model_wall_seconds": 590.4478307860118,
+        "retries": 0,
+        "formal_calls": 0,
+        "monetary_cost": null,
+        "compile_calls": 7,
+        "simulation_calls": 79,
+        "compile_seconds": 69.71826046203205,
+        "simulation_seconds": 1.6122993049939396
+      },
+      "arms": {
+        "A": {
+          "config": {
+            "search": false,
+            "gate": false
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "reasons": [
+              {
+                "kind": "generation_or_interface_failure"
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 798,
+            "unknown": 0,
+            "triggers": 62,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 0,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": null,
+          "proposal_frontend_status": "rejected",
+          "proposal_frontend_error": "AssertionError('expressions_must_not_include_temporal_operators')",
+          "proposal_compile_status": "not_run",
+          "holdout": {
+            "rows": 4072,
+            "unknown": 3,
+            "false_positives": 0,
+            "detections": 13,
+            "misses": 1,
+            "triggers": 163
+          },
+          "holdout_target_rows": 17,
+          "holdout_later_attribution_unknown": 208,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 8014,
+            "completion_tokens": 231,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 334876932409,
+            "done_reason": "stop",
+            "wall_seconds": 334.8796454080002,
+            "partial_response_characters": 918,
+            "candidate_status": "rejected",
+            "candidate_error": "AssertionError('expressions_must_not_include_temporal_operators')"
+          }
+        },
+        "B": {
+          "config": {
+            "search": true,
+            "gate": false
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "gate_enforced": false,
+            "plain_current_evidence_acceptance": false,
+            "reasons": [
+              {
+                "kind": "current_evidence_not_repaired_or_unknown"
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 1884,
+            "unknown": 0,
+            "triggers": 69,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 1,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": {
+            "rows": 1884,
+            "unknown": 0,
+            "triggers": 69,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 1,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposal_frontend_status": "parsed_from_model_selected_expressions_and_timing",
+          "proposal_frontend_error": null,
+          "proposal_compile_status": "passed",
+          "holdout": {
+            "rows": 4072,
+            "unknown": 3,
+            "false_positives": 0,
+            "detections": 13,
+            "misses": 1,
+            "triggers": 163
+          },
+          "holdout_target_rows": 17,
+          "holdout_later_attribution_unknown": 208,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 8282,
+            "completion_tokens": 253,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 91377114748,
+            "done_reason": "stop",
+            "wall_seconds": 91.37977207600488,
+            "partial_response_characters": 1003,
+            "candidate_status": "parsed_from_model_selected_expressions_and_timing"
+          }
+        },
+        "C": {
+          "config": {
+            "search": false,
+            "gate": true
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "reasons": [
+              {
+                "kind": "generation_or_interface_failure"
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 798,
+            "unknown": 0,
+            "triggers": 62,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 0,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": null,
+          "proposal_frontend_status": "rejected",
+          "proposal_frontend_error": "AssertionError('expressions_must_not_include_temporal_operators')",
+          "proposal_compile_status": "not_run",
+          "holdout": {
+            "rows": 4072,
+            "unknown": 3,
+            "false_positives": 0,
+            "detections": 13,
+            "misses": 1,
+            "triggers": 163
+          },
+          "holdout_target_rows": 17,
+          "holdout_later_attribution_unknown": 208,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 8014,
+            "completion_tokens": 231,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 73140676828,
+            "done_reason": "stop",
+            "wall_seconds": 73.14326646900736,
+            "partial_response_characters": 918,
+            "candidate_status": "rejected",
+            "candidate_error": "AssertionError('expressions_must_not_include_temporal_operators')"
+          }
+        },
+        "D": {
+          "config": {
+            "search": true,
+            "gate": true
+          },
+          "accepted_proposal": false,
+          "decision": {
+            "accepted": false,
+            "gate_enforced": true,
+            "plain_current_evidence_acceptance": false,
+            "reasons": [
+              {
+                "kind": "current_gap_not_confirmed_repaired",
+                "evidence_keys": [
+                  "fifo:3961e11786a9cdd72e46e6d2c753178d62c27bd65c17e458ec60d790d1cad1da"
+                ]
+              }
+            ]
+          },
+          "selected_version": "retained_initial",
+          "before": {
+            "rows": 1884,
+            "unknown": 0,
+            "triggers": 69,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 1,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposed_after": {
+            "rows": 1884,
+            "unknown": 0,
+            "triggers": 69,
+            "false_positives": 0,
+            "detections": 3,
+            "misses": 1,
+            "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+            "later_attribution_unknown": 56
+          },
+          "proposal_frontend_status": "parsed_from_model_selected_expressions_and_timing",
+          "proposal_frontend_error": null,
+          "proposal_compile_status": "passed",
+          "holdout": {
+            "rows": 4072,
+            "unknown": 3,
+            "false_positives": 0,
+            "detections": 13,
+            "misses": 1,
+            "triggers": 163
+          },
+          "holdout_target_rows": 17,
+          "holdout_later_attribution_unknown": 208,
+          "model_call": {
+            "status": "response_received",
+            "model": "qwen2.5-coder:7b-instruct",
+            "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+            "prompt_tokens": 8282,
+            "completion_tokens": 253,
+            "model_calls": 1,
+            "retries": 0,
+            "service_total_ns": 91042779453,
+            "done_reason": "stop",
+            "wall_seconds": 91.04514683299931,
+            "partial_response_characters": 1003,
+            "candidate_status": "parsed_from_model_selected_expressions_and_timing"
+          }
+        }
+      },
+      "report": "deliverables/research16_ablation_20261016_r03/report/REPORT.md"
+    }
+  },
+  "all_attempts_cost": {
+    "model_calls": 11,
+    "prompt_tokens": 86547,
+    "completion_tokens": 2172,
+    "usage_unavailable_calls": 0,
+    "model_wall_seconds": 1444.7345229360217,
+    "retries": 0,
+    "formal_calls": 0,
+    "compile_calls": 15,
+    "simulation_calls": 393,
+    "compile_seconds": 153.18371760901937,
+    "simulation_seconds": 8.686376597019262
+  },
+  "search": [
+    {
+      "method": "ordinary",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "independent_gap_count": 2,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "corrupt/order_payload/causal_detection",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/order_payload/attribution_unknown",
+        "drop/order_payload/causal_detection",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/causal_detection",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/no_unsolicited_output/false_negative",
+        "reset_residue/order_payload/causal_detection",
+        "reset_residue/reset_cancellation/attribution_unknown",
+        "reset_residue/reset_cancellation/false_negative"
+      ],
+      "duplicate_gap_observations": 2,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.5195435440982692,
+      "selected_families": {
+        "reset_pending": 6,
+        "overlap": 2,
+        "random": 3,
+        "backpressure": 1
+      }
+    },
+    {
+      "method": "candidate_disagreement",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "drop/drain_no_loss",
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "independent_gap_count": 3,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "corrupt/order_payload/causal_detection",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/drain_no_loss/false_negative",
+        "drop/order_payload/attribution_unknown",
+        "drop/order_payload/causal_detection",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/causal_detection",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/no_unsolicited_output/false_negative",
+        "reset_residue/order_payload/attribution_unknown",
+        "reset_residue/order_payload/causal_detection",
+        "reset_residue/reset_cancellation/attribution_unknown",
+        "reset_residue/reset_cancellation/false_negative"
+      ],
+      "duplicate_gap_observations": 0,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.3448012309963815,
+      "selected_families": {
+        "reset_pending": 4,
+        "random": 2,
+        "drain": 2,
+        "tail_loss": 1,
+        "backpressure": 2,
+        "overlap": 1
+      }
+    },
+    {
+      "method": "raw_difference",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "independent_gap_count": 2,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "corrupt/order_payload/causal_detection",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/order_payload/attribution_unknown",
+        "drop/order_payload/causal_detection",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/causal_detection",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/no_unsolicited_output/false_negative",
+        "reset_residue/reset_cancellation/attribution_unknown",
+        "reset_residue/reset_cancellation/false_negative"
+      ],
+      "duplicate_gap_observations": 4,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.3355179819773184,
+      "selected_families": {
+        "reset_pending": 5,
+        "overlap": 2,
+        "backpressure": 5
+      }
+    },
+    {
+      "method": "contract_coverage",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "drop/drain_no_loss",
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "independent_gap_count": 3,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "corrupt/order_payload/causal_detection",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/drain_no_loss/false_negative",
+        "drop/order_payload/attribution_unknown",
+        "drop/order_payload/causal_detection",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/causal_detection",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/no_unsolicited_output/false_negative",
+        "reset_residue/reset_cancellation/attribution_unknown",
+        "reset_residue/reset_cancellation/false_negative"
+      ],
+      "duplicate_gap_observations": 3,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.3410526549560018,
+      "selected_families": {
+        "tail_loss": 3,
+        "reset_pending": 5,
+        "backpressure": 4
+      }
+    }
+  ],
+  "accounting": "Sum physical calls across the failed initial block, first syntax-failure four-arm block, and uniform prompt-interface correction block. The initial and search acquisition reused by r03 is charged only in r02.",
+  "limitations": [
+    "One engineering FIFO parent, one generation seed; not a statistical superiority result.",
+    "Candidate-disagreement has a single initial property and falls back to exploration.",
+    "Original FIFO presented bug remains unknown; these are artificial boundary faults.",
+    "Finite native simulation, not formal proof. First-violation attribution leaves later failures unknown.",
+    "All failed blocks remain reported; prompt-interface changes are not benefits of the research mechanisms."
+  ]
+}

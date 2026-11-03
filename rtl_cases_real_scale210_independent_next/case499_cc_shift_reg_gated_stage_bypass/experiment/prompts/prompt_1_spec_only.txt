@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, data_i, enable_i, q_o, state_o
+
+Specification:
+
+With enable asserted, serial data traverses all three shift stages. A newly asserted input bit must not reach q_o after only two enabled sampling edges.

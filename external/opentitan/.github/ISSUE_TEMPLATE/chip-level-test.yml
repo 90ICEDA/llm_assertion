@@ -1,0 +1,74 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Chip-Level / SiVal Test
+description: Issue to track the development of a chip-level tests for either pre-silicon and post-silicon environments.
+title: "[chip-test] "
+labels: ["Component:ChipLevelTest"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Test point name
+      description: Test point name with link to entry in test plan.
+      placeholder: >
+        Example: [chip_sw_uart_tx_rx](https://github.com/lowRISC/opentitan/blob/65e2c995beb96806d13bf04dcd8ef25ca64ac6c5/hw/top_earlgrey/data/chip_testplan.hjson#L24)
+    validations:
+      required: true
+  - type: dropdown
+    id: host-side-component
+    attributes:
+      label: Host side component
+      description: Does this test require development of a host side component? (In other words, does the test require an external stimulus, like receiving UART or SPI transactions?)
+      options:
+        - None Required
+        - Unknown
+        - SystemVerilog
+        - Rust
+        - SystemVerilog+Rust
+  - type: dropdown
+    id: opentitantool-infra-done
+    attributes:
+      label: OpenTitanTool infrastructure implemented
+      description: Does the required opentitantool infrastructure exist so that the Rust component can be developed? If not, this must be developed in SV. 'None' means that there is no Rust component for this test.
+      options:
+        - Unknown
+        - "Yes"
+        - "No"
+  - type: dropdown
+    id: sival-test
+    attributes:
+      label: Silicon Validation (SiVal)
+      description: Does the test need to run in SiVal targets? If the answer is yes, the test will required to be enabled in the relevant FPGA target platform. Add the "Component:SiliconValidation" after creating the issue.
+      options:
+        - Unkown
+        - "Yes"
+        - "No"
+  - type: checkboxes
+    id: emulation-target
+    attributes:
+      label: Emulation Targets
+      description: Select the emulation targets compatible with this test case.
+      options:
+        - label: "None"
+        - label: "CW310"
+        - label: "Hyperdebug + CW310"
+  - type: input
+    id: contact
+    attributes:
+      label: Contact person
+      description: GitHub username for a hardware engineer who can answer questions.
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      value: |
+        Please fill out this checklist as items are completed. Link to PRs and issues as appropriate.
+        - [ ] Check if existing test covers most or all of this testpoint (if so, either extend said test to cover all points, or skip the next 3 checkboxes)
+        - [ ] Device-side (C) component developed
+        - [ ] Bazel build rules developed
+        - [ ] Host-side component developed
+        - [ ] HJSON test plan updated with test name (so it shows up in the dashboard)
+        - [ ] Test added to dvsim nightly regression (and passing at time of checking)
+        - [ ] For SiVal test cases, test is running relevant FPGA or silicon regression

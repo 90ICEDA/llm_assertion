@@ -1,0 +1,442 @@
+{
+  "sealed_hashes_checked": 46001,
+  "sealed_hash_mismatches": [],
+  "runs": 1072,
+  "run_status": {
+    "ok": 728,
+    "unsupported_syntax": 344
+  },
+  "parent_count": 6,
+  "parent_cells": 48,
+  "parent_status": {
+    "miss": 10,
+    "false_positive": 9,
+    "unknown": 23,
+    "complete_pass": 6
+  },
+  "summary_matches_run_count": true,
+  "methods": {
+    "equal_budget_select": {
+      "pass": [],
+      "unknown": [
+        "onehot",
+        "spill",
+        "intr"
+      ]
+    },
+    "equal_information_control": {
+      "pass": [
+        "onehot"
+      ],
+      "unknown": [
+        "spill",
+        "stat"
+      ]
+    },
+    "existing_feedback": {
+      "pass": [
+        "onehot"
+      ],
+      "unknown": [
+        "spill",
+        "stat",
+        "intr"
+      ]
+    },
+    "first": {
+      "pass": [],
+      "unknown": [
+        "filter",
+        "onehot",
+        "spill",
+        "stat",
+        "intr"
+      ]
+    },
+    "generic_diff": {
+      "pass": [
+        "onehot"
+      ],
+      "unknown": [
+        "spill",
+        "stat",
+        "intr"
+      ]
+    },
+    "no_fp_check": {
+      "pass": [
+        "onehot"
+      ],
+      "unknown": [
+        "spill",
+        "stat"
+      ]
+    },
+    "no_observation_refinement": {
+      "pass": [
+        "onehot"
+      ],
+      "unknown": [
+        "filter",
+        "spill",
+        "stat"
+      ]
+    },
+    "obligation_loop": {
+      "pass": [
+        "onehot"
+      ],
+      "unknown": [
+        "spill",
+        "stat"
+      ]
+    }
+  },
+  "charged_checks_range": [
+    4,
+    8,
+    12
+  ],
+  "executed_simulations_range": [
+    0,
+    4,
+    8,
+    12
+  ],
+  "parents_with_both_fp_and_miss": [
+    {
+      "case": "filter",
+      "method": "equal_budget_select",
+      "reported_status": "false_positive",
+      "fp": 104,
+      "miss": 30
+    },
+    {
+      "case": "filter",
+      "method": "equal_information_control",
+      "reported_status": "false_positive",
+      "fp": 18,
+      "miss": 30
+    },
+    {
+      "case": "filter",
+      "method": "no_fp_check",
+      "reported_status": "false_positive",
+      "fp": 88,
+      "miss": 6
+    },
+    {
+      "case": "filter",
+      "method": "obligation_loop",
+      "reported_status": "false_positive",
+      "fp": 26,
+      "miss": 24
+    },
+    {
+      "case": "stat",
+      "method": "equal_budget_select",
+      "reported_status": "false_positive",
+      "fp": 25,
+      "miss": 34
+    },
+    {
+      "case": "intr",
+      "method": "obligation_loop",
+      "reported_status": "false_positive",
+      "fp": 31,
+      "miss": 22
+    },
+    {
+      "case": "intr",
+      "method": "no_fp_check",
+      "reported_status": "false_positive",
+      "fp": 46,
+      "miss": 22
+    },
+    {
+      "case": "intr",
+      "method": "no_observation_refinement",
+      "reported_status": "false_positive",
+      "fp": 31,
+      "miss": 22
+    },
+    {
+      "case": "intr",
+      "method": "equal_information_control",
+      "reported_status": "false_positive",
+      "fp": 59,
+      "miss": 22
+    }
+  ],
+  "slots_06_07": [
+    {
+      "parent": "case438_cc_fifo_protocol_suppress_2",
+      "status": "distinguished_on_checked_legal_inputs",
+      "evidence_count": 1
+    },
+    {
+      "parent": "case505_axis_stat_counter_frame_pulse_early",
+      "status": "distinguished_on_checked_legal_inputs",
+      "evidence_count": 2
+    },
+    {
+      "parent": "case510_cc_spill_register_flush_push_priority",
+      "status": "distinguished_on_checked_legal_inputs",
+      "evidence_count": 1
+    }
+  ],
+  "observation_witnesses": 20,
+  "legal_sample_witnesses_with_earlier_violation": 11,
+  "filter_prompts_containing_unallowed_debug_signal": [
+    "deliverables/repair_contract_20261009/model_calls/repair/filter/equal_information_control/1/prompt.txt",
+    "deliverables/repair_contract_20261009/model_calls/repair/filter/no_fp_check/1/prompt.txt"
+  ],
+  "accepted_rounds_with_unknown_checks": [
+    {
+      "case": "filter",
+      "method": "existing_feedback",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "filter",
+      "method": "no_observation_refinement",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "filter",
+      "method": "no_observation_refinement",
+      "step": 1,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "filter",
+      "method": "obligation_loop",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "existing_feedback",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "existing_feedback",
+      "step": 1,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "obligation_loop",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "obligation_loop",
+      "step": 1,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "generic_diff",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "generic_diff",
+      "step": 1,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "no_fp_check",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "no_fp_check",
+      "step": 1,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "no_observation_refinement",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "no_observation_refinement",
+      "step": 1,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "equal_information_control",
+      "step": 0,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    },
+    {
+      "case": "stat",
+      "method": "equal_information_control",
+      "step": 1,
+      "score": {
+        "fp": 0,
+        "miss": 0,
+        "trigger": 0,
+        "covered": 0,
+        "unknown": 4,
+        "violations": 0
+      }
+    }
+  ],
+  "fresh_replays": [
+    {
+      "case": "onehot",
+      "exit_code": 0,
+      "same_trace_and_checks": true,
+      "same_checker": true,
+      "same_rtl": true,
+      "command": [
+        "sh",
+        "/mnt/d/AssertionForge-main1/deliverables/repair_contract_completion_audit_20261009/replays/onehot/reproduce.sh"
+      ],
+      "elapsed_seconds": 0.10809399599929748
+    },
+    {
+      "case": "filter",
+      "exit_code": 0,
+      "same_trace_and_checks": true,
+      "same_checker": true,
+      "same_rtl": true,
+      "command": [
+        "sh",
+        "/mnt/d/AssertionForge-main1/deliverables/repair_contract_completion_audit_20261009/replays/filter/reproduce.sh"
+      ],
+      "elapsed_seconds": 0.071194676000232
+    },
+    {
+      "case": "fifo",
+      "exit_code": 0,
+      "same_trace_and_checks": true,
+      "same_checker": true,
+      "same_rtl": true,
+      "command": [
+        "sh",
+        "/mnt/d/AssertionForge-main1/deliverables/repair_contract_completion_audit_20261009/replays/fifo/reproduce.sh"
+      ],
+      "elapsed_seconds": 0.0764655170005426
+    }
+  ]
+}

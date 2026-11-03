@@ -1,0 +1,26 @@
+{
+  "complete_pass_cases": {
+    "equal_budget_select": [],
+    "equal_information_control": [
+      "onehot"
+    ],
+    "existing_feedback": [
+      "onehot"
+    ],
+    "first": [],
+    "generic_diff": [
+      "onehot"
+    ],
+    "no_fp_check": [
+      "onehot"
+    ],
+    "no_observation_refinement": [
+      "onehot"
+    ],
+    "obligation_loop": [
+      "onehot"
+    ]
+  },
+  "finding": "All six repair arms complete only onehot. The obligation arm has no unique passing parent beyond generic feedback, ablations or equal-information control. Baseline onehot is unsupported, so observed executability improvement is not evidence of obligation-specific superiority. Different unknown populations prevent naive rate comparison.",
+  "history_refinement_scope": "Conflict elimination measured on saved trajectories only; filter needs depth 3 in this checked set, stat depth 2, spill and interrupt depth 1; no global proof."
+}

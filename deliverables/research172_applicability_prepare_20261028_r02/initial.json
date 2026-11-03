@@ -1,0 +1,29 @@
+[
+  {
+    "label": "nonfinal",
+    "antecedent": "m_axis_tvalid && m_axis_tready && !m_axis_tlast",
+    "consequent": "m_axis_tkeep==4'b1111",
+    "timing": "same_sample",
+    "obligations": [
+      "nonfinal_keep"
+    ]
+  },
+  {
+    "label": "hold_valid",
+    "antecedent": "m_axis_tvalid && !m_axis_tready",
+    "consequent": "m_axis_tvalid",
+    "timing": "next_sample",
+    "obligations": [
+      "stall_valid"
+    ]
+  },
+  {
+    "label": "hold_payload",
+    "antecedent": "m_axis_tvalid && !m_axis_tready",
+    "consequent": "$stable({m_axis_tdata,m_axis_tkeep,m_axis_tlast})",
+    "timing": "next_sample",
+    "obligations": [
+      "stall_payload"
+    ]
+  }
+]

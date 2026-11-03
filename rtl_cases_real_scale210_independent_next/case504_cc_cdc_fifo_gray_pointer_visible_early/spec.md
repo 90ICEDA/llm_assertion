@@ -1,0 +1,1 @@
+A changed Gray-coded write pointer must not be exposed to read-domain logic until it has passed through three sampling stages. The immediately following read-domain sample must still expose the old pointer.

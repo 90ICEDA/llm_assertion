@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -16,7 +16,7 @@
+       if (!noisy_i) begin high_count<=0; filtered<=0; end
+       else begin
+         if (high_count != 3) high_count <= high_count + 1'b1;
+-        if (high_count >= 2) filtered <= 1'b1;
++        if (high_count >= 1) filtered <= 1'b1;
+       end
+     end
+   end

@@ -1,0 +1,104 @@
+{
+  "name": "case484_cc_exp_backoff_clear_set_priority",
+  "parent_bug_id": "case484_cc_exp_backoff_clear_set_priority",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_exp_backoff",
+  "source_files": [
+    "external/common_cells/src/cc_exp_backoff.sv"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "simultaneous_clear_set_priority",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "clr_i",
+    "set_cnt_i",
+    "clr_cnt_i",
+    "is_zero_o",
+    "count_o"
+  ],
+  "temporal_type": "cross-cycle state transition",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (clr_cnt_i && set_cnt_i) |=> (is_zero_o && count_o==0));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "count_o[3:0]",
+        "is_zero_o"
+      ],
+      "good_values": {
+        "count_o[3:0]": "0000",
+        "is_zero_o": "1"
+      },
+      "bad_values": {
+        "count_o[3:0]": "0011",
+        "is_zero_o": "0"
+      },
+      "good_trace_sha256": "61dc2d7d83e34becaccfff3ad62fb6fcc8fe4d083a7a801f0d4d31dafdd71216",
+      "bad_trace_sha256": "7b352fb0106f90ccc8f91897641dc9b8aaabbc85ecf19944d4a98e72cfd2ae58",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "count_o[3:0]",
+        "is_zero_o"
+      ],
+      "good_values": {
+        "count_o[3:0]": "0000",
+        "is_zero_o": "1"
+      },
+      "bad_values": {
+        "count_o[3:0]": "0111",
+        "is_zero_o": "0"
+      },
+      "good_trace_sha256": "4cdfa290a895b16e78f685552ef819ebda8024cb07d3276c1817ee2596d3392f",
+      "bad_trace_sha256": "ba4b98c497b2d6ccd67881253116b1ae730bf19b0c1a8870c2727fc37985ec95",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "count_o[3:0]",
+        "is_zero_o"
+      ],
+      "good_values": {
+        "count_o[3:0]": "0000",
+        "is_zero_o": "1"
+      },
+      "bad_values": {
+        "count_o[3:0]": "0011",
+        "is_zero_o": "0"
+      },
+      "good_trace_sha256": "8993f4f8af1be5d486b09bf8df59c1430b6f0cd93a79c77560b4443a6b98d68b",
+      "bad_trace_sha256": "22672eed6e84b0795c8f44ca7b08f96946e5e0a000b8d51d2b616358d4af6d2d",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "cb224a138ad8068b778cc0d6397b1c1222290f85d364bd6ca0609d5a46a04de7",
+  "buggy_sha256": "da075648260692c5a2f795cadb78d9ee576bd5a3bc204546376b930775752a61"
+}

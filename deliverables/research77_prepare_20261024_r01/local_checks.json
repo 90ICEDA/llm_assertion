@@ -1,0 +1,457 @@
+{
+  "passed": true,
+  "checks": [
+    "private oracle fixture only",
+    "unlock preserves model plan exactly",
+    "actual research76 rule mapped without correction",
+    "actual valid withdrawal exposes rule-window inconsistency",
+    "internally consistent but spec-wrong rule and labels",
+    "independent truth rejects internally consistent wrong plan",
+    "trigger_condition/sample:wrong",
+    "trigger_condition/sample:missing",
+    "trigger_condition/sample:array",
+    "trigger_condition/sample:boolean",
+    "trigger_condition/mvalid:wrong",
+    "trigger_condition/mvalid:missing",
+    "trigger_condition/mvalid:array",
+    "trigger_condition/mvalid:boolean",
+    "trigger_condition/mready:wrong",
+    "trigger_condition/mready:missing",
+    "trigger_condition/mready:array",
+    "trigger_condition/mready:boolean",
+    "trigger_condition/rst:wrong",
+    "trigger_condition/rst:missing",
+    "trigger_condition/rst:array",
+    "trigger_condition/rst:boolean",
+    "reset_cancellation/sample:wrong",
+    "reset_cancellation/sample:missing",
+    "reset_cancellation/sample:array",
+    "reset_cancellation/sample:boolean",
+    "reset_cancellation/rst:wrong",
+    "reset_cancellation/rst:missing",
+    "reset_cancellation/rst:array",
+    "reset_cancellation/rst:boolean",
+    "hold_requirement/sample:wrong",
+    "hold_requirement/sample:missing",
+    "hold_requirement/sample:array",
+    "hold_requirement/sample:boolean",
+    "hold_requirement/mvalid:wrong",
+    "hold_requirement/mvalid:missing",
+    "hold_requirement/mvalid:array",
+    "hold_requirement/mvalid:boolean",
+    "hold_requirement/data_reference/sample:wrong",
+    "hold_requirement/data_reference/sample:missing",
+    "hold_requirement/data_reference/sample:array",
+    "hold_requirement/data_reference/sample:boolean",
+    "hold_requirement/data_reference/signal:wrong",
+    "hold_requirement/data_reference/signal:missing",
+    "hold_requirement/data_reference/signal:array",
+    "hold_requirement/data_reference/signal:boolean",
+    "window0:anchor_cycle",
+    "window0:check_cycle",
+    "window0:applicability",
+    "window0:expected_data",
+    "window0:observed_data",
+    "window0:observed_valid",
+    "window0:verdict",
+    "window1:anchor_cycle",
+    "window1:check_cycle",
+    "window1:applicability",
+    "window1:expected_data",
+    "window1:observed_data",
+    "window1:observed_valid",
+    "window1:verdict",
+    "window2:anchor_cycle",
+    "window2:check_cycle",
+    "window2:applicability",
+    "window2:expected_data",
+    "window2:observed_data",
+    "window2:observed_valid",
+    "window2:verdict",
+    "window3:anchor_cycle",
+    "window3:check_cycle",
+    "window3:applicability",
+    "window3:expected_data",
+    "window3:observed_data",
+    "window3:observed_valid",
+    "window3:verdict",
+    "window4:anchor_cycle",
+    "window4:check_cycle",
+    "window4:applicability",
+    "window4:expected_data",
+    "window4:observed_data",
+    "window4:observed_valid",
+    "window4:verdict",
+    "window5:anchor_cycle",
+    "window5:check_cycle",
+    "window5:applicability",
+    "window5:expected_data",
+    "window5:observed_data",
+    "window5:observed_valid",
+    "window5:verdict",
+    "window6:anchor_cycle",
+    "window6:check_cycle",
+    "window6:applicability",
+    "window6:expected_data",
+    "window6:observed_data",
+    "window6:observed_valid",
+    "window6:verdict",
+    "window7:anchor_cycle",
+    "window7:check_cycle",
+    "window7:applicability",
+    "window7:expected_data",
+    "window7:observed_data",
+    "window7:observed_valid",
+    "window7:verdict",
+    "window8:anchor_cycle",
+    "window8:check_cycle",
+    "window8:applicability",
+    "window8:expected_data",
+    "window8:observed_data",
+    "window8:observed_valid",
+    "window8:verdict",
+    "window9:anchor_cycle",
+    "window9:check_cycle",
+    "window9:applicability",
+    "window9:expected_data",
+    "window9:observed_data",
+    "window9:observed_valid",
+    "window9:verdict",
+    "window10:anchor_cycle",
+    "window10:check_cycle",
+    "window10:applicability",
+    "window10:expected_data",
+    "window10:observed_data",
+    "window10:observed_valid",
+    "window10:verdict",
+    "window:duplicate",
+    "window:missing",
+    "empty certificates reject",
+    "unbound public sample rejected"
+  ],
+  "actual_research76_rejection": {
+    "accepted": false,
+    "reasons": [
+      {
+        "kind": "incorrect_rule_binding",
+        "field": "hold_requirement"
+      },
+      {
+        "kind": "rule_vs_certificate",
+        "id": "w0"
+      },
+      {
+        "kind": "rule_vs_window",
+        "id": "w0"
+      },
+      {
+        "kind": "rule_vs_certificate",
+        "id": "w2"
+      },
+      {
+        "kind": "rule_vs_window",
+        "id": "w2"
+      },
+      {
+        "kind": "rule_vs_certificate",
+        "id": "w5"
+      },
+      {
+        "kind": "rule_vs_window",
+        "id": "w5"
+      }
+    ],
+    "details": [
+      {
+        "id": "w0",
+        "executed_rule": {
+          "id": "w0",
+          "anchor_cycle": 49,
+          "check_cycle": 50,
+          "applicability": "required",
+          "expected_data": 3883009061,
+          "observed_data": 3883009060,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w0",
+          "anchor_cycle": 49,
+          "check_cycle": 50,
+          "applicability": "required",
+          "expected_data": 3883009061,
+          "observed_data": 3883009060,
+          "observed_valid": 1,
+          "verdict": "violated"
+        },
+        "rule_matches_certificate": false,
+        "window_matches_certificate": true,
+        "rule_matches_window": false
+      },
+      {
+        "id": "w1",
+        "executed_rule": {
+          "id": "w1",
+          "anchor_cycle": 49,
+          "check_cycle": 50,
+          "applicability": "required",
+          "expected_data": 3883009060,
+          "observed_data": 3883009060,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w1",
+          "anchor_cycle": 49,
+          "check_cycle": 50,
+          "applicability": "required",
+          "expected_data": 3883009060,
+          "observed_data": 3883009060,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      },
+      {
+        "id": "w2",
+        "executed_rule": {
+          "id": "w2",
+          "anchor_cycle": 7,
+          "check_cycle": 8,
+          "applicability": "required",
+          "expected_data": 267114574,
+          "observed_data": 267114575,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w2",
+          "anchor_cycle": 7,
+          "check_cycle": 8,
+          "applicability": "required",
+          "expected_data": 267114574,
+          "observed_data": 267114575,
+          "observed_valid": 1,
+          "verdict": "violated"
+        },
+        "rule_matches_certificate": false,
+        "window_matches_certificate": true,
+        "rule_matches_window": false
+      },
+      {
+        "id": "w3",
+        "executed_rule": {
+          "id": "w3",
+          "anchor_cycle": 7,
+          "check_cycle": 8,
+          "applicability": "required",
+          "expected_data": 267114575,
+          "observed_data": 267114575,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w3",
+          "anchor_cycle": 7,
+          "check_cycle": 8,
+          "applicability": "required",
+          "expected_data": 267114575,
+          "observed_data": 267114575,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      },
+      {
+        "id": "w4",
+        "executed_rule": {
+          "id": "w4",
+          "anchor_cycle": 21,
+          "check_cycle": 22,
+          "applicability": "required",
+          "expected_data": 1111347460,
+          "observed_data": 1111347460,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w4",
+          "anchor_cycle": 21,
+          "check_cycle": 22,
+          "applicability": "required",
+          "expected_data": 1111347460,
+          "observed_data": 1111347460,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      },
+      {
+        "id": "w5",
+        "executed_rule": {
+          "id": "w5",
+          "anchor_cycle": 16,
+          "check_cycle": 17,
+          "applicability": "required",
+          "expected_data": 3773356146,
+          "observed_data": 3773356146,
+          "observed_valid": 0,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w5",
+          "anchor_cycle": 16,
+          "check_cycle": 17,
+          "applicability": "required",
+          "expected_data": 3773356146,
+          "observed_data": 3773356146,
+          "observed_valid": 0,
+          "verdict": "violated"
+        },
+        "rule_matches_certificate": false,
+        "window_matches_certificate": true,
+        "rule_matches_window": false
+      },
+      {
+        "id": "w6",
+        "executed_rule": {
+          "id": "w6",
+          "anchor_cycle": 16,
+          "check_cycle": 17,
+          "applicability": "required",
+          "expected_data": 3773356146,
+          "observed_data": 3773356146,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w6",
+          "anchor_cycle": 16,
+          "check_cycle": 17,
+          "applicability": "required",
+          "expected_data": 3773356146,
+          "observed_data": 3773356146,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      },
+      {
+        "id": "w7",
+        "executed_rule": {
+          "id": "w7",
+          "anchor_cycle": 2,
+          "check_cycle": 3,
+          "applicability": "not_required",
+          "expected_data": null,
+          "observed_data": 0,
+          "observed_valid": 0,
+          "verdict": "not_applicable"
+        },
+        "model_window": {
+          "id": "w7",
+          "anchor_cycle": 2,
+          "check_cycle": 3,
+          "applicability": "not_required",
+          "expected_data": null,
+          "observed_data": 0,
+          "observed_valid": 0,
+          "verdict": "not_applicable"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      },
+      {
+        "id": "w8",
+        "executed_rule": {
+          "id": "w8",
+          "anchor_cycle": 3,
+          "check_cycle": 4,
+          "applicability": "not_required",
+          "expected_data": null,
+          "observed_data": 0,
+          "observed_valid": 0,
+          "verdict": "not_applicable"
+        },
+        "model_window": {
+          "id": "w8",
+          "anchor_cycle": 3,
+          "check_cycle": 4,
+          "applicability": "not_required",
+          "expected_data": null,
+          "observed_data": 0,
+          "observed_valid": 0,
+          "verdict": "not_applicable"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      },
+      {
+        "id": "w9",
+        "executed_rule": {
+          "id": "w9",
+          "anchor_cycle": 56,
+          "check_cycle": 57,
+          "applicability": "required",
+          "expected_data": 12135273,
+          "observed_data": 12135273,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "model_window": {
+          "id": "w9",
+          "anchor_cycle": 56,
+          "check_cycle": 57,
+          "applicability": "required",
+          "expected_data": 12135273,
+          "observed_data": 12135273,
+          "observed_valid": 1,
+          "verdict": "satisfied"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      },
+      {
+        "id": "w10",
+        "executed_rule": {
+          "id": "w10",
+          "anchor_cycle": 60,
+          "check_cycle": 61,
+          "applicability": "cancelled",
+          "expected_data": null,
+          "observed_data": 7817769,
+          "observed_valid": 1,
+          "verdict": "not_applicable"
+        },
+        "model_window": {
+          "id": "w10",
+          "anchor_cycle": 60,
+          "check_cycle": 61,
+          "applicability": "cancelled",
+          "expected_data": null,
+          "observed_data": 7817769,
+          "observed_valid": 1,
+          "verdict": "not_applicable"
+        },
+        "rule_matches_certificate": true,
+        "window_matches_certificate": true,
+        "rule_matches_window": true
+      }
+    ],
+    "windows": 11,
+    "scope": "Development sample consistency only; native SVA and unchanged105-history admission remain mandatory."
+  },
+  "fixture_only": true,
+  "model_calls": 0
+}

@@ -1,0 +1,1 @@
+assert property (@(posedge clk_i) disable iff (!rst_ni) (en_i && !down_i && (q_o+delta_i)>dut.max_q) |=> max_o==$past(q_o+delta_i));

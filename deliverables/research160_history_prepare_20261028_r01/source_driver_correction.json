@@ -1,0 +1,12 @@
+{
+  "reason": "Fixed-cycle source in research159 can withdraw/change unaccepted input under backpressure. Those observations are not admitted as legal witnesses.",
+  "driver": "Advance source_index only on actual positive-edge valid&&ready; drive stable input on negative edges. Reset cancels pending source and DUT transactions.",
+  "common_stimulus": "Compare every actual source valid/data/keep/last and external ready/pause/reset trace between revisions; unequal timing cannot qualify as same-stimulus witness.",
+  "changed_rtl": false,
+  "changed_obligations": false,
+  "changed_native_sva": false,
+  "preserved_first_run": "deliverables/research159_history_native_20261028_r01",
+  "native_compiles": 8,
+  "total_round_compile_cap": 18,
+  "model_calls": 0
+}

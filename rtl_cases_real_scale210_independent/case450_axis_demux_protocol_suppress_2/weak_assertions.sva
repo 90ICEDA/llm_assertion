@@ -1,0 +1,17 @@
+// Deliberately weak admission candidates for case450_axis_demux_protocol_suppress_2.
+// PENDING VALIDATION: presence in this file is not evidence that a candidate misses the bug.
+
+// weak_single_cycle_implication: Checks only the current sample after a reduced trigger and cannot enforce the required cross-cycle history.
+assert property (@(posedge clk) disable iff (rst) (m_axis_tvalid[select]) |-> (m_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH] == s_axis_tdata));
+
+// weak_final_output_only: Observes only that the final output is known when already asserted; it ignores how and when that output was reached.
+assert property (@(posedge clk) disable iff (rst) (m_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH] == s_axis_tdata) |-> !$isunknown(m_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH] == s_axis_tdata));
+
+// weak_delay_removed: Removes the next-cycle or multi-cycle delay from the intended temporal relationship.
+assert property (@(posedge clk) disable iff (rst) (m_axis_tvalid[select]) |-> (m_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH] == s_axis_tdata));
+
+// weak_antecedent_removed: Drops the behavioral trigger and reduces the check to output definedness.
+assert property (@(posedge clk) disable iff (rst) 1'b1 |-> !$isunknown(m_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH] == s_axis_tdata));
+
+// weak_simple_invariant: A generic signal-integrity invariant contains no ordering, exact delay, duration, or protocol condition.
+assert property (@(posedge clk) disable iff (rst) 1'b1 |-> !$isunknown(m_axis_tvalid[select]));

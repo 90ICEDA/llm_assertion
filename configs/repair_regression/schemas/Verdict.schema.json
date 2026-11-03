@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "Verdict"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "config_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "rtl_hashes": {
+      "type": "object"
+    },
+    "assertion_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "evidence_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "versions": {
+      "type": "object"
+    },
+    "stages": {
+      "type": "object"
+    },
+    "search": {
+      "type": "object"
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "replay": {
+      "type": "object"
+    },
+    "refinement": {
+      "type": "object"
+    },
+    "evidence_preservation": {
+      "type": "boolean"
+    },
+    "flow_completed": {
+      "type": "boolean"
+    },
+    "current_evidence_pass": {
+      "type": "boolean"
+    },
+    "bounded_search": {
+      "type": "string",
+      "minLength": 1
+    },
+    "native_sva": {
+      "type": "string",
+      "minLength": 1
+    },
+    "formal_proof": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stop_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "reproduce": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "case_id",
+    "config_hash",
+    "rtl_hashes",
+    "assertion_hash",
+    "evidence_hash",
+    "versions",
+    "stages",
+    "search",
+    "obligations",
+    "replay",
+    "refinement",
+    "evidence_preservation",
+    "flow_completed",
+    "current_evidence_pass",
+    "bounded_search",
+    "native_sva",
+    "formal_proof",
+    "stop_reason",
+    "limitations",
+    "reproduce"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,19 @@
+{
+  "idle": {
+    "basis": "No ready/spacing restrictions in stat/spill specs; FIFO environment contract; filter same-value samples count toward qualification",
+    "preserved": "transaction payload/order for isolated stat events",
+    "changed": "absolute deadlines remain relative to triggers; filter repeated values change qualification and are not stutter equivalent"
+  },
+  "backpressure": {
+    "basis": "Depth=0 FIFO input contract: hold push/data until pop or reset",
+    "precondition": "push and not pop",
+    "preserved": "presented item/data",
+    "changed": "acceptance time; no arbitrary backpressure for interfaces with no ready port"
+  },
+  "reset": {
+    "basis": "active-low reset in source module contracts",
+    "precondition": "reset explicitly asserted",
+    "preserved": "no pre-reset obligation crosses epoch",
+    "changed": "cancels pending transaction; not behavior-preserving equivalence"
+  }
+}

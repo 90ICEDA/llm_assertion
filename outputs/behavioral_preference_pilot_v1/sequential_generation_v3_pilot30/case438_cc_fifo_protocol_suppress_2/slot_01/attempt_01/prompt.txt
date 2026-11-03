@@ -1,0 +1,10 @@
+Return exactly one JSON AST matching the schema. Choose only enum values; do not emit SystemVerilog or prose.
+This is candidate slot 1/8. Prefer two behaviorally related, distinct top-level signals. Avoid clock/reset.
+Parent: case438_cc_fifo_protocol_suppress_2 Project: common_cells Bug family: combinational_protocol_output_suppressed
+Specification: # Behavioral specification
+
+For the zero-depth FIFO configuration, emptiness is the inverse of an active push in the same cycle; a presented item makes the combinational FIFO non-empty.
+
+Temporal type: `same-cycle combinational/protocol relation`
+
+Visible semantic signals: clr_i, flush_i, full_o, empty_o, push_i, pop_i, usage_o, data_i, data_o

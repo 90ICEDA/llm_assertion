@@ -1,0 +1,43 @@
+{
+  "depths": [
+    2,
+    3,
+    4
+  ],
+  "ram_pipeline": [
+    0,
+    2
+  ],
+  "development_seeds": [
+    202610141,
+    202610142
+  ],
+  "independent_test_seeds": [
+    916211,
+    916273
+  ],
+  "mutations": [
+    "correct",
+    "corrupt",
+    "duplicate_payload",
+    "drop"
+  ],
+  "source": "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+  "source_sha256": "b29a492b29dcb6b060a3d40d77206e490533433b23d2a954d3b84b08985db16e",
+  "source_url": "https://github.com/alexforencich/verilog-axis/blob/master/rtl/axis_fifo.v",
+  "source_provenance": "existing vendored source; exact upstream commit unverified",
+  "obligations": {
+    "order_payload": "Every accepted output equals the oldest outstanding accepted input payload.",
+    "no_unsolicited_output": "Every accepted output corresponds to an outstanding accepted input since reset.",
+    "stall_stability": "Output valid and payload persist while valid and not ready, except reset cancellation.",
+    "drain_no_loss": "After input stops and ready remains asserted, all outstanding accepted inputs drain within the finite experiment bound.",
+    "reset_cancellation": "Reset cancels every pending transaction; no pre-reset item may reappear after reset."
+  },
+  "handshake": "accept iff valid && ready at pre-NBA rising edge",
+  "reset": "synchronous active high; pending requests and queue contents cancelled",
+  "latency": "buffered FIFO; variable latency under backpressure; no fixed next-cycle response obligation",
+  "capacity": "RAM depth rounds up to a power of two; pipeline adds storage; do not assume DEPTH is total capacity",
+  "dedup_rule": "one gap per mutation and violated obligation; depth/pipeline/seed/waveform are replications, not discoveries",
+  "historical_fifo_presented": "unknown; these mutants are not a witness for the original presented defect",
+  "python_version": "Python 3.12.3"
+}

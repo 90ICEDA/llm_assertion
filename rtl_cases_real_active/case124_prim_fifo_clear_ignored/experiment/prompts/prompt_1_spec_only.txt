@@ -15,10 +15,10 @@ Rules:
 10) The final assertion line must contain exactly one implication operator total: either one |-> or one |=>.
 
 Allowed signals:
-clk, rst_n, clr_i, incr_wptr_i, incr_rptr_i, full_o, empty_o, depth_o
+clk, rst_n, clr_i, incr_wptr_i, incr_rptr_i, wptr_o, rptr_o, full_o, empty_o, depth_o
 
 Specification:
 A clear pulse shall reset the FIFO occupancy and pointers on the next cycle.
 
 Additional guidance:
-- Waveform naming hints: depth_o appears in waveforms as column 'depth_o[2:0]'.
+- Waveform naming hints: depth_o appears in waveforms as column 'depth_o[2:0]'; rptr_o appears in waveforms as column 'rptr_o[1:0]'; wptr_o appears in waveforms as column 'wptr_o[1:0]'.

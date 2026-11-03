@@ -1,0 +1,555 @@
+{
+  "parent": "axis_fifo_actual_RTL_with_artificial_boundary_faults",
+  "traces": [
+    {
+      "version": "v0",
+      "property": "((mvalid && (!(mready)) && $past(mvalid) && (!(rst)))) |-> ((mdata == $past(mdata)))",
+      "rendered_edit": {
+        "operation": "replace_one",
+        "assertion_id": "a4",
+        "assertions": [
+          {
+            "antecedent": "(mvalid && (!(mready)) && $past(mvalid) && (!(rst)))",
+            "consequent": "(mdata == $past(mdata))",
+            "timing": "same_sample",
+            "obligation": [
+              "stall_stability"
+            ]
+          }
+        ],
+        "reason": "Ensures that the output data (mdata) remains stable during backpressure (mready is low) and across consecutive cycles, as required by the stall_stability obligation. The timing is adjusted to the same sample to ensure immediate stability during backpressure, and the reset condition is explicitly excluded."
+      },
+      "target_examples": [
+        {
+          "evidence_id": "fifo:6762b930036e8ef082c7661424e80082aacbd9ea5a425e78235755aad6c1a852",
+          "obligation": "stall_stability",
+          "cycle": 23,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "native": {
+            "compile": "ok",
+            "support": "supported",
+            "execution": "ok",
+            "attribution_status": "unknown",
+            "trigger_source": "property_antecedent_cover",
+            "assertions": [
+              {
+                "id": "a2",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": null
+              },
+              {
+                "id": "a4",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": null
+              }
+            ]
+          },
+          "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_1/long_valid_withdraw_stalled/replay.json",
+          "source_sha256": "8d5c5c3e8862b1db1493075745a1536dd5fce6a7d5ae815121962b15d3b1d8a9",
+          "samples": [
+            {
+              "cycle": 22,
+              "rst": 0,
+              "mvalid": 1,
+              "mready": 0,
+              "mdata": 1102837798
+            },
+            {
+              "cycle": 23,
+              "rst": 0,
+              "mvalid": 0,
+              "mready": 0,
+              "mdata": 1102837798
+            }
+          ]
+        },
+        {
+          "evidence_id": "fifo:b6744d434db35b8fb4ec67911015c0d201f20badde7bd5be8c84e102f6c60f5a",
+          "obligation": "stall_stability",
+          "cycle": 31,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "native": {
+            "compile": "ok",
+            "support": "supported",
+            "execution": "ok",
+            "attribution_status": "unknown",
+            "trigger_source": "property_antecedent_cover",
+            "assertions": [
+              {
+                "id": "a2",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": null
+              },
+              {
+                "id": "a4",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": null
+              }
+            ]
+          },
+          "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_2/long_valid_withdraw_release/replay.json",
+          "source_sha256": "7708572cbc5a1b47d7bde39f79e12712a4f9b8abe35f967208071f3a5548f052",
+          "samples": [
+            {
+              "cycle": 30,
+              "rst": 0,
+              "mvalid": 1,
+              "mready": 0,
+              "mdata": 1102837798
+            },
+            {
+              "cycle": 31,
+              "rst": 0,
+              "mvalid": 0,
+              "mready": 1,
+              "mdata": 1102837798
+            }
+          ]
+        }
+      ],
+      "window_gate": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w2"
+          },
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w3"
+          },
+          {
+            "kind": "legal_window_false_alarm",
+            "id": "w4"
+          },
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w8"
+          },
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w10"
+          }
+        ],
+        "windows": [
+          {
+            "id": "w0",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_0/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 4,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w1",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_0/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 6,
+            "triggered": true,
+            "failed": false
+          },
+          {
+            "id": "w2",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_2/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 31,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w3",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_1/long_valid_withdraw_stalled/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 23,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w4",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_2/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 15,
+            "triggered": true,
+            "failed": true
+          },
+          {
+            "id": "w5",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_0/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 3,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w6",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_1/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 23,
+            "triggered": true,
+            "failed": false
+          },
+          {
+            "id": "w7",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_0/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 19,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w8",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_0/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 18,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w9",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_0/correct/replay.json",
+            "label": "cancelled",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 61,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w10",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v0/visible_native/case_2/long_valid_withdraw_release/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 31,
+            "triggered": false,
+            "failed": false
+          }
+        ],
+        "scope": "Native trigger/sample correspondence only; current target causal detection and full history are additional mandatory gates."
+      },
+      "current_counts": {
+        "rows": 2150,
+        "unknown": 2,
+        "triggers": 635,
+        "false_positives": 16,
+        "detections": 3,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 95
+      },
+      "history_counts": {
+        "rows": 69124,
+        "unknown": 61,
+        "triggers": 16309,
+        "false_positives": 918,
+        "detections": 139,
+        "misses": 14,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1177
+      },
+      "history_rejection_counts": {
+        "unconfirmed_replay": 61,
+        "new_legal_false_positive": 918,
+        "lost_target_detection": 75,
+        "lost_obligation_trigger": 1092
+      }
+    },
+    {
+      "version": "v2",
+      "property": "((mvalid && (!(mready)) && $past((mvalid && (!(mready)))))) |-> ((mdata == $past(mdata)))",
+      "rendered_edit": {
+        "operation": "replace_one",
+        "assertion_id": "a4",
+        "assertions": [
+          {
+            "antecedent": "(mvalid && (!(mready)) && $past((mvalid && (!(mready)))))",
+            "consequent": "(mdata == $past(mdata))",
+            "timing": "same_sample",
+            "obligation": [
+              "stall_stability"
+            ]
+          }
+        ],
+        "reason": "The existing a4 assertion does not fully capture the stall stability requirement, especially in the case of repeated backpressure cycles. The new assertion ensures that mdata remains stable during backpressure, even if the backpressure persists for multiple cycles."
+      },
+      "target_examples": [
+        {
+          "evidence_id": "fifo:6762b930036e8ef082c7661424e80082aacbd9ea5a425e78235755aad6c1a852",
+          "obligation": "stall_stability",
+          "cycle": 23,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "native": {
+            "compile": "ok",
+            "support": "supported",
+            "execution": "ok",
+            "attribution_status": "confirmed",
+            "trigger_source": "property_antecedent_cover",
+            "assertions": [
+              {
+                "id": "a2",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": false
+              },
+              {
+                "id": "a4",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": false
+              }
+            ]
+          },
+          "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_1/long_valid_withdraw_stalled/replay.json",
+          "source_sha256": "16231c0045f35ef2b207a064b65d500e3432e721b3e78628fdd2e060bc2e3996",
+          "samples": [
+            {
+              "cycle": 22,
+              "rst": 0,
+              "mvalid": 1,
+              "mready": 0,
+              "mdata": 1102837798
+            },
+            {
+              "cycle": 23,
+              "rst": 0,
+              "mvalid": 0,
+              "mready": 0,
+              "mdata": 1102837798
+            }
+          ]
+        },
+        {
+          "evidence_id": "fifo:b6744d434db35b8fb4ec67911015c0d201f20badde7bd5be8c84e102f6c60f5a",
+          "obligation": "stall_stability",
+          "cycle": 31,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "native": {
+            "compile": "ok",
+            "support": "supported",
+            "execution": "ok",
+            "attribution_status": "confirmed",
+            "trigger_source": "property_antecedent_cover",
+            "assertions": [
+              {
+                "id": "a2",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": false
+              },
+              {
+                "id": "a4",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": false
+              }
+            ]
+          },
+          "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_2/long_valid_withdraw_release/replay.json",
+          "source_sha256": "0dcc27ef1cf34a14ecae5613cc697bb1c1fb8bb4eaf889ca0b21ec616d078c48",
+          "samples": [
+            {
+              "cycle": 30,
+              "rst": 0,
+              "mvalid": 1,
+              "mready": 0,
+              "mdata": 1102837798
+            },
+            {
+              "cycle": 31,
+              "rst": 0,
+              "mvalid": 0,
+              "mready": 1,
+              "mdata": 1102837798
+            }
+          ]
+        }
+      ],
+      "window_gate": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w2"
+          },
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w3"
+          },
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w8"
+          },
+          {
+            "kind": "validated_required_window_not_triggered",
+            "id": "w10"
+          }
+        ],
+        "windows": [
+          {
+            "id": "w0",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_0/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 4,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w1",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_0/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 6,
+            "triggered": true,
+            "failed": false
+          },
+          {
+            "id": "w2",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_2/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 31,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w3",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_1/long_valid_withdraw_stalled/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 23,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w4",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_2/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 15,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w5",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_0/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 3,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w6",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_1/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 23,
+            "triggered": true,
+            "failed": false
+          },
+          {
+            "id": "w7",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_0/correct/replay.json",
+            "label": "not_required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 19,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w8",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_0/correct/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 18,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w9",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_0/correct/replay.json",
+            "label": "cancelled",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 61,
+            "triggered": false,
+            "failed": false
+          },
+          {
+            "id": "w10",
+            "source": "/mnt/d/AssertionForge-main1/deliverables/research48_real_20261022_r01/core/v2/visible_native/case_2/long_valid_withdraw_release/replay.json",
+            "label": "required",
+            "independent_certificate_unchanged": true,
+            "antecedent_cycle": 31,
+            "triggered": false,
+            "failed": false
+          }
+        ],
+        "scope": "Native trigger/sample correspondence only; current target causal detection and full history are additional mandatory gates."
+      },
+      "current_counts": {
+        "rows": 2150,
+        "unknown": 0,
+        "triggers": 619,
+        "false_positives": 0,
+        "detections": 3,
+        "misses": 2,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 95
+      },
+      "history_counts": {
+        "rows": 69124,
+        "unknown": 0,
+        "triggers": 15421,
+        "false_positives": 0,
+        "detections": 183,
+        "misses": 31,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1177
+      },
+      "history_rejection_counts": {
+        "lost_target_detection": 31,
+        "lost_obligation_trigger": 1048
+      }
+    }
+  ]
+}

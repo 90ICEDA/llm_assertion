@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -83,7 +83,7 @@
+     end
+ endgenerate
+ 
+-assign output_valid = stage_valid[LEVELS-1];
++assign output_valid = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+ assign output_encoded = stage_enc[LEVELS-1];
+ assign output_unencoded = 1 << output_encoded;
+ 

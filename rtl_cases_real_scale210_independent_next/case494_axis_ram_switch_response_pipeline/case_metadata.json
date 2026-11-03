@@ -1,0 +1,94 @@
+{
+  "name": "case494_axis_ram_switch_response_pipeline",
+  "parent_bug_id": "case494_axis_ram_switch_response_pipeline",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_ram_switch",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_ram_switch.v"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "response_pipeline_stage_skipped",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "grant_i",
+    "output_ready_i",
+    "q_o",
+    "state_o"
+  ],
+  "temporal_type": "three-stage arbitration response latency",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(grant_i) |-> ##2 !q_o));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "good_row_index": 10,
+      "bad_row_index": 10,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "813f76224dabc31634ef51e11c8279900c037a58d596fa99a5958e160527a788",
+      "bad_trace_sha256": "1890f7a7d7169d96d61f7cb5b18cc4bda58ccdf968fb56e8da51f55f58945f4d",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "6f19dbe4c15a35617fe91f77b9f3bbbf3d78443d06d6b58c1ff3dee672e36c4c",
+      "bad_trace_sha256": "e98ac9b0839aa9e793c16cf1ec847c596c8dcaa20147a44205b7b162c05838d5",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "3257531762409cfac13bf6a9acfda5736f0597630fc592db28373fe76e95cfe8",
+      "bad_trace_sha256": "15963faaba416f2e4e913e3fe7291f476b02eb0b90086b592fc9e142a3576389",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "565ddec3d2896bfc523a17abd6a88d569224a91fd330648c4146f1c89ced1c7f",
+  "buggy_sha256": "4dc61df9612261751c59af7eb4f2a3f9d1876f77bcf2b77fea4e244ff82c8d70"
+}

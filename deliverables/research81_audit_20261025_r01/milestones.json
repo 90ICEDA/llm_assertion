@@ -1,0 +1,212 @@
+{
+  "outcome": {
+    "status": "qualified_no_expansion",
+    "actual_model_calls": 2,
+    "reserved_calls": 2,
+    "new_accepted_versions": 1,
+    "completed_history_replays": 1,
+    "new_independent_passes": 1,
+    "independent": {
+      "P": {
+        "path": "independent_by_hash/0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+        "candidate_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+        "passed": false,
+        "qualified": false
+      },
+      "D": {
+        "path": "independent_by_hash/d26cff98c4196dc916da4642a29d8417f4aec2fb154fe0ba5fb22eece398bc47",
+        "candidate_hash": "d26cff98c4196dc916da4642a29d8417f4aec2fb154fe0ba5fb22eece398bc47",
+        "passed": true,
+        "qualified": true
+      }
+    },
+    "core_mechanism_increment_evidence": 0,
+    "automatic_expansion": false,
+    "protected_unchanged": true
+  },
+  "arms": {
+    "P": {
+      "status": "plan_rejected",
+      "accepted": false,
+      "frozen_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+      "calls": 1
+    },
+    "D": {
+      "status": "native_accepted",
+      "accepted": true,
+      "frozen_hash": "d26cff98c4196dc916da4642a29d8417f4aec2fb154fe0ba5fb22eece398bc47",
+      "calls": 1
+    }
+  },
+  "distinct_new_accepted_hashes": 1,
+  "cost": {
+    "model_calls": 2,
+    "prompt_tokens_known_subtotal": 31202,
+    "completion_tokens_known_subtotal": 1390,
+    "usage_unavailable_calls": 0,
+    "prompt_tokens_total": 31202,
+    "completion_tokens_total": 1390,
+    "model_wall_seconds_known_subtotal": 57.989656571000005,
+    "model_wall_seconds_unavailable_calls": 0,
+    "model_status": {
+      "response_received": 2
+    },
+    "native_compile_calls": 19,
+    "native_execute_calls": 491,
+    "compile_smoke_execute_calls": 19,
+    "native_compile_wall_seconds": 181.70067236000017,
+    "native_execute_wall_seconds": 11.385327930999892,
+    "native_commands_failed_or_timed_out": 0,
+    "tool_version_query_calls": 19,
+    "formal_calls": 0
+  },
+  "independent": {
+    "P": {
+      "path": "independent_by_hash/0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+      "candidate_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+      "passed": false,
+      "qualified": false
+    },
+    "D": {
+      "path": "independent_by_hash/d26cff98c4196dc916da4642a29d8417f4aec2fb154fe0ba5fb22eece398bc47",
+      "candidate_hash": "d26cff98c4196dc916da4642a29d8417f4aec2fb154fe0ba5fb22eece398bc47",
+      "passed": true,
+      "qualified": true
+    }
+  },
+  "limitation": "One selected FIFO task and fixed seed. Workflow comparison, not isolated gate causality or core mechanism benefit.",
+  "independent_details": {
+    "P": {
+      "metrics": {
+        "healthy": true,
+        "counts": {
+          "rows": 34913,
+          "unknown": 0,
+          "triggers": 6988,
+          "false_positives": 0,
+          "detections": 48,
+          "misses": 20,
+          "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+          "later_attribution_unknown": 556
+        },
+        "scenarios_total": 56,
+        "scenarios_with_first_attributable_target": 50,
+        "scenarios_without_first_attributable_target": [
+          "independent29:s715060862:d2:p0:legal_three",
+          "independent29:s715060862:d2:p0:reset_cancels_tail",
+          "independent29:s715060862:d4:p1:legal_three",
+          "independent29:s715060862:d4:p1:reset_cancels_tail",
+          "independent29:s715060862:d8:p2:legal_three",
+          "independent29:s715060862:d8:p2:reset_cancels_tail"
+        ],
+        "obligations": {
+          "order_payload": {
+            "detections": 15,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 2007
+          },
+          "drain_no_loss": {
+            "detections": 12,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 12
+          },
+          "no_unsolicited_output": {
+            "detections": 6,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 1998
+          },
+          "stall_stability": {
+            "detections": 9,
+            "misses": 20,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 973
+          },
+          "reset_cancellation": {
+            "detections": 6,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 1998
+          }
+        }
+      },
+      "all_five_pass_on_first_attributed_evidence": false,
+      "distinct_inputs": 48,
+      "scenarios": 56,
+      "scope": "Finite first-attribution evidence only; subsequent attribution unknowns remain. Not a global proof."
+    },
+    "D": {
+      "metrics": {
+        "healthy": true,
+        "counts": {
+          "rows": 34913,
+          "unknown": 0,
+          "triggers": 6988,
+          "false_positives": 0,
+          "detections": 68,
+          "misses": 0,
+          "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+          "later_attribution_unknown": 556
+        },
+        "scenarios_total": 56,
+        "scenarios_with_first_attributable_target": 50,
+        "scenarios_without_first_attributable_target": [
+          "independent29:s715060862:d2:p0:legal_three",
+          "independent29:s715060862:d2:p0:reset_cancels_tail",
+          "independent29:s715060862:d4:p1:legal_three",
+          "independent29:s715060862:d4:p1:reset_cancels_tail",
+          "independent29:s715060862:d8:p2:legal_three",
+          "independent29:s715060862:d8:p2:reset_cancels_tail"
+        ],
+        "obligations": {
+          "order_payload": {
+            "detections": 15,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 2007
+          },
+          "drain_no_loss": {
+            "detections": 12,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 12
+          },
+          "no_unsolicited_output": {
+            "detections": 6,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 1998
+          },
+          "stall_stability": {
+            "detections": 29,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 973
+          },
+          "reset_cancellation": {
+            "detections": 6,
+            "misses": 0,
+            "unknown": 0,
+            "false_positives": 0,
+            "triggers": 1998
+          }
+        }
+      },
+      "all_five_pass_on_first_attributed_evidence": true,
+      "distinct_inputs": 48,
+      "scenarios": 56,
+      "scope": "Finite first-attribution evidence only; subsequent attribution unknowns remain. Not a global proof."
+    }
+  }
+}

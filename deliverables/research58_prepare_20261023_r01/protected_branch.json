@@ -1,0 +1,11 @@
+{
+  "id": "a0",
+  "antecedent": "instr[6:0] == 7'h63 && (instr[14:12] == 3'b010 || instr[14:12] == 3'b011)",
+  "consequent": "illegal_insn",
+  "timing": "same_sample",
+  "obligations": [
+    "illegal_branch_persists"
+  ],
+  "delay": 0,
+  "property": "(instr[6:0] == 7'h63 && (instr[14:12] == 3'b010 || instr[14:12] == 3'b011)) |-> (illegal_insn)"
+}

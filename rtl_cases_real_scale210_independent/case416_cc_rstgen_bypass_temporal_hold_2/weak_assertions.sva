@@ -1,0 +1,22 @@
+// Weak assertion candidates for case416_cc_rstgen_bypass_temporal_hold_2
+// STATUS: PENDING FORMAL VALIDATION; this file makes no admission claim.
+
+// weak_01_single_cycle_implication [single_cycle_implication]
+// nonempty_antecedent=true
+assert property (@(posedge clk_i) disable iff (!rst_ni) test_mode_i |-> !$isunknown(init_no));
+
+// weak_02_final_output_only [final_output_only]
+// nonempty_antecedent=false
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(init_no));
+
+// weak_03_delay_removed [delay_removed]
+// nonempty_antecedent=true
+assert property (@(posedge clk_i) disable iff (!rst_ni) test_mode_i |-> init_no);
+
+// weak_04_antecedent_removed [antecedent_removed]
+// nonempty_antecedent=false
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(init_no));
+
+// weak_05_simple_invariant [simple_invariant]
+// nonempty_antecedent=false
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(test_mode_i) && !$isunknown(init_no));

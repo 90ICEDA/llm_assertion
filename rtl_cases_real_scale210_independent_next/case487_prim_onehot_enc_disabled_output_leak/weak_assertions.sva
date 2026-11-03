@@ -1,0 +1,10 @@
+// single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) en_i |-> $onehot(out_o));
+// final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) en_i |-> (out_o != 8'h00));
+// delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) en_i |-> !$isunknown(out_o));
+// antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (!en_i || $onehot(out_o)));
+// simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) $onehot0(out_o));

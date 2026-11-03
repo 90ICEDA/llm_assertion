@@ -1,0 +1,39 @@
+{
+  "created_utc": "2026-10-16T08:36:31Z",
+  "model": "qwen2.5-coder:7b-instruct",
+  "options": {
+    "seed": 20261016,
+    "temperature": 0,
+    "num_predict": 1024,
+    "num_ctx": 16384,
+    "num_gpu": 0,
+    "num_thread": 8
+  },
+  "max_initial_calls": 2,
+  "calls_per_arm": 1,
+  "arms": {
+    "A": {
+      "search": false,
+      "gate": false
+    },
+    "B": {
+      "search": true,
+      "gate": false
+    },
+    "C": {
+      "search": false,
+      "gate": true
+    },
+    "D": {
+      "search": true,
+      "gate": true
+    }
+  },
+  "search_budget_per_method_per_seed": 6,
+  "modifications": "Shared human-authored interface explanation of SVA sampling; no candidate assertion supplied or edited. All groups receive identical explanation.",
+  "initial_selection": "First actually generated candidate passing no FP/unknown/miss and positive order-payload detection on the common development replay. At most one feedback revision.",
+  "search": "Reuse fixed 4-policy search, 2 configurations, 6 queries each. Only contract tail-loss witness given to B/D; A/C receive only common evidence.",
+  "independent_test": "Fresh secret-generated seeds materialized after all four versions are frozen. Same input grammar; new transactions and depth4/pipeline2. Never refine after viewing test results.",
+  "scope": "One model seed, one engineering fault family on actual FIFO RTL. No historical FIFO bug or global non-regression claim.",
+  "no_success_guarantee": true
+}

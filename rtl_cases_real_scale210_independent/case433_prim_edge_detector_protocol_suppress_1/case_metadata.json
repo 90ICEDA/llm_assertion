@@ -1,0 +1,104 @@
+{
+  "name": "case433_prim_edge_detector_protocol_suppress_1",
+  "parent_bug_id": "case433_prim_edge_detector_protocol_suppress_1",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_edge_detector",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_edge_detector.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_edge_detector.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "q_sync_d combinational/protocol output is forced low",
+  "spec": "In the no-synchronizer configuration, q_sync_o follows d_i without an added cycle. A sampled rising or falling transition is also reported by the corresponding one-cycle edge pulse.",
+  "mutation_edits": [
+    {
+      "line": 42,
+      "search": "    assign q_sync_d = d_i;",
+      "replace": "    assign q_sync_d = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "q_sync_d",
+  "relevant_signals": [
+    "rst_ni",
+    "clk_i",
+    "d_i",
+    "q_sync_o",
+    "q_posedge_pulse_o",
+    "q_negedge_pulse_o"
+  ],
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "a4df5485f3f07427990b672a3745a9d94581479371b98f60903bf9805907fb22",
+  "buggy_sha256": "c36b543d3ba20073e24c84c344e43b262563115ccb9bde7916d631699493dceb",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete",
+  "golden_sva": {
+    "name": "UnsynchronizedPathTracks_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (q_sync_o == d_i));",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (q_sync_o == d_i));",
+    "temporal_type": "same-cycle signal propagation"
+  },
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 20000,
+      "cycle_index": 1,
+      "sample_index": 4,
+      "clock_phase": "between rising edges",
+      "signals": [
+        "q_posedge_pulse_o",
+        "q_sync_o"
+      ],
+      "good_values": {
+        "q_posedge_pulse_o": "1",
+        "q_sync_o": "1"
+      },
+      "bad_values": {
+        "q_posedge_pulse_o": "0",
+        "q_sync_o": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 40000,
+      "cycle_index": 3,
+      "sample_index": 8,
+      "clock_phase": "between rising edges",
+      "signals": [
+        "q_posedge_pulse_o",
+        "q_sync_o"
+      ],
+      "good_values": {
+        "q_posedge_pulse_o": "1",
+        "q_sync_o": "1"
+      },
+      "bad_values": {
+        "q_posedge_pulse_o": "0",
+        "q_sync_o": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 60000,
+      "cycle_index": 5,
+      "sample_index": 12,
+      "clock_phase": "between rising edges",
+      "signals": [
+        "q_posedge_pulse_o",
+        "q_sync_o"
+      ],
+      "good_values": {
+        "q_posedge_pulse_o": "1",
+        "q_sync_o": "1"
+      },
+      "bad_values": {
+        "q_posedge_pulse_o": "0",
+        "q_sync_o": "0"
+      }
+    }
+  }
+}

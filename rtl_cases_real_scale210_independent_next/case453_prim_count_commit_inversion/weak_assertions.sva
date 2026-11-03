@@ -1,0 +1,10 @@
+// W1_single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(cnt_after_commit_o));
+// W2_final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(cnt_after_commit_o));
+// W3_delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) commit_i && incr_en_i |-> cnt_o == $past(cnt_after_commit_o));
+// W4_antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(cnt_after_commit_o));
+// W5_simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> 1'b1);

@@ -1,0 +1,70 @@
+{
+  "name": "case425_axis_fifo_temporal_hold_2",
+  "parent_bug_id": "case425_axis_fifo_temporal_hold_2",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_fifo",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_fifo.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_fifo.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "bad_frame_reg state update is suppressed",
+  "spec": "Completing a frame marked bad must produce a one-clock bad-frame status pulse; in the absence of another completed bad frame, the indication must clear on the following clock.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) status_bad_frame |=> !status_bad_frame);",
+    "temporal_type": "one-cycle bad-frame pulse"
+  },
+  "mutation_edits": [
+    {
+      "line": 263,
+      "search": "    bad_frame_reg <= 1'b0;",
+      "replace": "    bad_frame_reg <= bad_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "bad_frame_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "s_axis_tlast",
+    "s_axis_tuser",
+    "status_bad_frame"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 12,
+      "signals": [
+        "status_bad_frame"
+      ],
+      "clock_cycle": 5
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 16,
+      "signals": [
+        "status_bad_frame"
+      ],
+      "clock_cycle": 7
+    },
+    "decoy": {
+      "time_ps": 75000,
+      "sample_index": 19,
+      "signals": [
+        "status_bad_frame"
+      ],
+      "clock_cycle": 8
+    }
+  },
+  "temporal_type": "one-cycle bad-frame pulse",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "aefddc67fc3552d919280424606fc6b048e61d7df9ee7ee0f8801c082c1cfc39",
+  "buggy_sha256": "3c40b23ec670429cb8991a04a8bfd9323f69d9adac3348bfe0f69143cf96495d",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "pristine_trace_validated"
+}

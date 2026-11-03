@@ -1,0 +1,68 @@
+{
+  "parent_bug": "case505_axis_stat_counter_frame_pulse_early",
+  "status": "upstream_timing_and_overlap_not_confirmed",
+  "source_url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/48ff7a7e2ef782cf778d47910cf85835c64b1bce/rtl/axis_stat_counter.v",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "official_download_sha256": "2a431655333c6d4b8daad55a80eb2b22b9796e92b15a2c295a6b5d2f5e0e2ce1",
+  "local_external_sha256": "0ece64ffb42d727016b603b55408eb83e1c7fdc0c7ed8d1bf1df63ecb5951ac9",
+  "official_equals_local_after_universal_newlines": true,
+  "cited_upstream_contains_case_signals": {
+    "frame_done_i": false,
+    "frame_len_i": false,
+    "stat_valid_o": false,
+    "stat_len_o": false
+  },
+  "local_synthetic_contains_case_signals": {
+    "frame_done_i": true,
+    "frame_len_i": true,
+    "stat_valid_o": true,
+    "stat_len_o": true
+  },
+  "upstream_interface": "AXI monitor handshake inputs monitor_axis_tvalid/tready/tlast plus trigger; serial statistics output m_axis_tdata/tvalid/tready; busy",
+  "local_interface": "frame_done_i/frame_len_i input and stat_valid_o/stat_len_o output; no AXI handshake",
+  "upstream_line_references": {
+    "module axis_stat_counter": [
+      34
+    ],
+    "monitor_axis_tvalid": [
+      68,
+      233
+    ],
+    "m_axis_tready": [
+      77,
+      123,
+      126,
+      160,
+      180,
+      309,
+      320,
+      322,
+      331,
+      341,
+      363
+    ],
+    "input  wire                   trigger": [
+      85
+    ],
+    "if (trigger)": [
+      153
+    ],
+    "monitor_axis_tready && monitor_axis_tvalid": [
+      233
+    ]
+  },
+  "local_spec": "A frame-completion event and its captured length must pass through the two-entry status pipeline. The status-valid pulse must be absent in the cycle immediately following the sampled event and appear one cycle later with the original length.",
+  "local_metadata_claim": {
+    "mutation_kind": "actual_rtl_logic_change",
+    "status": "final_verified_admitted"
+  },
+  "conclusion": "The cited historical upstream module does not expose the local two-sample interface. No mapping or upstream guarantee for local frame_done overlap/two-cycle semantics is established by this cited source. Local generated prose can define a conditional engineering experiment but cannot establish historical upstream behavior.",
+  "overlap": "unknown for original historical provenance; do not count a stat whole-parent success",
+  "limitations": "This audits the exact cited source, not every possible historical source or unpublished specification. No attempt to infer permission merely from absence of a ready port.",
+  "saved_local_inputs": {
+    "rtl_cases_real_scale210_independent_next/case505_axis_stat_counter_frame_pulse_early/spec.md": "58641267246849f93f871ad2e73eece2b1142a0bb26ec269612792c8dc15291a",
+    "rtl_cases_real_scale210_independent_next/case505_axis_stat_counter_frame_pulse_early/case_metadata.json": "e806151a23755d01f043ad3d91acdcd844f180e8f66a0055b6da172e35acfe5e",
+    "rtl_cases_real_scale210_independent_next/case505_axis_stat_counter_frame_pulse_early/correct.v": "95572170f99b38279d312a3f063fb6d2ddf468dba1c4fbd3888729974a73c34b",
+    "rtl_cases_real_scale210_independent_next/case505_axis_stat_counter_frame_pulse_early/buggy.v": "6f375b4de3c411d5449f540ff3f11559f85e4b0be81c21ef22479bb4c4e54eb6"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "name": "case495_axis_fifo_adapter_commit_pulse_width",
+  "parent_bug_id": "case495_axis_fifo_adapter_commit_pulse_width",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_fifo_adapter",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_fifo_adapter.v"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "adapter_commit_pulse_stretched",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "delimiter_i",
+    "output_ready_i",
+    "q_o",
+    "state_o"
+  ],
+  "temporal_type": "single-cycle width-adapter commit pulse",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(delimiter_i) |-> ##2 !q_o));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "good_row_index": 10,
+      "bad_row_index": 10,
+      "signals": [
+        "q_o",
+        "state_o[7:0]"
+      ],
+      "good_values": {
+        "q_o": "0",
+        "state_o[7:0]": "00000000"
+      },
+      "bad_values": {
+        "q_o": "1",
+        "state_o[7:0]": "00000001"
+      },
+      "good_trace_sha256": "5bc6850c308e4c740a035117ea8c632eaf5b5a5aea0c9d6fa2123ba2ecec1a80",
+      "bad_trace_sha256": "c97b5892bbcc314ecbbdf05b7e76b4be34f341aeba5e3954b760454c50828de4",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "q_o",
+        "state_o[7:0]"
+      ],
+      "good_values": {
+        "q_o": "0",
+        "state_o[7:0]": "00000000"
+      },
+      "bad_values": {
+        "q_o": "1",
+        "state_o[7:0]": "00000001"
+      },
+      "good_trace_sha256": "794505a26c50c5fef81e506c0cea888af7512863fda98869bece79c2811c2197",
+      "bad_trace_sha256": "becb7ccd730311842d75eaee7bb3aec1b61408b25cba87eda593cf6032ef6a27",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "q_o",
+        "state_o[7:0]"
+      ],
+      "good_values": {
+        "q_o": "0",
+        "state_o[7:0]": "00000000"
+      },
+      "bad_values": {
+        "q_o": "1",
+        "state_o[7:0]": "00000001"
+      },
+      "good_trace_sha256": "b203be6e3b5f290d84894d1b739a5775764fb7c3933d07517024158568665c76",
+      "bad_trace_sha256": "5cb04f684a02b348093f9dc9677a0ab710e71152ae8fe52efa2cb44e3d31c112",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "3882e570fb9f88da7d6f85a750965777351ad10dc85076871290b56459b419c5",
+  "buggy_sha256": "410925a5c0ac39a2645163a6998358bde098016226684e1daf9c3f9e05604f0c"
+}

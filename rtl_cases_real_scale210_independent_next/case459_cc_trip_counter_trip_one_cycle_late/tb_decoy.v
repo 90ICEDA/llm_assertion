@@ -1,0 +1,2 @@
+`timescale 1ns/1ps
+module tb; reg clk_i=0,rst_ni=0,clr_i=0; always #5 clk_i=~clk_i; reg en_i=0;reg [3:0] delta_i=2,bound_i=6;wire [3:0] q_o;wire last_o,trip_o; cc_trip_counter #(.Width(4)) dut(.clk_i,.rst_ni,.clr_i,.en_i,.delta_i,.bound_i,.q_o,.last_o,.trip_o); initial begin $monitor("T=%0t q=%0d last=%b trip=%b",$time,q_o,last_o,trip_o); #2 rst_ni=0; #10 rst_ni=1; #13 delta_i=1;bound_i=3;en_i=1;#70 en_i=0; #30 $finish; end endmodule

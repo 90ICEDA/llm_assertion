@@ -1,0 +1,95 @@
+{
+  "kind": "read-only current-code review; synthetic adapter unit checks explicitly NOT hardware/model experiments",
+  "source_sha256": {
+    "scripts/research15_acceptance.py": "46b54798549f97d12e35d74006993c5368388a7acdab79f153cb14fa3943d84c",
+    "scripts/research15_evidence.py": "aad81ff459a7c73867749ccd6a1eac33d84195cc40721215e60c28a35c9c9a08"
+  },
+  "resolved_finding": {
+    "issue": "Initial implementation credited first-cycle mutant alarms even if the same set alarms on legal fixed prefix.",
+    "status": "fixed by parent during review",
+    "unit_counterexample_result": {
+      "target_attribution_status": "unknown",
+      "confirmed_detections": 0,
+      "unknown_rows": 1
+    }
+  },
+  "remaining_limits": [
+    {
+      "kind": "trigger_relevance",
+      "severity": "research_design_limit",
+      "detail": "Every tagged assertion antecedent cover on every legal sample is preserved. Obligation applicability is not represented, so legitimate narrowing on irrelevant/idle samples may be rejected as lost_obligation_trigger and current_gap_not_confirmed_repaired.",
+      "unit_result": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "unit-inactive-obligation"
+            ]
+          },
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "unit-inactive-obligation"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "662b506afbf05145052505ff1586f4713da50165c55f10e715198cbc1e6de690",
+        "after_sha256": "847d08921fbb69ea13611ce1699caf996600fb48316b3ab842134ed695dd4120",
+        "counts": {
+          "before": {
+            "rows": 1,
+            "unknown": 0,
+            "triggers": 1,
+            "false_positives": 1,
+            "detections": 0,
+            "misses": 0
+          },
+          "after": {
+            "rows": 1,
+            "unknown": 0,
+            "triggers": 0,
+            "false_positives": 0,
+            "detections": 0,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "no_unsolicited_output": {
+            "assertions": [],
+            "trigger_evidence": [],
+            "violation_evidence": [],
+            "legal_evidence": [
+              "unit-inactive-obligation"
+            ],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "kind": "strict_unknown_gate",
+      "severity": "conservative_admission_limit",
+      "detail": "Any unknown after replay prevents admission, including unresolved prior unknowns; this can block beneficial partial repairs until all attribution-confounded rows are resolved."
+    },
+    {
+      "kind": "causal_scope",
+      "severity": "reporting_limit",
+      "detail": "Current scope correctly labels causal_detection a legacy field for bounded paired contrast. Same legal inputs, first violation, clean fixed assertion prefix and matching marker do not prove logical relevance or strict causal necessity. Requiring identical past outputs would wrongly reject allowed-latency/drain witnesses, so that was not recommended as unconditional."
+    },
+    {
+      "kind": "input_pairing",
+      "severity": "scope_limit",
+      "detail": "INPUTS includes sready, a DUT response; ready-diverging bugs become unknown under exact input/accepted-handshake comparison. This is conservative for the present replay, not a general transaction-aligned search implementation."
+    },
+    {
+      "kind": "later_violations",
+      "severity": "denominator_limit",
+      "detail": "Only first obligation violation per reset epoch is a target. Later violation entries remain attribution_unknown exclusions and cannot be dropped from whole-case outcome reporting."
+    }
+  ],
+  "files_modified_by_reviewer": [],
+  "model_calls": 0
+}

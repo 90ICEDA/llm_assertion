@@ -1,0 +1,934 @@
+{
+  "source_dataset": "https://huggingface.co/datasets/henryen/hwe-bench",
+  "sha256": "1b2d2875f105c07c75b787ce563aee35d9e457f29b75befec3bc25cf3a18f445",
+  "download_attempts": [
+    {
+      "environment": "WSL",
+      "status": "network_unreachable",
+      "record": "result.json"
+    },
+    {
+      "environment": "Windows",
+      "status": "success",
+      "file": "windows_retry_ibex.jsonl"
+    }
+  ],
+  "metadata_rows": 35,
+  "shortlist_size": 3,
+  "admitted": 0,
+  "rows": [
+    {
+      "case_id": "lowRISC/ibex#222",
+      "source": "https://github.com/lowRISC/ibex/pull/222",
+      "title": "Fix IF stalls preventing deassertion of regfile write enable",
+      "base_commit": "e5bdf1ea9fd522bb345db6f7310b2c0f9253c706",
+      "merge_commit": "ea0296d74aa216397915069e4b10d418df1cd205",
+      "fix_commits": [
+        "e7c65c81f325fa406df9f381074b7451a99b2179",
+        "f7454716b9e99fe575963b653cbed0730e3c2c1c"
+      ],
+      "intent": "When a single-cycle instruction such as `addi` completes in Ibex and the next instruction fetch is stalled because the instruction-fetch grant signal (`instr_gnt_i`) stays low, the core can remain in the instruction-decode (ID) stage with the register-file write-enable signal (`regfile_we`) still asserted. During those stalled cycles, the destination register of the completed instruction may be written again even though no new instruction has arrived. The affected functionality is the ID-stage logic that determines when the current instruction has finished and whether register-file writes remain enabled while the instruction-fetch interface is stalled. Once the single-cycle instruction has committed its result, `regfile_we` must be deasserted on every cycle while the core waits for the next instruction-fetch grant, and the destination register must retain its committed value throughout that stall.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false,
+      "archived_reproducer": "deliverables/obligation_evidence_20261013_r01/historical_screening/ibex_222"
+    },
+    {
+      "case_id": "lowRISC/ibex#1735",
+      "source": "https://github.com/lowRISC/ibex/pull/1735",
+      "title": "[rtl] Do not register instruction fetch errors",
+      "base_commit": "23806e2ad7d0d6fab429ae227d9a45cbd42f0fb3",
+      "merge_commit": "46404cf86f60f72fb84a2bc693d2ab08011bdb37",
+      "fix_commits": [
+        "84311eba533d02a6b432a442d6b184ff7601ffa0"
+      ],
+      "intent": "Ibex can apply a Physical Memory Protection (PMP) update one instruction late. When software writes a PMP address or configuration CSR so that the next instruction address becomes non-executable, the core may still fetch that next instruction and let it execute instead of faulting immediately. The expected behavior is that the updated PMP permissions take effect for the very next instruction fetch: if the next program counter is now blocked for execution, that instruction must not execute and the core must raise an instruction access fault at that program counter. This bug affects PMP-based instruction-fetch permission checking, and it is triggered by a PMP CSR write immediately followed by a fetch from the newly blocked address.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false,
+      "archived_reproducer": "deliverables/obligation_evidence_20261013_r01/historical_screening/ibex_1735"
+    },
+    {
+      "case_id": "lowRISC/ibex#54",
+      "source": "https://github.com/lowRISC/ibex/pull/54",
+      "title": "Fix decoding of C.LI, C.LUI, C.SRLI, C.SRAI, C.SSLI",
+      "base_commit": "cd15ce88beba8ed8496f414af361f664764f47e2",
+      "merge_commit": "5319734180ac4844e43d31ad19dc108aac503037",
+      "fix_commits": [
+        "687952e42f3eff68348770ae0c55bc5c0f036d3e"
+      ],
+      "intent": "In the compressed instruction decoder, several RISC-V compressed HINT encodings are being reported as illegal instructions. In the RISC-V C extension, these encodings are legal HINT/no-op forms: `C.LI` with destination register `x0`, `C.LUI` with destination register `x0` and a non-zero immediate (for example `0x7065`), and `C.SRLI`, `C.SRAI`, or `C.SLLI` with shift amount `0`. Ibex currently treats these compressed instructions as illegal instead of recognizing them as valid compressed HINTs. The bug affects `ibex_compressed_decoder` whenever one of those specific HINT forms is presented. The expected behavior is that these instructions are still recognized as compressed instructions and do not raise the illegal-instruction indication.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false,
+      "archived_reproducer": "deliverables/obligation_evidence_20261013_r01/historical_screening/ibex_54"
+    },
+    {
+      "case_id": "lowRISC/ibex#167",
+      "source": "https://github.com/lowRISC/ibex/pull/167",
+      "title": "Controller: save next PC to dpc CSR upon a halt request",
+      "base_commit": "59254498489d441f64c24e6b344fce73d0d8bbce",
+      "merge_commit": "010985a39555bbbee969296e1da4f3bd0b502e63",
+      "fix_commits": [
+        "be960038546de0792d9f52a59c9b896303a8fecc"
+      ],
+      "intent": "When an external debug halt request (`debug_req`) arrives while Ibex is executing a regular instruction, the controller logic that enters debug mode saves the current instruction address in the debug return PC CSR (`dpc`) instead of the address of the following instruction. After the core executes the debug return instruction (`dret`), execution resumes from that saved `dpc`, so the interrupted instruction is executed a second time. For halt-request debug entry, `dpc` must hold the next instruction address, and the first instruction executed after `dret` must be the instruction that would have followed the interrupted one.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#974",
+      "source": "https://github.com/lowRISC/ibex/pull/974",
+      "title": "[rtl] disable clock between reset and fetch_enable_i",
+      "base_commit": "37fd4236c854fdda4543ce7cdced6d48149e2c3e",
+      "merge_commit": "fdfdcc04672c094d5769db436926b3959fd9aba8",
+      "fix_commits": [
+        "16e3c82426bcf838462f6c9ea24ec93a326f69bd"
+      ],
+      "intent": "`fetch_enable_i` is the input that allows the Ibex core to fetch instructions. When the core comes out of reset with `fetch_enable_i` low, the gated core clock can still toggle during the startup idle window instead of staying off. If `fetch_enable_i` is later asserted for only a single cycle, that start request can be missed. The affected reset/startup path is the logic that keeps the core quiescent until fetch is enabled. Correct behavior is that no gated core clock activity should occur while `fetch_enable_i` is low after reset, and even a one-cycle assertion of `fetch_enable_i` must be enough for the core to wake up and issue an instruction fetch request.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#166",
+      "source": "https://github.com/lowRISC/ibex/pull/166",
+      "title": "Decoder: fix signaling and detection of illegal instructions",
+      "base_commit": "c96ece04296c3c69df578d760aa8a66f9b886fef",
+      "merge_commit": "59254498489d441f64c24e6b344fce73d0d8bbce",
+      "fix_commits": [
+        "3bcbb50630a7cb0278623a8a1f5d262e0220dd86"
+      ],
+      "intent": "The Ibex decoder fails to classify some register-register ALU instruction encodings as illegal. In this core configuration, a 32-bit register-register ALU instruction with bit 28 set is not a supported instruction, but the decoder can still let it execute and the core then falls through to the next instruction instead of taking an illegal-instruction exception. The affected functionality is illegal-instruction detection in the decoder for register-register ALU operations. The trigger condition is any register-register ALU encoding with `instr[28] = 1`. The expected behavior is that the instruction is treated as illegal and the core raises an illegal-instruction trap before any subsequent instruction is executed.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1229",
+      "source": "https://github.com/lowRISC/ibex/pull/1229",
+      "title": "Verilator warnings",
+      "base_commit": "a4238bdd8d505344b7b6f9a4ff41197e3e8aebe4",
+      "merge_commit": "0f2dc5c64ada16118a8621df9f34cf07eb943f4e",
+      "fix_commits": [
+        "54fc195de46750d8934b368c855e7ee4434ae0dd",
+        "a6954596ef05f2a067bbdcd8ddecca6011ea15cd",
+        "b61f00fbbb95bf7d7fbf8d68959ab0b633acec20",
+        "0ef72f0a03eefb8cf74a9cb1dabb36473a228f6d"
+      ],
+      "intent": "Building the `lowrisc:ibex:ibex_simple_system` Verilator simulation fails on recent Verilator versions because warnings are treated as fatal. In the baseline, the build emits `UNUSED` warnings from `rtl/ibex_tracer_pkg.sv` and `LATCH` warnings from `shared/rtl/bus.sv`, then exits with an error instead of completing. The affected functionality is the `ibex_simple_system` Verilator build, specifically the tracer package and shared bus logic compiled for that target. The expected behavior is that this build completes successfully on those Verilator versions without fatal unused-parameter or inferred-latch warnings from those sources.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#465",
+      "source": "https://github.com/lowRISC/ibex/pull/465",
+      "title": "[rtl] Switch to M mode on debug entry",
+      "base_commit": "6ce8b6ecf2fa931b333c7878bb2345b92f745854",
+      "merge_commit": "0243e081119ad971a045097f0b74b552d5d1fab4",
+      "fix_commits": [
+        "209b6f97b7137be9751d75389bede371f7036d7d"
+      ],
+      "intent": "When Ibex takes a debug request while the core is executing in RISC-V User mode (U-mode), it can jump to the debug ROM while still treating the current execution privilege as U-mode instead of RISC-V Machine mode (M-mode). This affects the debug-entry privilege handling in the core's control and CSR logic. The observed consequence is that code running from the debug ROM can raise illegal-instruction exceptions when it accesses debug control and status registers (CSRs), because those accesses are still being checked as if the core were in U-mode. The expected behavior is that once debug mode is entered, all execution in the debug ROM must run with the core's current privilege level set to M-mode, regardless of the privilege level from which debug was entered.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1135",
+      "source": "https://github.com/lowRISC/ibex/pull/1135",
+      "title": "[rtl] Various security feature bugfixes",
+      "base_commit": "adc574b8b0c10381a7728badc2c67c21daabc63f",
+      "merge_commit": "8953d82ca42725f6fe9d8669a422995ee7d9e9dc",
+      "fix_commits": [
+        "a8c642db1d763ee027ab7062b74ab0c915d01dea"
+      ],
+      "intent": "An instruction bus error in the Ibex instruction-fetch path can be misclassified when it occurs on a 32-bit instruction that starts at a half-word-aligned address, so the instruction spans two 16-bit halves across fetch words. In that case, the fetch logic may treat the faulting instruction as if the first half were a completed 16-bit RISC-V compressed instruction, advance the instruction stream by 2 bytes, and, when SecureIbex's sequential program-counter check is enabled, raise a spurious PC mismatch alarm. The correct behavior is that a fetch error must not cause that unaligned 32-bit instruction to be treated as compressed: the instruction must remain incomplete until both halves are available, and the next sequential PC tracked by the fetch path must advance by 4 bytes rather than 2. This affects the instruction fetch FIFO/front-end and is triggered by a sequential instruction bus error during an unaligned 32-bit instruction fetch.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1780",
+      "source": "https://github.com/lowRISC/ibex/pull/1780",
+      "title": "[rtl] Cannot add M mode executable PMP regions when MML = 1",
+      "base_commit": "1affeff5278d5b2d84984cd3bf173f72d9f024da",
+      "merge_commit": "a646737d4d7a210ba6292ad0c825dfd194d8623a",
+      "fix_commits": [
+        "c8cfdc5bc9d0657eaefd66428e0c9cb2601d74e8"
+      ],
+      "intent": "The bug is in the CSR write path for Physical Memory Protection (PMP/ePMP). After the Machine Security Configuration CSR (`mseccfg`) enables Machine Mode Lockdown (`mseccfg.MML`) and Rule Locking Bypass (`mseccfg.RLB`) remains clear, a write to a PMP configuration CSR (`pmpcfg`) that would create a locked executable region for M-mode only is still accepted and changes the PMP entry. The expected behavior is that this write is ignored: the existing PMP entry must remain unchanged, and the CSR access must not raise an illegal-instruction error.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1816",
+      "source": "https://github.com/lowRISC/ibex/pull/1816",
+      "title": "[rtl] Change how we record debug causes",
+      "base_commit": "7b1be3354d650bc5b23dff6f439459c353288e4f",
+      "merge_commit": "75a93dbed0dbe340b637c82e2a8e3ba1b841ecc3",
+      "fix_commits": [
+        "2d9caf6fac84eac05bef149b86fe330c8d1d08d3",
+        "f38afe05b1fbdcb954918ec998410ea64817c183"
+      ],
+      "intent": "Reading the `cause` field of the RISC-V Debug Control and Status Register (`DCSR.cause`) can report the wrong reason for entering debug mode. In the failing behavior, Ibex records a single-step cause (`DBG_CAUSE_STEP`) even though debug mode was entered because of an external debug request (`debug_req_i`), which should be reported as `DBG_CAUSE_HALTREQ`. This affects the debug-entry cause recording logic in `ibex_controller`. The bug is triggered when the core decides to enter debug mode because `debug_req_i` is asserted, but `debug_req_i` is de-asserted before the later cycle that saves the cause into `DCSR.cause`; the issue was observed after a debug return instruction (`dret`) followed by immediate re-entry into debug mode. In that situation, `DCSR.cause` must still read back as `DBG_CAUSE_HALTREQ`, because the debug entry was caused by the halt request rather than by single-step execution.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#48",
+      "source": "https://github.com/lowRISC/ibex/pull/48",
+      "title": "Compressed hints",
+      "base_commit": "145269fdc88e1d545fca692fd3e3a43c99e1ac12",
+      "merge_commit": "409892ec8c4bf47a03b3c2107b79e701b2628bb6",
+      "fix_commits": [
+        "af8ae94da0c5d96fbcfeb931bad52657c4a34973",
+        "efa93b27945fe8b2e3dae24c674db28377f25361"
+      ],
+      "intent": "The Ibex compressed instruction decoder mishandles a RISC-V compressed (RVC) HINT encoding. When the core decodes the 16-bit instruction `0x9056`, which is a legal compressed HINT that corresponds to `add x0, x0, s5`, it currently reports the instruction as an illegal `C.EBREAK` instead. The affected functionality is compressed-instruction decoding in the Ibex core. The bug is triggered by a compressed `C.ADD`-family HINT encoding in which the destination register field is `x0` while the second source register field is non-zero, as in `0x9056`. In that case, the decoder must treat the instruction as a valid compressed HINT, expand it to the corresponding 32-bit `add x0, x0, s5` form, mark it as compressed, and must not raise an illegal-instruction exception.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#293",
+      "source": "https://github.com/lowRISC/ibex/pull/293",
+      "title": "[I-side] - Fix issues found in tracing example",
+      "base_commit": "ac22439374a0bafd6fc2f9d38aefc02e44fa2abb",
+      "merge_commit": "f025236a22e4d2290acf856de60449f24d79bc6f",
+      "fix_commits": [
+        "a3b0d35f245c96ec3b66b100a41f410d2c5a18ac"
+      ],
+      "intent": "Recent instruction-side logic and prefetch-buffer changes broke the instruction fetch handshake in Ibex. The instruction-side prefetch buffer issues fetches through a request/grant/response interface: `instr_req_o` requests an instruction fetch, `instr_gnt_i` accepts that request, and the returned instruction data arrives later. In the failing behavior, if a fetch request is made and the grant does not arrive immediately, the prefetch buffer can stop treating that fetch as pending and can advance to a different address before the original request has been accepted. This can desynchronize instruction fetches and cause execution to stop early in the tracing example. The affected logic is the instruction-side prefetch buffer and its request/address tracking. When a fetch is pending but has not yet been granted, including the sequential fetch immediately after a granted branch fetch, `instr_req_o` must remain asserted and `instr_addr_o` must remain at the same word-aligned address until `instr_gnt_i` acknowledges that request.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1383",
+      "source": "https://github.com/lowRISC/ibex/pull/1383",
+      "title": "Various fixes for known simulation issues",
+      "base_commit": "2ce6653c65dad0987ff56631694f4f814a14a2b6",
+      "merge_commit": "fd4fdc451958ae472b14d6f8eafeabf385de93ce",
+      "fix_commits": [
+        "b3b05a27ce81bff7edef9871b270cc7c9e46b2a7",
+        "ce57d2691e06972da86212d835a43bbb72fa66f0",
+        "e3b59ddec7b57cd946f1b52ecc61f1a02710c350",
+        "fd9cdf8c854ef179375434ed111193530cc87e5b"
+      ],
+      "intent": "In `ibex_decoder`, a taken branch can remain in decode for a second cycle while the optional dedicated branch-target path (`BranchTargetALU`) is enabled; this is the state reached when data-independent timing keeps the branch in decode for an extra cycle. In that non-first decode cycle, the decoder incorrectly drives the main ALU B-operand selection as if the main ALU should use the branch-offset immediate, even though branch target generation is supposed to come from the dedicated branch-target path. This creates an illegal decode combination and causes simulation assertion failures. For any taken branch that remains in decode on a non-first cycle with `BranchTargetALU` enabled, the decoder must keep its operand-select outputs legal and must not route the branch-offset immediate onto the main ALU B operand.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#176",
+      "source": "https://github.com/lowRISC/ibex/pull/176",
+      "title": "Decoder: remove reg-reg load, make LWU illegal",
+      "base_commit": "04f4cd44f6b62a48af65f11143278be00d54132b",
+      "merge_commit": "e4383589eb7614f595504fedd3eb2caaad3a74ab",
+      "fix_commits": [
+        "fd73277b4309815ce4a2bee786fc5cdd50fc838a"
+      ],
+      "intent": "The Ibex instruction decoder accepts the load encoding with `funct3 = 3'b110` as a normal load instead of flagging it as illegal. In RISC-V, that encoding is `LWU` (`load word unsigned`), but this instruction is not supported by Ibex and must not be decoded as a valid load. The expected behavior is that the decoder continues to accept a normal `LW` instruction, but asserts its illegal-instruction indication for the `LWU` encoding. This bug affects the decoder's load handling whenever a load instruction uses the `funct3 = 3'b110` variant.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#244",
+      "source": "https://github.com/lowRISC/ibex/pull/244",
+      "title": "Rework CSR-related pipeline flushes",
+      "base_commit": "396d6fa68ad08bb10d46e4ce971bd8575605c67f",
+      "merge_commit": "e1a7dcf37f315464feda3509f220aafe0661020e",
+      "fix_commits": [
+        "803992161bc8a4a33c53a89868e6a3f2b00b0f07"
+      ],
+      "intent": "When software uses RISC-V Control and Status Register (CSR) instructions to enable interrupts through the `mie` (machine interrupt-enable) and `mstatus` (machine status) CSRs while an interrupt is already pending, Ibex can perform the CSR-related pipeline flush and then resume normal instruction execution instead of entering the interrupt handler. The failing case is a back-to-back sequence that first enables the relevant source in `mie`, then sets the global interrupt-enable bit in `mstatus`, and then immediately clears that bit again: the pending interrupt can be lost and a following non-interrupt instruction can retire. The affected logic is the CSR-related pipeline-flush and interrupt-entry path around updates to `mie` and `mstatus`. Correct behavior is that once those CSR write/set operations make a pending interrupt eligible for service, the core must take the interrupt before normal execution resumes, even if the next instruction would disable interrupts again.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#907",
+      "source": "https://github.com/lowRISC/ibex/pull/907",
+      "title": "[rtl] prefetch buffer performance fix",
+      "base_commit": "dd39ec0c91d13d6288e4f131a39d049ccfe32173",
+      "merge_commit": "4b01580a7bd88d5293aba786bce1724536a823fa",
+      "fix_commits": [
+        "d9c0968bc7ba4f6dad1fde3ab214f040843aa5b6"
+      ],
+      "intent": "In the instruction fetch path, the interaction between `ibex_prefetch_buffer` and the fetch FIFO can deassert `instr_req_o` too early when the FIFO is full on a non-branch path and contains a 16-bit compressed instruction followed by a 32-bit instruction that starts in the upper half of one fetched word and completes in the next fetched word. In that state, the next word is requested one cycle late, so after the compressed instruction is consumed the following 32-bit instruction is still incomplete and the core incurs an extra instruction-fetch stall. The expected behavior is that the prefetch buffer must keep requesting the next word needed to complete that spanning 32-bit instruction while the FIFO still holds the compressed instruction and the partial 32-bit instruction, so that once the compressed instruction is consumed the 32-bit instruction is available immediately without an extra fetch bubble.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#2232",
+      "source": "https://github.com/lowRISC/ibex/pull/2232",
+      "title": "[rtl,pmp] Allow all accesses to Debug Module in debug mode",
+      "base_commit": "667fd20d2ede51caececccbcbda3652074424ce2",
+      "merge_commit": "a05d4d825c6dd1452d46edaaa43680249fcfa001",
+      "fix_commits": [
+        "fe2226ce57ce4b59a54ff40ca51df64e5f498762",
+        "68f1a9fb1b5461755d715bab3de08c2d84584b8e"
+      ],
+      "intent": "The Physical Memory Protection (PMP) logic in Ibex still rejects accesses to the RISC-V Debug Module address range even when the processor core is already in debug mode. If the active PMP rules would normally deny the access, a load, store, or instruction fetch to an address inside the Debug Module range can incorrectly raise a PMP access error. The correct behavior is that, while debug mode is active, PMP must allow loads, stores, and instruction fetches within the Debug Module address range even when those same accesses would otherwise be blocked by PMP. At the same time, accesses outside the Debug Module address range must continue to follow normal PMP checks and must still fault when PMP denies them. This bug affects the PMP permission-check path for debug-mode accesses and is triggered when the core, while in debug mode, accesses an address in the Debug Module range under PMP rules that would otherwise deny the access.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#882",
+      "source": "https://github.com/lowRISC/ibex/pull/882",
+      "title": "[rtl] Various small icache bugfixes",
+      "base_commit": "d5ee96fff670cfaf15b9d77a629f9ed450cd8ef3",
+      "merge_commit": "db149880bd0e5a551859f0a854de6417d35261e8",
+      "fix_commits": [
+        "378c175de14397ce5d21bd3769b7733306e1eca0",
+        "ce9fd5a83372657bf3a7afc6cf35be118e74698c",
+        "1076ec6a77fb6ef4f4d86e59861282e4167ccd26"
+      ],
+      "intent": "`ibex_icache` violates its documented core-side instruction response handshake: `valid_o` can depend on `ready_i`, so the cache may withhold an instruction response that is already available internally until the core raises `ready_i`. The expected behavior is concrete and testable: once the cache has assembled a response for the current fetch, it must assert `valid_o` even while `ready_i` is low; `ready_i` should only control when the core consumes that response. This affects the icache output path back to the core and is exposed when fetch is redirected to a half-word-aligned address. In a design that supports 16-bit compressed instructions, a 32-bit instruction can start on a 16-bit boundary and must then be assembled from two fetch words; that completed 32-bit response must still be presented with `valid_o` independent of `ready_i`.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#157",
+      "source": "https://github.com/lowRISC/ibex/pull/157",
+      "title": "Fix dpc CSR not updated",
+      "base_commit": "c4370083106042cc0398de615e69d661032c04ba",
+      "merge_commit": "a775abd96768165c4637ea6bc3c5bf09a298007c",
+      "fix_commits": [
+        "67056c960fc1459e7f659e65d8b990fc378877d9",
+        "cf24fdafb0f256b309f6d4a9627b12459c22ec2a",
+        "0750ae108e32aaa815b77638cc86c5ccaa28ff9c"
+      ],
+      "intent": "When Ibex handles an external debug halt request (`debug_req_i`), it should enter debug mode by jumping to the configured debug halt address (`DmHaltAddr`) and saving the interrupted program counter in the debug PC CSR (`dpc`). In the controller's debug-entry path, if `debug_req_i` is asserted for only one cycle and then deasserted while debug entry is still in progress, the core can still enter debug mode and fetch from `DmHaltAddr`, but `dpc` can remain at 0 instead of capturing the interrupted PC. The bug affects transient `debug_req_i` deassertion during debug entry. The expected behavior is that this request is handled consistently: either the core completes debug entry with `dpc` set to the interrupted PC, or the transient request is ignored and the core stays out of debug mode.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#83",
+      "source": "https://github.com/lowRISC/ibex/pull/83",
+      "title": "Fix perf counters",
+      "base_commit": "92803bb8e5b7508b9c68116a55e4517cf8d67b4d",
+      "merge_commit": "0ecf71e8e13e195c4d6b5d61bb99ed523cc1da12",
+      "fix_commits": [
+        "bdadde2e49d9eba8dd0a0c984e5a7fdb0d0892d1",
+        "08a0eada23bdef78984bf4dab8df80822adcddfe"
+      ],
+      "intent": "In the Ibex Control and Status Register (CSR) logic, optional machine performance counter CSRs are not decoded correctly. On this 32-bit core, software accesses to counters beyond the mandatory `mcycle` and `minstret` counters, such as `mhpmcounter3`, are not handled as valid CSR accesses: a write to `mhpmcounter3` does not reliably take effect, and a subsequent read of the same CSR can return the wrong value or raise an illegal CSR indication. The expected behavior is that implemented optional performance counter CSRs `mhpmcounter3` through `mhpmcounter31` decode like normal machine CSRs; for example, a 32-bit write to `mhpmcounter3` followed by a read of `mhpmcounter3` should return the written low 32-bit value without flagging the access as illegal. This affects the performance-counter CSR decode path and is triggered when software reads or writes optional performance counter CSRs beyond `mcycle` and `minstret`.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#276",
+      "source": "https://github.com/lowRISC/ibex/pull/276",
+      "title": "[RTL] - Remove timing loop in LSU",
+      "base_commit": "892ad8a6213057e20e43f44a2eb70b02d90cce35",
+      "merge_commit": "36db1041605c4e0c62e5e0612f35331647674ed8",
+      "fix_commits": [
+        "abe4bba92a97265a6784a265a76149d852252115"
+      ],
+      "intent": "`ibex_load_store_unit` has a data-interface timing bug. The outgoing request signal `data_req_o` is coupled to the current response/error inputs `data_rvalid_i` and `data_err_i`, creating a slave-to-master-to-slave combinational path on the Load-Store Unit (LSU) interface. In the misaligned access path, where one load or store that crosses a word boundary is split into two word-aligned memory transactions, this also changes visible behavior: the second transaction can be held off until the first transaction returns a response. The expected behavior is concrete: once the first part of a misaligned access has been granted, the LSU must be able to issue the second request before the first response arrives, independent of the current values of `data_rvalid_i` and `data_err_i`. If the first response later reports an error after that second request has already been issued, the LSU must report the error for the original access, remain busy until the already-issued second response is received, ignore that abandoned second response for architectural completion, and only then return to idle. The bug is triggered when a misaligned data access has its first transfer granted and the first response returns with `data_err_i` asserted while the LSU still needs to manage the second transfer.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#475",
+      "source": "https://github.com/lowRISC/ibex/pull/475",
+      "title": "Fix behavior of exceptions in debug mode, document debug CSRs",
+      "base_commit": "aefbcdceb327a7af47e8c9af710a5110aab5a0eb",
+      "merge_commit": "99a12ff6d507b44587c2dac6e4f20a4a82aeeaf6",
+      "fix_commits": [
+        "82adf45d375f2e4639fea81c1bedeaa4e27e3445",
+        "9027d80651a1b152922e79eb40fbeda0b4abad6f",
+        "dab57a2de9de946ac8319ab7c4a41c3d5e4c12c4"
+      ],
+      "intent": "When Ibex takes an exception while the core is already in Debug Mode, the exception-handling path still overwrites machine Control and Status Registers (CSRs) that record trap state. As a result, `mepc`, `mcause`, `mtval`, and `mstatus` can be modified even though the core is already in Debug Mode. The affected functionality is the Debug Mode exception/CSR handling logic. The correct behavior is that an exception taken in Debug Mode must leave those CSRs unchanged; in particular, it must not clear the interrupt-enable state in `mstatus` or replace the existing trap information in `mepc`, `mcause`, and `mtval`. This is triggered whenever an exception is taken after `debug_mode` is already active.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1469",
+      "source": "https://github.com/lowRISC/ibex/pull/1469",
+      "title": "Move not-taken, predicted taken branch address calculation to ID stage",
+      "base_commit": "e70add7228dc9b82c724078475e44e467808175d",
+      "merge_commit": "ab4041c43977539323514b35bea1a10546d69b57",
+      "fix_commits": [
+        "41809fa045424b12ec5a66b957c90cab39740436"
+      ],
+      "intent": "When `BranchPredictor=1`, Ibex can mis-handle recovery from a branch that was predicted taken but later resolves as not taken if that branch is still unresolved while fetch continues down the predicted path. In the reported failing case, a preceding load delays resolution of the first branch, a later branch or jump on the speculative path is also predicted, and the recovery state for the earlier branch is replaced by the later prediction. Instructions from the wrong path can also remain buffered in the instruction fetch pipeline. When the earlier branch is finally resolved as not taken, the core can resume from the wrong PC and continue with wrong-path instructions, which can send execution into an unintended instruction stream and make the core appear to lock up. The expected behavior is that a predicted-taken branch that resolves as not taken must restart execution from the instruction immediately following that branch, independent of any later predictions, and any buffered instructions from the wrong predicted path must be discarded. This affects the instruction-fetch branch prediction and not-taken mispredict recovery logic.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#377",
+      "source": "https://github.com/lowRISC/ibex/pull/377",
+      "title": "[RTL LSU] Change unaligned error behaviour",
+      "base_commit": "4a1806f16ffd87bded3201bc923da5317aec8210",
+      "merge_commit": "c33525ae804e5c6200bab582f7e5d80da2aebbf9",
+      "fix_commits": [
+        "b9c7a87aeb188a9d3ec2743521b61c9c0addc9f4"
+      ],
+      "intent": "The Ibex load-store unit mishandles a store whose address is not naturally aligned and therefore has to be split into two internal memory transactions. If the first transaction returns a memory fault, the unit can report the store as complete and raise the store fault immediately, even though the second half of the split access is still outstanding. The expected behavior is that the second transaction is still issued and allowed to finish, and the store fault is reported only after responses for both halves of the split access have been received.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1865",
+      "source": "https://github.com/lowRISC/ibex/pull/1865",
+      "title": "[rtl] Protect core_busy_o with a multi-bit encoding",
+      "base_commit": "f385d4d6b1d1a2455baf0bec7cc77d3073c37cff",
+      "merge_commit": "28935490c28923f486314e61696820bf45e23aae",
+      "fix_commits": [
+        "7e0f46c7f71f9576c71c20d4506ae994d0641709"
+      ],
+      "intent": "In lockstep mode, the main Ibex core and its delayed shadow core share the same gated core clock, but the lockstep logic compares the shadow core's delayed `core_busy_o` value against the main core's `core_busy_o`. If the main core's `core_busy_o` has a transient low glitch while the core is still busy, both cores can be clock-gated in the same cycle before the delayed shadow core reaches the corresponding busy state. That masks the `core_busy_o` mismatch, can spuriously put the core to sleep, and prevents the lockstep logic from reporting the error. A transient low glitch on `core_busy_o` while the core is still busy must not gate off the shared core clock in that cycle; the delayed shadow core must continue running long enough for the lockstep comparison to observe the mismatch and raise a major alert.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1141",
+      "source": "https://github.com/lowRISC/ibex/pull/1141",
+      "title": "[rtl] Fix performance counter bug",
+      "base_commit": "94c87ba987f9db6e1cd4dbb3a2605da83bd67ad8",
+      "merge_commit": "62405f931fe70ffe8ef8e5de70afd07ef7714c94",
+      "fix_commits": [
+        "57d93aa558e889357bd3ed95e87bfe3fd1a1cdbd"
+      ],
+      "intent": "The Ibex instruction-retirement counter path can count a trapping instruction as if it had retired normally. With retired-instruction counting enabled (`mcountinhibit.IR = 0`), `minstret` is observed to increment for an illegal instruction, and the same bug appears for `ECALL` (the RISC-V environment-call instruction): if software reads `minstret`, executes `ECALL`, and the trap handler reads `minstret` on entry, the second value should be exactly one count higher because only the earlier read instruction retired, but the trapping `ECALL` is currently counted as well. The affected logic is the instruction-retirement/performance-counter path between the core pipeline and the CSR counter block. The correct behavior is that `minstret` increments only for instructions that complete and retire normally; instructions that raise a synchronous exception, including illegal instructions and `ECALL`, must not contribute to the retired-instruction count.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1513",
+      "source": "https://github.com/lowRISC/ibex/pull/1513",
+      "title": "[rtl,doc] Add double fault detection.",
+      "base_commit": "97fa5cf28024b882ffa1acbe81f6b6c865715840",
+      "merge_commit": "c0f67946f21838de36088b6a25573051b925207e",
+      "fix_commits": [
+        "e5fff3a0e4daca6f2d72892c776a4ff115da0b11"
+      ],
+      "intent": "Ibex does not correctly detect and record double faults in its synchronous-exception handling state. In this context, a double fault means that a second synchronous exception is taken before the core has returned from a previous synchronous exception, for example when the first instruction of the exception handler itself raises a bus fault or a Physical Memory Protection (PMP) access fault. The current behavior can leave the core looping or deadlocked without exposing the condition through machine-visible control/status state. The expected behavior is that taking any synchronous exception records that a synchronous exception is in progress in a machine-visible control/status register, and taking another synchronous exception while that state is still set records a separate double-fault condition. Executing the RISC-V `mret` return-from-exception instruction must clear only the \"synchronous exception in progress\" state and must not clear the recorded double-fault condition. This bug affects the exception/CSR control logic that tracks synchronous exceptions across handler entry and return.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#332",
+      "source": "https://github.com/lowRISC/ibex/pull/332",
+      "title": "[Prefetch buffer] - various bug fixes",
+      "base_commit": "1e8381bfa1a1e70056cc25cc1d55c306d1eba680",
+      "merge_commit": "f2fccaadbc6aaedf08bec73b7386ffce3aaeb618",
+      "fix_commits": [
+        "41f11a9cc713e77027ad7d457f35f9fc815a6ac9"
+      ],
+      "intent": "The Ibex instruction-fetch prefetch buffer can change the address on the external instruction request interface before the current request has completed its request/grant handshake. When an instruction fetch request is still pending and a branch redirects fetching to a different address, `instr_req_o` remains asserted but `instr_addr_o` can incorrectly switch from the original fetch address to the branch target before `instr_gnt_i` arrives. This affects the prefetch buffer and instruction-side request path. The correct behavior is that, once an instruction fetch request is pending, the corresponding `instr_addr_o` must remain stable until the `instr_req_o`/`instr_gnt_i` handshake completes.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#1584",
+      "source": "https://github.com/lowRISC/ibex/pull/1584",
+      "title": "Introduce internal interrupt concept",
+      "base_commit": "98931c7dff32c3177c8b3ad45e558d4f04320ef2",
+      "merge_commit": "ead2174c1a319a21fd35d81bad4af81187b509fb",
+      "fix_commits": [
+        "f1658802a6508e945c756e7824f928bc4c1cfd99"
+      ],
+      "intent": "When memory-data integrity checking is enabled through MemECC, Ibex currently handles a load response with bad integrity/ECC bits through the normal synchronous exception path. Instead, a load-data integrity failure must be treated as an internal interrupt that enters the Non-Maskable Interrupt (NMI) vector rather than the standard exception vector. The affected behavior spans the load/store unit's handling of load-data integrity failures and the controller logic that selects between exception and interrupt entry. The bug is triggered when a load completes and the returned data fails the integrity check.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#45",
+      "source": "https://github.com/lowRISC/ibex/pull/45",
+      "title": "Code cleanup",
+      "base_commit": "7728b7b6f2318fb4078945570a55af31ee77537a",
+      "merge_commit": "a44e312e74e57caa6c170e9e8470ec110ed0f2f3",
+      "fix_commits": [
+        "d60a2ca49919a0dfbba1c27fe7bc29ec12508cdc",
+        "764e7e993239bb16be91593a5b746bac133e9514",
+        "3097a535ae667be2d64c0369bb2c8b85a45ab413",
+        "caf99dae5ea64ef8f076787d2454da02d6b3bb3d",
+        "ff465f3e5c95173af8d52853a24cb714ebb79aa6",
+        "983291591936176cbee438ee9f657b3297944e2d"
+      ],
+      "intent": "Ibex's load-store unit (LSU) does not correctly report data-side error responses as load or store faults. On the data memory interface, `data_rvalid_i` marks the response cycle and `data_err_i` marks that the response failed. When an outstanding data access receives a response with both signals asserted, the LSU currently does not raise the correct load-specific or store-specific error indication for that transaction. The expected behavior is concrete: on an errored response, a failed load must assert `load_err_o` while keeping `store_err_o` low, and a failed store must assert `store_err_o` while keeping `load_err_o` low. This affects LSU handling of data memory interface responses and is triggered whenever a previously accepted load or store request completes with `data_rvalid_i` and `data_err_i` asserted.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#155",
+      "source": "https://github.com/lowRISC/ibex/pull/155",
+      "title": "Tracer based on RVFI",
+      "base_commit": "a38389e3a2d79e2e067cf40ed308960655f02d2c",
+      "merge_commit": "b7ef64b62da74afe52bb40165e17a7e87539d47a",
+      "fix_commits": [
+        "5ea660ba96ad26174e2da446dbd819fb68f25368",
+        "efcfd76ae95365656d3235a8aaee149a4d83a54a",
+        "6565a4f32216ffd8e5c2df3485085999a5361032",
+        "4e9377f2664070cf801a62dc2764a00469631a7b"
+      ],
+      "intent": "The Ibex RISC-V Formal Interface (RVFI) used by the execution tracer is not aligned with instruction retirement. In the current behavior, `rvfi_valid` can become true only after a later program-counter change, so the RVFI record for a retired instruction is emitted one cycle late and may be paired with the PC and instruction data of a different instruction. This affects the RVFI/tracer path that records retired instructions.\n\nExpected behavior is that every retired instruction becomes visible to RVFI immediately when it retires, without waiting for a later PC update, and that each RVFI record corresponds to exactly one retired instruction in retirement order. The instruction value in that record, the PC of the retired instruction, and the next PC or branch target must all describe the same instruction. This must also work for 16-bit RISC-V compressed instructions, including consecutive compressed instructions: they should appear as separate retire records with 2-byte PC advances and a usable instruction value for tracing, rather than being delayed, merged into a later record, or shown as invalid.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#122",
+      "source": "https://github.com/lowRISC/ibex/pull/122",
+      "title": "Fix LSU + lint errors",
+      "base_commit": "c84ca25755a701c2246276d099065f7a211c3283",
+      "merge_commit": "6a1ac272da5c17945fe1b058b1a8cfb8fc922e57",
+      "fix_commits": [
+        "60fc44ccba97f03c396b85f9e44418a02c2a3650",
+        "b3ea5c72dec4a88e38b41e1aa8a06668fcd35486"
+      ],
+      "intent": "Ibex mishandles misaligned 32-bit stores in the load-store unit. When a store address is not 32-bit aligned and the access must be split across two adjacent 32-bit words, the address and byte-enable calculation for the second memory transaction is incorrect, so the split store does not preserve the original byte lanes. In the failing boundary case, a 32-bit store to an address whose two least significant bits are `01` is not performed as the required pair of aligned writes. The correct behavior is to issue two aligned store transactions that together write the same four bytes as the original store: the first transaction writes byte lanes 1-3 of the lower word, and the second transaction writes byte lane 0 of the next word. This affects the load-store unit and the address generation used for the second part of a misaligned store, and it is triggered by a misaligned 32-bit store that crosses a 32-bit word boundary.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#282",
+      "source": "https://github.com/lowRISC/ibex/pull/282",
+      "title": "[RTL] Fix I-side timing loop",
+      "base_commit": "36db1041605c4e0c62e5e0612f35331647674ed8",
+      "merge_commit": "16177fe8db9012197c150d7487428437e020eaa6",
+      "fix_commits": [
+        "8805d24ab230e10719f149cca0a21e7d47dd07f6"
+      ],
+      "intent": "In the instruction-side fetch path, the instruction request output (`instr_req_o`) has a combinational dependency on the instruction return-valid input (`instr_rvalid_i`). When the prefetch buffer already has a granted fetch outstanding and is deciding whether it can issue the next instruction fetch request, a change on `instr_rvalid_i` can immediately change `instr_req_o`, creating a slave-to-master-to-slave timing path on the instruction interface in systems that do not pipeline these signals. The affected functionality is the instruction prefetch buffer / fetch interface. The correct behavior is that `instr_req_o` must not change combinationally in response to `instr_rvalid_i` within the same cycle; receipt of an instruction return-valid may only affect request generation in a later cycle.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    {
+      "case_id": "lowRISC/ibex#104",
+      "source": "https://github.com/lowRISC/ibex/pull/104",
+      "title": "Spec compliant trap handling",
+      "base_commit": "d00db652277ba9d33a8ac68794b5260c6ed168d9",
+      "merge_commit": "ca7bbddd4ed9c5755eecca864d990d93dc2ea741",
+      "fix_commits": [
+        "d0c5dacd0de3c50b46771640c5f5440b9ee1cef0",
+        "03fa96d057b40f21632097d1512bb35e07f42582",
+        "164f6d6b56a2f391fb74e3064fc242a37807cdc6",
+        "79209d280b4bb56b6e1f8532cec9419eebe32956",
+        "7aff29cce716af77467ed2184dafcd635cab614c",
+        "8487f1c7b50960d2283f6873644a083fa55c553c",
+        "39902df2ac0483999c5a0b04118032aa34944c31",
+        "72eef084606ccc9760571002df9755908e03a045",
+        "8e3d5a8e8e6f6671179e9fb909ef0857f92cb365",
+        "b7e7a2bbfb47a24780bf2469ea4b8f47437c76f9"
+      ],
+      "intent": "Ibex's machine-mode trap control and status register (CSR) interface is incomplete relative to the RISC-V privileged specification. In the buggy baseline, the standard `mscratch` CSR is missing, the architectural `mtvec` value is not exposed as a normal machine trap-vector register that software can read back, and the full exception state is not available through the standard trap CSRs because there is no `mtval` register for the trap-specific value.\n\nIbex should expose the standard machine trap CSR set needed for spec-compliant trap handling: `mtvec` must read back the configured trap-vector value, `mscratch` must behave as a normal read/write scratch CSR, and when an exception is recorded the trap state visible to software must include the saved exception PC in `mepc`, the trap cause in `mcause`, and the trap-specific value in `mtval`. This affects the trap-handling CSR logic whenever software accesses machine trap CSRs or the core saves exception state for a trap handler.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    }
+  ]
+}

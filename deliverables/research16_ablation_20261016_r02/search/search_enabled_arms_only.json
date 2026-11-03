@@ -1,0 +1,4099 @@
+{
+  "allowed_arms": [
+    "B",
+    "D"
+  ],
+  "split": "development",
+  "queries": [
+    {
+      "scenario": "queries/s2026101507/contract_coverage/q00",
+      "selection": {
+        "family": "tail_loss",
+        "target_obligation": "drain_no_loss",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 8.0,
+          "no_unsolicited_output": 8.0,
+          "stall_stability": 8.0,
+          "drain_no_loss": 8.0,
+          "reset_cancellation": 8.0
+        },
+        "history_queries": 0,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [
+        "drop/drain_no_loss"
+      ],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q00",
+          "cycle": 7,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 5,
+            "data": 1728997572,
+            "response_cycle": 7,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1728997573
+          },
+          "oracle_details": {
+            "cycle": 7,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 1728997572,
+            "actual": 1728997573
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q00",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 13,
+            "data": 2123208548,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 2123208549
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 2123208548,
+            "actual": 2123208549
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q00",
+          "cycle": 23,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 21,
+            "data": 4006402228,
+            "response_cycle": 23,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 4006402229
+          },
+          "oracle_details": {
+            "cycle": 23,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 4006402228,
+            "actual": 4006402229
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q00",
+          "cycle": 31,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 29,
+            "data": 2410504788,
+            "response_cycle": 31,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 2410504789
+          },
+          "oracle_details": {
+            "cycle": 31,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 2410504788,
+            "actual": 2410504789
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "duplicate_payload/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "duplicate_payload",
+          "scenario": "queries/s2026101507/contract_coverage/q00",
+          "cycle": 31,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 29,
+            "data": 2410504788,
+            "response_cycle": 31,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 4006402228
+          },
+          "oracle_details": {
+            "cycle": 31,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 2410504788,
+            "actual": 4006402228
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "drop/drain_no_loss/false_negative",
+          "kind": "false_negative",
+          "obligation": "drain_no_loss",
+          "variant": "drop",
+          "scenario": "queries/s2026101507/contract_coverage/q00",
+          "cycle": 111,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": null,
+          "transaction": null,
+          "oracle_details": {
+            "cycle": 111,
+            "obligation": "drain_no_loss",
+            "passed": false,
+            "transaction_id": null,
+            "outstanding": [
+              "e1:t3"
+            ]
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [],
+          "all_native_failure_ids_same_cycle": [],
+          "candidate_prefix_accepted": true,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101507/contract_coverage/q01",
+      "selection": {
+        "family": "reset_pending",
+        "target_obligation": "reset_cancellation",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 5.0,
+          "stall_stability": 8.0,
+          "drain_no_loss": 2.0,
+          "reset_cancellation": 8.0
+        },
+        "history_queries": 1,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 39,
+          "epoch": 2,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e2:t3",
+          "transaction": {
+            "transaction_id": "e2:t3",
+            "epoch": 2,
+            "accept_cycle": 37,
+            "data": 1149037716,
+            "response_cycle": 39,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1149037717
+          },
+          "oracle_details": {
+            "cycle": 39,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t3",
+            "expected": 1149037716,
+            "actual": 1149037717
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 40,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t4",
+          "transaction": {
+            "transaction_id": "e2:t4",
+            "epoch": 2,
+            "accept_cycle": 38,
+            "data": 1063084628,
+            "response_cycle": 40,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1063084629
+          },
+          "oracle_details": {
+            "cycle": 40,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t4",
+            "expected": 1063084628,
+            "actual": 1063084629
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 41,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t5",
+          "transaction": {
+            "transaction_id": "e2:t5",
+            "epoch": 2,
+            "accept_cycle": 39,
+            "data": 1609326596,
+            "response_cycle": 41,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1609326597
+          },
+          "oracle_details": {
+            "cycle": 41,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t5",
+            "expected": 1609326596,
+            "actual": 1609326597
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 42,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t6",
+          "transaction": {
+            "transaction_id": "e2:t6",
+            "epoch": 2,
+            "accept_cycle": 40,
+            "data": 1784820868,
+            "response_cycle": 42,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1784820869
+          },
+          "oracle_details": {
+            "cycle": 42,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t6",
+            "expected": 1784820868,
+            "actual": 1784820869
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 43,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t7",
+          "transaction": {
+            "transaction_id": "e2:t7",
+            "epoch": 2,
+            "accept_cycle": 41,
+            "data": 2978580100,
+            "response_cycle": 43,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 2978580101
+          },
+          "oracle_details": {
+            "cycle": 43,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t7",
+            "expected": 2978580100,
+            "actual": 2978580101
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 44,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t8",
+          "transaction": {
+            "transaction_id": "e2:t8",
+            "epoch": 2,
+            "accept_cycle": 42,
+            "data": 4291762276,
+            "response_cycle": 44,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 4291762277
+          },
+          "oracle_details": {
+            "cycle": 44,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t8",
+            "expected": 4291762276,
+            "actual": 4291762277
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 45,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t9",
+          "transaction": {
+            "transaction_id": "e2:t9",
+            "epoch": 2,
+            "accept_cycle": 43,
+            "data": 443347268,
+            "response_cycle": 45,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 443347269
+          },
+          "oracle_details": {
+            "cycle": 45,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t9",
+            "expected": 443347268,
+            "actual": 443347269
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q01",
+          "cycle": 46,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t10",
+          "transaction": {
+            "transaction_id": "e2:t10",
+            "epoch": 2,
+            "accept_cycle": 44,
+            "data": 3374843252,
+            "response_cycle": 46,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 3374843253
+          },
+          "oracle_details": {
+            "cycle": 46,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t10",
+            "expected": 3374843252,
+            "actual": 3374843253
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101507/contract_coverage/q02",
+      "selection": {
+        "family": "backpressure",
+        "target_obligation": "stall_stability",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 4.0,
+          "stall_stability": 5.0,
+          "drain_no_loss": 2.0,
+          "reset_cancellation": 2.0
+        },
+        "history_queries": 2,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 10,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 3706237844,
+            "response_cycle": 10,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 6,
+            "observed_data": 3706237845
+          },
+          "oracle_details": {
+            "cycle": 10,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 3706237844,
+            "actual": 3706237845
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 11,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 5,
+            "data": 4008120452,
+            "response_cycle": 11,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 6,
+            "observed_data": 4008120453
+          },
+          "oracle_details": {
+            "cycle": 11,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 4008120452,
+            "actual": 4008120453
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 12,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 6,
+            "data": 1305163604,
+            "response_cycle": 12,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 6,
+            "observed_data": 1305163605
+          },
+          "oracle_details": {
+            "cycle": 12,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 1305163604,
+            "actual": 1305163605
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 13,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 11,
+            "data": 248382564,
+            "response_cycle": 13,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 248382565
+          },
+          "oracle_details": {
+            "cycle": 13,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 248382564,
+            "actual": 248382565
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t4",
+          "transaction": {
+            "transaction_id": "e1:t4",
+            "epoch": 1,
+            "accept_cycle": 13,
+            "data": 1079049940,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1079049941
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t4",
+            "expected": 1079049940,
+            "actual": 1079049941
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 16,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t5",
+          "transaction": {
+            "transaction_id": "e1:t5",
+            "epoch": 1,
+            "accept_cycle": 14,
+            "data": 1518238292,
+            "response_cycle": 16,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1518238293
+          },
+          "oracle_details": {
+            "cycle": 16,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t5",
+            "expected": 1518238292,
+            "actual": 1518238293
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 27,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t6",
+          "transaction": {
+            "transaction_id": "e1:t6",
+            "epoch": 1,
+            "accept_cycle": 15,
+            "data": 3649978500,
+            "response_cycle": 27,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 3649978501
+          },
+          "oracle_details": {
+            "cycle": 27,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t6",
+            "expected": 3649978500,
+            "actual": 3649978501
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q02",
+          "cycle": 28,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t7",
+          "transaction": {
+            "transaction_id": "e1:t7",
+            "epoch": 1,
+            "accept_cycle": 16,
+            "data": 56958404,
+            "response_cycle": 28,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 56958405
+          },
+          "oracle_details": {
+            "cycle": 28,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t7",
+            "expected": 56958404,
+            "actual": 56958405
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101507/contract_coverage/q03",
+      "selection": {
+        "family": "reset_pending",
+        "target_obligation": "no_unsolicited_output",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 4.0,
+          "stall_stability": 2.5,
+          "drain_no_loss": 2.0,
+          "reset_cancellation": 2.0
+        },
+        "history_queries": 3,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 42,
+          "epoch": 2,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e2:t3",
+          "transaction": {
+            "transaction_id": "e2:t3",
+            "epoch": 2,
+            "accept_cycle": 40,
+            "data": 2526535108,
+            "response_cycle": 42,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 2526535109
+          },
+          "oracle_details": {
+            "cycle": 42,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t3",
+            "expected": 2526535108,
+            "actual": 2526535109
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 43,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t4",
+          "transaction": {
+            "transaction_id": "e2:t4",
+            "epoch": 2,
+            "accept_cycle": 41,
+            "data": 3702883684,
+            "response_cycle": 43,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 3702883685
+          },
+          "oracle_details": {
+            "cycle": 43,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t4",
+            "expected": 3702883684,
+            "actual": 3702883685
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 44,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t5",
+          "transaction": {
+            "transaction_id": "e2:t5",
+            "epoch": 2,
+            "accept_cycle": 42,
+            "data": 276167284,
+            "response_cycle": 44,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 276167285
+          },
+          "oracle_details": {
+            "cycle": 44,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t5",
+            "expected": 276167284,
+            "actual": 276167285
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 45,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t6",
+          "transaction": {
+            "transaction_id": "e2:t6",
+            "epoch": 2,
+            "accept_cycle": 43,
+            "data": 1666158484,
+            "response_cycle": 45,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1666158485
+          },
+          "oracle_details": {
+            "cycle": 45,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t6",
+            "expected": 1666158484,
+            "actual": 1666158485
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 46,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t7",
+          "transaction": {
+            "transaction_id": "e2:t7",
+            "epoch": 2,
+            "accept_cycle": 44,
+            "data": 2105480468,
+            "response_cycle": 46,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 2105480469
+          },
+          "oracle_details": {
+            "cycle": 46,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t7",
+            "expected": 2105480468,
+            "actual": 2105480469
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 47,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t8",
+          "transaction": {
+            "transaction_id": "e2:t8",
+            "epoch": 2,
+            "accept_cycle": 45,
+            "data": 1715695300,
+            "response_cycle": 47,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1715695301
+          },
+          "oracle_details": {
+            "cycle": 47,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t8",
+            "expected": 1715695300,
+            "actual": 1715695301
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 48,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t9",
+          "transaction": {
+            "transaction_id": "e2:t9",
+            "epoch": 2,
+            "accept_cycle": 46,
+            "data": 192709988,
+            "response_cycle": 48,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 192709989
+          },
+          "oracle_details": {
+            "cycle": 48,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t9",
+            "expected": 192709988,
+            "actual": 192709989
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q03",
+          "cycle": 49,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t10",
+          "transaction": {
+            "transaction_id": "e2:t10",
+            "epoch": 2,
+            "accept_cycle": 47,
+            "data": 1800546756,
+            "response_cycle": 49,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1800546757
+          },
+          "oracle_details": {
+            "cycle": 49,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t10",
+            "expected": 1800546756,
+            "actual": 1800546757
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101507/contract_coverage/q04",
+      "selection": {
+        "family": "backpressure",
+        "target_obligation": "stall_stability",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 2.0,
+          "stall_stability": 2.5,
+          "drain_no_loss": 2.0,
+          "reset_cancellation": 2.0
+        },
+        "history_queries": 4,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 10,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 1716597348,
+            "response_cycle": 10,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 6,
+            "observed_data": 1716597349
+          },
+          "oracle_details": {
+            "cycle": 10,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 1716597348,
+            "actual": 1716597349
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 11,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 5,
+            "data": 3792010020,
+            "response_cycle": 11,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 6,
+            "observed_data": 3792010021
+          },
+          "oracle_details": {
+            "cycle": 11,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 3792010020,
+            "actual": 3792010021
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 12,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 6,
+            "data": 3093027492,
+            "response_cycle": 12,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 6,
+            "observed_data": 3093027493
+          },
+          "oracle_details": {
+            "cycle": 12,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 3093027492,
+            "actual": 3093027493
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 13,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 11,
+            "data": 2243823380,
+            "response_cycle": 13,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 2243823381
+          },
+          "oracle_details": {
+            "cycle": 13,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 2243823380,
+            "actual": 2243823381
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t4",
+          "transaction": {
+            "transaction_id": "e1:t4",
+            "epoch": 1,
+            "accept_cycle": 13,
+            "data": 839411140,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 839411141
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t4",
+            "expected": 839411140,
+            "actual": 839411141
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 16,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t5",
+          "transaction": {
+            "transaction_id": "e1:t5",
+            "epoch": 1,
+            "accept_cycle": 14,
+            "data": 143294420,
+            "response_cycle": 16,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 143294421
+          },
+          "oracle_details": {
+            "cycle": 16,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t5",
+            "expected": 143294420,
+            "actual": 143294421
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 27,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t6",
+          "transaction": {
+            "transaction_id": "e1:t6",
+            "epoch": 1,
+            "accept_cycle": 15,
+            "data": 114811604,
+            "response_cycle": 27,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 114811605
+          },
+          "oracle_details": {
+            "cycle": 27,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t6",
+            "expected": 114811604,
+            "actual": 114811605
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q04",
+          "cycle": 28,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t7",
+          "transaction": {
+            "transaction_id": "e1:t7",
+            "epoch": 1,
+            "accept_cycle": 16,
+            "data": 3937570388,
+            "response_cycle": 28,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 3937570389
+          },
+          "oracle_details": {
+            "cycle": 28,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t7",
+            "expected": 3937570388,
+            "actual": 3937570389
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101507/contract_coverage/q05",
+      "selection": {
+        "family": "tail_loss",
+        "target_obligation": "drain_no_loss",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 2.0,
+          "stall_stability": 1.6666666666666667,
+          "drain_no_loss": 2.0,
+          "reset_cancellation": 2.0
+        },
+        "history_queries": 5,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q05",
+          "cycle": 6,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 2728865524,
+            "response_cycle": 6,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 2728865525
+          },
+          "oracle_details": {
+            "cycle": 6,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 2728865524,
+            "actual": 2728865525
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q05",
+          "cycle": 14,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 12,
+            "data": 4224865252,
+            "response_cycle": 14,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 4224865253
+          },
+          "oracle_details": {
+            "cycle": 14,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 4224865252,
+            "actual": 4224865253
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q05",
+          "cycle": 22,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 20,
+            "data": 4228713892,
+            "response_cycle": 22,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 4228713893
+          },
+          "oracle_details": {
+            "cycle": 22,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 4228713892,
+            "actual": 4228713893
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101507/contract_coverage/q05",
+          "cycle": 30,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 28,
+            "data": 1020484836,
+            "response_cycle": 30,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 1020484837
+          },
+          "oracle_details": {
+            "cycle": 30,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 1020484836,
+            "actual": 1020484837
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "duplicate_payload/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "duplicate_payload",
+          "scenario": "queries/s2026101507/contract_coverage/q05",
+          "cycle": 30,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 28,
+            "data": 1020484836,
+            "response_cycle": 30,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 2,
+            "observed_data": 4228713892
+          },
+          "oracle_details": {
+            "cycle": 30,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 1020484836,
+            "actual": 4228713892
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "drop/drain_no_loss/false_negative",
+          "kind": "false_negative",
+          "obligation": "drain_no_loss",
+          "variant": "drop",
+          "scenario": "queries/s2026101507/contract_coverage/q05",
+          "cycle": 111,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": null,
+          "transaction": null,
+          "oracle_details": {
+            "cycle": 111,
+            "obligation": "drain_no_loss",
+            "passed": false,
+            "transaction_id": null,
+            "outstanding": [
+              "e1:t3"
+            ]
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [],
+          "all_native_failure_ids_same_cycle": [],
+          "candidate_prefix_accepted": true,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101531/contract_coverage/q00",
+      "selection": {
+        "family": "backpressure",
+        "target_obligation": "stall_stability",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 8.0,
+          "no_unsolicited_output": 8.0,
+          "stall_stability": 8.0,
+          "drain_no_loss": 8.0,
+          "reset_cancellation": 8.0
+        },
+        "history_queries": 0,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 10,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 3,
+            "data": 1322249860,
+            "response_cycle": 10,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 7,
+            "observed_data": 1322249861
+          },
+          "oracle_details": {
+            "cycle": 10,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 1322249860,
+            "actual": 1322249861
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 11,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 122619476,
+            "response_cycle": 11,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 7,
+            "observed_data": 122619477
+          },
+          "oracle_details": {
+            "cycle": 11,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 122619476,
+            "actual": 122619477
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 12,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 5,
+            "data": 3701154276,
+            "response_cycle": 12,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 7,
+            "observed_data": 3701154277
+          },
+          "oracle_details": {
+            "cycle": 12,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 3701154276,
+            "actual": 3701154277
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 13,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 6,
+            "data": 477591204,
+            "response_cycle": 13,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 7,
+            "observed_data": 477591205
+          },
+          "oracle_details": {
+            "cycle": 13,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 477591204,
+            "actual": 477591205
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 14,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t4",
+          "transaction": {
+            "transaction_id": "e1:t4",
+            "epoch": 1,
+            "accept_cycle": 7,
+            "data": 3737059012,
+            "response_cycle": 14,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 7,
+            "observed_data": 3737059013
+          },
+          "oracle_details": {
+            "cycle": 14,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t4",
+            "expected": 3737059012,
+            "actual": 3737059013
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t5",
+          "transaction": {
+            "transaction_id": "e1:t5",
+            "epoch": 1,
+            "accept_cycle": 8,
+            "data": 398130116,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 7,
+            "observed_data": 398130117
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t5",
+            "expected": 398130116,
+            "actual": 398130117
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 16,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t6",
+          "transaction": {
+            "transaction_id": "e1:t6",
+            "epoch": 1,
+            "accept_cycle": 9,
+            "data": 2257855556,
+            "response_cycle": 16,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 7,
+            "observed_data": 2257855557
+          },
+          "oracle_details": {
+            "cycle": 16,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t6",
+            "expected": 2257855556,
+            "actual": 2257855557
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q00",
+          "cycle": 27,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t7",
+          "transaction": {
+            "transaction_id": "e1:t7",
+            "epoch": 1,
+            "accept_cycle": 10,
+            "data": 2678370628,
+            "response_cycle": 27,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 17,
+            "observed_data": 2678370629
+          },
+          "oracle_details": {
+            "cycle": 27,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t7",
+            "expected": 2678370628,
+            "actual": 2678370629
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101531/contract_coverage/q01",
+      "selection": {
+        "family": "reset_pending",
+        "target_obligation": "reset_cancellation",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 5.0,
+          "stall_stability": 2.5,
+          "drain_no_loss": 5.0,
+          "reset_cancellation": 8.0
+        },
+        "history_queries": 1,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 3,
+            "data": 2714418724,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 2714418725
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 2714418724,
+            "actual": 2714418725
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 16,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 2870533284,
+            "response_cycle": 16,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 2870533285
+          },
+          "oracle_details": {
+            "cycle": 16,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 2870533284,
+            "actual": 2870533285
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 17,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 5,
+            "data": 148275140,
+            "response_cycle": 17,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 148275141
+          },
+          "oracle_details": {
+            "cycle": 17,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 148275140,
+            "actual": 148275141
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 46,
+          "epoch": 2,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e2:t13",
+          "transaction": {
+            "transaction_id": "e2:t13",
+            "epoch": 2,
+            "accept_cycle": 43,
+            "data": 3838228980,
+            "response_cycle": 46,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3838228981
+          },
+          "oracle_details": {
+            "cycle": 46,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t13",
+            "expected": 3838228980,
+            "actual": 3838228981
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 47,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t14",
+          "transaction": {
+            "transaction_id": "e2:t14",
+            "epoch": 2,
+            "accept_cycle": 44,
+            "data": 401551796,
+            "response_cycle": 47,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 401551797
+          },
+          "oracle_details": {
+            "cycle": 47,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t14",
+            "expected": 401551796,
+            "actual": 401551797
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 48,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t15",
+          "transaction": {
+            "transaction_id": "e2:t15",
+            "epoch": 2,
+            "accept_cycle": 45,
+            "data": 1695797268,
+            "response_cycle": 48,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 1695797269
+          },
+          "oracle_details": {
+            "cycle": 48,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t15",
+            "expected": 1695797268,
+            "actual": 1695797269
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 49,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t16",
+          "transaction": {
+            "transaction_id": "e2:t16",
+            "epoch": 2,
+            "accept_cycle": 46,
+            "data": 2960569396,
+            "response_cycle": 49,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 2960569397
+          },
+          "oracle_details": {
+            "cycle": 49,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t16",
+            "expected": 2960569396,
+            "actual": 2960569397
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q01",
+          "cycle": 50,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t17",
+          "transaction": {
+            "transaction_id": "e2:t17",
+            "epoch": 2,
+            "accept_cycle": 47,
+            "data": 3897543908,
+            "response_cycle": 50,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3897543909
+          },
+          "oracle_details": {
+            "cycle": 50,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t17",
+            "expected": 3897543908,
+            "actual": 3897543909
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101531/contract_coverage/q02",
+      "selection": {
+        "family": "reset_pending",
+        "target_obligation": "no_unsolicited_output",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 5.0,
+          "stall_stability": 2.5,
+          "drain_no_loss": 5.0,
+          "reset_cancellation": 2.5
+        },
+        "history_queries": 2,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 3,
+            "data": 4266334884,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 4266334885
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 4266334884,
+            "actual": 4266334885
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 16,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 3879440244,
+            "response_cycle": 16,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 3879440245
+          },
+          "oracle_details": {
+            "cycle": 16,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 3879440244,
+            "actual": 3879440245
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 17,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 5,
+            "data": 458150244,
+            "response_cycle": 17,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 458150245
+          },
+          "oracle_details": {
+            "cycle": 17,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 458150244,
+            "actual": 458150245
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 18,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 6,
+            "data": 1444914900,
+            "response_cycle": 18,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 12,
+            "observed_data": 1444914901
+          },
+          "oracle_details": {
+            "cycle": 18,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 1444914900,
+            "actual": 1444914901
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 47,
+          "epoch": 2,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e2:t14",
+          "transaction": {
+            "transaction_id": "e2:t14",
+            "epoch": 2,
+            "accept_cycle": 44,
+            "data": 1470303092,
+            "response_cycle": 47,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 1470303093
+          },
+          "oracle_details": {
+            "cycle": 47,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t14",
+            "expected": 1470303092,
+            "actual": 1470303093
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 48,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t15",
+          "transaction": {
+            "transaction_id": "e2:t15",
+            "epoch": 2,
+            "accept_cycle": 45,
+            "data": 3019871876,
+            "response_cycle": 48,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3019871877
+          },
+          "oracle_details": {
+            "cycle": 48,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t15",
+            "expected": 3019871876,
+            "actual": 3019871877
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 49,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t16",
+          "transaction": {
+            "transaction_id": "e2:t16",
+            "epoch": 2,
+            "accept_cycle": 46,
+            "data": 3835691588,
+            "response_cycle": 49,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3835691589
+          },
+          "oracle_details": {
+            "cycle": 49,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t16",
+            "expected": 3835691588,
+            "actual": 3835691589
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q02",
+          "cycle": 50,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t17",
+          "transaction": {
+            "transaction_id": "e2:t17",
+            "epoch": 2,
+            "accept_cycle": 47,
+            "data": 2401600660,
+            "response_cycle": 50,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 2401600661
+          },
+          "oracle_details": {
+            "cycle": 50,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t17",
+            "expected": 2401600660,
+            "actual": 2401600661
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101531/contract_coverage/q03",
+      "selection": {
+        "family": "tail_loss",
+        "target_obligation": "drain_no_loss",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 2.5,
+          "stall_stability": 2.5,
+          "drain_no_loss": 5.0,
+          "reset_cancellation": 2.5
+        },
+        "history_queries": 3,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [
+        "drop/drain_no_loss"
+      ],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q03",
+          "cycle": 7,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 3719628724,
+            "response_cycle": 7,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3719628725
+          },
+          "oracle_details": {
+            "cycle": 7,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 3719628724,
+            "actual": 3719628725
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q03",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 12,
+            "data": 3575845348,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3575845349
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 3575845348,
+            "actual": 3575845349
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q03",
+          "cycle": 23,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 20,
+            "data": 2762800116,
+            "response_cycle": 23,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 2762800117
+          },
+          "oracle_details": {
+            "cycle": 23,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 2762800116,
+            "actual": 2762800117
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q03",
+          "cycle": 31,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 28,
+            "data": 2592827380,
+            "response_cycle": 31,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 2592827381
+          },
+          "oracle_details": {
+            "cycle": 31,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 2592827380,
+            "actual": 2592827381
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "duplicate_payload/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "duplicate_payload",
+          "scenario": "queries/s2026101531/contract_coverage/q03",
+          "cycle": 31,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 28,
+            "data": 2592827380,
+            "response_cycle": 31,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 2762800116
+          },
+          "oracle_details": {
+            "cycle": 31,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 2592827380,
+            "actual": 2762800116
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "drop/drain_no_loss/false_negative",
+          "kind": "false_negative",
+          "obligation": "drain_no_loss",
+          "variant": "drop",
+          "scenario": "queries/s2026101531/contract_coverage/q03",
+          "cycle": 111,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": null,
+          "transaction": null,
+          "oracle_details": {
+            "cycle": 111,
+            "obligation": "drain_no_loss",
+            "passed": false,
+            "transaction_id": null,
+            "outstanding": [
+              "e1:t3"
+            ]
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [],
+          "all_native_failure_ids_same_cycle": [],
+          "candidate_prefix_accepted": true,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101531/contract_coverage/q04",
+      "selection": {
+        "family": "backpressure",
+        "target_obligation": "stall_stability",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 2.5,
+          "stall_stability": 2.5,
+          "drain_no_loss": 2.0,
+          "reset_cancellation": 2.5
+        },
+        "history_queries": 4,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 10,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 2,
+            "data": 3029344708,
+            "response_cycle": 10,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 8,
+            "observed_data": 3029344709
+          },
+          "oracle_details": {
+            "cycle": 10,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 3029344708,
+            "actual": 3029344709
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 11,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 3,
+            "data": 2077848804,
+            "response_cycle": 11,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 8,
+            "observed_data": 2077848805
+          },
+          "oracle_details": {
+            "cycle": 11,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 2077848804,
+            "actual": 2077848805
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 12,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t2",
+          "transaction": {
+            "transaction_id": "e1:t2",
+            "epoch": 1,
+            "accept_cycle": 4,
+            "data": 647046372,
+            "response_cycle": 12,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 8,
+            "observed_data": 647046373
+          },
+          "oracle_details": {
+            "cycle": 12,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t2",
+            "expected": 647046372,
+            "actual": 647046373
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 13,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t3",
+          "transaction": {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 5,
+            "data": 2328049060,
+            "response_cycle": 13,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 8,
+            "observed_data": 2328049061
+          },
+          "oracle_details": {
+            "cycle": 13,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t3",
+            "expected": 2328049060,
+            "actual": 2328049061
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 14,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t4",
+          "transaction": {
+            "transaction_id": "e1:t4",
+            "epoch": 1,
+            "accept_cycle": 6,
+            "data": 2021988276,
+            "response_cycle": 14,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 8,
+            "observed_data": 2021988277
+          },
+          "oracle_details": {
+            "cycle": 14,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t4",
+            "expected": 2021988276,
+            "actual": 2021988277
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t5",
+          "transaction": {
+            "transaction_id": "e1:t5",
+            "epoch": 1,
+            "accept_cycle": 7,
+            "data": 3965107972,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 8,
+            "observed_data": 3965107973
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t5",
+            "expected": 3965107972,
+            "actual": 3965107973
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 16,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t6",
+          "transaction": {
+            "transaction_id": "e1:t6",
+            "epoch": 1,
+            "accept_cycle": 8,
+            "data": 2956228852,
+            "response_cycle": 16,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 8,
+            "observed_data": 2956228853
+          },
+          "oracle_details": {
+            "cycle": 16,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t6",
+            "expected": 2956228852,
+            "actual": 2956228853
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q04",
+          "cycle": 27,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t7",
+          "transaction": {
+            "transaction_id": "e1:t7",
+            "epoch": 1,
+            "accept_cycle": 9,
+            "data": 1943814676,
+            "response_cycle": 27,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 18,
+            "observed_data": 1943814677
+          },
+          "oracle_details": {
+            "cycle": 27,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t7",
+            "expected": 1943814676,
+            "actual": 1943814677
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    },
+    {
+      "scenario": "queries/s2026101531/contract_coverage/q05",
+      "selection": {
+        "family": "reset_pending",
+        "target_obligation": "reset_cancellation",
+        "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+        "deficit_scores": {
+          "order_payload": 1.0,
+          "no_unsolicited_output": 2.5,
+          "stall_stability": 1.6666666666666667,
+          "drain_no_loss": 2.0,
+          "reset_cancellation": 2.5
+        },
+        "history_queries": 5,
+        "selection_uses_no_unexecuted_oracle": true
+      },
+      "new_independent_gap_keys": [],
+      "examples": [
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 15,
+          "epoch": 1,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e1:t0",
+          "transaction": {
+            "transaction_id": "e1:t0",
+            "epoch": 1,
+            "accept_cycle": 2,
+            "data": 2780707428,
+            "response_cycle": 15,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 13,
+            "observed_data": 2780707429
+          },
+          "oracle_details": {
+            "cycle": 15,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 2780707428,
+            "actual": 2780707429
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 16,
+          "epoch": 1,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e1:t1",
+          "transaction": {
+            "transaction_id": "e1:t1",
+            "epoch": 1,
+            "accept_cycle": 3,
+            "data": 187147572,
+            "response_cycle": 16,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 13,
+            "observed_data": 187147573
+          },
+          "oracle_details": {
+            "cycle": 16,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t1",
+            "expected": 187147572,
+            "actual": 187147573
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/causal_detection",
+          "kind": "causal_detection",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 45,
+          "epoch": 2,
+          "first_violation_in_epoch": true,
+          "transaction_id": "e2:t12",
+          "transaction": {
+            "transaction_id": "e2:t12",
+            "epoch": 2,
+            "accept_cycle": 42,
+            "data": 3183032996,
+            "response_cycle": 45,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3183032997
+          },
+          "oracle_details": {
+            "cycle": 45,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t12",
+            "expected": 3183032996,
+            "actual": 3183032997
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": true
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 46,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t13",
+          "transaction": {
+            "transaction_id": "e2:t13",
+            "epoch": 2,
+            "accept_cycle": 43,
+            "data": 4183941380,
+            "response_cycle": 46,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 4183941381
+          },
+          "oracle_details": {
+            "cycle": 46,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t13",
+            "expected": 4183941380,
+            "actual": 4183941381
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 47,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t14",
+          "transaction": {
+            "transaction_id": "e2:t14",
+            "epoch": 2,
+            "accept_cycle": 44,
+            "data": 3453681060,
+            "response_cycle": 47,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3453681061
+          },
+          "oracle_details": {
+            "cycle": 47,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t14",
+            "expected": 3453681060,
+            "actual": 3453681061
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 48,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t15",
+          "transaction": {
+            "transaction_id": "e2:t15",
+            "epoch": 2,
+            "accept_cycle": 45,
+            "data": 1922486468,
+            "response_cycle": 48,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 1922486469
+          },
+          "oracle_details": {
+            "cycle": 48,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t15",
+            "expected": 1922486468,
+            "actual": 1922486469
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 49,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t16",
+          "transaction": {
+            "transaction_id": "e2:t16",
+            "epoch": 2,
+            "accept_cycle": 46,
+            "data": 3226980996,
+            "response_cycle": 49,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 3226980997
+          },
+          "oracle_details": {
+            "cycle": 49,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t16",
+            "expected": 3226980996,
+            "actual": 3226980997
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        },
+        {
+          "semantic_key": "corrupt/order_payload/attribution_unknown",
+          "kind": "attribution_unknown",
+          "obligation": "order_payload",
+          "variant": "corrupt",
+          "scenario": "queries/s2026101531/contract_coverage/q05",
+          "cycle": 50,
+          "epoch": 2,
+          "first_violation_in_epoch": false,
+          "transaction_id": "e2:t17",
+          "transaction": {
+            "transaction_id": "e2:t17",
+            "epoch": 2,
+            "accept_cycle": 47,
+            "data": 1834900500,
+            "response_cycle": 50,
+            "cancel_cycle": null,
+            "outcome": "responded",
+            "latency": 3,
+            "observed_data": 1834900501
+          },
+          "oracle_details": {
+            "cycle": 50,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t17",
+            "expected": 1834900500,
+            "actual": 1834900501
+          },
+          "legal": true,
+          "same_input_schedule": true,
+          "independent_fixed": "no_violation_within_execution",
+          "independent_buggy": "violation",
+          "assertion_ids": [
+            "a0"
+          ],
+          "all_native_failure_ids_same_cycle": [
+            "a0"
+          ],
+          "candidate_prefix_accepted": false,
+          "trigger_measurement": "native cover action for parsed assertion antecedent",
+          "clean_first_violation_credit": false
+        }
+      ],
+      "fixed_false_positives": []
+    }
+  ]
+}

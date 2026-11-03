@@ -1,0 +1,45 @@
+{
+  "source": {
+    "source": {
+      "case_id": "lowRISC/ibex#54",
+      "source": "https://github.com/lowRISC/ibex/pull/54",
+      "title": "Fix decoding of C.LI, C.LUI, C.SRLI, C.SRAI, C.SSLI",
+      "base_commit": "cd15ce88beba8ed8496f414af361f664764f47e2",
+      "merge_commit": "5319734180ac4844e43d31ad19dc108aac503037",
+      "fix_commits": [
+        "687952e42f3eff68348770ae0c55bc5c0f036d3e"
+      ],
+      "intent": "In the compressed instruction decoder, several RISC-V compressed HINT encodings are being reported as illegal instructions. In the RISC-V C extension, these encodings are legal HINT/no-op forms: `C.LI` with destination register `x0`, `C.LUI` with destination register `x0` and a non-zero immediate (for example `0x7065`), and `C.SRLI`, `C.SRAI`, or `C.SLLI` with shift amount `0`. Ibex currently treats these compressed instructions as illegal instead of recognizing them as valid compressed HINTs. The bug affects `ibex_compressed_decoder` whenever one of those specific HINT forms is presented. The expected behavior is that these instructions are still recognized as compressed instructions and do not raise the illegal-instruction indication.",
+      "benchmark_reported_result": {
+        "passed_count": 0,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "passed_tests": [],
+        "failed_tests": [],
+        "skipped_tests": []
+      },
+      "status": "deferred",
+      "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+      "before": "not_executed",
+      "after": "not_executed",
+      "admitted": false,
+      "generator_visible": false
+    },
+    "reproduction": "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/reproduction.json",
+    "patch_verification": "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/patch_validation/result.json",
+    "source_hashes": {
+      "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/fix.patch": "182cb9713afbc8c08fdf3d14c03f44e8e09db212b3176883bca8ef9638d167c3",
+      "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/benchmark_tb.sv": "fc78fabb032bf3c2d1e60f9a1f5123c0c9bcdd49c2361b372758f997e158a1a1",
+      "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/before/ibex_compressed_decoder.sv": "b2b3ee1349c9c933dc7735ce004ce078cf3732d7b8e29a641e004bd684fd8166",
+      "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/before/ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+      "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/after/ibex_compressed_decoder.sv": "b568caec0b093981f499c4ea3a514c88c33969fe8e86e3e47a63a74fa275297c",
+      "deliverables/obligation_evidence_20261013_r02/historical_screening/ibex_54/after/ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667"
+    },
+    "generator_visible_files": [
+      "deliverables/obligation_continuation_20261013_r01/frozen/ibex/public_contract.json"
+    ],
+    "patch_or_fixed_RTL_visible": false
+  },
+  "status": "fresh original RTL/test reproduction only; not new generated/native SVA result",
+  "dataset": "development: these historical test vectors have been observed before"
+}

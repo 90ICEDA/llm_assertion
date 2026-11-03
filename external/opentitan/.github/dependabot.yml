@@ -1,0 +1,21 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      # Updates are scheduled at the beginning of the work week.
+      interval: "weekly"
+      day: "monday"
+      time: "02:00"
+      # US Pacific Time
+      timezone: "America/Los_Angeles"
+    commit-message:
+      prefix: "[dependabot]"
+      reviewers:
+        - "lowRISC/ot-python-reviewers"
+    reviewers:
+      - "timothytrippel"

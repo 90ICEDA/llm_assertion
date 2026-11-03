@@ -1,0 +1,77 @@
+{
+  "partial_stalled": [
+    {
+      "label": "first_stalled",
+      "antecedent": "first_present && !m_axis_tready",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ],
+  "replacement_ready": [
+    {
+      "label": "first_ready",
+      "antecedent": "first_present && m_axis_tready",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ],
+  "union": [
+    {
+      "label": "first_stalled",
+      "antecedent": "first_present && !m_axis_tready",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    },
+    {
+      "label": "first_ready",
+      "antecedent": "first_present && m_axis_tready",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ],
+  "full": [
+    {
+      "label": "all_first",
+      "antecedent": "first_present",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ],
+  "overbroad": [
+    {
+      "label": "overbroad_one",
+      "antecedent": "first_present",
+      "consequent": "input_complete && input_count == 1",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ],
+  "vacuous": [
+    {
+      "label": "never",
+      "antecedent": "first_present && 1'b0",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ]
+}

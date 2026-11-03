@@ -1,0 +1,73 @@
+{
+  "native": {
+    "engine": "Verilator native SVA simulation",
+    "formal_proof": false,
+    "source_sha256": "f8b75b368faca7c2777903f28ec2a44731fdcbc8a7e969adfdaf4f8e7fb4ab5d",
+    "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "compile_status": "passed",
+    "tool_support_status": "supported_for_compiled_constructs",
+    "execution_status": "completed",
+    "trigger_status": "observed",
+    "property_status": "violation",
+    "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+    "formal_cost": {
+      "calls": 0,
+      "wall_seconds": 0
+    },
+    "native_simulation_calls": 1,
+    "compile": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research15_native_20261015_r01/cover_qualification/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research15_native_20261015_r01/cover_qualification/tb.sv",
+        "--coverage-user"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research15_native_20261015_r01/cover_qualification",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 9.948870574999999
+    },
+    "execute": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research15_native_20261015_r01/cover_qualification/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research15_native_20261015_r01/cover_qualification",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.012989229000000435
+    },
+    "failures": [
+      {
+        "id": "a0",
+        "detail": "cycle=4"
+      }
+    ],
+    "triggers": [
+      {
+        "id": "a0",
+        "detail": "cycle=1"
+      },
+      {
+        "id": "a0",
+        "detail": "cycle=3"
+      }
+    ]
+  },
+  "expected_trigger_count": 2,
+  "expected_failure_count": 1,
+  "passed": true
+}

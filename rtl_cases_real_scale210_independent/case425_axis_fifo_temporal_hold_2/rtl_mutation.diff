@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -260,7 +260,7 @@
+ // Write logic
+ always @(posedge clk) begin
+     overflow_reg <= 1'b0;
+-    bad_frame_reg <= 1'b0;
++    bad_frame_reg <= bad_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed
+     good_frame_reg <= 1'b0;
+ 
+     if (s_axis_tready && s_axis_tvalid && LAST_ENABLE) begin

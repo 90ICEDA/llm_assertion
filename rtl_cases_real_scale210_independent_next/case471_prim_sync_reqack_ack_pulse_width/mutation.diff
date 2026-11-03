@@ -1,0 +1,14 @@
+--- correct.v
++++ buggy.v
+@@ -18,8 +18,9 @@
+         request_pending <= 1'b1;
+         dst_req_o <= 1'b1;
+       end else if (request_pending && dst_ack_i) begin
+-        request_pending <= 1'b0;
+-        dst_req_o <= 1'b0;
++        // MUTATION: ACK is forwarded, but the completed transaction is not retired.
++        request_pending <= 1'b1;
++        dst_req_o <= 1'b1;
+         src_ack_o <= 1'b1;
+       end
+     end

@@ -1,0 +1,95 @@
+{
+  "name": "case412_cc_edge_propagator_tx_temporal_hold_1",
+  "parent_bug_id": "case412_cc_edge_propagator_tx_temporal_hold_1",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_edge_propagator_tx",
+  "source_files": [
+    "external/common_cells/src/cc_edge_propagator_tx.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_edge_propagator_tx.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "r_input_reg state update is suppressed",
+  "spec": "Reset clears the retained input request and synchronizer state. With reset asserted, valid_o is low and the exposed retained-request and synchronization aliases are zero.",
+  "mutation_edits": [
+    {
+      "line": 30,
+      "search": "            r_input_reg <= 1'b0;",
+      "replace": "            r_input_reg <= r_input_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "r_input_reg",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "valid_i",
+    "ack_i",
+    "valid_o",
+    "r_input_reg",
+    "sync_a[1:0]"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "d7322999d9e68f4c6decbf65f644895281b016f11c21864e71ba8b8e178f0409",
+  "buggy_sha256": "773347b6d7b55948f7fa8044fdd8ab99edb566548dc4f3370ea9a725d3f1f661",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk_i) !rst_ni |-> (!valid_o && !r_input_reg && sync_a == 2'b00));",
+    "temporal_type": "cross-cycle sequential state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "r_input_reg",
+        "valid_o"
+      ],
+      "good": {
+        "r_input_reg": "0",
+        "valid_o": "0"
+      },
+      "bad": {
+        "r_input_reg": "x",
+        "valid_o": "x"
+      }
+    },
+    "heldout": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "r_input_reg",
+        "valid_o"
+      ],
+      "good": {
+        "r_input_reg": "0",
+        "valid_o": "0"
+      },
+      "bad": {
+        "r_input_reg": "x",
+        "valid_o": "x"
+      }
+    },
+    "decoy": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "r_input_reg",
+        "valid_o"
+      ],
+      "good": {
+        "r_input_reg": "0",
+        "valid_o": "0"
+      },
+      "bad": {
+        "r_input_reg": "x",
+        "valid_o": "x"
+      }
+    }
+  },
+  "contract_status": "formal_complete"
+}

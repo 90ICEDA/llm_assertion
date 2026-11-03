@@ -1,0 +1,103 @@
+{
+  "name": "case472_prim_pulse_sync_destination_single_cycle",
+  "parent_bug_id": "case472_prim_pulse_sync_destination_single_cycle",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_pulse_sync",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_pulse_sync.sv"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "cdc_destination_pulse_width",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_src_i",
+    "rst_src_ni",
+    "src_pulse_i",
+    "clk_dst_i",
+    "rst_dst_ni",
+    "dst_pulse_o"
+  ],
+  "temporal_type": "CDC toggle-to-pulse reconstruction",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_dst_i) disable iff (!rst_dst_ni) dst_pulse_o |=> !dst_pulse_o);"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "dst_pulse_o",
+        "q_o"
+      ],
+      "good_values": {
+        "dst_pulse_o": "0",
+        "q_o": "0"
+      },
+      "bad_values": {
+        "dst_pulse_o": "1",
+        "q_o": "1"
+      },
+      "good_trace_sha256": "2e60577ce5706f405b0338d2851a8c694e98e1c800d4fe1a2355ebdffce9bfbd",
+      "bad_trace_sha256": "ad02c81f1a8d8417d919d8837a5238d38bfb4ed9df8be331dac8ec657767f25e",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 24,
+      "good_row_index": 24,
+      "bad_row_index": 24,
+      "signals": [
+        "dst_pulse_o",
+        "q_o"
+      ],
+      "good_values": {
+        "dst_pulse_o": "0",
+        "q_o": "0"
+      },
+      "bad_values": {
+        "dst_pulse_o": "1",
+        "q_o": "1"
+      },
+      "good_trace_sha256": "60cfa9dcff38160c12ab8cbb0196f2feab84614971c81d84dd64b3789fb533c6",
+      "bad_trace_sha256": "1f8c01285cddb12c7eff2cfcc28cf6f97d6e7cf3fcf56d23191e2e66c29f330a",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 75000,
+      "sample_index": 16,
+      "good_row_index": 16,
+      "bad_row_index": 16,
+      "signals": [
+        "dst_pulse_o",
+        "q_o"
+      ],
+      "good_values": {
+        "dst_pulse_o": "0",
+        "q_o": "0"
+      },
+      "bad_values": {
+        "dst_pulse_o": "1",
+        "q_o": "1"
+      },
+      "good_trace_sha256": "aa59486eb4d3fd19a0681a1fb5861f5b1d3d8a8c263038df2255387e7de0baa1",
+      "bad_trace_sha256": "b285c078af614b59d5cc4d5cd964983fe776cfebb2ebf6562e4ab110c3c9b745",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "8f58e4904a4156ce877a926f680ee3ac8400c942876fcc71917173a4eb42a096",
+  "buggy_sha256": "f893481d2ab3ed8c709026ec684ca1c58b3b9597073c42990a8273b355cf594c"
+}

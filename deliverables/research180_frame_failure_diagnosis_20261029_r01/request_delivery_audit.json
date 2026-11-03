@@ -1,0 +1,284 @@
+{
+  "request_path": "deliverables/research179_frame_controller_run_20261029_r01/shared/model_call/request.json",
+  "request_sha256": "2623747052fe4f340f7bd423a0a8d5d0829e6baac550d92a797b7d82b31d9126",
+  "preview_matched": true,
+  "public_sample_count": 10,
+  "legal_multi_sample_indices": [
+    1,
+    4,
+    6,
+    9
+  ],
+  "all_eight_alarms_have_exact_sent_window": true,
+  "monitor_definition": "acc_bytes is bytes in unfinished accepted frame before this edge; beat_bytes is current beat byte count; finish=valid&&ready&&last; prev_complete means the previous clock accepted last. All monitor assignments are passive and reset to0. Properties sample pre-edge; registered output for accepted TLAST is checked next edge. No cycle/sid/internal RTL identifiers allowed.",
+  "specification": "Count only monitor valid&&ready beats. With KEEP_ENABLE1 and contiguous low keep masks, byte count is popcount; with KEEP_ENABLE0,width8 one byte per accepted beat. One cycle after accepted TLAST report that frame length and valid; next frame starts zero; reset discards partial frame. Count sums stay below16-bit wrap.",
+  "public_inventory": [
+    {
+      "index": 0,
+      "config": 0,
+      "accepted_cycles": [
+        3
+      ],
+      "accepted_beats": 1,
+      "bytes_per_beat": [
+        1
+      ],
+      "expected": 1,
+      "anchor_cycle": 3,
+      "check_cycle": 4,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 1,
+      "config": 0,
+      "accepted_cycles": [
+        8,
+        11,
+        12
+      ],
+      "accepted_beats": 3,
+      "bytes_per_beat": [
+        1,
+        1,
+        1
+      ],
+      "expected": 3,
+      "anchor_cycle": 12,
+      "check_cycle": 13,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 2,
+      "config": 0,
+      "accepted_cycles": [
+        16
+      ],
+      "accepted_beats": 1,
+      "bytes_per_beat": [
+        1
+      ],
+      "expected": 1,
+      "anchor_cycle": 16,
+      "check_cycle": 17,
+      "legal_before_and_after": false,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 3,
+      "config": 0,
+      "accepted_cycles": [
+        20
+      ],
+      "accepted_beats": 1,
+      "bytes_per_beat": [
+        1
+      ],
+      "expected": 1,
+      "anchor_cycle": 20,
+      "check_cycle": 21,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 4,
+      "config": 0,
+      "accepted_cycles": [
+        22,
+        23
+      ],
+      "accepted_beats": 2,
+      "bytes_per_beat": [
+        1,
+        1
+      ],
+      "expected": 2,
+      "anchor_cycle": 23,
+      "check_cycle": 24,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 5,
+      "config": 1,
+      "accepted_cycles": [
+        3
+      ],
+      "accepted_beats": 1,
+      "bytes_per_beat": [
+        4
+      ],
+      "expected": 4,
+      "anchor_cycle": 3,
+      "check_cycle": 4,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 6,
+      "config": 1,
+      "accepted_cycles": [
+        8,
+        11,
+        12
+      ],
+      "accepted_beats": 3,
+      "bytes_per_beat": [
+        4,
+        4,
+        3
+      ],
+      "expected": 11,
+      "anchor_cycle": 12,
+      "check_cycle": 13,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 7,
+      "config": 1,
+      "accepted_cycles": [
+        16
+      ],
+      "accepted_beats": 1,
+      "bytes_per_beat": [
+        2
+      ],
+      "expected": 2,
+      "anchor_cycle": 16,
+      "check_cycle": 17,
+      "legal_before_and_after": false,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 8,
+      "config": 1,
+      "accepted_cycles": [
+        20
+      ],
+      "accepted_beats": 1,
+      "bytes_per_beat": [
+        1
+      ],
+      "expected": 1,
+      "anchor_cycle": 20,
+      "check_cycle": 21,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    },
+    {
+      "index": 9,
+      "config": 1,
+      "accepted_cycles": [
+        22,
+        23
+      ],
+      "accepted_beats": 2,
+      "bytes_per_beat": [
+        4,
+        2
+      ],
+      "expected": 6,
+      "anchor_cycle": 23,
+      "check_cycle": 24,
+      "legal_before_and_after": true,
+      "native_aliases": {
+        "acc": "acc_bytes",
+        "prev": "prev_complete",
+        "k": "monitor_axis_tkeep",
+        "v": "monitor_axis_tvalid",
+        "r": "monitor_axis_tready",
+        "last": "monitor_axis_tlast",
+        "length": "frame_len",
+        "valid": "frame_len_valid"
+      }
+    }
+  ],
+  "explicit_sample_alias_map": false,
+  "disable_iff_wrapper_disclosed": false,
+  "prompt_tokens": 5539,
+  "completion_tokens": 494,
+  "limitation": "Submission log and service usage confirm supplied content, not model attention to every field. One call cannot establish the causal effect of presentation length or aliases."
+}

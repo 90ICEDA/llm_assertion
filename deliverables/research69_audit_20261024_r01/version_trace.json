@@ -1,0 +1,51 @@
+[
+  {
+    "version": "v0",
+    "status": "response_received",
+    "candidate_hash": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+    "properties": [
+      {
+        "id": "a0",
+        "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected"
+      },
+      {
+        "id": "a1",
+        "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+      },
+      {
+        "id": "a2",
+        "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)"
+      },
+      {
+        "id": "a3",
+        "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)"
+      },
+      {
+        "id": "a4",
+        "property": "((mvalid && (!(mready)))) |=> (((mdata == $past(mdata)) && (mvalid == $past(mvalid))))"
+      }
+    ],
+    "accepted": true,
+    "target": {
+      "rows": 14814,
+      "unknown": 0,
+      "triggers": 5612,
+      "false_positives": 0,
+      "detections": 4,
+      "misses": 0,
+      "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+      "later_attribution_unknown": 151
+    },
+    "history": {
+      "rows": 69124,
+      "unknown": 0,
+      "triggers": 16469,
+      "false_positives": 0,
+      "detections": 214,
+      "misses": 0,
+      "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+      "later_attribution_unknown": 1177
+    },
+    "reason_kinds": []
+  }
+]

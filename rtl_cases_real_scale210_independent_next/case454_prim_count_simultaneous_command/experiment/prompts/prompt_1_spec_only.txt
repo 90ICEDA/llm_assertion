@@ -1,0 +1,15 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, incr_en_i, decr_en_i, cnt_o, cnt_after_commit_o
+
+Specification:
+
+# Behavioral specification
+
+When increment and decrement are asserted together, the counter must retain its prior value.

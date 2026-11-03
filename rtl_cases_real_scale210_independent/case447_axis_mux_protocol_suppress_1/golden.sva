@@ -1,0 +1,2 @@
+// Temporal type: selected-lane ready propagation
+assert property (@(posedge clk) disable iff (rst) (enable && m_axis_tready) |-> s_axis_tready[select]);

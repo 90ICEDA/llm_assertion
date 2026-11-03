@@ -1,0 +1,40 @@
+{
+  "case": "original Ibex #166 decoder",
+  "count": 96,
+  "family_counts": {
+    "branch_reserved": 24,
+    "op_bit28": 24,
+    "branch_legal": 24,
+    "op_control": 24
+  },
+  "configurations": [
+    {
+      "RV32E": 0,
+      "RV32M": 1
+    },
+    {
+      "RV32E": 0,
+      "RV32M": 0
+    },
+    {
+      "RV32E": 1,
+      "RV32M": 1
+    },
+    {
+      "RV32E": 1,
+      "RV32M": 0
+    }
+  ],
+  "new_configuration": {
+    "RV32E": 1,
+    "RV32M": 0
+  },
+  "phases": "Each word has 2..9 samples; first instr_new=1 then same bits held with instr_new=0. Each hold length occurs three times per family.",
+  "strata": "BRANCH covers all legal/reserved funct3, 12 words per branch family have bit28=1. OP target cycles funct7=8,9,40 and all funct3. OP controls include base operations, legal SUB/SRA, and M encodings (illegal when RV32M=0). All register operands <16.",
+  "generation": "Seed drawn only after freeze.json exists. Reject only word collisions, never native outcomes. No regeneration or candidate selection.",
+  "acceptance": "Native completion; zero misses, false alarms across ALL properties, critical unknown, required-untriggered. Every configuration must expose OP violations in first AND held phases and BRANCH violations in held phase. BRANCH first samples must have correct illegal_insn=1 in both revisions, actual antecedent trigger, and no assertion failure. Legal controls must occur in every configuration and phase.",
+  "independence": "Instruction-word disjoint from recorded lineage development and prior tests; same known bug mechanisms, not new bug discovery. No model calls or feedback.",
+  "failure_policy": "Retain frozen candidate and all test failures. If later used for modifications, entire batch becomes development and fresh tests are required.",
+  "scope": "Combinational original decoder only, not FIFO, whole-core execution, trap/retire, or formal proof.",
+  "previous_batch": "r01 remains failed under its original rule; all 96 words excluded here. No assertion changes."
+}

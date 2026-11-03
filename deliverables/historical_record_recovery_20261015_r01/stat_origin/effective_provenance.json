@@ -1,0 +1,47 @@
+{
+  "parent": "case505_axis_stat_counter_frame_pulse_early",
+  "status": "provenance_mismatch_confirmed_not_repaired",
+  "actual_upstream_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "upstream_module": "AXI monitor/statistics module",
+  "local_module": "Eight-line frame_done/stat_valid pipeline surrogate",
+  "source_hashes": {
+    "correct.v": "95572170f99b38279d312a3f063fb6d2ddf468dba1c4fbd3888729974a73c34b",
+    "buggy.v": "6f375b4de3c411d5449f540ff3f11559f85e4b0be81c21ef22479bb4c4e54eb6",
+    "case_metadata.json": "e806151a23755d01f043ad3d91acdcd844f180e8f66a0055b6da172e35acfe5e",
+    "spec.md": "58641267246849f93f871ad2e73eece2b1142a0bb26ec269612792c8dc15291a",
+    "mutation.diff": "5bed34aa1f70d1105cca3e1d1e963590f95070931dcf2a458ee97fc039f76ab6"
+  },
+  "missing": [
+    "Transformation/reduction derivation from the claimed upstream module",
+    "Confirmed mapping of events, cycles and resets",
+    "Upstream authority for local two-cycle and overlap semantics",
+    "Original creation patch/session establishing the claimed historical mutation"
+  ],
+  "effective_classification": "local_synthetic_pipeline_with_unverified_upstream_mapping",
+  "effective_historical_admission": false,
+  "raw_metadata_preserved": true,
+  "search_scope": [
+    "scripts/src/configs/docs/analysis text search",
+    "Related July project Git tree/history",
+    "Available July/August/September session logs by exact case id",
+    "Small local project/result archives by member names"
+  ],
+  "warning": "The existing local metadata says actual_rtl_logic_change/final_verified_admitted. This recovery overlay supersedes its historical-provenance interpretation only; it does not rewrite old files or invalidate the existence of local synthetic simulations.",
+  "solution_options": [
+    {
+      "option": "Preserve the current local case as synthetic engineering data",
+      "needed": "Explicit local specification owner must define sampled latency, captured length and overlap; all resulting conclusions limited to that contract.",
+      "historical_claim_allowed": false
+    },
+    {
+      "option": "Recover the missing derivation",
+      "needed": "Original generation script/patch, its input upstream blob, reduction assumptions, event mapping and equivalence evidence. Archive and independently verify before historical admission.",
+      "historical_claim_allowed": "only after verification"
+    },
+    {
+      "option": "Create a new real upstream task",
+      "needed": "Select an actual fixed-before/fixed-after upstream commit pair and reproduce its AXI-level behavior with an independent monitor. This is a new experiment, not repair of the old provenance.",
+      "historical_claim_allowed": "only for the new reproduced task"
+    }
+  ]
+}

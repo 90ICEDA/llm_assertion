@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case482_cc_stream_demux_unselected_ready_accept",
+  "parent_bug_id": "case482_cc_stream_demux_unselected_ready_accept",
+  "source_project": "common_cells",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "id": "W1_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "property": "valid_i |-> $onehot(valid_o)",
+      "antecedent": "valid_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Valid routing remains one-hot.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W2_final_output_only",
+      "weakness_class": "final_output_only",
+      "property": "data_o==data_i",
+      "antecedent": "1'b1",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Payload path is unaffected.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W3_delay_removed",
+      "weakness_class": "delay_removed",
+      "property": "ready_i[sel_i] |-> ready_o",
+      "antecedent": "ready_i[sel_i]",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Only checks the sufficient direction.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W4_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "property": "!valid_i || $onehot(valid_o)",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "No selected-ready equivalence.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W5_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "property": "|valid_o |-> valid_i",
+      "antecedent": "|valid_o",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Valid encoding survives mutation.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    }
+  ]
+}

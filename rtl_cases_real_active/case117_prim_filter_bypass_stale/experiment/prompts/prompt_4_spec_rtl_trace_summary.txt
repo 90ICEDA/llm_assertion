@@ -261,13 +261,18 @@ endmodule
 
 Trace divergence summary:
 Case: case117_prim_filter_bypass_stale
-First divergence cycle: none
-Differing signals at first divergence: (none)
+First divergence cycle: 6
+Differing signals at first divergence: filter_o
+Observed differing signal values (good): filter_o=0
+Observed differing signal values (bad): filter_o=1
 
 Structured trace summary:
-- first_divergence_cycle: none
-- differing_signals: (none)
-- divergence_snapshot: (none)
+- first_divergence_cycle: 6
+- differing_signals: filter_o
+- first_divergence_time_ps: 65000
+- divergence_observation: posedge_cycle
+- divergence_snapshot:
+  - filter_o: good=0, bad=1
 
 Summary-driven construction checklist:
 - Identify the first divergence cycle and the listed differing signal(s).

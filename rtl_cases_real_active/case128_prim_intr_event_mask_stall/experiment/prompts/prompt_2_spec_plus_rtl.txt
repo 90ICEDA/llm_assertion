@@ -18,7 +18,7 @@ Allowed signals:
 clk, rst_n, event_intr_i, reg2hw_intr_enable_q_i, reg2hw_intr_state_q_i, intr_o
 
 Specification:
-With FlopOutput enabled, a fresh event shall appear at intr_o on the next cycle even before software state feedback loops around.
+With FlopOutput enabled in Event mode, intr_o shall be derived from the committed interrupt state feedback, not from the speculative next-state in the same event cycle.
 
 Additional guidance:
 - Use only the allowed interface-visible signals in the final assertion.

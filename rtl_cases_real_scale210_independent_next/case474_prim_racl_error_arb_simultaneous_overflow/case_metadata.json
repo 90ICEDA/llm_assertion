@@ -1,0 +1,105 @@
+{
+  "name": "case474_prim_racl_error_arb_simultaneous_overflow",
+  "parent_bug_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_racl_error_arb",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_racl_error_arb.sv"
+  ],
+  "bug_class": "combination_protocol",
+  "bug_family": "simultaneous_error_overflow_aggregation",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "error_valid_i",
+    "error_overflow_i",
+    "error_payload_i",
+    "error_valid_o",
+    "error_overflow_o",
+    "error_payload_o"
+  ],
+  "temporal_type": "same-cycle arbitration collision reporting",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ($countones(error_valid_i) > 1) |-> error_overflow_o);"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 30000,
+      "sample_index": 7,
+      "good_row_index": 7,
+      "bad_row_index": 7,
+      "signals": [
+        "error_overflow_o",
+        "q_o"
+      ],
+      "good_values": {
+        "error_overflow_o": "1",
+        "q_o": "1"
+      },
+      "bad_values": {
+        "error_overflow_o": "0",
+        "q_o": "0"
+      },
+      "good_trace_sha256": "d4ffcc7d81f0989b0d2a620c823daf7dbbfa7bd116e2c41e88b4a639ab64d752",
+      "bad_trace_sha256": "9ae78ea536a121bdc58e82c3a04d65842a5b8083e96ab5313ff255bcde0a1fbe",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 30000,
+      "sample_index": 7,
+      "good_row_index": 7,
+      "bad_row_index": 7,
+      "signals": [
+        "error_overflow_o",
+        "q_o"
+      ],
+      "good_values": {
+        "error_overflow_o": "1",
+        "q_o": "1"
+      },
+      "bad_values": {
+        "error_overflow_o": "0",
+        "q_o": "0"
+      },
+      "good_trace_sha256": "8ec8c67d7262808cafe892b437582bc8af48972025ee0757406121eeea273788",
+      "bad_trace_sha256": "c8a4af296c68e85f76afbf2b8e972fce7ba29bbc578c3befe261b58e29c12409",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 70000,
+      "sample_index": 15,
+      "good_row_index": 15,
+      "bad_row_index": 15,
+      "signals": [
+        "error_overflow_o",
+        "q_o"
+      ],
+      "good_values": {
+        "error_overflow_o": "1",
+        "q_o": "1"
+      },
+      "bad_values": {
+        "error_overflow_o": "0",
+        "q_o": "0"
+      },
+      "good_trace_sha256": "e26286943251bbdd3be3ae575de82453d88e59108d22fdb478aa9fdd67e780db",
+      "bad_trace_sha256": "24e5d356c6ae68ba3e0e567e519675a33aeaf9c32812161fbaae65e6792b04d5",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "2b552791282e008f18e9244f5bc232fea7bd99ff30e6cfda23113e8900eeda1e",
+  "buggy_sha256": "e97b3c655dc7f4a2f8ab878bab6d8f3b27e88d938fde85f632e776614fe85734"
+}

@@ -1,0 +1,90 @@
+{
+  "name": "case438_cc_fifo_protocol_suppress_2",
+  "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_fifo",
+  "source_files": [
+    "external/common_cells/src/cc_fifo.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_fifo.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "empty_o combinational/protocol output is forced low",
+  "spec": "For the zero-depth FIFO configuration, emptiness is the inverse of an active push in the same cycle; a presented item makes the combinational FIFO non-empty.",
+  "mutation_edits": [
+    {
+      "line": 58,
+      "search": "        assign empty_o     = ~push_i;",
+      "replace": "        assign empty_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "empty_o",
+  "relevant_signals": [
+    "push_i",
+    "empty_o",
+    "full_o",
+    "data_i[7:0]",
+    "data_o[7:0]"
+  ],
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [
+    {
+      "search": "{FifoDepth{data_t'('0)}}",
+      "replace": "'0",
+      "semantic_change": false
+    }
+  ],
+  "correct_sha256": "630c118b2e513b78456b47f6b0334601679a722ee9dc3a23b5971478441d565c",
+  "buggy_sha256": "379348a1c8cd585b85bdc4df98b246c0c7d73282308b6a10d8d1b417c78d08d7",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(*) (empty_o == !push_i));",
+    "temporal_type": "same-cycle combinational/protocol relation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "empty_o"
+      ],
+      "good": {
+        "empty_o": "1"
+      },
+      "bad": {
+        "empty_o": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 19,
+      "observation_index": 6,
+      "signals": [
+        "empty_o"
+      ],
+      "good": {
+        "empty_o": "1"
+      },
+      "bad": {
+        "empty_o": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "empty_o"
+      ],
+      "good": {
+        "empty_o": "1"
+      },
+      "bad": {
+        "empty_o": "0"
+      }
+    }
+  },
+  "contract_status": "formal_complete"
+}

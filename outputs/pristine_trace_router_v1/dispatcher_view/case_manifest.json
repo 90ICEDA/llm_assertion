@@ -1,0 +1,1333 @@
+{
+  "cases": [
+    {
+      "name": "case426_axis_fifo_temporal_hold_3",
+      "parent_bug_id": "case426_axis_fifo_temporal_hold_3",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_fifo",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_fifo.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_fifo.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "good_frame_reg state update is suppressed",
+      "spec": "In frame-FIFO mode, accepting the final beat of a frame that is not marked bad shall raise status_good_frame for one clock interval. If no new good frame completes on the next clock, status_good_frame shall return low.",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (!(s_axis_tvalid && s_axis_tready && s_axis_tlast && !s_axis_tuser)) |=> !status_good_frame);",
+      "mutation_edits": [
+        {
+          "line": 264,
+          "search": "    good_frame_reg <= 1'b0;",
+          "replace": "    good_frame_reg <= good_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "good_frame_reg",
+      "relevant_signals": [
+        "rst",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "s_axis_tlast",
+        "s_axis_tuser",
+        "status_good_frame"
+      ],
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "status_good_frame"
+          ]
+        },
+        "heldout": {
+          "time_ps": 65000,
+          "clock_cycle": 7,
+          "signals": [
+            "status_good_frame"
+          ]
+        },
+        "decoy": {
+          "time_ps": 75000,
+          "clock_cycle": 8,
+          "signals": [
+            "status_good_frame"
+          ]
+        }
+      },
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "aefddc67fc3552d919280424606fc6b048e61d7df9ee7ee0f8801c082c1cfc39",
+      "buggy_sha256": "8f43797ca67fe891f3a28f1db8f57094999a21cd6f5d2857a8c90ac161af6c12",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated"
+    },
+    {
+      "name": "case440_cc_onehot_protocol_suppress_2",
+      "parent_bug_id": "case440_cc_onehot_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_onehot",
+      "source_files": [
+        "external/common_cells/src/cc_onehot.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_onehot.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "sum[0] combinational/protocol output is forced low",
+      "spec": "is_onehot_o must be asserted when d_i contains exactly one set bit and deasserted for zero or for two-or-more set bits. The result is a same-cycle combinational classification and applies to every input bit position.",
+      "golden_sva": "always_comb assert (is_onehot_o == $onehot(d_i));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 4,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 2,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 34,
+          "search": "    assign sum[0] = d_i;",
+          "replace": "    assign sum[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "sum[0]",
+      "relevant_signals": [
+        "d_i",
+        "is_onehot_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "e68efe28e677819cd434a32700733b11cb192c935094750a906ceec2041cf19c",
+      "buggy_sha256": "21426056cfa665256c1c83ec3a394ea64a80458be54d4f97728a497ad904d435",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case417_cc_clk_mux_glitch_free_temporal_hold_1",
+      "parent_bug_id": "case417_cc_clk_mux_glitch_free_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_clk_mux_glitch_free",
+      "source_files": [
+        "external/common_cells/src/cc_clk_mux_glitch_free.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_clk_mux_glitch_free.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "async_reset_bypass_active_q[i] state update is suppressed",
+      "spec": "When ClockDuringReset is enabled and asynchronous reset is asserted, the clock selected by async_sel_i must be able to propagate to clk_o without waiting for the reset synchronizers. Test enable instead selects test_clk_i. After reset release, the mux transitions to synchronized glitch-free clock selection.",
+      "golden_sva": "assert property (@(posedge clks_i[0] or posedge clks_i[1]) (!async_rstn_i && !test_en_i && clks_i[async_sel_i]) |-> clk_o);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 5,
+          "observation_index": 2,
+          "clock": "selected clks_i",
+          "clock_cycle": 1,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "1"
+          },
+          "bad": {
+            "clk_o": "x"
+          }
+        },
+        "decoy": {
+          "time_ps": 35,
+          "observation_index": 19,
+          "clock": "selected clks_i",
+          "clock_cycle": 3,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "1"
+          },
+          "bad": {
+            "clk_o": "x"
+          }
+        },
+        "heldout": {
+          "time_ps": 9,
+          "observation_index": 5,
+          "clock": "selected clks_i",
+          "clock_cycle": 1,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "1"
+          },
+          "bad": {
+            "clk_o": "x"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 200,
+          "search": "          async_reset_bypass_active_q[i] <= 1'b1;",
+          "replace": "          async_reset_bypass_active_q[i] <= async_reset_bypass_active_q[i]; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "async_reset_bypass_active_q[i]",
+      "relevant_signals": [
+        "clks_i",
+        "test_clk_i",
+        "test_en_i",
+        "async_rstn_i",
+        "async_sel_i",
+        "clk_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "44763ddf2f5ce9658499475a79f04c69474ed70d7131d875ccd93cbe422609e0",
+      "buggy_sha256": "ebbdda0e130b62e966dcf216ebd68133583b7e688f7388c2a79cf5c5e47bb3f8",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case435_prim_filter_ctr_protocol_suppress_1",
+      "parent_bug_id": "case435_prim_filter_ctr_protocol_suppress_1",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_filter_ctr",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "filter_synced combinational/protocol output is forced low",
+      "spec": "With AsyncOn disabled, filter_i is the synchronous input sample. While enable_i is low, filter_o shall equal filter_i in the same cycle. While enable_i is high, filter_o changes only after the new input value has remained stable for the configured threshold interval.",
+      "golden_sva": {
+        "name": "FilterBypassTracksInput_A",
+        "clock": "@(posedge clk_i)",
+        "disable_iff": "!rst_ni",
+        "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (!enable_i) |-> (filter_o == filter_i));",
+        "temporal_type": "same-cycle implication"
+      },
+      "mutation_edits": [
+        {
+          "line": 46,
+          "search": "    assign filter_synced = filter_i;",
+          "replace": "    assign filter_synced = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "filter_synced",
+      "relevant_signals": [
+        "rst_ni",
+        "clk_i",
+        "enable_i",
+        "filter_i",
+        "thresh_i",
+        "filter_o",
+        "filter_synced",
+        "stored_value_q",
+        "diff_ctr_q"
+      ],
+      "first_divergence": {
+        "cycle_definition": "cycle_index is the zero-based ordinal of the most recent rising clk_i edge in the CSV; sample_index is the zero-based CSV data-row index",
+        "primary": {
+          "time_ps": 20000,
+          "cycle_index": 1,
+          "sample_index": 4,
+          "clock_phase": "falling edge / same-cycle combinational response",
+          "signals": [
+            "filter_o"
+          ],
+          "good_values": {
+            "filter_o": "1"
+          },
+          "bad_values": {
+            "filter_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 48000,
+          "cycle_index": 3,
+          "sample_index": 8,
+          "clock_phase": "falling edge / same-cycle combinational response",
+          "signals": [
+            "filter_o"
+          ],
+          "good_values": {
+            "filter_o": "1"
+          },
+          "bad_values": {
+            "filter_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 36000,
+          "cycle_index": 4,
+          "sample_index": 9,
+          "clock_phase": "rising edge",
+          "signals": [
+            "filter_o"
+          ],
+          "good_values": {
+            "filter_o": "1"
+          },
+          "bad_values": {
+            "filter_o": "0"
+          }
+        }
+      },
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "770a3ae13dc5fc389cb0ab513ab2becc9f1521ea83f55ce4eb517c77b1a7dfde",
+      "buggy_sha256": "b956f9998b57f389ef32c78fc0d995dcdc1092feb92ac0ce0dace5898dc50bf8",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "trace_validated_metadata_complete"
+    },
+    {
+      "name": "case415_cc_rstgen_bypass_temporal_hold_1",
+      "parent_bug_id": "case415_cc_rstgen_bypass_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_rstgen_bypass",
+      "source_files": [
+        "external/common_cells/src/cc_rstgen_bypass.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_rstgen_bypass.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "synch_regs_q state update is suppressed",
+      "spec": "In functional mode, asserting the active-low reset must immediately assert both synchronized reset outputs, independently of the clock. The outputs may deassert only after reset release has propagated through the configured synchronization stages. In test mode, the dedicated test reset controls rst_no while init_no remains released.",
+      "golden_sva": "assert property (@(negedge rst_ni) !test_mode_i |-> (!rst_no && !init_no));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 3,
+          "observation_index": 1,
+          "clock": "clk_i",
+          "clock_cycle": 0,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "0",
+            "init_no": "0"
+          },
+          "bad": {
+            "rst_no": "x",
+            "init_no": "x"
+          }
+        },
+        "decoy": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock": "clk_i",
+          "clock_cycle": 0,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "0",
+            "init_no": "0"
+          },
+          "bad": {
+            "rst_no": "x",
+            "init_no": "x"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock": "clk_i",
+          "clock_cycle": 0,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "0",
+            "init_no": "0"
+          },
+          "bad": {
+            "rst_no": "x",
+            "init_no": "x"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 55,
+          "search": "            synch_regs_q <= 0;",
+          "replace": "            synch_regs_q <= synch_regs_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "synch_regs_q",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "rst_test_mode_ni",
+        "test_mode_i",
+        "rst_no",
+        "init_no"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a7dab27285db6aecdb3146c9a34a418504d58f8a84f1e87b345b3fbe597e9712",
+      "buggy_sha256": "79901a7c1d54a912ef9f6628082946489c98b6e893e3c6262454fc01acc78767",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case421_axis_register_temporal_hold_1",
+      "parent_bug_id": "case421_axis_register_temporal_hold_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_register",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_register.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_register.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "s_axis_tready_reg state update is suppressed",
+      "spec": "After reset is released, when the downstream interface can accept data and the output buffer is not blocking progress, the registered AXI-stream input interface shall advertise ready on the following clock. An accepted input beat shall subsequently be presented on the output while respecting ready/valid backpressure.",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (m_axis_tready && !m_axis_tvalid) |=> s_axis_tready);",
+      "mutation_edits": [
+        {
+          "line": 160,
+          "search": "        s_axis_tready_reg <= s_axis_tready_early;",
+          "replace": "        s_axis_tready_reg <= s_axis_tready_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "s_axis_tready_reg",
+      "relevant_signals": [
+        "rst",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "m_axis_tvalid",
+        "m_axis_tready"
+      ],
+      "first_divergence": {
+        "primary": {
+          "time_ps": 25000,
+          "clock_cycle": 3,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "heldout": {
+          "time_ps": 35000,
+          "clock_cycle": 4,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "decoy": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "s_axis_tready"
+          ]
+        }
+      },
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+      "buggy_sha256": "315e03ac970dac1f0ac5e3f66591e75df22190c247c9e3b13a960b9e81a095ba",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated"
+    },
+    {
+      "name": "case416_cc_rstgen_bypass_temporal_hold_2",
+      "parent_bug_id": "case416_cc_rstgen_bypass_temporal_hold_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_rstgen_bypass",
+      "source_files": [
+        "external/common_cells/src/cc_rstgen_bypass.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_rstgen_bypass.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "synch_regs_q state update is suppressed",
+      "spec": "In functional mode, reset assertion drives rst_no and init_no low asynchronously. After rst_ni is released, both outputs remain low while the release is synchronized and then rise after NumRegs active clock edges; they must not remain asserted indefinitely. Test mode selects the dedicated test reset behavior.",
+      "golden_sva": "assert property (@(posedge clk_i) disable iff (!rst_ni || test_mode_i) $rose(rst_ni) |-> ##3 (rst_no && init_no));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45,
+          "observation_index": 10,
+          "clock": "clk_i",
+          "clock_cycle": 5,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "1",
+            "init_no": "1"
+          },
+          "bad": {
+            "rst_no": "0",
+            "init_no": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 63,
+          "observation_index": 11,
+          "clock": "clk_i",
+          "clock_cycle": 5,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "1",
+            "init_no": "1"
+          },
+          "bad": {
+            "rst_no": "0",
+            "init_no": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 27,
+          "observation_index": 10,
+          "clock": "clk_i",
+          "clock_cycle": 5,
+          "signals": [
+            "rst_no",
+            "init_no"
+          ],
+          "good": {
+            "rst_no": "1",
+            "init_no": "1"
+          },
+          "bad": {
+            "rst_no": "0",
+            "init_no": "0"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 57,
+          "search": "            synch_regs_q <= {synch_regs_q[NumRegs-2:0], 1'b1};",
+          "replace": "            synch_regs_q <= synch_regs_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "synch_regs_q",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "rst_test_mode_ni",
+        "test_mode_i",
+        "rst_no",
+        "init_no"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a7dab27285db6aecdb3146c9a34a418504d58f8a84f1e87b345b3fbe597e9712",
+      "buggy_sha256": "c3b6b3e7923b9f58085dd6858d15e2f552f45b94b5aad16d6bbcbe655d905409",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case439_cc_onehot_protocol_suppress_1",
+      "parent_bug_id": "case439_cc_onehot_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_onehot",
+      "source_files": [
+        "external/common_cells/src/cc_onehot.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_onehot.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "is_onehot_o combinational/protocol output is forced low",
+      "spec": "For Width=1, is_onehot_o is asserted exactly when the sole input bit is asserted. More generally, is_onehot_o is high if and only if d_i contains exactly one set bit; all-zero and multi-hot inputs produce a low result.",
+      "golden_sva": "always_comb assert (is_onehot_o == $onehot(d_i));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 5,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 2,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "is_onehot_o"
+          ],
+          "good": {
+            "is_onehot_o": "1"
+          },
+          "bad": {
+            "is_onehot_o": "0"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 26,
+          "search": "    assign is_onehot_o = d_i;",
+          "replace": "    assign is_onehot_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "is_onehot_o",
+      "relevant_signals": [
+        "d_i",
+        "is_onehot_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "e68efe28e677819cd434a32700733b11cb192c935094750a906ceec2041cf19c",
+      "buggy_sha256": "08de5ae122e4e7ef18afdf27232b2f515f452df63af0fa8596b3fbd387072f03",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case425_axis_fifo_temporal_hold_2",
+      "parent_bug_id": "case425_axis_fifo_temporal_hold_2",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_fifo",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_fifo.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_fifo.v",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "bad_frame_reg state update is suppressed",
+      "spec": "In frame-FIFO mode with bad-frame dropping enabled, accepting a final beat whose user marker identifies a bad frame shall raise status_bad_frame for one clock interval. If no new bad frame completes on the next clock, status_bad_frame shall return low.",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (!(s_axis_tvalid && s_axis_tready && s_axis_tlast && s_axis_tuser)) |=> !status_bad_frame);",
+      "mutation_edits": [
+        {
+          "line": 263,
+          "search": "    bad_frame_reg <= 1'b0;",
+          "replace": "    bad_frame_reg <= bad_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "bad_frame_reg",
+      "relevant_signals": [
+        "rst",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "s_axis_tlast",
+        "s_axis_tuser",
+        "status_bad_frame"
+      ],
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "status_bad_frame"
+          ]
+        },
+        "heldout": {
+          "time_ps": 65000,
+          "clock_cycle": 7,
+          "signals": [
+            "status_bad_frame"
+          ]
+        },
+        "decoy": {
+          "time_ps": 75000,
+          "clock_cycle": 8,
+          "signals": [
+            "status_bad_frame"
+          ]
+        }
+      },
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "aefddc67fc3552d919280424606fc6b048e61d7df9ee7ee0f8801c082c1cfc39",
+      "buggy_sha256": "3c40b23ec670429cb8991a04a8bfd9323f69d9adac3348bfe0f69143cf96495d",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated"
+    },
+    {
+      "name": "case442_cc_stream_mux_protocol_suppress_2",
+      "parent_bug_id": "case442_cc_stream_mux_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_stream_mux",
+      "source_files": [
+        "external/common_cells/src/cc_stream_mux.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_stream_mux.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "oup_valid_o combinational/protocol output is forced low",
+      "spec": "The output valid signal reflects the valid bit of the input selected by inp_sel_i in the same combinational cycle. Output data comes from that same selected input, and ready is returned only to the selected input.",
+      "golden_sva": "always_comb assert (oup_valid_o == inp_valid_i[inp_sel_i] && oup_data_o == inp_data_i[inp_sel_i] && inp_ready_o[inp_sel_i] == oup_ready_i);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_valid_o"
+          ],
+          "good": {
+            "oup_valid_o": "1"
+          },
+          "bad": {
+            "oup_valid_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_valid_o"
+          ],
+          "good": {
+            "oup_valid_o": "1"
+          },
+          "bad": {
+            "oup_valid_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 3,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "oup_valid_o"
+          ],
+          "good": {
+            "oup_valid_o": "1"
+          },
+          "bad": {
+            "oup_valid_o": "0"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 38,
+          "search": "  assign oup_valid_o  = inp_valid_i[inp_sel_i];",
+          "replace": "  assign oup_valid_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "oup_valid_o",
+      "relevant_signals": [
+        "inp_data_i",
+        "inp_valid_i",
+        "inp_ready_o",
+        "inp_sel_i",
+        "oup_data_o",
+        "oup_valid_o",
+        "oup_ready_i"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a885b7d2314487d07d5122aa0b3d2c0a6371e85f594c1938b1843a3e016efbf4",
+      "buggy_sha256": "a5b93f5292f230a317813ffc38f9be06caa4a22b00f3ccfa85d679307288c180",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+      "parent_bug_id": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+      "source_project": "opentitan",
+      "source_url": "https://github.com/lowRISC/opentitan.git",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "source_module": "prim_fifo_sync_cnt",
+      "source_files": [
+        "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv"
+      ],
+      "top_file": "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "wptr_wrap_cnt_q state update is suppressed",
+      "spec": "After reset, an accepted write increment advances wptr_o modulo Depth. In particular, when incr_wptr_i is asserted while wptr_o equals Depth-1, the next write-pointer state wraps to zero and the wrap state advances so that depth_o and full_o continue to describe FIFO occupancy correctly.",
+      "golden_sva": {
+        "name": "WritePointerWraps_A",
+        "clock": "@(posedge clk_i)",
+        "disable_iff": "!rst_ni",
+        "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (incr_wptr_i && (wptr_o == 2'd3)) |=> (wptr_o == 2'd0));",
+        "temporal_type": "one-cycle delayed state transition"
+      },
+      "mutation_edits": [
+        {
+          "line": 124,
+          "search": "        wptr_wrap_cnt_q <= wptr_wrap_set_cnt;",
+          "replace": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "wptr_wrap_cnt_q",
+      "relevant_signals": [
+        "rst_ni",
+        "clk_i",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "depth_o",
+        "full_o",
+        "empty_o",
+        "wptr_wrap_cnt_q"
+      ],
+      "first_divergence": {
+        "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge in the CSV; sample_index is the zero-based CSV data-row index",
+        "primary": {
+          "time_ps": 85000,
+          "cycle_index": 8,
+          "sample_index": 17,
+          "clock_phase": "rising edge",
+          "signals": [
+            "wptr_o",
+            "depth_o",
+            "full_o"
+          ],
+          "good_values": {
+            "wptr_o": "00",
+            "depth_o": "100",
+            "full_o": "1"
+          },
+          "bad_values": {
+            "wptr_o": "11",
+            "depth_o": "011",
+            "full_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 138000,
+          "cycle_index": 11,
+          "sample_index": 23,
+          "clock_phase": "rising edge",
+          "signals": [
+            "wptr_o",
+            "depth_o",
+            "full_o"
+          ],
+          "good_values": {
+            "wptr_o": "00",
+            "depth_o": "100",
+            "full_o": "1"
+          },
+          "bad_values": {
+            "wptr_o": "11",
+            "depth_o": "011",
+            "full_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 76000,
+          "cycle_index": 9,
+          "sample_index": 19,
+          "clock_phase": "rising edge",
+          "signals": [
+            "wptr_o",
+            "depth_o"
+          ],
+          "good_values": {
+            "wptr_o": "00",
+            "depth_o": "011"
+          },
+          "bad_values": {
+            "wptr_o": "11",
+            "depth_o": "010"
+          }
+        }
+      },
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+      "buggy_sha256": "a7bf7cfca81ee48e0226a2b28b19c898ee52b50258fd252fa70665dcce5997b1",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "trace_validated_metadata_complete"
+    },
+    {
+      "name": "case441_cc_stream_mux_protocol_suppress_1",
+      "parent_bug_id": "case441_cc_stream_mux_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_stream_mux",
+      "source_files": [
+        "external/common_cells/src/cc_stream_mux.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_stream_mux.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "oup_data_o combinational/protocol output is forced low",
+      "spec": "The selected input stream is connected combinationally to the output: oup_data_o equals inp_data_i[inp_sel_i], oup_valid_o equals the selected valid bit, and only the selected input receives oup_ready_i on inp_ready_o.",
+      "golden_sva": "always_comb assert (oup_data_o == inp_data_i[inp_sel_i] && oup_valid_o == inp_valid_i[inp_sel_i] && inp_ready_o[inp_sel_i] == oup_ready_i);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_data_o"
+          ],
+          "good": {
+            "oup_data_o": "00010001"
+          },
+          "bad": {
+            "oup_data_o": "00000000"
+          }
+        },
+        "decoy": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_data_o"
+          ],
+          "good": {
+            "oup_data_o": "10000000"
+          },
+          "bad": {
+            "oup_data_o": "00000000"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "oup_data_o"
+          ],
+          "good": {
+            "oup_data_o": "01111110"
+          },
+          "bad": {
+            "oup_data_o": "00000000"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 37,
+          "search": "  assign oup_data_o   = inp_data_i[inp_sel_i];",
+          "replace": "  assign oup_data_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "oup_data_o",
+      "relevant_signals": [
+        "inp_data_i",
+        "inp_valid_i",
+        "inp_ready_o",
+        "inp_sel_i",
+        "oup_data_o",
+        "oup_valid_o",
+        "oup_ready_i"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "a885b7d2314487d07d5122aa0b3d2c0a6371e85f594c1938b1843a3e016efbf4",
+      "buggy_sha256": "43d111f5f47ef06fa9f0229ddcea409806ed0167d1ac6895144e104b272d4915",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case443_cc_lzc_protocol_suppress_1",
+      "parent_bug_id": "case443_cc_lzc_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_lzc",
+      "source_files": [
+        "external/common_cells/src/cc_lzc.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_lzc.sv",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "cnt_o[0] combinational/protocol output is forced low",
+      "spec": "For a one-bit input, cnt_o and empty_o are both asserted when in_i is zero and both deasserted when in_i is one. The outputs are combinational and represent the zero count and empty indication for the current input.",
+      "golden_sva": "always_comb assert (cnt_o == !in_i && empty_o == !in_i);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 5,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "cnt_o"
+          ],
+          "good": {
+            "cnt_o": "1"
+          },
+          "bad": {
+            "cnt_o": "0"
+          }
+        },
+        "decoy": {
+          "time_ps": 2,
+          "observation_index": 1,
+          "clock_cycle": null,
+          "signals": [
+            "cnt_o"
+          ],
+          "good": {
+            "cnt_o": "1"
+          },
+          "bad": {
+            "cnt_o": "0"
+          }
+        },
+        "heldout": {
+          "time_ps": 0,
+          "observation_index": 0,
+          "clock_cycle": null,
+          "signals": [
+            "cnt_o"
+          ],
+          "good": {
+            "cnt_o": "1"
+          },
+          "bad": {
+            "cnt_o": "0"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 41,
+          "search": "    assign cnt_o[0] = !in_i[0];",
+          "replace": "    assign cnt_o[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "cnt_o[0]",
+      "relevant_signals": [
+        "in_i",
+        "cnt_o",
+        "empty_o"
+      ],
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "62119065b214b01d98f47d8c2f342e16cae537e3eacfc41bfd5f4b709482f51e",
+      "buggy_sha256": "f903235d83c29e70cf302c12ceb94aafbf8088748eb549ba48d3dd71d9d083f7",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case410_cc_edge_propagator_ack_temporal_hold_1",
+      "parent_bug_id": "case410_cc_edge_propagator_ack_temporal_hold_1",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_edge_propagator_ack",
+      "source_files": [
+        "external/common_cells/src/cc_edge_propagator_ack.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_edge_propagator_ack.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "r_input_reg state update is suppressed",
+      "spec": "An edge request in the transmit clock domain is retained until it crosses into the receive domain. Reset assertion in either domain clears the corresponding protocol state; after transmit reset, no stale request may remain pending. Each retained request produces a receive-domain edge pulse and is acknowledged back to the transmitter.",
+      "golden_sva": "assert property (@(posedge clk_tx_i or negedge rst_tx_ni) !rst_tx_ni |-> (r_input_reg == 1'b0 && ack_tx_o == 1'b0));",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 21,
+          "observation_index": 8,
+          "clock": "clk_rx_i",
+          "clock_cycle": 2,
+          "signals": [
+            "edge_o"
+          ],
+          "good": {
+            "edge_o": "0"
+          },
+          "bad": {
+            "edge_o": "x"
+          }
+        },
+        "decoy": {
+          "time_ps": 15,
+          "observation_index": 6,
+          "clock": "clk_rx_i",
+          "clock_cycle": 2,
+          "signals": [
+            "edge_o"
+          ],
+          "good": {
+            "edge_o": "0"
+          },
+          "bad": {
+            "edge_o": "x"
+          }
+        },
+        "heldout": {
+          "time_ps": 108,
+          "observation_index": 40,
+          "clock": "clk_rx_i",
+          "clock_cycle": 6,
+          "signals": [
+            "ack_tx_o"
+          ],
+          "good": {
+            "ack_tx_o": "0"
+          },
+          "bad": {
+            "ack_tx_o": "1"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 35,
+          "search": "      r_input_reg <= 1'b0;",
+          "replace": "      r_input_reg <= r_input_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "r_input_reg",
+      "relevant_signals": [
+        "clk_tx_i",
+        "rst_tx_ni",
+        "edge_i",
+        "ack_tx_o",
+        "clk_rx_i",
+        "rst_rx_ni",
+        "edge_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "28e1c1b5096b0f98963f27d0e0fbdf2dd204ba453b836e033d2efc87f0e05161",
+      "buggy_sha256": "39dedd8a9784a487e6b9dcb86165ab2087b0b2cb81e9b2d8b88d0f203a8a1f16",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    },
+    {
+      "name": "case449_axis_demux_protocol_suppress_1",
+      "parent_bug_id": "case449_axis_demux_protocol_suppress_1",
+      "source_project": "verilog_axis",
+      "source_url": "https://github.com/alexforencich/verilog-axis.git",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "source_module": "axis_demux",
+      "source_files": [
+        "external/verilog-axis/rtl/axis_demux.v"
+      ],
+      "top_file": "external/verilog-axis/rtl/axis_demux.v",
+      "bug_class": "combination_protocol",
+      "bug_family": "combinational_protocol_output_suppressed",
+      "bug_type": "s_axis_tready combinational/protocol output is forced low",
+      "spec": "When routing is enabled and the demultiplexer has registered capacity to forward toward the selected output, the source-side ready signal shall be asserted. It shall remain deasserted while routing is disabled, and accepted beats shall be directed only to the selected output unless drop is requested.",
+      "golden_sva": "assert property (@(posedge clk) disable iff (rst) (enable && !drop && !s_axis_tvalid && !(|m_axis_tvalid)) |=> s_axis_tready);",
+      "mutation_edits": [
+        {
+          "line": 133,
+          "search": "assign s_axis_tready = s_axis_tready_reg && enable;",
+          "replace": "assign s_axis_tready = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+        }
+      ],
+      "mutation_signal": "s_axis_tready",
+      "relevant_signals": [
+        "rst",
+        "enable",
+        "drop",
+        "select",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "m_axis_tready",
+        "m_axis_tvalid"
+      ],
+      "first_divergence": {
+        "primary": {
+          "time_ps": 25000,
+          "clock_cycle": 3,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "heldout": {
+          "time_ps": 36000,
+          "clock_cycle": 4,
+          "signals": [
+            "s_axis_tready"
+          ]
+        },
+        "decoy": {
+          "time_ps": 45000,
+          "clock_cycle": 5,
+          "signals": [
+            "s_axis_tready"
+          ]
+        }
+      },
+      "temporal_type": "same-cycle combinational/protocol relation",
+      "mutation_kind": "combinational_force_zero",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "b3ec5e59baa6b29f9d2bd077c262b8f3e57ea1de1162e19614f93dc866d5ba38",
+      "buggy_sha256": "0a1dd3bcf88a4bcc1b4a6df4d998bcd0a2d1550064b721214d26941bdd51e0ea",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "pristine_trace_validated"
+    },
+    {
+      "name": "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+      "parent_bug_id": "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+      "source_project": "common_cells",
+      "source_url": "https://github.com/pulp-platform/common_cells.git",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "source_module": "cc_clk_mux_glitch_free",
+      "source_files": [
+        "external/common_cells/src/cc_clk_mux_glitch_free.sv"
+      ],
+      "top_file": "external/common_cells/src/cc_clk_mux_glitch_free.sv",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sequential_state_update_suppressed",
+      "bug_type": "async_reset_bypass_active_q[i] state update is suppressed",
+      "spec": "With ClockDuringReset enabled, reset assertion permits the asynchronously selected input clock to propagate. Once asynchronous reset is released, each input domain must leave reset-bypass mode on its next active edge, so clk_o is controlled by the synchronized glitch-free enable path rather than continuing the reset bypass indefinitely.",
+      "golden_sva": "assert property (@(posedge clks_i[0]) $rose(async_rstn_i) |=> !dut.async_reset_bypass_active_q[0]); assert property (@(posedge clks_i[1]) $rose(async_rstn_i) |=> !dut.async_reset_bypass_active_q[1]);",
+      "first_divergence": {
+        "primary": {
+          "time_ps": 45,
+          "observation_index": 24,
+          "clock": "selected clks_i",
+          "clock_cycle": 5,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "0"
+          },
+          "bad": {
+            "clk_o": "1"
+          }
+        },
+        "decoy": {
+          "time_ps": 56,
+          "observation_index": 30,
+          "clock": "selected clks_i",
+          "clock_cycle": 4,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "0"
+          },
+          "bad": {
+            "clk_o": "1"
+          }
+        },
+        "heldout": {
+          "time_ps": 63,
+          "observation_index": 32,
+          "clock": "selected clks_i",
+          "clock_cycle": 4,
+          "signals": [
+            "clk_o"
+          ],
+          "good": {
+            "clk_o": "0"
+          },
+          "bad": {
+            "clk_o": "1"
+          }
+        }
+      },
+      "mutation_edits": [
+        {
+          "line": 202,
+          "search": "          async_reset_bypass_active_q[i] <= 1'b0;",
+          "replace": "          async_reset_bypass_active_q[i] <= async_reset_bypass_active_q[i]; // ASSERTIONFORGE_MUTATION: state update suppressed"
+        }
+      ],
+      "mutation_signal": "async_reset_bypass_active_q[i]",
+      "relevant_signals": [
+        "clks_i",
+        "test_clk_i",
+        "test_en_i",
+        "async_rstn_i",
+        "async_sel_i",
+        "clk_o"
+      ],
+      "temporal_type": "cross-cycle sequential state transition",
+      "mutation_kind": "sequential_hold",
+      "iverilog_compatibility_edits": [],
+      "correct_sha256": "44763ddf2f5ce9658499475a79f04c69474ed70d7131d875ccd93cbe422609e0",
+      "buggy_sha256": "d3c5b12a4b03109c1233738a5328a25229a8bc7c0d64b26677525218e045c6fb",
+      "dataset_phase": "scale210_independent_multproject",
+      "status": "rtl_mutation_materialized_validation_pending"
+    }
+  ]
+}

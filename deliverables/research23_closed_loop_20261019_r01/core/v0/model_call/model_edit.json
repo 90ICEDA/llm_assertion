@@ -1,0 +1,12 @@
+{
+  "reason": "The existing property 'no_unsolicited_output' only checks that every accepted output has a corresponding uncancelled input since the latest reset, but it does not ensure that this condition holds for all cycles. The actual violating samples show that there are outputs without any previously accepted, uncancelled inputs in the sampled queue. The new property will enforce this condition for all cycles.",
+  "operation": "add",
+  "assertions": [
+    {
+      "property": "(mvalid && mready) |-> $exists{cycle: cycle < $past(cycle), (svalid && sready && ref_count > 0)}",
+      "obligation": [
+        "no_unsolicited_output"
+      ]
+    }
+  ]
+}

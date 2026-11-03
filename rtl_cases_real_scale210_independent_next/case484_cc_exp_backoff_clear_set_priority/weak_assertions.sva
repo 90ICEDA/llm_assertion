@@ -1,0 +1,10 @@
+// single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) (set_cnt_i && !clr_cnt_i |=> !is_zero_o));
+// final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) (is_zero_o == (count_o==0)));
+// delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (clr_cnt_i |-> is_zero_o || !is_zero_o));
+// antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (count_o<=15));
+// simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) (!is_zero_o |-> count_o!=0));

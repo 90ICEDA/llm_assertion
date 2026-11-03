@@ -1,0 +1,42 @@
+{
+  "status": "complete",
+  "version": "frozen_top1_generation_v1",
+  "created_utc": "2026-08-22T14:30:07.264769+00:00",
+  "seed": 20260815,
+  "query_manifest_sha256": "4b57a42c1d06d7ea8a967cd7753ca610368f21698e21564c075a02c4fbafe4ec",
+  "query_count": 48,
+  "adapter_hashes": {
+    "ordinary_sft": "97b28837673e16fab251a0d57aa46eb36efc5e3e0bd215eb2c846330aa8db775",
+    "pass_count_dpo": "71429e0a6ec962a0fdedcd279600ff73d1a5d2c87f925d0f9f9415c4049fab22",
+    "scalar_score_dpo": "0b0fdcce088f88adcbd820f075ed48ddbe98b7ff339421b3839748e53efa28cf",
+    "random_probe_dominance_dpo": "81c0225f6b0d8978724b86f97ce8f49e30c9ca59d759d4850bb1a4d9e3661031",
+    "full_disagreement_dominance_dpo": "8ee63a43f6851f69f6fe3532e61b0fe4bd2ed2c2f948da2a489e42ede6e4f641"
+  },
+  "decode": {
+    "temperature": 0.0,
+    "do_sample": false,
+    "num_return_sequences": 1,
+    "max_new_tokens": 512,
+    "reranker": false,
+    "repair": false,
+    "selector": false,
+    "heldout_information": false
+  },
+  "input_token_min": 251,
+  "input_token_max": 3250,
+  "expected_generation_count": 240,
+  "command": [
+    "/root/miniconda3/bin/python3",
+    "src/generate_frozen_top1_v1.py",
+    "--resume"
+  ],
+  "python": "3.12.3",
+  "torch": "2.5.1+cu124",
+  "transformers": "4.53.2",
+  "peft": "0.15.2",
+  "gpu": "NVIDIA GeForce RTX 4090 D",
+  "once_only_policy": "existing evidence is verified and skipped; never regenerated",
+  "extraction_rule": "first regex-matched assert property statement; empty means compile failure; no repair",
+  "completed_generation_count": 240,
+  "completed_utc": "2026-08-22T17:06:38.064630+00:00"
+}

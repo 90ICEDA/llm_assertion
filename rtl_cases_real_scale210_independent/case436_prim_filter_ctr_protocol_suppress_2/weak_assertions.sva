@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Checks one sample and ignores the threshold qualification duration.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && filter_i) |-> filter_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Only checks final output knownness.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) enable_i |-> !$isunknown(filter_o));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Reduces the four-sample persistence requirement to one stable observation.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && $stable(filter_i)) |-> (filter_o == filter_i));
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops enable and persistence qualification.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) filter_o == filter_i);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: A Boolean range check cannot establish counter-qualified commitment.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) filter_o == 1'b0 || filter_o == 1'b1);

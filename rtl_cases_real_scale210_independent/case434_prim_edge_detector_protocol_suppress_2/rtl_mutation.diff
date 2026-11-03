@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -42,7 +42,7 @@
+     assign q_sync_d = d_i;
+   end : g_nosync
+ 
+-  assign q_sync_o = q_sync_d;
++  assign q_sync_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+ 
+   always_ff @(posedge clk_i or negedge rst_ni) begin
+     if (!rst_ni) q_sync_q <= ResetValue;

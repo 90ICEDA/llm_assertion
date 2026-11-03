@@ -1,0 +1,182 @@
+[
+  {
+    "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+    "project": "common_cells",
+    "slot": 6,
+    "attempt": 1,
+    "signals": [
+      "clk_i",
+      "rst_ni",
+      "flush_i",
+      "push_i",
+      "data_i",
+      "valid_o",
+      "data_o",
+      "q_o"
+    ],
+    "clock": "clk_i",
+    "reset": "rst_ni",
+    "request_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_06/attempt_01/request.json",
+    "request_sha256": "1f1a5622ce1bb8ef9384a8675f3d12ea22b1c6259c45cc4c11e801e0c20843ca",
+    "prompt_sha256": "6ca40a09781d47da3b9582d531680d8099f1bf4872f0cc37a818c9068e9f7f81",
+    "response_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_06/attempt_01/raw_response.json",
+    "json_schema_ok": true,
+    "ast": {
+      "antecedent_polarity": "high",
+      "antecedent_signal": "flush_i",
+      "consequent_signal": "valid_o",
+      "implication": "|=>",
+      "relation": "low"
+    },
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (flush_i) |=> (!valid_o));",
+    "signal_legal": true,
+    "pyslang_ok": true,
+    "pyslang_diagnostics": [],
+    "icarus_compile_ok": true,
+    "fixed_safe": true,
+    "target_detect": true,
+    "antecedent_hit": true,
+    "non_vacuous": true,
+    "runs": {
+      "correct": {
+        "command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_06/attempt_01/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/correct.v",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_06/attempt_01/checker.sv"
+        ],
+        "compile_returncode": 0,
+        "compile_stdout": "",
+        "compile_stderr": "",
+        "sim_returncode": 0,
+        "sim_stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v:7: $finish called at 90000 (1ps)\nV3_METRIC ant_hits=1 fail_hits=0\n",
+        "sim_stderr": "",
+        "ant_hits": 1,
+        "fail_hits": 0
+      },
+      "buggy": {
+        "command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_06/attempt_01/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/buggy.v",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_06/attempt_01/checker.sv"
+        ],
+        "compile_returncode": 0,
+        "compile_stdout": "",
+        "compile_stderr": "",
+        "sim_returncode": 0,
+        "sim_stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v:7: $finish called at 90000 (1ps)\nV3_METRIC ant_hits=1 fail_hits=1\n",
+        "sim_stderr": "",
+        "ant_hits": 1,
+        "fail_hits": 1
+      }
+    },
+    "sva_sha256": "0ae4b46dc532835e9dada2840d2f54afac4d88cc00e3f5aa200451efbb12f06d",
+    "raw_response_sha256": "9f7aee52687927097cfffa32575a1f2f5e89182a80ebc0377208875c554507a7",
+    "validation_seconds": 0.1342054560000001
+  },
+  {
+    "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+    "project": "common_cells",
+    "slot": 7,
+    "attempt": 1,
+    "signals": [
+      "clk_i",
+      "rst_ni",
+      "flush_i",
+      "push_i",
+      "data_i",
+      "valid_o",
+      "data_o",
+      "q_o"
+    ],
+    "clock": "clk_i",
+    "reset": "rst_ni",
+    "request_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_07/attempt_01/request.json",
+    "request_sha256": "06950f1fc4fc17c6932fdb0ed611999ce63b5a477f0d9bf020d556ff990782bd",
+    "prompt_sha256": "6cc0ae7542dca50117f9267146eb2cf826951f8de5afbc06cb17d8103f3f2557",
+    "response_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_07/attempt_01/raw_response.json",
+    "json_schema_ok": true,
+    "ast": {
+      "antecedent_polarity": "high",
+      "antecedent_signal": "flush_i",
+      "consequent_signal": "data_o",
+      "implication": "|=>",
+      "relation": "equal"
+    },
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (flush_i) |=> ((data_o == flush_i)));",
+    "signal_legal": true,
+    "pyslang_ok": true,
+    "pyslang_diagnostics": [],
+    "icarus_compile_ok": true,
+    "fixed_safe": true,
+    "target_detect": true,
+    "antecedent_hit": true,
+    "non_vacuous": true,
+    "runs": {
+      "correct": {
+        "command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_07/attempt_01/correct.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/correct.v",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_07/attempt_01/checker.sv"
+        ],
+        "compile_returncode": 0,
+        "compile_stdout": "",
+        "compile_stderr": "",
+        "sim_returncode": 0,
+        "sim_stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v:7: $finish called at 90000 (1ps)\nV3_METRIC ant_hits=1 fail_hits=0\n",
+        "sim_stderr": "",
+        "ant_hits": 1,
+        "fail_hits": 0
+      },
+      "buggy": {
+        "command": [
+          "iverilog",
+          "-g2012",
+          "-I",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority",
+          "-I",
+          "/mnt/d/AssertionForge-main1/external/common_cells/include",
+          "-o",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_07/attempt_01/buggy.out",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/buggy.v",
+          "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v",
+          "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case510_cc_spill_register_flush_push_priority/slot_07/attempt_01/checker.sv"
+        ],
+        "compile_returncode": 0,
+        "compile_stdout": "",
+        "compile_stderr": "",
+        "sim_returncode": 0,
+        "sim_stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/tb.v:7: $finish called at 90000 (1ps)\nV3_METRIC ant_hits=1 fail_hits=1\n",
+        "sim_stderr": "",
+        "ant_hits": 1,
+        "fail_hits": 1
+      }
+    },
+    "sva_sha256": "9da733fdfa5ea26f70f6240638f1fed75ab4925fef3e6747a0665d1ef7bdecd9",
+    "raw_response_sha256": "f977396eacaf45bcc4cc635bbfda14da1e68455da475f6bb0a504cd5e8aa8e1c",
+    "validation_seconds": 0.1342165520000007
+  }
+]

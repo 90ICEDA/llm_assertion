@@ -1,0 +1,29 @@
+{
+  "model": "qwen2.5-coder:7b-instruct",
+  "model_digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+  "sampling": {
+    "seed": 20261014,
+    "temperature": 0,
+    "num_predict": 512,
+    "num_ctx": 8192,
+    "num_gpu": 0,
+    "num_thread": 8
+  },
+  "interface": "continuation-interface-v5",
+  "timeout_seconds": 420,
+  "retries": 0,
+  "rounds": 2,
+  "active_queries_per_round": 4,
+  "common_initial_queries": 2,
+  "regression_queries_per_round": 2,
+  "query_budget_per_parent_arm": 14,
+  "model_budget_per_parent_arm": 2,
+  "final_selection": "last executable proposal after fixed two rounds; errors retain previous candidate",
+  "model_cost_scope": "preflight, historical replay, initial historical generation, and formal refinement separately costed",
+  "human_clarifications": 0,
+  "human_time_seconds": null,
+  "formal_solver_calls": 0,
+  "acceptance": "gate.decide for C/D; executable-only for A/B",
+  "query_budget": "2 common + 2 new acquisitions per round; all arms replay same number of own-history queries",
+  "execution_backend": "Icarus procedural checker, not native SVA"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case453_prim_count_commit_inversion",
+  "parent_bug_id": "case453_prim_count_commit_inversion",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "id": "W1_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "property": "rst_ni |-> !$isunknown(cnt_after_commit_o)",
+      "antecedent": "rst_ni",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Deliberately omits the exact trigger, delay, duration, or state relation of the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W2_final_output_only",
+      "weakness_class": "final_output_only",
+      "property": "rst_ni |-> !$isunknown(cnt_after_commit_o)",
+      "antecedent": "rst_ni",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Deliberately omits the exact trigger, delay, duration, or state relation of the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W3_delay_removed",
+      "weakness_class": "delay_removed",
+      "property": "commit_i && incr_en_i |-> cnt_o == $past(cnt_after_commit_o)",
+      "antecedent": "rst_ni",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Deliberately omits the exact trigger, delay, duration, or state relation of the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W4_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "property": "!$isunknown(cnt_after_commit_o)",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Deliberately omits the exact trigger, delay, duration, or state relation of the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W5_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "property": "rst_ni |-> 1'b1",
+      "antecedent": "rst_ni",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Deliberately omits the exact trigger, delay, duration, or state relation of the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    }
+  ]
+}

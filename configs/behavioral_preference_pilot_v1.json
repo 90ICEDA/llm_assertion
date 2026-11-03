@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "experiment_id": "behavioral_preference_pilot_v1",
+  "status": "preregistered_pilot",
+  "selection_seed": "sha256:behavioral-preference-pilot-v1",
+  "train_parent_count": 30,
+  "minimum_projects": 3,
+  "minimum_observed_candidate_failure_modes": 4,
+  "candidate_failure_modes": [
+    "compile_fail",
+    "signal_illegal",
+    "fixed_false_positive",
+    "target_miss",
+    "vacuous",
+    "timeout"
+  ],
+  "candidates_per_parent": 12,
+  "candidates_per_parent_allowed": [8, 16],
+  "probe_queries_per_parent_per_policy": 32,
+  "candidate_generation": {
+    "base_checkpoint": "outputs/checkpoints/Qwen3-8B",
+    "base_checkpoint_revision": "2069b3fae1114555f3c020c81410e51fa0f656f2",
+    "temperature": 0.7,
+    "max_new_tokens": 512,
+    "seed": 20260815,
+    "do_sample": true
+  },
+  "probe_policies": ["random_legal", "disagreement_guided"],
+  "required_probe_families": [
+    "data_address_rename",
+    "width_parameter_change",
+    "stall_backpressure",
+    "request_spacing",
+    "reset_translation",
+    "same_root_cause_mutant",
+    "decoy"
+  ],
+  "validation_order": [
+    "compile",
+    "signal_legality",
+    "fixed_buggy",
+    "non_vacuity",
+    "behavior_probes"
+  ],
+  "dominance_rule": "A>B iff FP(A) subset-or-equal FP(B), TP(A) superset-or-equal TP(B), and at least one inclusion is strict",
+  "minimum_dominance_pairs": 300,
+  "training_methods": [
+    "ordinary_sft",
+    "pass_count_dpo",
+    "scalar_score_dpo",
+    "random_probe_dominance_dpo",
+    "full_disagreement_dominance_dpo"
+  ],
+  "training": {
+    "model": "outputs/checkpoints/Qwen3-8B",
+    "model_revision": "2069b3fae1114555f3c020c81410e51fa0f656f2",
+    "seed": 20260815,
+    "epochs": 1,
+    "token_budget": null,
+    "token_budget_status": "must_be_frozen_before_training"
+  },
+  "frozen_top1_decode": {
+    "temperature": 0.0,
+    "do_sample": false,
+    "num_return_sequences": 1,
+    "reranker": false,
+    "repair": false,
+    "heldout_information": false
+  },
+  "go_no_go": {
+    "scs_at_1_absolute_point_gain_over_best_nonbehavioral": 5.0,
+    "fixed_false_positives_may_increase": false
+  },
+  "frozen_assets": [
+    "deliverables/final46_main_experiment_20260806/SHA256SUMS.txt",
+    "deliverables/final46_main_experiment_20260806/unified_main_table.csv",
+    "deliverables/final46_main_experiment_20260806/parent_deduplicated_results.csv",
+    "outputs/temporal40_parent_bug_reorg/temporal40_parent_bug_summary.json",
+    "outputs/temporal40_parent_bug_reorg/temporal40_parent_bug_reorganized.xlsx"
+  ]
+}

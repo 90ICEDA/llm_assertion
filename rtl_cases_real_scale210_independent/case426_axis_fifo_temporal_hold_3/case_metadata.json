@@ -1,0 +1,70 @@
+{
+  "name": "case426_axis_fifo_temporal_hold_3",
+  "parent_bug_id": "case426_axis_fifo_temporal_hold_3",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_fifo",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_fifo.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_fifo.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "good_frame_reg state update is suppressed",
+  "spec": "Completing a frame not marked bad must produce a one-clock good-frame status pulse; in the absence of another completed good frame, the indication must clear on the following clock.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) status_good_frame |=> !status_good_frame);",
+    "temporal_type": "one-cycle good-frame pulse"
+  },
+  "mutation_edits": [
+    {
+      "line": 264,
+      "search": "    good_frame_reg <= 1'b0;",
+      "replace": "    good_frame_reg <= good_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "good_frame_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "s_axis_tlast",
+    "s_axis_tuser",
+    "status_good_frame"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 12,
+      "signals": [
+        "status_good_frame"
+      ],
+      "clock_cycle": 5
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 16,
+      "signals": [
+        "status_good_frame"
+      ],
+      "clock_cycle": 7
+    },
+    "decoy": {
+      "time_ps": 75000,
+      "sample_index": 19,
+      "signals": [
+        "status_good_frame"
+      ],
+      "clock_cycle": 8
+    }
+  },
+  "temporal_type": "one-cycle good-frame pulse",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "aefddc67fc3552d919280424606fc6b048e61d7df9ee7ee0f8801c082c1cfc39",
+  "buggy_sha256": "8f43797ca67fe891f3a28f1db8f57094999a21cd6f5d2857a8c90ac161af6c12",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "pristine_trace_validated"
+}

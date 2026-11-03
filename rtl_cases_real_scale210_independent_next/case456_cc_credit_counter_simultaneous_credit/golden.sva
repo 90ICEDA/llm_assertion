@@ -1,0 +1,1 @@
+assert property (@(posedge clk_i) disable iff (!rst_ni) (credit_give_i && credit_take_i) |=> credit_o==$past(credit_o));

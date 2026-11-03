@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -219,7 +219,7 @@
+ reg store_axis_int_to_temp;
+ reg store_axis_temp_to_output;
+ 
+-assign m_axis_tdata  = {M_COUNT{m_axis_tdata_reg}};
++assign m_axis_tdata = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+ assign m_axis_tkeep  = KEEP_ENABLE ? {M_COUNT{m_axis_tkeep_reg}} : {M_COUNT*KEEP_WIDTH{1'b1}};
+ assign m_axis_tvalid = m_axis_tvalid_reg;
+ assign m_axis_tlast  = {M_COUNT{m_axis_tlast_reg}};

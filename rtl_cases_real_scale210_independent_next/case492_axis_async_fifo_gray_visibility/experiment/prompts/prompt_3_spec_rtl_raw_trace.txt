@@ -1,0 +1,67 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, write_toggle_i, sample_enable_i, q_o, state_o
+
+Specification:
+
+A write-toggle crossing into the read domain becomes visible only after all three synchronizer stages; the second-stage value is not externally visible.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_async_fifo(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire write_toggle_i,
+  input wire sample_enable_i,
+  
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg [2:0] sync_pipe;
+  always @(posedge clk_i or negedge rst_ni)
+    if (!rst_ni) sync_pipe <= 3'b000;
+    else if (sample_enable_i) sync_pipe <= {sync_pipe[1:0],write_toggle_i};
+  assign q_o = sync_pipe[2];
+  assign state_o = {5'b0,sync_pipe};
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000000, write_toggle_i=0
+cycle 1: rst_ni=0, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000000, write_toggle_i=0
+cycle 2: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000000, write_toggle_i=0
+cycle 3: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=1, state_o[7:0]=00000001, write_toggle_i=1
+cycle 4: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=1, state_o[7:0]=00000010, write_toggle_i=0
+cycle 5: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 6: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 7: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 8: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 9: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 10: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 11: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 12: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 13: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000000, write_toggle_i=0
+cycle 1: rst_ni=0, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000000, write_toggle_i=0
+cycle 2: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=0, state_o[7:0]=00000000, write_toggle_i=0
+cycle 3: rst_ni=1, clk_i=1, q_o=0, sample_enable_i=1, state_o[7:0]=00000001, write_toggle_i=1
+cycle 4: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=1, state_o[7:0]=00000010, write_toggle_i=0
+cycle 5: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 6: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 7: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 8: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 9: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 10: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 11: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 12: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0
+cycle 13: rst_ni=1, clk_i=1, q_o=1, sample_enable_i=0, state_o[7:0]=00000010, write_toggle_i=0

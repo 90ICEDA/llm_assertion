@@ -1,0 +1,12 @@
+--- correct.v
++++ buggy.v
+@@ -61,7 +61,8 @@
+ assign m_axis_tvalid = !ll_src_rdy_in_n;
+ assign m_axis_tlast = !ll_eof_in_n;
+ 
+-assign ll_dst_rdy_out_n = !m_axis_tready;
++// ASSERTIONFORGE_MUTATION: active-low ready polarity inverted
++assign ll_dst_rdy_out_n = m_axis_tready;
+ 
+ endmodule
+ 

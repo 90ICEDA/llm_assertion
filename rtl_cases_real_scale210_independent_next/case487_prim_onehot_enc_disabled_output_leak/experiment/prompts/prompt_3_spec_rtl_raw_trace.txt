@@ -1,0 +1,53 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, in_i, en_i, out_o
+
+Specification:
+
+`out_o` is the one-hot encoding of `in_i` only while `en_i` is asserted. While disabled, every output bit must be zero.
+
+RTL:
+
+`timescale 1ns/1ps
+module prim_onehot_enc_case (
+  input wire clk_i,
+  input wire rst_ni,
+  input wire [2:0] in_i,
+  input wire en_i,
+  output wire [7:0] out_o
+);
+  assign out_o = (!rst_ni || !en_i) ? 8'h00 : (8'h01 << in_i);
+  wire unused_clk = clk_i;
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, en_i=0, in_i[2:0]=000, out_o[7:0]=00000000
+cycle 1: rst_ni=0, clk_i=1, en_i=0, in_i[2:0]=000, out_o[7:0]=00000000
+cycle 2: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=000, out_o[7:0]=00000000
+cycle 3: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=001, out_o[7:0]=00000010
+cycle 4: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=001, out_o[7:0]=00000010
+cycle 5: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=101, out_o[7:0]=00000000
+cycle 6: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=101, out_o[7:0]=00000000
+cycle 7: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=101, out_o[7:0]=00000000
+cycle 8: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=111, out_o[7:0]=10000000
+cycle 9: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=111, out_o[7:0]=10000000
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, en_i=0, in_i[2:0]=000, out_o[7:0]=00000000
+cycle 1: rst_ni=0, clk_i=1, en_i=0, in_i[2:0]=000, out_o[7:0]=00000000
+cycle 2: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=000, out_o[7:0]=00000001
+cycle 3: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=001, out_o[7:0]=00000010
+cycle 4: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=001, out_o[7:0]=00000010
+cycle 5: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=101, out_o[7:0]=00100000
+cycle 6: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=101, out_o[7:0]=00100000
+cycle 7: rst_ni=1, clk_i=1, en_i=0, in_i[2:0]=101, out_o[7:0]=00100000
+cycle 8: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=111, out_o[7:0]=10000000
+cycle 9: rst_ni=1, clk_i=1, en_i=1, in_i[2:0]=111, out_o[7:0]=10000000

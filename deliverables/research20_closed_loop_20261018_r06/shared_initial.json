@@ -1,0 +1,42 @@
+{
+  "assertions": [
+    {
+      "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected",
+      "reason": "Ensures that at an accepted output, with an outstanding input, the output payload equals the oldest accepted input payload at that same sample.",
+      "obligations": [
+        "order_payload"
+      ],
+      "id": "a0",
+      "derived_antecedent": "mvalid && mready && ref_count > 0",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "mdata == ref_expected"
+    },
+    {
+      "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected",
+      "reason": "Ensures that at a fair-drain checkpoint, if there are outstanding accepted inputs, the last output must match the oldest outstanding input. This complements the existing property by focusing on the condition where the drain is due and there are outstanding inputs.",
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "id": "a1",
+      "derived_antecedent": "drain_due && ref_count > 0",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "$past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+    },
+    {
+      "property": "mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)",
+      "reason": "Ensures that the output data (mdata) remains stable during backpressure (mready is low) across consecutive cycles, as required by the stall_stability obligation.",
+      "obligations": [
+        "stall_stability"
+      ],
+      "id": "a2",
+      "derived_antecedent": "mvalid && !mready && $past(mvalid && !mready)",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "mdata == $past(mdata)"
+    }
+  ],
+  "syntax_profile": "qualified_sampled_multi_v2",
+  "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+}

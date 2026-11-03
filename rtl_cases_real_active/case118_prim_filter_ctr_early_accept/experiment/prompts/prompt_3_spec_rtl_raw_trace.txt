@@ -18,7 +18,7 @@ Rules:
 13) Do not hard-code trace-only multi-bit values or one-off transitions such as a single observed address pair unless the value is explicitly justified by the spec or RTL.
 
 Allowed signals:
-clk, rst_n, enable_i, filter_i, thresh_i, filter_o
+clk, rst_n, enable_i, filter_i, thresh_i, filter_o, pre_accept_hold_dbg
 
 Specification:
 With filtering enabled, filter_o shall not switch until thresh_i consecutive agreeing samples have been observed.
@@ -84,7 +84,8 @@ module dut_case118_prim_filter_ctr_early_accept (
   input logic enable_i,
   input logic filter_i,
   input logic [1:0] thresh_i,
-  output logic filter_o
+  output logic filter_o,
+  output logic pre_accept_hold_dbg
 );
   prim_filter_ctr #(
     .AsyncOn(1'b0),
@@ -97,6 +98,30 @@ module dut_case118_prim_filter_ctr_early_accept (
     .thresh_i(thresh_i),
     .filter_o(filter_o)
   );
+
+  logic ref_stored_value;
+  logic [1:0] ref_agree_count;
+
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      ref_stored_value <= 1'b0;
+      ref_agree_count <= '0;
+      pre_accept_hold_dbg <= 1'b0;
+    end else begin
+      pre_accept_hold_dbg <= 1'b0;
+      if (!enable_i) begin
+        ref_agree_count <= '0;
+      end else if (filter_i == ref_stored_value) begin
+        ref_agree_count <= '0;
+      end else if ((ref_agree_count + 2'd1) < thresh_i) begin
+        ref_agree_count <= ref_agree_count + 2'd1;
+        pre_accept_hold_dbg <= 1'b1;
+      end else begin
+        ref_agree_count <= thresh_i;
+        ref_stored_value <= filter_i;
+      end
+    end
+  end
 endmodule
 
 // ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop.sv -----
@@ -270,19 +295,19 @@ endmodule
 
 
 Good trace (posedge cycles):
-cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
-cycle 1: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=0
-cycle 2: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=1
-cycle 3: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
-cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=0, thresh_i[1:0]=10, filter_o=0
-cycle 5: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
-cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
+cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0
+cycle 1: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=1
+cycle 2: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=1, pre_accept_hold_dbg=0
+cycle 3: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0
+cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=1
+cycle 5: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0
+cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0
 
 Bad trace (posedge cycles):
-cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
-cycle 1: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=1
-cycle 2: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=1
-cycle 3: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
-cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=0, thresh_i[1:0]=10, filter_o=1
-cycle 5: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
-cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0
+cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0
+cycle 1: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=1, pre_accept_hold_dbg=1
+cycle 2: clk=1, rst_n=1, enable_i=1, filter_i=1, thresh_i[1:0]=10, filter_o=1, pre_accept_hold_dbg=0
+cycle 3: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0
+cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=0, thresh_i[1:0]=10, filter_o=1, pre_accept_hold_dbg=1
+cycle 5: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0
+cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, thresh_i[1:0]=10, filter_o=0, pre_accept_hold_dbg=0

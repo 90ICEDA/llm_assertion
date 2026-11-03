@@ -1,0 +1,49 @@
+{
+  "assertions": [
+    {
+      "property": "(mvalid && mready) |-> (ref_count > 0 && mdata == ref_expected)",
+      "obligations": [
+        "order_payload"
+      ],
+      "id": "a0",
+      "derived_antecedent": "(mvalid && mready)",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "(ref_count > 0 && mdata == ref_expected)"
+    },
+    {
+      "property": "(mvalid && mready) |-> (ref_count > 0)",
+      "obligations": [
+        "no_unsolicited_output"
+      ],
+      "id": "a1",
+      "derived_antecedent": "(mvalid && mready)",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "(ref_count > 0)"
+    },
+    {
+      "property": "(mvalid && !mready) |=> (mvalid && $stable(mdata))",
+      "obligations": [
+        "stall_stability"
+      ],
+      "id": "a2",
+      "derived_antecedent": "(mvalid && !mready)",
+      "implication": "|=>",
+      "derived_delay": 1,
+      "consequent": "(mvalid && $stable(mdata))"
+    },
+    {
+      "property": "drain_due |-> (ref_count == 0)",
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "id": "a3",
+      "derived_antecedent": "drain_due",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "(ref_count == 0)"
+    }
+  ],
+  "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+}

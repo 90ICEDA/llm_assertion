@@ -1,0 +1,2 @@
+`timescale 1ns/1ps
+module tb; reg clk_i=0,rst_ni=0,clr_i=0; always #5 clk_i=~clk_i; reg en_i=0,load_i=0,down_i=0; reg [3:0] delta_i=1,d_i=0; wire [3:0] q_o; wire overflow_o; cc_delta_counter #(.Width(4),.StickyOverflow(0)) dut(.clk_i,.rst_ni,.clr_i,.en_i,.load_i,.down_i,.delta_i,.d_i,.q_o,.overflow_o); initial begin $monitor("T=%0t q=%0d ov=%b en=%b load=%b",$time,q_o,overflow_o,en_i,load_i); #2 rst_ni=0; #10 rst_ni=1; #13 d_i=9;delta_i=2;load_i=1;en_i=1;#10 load_i=0;en_i=0; #30 $finish; end endmodule

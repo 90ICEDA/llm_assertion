@@ -1,0 +1,20 @@
+{
+  "message": {
+    "role": "assistant",
+    "content": "{\n  \"operation\": \"replace_one\",\n  \"assertion_id\": \"a2\",\n  \"assertions\": [\n    {\n      \"antecedent\": {\n        \"op\": \"&&\",\n        \"args\": [\n          {\n            \"signal\": \"mvalid\"\n          },\n          {\n            \"op\": \"!\",\n            \"args\": [\n              {\n                \"signal\": \"mready\"\n              }\n            ]\n          },\n          {\n            \"op\": \"!\",\n            \"args\": [\n              {\n                \"signal\": \"rst\"\n              }\n            ]\n          }\n        ]\n      },\n      \"consequent\": {\n        \"op\": \"&&\",\n        \"args\": [\n          {\n            \"signal\": \"mvalid\"\n          },\n          {\n            \"op\": \"==\",\n            \"args\": [\n              {\n                \"signal\": \"mdata\"\n              },\n              {\n                \"op\": \"$past\",\n                \"args\": [\n                  {\n                    \"signal\": \"mdata\"\n                  }\n                ]\n              }\n            ]\n          }\n        ]\n      },\n      \"timing\": \"next_sample\",\n      \"obligation\": [\n        \"stall_stability\"\n      ]\n    }\n  ],\n  \"reason\": \"Ensure mvalid and mdata stability during backpressure, except on reset.\"\n}"
+  },
+  "representation": "Locally assembled first-choice content, not an upstream response envelope. Original bytes are response.stream.raw; parsed upstream SSE events are response.events.jsonl or full JSON is response.server.json.",
+  "service_done": {
+    "finish_reason": "stop",
+    "terminal_received": true,
+    "usage": {
+      "prompt_tokens": 18347,
+      "completion_tokens": 262,
+      "total_tokens": 18609,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "id": "e9511cc44381806f5d217f6146038952"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "thread_id": "019ed9f6-87cf-7830-adb8-595fe2ae140d",
+  "selected_case_ids": [
+    "case104_prim_fifo_full_early",
+    "case108_prim_arbiter_grant_without_ready",
+    "case112_prim_intr_test_pulse_dropped",
+    "case116_prim_filter_late_accept",
+    "case120_prim_filter_ctr_bypass_stale",
+    "case124_prim_fifo_clear_ignored",
+    "case128_prim_intr_event_mask_stall",
+    "case132_prim_edge_posedge_missing",
+    "case136_prim_filter_ctr_disabled_bypass_stale_alt",
+    "case140_prim_onehot_legal_request_false_positive",
+    "case204_onehot_multihot_v4_from_case101_prim_onehot_multihot_suppressed",
+    "case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed",
+    "case212_onehot_zerohot_v4_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "case216_onehot_zerohot_v8_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "case220_onehot_zerohot_v4_from_case129_prim_onehot_zero_enabled_suppressed",
+    "case224_onehot_zerohot_v8_from_case129_prim_onehot_zero_enabled_suppressed",
+    "case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "case232_onehot_addr_bad_v8_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "case236_onehot_addr_legal_v4_from_case137_prim_onehot_addr_false_positive",
+    "case240_onehot_addr_legal_v8_from_case137_prim_onehot_addr_false_positive",
+    "case247_regwe_enable_gap_v7_from_case126_prim_regwe_enable_gap",
+    "case251_fifo_v4_from_case104_prim_fifo_full_early",
+    "case255_fifo_v8_from_case104_prim_fifo_full_early",
+    "case259_fifo_v3_from_case105_prim_fifo_empty_late",
+    "case263_fifo_v7_from_case105_prim_fifo_empty_late",
+    "case267_fifo_v2_from_case106_prim_fifo_depth_off_by_one",
+    "case271_fifo_v6_from_case106_prim_fifo_depth_off_by_one",
+    "case275_fifo_v1_from_case130_prim_fifo_empty_early",
+    "case279_fifo_v5_from_case130_prim_fifo_empty_early",
+    "case283_fifo_v9_from_case130_prim_fifo_empty_early"
+  ],
+  "active_model_specs": [
+    {
+      "model_label": "Claude",
+      "provider": "openai_compatible",
+      "model_name": "claude-opus-4-8",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "key_file_name": "anthropic_api_key.txt",
+      "relay_base_url_env": "MULTIMODEL_CLAUDE_BASE_URL",
+      "relay_auth_scheme_env": "MULTIMODEL_CLAUDE_AUTH_SCHEME",
+      "relay_extra_headers_env": "MULTIMODEL_CLAUDE_EXTRA_HEADERS_JSON",
+      "relay_max_retries_env": "MULTIMODEL_CLAUDE_MAX_RETRIES",
+      "relay_retry_backoff_env": "MULTIMODEL_CLAUDE_RETRY_BACKOFF_SEC"
+    }
+  ],
+  "active_method_specs": [
+    {
+      "method": "spec_rtl_raw_trace",
+      "trace_input_label": "Raw trace",
+      "representation_label": "raw_trace"
+    },
+    {
+      "method": "spec_rtl_naive_summary",
+      "trace_input_label": "Naive summary",
+      "representation_label": "naive_summary"
+    },
+    {
+      "method": "spec_rtl_event_level_abstraction",
+      "trace_input_label": "Event-level abstraction",
+      "representation_label": "event_level_abstraction"
+    },
+    {
+      "method": "spec_rtl_temporal_relation_abstraction",
+      "trace_input_label": "Temporal-relation abstraction",
+      "representation_label": "temporal_relation_abstraction"
+    }
+  ],
+  "candidates_per_cell": 2,
+  "use_property_compile_mode": false,
+  "write_mode": "upsert_append_by_unique_key",
+  "result_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method",
+    "candidate_index"
+  ],
+  "prompt_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method"
+  ],
+  "summary_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "method"
+  ],
+  "argv": [
+    "src\\run_trace_representation_ablation.py",
+    "--root",
+    "D:\\AssertionForge-main1\\rtl_cases_real_scale120",
+    "--output-dir",
+    "D:\\AssertionForge-main1\\outputs\\scale120_trace_representation_ablation_data",
+    "--temporal-summary-json",
+    "D:\\AssertionForge-main1\\outputs\\scale120_abstracted_summary_inputs\\scale120_abstracted_summaries_combined.json",
+    "--all-cases",
+    "--candidates-per-cell",
+    "2",
+    "--shard-index",
+    "3",
+    "--shard-count",
+    "4",
+    "--model",
+    "Claude",
+    "--method",
+    "spec_rtl_raw_trace",
+    "--method",
+    "spec_rtl_naive_summary",
+    "--method",
+    "spec_rtl_event_level_abstraction",
+    "--method",
+    "spec_rtl_temporal_relation_abstraction"
+  ]
+}

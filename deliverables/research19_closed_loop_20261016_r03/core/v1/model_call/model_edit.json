@@ -1,0 +1,12 @@
+{
+  "reason": "The requirement 'drain_no_loss' mandates that at a fair-drain checkpoint, the outstanding accepted-input count (`ref_count`) is ",
+  "operation": "add",
+  "assertions": [
+    {
+      "antecedent": "(drain_due && ref_count == 0)",
+      "consequent": "1'b1",
+      "timing": "same_sample",
+      "obligation": "drain_no_loss"
+    }
+  ]
+}

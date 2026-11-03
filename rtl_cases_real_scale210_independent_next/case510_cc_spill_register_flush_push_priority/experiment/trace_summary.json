@@ -1,0 +1,28 @@
+{
+  "case_name": "case510_cc_spill_register_flush_push_priority",
+  "first_divergence_cycle": 8,
+  "first_divergence_time_ps": "35000",
+  "differing_signals": [
+    "data_o[7:0]",
+    "q_o",
+    "valid_o"
+  ],
+  "divergence_snapshot": [
+    {
+      "signal": "data_o[7:0]",
+      "good": "00000000",
+      "bad": "01010101"
+    },
+    {
+      "signal": "q_o",
+      "good": "0",
+      "bad": "1"
+    },
+    {
+      "signal": "valid_o",
+      "good": "0",
+      "bad": "1"
+    }
+  ],
+  "divergence_observation": "sampled_csv_row"
+}

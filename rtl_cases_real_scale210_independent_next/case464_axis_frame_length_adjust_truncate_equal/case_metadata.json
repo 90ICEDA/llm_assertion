@@ -1,0 +1,73 @@
+{
+  "name": "case464_axis_frame_length_adjust_truncate_equal",
+  "parent_bug_id": "case464_axis_frame_length_adjust_truncate_equal",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_frame_length_adjust",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_frame_length_adjust.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_frame_length_adjust.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "truncate_equality_boundary",
+  "bug_type": "A frame exactly equal to length_max is neither dropped nor reported truncated.",
+  "spec": "A frame exactly equal to length_max is neither dropped nor reported truncated.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (sv && sr && !sl && dut.long_counter_reg == 2) |=> !mv);",
+    "temporal_type": "exact cross-cycle protocol"
+  },
+  "mutation_edits": [
+    {
+      "search": "                if (long_counter_reg <= word_cnt) begin",
+      "replace": "                if (long_counter_reg < word_cnt) begin // ASSERTIONFORGE_MUTATION"
+    }
+  ],
+  "mutation_signal": "internal protocol state",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "sv",
+    "sr",
+    "mv",
+    "mr"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 105000,
+      "sample_index": 21,
+      "good_trace_sha256": "2737830cbb6044b8c7b954a887fed80706724410e05cc791b88345d13fd64f69",
+      "bad_trace_sha256": "1f92d6956d944cc9ff077ade580dec2e721865212b289ff84e7a603ad13fa723",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 115000,
+      "sample_index": 23,
+      "good_trace_sha256": "aec96871b1d1b05d0d64f8f91e9872d063b05938f73dca7319bfb8d4c4848eb5",
+      "bad_trace_sha256": "0cc3d33a3eddfc4f86562b550976f6246f7028e3e9fe7132f36c85505b0b8bcb",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 115000,
+      "sample_index": 23,
+      "good_trace_sha256": "02aca1d8ff576df62f25597adabdfaffb28abbd13c8b1157a76af1563de05485",
+      "bad_trace_sha256": "6a2b3a9c646875885eb7dc634f6b6b5bd33676b0d1bc5d3eefdb94a97075f3cd",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol boundary",
+  "mutation_kind": "real_rtl_control_mutation",
+  "correct_sha256": "7b3320ba626149593b72a8dbe88b56f57a39c2a6af9b87d204c3202ed72480f5",
+  "buggy_sha256": "5925305331149143a5c66f8589ba7eb9824498cc2449a5788bc4c79817e8e811",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_rejected",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

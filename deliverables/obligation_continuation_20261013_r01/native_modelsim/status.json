@@ -1,0 +1,19 @@
+{
+  "tool": "ModelSim SE-64 10.4 (2014.12)",
+  "installed": true,
+  "sva_compilation": "passed for multibit antecedent, overlapping implication, exact delay two and asynchronous disable",
+  "native_execution": "unusable; no HDL trace produced",
+  "attempts": [
+    {"log":"vsim.log", "failure":"Tcl FileWatch(fileName) uninitialized at run -all"},
+    {"log":"native_retry1.log", "failure":"design loaded, same Tcl error"},
+    {"log":"native_retry2.log", "failure":"session-local FileWatch initialization avoids Tcl error but process ends at run without HDL output"},
+    {"log":"native_retry3.log", "failure":"do-file reaches after run 0 ns, never reaches after positive time run or produces HDL output"},
+    {"log":"noassert_run.log", "failure":"same early termination on positive time with no assertions at all"}
+  ],
+  "classification":"executor/environment problem, not evidence against candidate semantics",
+  "license_cause":"not established; no license error emitted",
+  "exit_zero_is_success":false,
+  "tool_install_or_license_modified":false,
+  "residual_requirement":"working native simulator installation/runtime capable of executing noassert.sv, then repeat qa.sv and frozen candidates",
+  "native_cross_validation_completed":false
+}

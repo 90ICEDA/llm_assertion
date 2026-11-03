@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -31,7 +31,7 @@
+     logic [Lvls-2:0] carry_array;
+ 
+     // Extend to a power of two.
+-    assign sum[0] = d_i;
++    assign sum[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+ 
+     // generate half adders for each lvl
+     // lvl 0 is the input level

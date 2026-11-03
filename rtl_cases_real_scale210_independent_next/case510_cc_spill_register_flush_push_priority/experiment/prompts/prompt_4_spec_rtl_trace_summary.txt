@@ -1,0 +1,33 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, flush_i, push_i, data_i, valid_o, data_o
+
+Specification:
+
+Flush has priority over a simultaneous push. On the sample after both controls are asserted, the spill register must be empty and must not expose the pushed payload.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_spill_register_flushable(input wire clk_i,input wire rst_ni,input wire flush_i,input wire push_i,input wire [7:0] data_i,output reg valid_o,output reg [7:0] data_o);
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) begin valid_o<=0;data_o<=0; end
+    else if(flush_i) begin valid_o<=0;data_o<=0; end
+    else if(push_i) begin valid_o<=1;data_o<=data_i; end
+  end
+endmodule
+
+Waveform evidence:
+
+Case: case510_cc_spill_register_flush_push_priority
+First divergence cycle: 8
+First divergence time_ps: 35000
+Differing signals at first divergence: data_o[7:0], q_o, valid_o
+Observed differing signal values (good): data_o[7:0]=00000000, q_o=0, valid_o=0
+Observed differing signal values (bad): data_o[7:0]=01010101, q_o=1, valid_o=1

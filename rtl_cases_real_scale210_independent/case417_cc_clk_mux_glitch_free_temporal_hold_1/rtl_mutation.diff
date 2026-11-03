@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -197,7 +197,7 @@
+     if (ClockDuringReset) begin : gen_async_reset_clock_bypass_logic
+       always_ff @(posedge clks_i[i], negedge s_reset_synced[i]) begin
+         if (!s_reset_synced[i]) begin
+-          async_reset_bypass_active_q[i] <= 1'b1;
++          async_reset_bypass_active_q[i] <= async_reset_bypass_active_q[i]; // ASSERTIONFORGE_MUTATION: state update suppressed
+         end else begin
+           async_reset_bypass_active_q[i] <= 1'b0;
+         end

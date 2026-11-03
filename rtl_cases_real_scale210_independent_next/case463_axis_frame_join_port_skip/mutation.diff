@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -199,7 +199,7 @@
+ 
+                 if (input_tlast) begin
+                     // last flag received, switch to next port
+-                    port_sel_next = port_sel_reg + 1;
++                    port_sel_next = port_sel_reg + 2; // ASSERTIONFORGE_MUTATION
+                     // save tuser - assert tuser out if ANY tuser asserts received
+                     output_tuser_next = output_tuser_next | input_tuser;
+                     // disable input

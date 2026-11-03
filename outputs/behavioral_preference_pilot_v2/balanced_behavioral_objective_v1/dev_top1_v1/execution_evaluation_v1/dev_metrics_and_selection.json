@@ -1,0 +1,105 @@
+{
+  "status": "complete",
+  "query_manifest_sha256": "74a90578c44d1b8055c19e27e481447a51e358882526e4f01103da0224234d38",
+  "metric_definitions_sha256": "0f9ea59e1e6c961daf579fabfb022f2c7965943d19b088fde13b76365c7d8980",
+  "record_count": 30,
+  "summaries": {
+    "anchor_10": {
+      "query_count": 6,
+      "compile_rate": 0.8333333333333334,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.5,
+      "Target Detect": 0.3333333333333333,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.8333333333333334,
+      "TOR": null,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 3,
+        "target_detect": 2,
+        "non_vacuous": 5
+      }
+    },
+    "anchor_20": {
+      "query_count": 6,
+      "compile_rate": 0.8333333333333334,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.3333333333333333,
+      "Target Detect": 0.5,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.8333333333333334,
+      "TOR": null,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 2,
+        "target_detect": 3,
+        "non_vacuous": 5
+      }
+    },
+    "anchor_25": {
+      "query_count": 6,
+      "compile_rate": 0.8333333333333334,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.16666666666666666,
+      "Target Detect": 0.5,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.8333333333333334,
+      "TOR": 1.0,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 1,
+        "target_detect": 3,
+        "non_vacuous": 5
+      }
+    },
+    "scalar_score_dpo": {
+      "query_count": 6,
+      "compile_rate": 0.8333333333333334,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.16666666666666666,
+      "Target Detect": 0.5,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.8333333333333334,
+      "TOR": null,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 1,
+        "target_detect": 3,
+        "non_vacuous": 5
+      }
+    },
+    "full_disagreement_dominance_dpo": {
+      "query_count": 6,
+      "compile_rate": 0.8333333333333334,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.16666666666666666,
+      "Target Detect": 0.5,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.8333333333333334,
+      "TOR": null,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 1,
+        "target_detect": 3,
+        "non_vacuous": 5
+      }
+    }
+  },
+  "selection": {
+    "status": "selected",
+    "constraints": {
+      "fixed_safe_floor_method": "scalar_score_dpo",
+      "fixed_safe_floor": 0.16666666666666666,
+      "target_detect_floor_method": "full_disagreement_dominance_dpo",
+      "target_detect_floor": 0.5
+    },
+    "eligible_variants": [
+      "anchor_20",
+      "anchor_25"
+    ],
+    "selected_variant": "anchor_20",
+    "ranking": "SCS@1 desc, Fixed-Safe desc, Target Detect desc, anchor fraction asc",
+    "next_action": "phase_b_refit_all30"
+  },
+  "wall_clock_seconds": 0.029474300041329116
+}

@@ -1,0 +1,399 @@
+{
+  "schema": "research17_native_sampled_feedback_v1",
+  "scenario_id": "instrumentation:d2:p0:s2026101551",
+  "replays": {
+    "correct": {
+      "directory": "/mnt/d/AssertionForge-main1/deliverables/research17_fifo_observation_20261016_r01/correct",
+      "waveform": "/mnt/d/AssertionForge-main1/deliverables/research17_fifo_observation_20261016_r01/correct/wave.vcd",
+      "native": {
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_status": "observed"
+      },
+      "sampled_diagnostics": {
+        "status": "verified",
+        "issues": [],
+        "trace_samples": 112,
+        "native_observation_samples": 112,
+        "semantics": "preponed $sampled values from native cover action; reference state before same-edge NBA updates"
+      },
+      "properties": [
+        {
+          "id": "a0",
+          "obligations": [
+            "order_payload"
+          ],
+          "property": "(mvalid && mready) |-> (ref_expected == mdata)",
+          "antecedent": "(mvalid && mready)",
+          "consequent": "(ref_expected == mdata)",
+          "derived_delay": 0,
+          "trigger_cycles": [
+            7,
+            15,
+            23,
+            31
+          ],
+          "failure_cycles": [],
+          "trigger_count": 4,
+          "failure_count": 0,
+          "native_status": "no_violation_within_execution"
+        }
+      ],
+      "legality": "legal",
+      "independent_oracle_verdict": "no_violation_within_execution",
+      "oracle_unknown": [],
+      "accepted_transactions": [
+        {
+          "transaction_id": "e1:t0",
+          "epoch": 1,
+          "accept_cycle": 5,
+          "data": 2287104404,
+          "response_cycle": 7,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 2287104404
+        },
+        {
+          "transaction_id": "e1:t1",
+          "epoch": 1,
+          "accept_cycle": 13,
+          "data": 345406980,
+          "response_cycle": 15,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 345406980
+        },
+        {
+          "transaction_id": "e1:t2",
+          "epoch": 1,
+          "accept_cycle": 21,
+          "data": 441731732,
+          "response_cycle": 23,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 441731732
+        },
+        {
+          "transaction_id": "e1:t3",
+          "epoch": 1,
+          "accept_cycle": 29,
+          "data": 3874175908,
+          "response_cycle": 31,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 3874175908
+        }
+      ],
+      "cancelled_transactions": [],
+      "outstanding_at_end": [],
+      "drain_scope": {
+        "max_ram_depth": 8,
+        "max_ram_pipeline": 2,
+        "output_fifo_enabled": false,
+        "required_fair_samples": 18,
+        "actual_fair_samples": 82
+      }
+    },
+    "drop": {
+      "directory": "/mnt/d/AssertionForge-main1/deliverables/research17_fifo_observation_20261016_r01/drop",
+      "waveform": "/mnt/d/AssertionForge-main1/deliverables/research17_fifo_observation_20261016_r01/drop/wave.vcd",
+      "native": {
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_status": "observed"
+      },
+      "sampled_diagnostics": {
+        "status": "verified",
+        "issues": [],
+        "trace_samples": 112,
+        "native_observation_samples": 112,
+        "semantics": "preponed $sampled values from native cover action; reference state before same-edge NBA updates"
+      },
+      "properties": [
+        {
+          "id": "a0",
+          "obligations": [
+            "order_payload"
+          ],
+          "property": "(mvalid && mready) |-> (ref_expected == mdata)",
+          "antecedent": "(mvalid && mready)",
+          "consequent": "(ref_expected == mdata)",
+          "derived_delay": 0,
+          "trigger_cycles": [
+            7,
+            15,
+            23
+          ],
+          "failure_cycles": [],
+          "trigger_count": 3,
+          "failure_count": 0,
+          "native_status": "no_violation_within_execution"
+        }
+      ],
+      "legality": "legal",
+      "independent_oracle_verdict": "violation",
+      "oracle_unknown": [],
+      "accepted_transactions": [
+        {
+          "transaction_id": "e1:t0",
+          "epoch": 1,
+          "accept_cycle": 5,
+          "data": 2287104404,
+          "response_cycle": 7,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 2287104404
+        },
+        {
+          "transaction_id": "e1:t1",
+          "epoch": 1,
+          "accept_cycle": 13,
+          "data": 345406980,
+          "response_cycle": 15,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 345406980
+        },
+        {
+          "transaction_id": "e1:t2",
+          "epoch": 1,
+          "accept_cycle": 21,
+          "data": 441731732,
+          "response_cycle": 23,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 441731732
+        },
+        {
+          "transaction_id": "e1:t3",
+          "epoch": 1,
+          "accept_cycle": 29,
+          "data": 3874175908,
+          "response_cycle": null,
+          "cancel_cycle": null,
+          "outcome": "pending"
+        }
+      ],
+      "cancelled_transactions": [],
+      "outstanding_at_end": [
+        {
+          "transaction_id": "e1:t3",
+          "epoch": 1,
+          "accept_cycle": 29,
+          "data": 3874175908,
+          "response_cycle": null,
+          "cancel_cycle": null,
+          "outcome": "pending"
+        }
+      ],
+      "drain_scope": {
+        "max_ram_depth": 8,
+        "max_ram_pipeline": 2,
+        "output_fifo_enabled": false,
+        "required_fair_samples": 18,
+        "actual_fair_samples": 82
+      }
+    }
+  },
+  "issues": [
+    {
+      "evidence_id": "fifo:78d3e083f3364693dc770b13cc39db660929cd099c86272eaecd75485ab32dce",
+      "scenario_id": "instrumentation:d2:p0:s2026101551",
+      "variant": "drop",
+      "cycle": 111,
+      "obligation": "drain_no_loss",
+      "classification": "no_property_for_obligation",
+      "oracle": {
+        "legality": "legal",
+        "verdict": "violated",
+        "validator": "independent_fifo_port_history_queue",
+        "paired_control_pass": true,
+        "identical_input_handshakes": true,
+        "first_violation_in_epoch": true
+      },
+      "oracle_violation": [
+        {
+          "cycle": 111,
+          "obligation": "drain_no_loss",
+          "passed": false,
+          "transaction_id": null,
+          "outstanding": [
+            "e1:t3"
+          ]
+        }
+      ],
+      "mapped_assertion_evidence": [],
+      "all_property_observations": [
+        {
+          "id": "a0",
+          "obligations": [
+            "order_payload"
+          ],
+          "mapped_to_target_obligation": false,
+          "antecedent": "(mvalid && mready)",
+          "consequent": "(ref_expected == mdata)",
+          "relevant_trigger_cycle": 111,
+          "native_cover_observed": false,
+          "native_failure_at_target": false,
+          "antecedent_sample": [
+            {
+              "cycle": 111,
+              "rst": 0,
+              "svalid": 0,
+              "sready": 1,
+              "sdata": 2214782436,
+              "mvalid": 0,
+              "mready": 1,
+              "mdata": 441731732,
+              "ref_count": 1,
+              "ref_expected": 3874175908,
+              "drain_due": 1
+            }
+          ],
+          "target_sample": [
+            {
+              "cycle": 111,
+              "rst": 0,
+              "svalid": 0,
+              "sready": 1,
+              "sdata": 2214782436,
+              "mvalid": 0,
+              "mready": 1,
+              "mdata": 441731732,
+              "ref_count": 1,
+              "ref_expected": 3874175908,
+              "drain_due": 1
+            }
+          ]
+        }
+      ],
+      "fixed_control": {
+        "samples": [
+          {
+            "cycle": 109,
+            "rst": 0,
+            "svalid": 0,
+            "sready": 1,
+            "sdata": 1256340900,
+            "mvalid": 0,
+            "mready": 1,
+            "mdata": 441731732,
+            "ref_count": 0,
+            "ref_expected": 0,
+            "drain_due": 0
+          },
+          {
+            "cycle": 110,
+            "rst": 0,
+            "svalid": 0,
+            "sready": 1,
+            "sdata": 3156453204,
+            "mvalid": 0,
+            "mready": 1,
+            "mdata": 441731732,
+            "ref_count": 0,
+            "ref_expected": 0,
+            "drain_due": 0
+          },
+          {
+            "cycle": 111,
+            "rst": 0,
+            "svalid": 0,
+            "sready": 1,
+            "sdata": 2214782436,
+            "mvalid": 0,
+            "mready": 1,
+            "mdata": 441731732,
+            "ref_count": 0,
+            "ref_expected": 0,
+            "drain_due": 1
+          }
+        ],
+        "events_at_cycle": {
+          "accepted": [],
+          "responses": [],
+          "cancelled": []
+        },
+        "outstanding_before_cycle": [],
+        "reference_expected_valid_only_when_count_positive": true
+      },
+      "target": {
+        "samples": [
+          {
+            "cycle": 109,
+            "rst": 0,
+            "svalid": 0,
+            "sready": 1,
+            "sdata": 1256340900,
+            "mvalid": 0,
+            "mready": 1,
+            "mdata": 441731732,
+            "ref_count": 1,
+            "ref_expected": 3874175908,
+            "drain_due": 0
+          },
+          {
+            "cycle": 110,
+            "rst": 0,
+            "svalid": 0,
+            "sready": 1,
+            "sdata": 3156453204,
+            "mvalid": 0,
+            "mready": 1,
+            "mdata": 441731732,
+            "ref_count": 1,
+            "ref_expected": 3874175908,
+            "drain_due": 0
+          },
+          {
+            "cycle": 111,
+            "rst": 0,
+            "svalid": 0,
+            "sready": 1,
+            "sdata": 2214782436,
+            "mvalid": 0,
+            "mready": 1,
+            "mdata": 441731732,
+            "ref_count": 1,
+            "ref_expected": 3874175908,
+            "drain_due": 1
+          }
+        ],
+        "events_at_cycle": {
+          "accepted": [],
+          "responses": [],
+          "cancelled": []
+        },
+        "outstanding_before_cycle": [
+          {
+            "transaction_id": "e1:t3",
+            "epoch": 1,
+            "accept_cycle": 29,
+            "data": 3874175908,
+            "response_cycle": null,
+            "cancel_cycle": null,
+            "outcome": "pending"
+          }
+        ],
+        "reference_expected_valid_only_when_count_positive": true
+      },
+      "diagnostic_status": "verified"
+    }
+  ],
+  "counts": {
+    "no_property_for_obligation": 1
+  },
+  "later_attribution_unknown": [],
+  "scope": "Finite native simulation and independent accepted-transaction oracle. No formal proof. Missing diagnostic samples remain unknown. Cover is the exact native parsed antecedent; no Python predicate evaluator is used."
+}

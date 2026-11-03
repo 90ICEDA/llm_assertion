@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -13,7 +13,7 @@
+  assign timeout = int'(cnt) >= TimeOutCnt;
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) cnt<='0;
+-   else if(ack || !en_i) cnt<='0;
++   else if(ack && !en_i) cnt<='0;
+    else if(timeout) cnt<={CntWidth{1'b1}};
+    else if(en_i) cnt<=cnt+1'b1;
+  end

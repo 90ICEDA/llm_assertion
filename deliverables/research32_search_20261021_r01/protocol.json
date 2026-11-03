@@ -1,0 +1,35 @@
+{
+  "seeds": [
+    3203,
+    3209,
+    3217
+  ],
+  "methods": [
+    "ordinary",
+    "candidate_disagreement",
+    "raw_difference",
+    "contract_coverage"
+  ],
+  "durations": [
+    0,
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "queries_per_method_seed": 4,
+  "cycles": 112,
+  "depth": 4,
+  "pipeline": 1,
+  "common": "Same initial/repaired complete model-generated sets, RTL, artificial modes, duration grammar and common no-stall query.",
+  "contract": "After own measured max stall: cover short(1), medium(4), long(16) in ascending uncovered order. These are public duration buckets, not hidden fault threshold lookup.",
+  "ordinary": "Uniform choice of all six durations, with replacement, own seed.",
+  "score_baselines": "With probability .65 exploit own positive historical XOR or raw mismatch score, otherwise uniform exploration.",
+  "accounting": "One query is two candidates x correct/two long faults = six native executions; all failures/duplicates/no-witness charged. Two shared compiles and smoke counted separately.",
+  "dedup": "Initial candidate content hash / obligation / fault mechanism; waves and seeds do not add independent bugs.",
+  "scope": "Exploratory development counter mutation. Not historical repair, independent result, or general search advantage. Original FIFO semantics and port-history oracle unchanged.",
+  "root_git_commit": null,
+  "model_calls": 0,
+  "formal_calls": 0
+}

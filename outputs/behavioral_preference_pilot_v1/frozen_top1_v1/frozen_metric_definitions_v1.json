@@ -1,0 +1,30 @@
+{
+  "status": "frozen_before_frozen_top1_execution_evaluation",
+  "version": "frozen_top1_metric_definitions_v1",
+  "unit": "one frozen greedy Top-1 generation per adapter/query",
+  "failure_policy": "Missing extraction, empty candidate, parse error, compile failure, simulation failure, or timeout remains in the denominator and scores false.",
+  "primary_success": "compile_ok and correct_pass and buggy_fail",
+  "strict_success": "compile_ok and correct_pass and buggy_fail and antecedent_hit and non_vacuous and heldout_correct_pass and heldout_buggy_fail and heldout_antecedent_hit and heldout_non_vacuous",
+  "metrics": {
+    "SCS@1": "query macro-average of strict_success",
+    "Fixed-Safe": "query macro-average of (correct_pass and heldout_correct_pass)",
+    "Target Detect": "query macro-average of (buggy_fail and heldout_buggy_fail)",
+    "Family Recall": "number of bug families with at least one strict_success query divided by the number of test bug families",
+    "Non-vacuity": "query macro-average of (antecedent_hit and heldout_antecedent_hit)",
+    "TOR": "trace_overfit count divided by primary_success count; zero-denominator is reported as null"
+  },
+  "reported_splits": {
+    "unseen_parent": 35,
+    "unseen_bug_family": 25,
+    "union_overview_only": 48,
+    "project_ood": "N/A: Pilot training covers all three frozen projects"
+  },
+  "prohibited": [
+    "reranking",
+    "repair",
+    "selector",
+    "regeneration",
+    "dropping failed extractions or failed compilations",
+    "held-out outcome use during generation"
+  ]
+}

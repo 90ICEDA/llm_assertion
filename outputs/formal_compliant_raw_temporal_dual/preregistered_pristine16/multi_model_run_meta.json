@@ -1,0 +1,98 @@
+{
+  "thread_id": "019ed9f6-87cf-7830-adb8-595fe2ae140d",
+  "selected_case_ids": [
+    "case426_axis_fifo_temporal_hold_3",
+    "case440_cc_onehot_protocol_suppress_2",
+    "case417_cc_clk_mux_glitch_free_temporal_hold_1",
+    "case435_prim_filter_ctr_protocol_suppress_1",
+    "case415_cc_rstgen_bypass_temporal_hold_1",
+    "case421_axis_register_temporal_hold_1",
+    "case416_cc_rstgen_bypass_temporal_hold_2",
+    "case439_cc_onehot_protocol_suppress_1",
+    "case425_axis_fifo_temporal_hold_2",
+    "case442_cc_stream_mux_protocol_suppress_2",
+    "case408_prim_fifo_sync_cnt_temporal_hold_3",
+    "case441_cc_stream_mux_protocol_suppress_1",
+    "case443_cc_lzc_protocol_suppress_1",
+    "case410_cc_edge_propagator_ack_temporal_hold_1",
+    "case449_axis_demux_protocol_suppress_1",
+    "case418_cc_clk_mux_glitch_free_temporal_hold_2"
+  ],
+  "active_model_specs": [
+    {
+      "model_label": "GPT",
+      "provider": "openai",
+      "model_name": "gpt-5.4",
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    {
+      "model_label": "Claude",
+      "provider": "openai_compatible",
+      "model_name": "claude-opus-4-8",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "key_file_name": "anthropic_api_key.txt",
+      "relay_base_url_env": "MULTIMODEL_CLAUDE_BASE_URL",
+      "relay_auth_scheme_env": "MULTIMODEL_CLAUDE_AUTH_SCHEME",
+      "relay_extra_headers_env": "MULTIMODEL_CLAUDE_EXTRA_HEADERS_JSON",
+      "relay_max_retries_env": "MULTIMODEL_CLAUDE_MAX_RETRIES",
+      "relay_retry_backoff_env": "MULTIMODEL_CLAUDE_RETRY_BACKOFF_SEC"
+    }
+  ],
+  "active_method_specs": [
+    {
+      "method": "spec_rtl_temporal_relation_abstraction",
+      "trace_input_label": "Temporal-relation abstraction",
+      "representation_label": "temporal_relation_abstraction"
+    },
+    {
+      "method": "spec_rtl_raw_trace",
+      "trace_input_label": "Raw trace",
+      "representation_label": "raw_trace"
+    }
+  ],
+  "candidates_per_cell": 2,
+  "use_property_compile_mode": false,
+  "write_mode": "upsert_append_by_unique_key",
+  "result_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method",
+    "candidate_index"
+  ],
+  "prompt_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method"
+  ],
+  "summary_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "method"
+  ],
+  "argv": [
+    "src/run_trace_representation_ablation.py",
+    "--root",
+    "outputs/pristine_trace_router_v1/dispatcher_view",
+    "--output-dir",
+    "outputs/formal_compliant_raw_temporal_dual/preregistered_pristine16",
+    "--temporal-summary-json",
+    "outputs/pristine_trace_router_v1/dispatcher_temporal_primary.json",
+    "--all-cases",
+    "--model",
+    "GPT",
+    "--model",
+    "Claude",
+    "--method",
+    "spec_rtl_raw_trace",
+    "--method",
+    "spec_rtl_temporal_relation_abstraction",
+    "--candidates-per-cell",
+    "2",
+    "--resume"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "status": "frozen_before_any_balanced_objective_training",
+  "version": "balanced_behavioral_objective_v1",
+  "seed": 20260815,
+  "source_candidate_count": 240,
+  "source_dominance_pair_count": 484,
+  "source_dominance_sha256": "a524eeefddca65338a706f67c6e9b3e3fa3a13082511519127041fbb548fcde1",
+  "output_protocol_frozen_unchanged": "pilot_v2_corrected_json_ast_eos_v1 + strict schema trie",
+  "parent_split": {
+    "subtrain": 24,
+    "dev": 6,
+    "all_projects_in_both": true,
+    "dev_minimum_distinct_bug_families": 4,
+    "selection": "SHA256(seed\\0parent_id) deterministic coverage-first; frozen before training",
+    "split_manifest": "outputs/behavioral_preference_pilot_v2/balanced_behavioral_objective_v1/parent_split_24_6.jsonl"
+  },
+  "loss_token_budget_per_variant": 245760,
+  "sampling": {
+    "parent": "uniform over eligible subtrain parents before edge selection",
+    "stratum_loss_token_fractions": {
+      "joint_fp_tp": 0.5,
+      "fp_only": 0.25,
+      "tp_only": 0.25
+    },
+    "within_stratum": "uniform over unique directed candidate-id edges",
+    "candidate_degree_cap_per_schedule_cycle": 2,
+    "padding": "batch size 1; no padding; exact attention mask",
+    "response_eos_required": true
+  },
+  "anchor_eligibility": "fixed_safe && target_detect && non_vacuous && FP empty && TP nonempty on train evidence only",
+  "anchor_fraction_candidates": [
+    0.1,
+    0.2,
+    0.25
+  ],
+  "dev_selection": {
+    "generation": "same strict-trie greedy Top-1 protocol; one generation per adapter/dev query; no repair/reranker/selector",
+    "constraints": [
+      "Fixed-Safe >= scalar_score_dpo dev baseline",
+      "Target Detect >= full_disagreement_dominance_dpo dev baseline"
+    ],
+    "ranking": [
+      "highest SCS@1",
+      "highest Fixed-Safe",
+      "highest Target Detect",
+      "smallest anchor fraction"
+    ],
+    "no_eligible_variant": "NO-GO; do not refit all30 and do not access frozen OOD outcomes"
+  },
+  "phase_b_refit": "after dev selection only, refit selected variant on all 30 parents with the same 245760 response-loss tokens, then executable smoke, then one frozen OOD run",
+  "forbidden": [
+    "using current or future OOD outcomes for variant selection",
+    "case-specific OOD tuning",
+    "changing the 48-query universe",
+    "relaxing strict Pareto labels"
+  ],
+  "variants": [
+    {
+      "variant_id": "anchor_10",
+      "anchor_loss_token_fraction": 0.1,
+      "dpo_loss_token_fraction": 0.9,
+      "subtrain_parent_count": 24,
+      "dev_parent_count": 6,
+      "dpo_edge_pool": "outputs/behavioral_preference_pilot_v2/balanced_behavioral_objective_v1/dpo_edges_subtrain24.jsonl",
+      "anchor_pool": "outputs/behavioral_preference_pilot_v2/balanced_behavioral_objective_v1/safe_detect_anchors_subtrain24.jsonl"
+    },
+    {
+      "variant_id": "anchor_20",
+      "anchor_loss_token_fraction": 0.2,
+      "dpo_loss_token_fraction": 0.8,
+      "subtrain_parent_count": 24,
+      "dev_parent_count": 6,
+      "dpo_edge_pool": "outputs/behavioral_preference_pilot_v2/balanced_behavioral_objective_v1/dpo_edges_subtrain24.jsonl",
+      "anchor_pool": "outputs/behavioral_preference_pilot_v2/balanced_behavioral_objective_v1/safe_detect_anchors_subtrain24.jsonl"
+    },
+    {
+      "variant_id": "anchor_25",
+      "anchor_loss_token_fraction": 0.25,
+      "dpo_loss_token_fraction": 0.75,
+      "subtrain_parent_count": 24,
+      "dev_parent_count": 6,
+      "dpo_edge_pool": "outputs/behavioral_preference_pilot_v2/balanced_behavioral_objective_v1/dpo_edges_subtrain24.jsonl",
+      "anchor_pool": "outputs/behavioral_preference_pilot_v2/balanced_behavioral_objective_v1/safe_detect_anchors_subtrain24.jsonl"
+    }
+  ],
+  "inventory": {
+    "all_edges": {
+      "tp_only": 27,
+      "joint_fp_tp": 101,
+      "fp_only": 356
+    },
+    "subtrain_edges": {
+      "tp_only": 27,
+      "joint_fp_tp": 78,
+      "fp_only": 273
+    },
+    "safe_detect_anchors_all30": 7,
+    "safe_detect_anchors_subtrain24": 7,
+    "safe_detect_anchors_dev6": 0
+  }
+}

@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -71,7 +71,7 @@
+   end
+ 
+   // always look for differences, even if not filter enabled
+-  assign update_stored_value = (diff_ctr_d == thresh_i);
++  assign update_stored_value = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+   assign diff_ctr_d = (filter_synced != filter_q) ? '0       :           // restart
+                       (diff_ctr_q >= thresh_i)    ? thresh_i :           // saturate
+                                                     (diff_ctr_q + 1'b1); // count up

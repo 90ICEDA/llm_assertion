@@ -1,0 +1,2 @@
+// Temporal type: frame state across an inter-beat gap
+assert property (@(posedge clk) disable iff (rst) (by_frame && s_axis_tvalid && s_axis_tready && !s_axis_tlast) ##1 !s_axis_tvalid |=> s_axis_tready);

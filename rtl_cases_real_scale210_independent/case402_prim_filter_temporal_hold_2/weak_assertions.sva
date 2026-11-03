@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Checks one sample without requiring a full stable-input history.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && filter_i) |-> (filter_o == stored_value_q));
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Checks only the output endpoint and omits the retained-state update.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) (&stored_vector_q) |-> filter_o);
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Removes the required next-cycle state transition.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && (&stored_vector_q)) |-> (stored_value_q && filter_o));
+
+// W4_antecedent_removed
+// antecedent_nonempty: true
+// expected weakness: Removes the qualifying history antecedent and keeps only local state/output consistency.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) stored_value_q |-> filter_o);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: Does not constrain when stored_value_q is allowed to update.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) !enable_i || (filter_o == stored_value_q));

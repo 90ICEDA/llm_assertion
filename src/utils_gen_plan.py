@@ -9,13 +9,28 @@
 from utils import get_ts
 from config import FLAGS
 from saver import saver
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 import os
 import subprocess
 import re
 import tiktoken, shutil
 
 print = saver.log_info
+
+
+REPORT_UNDETECTABLE_START = "### AF_UNDETECTABLE_START ###"
+REPORT_UNDETECTABLE_END = "### AF_UNDETECTABLE_END ###"
+REPORT_UNPROCESSED_START = "### AF_UNPROCESSED_START ###"
+REPORT_UNPROCESSED_END = "### AF_UNPROCESSED_END ###"
+REPORT_COVER_STATUS_START = "### AF_ANTECEDENT_COVER_STATUS_START ###"
+REPORT_COVER_STATUS_END = "### AF_ANTECEDENT_COVER_STATUS_END ###"
+
+FORMAL_STATUS_PRIORITY = {
+    "proven": 3.0,
+    "inconclusive": 2.0,
+    "cex": 1.0,
+    "error": 0.0,
+}
 
 
 def analyze_coverage_of_proven_svas(svas: List[str], jasper_reports: List[str]) -> str:
@@ -35,16 +50,20 @@ def analyze_coverage_of_proven_svas(svas: List[str], jasper_reports: List[str]) 
     print(f"Number of SVAs: {len(svas)}")
     print(f"Number of reports: {len(jasper_reports)}")
 
-    # Collect proven SVAs
-    proven_svas = [
-        sva
-        for sva, report_path in zip(svas, jasper_reports)
-        if extract_proof_status(open(report_path, 'r').read()) == "proven"
-    ]
+    # Collect only non-vacuous proven SVAs so coverage is not dominated by unreachable antecedents.
+    proven_svas = []
+    for sva, report_path in zip(svas, jasper_reports):
+        with open(report_path, 'r') as f:
+            report_content = f.read()
+        if (
+            extract_proof_status(report_content) == "proven"
+            and extract_antecedent_reachability(report_content) is not False
+        ):
+            proven_svas.append(sva)
 
-    print(f"Number of proven SVAs: {len(proven_svas)}")
+    print(f"Number of non-vacuous proven SVAs: {len(proven_svas)}")
     if not proven_svas:
-        return "No proven SVAs found. Coverage analysis cannot be performed."
+        return "No non-vacuous proven SVAs found. Coverage analysis cannot be performed."
 
     # Print paths for verification
     print(f"\nDesign directory: {FLAGS.design_dir}")
@@ -402,8 +421,31 @@ def extract_proof_status(report_content: str) -> str:
     Returns:
         str: The proof status (proven, cex, inconclusive, or error).
     """
-    if "ERROR" in report_content:
-        return "error"
+    def _has_fatal_jasper_error(text: str) -> bool:
+        fatal_patterns = [
+            r"(?im)^\s*(?:fatal|internal\s+error)\s*:",
+            r"(?im)^\s*error\s*:",
+            r"(?im)^\s*\*\*?\s*error\b",
+            r"(?im)\blicense\b.*\b(error|fail|denied|checkout failed)\b",
+            r"(?im)\bcommand\s+not\s+found\b",
+        ]
+        ignored_patterns = [
+            "### AF_ANTECEDENT_COVER_STATUS_START ###",
+            "### AF_ANTECEDENT_COVER_STATUS_END ###",
+            "### AF_UNDETECTABLE_START ###",
+            "### AF_UNDETECTABLE_END ###",
+            "### AF_UNPROCESSED_START ###",
+            "### AF_UNPROCESSED_END ###",
+            "### AF_COVER_RUN_ERROR ###",
+            "### AF_COVERAGE_MEASURE_ERROR ###",
+        ]
+        filtered_lines = []
+        for line in text.splitlines():
+            if any(marker in line for marker in ignored_patterns):
+                continue
+            filtered_lines.append(line)
+        filtered_text = '\n'.join(filtered_lines)
+        return any(re.search(pattern, filtered_text) for pattern in fatal_patterns)
 
     # Look for the SUMMARY section
     summary_section = re.search(
@@ -413,7 +455,7 @@ def extract_proof_status(report_content: str) -> str:
     )
 
     if not summary_section:
-        return "inconclusive"
+        return "error" if _has_fatal_jasper_error(report_content) else "inconclusive"
 
     summary_lines = summary_section.group(1).strip().split('\n')
     assertion_section = False
@@ -444,13 +486,136 @@ def extract_proof_status(report_content: str) -> str:
     elif "- undetermined" in non_zero_statuses or "- unknown" in non_zero_statuses:
         return "inconclusive"
     elif len(non_zero_statuses) == 0:
-        return "inconclusive"
+        return "error" if _has_fatal_jasper_error(report_content) else "inconclusive"
     else:
         return non_zero_statuses[
             0
         ]  # Return the first non-zero status if it doesn't match known categories
 
     return "inconclusive"
+
+
+def _extract_marked_section(
+    report_content: str, start_marker: str, end_marker: str
+) -> Optional[str]:
+    pattern = re.escape(start_marker) + r"\s*(.*?)\s*" + re.escape(end_marker)
+    match = re.search(pattern, report_content, re.DOTALL)
+    return match.group(1) if match else None
+
+
+def _section_has_meaningful_entries(section_content: Optional[str]) -> Optional[bool]:
+    if section_content is None:
+        return None
+
+    cleaned_lines = []
+    for raw_line in section_content.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line in {"{}", "[]"}:
+            continue
+        lower = line.lower()
+        if lower in {
+            "none",
+            "null",
+            "n/a",
+            "no objects found",
+            "no properties found",
+        }:
+            continue
+        if lower.startswith("__af_error__"):
+            return None
+        cleaned_lines.append(line)
+
+    return len(cleaned_lines) > 0
+
+
+def extract_antecedent_reachability(report_content: str) -> Optional[bool]:
+    """
+    Infer whether the assertion antecedent was reachable during formal analysis.
+
+    Returns:
+        True when Jasper covers the antecedent-only helper property,
+        False when Jasper proves that helper cover is uncoverable,
+        None when the report does not contain enough metadata.
+    """
+    cover_status_section = _extract_marked_section(
+        report_content, REPORT_COVER_STATUS_START, REPORT_COVER_STATUS_END
+    )
+    if cover_status_section is not None:
+        normalized = " ".join(
+            line.strip()
+            for line in cover_status_section.splitlines()
+            if line.strip()
+        ).lower()
+        if normalized and not normalized.startswith("__af_error__"):
+            if "uncoverable" in normalized or "unreachable" in normalized:
+                return False
+            if "covered" in normalized:
+                return True
+            if "__af_none__" in normalized:
+                return None
+            if "undetermined" in normalized or "unknown" in normalized:
+                return None
+
+    undetectable = _section_has_meaningful_entries(
+        _extract_marked_section(
+            report_content, REPORT_UNDETECTABLE_START, REPORT_UNDETECTABLE_END
+        )
+    )
+    unprocessed = _section_has_meaningful_entries(
+        _extract_marked_section(
+            report_content, REPORT_UNPROCESSED_START, REPORT_UNPROCESSED_END
+        )
+    )
+
+    if undetectable is False and unprocessed is False:
+        return True
+    if undetectable is True or unprocessed is True:
+        return False
+    if undetectable is not None or unprocessed is not None:
+        return None
+
+    legacy_patterns = [
+        r'(?im)\b(assert(?:ion)?|property)\b.*\b(unreachable|vacuous|undetectable)\b',
+        r'(?im)\b(unreachable|vacuous|undetectable)\b.*\b(assert(?:ion)?|property)\b',
+    ]
+    if any(re.search(pattern, report_content) for pattern in legacy_patterns):
+        return False
+
+    return None
+
+
+def format_antecedent_reachability(report_content: str) -> str:
+    reachability = extract_antecedent_reachability(report_content)
+    if reachability is True:
+        return "reachable"
+    if reachability is False:
+        return "unreachable"
+    return "unknown"
+
+
+def get_effective_formal_score(
+    proof_status: str, antecedent_reachability: Optional[bool]
+) -> float:
+    base_score = FORMAL_STATUS_PRIORITY.get(proof_status, -1)
+    if proof_status != "proven":
+        return float(base_score)
+    if antecedent_reachability is False:
+        return 1.5
+    if antecedent_reachability is None:
+        return 2.75
+    return float(base_score)
+
+
+def get_effective_proof_status(
+    proof_status: str, antecedent_reachability: Optional[bool]
+) -> str:
+    if proof_status == "proven" and antecedent_reachability is False:
+        return "proven_vacuous"
+    if proof_status == "proven" and antecedent_reachability is None:
+        return "proven_unknown_reachability"
+    return proof_status
 
 
 def count_tokens_in_file(file_path):

@@ -1,0 +1,164 @@
+{
+  "status": "complete",
+  "record_count": 48,
+  "metric_definitions_sha256": "0f9ea59e1e6c961daf579fabfb022f2c7965943d19b088fde13b76365c7d8980",
+  "query_manifest_sha256": "7d77ae187a5551aa6978b7a15269db99bdd2696cfc9335ceb02b74e985672f63",
+  "summaries": {
+    "unseen_parent": {
+      "query_count": 35,
+      "compile_rate": 1.0,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.02857142857142857,
+      "Target Detect": 0.6,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.7428571428571429,
+      "TOR": null,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 1,
+        "target_detect": 21,
+        "recalled_families": 0,
+        "families": 17,
+        "non_vacuous": 26,
+        "primary_success": 0,
+        "trace_overfit": 0
+      }
+    },
+    "unseen_bug_family": {
+      "query_count": 25,
+      "compile_rate": 1.0,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.4,
+      "Target Detect": 0.52,
+      "Family Recall": 0.0,
+      "Non-vacuity": 1.0,
+      "TOR": 1.0,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 10,
+        "target_detect": 13,
+        "recalled_families": 0,
+        "families": 8,
+        "non_vacuous": 25,
+        "primary_success": 3,
+        "trace_overfit": 3
+      }
+    },
+    "union_overview": {
+      "query_count": 48,
+      "compile_rate": 1.0,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.22916666666666666,
+      "Target Detect": 0.4791666666666667,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.8125,
+      "TOR": 1.0,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 11,
+        "target_detect": 23,
+        "recalled_families": 0,
+        "families": 21,
+        "non_vacuous": 39,
+        "primary_success": 3,
+        "trace_overfit": 3
+      }
+    }
+  },
+  "comparison_to_frozen_five_method_results": {
+    "unseen_parent": {
+      "strongest_nonbehavior_baseline": "scalar_score_dpo",
+      "baseline": {
+        "query_count": 35,
+        "compile_rate": 1.0,
+        "SCS@1": 0.02857142857142857,
+        "Fixed-Safe": 0.3142857142857143,
+        "Target Detect": 0.4857142857142857,
+        "Family Recall": 0.058823529411764705,
+        "Non-vacuity": 1.0,
+        "TOR": 0.6666666666666666,
+        "counts": {
+          "strict_success": 1,
+          "fixed_safe": 11,
+          "target_detect": 17,
+          "recalled_families": 1,
+          "test_families": 17,
+          "non_vacuous": 35,
+          "primary_success": 3,
+          "trace_overfit": 2
+        }
+      },
+      "phase_b": {
+        "query_count": 35,
+        "compile_rate": 1.0,
+        "SCS@1": 0.0,
+        "Fixed-Safe": 0.02857142857142857,
+        "Target Detect": 0.6,
+        "Family Recall": 0.0,
+        "Non-vacuity": 0.7428571428571429,
+        "TOR": null,
+        "counts": {
+          "strict_success": 0,
+          "fixed_safe": 1,
+          "target_detect": 21,
+          "recalled_families": 0,
+          "families": 17,
+          "non_vacuous": 26,
+          "primary_success": 0,
+          "trace_overfit": 0
+        }
+      },
+      "scs_delta_pp": -2.857142857142857,
+      "fixed_safe_not_decreased": false,
+      "go_gate_pass": false
+    },
+    "unseen_bug_family": {
+      "strongest_nonbehavior_baseline": "ordinary_sft",
+      "baseline": {
+        "query_count": 25,
+        "compile_rate": 1.0,
+        "SCS@1": 0.04,
+        "Fixed-Safe": 0.32,
+        "Target Detect": 0.72,
+        "Family Recall": 0.125,
+        "Non-vacuity": 1.0,
+        "TOR": 0.0,
+        "counts": {
+          "strict_success": 1,
+          "fixed_safe": 8,
+          "target_detect": 18,
+          "recalled_families": 1,
+          "test_families": 8,
+          "non_vacuous": 25,
+          "primary_success": 1,
+          "trace_overfit": 0
+        }
+      },
+      "phase_b": {
+        "query_count": 25,
+        "compile_rate": 1.0,
+        "SCS@1": 0.0,
+        "Fixed-Safe": 0.4,
+        "Target Detect": 0.52,
+        "Family Recall": 0.0,
+        "Non-vacuity": 1.0,
+        "TOR": 1.0,
+        "counts": {
+          "strict_success": 0,
+          "fixed_safe": 10,
+          "target_detect": 13,
+          "recalled_families": 0,
+          "families": 8,
+          "non_vacuous": 25,
+          "primary_success": 3,
+          "trace_overfit": 3
+        }
+      },
+      "scs_delta_pp": -4.0,
+      "fixed_safe_not_decreased": true,
+      "go_gate_pass": false
+    }
+  },
+  "final_decision": "NO-GO",
+  "wall_clock_seconds": 0.057866099989041686
+}

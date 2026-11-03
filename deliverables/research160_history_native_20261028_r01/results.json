@@ -1,0 +1,1408 @@
+{
+  "results": [
+    {
+      "case": "axis_adapter_keep",
+      "parameter": 8,
+      "revision": "before",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "69c0f0acc923a37232b7245eed8bad18051eb1727bf8be8e1992f36fdd012c6c",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/before/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/before/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_adapter_keep/before/axis_adapter.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 23.60175787
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/before/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.022807126000003564
+        },
+        "failures": [],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=3"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=4"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=5"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=16"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=43"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=44"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=45"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=49"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=50"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=51"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=52"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=56"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=83"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=84"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=85"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=88"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=89"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=90"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=91"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=92"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=96"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=123"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=124"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=125"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "violated",
+      "failed": 10,
+      "legality_confirmed": true
+    },
+    {
+      "case": "axis_adapter_keep",
+      "parameter": 8,
+      "revision": "after",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "69c0f0acc923a37232b7245eed8bad18051eb1727bf8be8e1992f36fdd012c6c",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/after/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/after/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_adapter_keep/after/axis_adapter.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 21.883147228000013
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/after/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p8/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.01903551600003084
+        },
+        "failures": [],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=3"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=4"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=5"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=16"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=43"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=44"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=45"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=49"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=50"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=51"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=52"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=56"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=83"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=84"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=85"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=88"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=89"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=90"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=91"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=92"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=96"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=123"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=124"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=125"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "no_violation_in_scope",
+      "failed": 0,
+      "legality_confirmed": true
+    },
+    {
+      "case": "axis_adapter_keep",
+      "parameter": 32,
+      "revision": "before",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "b66517e78347a78bd8b8df1e728db8c23a01835e44c372ec219c22e7c580c53f",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/before/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/before/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_adapter_keep/before/axis_adapter.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 22.659189927
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/before/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.01969642799997473
+        },
+        "failures": [],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=5"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=45"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=49"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=50"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=51"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=52"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=85"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=88"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=89"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=90"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=91"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=92"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=125"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "violated",
+      "failed": 6,
+      "legality_confirmed": true
+    },
+    {
+      "case": "axis_adapter_keep",
+      "parameter": 32,
+      "revision": "after",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "b66517e78347a78bd8b8df1e728db8c23a01835e44c372ec219c22e7c580c53f",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/after/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/after/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_adapter_keep/after/axis_adapter.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 22.924506975999975
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/after/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_adapter_keep/p32/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.019718490000002475
+        },
+        "failures": [],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=5"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=45"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=49"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=50"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=51"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=52"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=85"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=88"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=89"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=90"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=91"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=92"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=125"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "no_violation_in_scope",
+      "failed": 0,
+      "legality_confirmed": true
+    },
+    {
+      "case": "axis_fifo_pause",
+      "parameter": 0,
+      "revision": "before",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "024eabfe2f39a4a99e9783c837f6702c4eff5cc9968145b6a82a0029607bbda5",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "violation",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/before/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/before/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_fifo_pause/before/axis_fifo.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 22.626308741999992
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/before/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.01936573299997235
+        },
+        "failures": [
+          {
+            "id": "hold_valid",
+            "detail": "cycle=49"
+          }
+        ],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=5"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=16"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=45"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=60"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=85"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=99"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=125"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "violated",
+      "failed": 1,
+      "legality_confirmed": true
+    },
+    {
+      "case": "axis_fifo_pause",
+      "parameter": 0,
+      "revision": "after",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "024eabfe2f39a4a99e9783c837f6702c4eff5cc9968145b6a82a0029607bbda5",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/after/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/after/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_fifo_pause/after/axis_fifo.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 22.588338989999954
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/after/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p0/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.019818041000007725
+        },
+        "failures": [],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=5"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=16"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=45"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=49"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=50"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=51"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=52"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=60"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=85"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=99"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=125"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "no_violation_in_scope",
+      "failed": 0,
+      "legality_confirmed": true
+    },
+    {
+      "case": "axis_fifo_pause",
+      "parameter": 1,
+      "revision": "before",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "9fb5d228a4eba80aa0570155b10d289cc1ee29411300299ac52758ff19b32ebf",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "violation",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/before/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/before/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_fifo_pause/before/axis_fifo.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 22.723545872999978
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/before/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/before",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.018179026999973757
+        },
+        "failures": [
+          {
+            "id": "hold_valid",
+            "detail": "cycle=49"
+          }
+        ],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=16"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=60"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=99"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "violated",
+      "failed": 1,
+      "legality_confirmed": true
+    },
+    {
+      "case": "axis_fifo_pause",
+      "parameter": 1,
+      "revision": "after",
+      "native": {
+        "engine": "Verilator native SVA simulation",
+        "formal_proof": false,
+        "source_sha256": "9fb5d228a4eba80aa0570155b10d289cc1ee29411300299ac52758ff19b32ebf",
+        "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "trigger_status": "observed",
+        "property_status": "no_violation_within_executed_scope",
+        "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+        "formal_cost": {
+          "calls": 0,
+          "wall_seconds": 0
+        },
+        "native_simulation_calls": 1,
+        "compile": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+            "--binary",
+            "--timing",
+            "--assert",
+            "--trace",
+            "-j",
+            "2",
+            "-Wno-fatal",
+            "--top-module",
+            "tb",
+            "--Mdir",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/after/obj_dir",
+            "-o",
+            "native_sim",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/after/tb.sv",
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_prepare_20261028_r01/axis_fifo_pause/after/axis_fifo.v"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 22.813299653
+        },
+        "execute": {
+          "argv": [
+            "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/after/obj_dir/native_sim"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research160_history_native_20261028_r01/axis_fifo_pause/p1/after",
+          "timeout_seconds": 240,
+          "exit_code": 0,
+          "status": "completed",
+          "wall_seconds": 0.01938438799999176
+        },
+        "failures": [],
+        "triggers": [
+          {
+            "id": "hold",
+            "detail": "cycle=6"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=7"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=8"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=9"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=10"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=11"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=12"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=16"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=46"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=47"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=48"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=49"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=50"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=51"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=52"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=60"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=86"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=87"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=99"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=126"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=127"
+          },
+          {
+            "id": "hold",
+            "detail": "cycle=128"
+          }
+        ]
+      },
+      "status": "no_violation_in_scope",
+      "failed": 0,
+      "legality_confirmed": true
+    }
+  ],
+  "model_calls": 0,
+  "formal_calls": 0
+}

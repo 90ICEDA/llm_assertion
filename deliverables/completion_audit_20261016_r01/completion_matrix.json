@@ -1,0 +1,74 @@
+[
+  {
+    "requirement": "真实LLM→原生SVA反馈链",
+    "status": "已运行，未通过",
+    "result": "3次真实模型生成/修改均原生编译执行并拒绝；无可接受最终版本。",
+    "code": "scripts/research15_native_models.py",
+    "artifact": "research15_native_20261015_r01/summary.json",
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "契约反馈驱动四法搜索",
+    "status": "已验证有限运行，负结果",
+    "result": "48查询/240原生回放；首个真实候选固定；无可导出的有效tail-loss细化见证。",
+    "code": "scripts/research15_search_experiment.py",
+    "artifact": "research15_search_20261015_r01/fixed_initial_negative/summary.json",
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "原11对候选四法对比",
+    "status": "此前已运行，本轮复用",
+    "result": "旧36/37/43/43独立候选缺口；不是本轮原生结果，无总体优势结论。",
+    "code": "scripts/research_search_compare.py",
+    "artifact": "research_search_20261014_r01/pair_results.json",
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "多SVA义务证据库/接受门",
+    "status": "已实现与定向资格检查，完整机制未验证",
+    "result": "12个门检查+13个适配器检查；实际模型版本无历史有效保护可供完整集合细化验收。",
+    "code": "scripts/research15_acceptance.py",
+    "artifact": "research15_integration_20261015_r01/gate_qualification.json",
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "复杂FIFO及复位取消",
+    "status": "已验证有限工程范围",
+    "result": "本轮Depth2与Depth5(实际8)、pipeline0/1；明确人工reset residue和tail loss故障，不能计原始presented bug成功。",
+    "code": "scripts/research15_search_runtime.py",
+    "artifact": "research15_search_20261015_r01/engineering_qualification/summary.json",
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "原生四组消融",
+    "status": "仅实现，尚未执行",
+    "result": "缺少通过资格检查的公共初始候选，且严格搜索treatment_witness为空；旧stat过程检查器四臂不能替代。",
+    "code": "scripts/research15_native_experiment.py",
+    "artifact": null,
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "最终冻结断言独立测试",
+    "status": "尚未执行",
+    "result": "没有接受版本；未生成或查看预定本轮holdout，不以历史工程测试替代。",
+    "code": "scripts/research15_native_experiment.py",
+    "artifact": null,
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "Ibex原始RTL案例",
+    "status": "已验证模块级有限范围",
+    "result": "#166新增，#54扩展新边界；手写原生SVA/独立ISA oracle，尚未纳入LLM细化。",
+    "code": "scripts/research15_history.py",
+    "artifact": "research15_history_20261015_r01/combined_summary.json",
+    "audit_date": "2026-10-16"
+  },
+  {
+    "requirement": "六原始父Bug完整保护",
+    "status": "未完成，0/6已证完整成功",
+    "result": "stat来源接口不符；FIFO presented未见证；spill/intr部分语义unknown；其余未完成原生整体验收。",
+    "code": null,
+    "artifact": "research15_integration_20261015_r01/parent_status.json",
+    "audit_date": "2026-10-16"
+  }
+]

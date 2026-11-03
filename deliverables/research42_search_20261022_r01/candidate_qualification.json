@@ -1,0 +1,117 @@
+{
+  "candidates_distinct": true,
+  "native_compile": {
+    "initial": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "6033902e1baa4985bb4d46eabb979dd154e7a3cfadb59b0f7513d32e8d41f46e",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "no_trigger_marker_observed",
+      "property_status": "no_violation_within_executed_scope",
+      "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/initial/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/initial/tb.sv",
+          "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+          "--coverage-user"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/initial",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 9.882225317
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/initial/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/initial",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.01895213800000306
+      },
+      "failures": [],
+      "triggers": []
+    },
+    "repaired": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "8b44a8026050f6df9504c72ea2b1e01eeb1257acd45c1300e12a320a0b456659",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "no_trigger_marker_observed",
+      "property_status": "no_violation_within_executed_scope",
+      "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/repaired/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/repaired/tb.sv",
+          "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+          "--coverage-user"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/repaired",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 9.612184990000003
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/repaired/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research42_search_20261022_r01/compiled/repaired",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.014621052000002521
+      },
+      "failures": [],
+      "triggers": []
+    }
+  },
+  "correct_control_qualification": "Every common and selected query is checked for both candidates below.",
+  "second_candidate_role": "Whole historical comparator only; not a hand-written property or current successful research41 answer."
+}

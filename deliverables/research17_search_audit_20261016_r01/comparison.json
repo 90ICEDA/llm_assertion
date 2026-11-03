@@ -1,0 +1,85 @@
+{
+  "methods": {
+    "ordinary": {
+      "queries": 12,
+      "native_replays": 60,
+      "unique_gap_keys": [
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "unique_gap_count": 2,
+      "archived_duplicate_gap_observations": 2,
+      "recomputed_cross_seed_duplicate_gap_observations": 4,
+      "unknown_queries": 0,
+      "contract_additional_gap_keys_vs_this_method": [
+        "drop/drain_no_loss"
+      ]
+    },
+    "candidate_disagreement": {
+      "queries": 12,
+      "native_replays": 60,
+      "unique_gap_keys": [
+        "drop/drain_no_loss",
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "unique_gap_count": 3,
+      "archived_duplicate_gap_observations": 0,
+      "recomputed_cross_seed_duplicate_gap_observations": 0,
+      "unknown_queries": 0,
+      "contract_additional_gap_keys_vs_this_method": []
+    },
+    "raw_difference": {
+      "queries": 12,
+      "native_replays": 60,
+      "unique_gap_keys": [
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "unique_gap_count": 2,
+      "archived_duplicate_gap_observations": 4,
+      "recomputed_cross_seed_duplicate_gap_observations": 4,
+      "unknown_queries": 0,
+      "contract_additional_gap_keys_vs_this_method": [
+        "drop/drain_no_loss"
+      ]
+    },
+    "contract_coverage": {
+      "queries": 12,
+      "native_replays": 60,
+      "unique_gap_keys": [
+        "drop/drain_no_loss",
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "unique_gap_count": 3,
+      "archived_duplicate_gap_observations": 3,
+      "recomputed_cross_seed_duplicate_gap_observations": 4,
+      "unknown_queries": 0,
+      "contract_additional_gap_keys_vs_this_method": []
+    }
+  },
+  "candidate_disagreement_eligible": false,
+  "same_candidate_sha256": "974a16c4f7d8f4627023d3574671ff50b9701cc485a50958e743aa64e084d5bf",
+  "declared_specs": [
+    {
+      "seed": 2026101507,
+      "depth": 2,
+      "pipeline": 0
+    },
+    {
+      "seed": 2026101531,
+      "depth": 5,
+      "pipeline": 1
+    }
+  ],
+  "planned_queries": 48,
+  "planned_replays": 240,
+  "dedup": "one independent gap per artificial fault mode and violated obligation; repeated cycles, seeds, families and configurations are replications",
+  "audit_findings": [
+    "Per-query duplicate tracking resets each seed. Unique gap totals union seeds correctly, but archived duplicate totals omit cross-seed repetitions; corrected counts supplied.",
+    "Single-property disagreement has no genuine candidate pair. It consumes random decisions differently from ordinary, so a different result is exploration variance, not disagreement efficacy.",
+    "Search classifications do not themselves gate every native/unknown condition. New witness admission must call strict validation before exporting treatment.",
+    "Obligation labels are declared proxies. Missing declared mapping is distinct from mapped-property vacuity, and neither proves a semantic entailment theorem."
+  ]
+}

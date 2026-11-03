@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Uses same-cycle implication and misses the register delay.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) (reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i) |-> intr_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Checks only a current output-to-enable relation, not capture timing.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) intr_o |-> reg2hw_intr_enable_q_i);
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Explicitly removes the next-cycle operator from the golden behavior.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i) |-> intr_o);
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the enabled-status trigger and reduces the property to an output level.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) intr_o);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: Local implication does not constrain the registered transition.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) !intr_o || reg2hw_intr_enable_q_i);

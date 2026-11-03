@@ -1,0 +1,2 @@
+case_name,bug_type,compile_ok,pass_on_correct,fail_on_buggy,non_vacuous,antecedent_triggered,correct_antecedent_hits,buggy_antecedent_hits,correct_fail_count,buggy_fail_count,non_trivial,non_trivial_reason,golden_ok,status,failure_reason,compile_error,assertion_line
+case133_prim_edge_negedge_missing,negedge pulse is dropped entirely,True,True,True,True,True,2,2,0,1,True,,True,pass,,,assert property (@(posedge clk) disable iff (!rst_n) ($past(d_i) && !d_i) |-> q_negedge_pulse_o);

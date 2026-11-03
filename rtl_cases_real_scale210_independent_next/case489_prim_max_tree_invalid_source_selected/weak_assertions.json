@@ -1,0 +1,10 @@
+{
+  "schema_version":"weak-assertions-v1","case_id":"case489_prim_max_tree_invalid_source_selected","parent_bug_id":"case489_prim_max_tree_invalid_source_selected","source_project":"opentitan","admission_rule":"At least two non-vacuous weak assertions must miss both buggy tracks.","overall_validation_status":"pending",
+  "assertions":[
+    {"id":"W1_single_cycle_implication","weakness_class":"single_cycle_implication","property":"(|valid_i) |-> max_valid_o","antecedent":"|valid_i","antecedent_nonempty":true,"expected_weakness":"Checks only aggregate validity, not selected-source validity.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W2_final_output_only","weakness_class":"final_output_only","property":"max_valid_o |-> !$isunknown(max_value_o)","antecedent":"max_valid_o","antecedent_nonempty":true,"expected_weakness":"An invalid source can still provide a known value.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W3_delay_removed","weakness_class":"delay_removed","property":"(|valid_i) |-> !$isunknown(max_idx_o)","antecedent":"|valid_i","antecedent_nonempty":true,"expected_weakness":"Index knownness does not establish that the index is enabled.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W4_antecedent_removed","weakness_class":"antecedent_removed","property":"!max_valid_o || !$isunknown(max_value_o)","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"Drops the selected validity relation.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W5_simple_invariant","weakness_class":"simple_invariant","property":"max_valid_o == (|valid_i)","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"Aggregate valid remains correct despite wrong source selection.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false}
+  ]
+}

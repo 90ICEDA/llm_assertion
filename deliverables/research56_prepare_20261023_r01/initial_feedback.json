@@ -1,0 +1,454 @@
+{
+  "native_development_feedback": {
+    "history": {
+      "counts": {
+        "rows": 2748,
+        "triggers": 384,
+        "detections": 141,
+        "misses": 282,
+        "false_positives": 0,
+        "unknown": 0
+      },
+      "native_status": {
+        "before": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed",
+          "property_status": "violation"
+        },
+        "after": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed",
+          "property_status": "no_violation_within_executed_scope"
+        }
+      },
+      "deduplication": "kind + obligation/failure mechanism + revision; phases/words are not additional discoveries",
+      "independent_findings": [
+        {
+          "kind": "miss",
+          "mechanism": "op_bit28_illegal",
+          "row": {
+            "evidence_id": "0011f1bd92d01113a50002332bee5de36be930e3464027538eb81e4dc393bd79",
+            "obligation": "op_bit28_illegal",
+            "stimulus_sha256": "7a09c30503fdded5ff98cefb3f786ff14f05c3fa1be3a8f76648a6f215f3a26b",
+            "sample": {
+              "sample_id": 359,
+              "transaction_id": 88,
+              "phase": 0,
+              "instruction": 1344483635,
+              "instr_new": 1,
+              "family": "op_bit28",
+              "cohort": "history"
+            },
+            "configuration": {
+              "RV32E": 1,
+              "RV32M": 1
+            },
+            "revision": "before",
+            "expected": 1,
+            "observed": 0,
+            "required": true,
+            "oracle": {
+              "legality": "legal",
+              "verdict": "violated",
+              "validator": "research15_history.oracle ISA encoding rules"
+            },
+            "native": {
+              "compile": "ok",
+              "support": "supported",
+              "execution": "ok",
+              "trigger_source": "property_antecedent_cover",
+              "attribution_status": "confirmed",
+              "assertions": [
+                {
+                  "id": "a1",
+                  "trigger": false,
+                  "failed": false,
+                  "causal_detection": false
+                }
+              ]
+            }
+          },
+          "trigger_state": "not_triggered"
+        }
+      ],
+      "required_untriggered_count": 564,
+      "mapping": {
+        "illegal_branch_persists": {
+          "assertions": [
+            "a0"
+          ],
+          "trigger_evidence": 384,
+          "violation_evidence": 141,
+          "legal_evidence": 243,
+          "gaps": 0
+        },
+        "op_bit28_illegal": {
+          "assertions": [],
+          "trigger_evidence": 0,
+          "violation_evidence": 0,
+          "legal_evidence": 282,
+          "gaps": 282
+        },
+        "encoding_controls": {
+          "assertions": [],
+          "trigger_evidence": 0,
+          "violation_evidence": 0,
+          "legal_evidence": 1800,
+          "gaps": 0
+        }
+      }
+    },
+    "search": {
+      "counts": {
+        "rows": 1248,
+        "triggers": 312,
+        "detections": 129,
+        "misses": 138,
+        "false_positives": 0,
+        "unknown": 0
+      },
+      "native_status": {
+        "before": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed",
+          "property_status": "violation"
+        },
+        "after": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed",
+          "property_status": "no_violation_within_executed_scope"
+        }
+      },
+      "deduplication": "kind + obligation/failure mechanism + revision; phases/words are not additional discoveries",
+      "independent_findings": [
+        {
+          "kind": "miss",
+          "mechanism": "op_bit28_illegal",
+          "row": {
+            "evidence_id": "0043bc994bd032390d42166be267eb90330fb0946d6cdc8d237f489ec2fe2e7f",
+            "obligation": "op_bit28_illegal",
+            "stimulus_sha256": "f3fbe850203da6a060acaca2e220ea594f0c842c9b491328081fe7944292448e",
+            "sample": {
+              "sample_id": 78,
+              "transaction_id": 13,
+              "phase": 2,
+              "instruction": 1345650867,
+              "instr_new": 0,
+              "family": "op_bit28",
+              "cohort": "search"
+            },
+            "configuration": {
+              "RV32E": 0,
+              "RV32M": 1
+            },
+            "revision": "before",
+            "expected": 1,
+            "observed": 0,
+            "required": true,
+            "oracle": {
+              "legality": "legal",
+              "verdict": "violated",
+              "validator": "research15_history.oracle ISA encoding rules"
+            },
+            "native": {
+              "compile": "ok",
+              "support": "supported",
+              "execution": "ok",
+              "trigger_source": "property_antecedent_cover",
+              "attribution_status": "confirmed",
+              "assertions": [
+                {
+                  "id": "a1",
+                  "trigger": false,
+                  "failed": false,
+                  "causal_detection": false
+                }
+              ]
+            }
+          },
+          "trigger_state": "not_triggered"
+        }
+      ],
+      "required_untriggered_count": 276,
+      "mapping": {
+        "illegal_branch_persists": {
+          "assertions": [
+            "a0"
+          ],
+          "trigger_evidence": 312,
+          "violation_evidence": 129,
+          "legal_evidence": 183,
+          "gaps": 0
+        },
+        "op_bit28_illegal": {
+          "assertions": [],
+          "trigger_evidence": 0,
+          "violation_evidence": 0,
+          "legal_evidence": 138,
+          "gaps": 138
+        },
+        "encoding_controls": {
+          "assertions": [],
+          "trigger_evidence": 0,
+          "violation_evidence": 0,
+          "legal_evidence": 660,
+          "gaps": 0
+        }
+      }
+    }
+  },
+  "measured_latest_gate": {
+    "accepted": false,
+    "bindings": [
+      {
+        "window": "w0",
+        "source_sample_id": 0,
+        "replay_sample_id": 0,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      },
+      {
+        "window": "w1",
+        "source_sample_id": 1,
+        "replay_sample_id": 1,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      },
+      {
+        "window": "w2",
+        "source_sample_id": 6,
+        "replay_sample_id": 6,
+        "original_sampling_matches": true,
+        "op_required": true,
+        "op_triggered_on_both_revisions": false,
+        "accepted": false
+      },
+      {
+        "window": "w3",
+        "source_sample_id": 7,
+        "replay_sample_id": 7,
+        "original_sampling_matches": true,
+        "op_required": true,
+        "op_triggered_on_both_revisions": false,
+        "accepted": false
+      },
+      {
+        "window": "w4",
+        "source_sample_id": 10,
+        "replay_sample_id": 10,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      },
+      {
+        "window": "w5",
+        "source_sample_id": 11,
+        "replay_sample_id": 11,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      },
+      {
+        "window": "w6",
+        "source_sample_id": 18,
+        "replay_sample_id": 18,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      },
+      {
+        "window": "w7",
+        "source_sample_id": 19,
+        "replay_sample_id": 19,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      },
+      {
+        "window": "w8",
+        "source_sample_id": 7,
+        "replay_sample_id": 7,
+        "original_sampling_matches": true,
+        "op_required": true,
+        "op_triggered_on_both_revisions": false,
+        "accepted": false
+      },
+      {
+        "window": "w9",
+        "source_sample_id": 19,
+        "replay_sample_id": 19,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      },
+      {
+        "window": "w10",
+        "source_sample_id": 7,
+        "replay_sample_id": 7,
+        "original_sampling_matches": true,
+        "op_required": true,
+        "op_triggered_on_both_revisions": false,
+        "accepted": false
+      },
+      {
+        "window": "w11",
+        "source_sample_id": 19,
+        "replay_sample_id": 19,
+        "original_sampling_matches": true,
+        "op_required": false,
+        "op_triggered_on_both_revisions": false,
+        "accepted": true
+      }
+    ],
+    "counts": {
+      "rows": 126,
+      "triggers": 36,
+      "detections": 15,
+      "misses": 12,
+      "false_positives": 0,
+      "unknown": 0
+    },
+    "required_untriggered": 24,
+    "all_property_guard": {
+      "accepted": true,
+      "false_alarms": [],
+      "unknown": [],
+      "scope": "All native property failures, regardless of claimed obligation mapping."
+    },
+    "native_status": {
+      "before": {
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "property_status": "violation"
+      },
+      "after": {
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "property_status": "no_violation_within_executed_scope"
+      }
+    },
+    "scope": "Finite original RTL development samples, actual covers and failures; not text bit matching or full acceptance."
+  },
+  "measured_latest_evidence": {
+    "counts": {
+      "rows": 126,
+      "triggers": 36,
+      "detections": 15,
+      "misses": 12,
+      "false_positives": 0,
+      "unknown": 0
+    },
+    "native_status": {
+      "before": {
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "property_status": "violation"
+      },
+      "after": {
+        "compile_status": "passed",
+        "tool_support_status": "supported_for_compiled_constructs",
+        "execution_status": "completed",
+        "property_status": "no_violation_within_executed_scope"
+      }
+    },
+    "deduplication": "kind + obligation/failure mechanism + revision; phases/words are not additional discoveries",
+    "independent_findings": [
+      {
+        "kind": "miss",
+        "mechanism": "op_bit28_illegal",
+        "row": {
+          "evidence_id": "1c83204a16036e96f78586a90dea2c1710ae564f08c3152df79d4c11d30ba31f",
+          "obligation": "op_bit28_illegal",
+          "stimulus_sha256": "d0a9eddde1f3d6da36e8d94e8bdfc22f249a5d5c432602c56bcf93f5c023547c",
+          "sample": {
+            "sample_id": 6,
+            "transaction_id": 1,
+            "phase": 0,
+            "instruction": 1353836083,
+            "instr_new": 1,
+            "family": "op_bit28",
+            "cohort": "alignment"
+          },
+          "configuration": {
+            "RV32E": 0,
+            "RV32M": 1
+          },
+          "revision": "before",
+          "expected": 1,
+          "observed": 0,
+          "required": true,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "research15_history.oracle ISA encoding rules"
+          },
+          "native": {
+            "compile": "ok",
+            "support": "supported",
+            "execution": "ok",
+            "trigger_source": "property_antecedent_cover",
+            "attribution_status": "confirmed",
+            "assertions": [
+              {
+                "id": "a1",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": false
+              },
+              {
+                "id": "a2",
+                "trigger": false,
+                "failed": false,
+                "causal_detection": false
+              }
+            ]
+          }
+        },
+        "trigger_state": "not_triggered"
+      }
+    ],
+    "required_untriggered_count": 24,
+    "mapping": {
+      "illegal_branch_persists": {
+        "assertions": [
+          "a0"
+        ],
+        "trigger_evidence": 36,
+        "violation_evidence": 15,
+        "legal_evidence": 21,
+        "gaps": 0
+      },
+      "op_bit28_illegal": {
+        "assertions": [],
+        "trigger_evidence": 0,
+        "violation_evidence": 0,
+        "legal_evidence": 12,
+        "gaps": 12
+      },
+      "encoding_controls": {
+        "assertions": [],
+        "trigger_evidence": 0,
+        "violation_evidence": 0,
+        "legal_evidence": 66,
+        "gaps": 0
+      }
+    }
+  },
+  "prior_failure": "The previous OP sets failed every required OP trigger and missed12 exposed violations on the small native development gate. Their prose and permutations did not repair the executable behavior."
+}

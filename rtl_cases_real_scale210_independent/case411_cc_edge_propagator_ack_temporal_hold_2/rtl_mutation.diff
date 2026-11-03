@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -33,7 +33,7 @@
+   always @(negedge rst_tx_ni or posedge clk_tx_i) begin
+     if (~rst_tx_ni) begin
+       r_input_reg <= 1'b0;
+-      sync_a      <= 2'b00;
++      sync_a <= sync_a; // ASSERTIONFORGE_MUTATION: state update suppressed
+     end else begin
+       r_input_reg <= s_input_reg_next;
+       sync_a      <= {sync_b,sync_a[1]};

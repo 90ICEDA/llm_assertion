@@ -1,0 +1,38 @@
+{
+  "selection_feature_allowlist": [
+    "compile_ok",
+    "parser_support",
+    "seen_good_pass",
+    "seen_bad_fail",
+    "seen_antecedent_hit",
+    "non_vacuous",
+    "signal_exists",
+    "reset_usage",
+    "literal_hardcoding",
+    "cross_representation_agreement"
+  ],
+  "strict_gates": [
+    "compile_ok",
+    "parser_support",
+    "seen_good_pass",
+    "seen_bad_fail",
+    "seen_antecedent_hit",
+    "non_vacuous",
+    "signal_exists"
+  ],
+  "loose_gates": [
+    "compile_ok",
+    "parser_support",
+    "seen_good_pass",
+    "signal_exists"
+  ],
+  "heldout_use": "final evaluation only",
+  "metric_definitions": {
+    "coverage": "covered/sample",
+    "conditional_success": "strict heldout success/covered",
+    "MDR": "missed heldout detection including abstentions/sample",
+    "FPR": "heldout correct failures/covered",
+    "overfit": "trace_overfit/covered"
+  },
+  "one_step_repair": "locked seen-only top candidate; AND antecedents on seen-good failure, OR antecedents on seen-bug miss; cross-representation partner; exactly one repaired candidate and no heldout-based reselection"
+}

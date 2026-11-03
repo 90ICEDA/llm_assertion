@@ -1,0 +1,94 @@
+{
+  "name": "case492_axis_async_fifo_gray_visibility",
+  "parent_bug_id": "case492_axis_async_fifo_gray_visibility",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_async_fifo",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_async_fifo.v"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "gray_pointer_sync_stage_removed",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "write_toggle_i",
+    "sample_enable_i",
+    "q_o",
+    "state_o"
+  ],
+  "temporal_type": "three-stage CDC pointer visibility latency",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(write_toggle_i) |-> ##2 !q_o));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "good_row_index": 10,
+      "bad_row_index": 10,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "774794a419d2529d6d7688eff5fe37f738f30315e3242193a0823542970d2b15",
+      "bad_trace_sha256": "903fd4a6a9c4ed02d6cc1a62fbb3063965d8f1b2a2d1939b31ae527893b10dac",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "8959d56bf97bdb0ecf2de59a3a4676696fd43a0f202be2684fb0b8fa5a057beb",
+      "bad_trace_sha256": "1ae1d4feb3fee1b23a2f7801c72a05261ba57babcbb5ea899e43157dc6c44d74",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "dd3a57d8c3cfb6612ec52c5887721e3f74de2f602d029ef3e21f7ee5a477b9e7",
+      "bad_trace_sha256": "ecb93e8291ed2fc35e1c99637db62752db91cd6ecd8f08997515b950b3bb6a32",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "b698816ccff933f17a57b69f46f935da2c1322600a243e10e14a84797832eeb9",
+  "buggy_sha256": "17c90a6ea92268fc8d4546af8162997b3de9aa70111637c73fa3c0b12e9dfa31"
+}

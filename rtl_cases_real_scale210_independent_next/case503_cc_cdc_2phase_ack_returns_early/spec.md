@@ -1,0 +1,1 @@
+A newly sampled request must traverse all three destination-domain synchronization stages. The acknowledgement must remain low at the immediately following sample and assert only after the final stage observes the request.

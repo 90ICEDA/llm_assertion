@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -154,7 +154,7 @@
+ 
+     if (m_axis_tready && s_axis_tvalid && s_axis_tready) begin
+         shift = 1'b1;
+-        inc = ptr_empty;
++        inc = 1'b1; // ASSERTIONFORGE_MUTATION
+         empty_next = 1'b0;
+     end else if (m_axis_tready && m_axis_tvalid) begin
+         dec = 1'b1;

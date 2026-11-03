@@ -1,0 +1,10 @@
+// W1_single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(timeout_o));
+// W2_final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(timeout_o));
+// W3_delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (ack || !en_i) |-> cnt == 0);
+// W4_antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(timeout_o));
+// W5_simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> 1'b1);

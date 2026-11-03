@@ -1,0 +1,94 @@
+{
+  "name": "case498_cc_serial_deglitch_qualification_short",
+  "parent_bug_id": "case498_cc_serial_deglitch_qualification_short",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_serial_deglitch",
+  "source_files": [
+    "external/common_cells/src/cc_serial_deglitch.sv"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "qualification_count_reduced",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "noisy_i",
+    "sample_enable_i",
+    "q_o",
+    "state_o"
+  ],
+  "temporal_type": "three-consecutive-sample glitch qualification",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(noisy_i) |-> ##2 !q_o));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "good_row_index": 10,
+      "bad_row_index": 10,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "3be0eab4b62e92067c4e00ae87a0887e50d2ae070d18efb4d433462dd54c09ba",
+      "bad_trace_sha256": "09b310ad11f46e99fb12312505552599cf39daa98ebacd51da777c7eb13c216d",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "330418ebb73fd7eabd6e8502cce1d5ab3f629d8c8239f4d72584c3adfef94479",
+      "bad_trace_sha256": "7bfbdfc10a5412ff0b783292a3c31d1505ab9e197fd707ff17e86ddbca437404",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "q_o"
+      ],
+      "good_values": {
+        "q_o": "0"
+      },
+      "bad_values": {
+        "q_o": "1"
+      },
+      "good_trace_sha256": "28d9d0aca4889037bee68c4f555ec90b4284373c475b5c21e4f7e857e0c31da4",
+      "bad_trace_sha256": "7cf30c6b1bb602175489178602d01d6a2dfa9761bd5e059593ac39169583fe2d",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "13ed4df1a385e24fa7d15cd88348a74d47d7bf7de81abadc4c23a9601a988fa1",
+  "buggy_sha256": "4280f1d7e804fe782f1a813b741d52f51f5942344e470f4b12a232190c4cc0bb"
+}

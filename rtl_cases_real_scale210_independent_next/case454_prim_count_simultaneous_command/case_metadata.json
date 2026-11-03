@@ -1,0 +1,110 @@
+{
+  "name": "case454_prim_count_simultaneous_command",
+  "parent_bug_id": "case454_prim_count_simultaneous_command",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_count",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_count.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_count.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "simultaneous_increment_decrement_not_suppressed",
+  "bug_type": "mutually exclusive command arbitration",
+  "spec": "When increment and decrement are asserted together, the counter must retain its prior value.",
+  "mutation_edits": [
+    {
+      "search": "assign cnt_en=(incr_en_i ^ decr_en_i)",
+      "replace": "assign cnt_en=(incr_en_i | decr_en_i)"
+    }
+  ],
+  "mutation_signal": "cnt_en",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "incr_en_i",
+    "decr_en_i",
+    "cnt_en",
+    "cnt_o",
+    "cnt_after_commit_o"
+  ],
+  "temporal_type": "mutually exclusive command arbitration",
+  "mutation_kind": "real_rtl_line_replacement",
+  "dataset_phase": "independent_next_hard_batch1",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "name": "Golden_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) incr_en_i && decr_en_i |=> $stable(cnt_o));",
+    "temporal_type": "mutually exclusive command arbitration"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 16000,
+      "sample_index": 5,
+      "good_row_index": 5,
+      "bad_row_index": 5,
+      "signals": [
+        "cnt_after_commit_o[3:0]"
+      ],
+      "good_values": {
+        "cnt_after_commit_o[3:0]": "0111"
+      },
+      "bad_values": {
+        "cnt_after_commit_o[3:0]": "0110"
+      },
+      "good_trace_sha256": "a6543d649ded4a33a5634aaa2c11f28dac6638e987116a70ccd287692ced1c58",
+      "bad_trace_sha256": "b19c674d5044d6d1b1d01bfe9fd9f17ef4eaed5308d736fba6ee204e6a9c1bc4",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 16000,
+      "sample_index": 5,
+      "good_row_index": 5,
+      "bad_row_index": 5,
+      "signals": [
+        "cnt_after_commit_o[3:0]"
+      ],
+      "good_values": {
+        "cnt_after_commit_o[3:0]": "1010"
+      },
+      "bad_values": {
+        "cnt_after_commit_o[3:0]": "1000"
+      },
+      "good_trace_sha256": "74e719f77dde9c47a25b95b94fb7c0fb5c9b6d3aa72ab71629d645a6a6912579",
+      "bad_trace_sha256": "439d505bbfa03173572b268d90b434786fbe586ab04cbe3defcfbd2090e0ed6f",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 16000,
+      "sample_index": 5,
+      "good_row_index": 5,
+      "bad_row_index": 5,
+      "signals": [
+        "cnt_after_commit_o[3:0]"
+      ],
+      "good_values": {
+        "cnt_after_commit_o[3:0]": "0101"
+      },
+      "bad_values": {
+        "cnt_after_commit_o[3:0]": "0100"
+      },
+      "good_trace_sha256": "178c4f502378b37c166fe2274eca808ccb9fb846048bf3c562b632647f56e7c4",
+      "bad_trace_sha256": "f76982aabf2d3e213a38d1ffd3dcd9d8c579f09629d4f4b1454e74130ecb614e",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "5f6d3c50a168e2cbba0c02159754052000b67752d7dc502ca8477fe581d66b2b",
+  "buggy_sha256": "cfdb2a96a7708e494ce63a27eab558f373c9e120aa27ef018ca0666e115bb330",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

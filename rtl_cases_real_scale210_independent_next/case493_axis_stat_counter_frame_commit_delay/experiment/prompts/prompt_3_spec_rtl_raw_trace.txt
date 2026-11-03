@@ -1,0 +1,72 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, frame_end_i, ready_i, q_o, state_o
+
+Specification:
+
+A terminal transfer first records a pending frame event. The public frame counter commits on the following clock, never in the terminal-transfer clock itself.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_stat_counter(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire frame_end_i,
+  input wire ready_i,
+  input wire valid_i,
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg pending;
+  reg [7:0] count;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin pending<=0; count<=0; end
+    else begin
+      pending <= frame_end_i && valid_i && ready_i;
+      if (pending) count <= count + 1'b1;
+    end
+  end
+  assign q_o = count[0];
+  assign state_o = count;
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, frame_end_i=0, q_o=0, ready_i=0, state_o[7:0]=00000000, valid_i=0
+cycle 1: rst_ni=0, clk_i=1, frame_end_i=0, q_o=0, ready_i=0, state_o[7:0]=00000000, valid_i=0
+cycle 2: rst_ni=1, clk_i=1, frame_end_i=0, q_o=0, ready_i=0, state_o[7:0]=00000000, valid_i=0
+cycle 3: rst_ni=1, clk_i=1, frame_end_i=1, q_o=0, ready_i=1, state_o[7:0]=00000000, valid_i=1
+cycle 4: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=1, state_o[7:0]=00000001, valid_i=1
+cycle 5: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 6: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 7: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 8: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 9: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 10: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 11: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 12: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 13: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, frame_end_i=0, q_o=0, ready_i=0, state_o[7:0]=00000000, valid_i=0
+cycle 1: rst_ni=0, clk_i=1, frame_end_i=0, q_o=0, ready_i=0, state_o[7:0]=00000000, valid_i=0
+cycle 2: rst_ni=1, clk_i=1, frame_end_i=0, q_o=0, ready_i=0, state_o[7:0]=00000000, valid_i=0
+cycle 3: rst_ni=1, clk_i=1, frame_end_i=1, q_o=1, ready_i=1, state_o[7:0]=00000001, valid_i=1
+cycle 4: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=1, state_o[7:0]=00000001, valid_i=1
+cycle 5: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 6: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 7: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 8: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 9: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 10: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 11: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 12: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0
+cycle 13: rst_ni=1, clk_i=1, frame_end_i=0, q_o=1, ready_i=0, state_o[7:0]=00000001, valid_i=0

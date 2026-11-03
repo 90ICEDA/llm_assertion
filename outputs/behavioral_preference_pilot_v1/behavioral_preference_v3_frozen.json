@@ -1,0 +1,49 @@
+{
+  "protocol": "v3_constrained_ast_gate_c",
+  "status": "frozen_gate_pass_before_30_parent_pilot",
+  "frozen_at_utc": "2026-08-19T10:19:08Z",
+  "model": {
+    "name": "qwen3-8b-pilot:q4_K_M",
+    "digest": "033521cec2c1f3afcf19a2ced270f4fdea6390582f40e350c10ffd965e6f3a6c",
+    "temperature": 0.7,
+    "num_predict": 512,
+    "seed": 20260815,
+    "num_ctx": 8192,
+    "think": false
+  },
+  "validators": {
+    "pyslang": "11.0.0",
+    "icarus": "12.0 stable",
+    "native_sva_parse_required": true,
+    "monitor_compile_correct_and_buggy_required": true
+  },
+  "execution_adapters": {
+    "cases": [
+      "case438_cc_fifo_protocol_suppress_2",
+      "case441_cc_stream_mux_protocol_suppress_1"
+    ],
+    "scope": "exact testbench parameterization",
+    "reason": "Icarus 12 lacks SystemVerilog parameter type/package support",
+    "evidence": "candidate evidence stores original and derived SHA256 plus exact compile command"
+  },
+  "gate": {
+    "parents": 3,
+    "candidates_per_parent": 8,
+    "parent_8_of_8": {
+      "case510_cc_spill_register_flush_push_priority": true,
+      "case133_prim_edge_negedge_missing": true,
+      "case478_axis_srl_register_ready_recovery": true
+    },
+    "quality_modes": {
+      "fixed_fp": true,
+      "target_miss": true,
+      "vacuous": true
+    },
+    "pass": true
+  },
+  "hashes": {
+    "implementation_sha256": "3f169ced903f10daf24d7d4a4ed3457ab64c78b3fbbb17febf45b72e1e78e9bf",
+    "request_index_sha256": "8153b1dc277109afffd9ecec223f1c24cfeb6002e7c707f2ca1b0a886dfe9082",
+    "gate_result_sha256": "d31bd156e193beef5f50c0ca27c95e2ccefeb0c53e58d3722a12c6133e0c3cc7"
+  }
+}

@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -43,7 +43,7 @@
+       .q_o(filter_synced)
+     );
+   end else begin : gen_sync
+-    assign filter_synced = filter_i;
++    assign filter_synced = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+   end
+ 
+   always_ff @(posedge clk_i or negedge rst_ni) begin

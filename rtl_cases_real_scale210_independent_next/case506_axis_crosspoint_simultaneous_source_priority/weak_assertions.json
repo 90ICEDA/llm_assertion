@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case506_axis_crosspoint_simultaneous_source_priority",
+  "parent_bug_id": "case506_axis_crosspoint_simultaneous_source_priority",
+  "source_project": "verilog_axis",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "id": "W1_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "property": "(s0_valid && s1_valid && m_ready) |-> 1'b1",
+      "antecedent": "s0_valid && s1_valid && m_ready",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Deliberately omits the discriminating temporal or protocol relation checked by the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W2_final_output_only",
+      "weakness_class": "final_output_only",
+      "property": "1'b1 |-> !$isunknown(q_o)",
+      "antecedent": "1'b1",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Deliberately omits the discriminating temporal or protocol relation checked by the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W3_delay_removed",
+      "weakness_class": "delay_removed",
+      "property": "s0_valid |-> (q_o==q_o)",
+      "antecedent": "s0_valid",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Deliberately omits the discriminating temporal or protocol relation checked by the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W4_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "property": "q_o==q_o",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Deliberately omits the discriminating temporal or protocol relation checked by the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W5_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "property": "q_o>=0",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Deliberately omits the discriminating temporal or protocol relation checked by the golden property.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    }
+  ]
+}

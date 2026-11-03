@@ -1,0 +1,31 @@
+{
+  "status": "draft_not_frozen_not_run",
+  "version": "behavioral_preference_pilot_v2",
+  "preserve_v1": true,
+  "frozen_test_assets_unchanged": ["46-parent main diagnostic", "40-parent selector queue", "frozen OOD membership and outcomes"],
+  "model_output": "one JSON AST object only",
+  "canonical_schema": {
+    "type": "object",
+    "required": ["antecedent_signal", "antecedent_polarity", "consequent_signal", "implication", "relation"],
+    "additionalProperties": false,
+    "properties": {
+      "antecedent_signal": {"type": "string", "constraint": "one visible non-clock/reset top-level signal"},
+      "antecedent_polarity": {"enum": ["high", "low"]},
+      "consequent_signal": {"type": "string", "constraint": "one visible non-clock/reset top-level signal"},
+      "implication": {"enum": ["|->", "|=>"]},
+      "relation": {"enum": ["high", "low", "equal", "not_equal"]}
+    }
+  },
+  "pipeline": ["constrained JSON AST", "schema validation", "top-level signal validation", "deterministic SVA rendering", "pyslang parse", "Icarus monitor compile"],
+  "same_output_space_for_all_methods": true,
+  "smoke": {
+    "parents": 3,
+    "selection": "one representative parent per project; cover combinational, temporal, and handshake designs",
+    "methods": 5,
+    "candidates_per_method_parent": 8,
+    "decode": {"seed": 20260815, "temperature": 0.0, "do_sample": false, "num_return_sequences": 1},
+    "gate": {"schema_valid": "8/8 for every method/parent", "renderable": "8/8", "signal_legal": "8/8", "compile_ok": "8/8", "token_cap_repetition": 0},
+    "failure_action": "no OOD generation; remain no-go"
+  },
+  "prohibited": ["overwriting Pilot v1", "test-case-specific prompt tuning", "repair", "reranking", "selector", "held-out outcome use"]
+}

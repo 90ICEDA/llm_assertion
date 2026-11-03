@@ -1,0 +1,10 @@
+--- correct.v
++++ buggy.v
+@@ -10,5 +10,6 @@
+   always @(posedge clk_dst_i or negedge rst_dst_ni)
+     if(!rst_dst_ni) begin sync1<=0; dst_level<=0; dst_level_q<=0; end
+     else begin sync1<=src_level; dst_level<=sync1; dst_level_q<=dst_level; end
+-  assign dst_pulse_o=dst_level_q^dst_level;
++  // MUTATION: exposes the synchronized level instead of XOR edge detection.
++  assign dst_pulse_o=dst_level;
+ endmodule

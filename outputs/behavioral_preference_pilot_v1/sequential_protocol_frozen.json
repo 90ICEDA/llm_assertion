@@ -1,0 +1,42 @@
+{
+  "protocol_version": "sequential_structured_v1",
+  "status": "frozen_after_one_parent_8_of_8_gate",
+  "frozen_at_utc": "2026-08-16T12:43:34Z",
+  "model": "qwen3-8b-pilot:q4_K_M",
+  "model_digest": "033521cec2c1f3afcf19a2ced270f4fdea6390582f40e350c10ffd965e6f3a6c",
+  "generation": {
+    "temperature": 0.7,
+    "num_predict": 512,
+    "seed": 20260815,
+    "num_ctx": 8192,
+    "think": false,
+    "candidates_per_parent": 8,
+    "maximum_attempts_per_slot": 4
+  },
+  "sampling_event": "posedge detected clock; @(*) for clockless combinational RTL",
+  "selection": "slot order 1..8; lowest attempt passing syntax, declared-signal, reset-exclusion, and global exact-render uniqueness; evaluation outcomes never select candidates",
+  "native_sva_compile_note": "No Slang/Verilator installed. strict renderer/parser plus Icarus compilation of the identical semantic expressions is recorded separately; do not label this native concurrent-SVA compiler coverage.",
+  "hashes": {
+    "pilot_source_sha256": "562bcdc5ba109e3d393c483d079d17d62882076b05fbad4aba9eb31723f4b4f4",
+    "runner_sha256": "34f44b4cb97a70508d4bb5d42721a0d68058caee7d2ee766600a46708cc7ac54",
+    "config_sha256": "80fc6ae98c9105c04ca9513546e32fd5f51461c4b5f6ad4c9e68f22716964adb",
+    "prepared_request_index_sha256": "4bcaa326c19ec6f8d924dcc56c68269a1e76a623e92996cebe55136415fef084",
+    "one_parent_accepted_index_sha256": "03a54be0f104e37d0362eed8b0ef20399d26cb1e128c8e8ae01fbba31c142f40",
+    "one_parent_ingestion_audit_sha256": "615512c98ace3610e4e8dda0e99c0cdc5e6cbf2e2d1a607754877fe6f7958597"
+  },
+  "one_parent_gate": {
+    "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+    "accepted": 8,
+    "compile_ok": 8,
+    "fixed_safe": 7,
+    "target_detect": 7,
+    "non_vacuous": 8,
+    "note": "fixed-safe and target-detect are measured outcomes, never candidate-selection gates"
+  },
+  "prepared_expansion": {
+    "parent_count": 30,
+    "slot_count_per_parent": 8,
+    "maximum_attempts_per_slot": 4,
+    "request_count": 960
+  }
+}

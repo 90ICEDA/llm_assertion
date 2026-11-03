@@ -1,0 +1,94 @@
+{
+  "name": "case415_cc_rstgen_bypass_temporal_hold_1",
+  "parent_bug_id": "case415_cc_rstgen_bypass_temporal_hold_1",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_rstgen_bypass",
+  "source_files": [
+    "external/common_cells/src/cc_rstgen_bypass.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_rstgen_bypass.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "synch_regs_q state update is suppressed",
+  "spec": "Assertion of the selected functional reset forces rst_no and init_no low, independent of earlier state. Reset outputs may only begin release after the selected reset input is released.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk_i) !rst_ni |-> (!rst_no && !init_no));",
+    "temporal_type": "cross-cycle sequential state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 3,
+      "observation_index": 1,
+      "signals": [
+        "rst_no",
+        "init_no"
+      ],
+      "good": {
+        "rst_no": "0",
+        "init_no": "0"
+      },
+      "bad": {
+        "rst_no": "x",
+        "init_no": "x"
+      }
+    },
+    "heldout": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "rst_no",
+        "init_no"
+      ],
+      "good": {
+        "rst_no": "0",
+        "init_no": "0"
+      },
+      "bad": {
+        "rst_no": "x",
+        "init_no": "x"
+      }
+    },
+    "decoy": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "rst_no",
+        "init_no"
+      ],
+      "good": {
+        "rst_no": "0",
+        "init_no": "0"
+      },
+      "bad": {
+        "rst_no": "x",
+        "init_no": "x"
+      }
+    }
+  },
+  "mutation_edits": [
+    {
+      "line": 55,
+      "search": "            synch_regs_q <= 0;",
+      "replace": "            synch_regs_q <= synch_regs_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "synch_regs_q",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "rst_test_mode_ni",
+    "test_mode_i",
+    "rst_no",
+    "init_no"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "a7dab27285db6aecdb3146c9a34a418504d58f8a84f1e87b345b3fbe597e9712",
+  "buggy_sha256": "79901a7c1d54a912ef9f6628082946489c98b6e893e3c6262454fc01acc78767",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "contract_status": "formal_complete"
+}

@@ -1,0 +1,9 @@
+a0: assert property (@(posedge clk) disable iff (rst) (mdata[0] == $past(mdata[0])))
+  else $display("ASSERT_FAIL a0 cycle=%0d", $sampled(native_cycle));
+always @(posedge clk) if (!rst && (svalid && sready && mvalid && mready)) $display("TRIGGER a0 cycle=%0d", native_cycle);
+a1: assert property (@(posedge clk) disable iff (rst) (mdata[0] == $past(mdata[0])))
+  else $display("ASSERT_FAIL a1 cycle=%0d", $sampled(native_cycle));
+always @(posedge clk) if (!rst && (svalid && sready && mvalid && mready)) $display("TRIGGER a1 cycle=%0d", native_cycle);
+a2: assert property (@(posedge clk) disable iff (rst) (mdata[0] == $past(mdata[0])))
+  else $display("ASSERT_FAIL a2 cycle=%0d", $sampled(native_cycle));
+always @(posedge clk) if (!rst && (svalid && sready && mvalid && mready)) $display("TRIGGER a2 cycle=%0d", native_cycle);

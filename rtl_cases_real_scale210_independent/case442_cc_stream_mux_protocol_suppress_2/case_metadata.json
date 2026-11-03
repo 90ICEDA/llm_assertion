@@ -1,0 +1,86 @@
+{
+  "name": "case442_cc_stream_mux_protocol_suppress_2",
+  "parent_bug_id": "case442_cc_stream_mux_protocol_suppress_2",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_stream_mux",
+  "source_files": [
+    "external/common_cells/src/cc_stream_mux.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_stream_mux.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "oup_valid_o combinational/protocol output is forced low",
+  "spec": "The mux output valid equals the valid bit of the selected input lane in the same cycle. Backpressure is returned only to the selected lane.",
+  "golden_sva": {
+    "sva": "assert property (@(*) (oup_valid_o == inp_valid_i[inp_sel_i]));",
+    "temporal_type": "same-cycle combinational/protocol relation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "oup_valid_o"
+      ],
+      "good": {
+        "oup_valid_o": "1"
+      },
+      "bad": {
+        "oup_valid_o": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 3,
+      "observation_index": 1,
+      "signals": [
+        "oup_valid_o"
+      ],
+      "good": {
+        "oup_valid_o": "1"
+      },
+      "bad": {
+        "oup_valid_o": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "oup_valid_o"
+      ],
+      "good": {
+        "oup_valid_o": "1"
+      },
+      "bad": {
+        "oup_valid_o": "0"
+      }
+    }
+  },
+  "mutation_edits": [
+    {
+      "line": 38,
+      "search": "  assign oup_valid_o  = inp_valid_i[inp_sel_i];",
+      "replace": "  assign oup_valid_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "oup_valid_o",
+  "relevant_signals": [
+    "inp_data_i[23:0]",
+    "inp_valid_i[2:0]",
+    "inp_ready_o[2:0]",
+    "inp_sel_i[1:0]",
+    "oup_data_o[7:0]",
+    "oup_valid_o",
+    "oup_ready_i"
+  ],
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "a885b7d2314487d07d5122aa0b3d2c0a6371e85f594c1938b1843a3e016efbf4",
+  "buggy_sha256": "a5b93f5292f230a317813ffc38f9be06caa4a22b00f3ccfa85d679307288c180",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "contract_status": "formal_complete"
+}

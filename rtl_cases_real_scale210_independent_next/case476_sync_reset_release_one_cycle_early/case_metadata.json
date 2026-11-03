@@ -1,0 +1,102 @@
+{
+  "name": "case476_sync_reset_release_one_cycle_early",
+  "parent_bug_id": "case476_sync_reset_release_one_cycle_early",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "sync_reset",
+  "source_files": [
+    "external/verilog-axis/rtl/sync_reset.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/sync_reset.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "reset_release_latency",
+  "bug_type": "After asynchronous assertion, reset output deasserts only after exactly N active clock edges with rst low.",
+  "spec": "After asynchronous assertion, reset output deasserts only after exactly N active clock edges with rst low.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) ($fell(rst) |-> sync_out[*3] ##1 !sync_out));",
+    "temporal_type": "exact sampled protocol relation"
+  },
+  "mutation_edits": [
+    {
+      "search": "        sync_reg <= {sync_reg[N-2:0], 1'b0};",
+      "replace": "        // ASSERTIONFORGE_MUTATION: shift two zeros per clock\n        sync_reg <= {sync_reg[N-3:0], 2'b00};"
+    }
+  ],
+  "mutation_signal": "protocol state or polarity",
+  "relevant_signals": [
+    "rst",
+    "sync_out"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "sync_out"
+      ],
+      "good_values": {
+        "sync_out": "1"
+      },
+      "bad_values": {
+        "sync_out": "0"
+      },
+      "good_trace_sha256": "c5b85ee02c4d1393d093f0fc13296f71942bde9d886ea699fee5ae816b51f169",
+      "bad_trace_sha256": "e9cf911cb83b0f5927e35b1cb4b07d506bdd78404e85334e4395c83060ca9b75",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_row_index": 13,
+      "bad_row_index": 13,
+      "signals": [
+        "sync_out"
+      ],
+      "good_values": {
+        "sync_out": "1"
+      },
+      "bad_values": {
+        "sync_out": "0"
+      },
+      "good_trace_sha256": "056000607cc2ff862707adbd77a2586b7ef45df53a86087ad79f4f9ecfdaf2e7",
+      "bad_trace_sha256": "75d6b7f92708d81976d994615cf1482b96eeeb814f98d7055514349c4a2c256d",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_row_index": 13,
+      "bad_row_index": 13,
+      "signals": [
+        "sync_out"
+      ],
+      "good_values": {
+        "sync_out": "1"
+      },
+      "bad_values": {
+        "sync_out": "0"
+      },
+      "good_trace_sha256": "056000607cc2ff862707adbd77a2586b7ef45df53a86087ad79f4f9ecfdaf2e7",
+      "bad_trace_sha256": "75d6b7f92708d81976d994615cf1482b96eeeb814f98d7055514349c4a2c256d",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol relation",
+  "mutation_kind": "real_rtl_mutation",
+  "correct_sha256": "3c333fc4596a932c3ec3a1541e3d8ceec91ed1d5119b64724cad9b5fae4b7322",
+  "buggy_sha256": "77348add7eccbcdc615c1a30844737adb9a7ef17ba128eaa9c9546ea49ee2aa3",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_admitted",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

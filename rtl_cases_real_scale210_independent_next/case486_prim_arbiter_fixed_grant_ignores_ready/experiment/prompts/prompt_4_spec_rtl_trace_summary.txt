@@ -1,0 +1,63 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, req_i, data_i, ready_i, gnt_o, idx_o, valid_o, data_o
+
+Specification:
+
+The fixed-priority arbiter may advertise a valid selected request while stalled, but it must not assert any grant until `ready_i` is high. Index zero has highest priority.
+
+RTL:
+
+`timescale 1ns/1ps
+module prim_arbiter_fixed_case (
+  input  wire        clk_i,
+  input  wire        rst_ni,
+  input  wire [3:0]  req_i,
+  input  wire [31:0] data_i,
+  input  wire        ready_i,
+  output reg  [3:0]  gnt_o,
+  output reg  [1:0]  idx_o,
+  output reg         valid_o,
+  output reg  [7:0]  data_o
+);
+  always @* begin
+    gnt_o = 4'b0000;
+    idx_o = 2'd0;
+    valid_o = 1'b0;
+    data_o = 8'h00;
+    if (rst_ni) begin
+      valid_o = |req_i;
+      if (req_i[0]) begin
+        idx_o = 2'd0;
+        data_o = data_i[7:0];
+      end else if (req_i[1]) begin
+        idx_o = 2'd1;
+        data_o = data_i[15:8];
+      end else if (req_i[2]) begin
+        idx_o = 2'd2;
+        data_o = data_i[23:16];
+      end else if (req_i[3]) begin
+        idx_o = 2'd3;
+        data_o = data_i[31:24];
+      end
+      if (valid_o && ready_i)
+        gnt_o[idx_o] = 1'b1;
+    end
+  end
+  wire unused_clk = clk_i;
+endmodule
+
+Waveform evidence:
+
+Case: case486_prim_arbiter_fixed_grant_ignores_ready
+First divergence cycle: 6
+First divergence time_ps: 30000
+Differing signals at first divergence: gnt_o[3:0]
+Observed differing signal values (good): gnt_o[3:0]=0000
+Observed differing signal values (bad): gnt_o[3:0]=0100

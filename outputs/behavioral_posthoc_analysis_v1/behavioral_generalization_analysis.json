@@ -1,0 +1,656 @@
+{
+  "status": "descriptive_posthoc_analysis_no_frozen_result_modified",
+  "definitions": {
+    "primary_pass": "compile && fixed_safe && target_detect && non_vacuous on original parent TB",
+    "unlabeled_pair": "equal FP/TP signature or crossing/non-nested FP/TP sets",
+    "failure_mode_proxy": "probe transformation family; counts are candidate-probe-family incidences and may overlap"
+  },
+  "primary_pass_candidate_count": 14,
+  "primary_pass_evidence": {
+    "case115_prim_edge_both_edges_collapsed__v3_slot_06": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case115_prim_edge_both_edges_collapsed\\slot_06\\attempt_01\\evidence.json",
+    "case135_prim_intr_enable_mask_ignored__v3_slot_02": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case135_prim_intr_enable_mask_ignored\\slot_02\\attempt_01\\evidence.json",
+    "case135_prim_intr_enable_mask_ignored__v3_slot_03": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case135_prim_intr_enable_mask_ignored\\slot_03\\attempt_01\\evidence.json",
+    "case135_prim_intr_enable_mask_ignored__v3_slot_07": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case135_prim_intr_enable_mask_ignored\\slot_07\\attempt_01\\evidence.json",
+    "case139_prim_regwe_addr_check_false_positive__v3_slot_02": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case139_prim_regwe_addr_check_false_positive\\slot_02\\attempt_01\\evidence.json",
+    "case139_prim_regwe_addr_check_false_positive__v3_slot_04": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case139_prim_regwe_addr_check_false_positive\\slot_04\\attempt_01\\evidence.json",
+    "case139_prim_regwe_addr_check_false_positive__v3_slot_06": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case139_prim_regwe_addr_check_false_positive\\slot_06\\attempt_01\\evidence.json",
+    "case455_prim_crc32_set_enable_coupling__v3_slot_05": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case455_prim_crc32_set_enable_coupling\\slot_05\\attempt_01\\evidence.json",
+    "case461_axis_adapter_segment_boundary_early__v3_slot_06": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case461_axis_adapter_segment_boundary_early\\slot_06\\attempt_01\\evidence.json",
+    "case498_cc_serial_deglitch_qualification_short__v3_slot_04": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case498_cc_serial_deglitch_qualification_short\\slot_04\\attempt_01\\evidence.json",
+    "case505_axis_stat_counter_frame_pulse_early__v3_slot_06": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case505_axis_stat_counter_frame_pulse_early\\slot_06\\attempt_01\\evidence.json",
+    "case505_axis_stat_counter_frame_pulse_early__v3_slot_07": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case505_axis_stat_counter_frame_pulse_early\\slot_07\\attempt_01\\evidence.json",
+    "case510_cc_spill_register_flush_push_priority__v3_slot_06": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case510_cc_spill_register_flush_push_priority\\slot_06\\attempt_01\\evidence.json",
+    "case510_cc_spill_register_flush_push_priority__v3_slot_07": "outputs\\behavioral_preference_pilot_v1\\sequential_generation_v3_pilot30\\case510_cc_spill_register_flush_push_priority\\slot_07\\attempt_01\\evidence.json"
+  },
+  "primary_pass_variant_failures": {
+    "legal_FP": {
+      "observation_window_extension": 173,
+      "data_address_value": 45,
+      "request_spacing": 34,
+      "stall_backpressure": 34,
+      "reset_translation": 30
+    },
+    "target_or_family_miss": {
+      "observation_window_extension": 25,
+      "data_address_value": 24,
+      "request_spacing": 1
+    }
+  },
+  "primary_pass_variant_failure_candidate_counts": {
+    "legal_FP": {
+      "request_spacing": 4,
+      "observation_window_extension": 7,
+      "stall_backpressure": 4,
+      "reset_translation": 3,
+      "data_address_value": 6
+    },
+    "target_or_family_miss": {
+      "data_address_value": 3,
+      "observation_window_extension": 4,
+      "request_spacing": 1
+    }
+  },
+  "primary_pass_variant_failure_examples": {
+    "legal_FP::request_spacing": [
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_001",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_001\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_011",
+        "source_label": "decoy",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_011\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_016",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_016\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      }
+    ],
+    "legal_FP::observation_window_extension": [
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_001",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_001\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_002",
+        "source_label": "decoy",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_002\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_004",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_004\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      }
+    ],
+    "legal_FP::stall_backpressure": [
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_002",
+        "source_label": "decoy",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_002\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_007",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_007\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_012",
+        "source_label": "target",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_012\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      }
+    ],
+    "legal_FP::reset_translation": [
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_008",
+        "source_label": "decoy",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_008\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_013",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_013\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_018",
+        "source_label": "target",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_018\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      }
+    ],
+    "legal_FP::data_address_value": [
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_014",
+        "source_label": "decoy",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_014\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_029",
+        "source_label": "decoy",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_029\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case135_prim_intr_enable_mask_ignored__v3_slot_02",
+        "probe_id": "case135_prim_intr_enable_mask_ignored__probe_035",
+        "source_label": "decoy",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case135_prim_intr_enable_mask_ignored\\runs\\case135_prim_intr_enable_mask_ignored__probe_035\\case135_prim_intr_enable_mask_ignored__v3_slot_02\\result.json"
+      }
+    ],
+    "target_or_family_miss::data_address_value": [
+      {
+        "candidate_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_02",
+        "probe_id": "case139_prim_regwe_addr_check_false_positive__probe_004",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case139_prim_regwe_addr_check_false_positive\\runs\\case139_prim_regwe_addr_check_false_positive__probe_004\\case139_prim_regwe_addr_check_false_positive__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_02",
+        "probe_id": "case139_prim_regwe_addr_check_false_positive__probe_010",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case139_prim_regwe_addr_check_false_positive\\runs\\case139_prim_regwe_addr_check_false_positive__probe_010\\case139_prim_regwe_addr_check_false_positive__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_02",
+        "probe_id": "case139_prim_regwe_addr_check_false_positive__probe_019",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case139_prim_regwe_addr_check_false_positive\\runs\\case139_prim_regwe_addr_check_false_positive__probe_019\\case139_prim_regwe_addr_check_false_positive__v3_slot_02\\result.json"
+      }
+    ],
+    "target_or_family_miss::observation_window_extension": [
+      {
+        "candidate_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_02",
+        "probe_id": "case139_prim_regwe_addr_check_false_positive__probe_004",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case139_prim_regwe_addr_check_false_positive\\runs\\case139_prim_regwe_addr_check_false_positive__probe_004\\case139_prim_regwe_addr_check_false_positive__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_02",
+        "probe_id": "case139_prim_regwe_addr_check_false_positive__probe_010",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case139_prim_regwe_addr_check_false_positive\\runs\\case139_prim_regwe_addr_check_false_positive__probe_010\\case139_prim_regwe_addr_check_false_positive__v3_slot_02\\result.json"
+      },
+      {
+        "candidate_id": "case139_prim_regwe_addr_check_false_positive__v3_slot_02",
+        "probe_id": "case139_prim_regwe_addr_check_false_positive__probe_019",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case139_prim_regwe_addr_check_false_positive\\runs\\case139_prim_regwe_addr_check_false_positive__probe_019\\case139_prim_regwe_addr_check_false_positive__v3_slot_02\\result.json"
+      }
+    ],
+    "target_or_family_miss::request_spacing": [
+      {
+        "candidate_id": "case461_axis_adapter_segment_boundary_early__v3_slot_06",
+        "probe_id": "case461_axis_adapter_segment_boundary_early__probe_016",
+        "source_label": "holdout",
+        "evidence": "outputs\\behavioral_preference_pilot_v1\\behavioral_probes_v3\\case461_axis_adapter_segment_boundary_early\\runs\\case461_axis_adapter_segment_boundary_early__probe_016\\case461_axis_adapter_segment_boundary_early__v3_slot_06\\result.json"
+      }
+    ]
+  },
+  "pair_comparability": {
+    "random_legal": {
+      "strict_dominance": 483,
+      "equal_signature": 296,
+      "crossing_incomparable": 61,
+      "total_unordered": 840,
+      "unlabeled_fraction": 0.425,
+      "crossing_incomparable_fraction": 0.07261904761904762,
+      "equal_signature_fraction": 0.3523809523809524
+    },
+    "disagreement_guided": {
+      "strict_dominance": 484,
+      "equal_signature": 294,
+      "crossing_incomparable": 62,
+      "total_unordered": 840,
+      "unlabeled_fraction": 0.4238095238095238,
+      "crossing_incomparable_fraction": 0.07380952380952381,
+      "equal_signature_fraction": 0.35
+    }
+  },
+  "probe_policy": {
+    "random_legal": {
+      "selected_probe_family_counts": {
+        "observation_window_extension": 928,
+        "reset_translation": 194,
+        "request_spacing": 107,
+        "stall_backpressure": 99,
+        "data_address_value": 78,
+        "combinational_observation_window_extension": 32
+      },
+      "distinguishing_candidate_probe_family_incidences": {
+        "observation_window_extension": 2317,
+        "reset_translation": 491,
+        "request_spacing": 274,
+        "stall_backpressure": 271,
+        "data_address_value": 151
+      },
+      "unique_fp_tp_signatures": 71
+    },
+    "disagreement_guided": {
+      "selected_probe_family_counts": {
+        "observation_window_extension": 928,
+        "reset_translation": 203,
+        "stall_backpressure": 110,
+        "request_spacing": 96,
+        "data_address_value": 74,
+        "combinational_observation_window_extension": 32
+      },
+      "distinguishing_candidate_probe_family_incidences": {
+        "observation_window_extension": 2333,
+        "reset_translation": 522,
+        "stall_backpressure": 323,
+        "request_spacing": 264,
+        "data_address_value": 164
+      },
+      "unique_fp_tp_signatures": 72
+    }
+  },
+  "frozen_top1_metrics": {
+    "unseen_parent": {
+      "split": "unseen_parent",
+      "methods": {
+        "ordinary_sft": {
+          "query_count": 35,
+          "compile_rate": 1.0,
+          "SCS@1": 0.02857142857142857,
+          "Fixed-Safe": 0.17142857142857143,
+          "Target Detect": 0.8,
+          "Family Recall": 0.058823529411764705,
+          "Non-vacuity": 0.9714285714285714,
+          "TOR": 0.0,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 6,
+            "target_detect": 28,
+            "recalled_families": 1,
+            "test_families": 17,
+            "non_vacuous": 34,
+            "primary_success": 1,
+            "trace_overfit": 0
+          }
+        },
+        "pass_count_dpo": {
+          "query_count": 35,
+          "compile_rate": 1.0,
+          "SCS@1": 0.0,
+          "Fixed-Safe": 0.3142857142857143,
+          "Target Detect": 0.4857142857142857,
+          "Family Recall": 0.0,
+          "Non-vacuity": 0.9714285714285714,
+          "TOR": 1.0,
+          "counts": {
+            "strict_success": 0,
+            "fixed_safe": 11,
+            "target_detect": 17,
+            "recalled_families": 0,
+            "test_families": 17,
+            "non_vacuous": 34,
+            "primary_success": 2,
+            "trace_overfit": 2
+          }
+        },
+        "scalar_score_dpo": {
+          "query_count": 35,
+          "compile_rate": 1.0,
+          "SCS@1": 0.02857142857142857,
+          "Fixed-Safe": 0.3142857142857143,
+          "Target Detect": 0.4857142857142857,
+          "Family Recall": 0.058823529411764705,
+          "Non-vacuity": 1.0,
+          "TOR": 0.6666666666666666,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 11,
+            "target_detect": 17,
+            "recalled_families": 1,
+            "test_families": 17,
+            "non_vacuous": 35,
+            "primary_success": 3,
+            "trace_overfit": 2
+          }
+        },
+        "random_probe_dominance_dpo": {
+          "query_count": 35,
+          "compile_rate": 1.0,
+          "SCS@1": 0.08571428571428572,
+          "Fixed-Safe": 0.11428571428571428,
+          "Target Detect": 0.8857142857142857,
+          "Family Recall": 0.17647058823529413,
+          "Non-vacuity": 1.0,
+          "TOR": 0.75,
+          "counts": {
+            "strict_success": 3,
+            "fixed_safe": 4,
+            "target_detect": 31,
+            "recalled_families": 3,
+            "test_families": 17,
+            "non_vacuous": 35,
+            "primary_success": 12,
+            "trace_overfit": 9
+          }
+        },
+        "full_disagreement_dominance_dpo": {
+          "query_count": 35,
+          "compile_rate": 1.0,
+          "SCS@1": 0.02857142857142857,
+          "Fixed-Safe": 0.2857142857142857,
+          "Target Detect": 0.5428571428571428,
+          "Family Recall": 0.058823529411764705,
+          "Non-vacuity": 0.9714285714285714,
+          "TOR": 0.5,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 10,
+            "target_detect": 19,
+            "recalled_families": 1,
+            "test_families": 17,
+            "non_vacuous": 34,
+            "primary_success": 2,
+            "trace_overfit": 1
+          }
+        }
+      }
+    },
+    "unseen_bug_family": {
+      "split": "unseen_bug_family",
+      "methods": {
+        "ordinary_sft": {
+          "query_count": 25,
+          "compile_rate": 1.0,
+          "SCS@1": 0.04,
+          "Fixed-Safe": 0.32,
+          "Target Detect": 0.72,
+          "Family Recall": 0.125,
+          "Non-vacuity": 1.0,
+          "TOR": 0.0,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 8,
+            "target_detect": 18,
+            "recalled_families": 1,
+            "test_families": 8,
+            "non_vacuous": 25,
+            "primary_success": 1,
+            "trace_overfit": 0
+          }
+        },
+        "pass_count_dpo": {
+          "query_count": 25,
+          "compile_rate": 1.0,
+          "SCS@1": 0.0,
+          "Fixed-Safe": 0.36,
+          "Target Detect": 0.56,
+          "Family Recall": 0.0,
+          "Non-vacuity": 1.0,
+          "TOR": null,
+          "counts": {
+            "strict_success": 0,
+            "fixed_safe": 9,
+            "target_detect": 14,
+            "recalled_families": 0,
+            "test_families": 8,
+            "non_vacuous": 25,
+            "primary_success": 0,
+            "trace_overfit": 0
+          }
+        },
+        "scalar_score_dpo": {
+          "query_count": 25,
+          "compile_rate": 1.0,
+          "SCS@1": 0.0,
+          "Fixed-Safe": 0.44,
+          "Target Detect": 0.08,
+          "Family Recall": 0.0,
+          "Non-vacuity": 1.0,
+          "TOR": null,
+          "counts": {
+            "strict_success": 0,
+            "fixed_safe": 11,
+            "target_detect": 2,
+            "recalled_families": 0,
+            "test_families": 8,
+            "non_vacuous": 25,
+            "primary_success": 0,
+            "trace_overfit": 0
+          }
+        },
+        "random_probe_dominance_dpo": {
+          "query_count": 25,
+          "compile_rate": 1.0,
+          "SCS@1": 0.04,
+          "Fixed-Safe": 0.16,
+          "Target Detect": 0.88,
+          "Family Recall": 0.125,
+          "Non-vacuity": 1.0,
+          "TOR": 0.0,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 4,
+            "target_detect": 22,
+            "recalled_families": 1,
+            "test_families": 8,
+            "non_vacuous": 25,
+            "primary_success": 1,
+            "trace_overfit": 0
+          }
+        },
+        "full_disagreement_dominance_dpo": {
+          "query_count": 25,
+          "compile_rate": 1.0,
+          "SCS@1": 0.0,
+          "Fixed-Safe": 0.6,
+          "Target Detect": 0.16,
+          "Family Recall": 0.0,
+          "Non-vacuity": 1.0,
+          "TOR": null,
+          "counts": {
+            "strict_success": 0,
+            "fixed_safe": 15,
+            "target_detect": 4,
+            "recalled_families": 0,
+            "test_families": 8,
+            "non_vacuous": 25,
+            "primary_success": 0,
+            "trace_overfit": 0
+          }
+        }
+      }
+    },
+    "union_overview": {
+      "split": "union_overview",
+      "methods": {
+        "ordinary_sft": {
+          "query_count": 48,
+          "compile_rate": 1.0,
+          "SCS@1": 0.020833333333333332,
+          "Fixed-Safe": 0.25,
+          "Target Detect": 0.7291666666666666,
+          "Family Recall": 0.047619047619047616,
+          "Non-vacuity": 0.9791666666666666,
+          "TOR": 0.0,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 12,
+            "target_detect": 35,
+            "recalled_families": 1,
+            "test_families": 21,
+            "non_vacuous": 47,
+            "primary_success": 1,
+            "trace_overfit": 0
+          }
+        },
+        "pass_count_dpo": {
+          "query_count": 48,
+          "compile_rate": 1.0,
+          "SCS@1": 0.0,
+          "Fixed-Safe": 0.2708333333333333,
+          "Target Detect": 0.5833333333333334,
+          "Family Recall": 0.0,
+          "Non-vacuity": 0.9791666666666666,
+          "TOR": 1.0,
+          "counts": {
+            "strict_success": 0,
+            "fixed_safe": 13,
+            "target_detect": 28,
+            "recalled_families": 0,
+            "test_families": 21,
+            "non_vacuous": 47,
+            "primary_success": 2,
+            "trace_overfit": 2
+          }
+        },
+        "scalar_score_dpo": {
+          "query_count": 48,
+          "compile_rate": 1.0,
+          "SCS@1": 0.020833333333333332,
+          "Fixed-Safe": 0.3333333333333333,
+          "Target Detect": 0.375,
+          "Family Recall": 0.047619047619047616,
+          "Non-vacuity": 1.0,
+          "TOR": 0.6666666666666666,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 16,
+            "target_detect": 18,
+            "recalled_families": 1,
+            "test_families": 21,
+            "non_vacuous": 48,
+            "primary_success": 3,
+            "trace_overfit": 2
+          }
+        },
+        "random_probe_dominance_dpo": {
+          "query_count": 48,
+          "compile_rate": 1.0,
+          "SCS@1": 0.0625,
+          "Fixed-Safe": 0.14583333333333334,
+          "Target Detect": 0.8541666666666666,
+          "Family Recall": 0.14285714285714285,
+          "Non-vacuity": 1.0,
+          "TOR": 0.75,
+          "counts": {
+            "strict_success": 3,
+            "fixed_safe": 7,
+            "target_detect": 41,
+            "recalled_families": 3,
+            "test_families": 21,
+            "non_vacuous": 48,
+            "primary_success": 12,
+            "trace_overfit": 9
+          }
+        },
+        "full_disagreement_dominance_dpo": {
+          "query_count": 48,
+          "compile_rate": 1.0,
+          "SCS@1": 0.020833333333333332,
+          "Fixed-Safe": 0.4166666666666667,
+          "Target Detect": 0.4583333333333333,
+          "Family Recall": 0.047619047619047616,
+          "Non-vacuity": 0.9791666666666666,
+          "TOR": 0.5,
+          "counts": {
+            "strict_success": 1,
+            "fixed_safe": 20,
+            "target_detect": 22,
+            "recalled_families": 1,
+            "test_families": 21,
+            "non_vacuous": 47,
+            "primary_success": 2,
+            "trace_overfit": 1
+          }
+        }
+      }
+    }
+  },
+  "phase_b_metrics": {
+    "unseen_parent": {
+      "query_count": 35,
+      "compile_rate": 1.0,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.02857142857142857,
+      "Target Detect": 0.6,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.7428571428571429,
+      "TOR": null,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 1,
+        "target_detect": 21,
+        "recalled_families": 0,
+        "families": 17,
+        "non_vacuous": 26,
+        "primary_success": 0,
+        "trace_overfit": 0
+      }
+    },
+    "unseen_bug_family": {
+      "query_count": 25,
+      "compile_rate": 1.0,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.4,
+      "Target Detect": 0.52,
+      "Family Recall": 0.0,
+      "Non-vacuity": 1.0,
+      "TOR": 1.0,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 10,
+        "target_detect": 13,
+        "recalled_families": 0,
+        "families": 8,
+        "non_vacuous": 25,
+        "primary_success": 3,
+        "trace_overfit": 3
+      }
+    },
+    "union_overview": {
+      "query_count": 48,
+      "compile_rate": 1.0,
+      "SCS@1": 0.0,
+      "Fixed-Safe": 0.22916666666666666,
+      "Target Detect": 0.4791666666666667,
+      "Family Recall": 0.0,
+      "Non-vacuity": 0.8125,
+      "TOR": 1.0,
+      "counts": {
+        "strict_success": 0,
+        "fixed_safe": 11,
+        "target_detect": 23,
+        "recalled_families": 0,
+        "families": 21,
+        "non_vacuous": 39,
+        "primary_success": 3,
+        "trace_overfit": 3
+      }
+    }
+  },
+  "repair_summary": {
+    "selected_case_count": 8,
+    "original_correct_pass_count": 7,
+    "repaired_correct_pass_count": 6,
+    "correct_pass_preserved_count": 6,
+    "fail_on_buggy_improved_count": 1,
+    "antecedent_hit_improved_count": 1,
+    "false_positive_introduced_count": 1,
+    "heldout_failure_introduced_count": 1,
+    "candidate_level_buggy_improve_with_fp_count": 7
+  },
+  "interpretation_limits": [
+    "The frozen 48-query manifest has no explicit signal-renaming or parameter-change stratum labels.",
+    "Probe transformation families measure behavioral sensitivity, not a causal decomposition of model internals.",
+    "Text-diagnosis causality cannot be identified without randomized diagnosis-label intervention at fixed behavioral evidence."
+  ]
+}

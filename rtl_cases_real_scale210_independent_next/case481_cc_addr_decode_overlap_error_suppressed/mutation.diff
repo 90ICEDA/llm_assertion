@@ -1,0 +1,10 @@
+--- correct.v
++++ buggy.v
+@@ -3,5 +3,6 @@
+   wire m1 = en_i && (addr_i >= 8'h30) && (addr_i < 8'h50);
+   assign sel_o = {m1,m0};
+   assign valid_o = m0 ^ m1;
+-  assign error_o = m0 && m1;
++  assign error_o = 1'b0;
++  // MUTATION: overlapping rules are silently accepted as no-match.
+ endmodule

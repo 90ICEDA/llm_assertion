@@ -1,0 +1,161 @@
+{
+  "counts": {
+    "alignment": {
+      "rows": 240,
+      "triggers": 102,
+      "detections": 48,
+      "misses": 0,
+      "false_positives": 0,
+      "unknown": 0
+    },
+    "search": {
+      "rows": 1248,
+      "triggers": 588,
+      "detections": 267,
+      "misses": 0,
+      "false_positives": 0,
+      "unknown": 0
+    },
+    "history": {
+      "rows": 2748,
+      "triggers": 1584,
+      "detections": 423,
+      "misses": 0,
+      "false_positives": 636,
+      "unknown": 0
+    }
+  },
+  "ordinary_accepted": true,
+  "historical_accepted": false,
+  "new_false_alarms": 636,
+  "lost_detections": 0,
+  "required_untriggered": 0,
+  "actual_development_counterexamples": [
+    {
+      "cohort": "history",
+      "kind": "false_positives",
+      "sample": {
+        "sample_id": 184,
+        "transaction_id": 47,
+        "phase": 3,
+        "instruction": 370497251,
+        "instr_new": 0,
+        "family": "branch_legal",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 0
+      },
+      "revision": "after",
+      "obligation": "encoding_controls",
+      "decoded_fields": {
+        "opcode": 99,
+        "bit28": 1,
+        "bit31": 0,
+        "funct3": 5
+      },
+      "expected": 0,
+      "observed": 0,
+      "native_assertions": [
+        {
+          "id": "a0",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a1",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": false
+        }
+      ]
+    },
+    {
+      "cohort": "history",
+      "kind": "false_positives",
+      "sample": {
+        "sample_id": 228,
+        "transaction_id": 59,
+        "phase": 0,
+        "instruction": 413169379,
+        "instr_new": 1,
+        "family": "branch_legal",
+        "cohort": "history"
+      },
+      "configuration": {
+        "RV32E": 0,
+        "RV32M": 0
+      },
+      "revision": "before",
+      "obligation": "encoding_controls",
+      "decoded_fields": {
+        "opcode": 99,
+        "bit28": 1,
+        "bit31": 0,
+        "funct3": 7
+      },
+      "expected": 0,
+      "observed": 0,
+      "native_assertions": [
+        {
+          "id": "a0",
+          "trigger": false,
+          "failed": false,
+          "causal_detection": false
+        },
+        {
+          "id": "a1",
+          "trigger": true,
+          "failed": true,
+          "causal_detection": false
+        }
+      ]
+    }
+  ],
+  "prior_local_attempts": [
+    {
+      "edit": {
+        "operation": "replace_op",
+        "reason": "To eliminate false alarms while maintaining OP detection, the antecedent and consequent of the property need to be updated. The antecedent should check if bit28 is set in the instruction, and the consequent should ensure that illegal_insn is set accordingly for every sample.",
+        "assertions": [
+          {
+            "antecedent": "(instr[28] == 1)",
+            "consequent": "(illegal_insn == 1)",
+            "timing": "same_sample",
+            "obligations": [
+              "op_bit28_illegal"
+            ]
+          }
+        ]
+      },
+      "actual_rejection": {
+        "accepted": false,
+        "reason": "interface_or_repeat",
+        "detail": "repeated_executable_proposal"
+      }
+    },
+    {
+      "edit": {
+        "operation": "replace_op",
+        "reason": "To eliminate false alarms while maintaining OP detection, the antecedent and consequent of the property need to be updated. The antecedent should check if bit28 is set in the instruction, and the consequent should ensure that illegal_insn is set accordingly for every sample.",
+        "assertions": [
+          {
+            "antecedent": "(instr[28] == 1)",
+            "consequent": "(illegal_insn == 1)",
+            "timing": "same_sample",
+            "obligations": [
+              "op_bit28_illegal"
+            ]
+          }
+        ]
+      },
+      "actual_rejection": {
+        "accepted": false,
+        "reason": "interface_or_repeat",
+        "detail": "repeated_executable_proposal"
+      }
+    }
+  ]
+}

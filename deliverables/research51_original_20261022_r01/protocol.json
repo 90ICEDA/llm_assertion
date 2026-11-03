@@ -1,0 +1,59 @@
+{
+  "case_id": "lowRISC/ibex#166",
+  "upstream": "https://github.com/lowRISC/ibex/pull/166",
+  "issue": "https://github.com/lowRISC/ibex/issues/163",
+  "before_commit": "c96ece04296c3c69df578d760aa8a66f9b886fef",
+  "after_commit": "3bcbb50630a7cb0278623a8a1f5d262e0220dd86",
+  "merge_commit": "59254498489d441f64c24e6b344fce73d0d8bbce",
+  "module": "ibex_decoder",
+  "rtl_policy": "Original bytes downloaded from immutable GitHub commit URLs; no source translation or logic edits",
+  "obligations": [
+    {
+      "id": "illegal_branch_persists",
+      "text": "BRANCH funct3 010/011 is illegal throughout instruction execution, including instr_new_i=0 stall cycles",
+      "source": "official PR #166 body; RISC-V branch encodings"
+    },
+    {
+      "id": "op_bit28_illegal",
+      "text": "Register-register OP encodings with bit28 set are illegal for these historical RV32IM configurations",
+      "source": "official PR #166 body; RISC-V OP encoding table"
+    }
+  ],
+  "legal_stimulus": "Decoder interface accepts any instruction bits, including illegal encodings. An instruction is first presented with instr_new_i=1, then held stable with instr_new_i=0 for its remaining execution samples. illegal_c_insn_i=0. These are module-interface stimuli, not a demonstrated full-core fetch/retire protocol.",
+  "configurations": [
+    {
+      "RV32E": 0,
+      "RV32M": 1
+    },
+    {
+      "RV32E": 0,
+      "RV32M": 0
+    },
+    {
+      "RV32E": 1,
+      "RV32M": 1
+    }
+  ],
+  "seed": 202610150166,
+  "independent_oracle": "Python ISA encoding classification in oracle(), not candidate alarm or buggy/fixed waveform difference",
+  "observation": "combinational decoder sampled at positive edge, inputs changed on prior negative edge; decoder has no clock/reset port",
+  "assertion_origin": "handwritten equality to expected independent ISA classification; no LLM-generated SVA",
+  "holdout_status": "New reproduction inputs frozen before execution; no model/candidate selection. Not a frozen learned-assertion generalization experiment.",
+  "whole_processor_trap": "not tested; original HWE-Bench full-core reproducer archived but not executed",
+  "native_sva": true,
+  "formal_proof": false,
+  "model_calls": 0,
+  "source_download_attempts": [
+    {
+      "environment": "Windows sandbox",
+      "status": "socket_access_denied",
+      "attempts": 5
+    },
+    {
+      "environment": "Windows elevated authorized read-only HTTP",
+      "status": "success",
+      "source_files": 4,
+      "official_PR_records": 1
+    }
+  ]
+}

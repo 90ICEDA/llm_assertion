@@ -1,0 +1,24 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, wr_gray_i, rd_gray_o
+
+Specification:
+
+A changed Gray-coded write pointer must not be exposed to read-domain logic until it has passed through three sampling stages. The immediately following read-domain sample must still expose the old pointer.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_cdc_fifo_gray(input wire clk_i,input wire rst_ni,input wire [2:0] wr_gray_i,output wire [2:0] rd_gray_o);
+  reg [2:0] s0,s1,s2;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) begin s0<=0;s1<=0;s2<=0; end else begin s0<=wr_gray_i;s1<=s0;s2<=s1; end
+  end
+  assign rd_gray_o=s2;
+endmodule

@@ -1,0 +1,12 @@
+--- correct.v
++++ buggy.v
+@@ -52,7 +52,8 @@
+     if (rst) begin
+         sync_reg <= {N{1'b1}};
+     end else begin
+-        sync_reg <= {sync_reg[N-2:0], 1'b0};
++        // ASSERTIONFORGE_MUTATION: shift two zeros per clock
++        sync_reg <= {sync_reg[N-3:0], 2'b00};
+     end
+ end
+ 

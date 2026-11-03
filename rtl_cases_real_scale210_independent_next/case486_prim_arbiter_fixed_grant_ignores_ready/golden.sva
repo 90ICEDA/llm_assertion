@@ -1,0 +1,1 @@
+assert property (@(posedge clk_i) disable iff (!rst_ni) ((|req_i) && !ready_i) |-> (gnt_o == 4'b0000));

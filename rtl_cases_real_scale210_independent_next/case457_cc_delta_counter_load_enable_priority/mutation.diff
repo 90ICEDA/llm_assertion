@@ -1,0 +1,8 @@
+--- correct.v
++++ buggy.v
+@@ -1 +1,4 @@
+-module cc_delta_counter #(parameter Width=4,parameter StickyOverflow=0)(input clk_i,rst_ni,clr_i,en_i,load_i,down_i,input [Width-1:0] delta_i,d_i,output [Width-1:0] q_o,output overflow_o); reg [Width:0] counter_q; reg overflow_q; wire overflow_clr=clr_i||load_i; wire ov_now=down_i ? delta_i>counter_q[Width-1:0] : counter_q[Width-1:0]>({Width{1'b1}}-delta_i); always @(posedge clk_i or negedge rst_ni) if(!rst_ni) begin counter_q<=0; overflow_q<=0; end else begin if(clr_i) counter_q<=0; else if(load_i) counter_q<={1'b0,d_i}; else if(en_i) counter_q<=down_i?counter_q-delta_i:counter_q+delta_i; if(overflow_clr) overflow_q<=0; else if(en_i&&ov_now) overflow_q<=1; end assign q_o=counter_q[Width-1:0]; assign overflow_o=StickyOverflow?overflow_q:counter_q[Width]; endmodule
++module cc_delta_counter #(parameter Width=4,parameter StickyOverflow=0)(input clk_i,rst_ni,clr_i,en_i,load_i,down_i,input [Width-1:0] delta_i,d_i,output [Width-1:0] q_o,output overflow_o); reg [Width:0] counter_q; reg overflow_q; wire overflow_clr=clr_i||load_i; wire ov_now=down_i ? delta_i>counter_q[Width-1:0] : counter_q[Width-1:0]>({Width{1'b1}}-delta_i); always @(posedge clk_i or negedge rst_ni) if(!rst_ni) begin counter_q<=0; overflow_q<=0; end else begin if(clr_i) counter_q<=0;
++// MUTATION: enable incorrectly has priority over load.
++else if(en_i) counter_q<=down_i?counter_q-delta_i:counter_q+delta_i; else if(load_i) counter_q<={1'b0,d_i};
++if(overflow_clr) overflow_q<=0; else if(en_i&&ov_now) overflow_q<=1; end assign q_o=counter_q[Width-1:0]; assign overflow_o=StickyOverflow?overflow_q:counter_q[Width]; endmodule

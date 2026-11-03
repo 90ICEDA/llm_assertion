@@ -1,0 +1,60 @@
+{
+  "O": [
+    {
+      "label": "first_stalled",
+      "antecedent": "first_present && !m_axis_tready",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    },
+    {
+      "label": "ready_first_legal",
+      "antecedent": "first_present && m_axis_tready && input_complete && input_count <= DEPTH",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    },
+    {
+      "label": "ready_first_oversize",
+      "antecedent": "first_present && m_axis_tready && input_complete && input_count > DEPTH",
+      "consequent": "!first_present",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ],
+  "H": [
+    {
+      "label": "first_stalled",
+      "antecedent": "first_present && !m_axis_tready",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    },
+    {
+      "label": "ready_first_legal",
+      "antecedent": "first_present && m_axis_tready && input_complete && input_count <= DEPTH",
+      "consequent": "input_complete && input_count <= DEPTH",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    },
+    {
+      "label": "ready_first_oversize",
+      "antecedent": "first_present && m_axis_tready && input_complete && input_count > DEPTH",
+      "consequent": "!first_present",
+      "timing": "same_sample",
+      "obligations": [
+        "oversize_frame_atomic_drop"
+      ]
+    }
+  ]
+}

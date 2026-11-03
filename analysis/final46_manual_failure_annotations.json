@@ -1,0 +1,778 @@
+[
+  {
+    "model": "Claude",
+    "case_id": "case451_prim_clock_timeout_threshold_off_by_one",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Raw candidate 1 captures int'(cnt)>=4 |=> timeout_o and succeeds. Temporal candidates refer to hidden TimeOutCnt/CntWidth identifiers and three fail compilation; the remaining reset candidate is too weak."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case451_prim_clock_timeout_threshold_off_by_one",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden behavior requires the registered next-cycle timeout. Raw candidates place timeout_o in the same cycle or anchor to witnessed cnt literals; temporal candidates either use unavailable parameters or overconstrain reset behavior."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case455_prim_crc32_set_enable_coupling",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "vacuity",
+    "evidence": "The target is set_crc_i&&!data_valid_i |=> crc_out_o==$past(crc_in_i). Raw candidates express the next-cycle relation but their antecedents do not hit the evaluated buggy trace; temporal candidates switch to same-cycle |-> and become too strong."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case455_prim_crc32_set_enable_coupling",
+    "quadrant": "both_fail",
+    "primary": "polarity",
+    "secondary": "too_strong",
+    "evidence": "Candidates assert crc_out_o==~crc_in_i or same-cycle equality, reversing the externally visible complement convention and missing the registered one-cycle relation."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "vacuity",
+    "evidence": "Raw candidates 3/4 use load_i |=> !overflow_o and succeed. Temporal candidates mostly use same-cycle |-> or add clr_i/en_i conjunctions that never trigger."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case466_cc_ring_buffer_write_advance_collision",
+    "quadrant": "both_fail",
+    "primary": "vacuity",
+    "secondary": "trigger",
+    "evidence": "All eight raw/temporal candidates use an accepted-write-and-advance antecedent that is not observed by the evaluator; several further hard-code step_i values, so no candidate is non-vacuous."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case468_cc_spill_register_drain_refill_duplicate",
+    "quadrant": "temporal_success_raw_fail",
+    "primary": "context_noise",
+    "secondary": "trigger",
+    "evidence": "Raw candidates split between vacuity and too-strong behavior. A temporal candidate succeeds, showing that the compressed ordering relation can suppress waveform detail that distracted antecedent selection."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case471_prim_sync_reqack_ack_pulse_width",
+    "quadrant": "temporal_success_raw_fail",
+    "primary": "duration",
+    "secondary": "too_strong",
+    "evidence": "All raw candidates are too strong on correct behavior. Temporal candidate 4 succeeds by preserving the acknowledgement pulse relation, indicating useful duration abstraction."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case471_prim_sync_reqack_ack_pulse_width",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "duration",
+    "secondary": "vacuity",
+    "evidence": "Raw candidate 4 succeeds, while temporal candidates either overconstrain pulse behavior or add an antecedent that does not occur. This is model-dependent use of the same duration evidence."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case482_cc_stream_demux_unselected_ready_accept",
+    "quadrant": "both_fail",
+    "primary": "hardcoding",
+    "secondary": "vacuity",
+    "evidence": "Both representations produce three vacuous candidates and one overfit-suspect candidate; witnessed selector/ready combinations are copied without a reusable accepted-transfer trigger."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case491_axis_pipeline_register_valid_latency",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Raw candidate 4 succeeds. Every temporal candidate is vacuous, showing that the abstraction steered antecedents away from an event that actually occurs in the buggy trace."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case491_axis_pipeline_register_valid_latency",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Raw candidate 3 succeeds; temporal candidates either fail compilation or encode a too-weak delay. The failure is not absence of waveform evidence but unusable temporal syntax/lag selection."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case493_axis_stat_counter_frame_commit_delay",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Raw candidates impose same-cycle state changes and are all too strong; temporal candidates try unsupported delayed sequence forms and all fail compilation."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case495_axis_fifo_adapter_commit_pulse_width",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "compile_form",
+    "evidence": "The target requires q_o low two samples after a rising boundary. Raw candidates identify ##2 but use an unsupported sequence form; temporal candidates choose $fell(delimiter_i), reversing the trigger polarity and becoming vacuous."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case495_axis_fifo_adapter_commit_pulse_width",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "polarity",
+    "evidence": "Raw candidates mix same-cycle and malformed ##1/##2 syntax. Temporal candidates collapse the exact two-sample pulse-width constraint to same/next-cycle !q_o, yielding too-weak or too-strong properties."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case497_cc_cdc_4phase_ack_sync_depth",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "polarity",
+    "secondary": "delay",
+    "evidence": "Raw candidate 3 succeeds on the observed intermediate state. All temporal candidates trigger on $fell(async_ack_i), whereas the target is a rising asynchronous acknowledgement followed by a two-cycle prohibition; they are vacuous."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case497_cc_cdc_4phase_ack_sync_depth",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "vacuity",
+    "evidence": "Raw candidates 1/2 succeed. Temporal candidates either miss the three-register visibility depth, use an unsupported ##3 sequence, or choose antecedents that do not hit."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case510_cc_spill_register_flush_push_priority",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Raw candidates use flush_i&&push_i |=> !valid_o and succeed. Temporal candidates collapse the registered effect to same-cycle |-> and therefore fail to distinguish the bug."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case510_cc_spill_register_flush_push_priority",
+    "quadrant": "temporal_success_raw_fail",
+    "primary": "delay",
+    "secondary": "context_noise",
+    "evidence": "All raw candidates use same-cycle |-> and are too weak. Temporal candidate 4 recovers the required |=> next-cycle relation and succeeds."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case457_cc_delta_counter_load_enable_priority",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) load_i |=> q_o==$past(d_i)); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) load_i |=> !overflow_o); Raw c1-c4 outcomes: too_strong/too_strong/too_strong/too_strong; temporal c1-c4 outcomes: too_strong/too_weak/too_strong/vacuity. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_strong. Successful controls: local_window;signal_subset;noise_signals;temporal_strict_no_trigger."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case461_axis_adapter_segment_boundary_early",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) (sv && sr && !sl && dut.upsize.seg_reg == 2) |=> (dut.upsize.seg_reg == 3 && !mv)); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case462_axis_broadcast_partial_ready_loss",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ((mv != 0) && ((mr & mv) != mv)) |=> ((mv & ~$past(mr)) != 0)); Raw c1-c4 outcomes: vacuity/vacuity/too_weak/too_strong; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: good_only;format_perturbed."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) (sv && sr && mv && mr) |=> (count == $past(count))); Raw c1-c4 outcomes: vacuity/vacuity/too_weak/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case468_cc_spill_register_drain_refill_duplicate",
+    "quadrant": "both_fail",
+    "primary": "context_noise",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (dut.af && !dut.bf && ready_i) |=> !dut.bf); Raw c1-c4 outcomes: too_strong/too_strong/too_strong/too_weak; temporal c1-c4 outcomes: too_strong/too_strong/vacuity/vacuity. The candidates select visible handshake proxies instead of the internal state transition in the golden property; successful alternate controls show that context selection changes the result. Secondary code: too_strong. Successful controls: bad_only;wrong_pairing;temporal_no_delay;temporal_no_polarity;temporal_strict_no_delay;temporal_strict_no_polarity."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case469_cc_stream_register_stall_overwrite",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (valid_o && !ready_i) |=> (valid_o && data_o==$past(data_o))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case472_prim_pulse_sync_destination_single_cycle",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_dst_i) disable iff (!rst_dst_ni) dst_pulse_o |=> !dst_pulse_o); Raw c1-c4 outcomes: too_strong/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: too_strong/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the required hold/pulse length, or express it with an unsupported repetition/sequence form. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (we && de) |=> q == ($past(d) & ~$past(wd))); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($countones(error_valid_i) > 1) |-> error_overflow_o); Raw c1-c4 outcomes: success/overfit_suspect/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: raw_good_bad;bad_only;format_perturbed;wrong_pairing;temporal_strict_no_trigger."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case475_prim_clock_gating_sync_enable_latency",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) $rose(async_en_i) |=> !en_o); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/too_weak/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case476_sync_reset_release_one_cycle_early",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ($fell(rst) |-> sync_out[*3] ##1 !sync_out)); Raw c1-c4 outcomes: vacuity/vacuity/compile_fail/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed candidates do not preserve the required hold/pulse length, or express it with an unsupported repetition/sequence form. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case480_axis_cobs_decode_ff_zero_suppression",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ((s_valid && s_ready && s_data == 8'd255) |=> dut.suppress_zero_reg)); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: too_weak/vacuity/too_weak/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: bad_only."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case489_prim_max_tree_invalid_source_selected",
+    "quadrant": "both_fail",
+    "primary": "hardcoding",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (|valid_i) |-> valid_i[max_idx_o]); Raw c1-c4 outcomes: too_weak/vacuity/overfit_suspect/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The candidates specialize to witnessed literals, lanes, or selector combinations rather than the general relation in the golden property. Secondary code: too_weak. Successful controls: temporal_no_polarity."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case490_prim_gate_gen_valid_latency_short",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) valid_i |-> ##3 valid_o); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case492_axis_async_fifo_gray_visibility",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(write_toggle_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/vacuity/success/success; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: raw_good_bad;bad_only;local_window;format_perturbed;wrong_pairing."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case493_axis_stat_counter_frame_commit_delay",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (($rose(frame_end_i) && valid_i && ready_i) |=> (q_o == $past(q_o)))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case494_axis_ram_switch_response_pipeline",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(grant_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/too_weak/too_weak/too_weak; temporal c1-c4 outcomes: too_weak/too_weak/vacuity/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: local_window;noise_signals;format_perturbed;wrong_pairing."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case498_cc_serial_deglitch_qualification_short",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(noisy_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/vacuity/vacuity/too_strong; temporal c1-c4 outcomes: too_weak/too_weak/ineffective/too_strong. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: bad_only;noise_signals;format_perturbed;wrong_pairing;temporal_no_polarity;temporal_no_duration;temporal_strict_no_polarity."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case499_cc_shift_reg_gated_stage_bypass",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (($rose(data_i) && enable_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: compile_fail/vacuity/too_weak/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: vacuity. Successful controls: format_perturbed."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case500_cc_isochronous_handshake_early_drop",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(ack_i) |=> q_o)); Raw c1-c4 outcomes: too_weak/too_weak/too_strong/vacuity; temporal c1-c4 outcomes: too_weak/too_weak/vacuity/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ((m_axis_tvalid && !m_axis_tready) |=> m_axis_tvalid)); Raw c1-c4 outcomes: vacuity/success/too_strong/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: raw_good_bad;temporal_no_duration."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case503_cc_cdc_2phase_ack_returns_early",
+    "quadrant": "both_fail",
+    "primary": "polarity",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(req_i) |=> !ack_o)); Raw c1-c4 outcomes: vacuity/compile_fail/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/compile_fail/compile_fail/vacuity. The reviewed trigger/value direction is reversed or attached to the wrong edge, so the property cannot observe the golden event. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(wr_gray_i[0]) |=> (rd_gray_o == 3'b000))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case505_axis_stat_counter_frame_pulse_early",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(frame_done_i) |=> !stat_valid_o)); Raw c1-c4 outcomes: success/compile_fail/vacuity/vacuity; temporal c1-c4 outcomes: too_weak/ineffective/ineffective/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: raw_good_bad;bad_only;noise_signals;format_perturbed."
+  },
+  {
+    "model": "GPT",
+    "case_id": "case507_cc_rr_arb_tree_locked_grant_replaced",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ((gnt_o[0] && !ready_i) |=> gnt_o[0])); Raw c1-c4 outcomes: too_weak/too_weak/too_weak/vacuity; temporal c1-c4 outcomes: too_weak/too_weak/too_weak/vacuity. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case455_prim_crc32_set_enable_coupling",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) set_crc_i && !data_valid_i |=> crc_out_o == $past(crc_in_i)); Raw c1-c4 outcomes: vacuity/vacuity/compile_fail/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: temporal_strict_no_trigger;temporal_strict_no_delay."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case457_cc_delta_counter_load_enable_priority",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) load_i |=> q_o==$past(d_i)); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/vacuity/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case461_axis_adapter_segment_boundary_early",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) (sv && sr && !sl && dut.upsize.seg_reg == 2) |=> (dut.upsize.seg_reg == 3 && !mv)); Raw c1-c4 outcomes: compile_fail/vacuity/compile_fail/compile_fail; temporal c1-c4 outcomes: vacuity/too_weak/too_strong/too_weak. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case462_axis_broadcast_partial_ready_loss",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ((mv != 0) && ((mr & mv) != mv)) |=> ((mv & ~$past(mr)) != 0)); Raw c1-c4 outcomes: vacuity/success/success/success; temporal c1-c4 outcomes: compile_fail/vacuity/vacuity/ineffective. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: vacuity. Successful controls: raw_good_bad;good_only;bad_only;local_window;signal_subset;noise_signals;format_perturbed;wrong_pairing."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) (sv && sr && mv && mr) |=> (count == $past(count))); Raw c1-c4 outcomes: vacuity/too_weak/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/too_weak/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case466_cc_ring_buffer_write_advance_collision",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (wvalid_i&&wready_o&&advance_i) |=> (wptr_o==$past(wptr_o)+1 && rptr_o==$past(rptr_o)+$past(step_i))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case469_cc_stream_register_stall_overwrite",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (valid_o && !ready_i) |=> (valid_o && data_o==$past(data_o))); Raw c1-c4 outcomes: vacuity/compile_fail/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/compile_fail/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case472_prim_pulse_sync_destination_single_cycle",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_dst_i) disable iff (!rst_dst_ni) dst_pulse_o |=> !dst_pulse_o); Raw c1-c4 outcomes: too_strong/vacuity/too_strong/too_weak; temporal c1-c4 outcomes: too_strong/too_weak/compile_fail/vacuity. The reviewed candidates do not preserve the required hold/pulse length, or express it with an unsupported repetition/sequence form. Secondary code: too_strong. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (we && de) |=> q == ($past(d) & ~$past(wd))); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case475_prim_clock_gating_sync_enable_latency",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) $rose(async_en_i) |=> !en_o); Raw c1-c4 outcomes: vacuity/too_strong/too_strong/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/compile_fail/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_strong. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case476_sync_reset_release_one_cycle_early",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ($fell(rst) |-> sync_out[*3] ##1 !sync_out)); Raw c1-c4 outcomes: compile_fail/vacuity/too_strong/compile_fail; temporal c1-c4 outcomes: vacuity/too_weak/vacuity/vacuity. The reviewed candidates do not preserve the required hold/pulse length, or express it with an unsupported repetition/sequence form. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case480_axis_cobs_decode_ff_zero_suppression",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ((s_valid && s_ready && s_data == 8'd255) |=> dut.suppress_zero_reg)); Raw c1-c4 outcomes: too_weak/success/too_strong/success; temporal c1-c4 outcomes: vacuity/too_weak/too_weak/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: raw_good_bad."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case490_prim_gate_gen_valid_latency_short",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) valid_i |-> ##3 valid_o); Raw c1-c4 outcomes: compile_fail/too_weak/compile_fail/vacuity; temporal c1-c4 outcomes: compile_fail/vacuity/vacuity/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case491_axis_pipeline_register_valid_latency",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(s_valid_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/too_strong/success/too_weak; temporal c1-c4 outcomes: too_weak/compile_fail/too_weak/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: raw_good_bad;signal_subset;format_perturbed;wrong_pairing;temporal_no_duration."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case492_axis_async_fifo_gray_visibility",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(write_toggle_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: success/vacuity/vacuity/success; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/compile_fail. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: raw_good_bad;bad_only;local_window;signal_subset;format_perturbed;wrong_pairing;temporal_no_delay."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case493_axis_stat_counter_frame_commit_delay",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (($rose(frame_end_i) && valid_i && ready_i) |=> (q_o == $past(q_o)))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case494_axis_ram_switch_response_pipeline",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(grant_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/compile_fail/success/vacuity; temporal c1-c4 outcomes: compile_fail/vacuity/too_weak/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: raw_good_bad;local_window;noise_signals;format_perturbed;wrong_pairing."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case498_cc_serial_deglitch_qualification_short",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(noisy_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/success/too_weak/too_weak; temporal c1-c4 outcomes: too_weak/too_weak/too_weak/vacuity. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: raw_good_bad;bad_only;local_window;signal_subset;noise_signals;format_perturbed;wrong_pairing;temporal_no_trigger;temporal_no_delay;temporal_no_polarity;temporal_no_duration;temporal_strict_no_trigger;temporal_strict_no_polarity;temporal_strict_no_duration."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case499_cc_shift_reg_gated_stage_bypass",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (($rose(data_i) && enable_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/too_weak/vacuity/vacuity; temporal c1-c4 outcomes: compile_fail/vacuity/compile_fail/vacuity. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ((m_axis_tvalid && !m_axis_tready) |=> m_axis_tvalid)); Raw c1-c4 outcomes: success/vacuity/too_weak/vacuity; temporal c1-c4 outcomes: compile_fail/compile_fail/too_weak/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: raw_good_bad;good_only;noise_signals;format_perturbed."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case503_cc_cdc_2phase_ack_returns_early",
+    "quadrant": "both_fail",
+    "primary": "polarity",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(req_i) |=> !ack_o)); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: vacuity/compile_fail/compile_fail/vacuity. The reviewed trigger/value direction is reversed or attached to the wrong edge, so the property cannot observe the golden event. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Claude",
+    "case_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(wr_gray_i[0]) |=> (rd_gray_o == 3'b000))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case451_prim_clock_timeout_threshold_off_by_one",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (en_i && !ack && cnt == 4) |=> timeout_o); Raw c1-c4 outcomes: too_strong/compile_fail/too_strong/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case457_cc_delta_counter_load_enable_priority",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) load_i |=> q_o==$past(d_i)); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/vacuity. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case461_axis_adapter_segment_boundary_early",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) (sv && sr && !sl && dut.upsize.seg_reg == 2) |=> (dut.upsize.seg_reg == 3 && !mv)); Raw c1-c4 outcomes: vacuity/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: vacuity/compile_fail/compile_fail/compile_fail. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case462_axis_broadcast_partial_ready_loss",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ((mv != 0) && ((mr & mv) != mv)) |=> ((mv & ~$past(mr)) != 0)); Raw c1-c4 outcomes: too_strong/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: too_strong/ineffective/vacuity/compile_fail. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) (sv && sr && mv && mr) |=> (count == $past(count))); Raw c1-c4 outcomes: too_weak/compile_fail/too_weak/too_weak; temporal c1-c4 outcomes: too_weak/too_weak/too_strong/too_strong. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case466_cc_ring_buffer_write_advance_collision",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (wvalid_i&&wready_o&&advance_i) |=> (wptr_o==$past(wptr_o)+1 && rptr_o==$past(rptr_o)+$past(step_i))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: too_strong/too_strong/too_strong/too_strong. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_strong. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case469_cc_stream_register_stall_overwrite",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (valid_o && !ready_i) |=> (valid_o && data_o==$past(data_o))); Raw c1-c4 outcomes: too_strong/vacuity/too_weak/too_strong; temporal c1-c4 outcomes: vacuity/too_strong/vacuity/too_strong. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_strong. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case472_prim_pulse_sync_destination_single_cycle",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_dst_i) disable iff (!rst_dst_ni) dst_pulse_o |=> !dst_pulse_o); Raw c1-c4 outcomes: too_strong/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: too_strong/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the required hold/pulse length, or express it with an unsupported repetition/sequence form. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (we && de) |=> q == ($past(d) & ~$past(wd))); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+    "quadrant": "both_fail",
+    "primary": "hardcoding",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($countones(error_valid_i) > 1) |-> error_overflow_o); Raw c1-c4 outcomes: too_weak/too_weak/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity. The candidates specialize to witnessed literals, lanes, or selector combinations rather than the general relation in the golden property. Secondary code: too_weak. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case475_prim_clock_gating_sync_enable_latency",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) $rose(async_en_i) |=> !en_o); Raw c1-c4 outcomes: too_strong/too_strong/compile_fail/compile_fail; temporal c1-c4 outcomes: too_strong/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_strong. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case476_sync_reset_release_one_cycle_early",
+    "quadrant": "both_fail",
+    "primary": "duration",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ($fell(rst) |-> sync_out[*3] ##1 !sync_out)); Raw c1-c4 outcomes: vacuity/too_weak/too_strong/compile_fail; temporal c1-c4 outcomes: too_strong/too_strong/too_strong/vacuity. The reviewed candidates do not preserve the required hold/pulse length, or express it with an unsupported repetition/sequence form. Secondary code: too_strong. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case478_axis_srl_register_ready_recovery",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ((m_valid && m_ready) |=> s_ready)); Raw c1-c4 outcomes: too_weak/too_strong/too_strong/too_weak; temporal c1-c4 outcomes: too_strong/too_weak/too_weak/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case480_axis_cobs_decode_ff_zero_suppression",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk) disable iff (rst) ((s_valid && s_ready && s_data == 8'd255) |=> dut.suppress_zero_reg)); Raw c1-c4 outcomes: too_strong/too_weak/vacuity/too_strong; temporal c1-c4 outcomes: too_strong/vacuity/too_strong/vacuity. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_strong. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case482_cc_stream_demux_unselected_ready_accept",
+    "quadrant": "both_fail",
+    "primary": "hardcoding",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) valid_i |-> (ready_o==ready_i[sel_i])); Raw c1-c4 outcomes: overfit_suspect/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/overfit_suspect/vacuity. The candidates specialize to witnessed literals, lanes, or selector combinations rather than the general relation in the golden property. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case484_cc_exp_backoff_clear_set_priority",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (clr_cnt_i && set_cnt_i) |=> (is_zero_o && count_o==0)); Raw c1-c4 outcomes: too_weak/too_weak/vacuity/too_weak; temporal c1-c4 outcomes: too_weak/too_weak/too_weak/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: temporal_strict_no_delay."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ((|req_i) && !ready_i) |-> (gnt_o == 4'b0000)); Raw c1-c4 outcomes: success/vacuity/too_weak/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/overfit_suspect/vacuity. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: raw_good_bad;good_only;bad_only;local_window;signal_subset;noise_signals;format_perturbed;wrong_pairing;temporal_strict_no_trigger;temporal_strict_no_delay."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case489_prim_max_tree_invalid_source_selected",
+    "quadrant": "both_fail",
+    "primary": "polarity",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (|valid_i) |-> valid_i[max_idx_o]); Raw c1-c4 outcomes: vacuity/vacuity/too_strong/too_weak; temporal c1-c4 outcomes: too_weak/too_strong/vacuity/vacuity. The reviewed trigger/value direction is reversed or attached to the wrong edge, so the property cannot observe the golden event. Secondary code: too_strong. Successful controls: signal_subset."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case490_prim_gate_gen_valid_latency_short",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) valid_i |-> ##3 valid_o); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case492_axis_async_fifo_gray_visibility",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(write_toggle_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_strong/compile_fail/vacuity/compile_fail; temporal c1-c4 outcomes: too_weak/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case494_axis_ram_switch_response_pipeline",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(grant_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: too_weak/too_weak/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case497_cc_cdc_4phase_ack_sync_depth",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(async_ack_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_weak/vacuity/vacuity/too_strong; temporal c1-c4 outcomes: too_weak/too_weak/too_weak/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case498_cc_serial_deglitch_qualification_short",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_strong",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(noisy_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: too_strong/too_strong/ineffective/too_strong; temporal c1-c4 outcomes: too_strong/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_strong. Successful controls: temporal_no_delay;temporal_strict_no_polarity."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case499_cc_shift_reg_gated_stage_bypass",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) (($rose(data_i) && enable_i) |-> ##2 !q_o)); Raw c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: temporal_strict_no_duration."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case500_cc_isochronous_handshake_early_drop",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(ack_i) |=> q_o)); Raw c1-c4 outcomes: too_strong/compile_fail/compile_fail/too_weak; temporal c1-c4 outcomes: too_strong/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: temporal_no_duration."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ((m_axis_tvalid && !m_axis_tready) |=> m_axis_tvalid)); Raw c1-c4 outcomes: vacuity/vacuity/ineffective/too_weak; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case503_cc_cdc_2phase_ack_returns_early",
+    "quadrant": "raw_success_temporal_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(req_i) |=> !ack_o)); Raw c1-c4 outcomes: success/compile_fail/compile_fail/compile_fail; temporal c1-c4 outcomes: compile_fail/compile_fail/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: raw_good_bad;good_only;bad_only;local_window;format_perturbed;temporal_no_trigger;temporal_no_delay;temporal_no_polarity;temporal_no_duration;temporal_strict_no_trigger;temporal_strict_no_delay;temporal_strict_no_polarity;temporal_strict_no_duration."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+    "quadrant": "both_fail",
+    "primary": "trigger",
+    "secondary": "vacuity",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(wr_gray_i[0]) |=> (rd_gray_o == 3'b000))); Raw c1-c4 outcomes: vacuity/vacuity/vacuity/vacuity; temporal c1-c4 outcomes: vacuity/vacuity/compile_fail/compile_fail. The reviewed antecedents differ from the golden triggering event or do not occur in evaluation, producing vacuity/ineffectiveness despite a relevant consequent. Secondary code: vacuity. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case505_axis_stat_counter_frame_pulse_early",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "compile_form",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ($rose(frame_done_i) |=> !stat_valid_o)); Raw c1-c4 outcomes: too_weak/compile_fail/compile_fail/too_weak; temporal c1-c4 outcomes: too_weak/too_strong/compile_fail/compile_fail. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: compile_form. Successful controls: none."
+  },
+  {
+    "model": "Qwen",
+    "case_id": "case507_cc_rr_arb_tree_locked_grant_replaced",
+    "quadrant": "both_fail",
+    "primary": "delay",
+    "secondary": "too_weak",
+    "evidence": "Golden target: assert property (@(posedge clk_i) disable iff (!rst_ni) ((gnt_o[0] && !ready_i) |=> gnt_o[0])); Raw c1-c4 outcomes: too_weak/too_weak/too_weak/vacuity; temporal c1-c4 outcomes: too_weak/too_weak/too_weak/too_weak. The reviewed candidates do not preserve the golden same/next/exact-cycle relation; same-cycle collapse or unusable delayed syntax explains the observed failure modes. Secondary code: too_weak. Successful controls: none."
+  }
+]

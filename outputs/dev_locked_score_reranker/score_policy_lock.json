@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "locked": true,
+  "fit_scope": "dev_parent_primary_only",
+  "objective": "maximize dev heldout strict success; tie-break lower FPR, lower MDR, fewer hardcoded selections",
+  "weights": {
+    "compile": 1,
+    "seen_correct": 2,
+    "seen_buggy_fail": 2,
+    "antecedent_hit": 1,
+    "non_vacuous": 1,
+    "signal_exists": 1,
+    "reset_ok": 0,
+    "cross_representation_agreement": 1,
+    "hardcoding": -2,
+    "unsupported": -4
+  },
+  "feature_signs": {
+    "positive": [
+      "compile",
+      "seen_correct",
+      "seen_buggy_fail",
+      "antecedent_hit",
+      "non_vacuous",
+      "signal_exists",
+      "cross_representation_agreement"
+    ],
+    "negative": [
+      "hardcoding",
+      "unsupported"
+    ]
+  },
+  "dev_parent_ids": [
+    "case104_prim_fifo_full_early",
+    "case106_prim_fifo_depth_off_by_one",
+    "case107_prim_arbiter_priority_reversed",
+    "case109_prim_arbiter_valid_depends_on_ready",
+    "case110_prim_intr_event_overwrite",
+    "case111_prim_intr_output_or_mask",
+    "case113_prim_edge_posedge_misdecoded",
+    "case114_prim_edge_negedge_misdecoded",
+    "case117_prim_filter_bypass_stale",
+    "case119_prim_filter_ctr_late_accept",
+    "case120_prim_filter_ctr_bypass_stale",
+    "case121_prim_intr_test_qe_ignored",
+    "case122_prim_filter_ctr_streak_reset_ignored",
+    "case124_prim_fifo_clear_ignored",
+    "case125_prim_fifo_wrap_late",
+    "case127_prim_intr_status_test_qe_ignored",
+    "case128_prim_intr_event_mask_stall",
+    "case129_prim_onehot_zero_enabled_suppressed",
+    "case131_prim_filter_disabled_bypass_stale_alt",
+    "case133_prim_edge_negedge_missing",
+    "case134_prim_intr_event_not_sticky",
+    "case136_prim_filter_ctr_disabled_bypass_stale_alt",
+    "case138_prim_regwe_zero_enabled_false_positive",
+    "case139_prim_regwe_addr_check_false_positive"
+  ],
+  "test_parent_ids": [
+    "case101_prim_onehot_multihot_suppressed",
+    "case102_prim_onehot_enable_mismatch_suppressed",
+    "case103_prim_onehot_addr_mismatch_suppressed",
+    "case105_prim_fifo_empty_late",
+    "case108_prim_arbiter_grant_without_ready",
+    "case112_prim_intr_test_pulse_dropped",
+    "case115_prim_edge_both_edges_collapsed",
+    "case116_prim_filter_late_accept",
+    "case118_prim_filter_ctr_early_accept",
+    "case123_prim_edge_sync_output_lag",
+    "case126_prim_regwe_enable_gap",
+    "case130_prim_fifo_empty_early",
+    "case132_prim_edge_posedge_missing",
+    "case135_prim_intr_enable_mask_ignored",
+    "case137_prim_onehot_addr_false_positive",
+    "case140_prim_onehot_legal_request_false_positive"
+  ],
+  "dev_parent_count": 24,
+  "test_parent_count": 16,
+  "source_hashes": {
+    "base": "4b4de417d138a541fd81aebf4635bfbb190c0645a3e0bbdbc1b63f01d8421f4f",
+    "extension": "a692f9206320f61363d77cc26a5bcbc21ad7a33c1c5c4aadbe8636a5acaff266",
+    "split": "cbd9d1e3e852e8e03eb434621610aae3c5dbead9db2d1b7f00145b86f482f3a5",
+    "parent_map": "21ef059c19ba6ccb3753c656171a46c576b58030447ecf18f41630de96fc1a12"
+  }
+}

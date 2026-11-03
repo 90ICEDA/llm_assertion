@@ -1,0 +1,81 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, noisy_i, sample_enable_i, q_o, state_o
+
+Specification:
+
+A high input is accepted only after three consecutive enabled samples. Two high samples are insufficient to raise the filtered output.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_serial_deglitch(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire noisy_i,
+  input wire sample_enable_i,
+  
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg [1:0] high_count;
+  reg filtered;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin high_count<=0; filtered<=0; end
+    else if (sample_enable_i) begin
+      if (!noisy_i) begin high_count<=0; filtered<=0; end
+      else begin
+        if (high_count != 3) high_count <= high_count + 1'b1;
+        if (high_count >= 2) filtered <= 1'b1;
+      end
+    end
+  end
+  assign q_o = filtered;
+  assign state_o = {6'b0,high_count};
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 1: rst_ni=0, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 2: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 3: rst_ni=1, clk_i=1, noisy_i=1, q_o=0, sample_enable_i=1, state_o[7:0]=00000001
+cycle 4: rst_ni=1, clk_i=1, noisy_i=1, q_o=0, sample_enable_i=1, state_o[7:0]=00000010
+cycle 5: rst_ni=1, clk_i=1, noisy_i=1, q_o=1, sample_enable_i=1, state_o[7:0]=00000011
+cycle 6: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=1, state_o[7:0]=00000000
+cycle 7: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 8: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 9: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 10: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 11: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 12: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 13: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 14: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 15: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 16: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 1: rst_ni=0, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 2: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 3: rst_ni=1, clk_i=1, noisy_i=1, q_o=0, sample_enable_i=1, state_o[7:0]=00000001
+cycle 4: rst_ni=1, clk_i=1, noisy_i=1, q_o=1, sample_enable_i=1, state_o[7:0]=00000010
+cycle 5: rst_ni=1, clk_i=1, noisy_i=1, q_o=1, sample_enable_i=1, state_o[7:0]=00000011
+cycle 6: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=1, state_o[7:0]=00000000
+cycle 7: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 8: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 9: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 10: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 11: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 12: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 13: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 14: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 15: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000
+cycle 16: rst_ni=1, clk_i=1, noisy_i=0, q_o=0, sample_enable_i=0, state_o[7:0]=00000000

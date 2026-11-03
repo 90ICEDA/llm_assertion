@@ -1,0 +1,1 @@
+For a W1C subregister, a hardware write supplies the candidate set value and a simultaneous software write clears every bit selected by `wd`. Thus the next value is `d & ~wd` on a collision; software clear wins only on overlapping bits.

@@ -29,15 +29,11 @@ module tb_case113;
     repeat (2) @(posedge clk);
     rst_n = 1'b1;
 
-    @(negedge clk); d_i = 1'b1;
+    // Drive the transition on the sampled edge so the pulse bug is visible
+    // in the posedge-trace abstraction used downstream.
+    @(posedge clk); #1 d_i = 1'b1;
     @(posedge clk);
-    @(negedge clk); d_i = 1'b1;
-    @(posedge clk);
-    @(negedge clk); d_i = 1'b0;
-    @(posedge clk);
-    @(negedge clk); d_i = 1'b0;
-    @(posedge clk);
-
+    @(posedge clk); #1 d_i = 1'b0;
     @(posedge clk);
     $finish;
   end

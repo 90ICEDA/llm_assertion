@@ -1,0 +1,44 @@
+--- correct.v
++++ buggy.v
+@@ -1,4 +1,37 @@
+-module cc_credit_counter #(parameter integer NumCredits=4, parameter InitCreditEmpty=0)(input clk_i,rst_ni,clr_i,input credit_give_i,credit_take_i,output reg [2:0] credit_o,output credit_left_o,credit_crit_o,credit_full_o);
+-wire decrement=credit_take_i & ~credit_give_i; wire increment=~credit_take_i & credit_give_i;
+-always @(posedge clk_i or negedge rst_ni) if(!rst_ni) credit_o<=InitCreditEmpty?0:NumCredits; else if(clr_i) credit_o<=InitCreditEmpty?0:NumCredits; else if(decrement) credit_o<=credit_o-1'b1; else if(increment) credit_o<=credit_o+1'b1;
+-assign credit_left_o=credit_o!=0; assign credit_crit_o=credit_o==NumCredits-1; assign credit_full_o=credit_o==NumCredits; endmodule
++`timescale 1ns/1ps
++module cc_credit_counter #(
++  parameter integer NumCredits = 4,
++  parameter InitCreditEmpty = 0
++) (
++  input  wire       clk_i,
++  input  wire       rst_ni,
++  input  wire       clr_i,
++  input  wire       credit_give_i,
++  input  wire       credit_take_i,
++  output reg  [2:0] credit_o,
++  output wire       credit_left_o,
++  output wire       credit_crit_o,
++  output wire       credit_full_o
++);
++  wire decrement;
++  wire increment;
++
++  // MUTATION: simultaneous give/take incorrectly decrements the count.
++  assign decrement = credit_take_i;
++  assign increment = ~credit_take_i & credit_give_i;
++
++  always @(posedge clk_i or negedge rst_ni) begin
++    if (!rst_ni)
++      credit_o <= InitCreditEmpty ? 0 : NumCredits;
++    else if (clr_i)
++      credit_o <= InitCreditEmpty ? 0 : NumCredits;
++    else if (decrement)
++      credit_o <= credit_o - 1'b1;
++    else if (increment)
++      credit_o <= credit_o + 1'b1;
++  end
++
++  assign credit_left_o = credit_o != 0;
++  assign credit_crit_o = credit_o == NumCredits-1;
++  assign credit_full_o = credit_o == NumCredits;
++endmodule

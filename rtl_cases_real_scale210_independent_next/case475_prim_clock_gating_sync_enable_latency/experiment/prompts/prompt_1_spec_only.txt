@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, test_en_i, async_en_i, en_o, clk_o
+
+Specification:
+
+`async_en_i` must pass through both synchronizer stages before `en_o` can enable the gated clock. On a sampled rising asynchronous enable, `en_o` must still be low at the following sample and may rise only after the second stage captures it. `test_en_i` bypasses only the gate, not `en_o`.

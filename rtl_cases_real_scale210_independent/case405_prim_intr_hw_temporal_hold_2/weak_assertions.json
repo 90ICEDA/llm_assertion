@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case405_prim_intr_hw_temporal_hold_2",
+  "parent_bug_id": "case405_prim_intr_hw_temporal_hold_2",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "weakness_class": "single_cycle_implication",
+      "property": "(reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i) |-> intr_o",
+      "antecedent": "reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Uses same-cycle implication and misses the register delay.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W1_single_cycle_implication"
+    },
+    {
+      "weakness_class": "final_output_only",
+      "property": "intr_o |-> reg2hw_intr_enable_q_i",
+      "antecedent": "intr_o",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Checks only a current output-to-enable relation, not capture timing.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W2_final_output_only"
+    },
+    {
+      "weakness_class": "delay_removed",
+      "property": "(reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i) |-> intr_o",
+      "antecedent": "reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Explicitly removes the next-cycle operator from the golden behavior.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W3_delay_removed"
+    },
+    {
+      "weakness_class": "antecedent_removed",
+      "property": "intr_o",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Drops the enabled-status trigger and reduces the property to an output level.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W4_antecedent_removed"
+    },
+    {
+      "weakness_class": "simple_invariant",
+      "property": "!intr_o || reg2hw_intr_enable_q_i",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Local implication does not constrain the registered transition.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W5_simple_invariant"
+    }
+  ]
+}

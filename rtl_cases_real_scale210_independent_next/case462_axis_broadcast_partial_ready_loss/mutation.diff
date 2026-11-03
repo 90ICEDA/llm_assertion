@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -135,7 +135,7 @@
+ 
+     if (s_axis_tready_reg) begin
+         // input is ready
+-        if (((m_axis_tready & m_axis_tvalid) == m_axis_tvalid) || !m_axis_tvalid) begin
++        if ((|(m_axis_tready & m_axis_tvalid)) || !m_axis_tvalid) begin // ASSERTIONFORGE_MUTATION
+             // output is ready or currently not valid, transfer data to output
+             m_axis_tvalid_next = {M_COUNT{s_axis_tvalid}};
+             store_axis_input_to_output = 1'b1;

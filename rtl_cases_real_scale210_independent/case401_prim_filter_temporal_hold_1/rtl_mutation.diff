@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -46,7 +46,7 @@
+ 
+   always_ff @(posedge clk_i or negedge rst_ni) begin
+     if (!rst_ni) begin
+-      stored_value_q <= 1'b0;
++      stored_value_q <= stored_value_q; // ASSERTIONFORGE_MUTATION: state update suppressed
+     end else if (update_stored_value) begin
+       stored_value_q <= filter_synced;
+     end

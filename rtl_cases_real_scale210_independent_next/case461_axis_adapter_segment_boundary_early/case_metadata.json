@@ -1,0 +1,110 @@
+{
+  "name": "case461_axis_adapter_segment_boundary_early",
+  "parent_bug_id": "case461_axis_adapter_segment_boundary_early",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_adapter",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_adapter.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_adapter.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "segment_boundary_early",
+  "bug_type": "A narrow-to-wide conversion must emit only after the last segment or input tlast.",
+  "spec": "A narrow-to-wide conversion must emit only after the last segment or input tlast.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (sv && sr && !sl && dut.upsize.seg_reg == 2) |=> (dut.upsize.seg_reg == 3 && !mv));",
+    "temporal_type": "exact cross-cycle protocol"
+  },
+  "mutation_edits": [
+    {
+      "search": "                if (s_axis_tlast_reg || seg_reg == SEG_COUNT-1) begin",
+      "replace": "                if (s_axis_tlast_reg || seg_reg == SEG_COUNT-2) begin // ASSERTIONFORGE_MUTATION"
+    },
+    {
+      "search": "                if (s_axis_tlast || seg_reg == SEG_COUNT-1) begin",
+      "replace": "                if (s_axis_tlast || seg_reg == SEG_COUNT-2) begin // ASSERTIONFORGE_MUTATION: direct path ends one segment early"
+    }
+  ],
+  "mutation_signal": "internal protocol state",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "sv",
+    "sr",
+    "mv",
+    "mr"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 85000,
+      "sample_index": 17,
+      "good_row_index": 17,
+      "bad_row_index": 17,
+      "signals": [
+        "mv"
+      ],
+      "good_values": {
+        "mv": "0"
+      },
+      "bad_values": {
+        "mv": "1"
+      },
+      "good_trace_sha256": "249e8ac0459d8f2562c1c2e65db34ad1694bc77bcb5377c372d0281caf6e8fe9",
+      "bad_trace_sha256": "9a0166118be58e52c3b6f0592f7c1b51e9a8ef1af5ffa7a2c6567d237b2147d9",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 95000,
+      "sample_index": 19,
+      "good_row_index": 19,
+      "bad_row_index": 19,
+      "signals": [
+        "mv"
+      ],
+      "good_values": {
+        "mv": "0"
+      },
+      "bad_values": {
+        "mv": "1"
+      },
+      "good_trace_sha256": "371553c9d5927f2893fe4e9884fab9ad6a40babbd42d9313898a2515566b616f",
+      "bad_trace_sha256": "a0a528be6859ed7c36d385def409870a75737609f7110f87b8b2d540339bd992",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 85000,
+      "sample_index": 17,
+      "good_row_index": 17,
+      "bad_row_index": 17,
+      "signals": [
+        "mv"
+      ],
+      "good_values": {
+        "mv": "0"
+      },
+      "bad_values": {
+        "mv": "1"
+      },
+      "good_trace_sha256": "3cb899cae5f81c05aaa4bf9637ef52935dc90615f747f40e2844dc1fbd564488",
+      "bad_trace_sha256": "3fa6c17b45217cfe7039c422aa5dac45643cf1010bc9bcee4ff35f093f4f44f9",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol boundary",
+  "mutation_kind": "real_rtl_control_mutation",
+  "correct_sha256": "84ee7ffadb5fc521c2aa85c1b82b15e019d7fea125e4dee37787204430b26c2b",
+  "buggy_sha256": "29a3f366e1d1b84c9351400dc2d0b7a267e4042c8b495832564d61ad3a6cf26d",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_admitted",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

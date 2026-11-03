@@ -1,0 +1,30 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, s0_valid, s1_valid, s0_data, s1_data, m_ready, m_valid, m_data
+
+Specification:
+
+When both sources simultaneously target the same ready output, source zero has priority. Exactly one beat is presented, and its payload must come from source zero.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_crosspoint(input wire clk_i,input wire rst_ni,input wire s0_valid,input wire s1_valid,input wire [7:0] s0_data,input wire [7:0] s1_data,input wire m_ready,output wire m_valid,output wire [7:0] m_data,output wire s0_ready,output wire s1_ready);
+  assign m_valid=s0_valid|s1_valid; assign m_data=s0_valid?s0_data:s1_data;
+  assign s0_ready=m_ready&s0_valid; assign s1_ready=m_ready&~s0_valid&s1_valid;
+endmodule
+
+Waveform evidence:
+
+Case: case506_axis_crosspoint_simultaneous_source_priority
+First divergence cycle: 7
+First divergence time_ps: 30000
+Differing signals at first divergence: m_data[7:0], q_o, s0_ready, s1_ready
+Observed differing signal values (good): m_data[7:0]=00010010, q_o=1, s0_ready=1, s1_ready=0
+Observed differing signal values (bad): m_data[7:0]=11100001, q_o=0, s0_ready=0, s1_ready=1

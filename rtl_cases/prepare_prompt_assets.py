@@ -200,14 +200,20 @@ def to_cycle_trace(rows: List[Dict[str, str]], key_signals: List[str]) -> List[D
 
     if has_clk:
         prev = rows[0].get("clk", "0")
+        interval_start = 1
         for i in range(1, len(rows)):
             curr = rows[i].get("clk", "0")
             if is_rising_edge(prev, curr):
                 entry = {"cycle": str(cycle)}
                 for s in selected:
-                    entry[s] = rows[i].get(s, "")
+                    value = rows[i].get(s, "")
+                    if s.endswith("_pulse_o"):
+                        window = rows[interval_start : i + 1]
+                        value = "1" if any(r.get(s, "") == "1" for r in window) else "0"
+                    entry[s] = value
                 out.append(entry)
                 cycle += 1
+                interval_start = i + 1
             prev = curr
     else:
         for r in rows:
@@ -258,11 +264,17 @@ def build_structured_trace_summary(summary: Dict) -> str:
     first_div = summary.get("first_divergence_cycle")
     differing = summary.get("differing_signals") or []
     snapshot = summary.get("divergence_snapshot") or []
+    first_time_ps = summary.get("first_divergence_time_ps")
+    observation = summary.get("divergence_observation")
     lines = [
         "Structured trace summary:",
         f"- first_divergence_cycle: {'none' if first_div is None else first_div}",
         "- differing_signals: " + (", ".join(differing) if differing else "(none)"),
     ]
+    if first_time_ps:
+        lines.append(f"- first_divergence_time_ps: {first_time_ps}")
+    if observation:
+        lines.append(f"- divergence_observation: {observation}")
     if snapshot:
         lines.append("- divergence_snapshot:")
         for item in snapshot:
@@ -367,12 +379,7 @@ def main():
         allowed_signals = ", ".join(c["key_signals"])
         extra_guidance = build_extra_guidance(c, rtl_text, good_rows)
         summary = summarize_case(root, c)
-        trace_summary = build_text_summary(
-            c,
-            summary["first_divergence_cycle"],
-            summary["differing_signals"],
-            summary["divergence_snapshot"],
-        )
+        trace_summary = build_text_summary(c, summary)
         structured_trace_summary = build_structured_trace_summary(summary)
 
         write_text(exp_dir / "spec.txt", c["spec"] + "\n")

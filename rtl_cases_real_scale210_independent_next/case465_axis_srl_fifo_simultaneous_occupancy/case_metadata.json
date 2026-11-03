@@ -1,0 +1,117 @@
+{
+  "name": "case465_axis_srl_fifo_simultaneous_occupancy",
+  "parent_bug_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_srl_fifo",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_srl_fifo.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_srl_fifo.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "simultaneous_push_pop_occupancy",
+  "bug_type": "A simultaneous accepted push and pop preserves FIFO occupancy and ordering.",
+  "spec": "A simultaneous accepted push and pop preserves FIFO occupancy and ordering.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (sv && sr && mv && mr) |=> (count == $past(count)));",
+    "temporal_type": "exact cross-cycle protocol"
+  },
+  "mutation_edits": [
+    {
+      "search": "        inc = ptr_empty;",
+      "replace": "        inc = 1'b1; // ASSERTIONFORGE_MUTATION"
+    }
+  ],
+  "mutation_signal": "internal protocol state",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "sv",
+    "sr",
+    "mv",
+    "mr",
+    "count",
+    "md"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 85000,
+      "sample_index": 17,
+      "good_row_index": 17,
+      "bad_row_index": 17,
+      "signals": [
+        "count[2:0]",
+        "md[7:0]"
+      ],
+      "good_values": {
+        "count[2:0]": "010",
+        "md[7:0]": "01010010"
+      },
+      "bad_values": {
+        "count[2:0]": "011",
+        "md[7:0]": "01010001"
+      },
+      "good_trace_sha256": "2c84e93289dbf053c7aee414c7be5cdebefdf9891c5de5a46f213eff6d895557",
+      "bad_trace_sha256": "97304bdf29ce4a160e39230abe42ac86f7da4931e5f34a2930d9f4b0d41b9080",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 105000,
+      "sample_index": 21,
+      "good_row_index": 21,
+      "bad_row_index": 21,
+      "signals": [
+        "count[2:0]",
+        "md[7:0]"
+      ],
+      "good_values": {
+        "count[2:0]": "011",
+        "md[7:0]": "11010010"
+      },
+      "bad_values": {
+        "count[2:0]": "100",
+        "md[7:0]": "11010001"
+      },
+      "good_trace_sha256": "d690bbb79a7707c56ceccdf18a47f22bc631e19be16b3b0b4fbd1ef22e0d1df1",
+      "bad_trace_sha256": "a81b8340991c081cfe8e26969664d31e07b808e2b58f419fd0ee835129e39661",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_row_index": 13,
+      "bad_row_index": 13,
+      "signals": [
+        "count[2:0]",
+        "md[7:0]"
+      ],
+      "good_values": {
+        "count[2:0]": "001",
+        "md[7:0]": "11110010"
+      },
+      "bad_values": {
+        "count[2:0]": "010",
+        "md[7:0]": "11110001"
+      },
+      "good_trace_sha256": "263bd3ba2f609684d67cbfc941d238582e0384033545c025ddf2b2b2fe5dc77f",
+      "bad_trace_sha256": "e6693395bb2a484ec25095b518092c31b7086ec431c4c75e792ae9ad908d00a1",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol boundary",
+  "mutation_kind": "real_rtl_control_mutation",
+  "correct_sha256": "92f9e58d38a9536cea326cc04230455bbb9e999fa4b1787a977ded1a5d655223",
+  "buggy_sha256": "a616e5c614a624c26f183cebfc1cf609bc923101d8ad367ce05808f4629b8e76",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_admitted",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

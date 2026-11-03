@@ -1,0 +1,55 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case445_priority_encoder_protocol_suppress_1",
+  "source_project": "verilog_axis",
+  "purpose": "difficulty_admission_pending_validation",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the buggy RTL before admission.",
+  "overall_verification_status": "pending",
+  "candidates": [
+    {
+      "id": "weak_single_cycle_implication",
+      "weakening_type": "single_cycle_implication",
+      "expression": "assert property (@(input_unencoded) (input_unencoded[0]) |-> (output_valid));",
+      "nonempty_antecedent": true,
+      "rationale": "Checks only the current sample after a reduced trigger and cannot enforce the required cross-cycle history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_final_output_only",
+      "weakening_type": "final_output_only",
+      "expression": "assert property (@(input_unencoded) (output_valid) |-> !$isunknown(output_valid));",
+      "nonempty_antecedent": true,
+      "rationale": "Observes only that the final output is known when already asserted; it ignores how and when that output was reached.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_delay_removed",
+      "weakening_type": "delay_removed",
+      "expression": "assert property (@(input_unencoded) (|input_unencoded) |-> (output_valid));",
+      "nonempty_antecedent": true,
+      "rationale": "Removes the next-cycle or multi-cycle delay from the intended temporal relationship.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_antecedent_removed",
+      "weakening_type": "antecedent_removed",
+      "expression": "assert property (@(input_unencoded) 1'b1 |-> !$isunknown(output_valid));",
+      "nonempty_antecedent": false,
+      "rationale": "Drops the behavioral trigger and reduces the check to output definedness.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_simple_invariant",
+      "weakening_type": "simple_invariant",
+      "expression": "assert property (@(input_unencoded) 1'b1 |-> !$isunknown(input_unencoded[0]));",
+      "nonempty_antecedent": false,
+      "rationale": "A generic signal-integrity invariant contains no ordering, exact delay, duration, or protocol condition.",
+      "verification_status": "pending",
+      "catches_bug": null
+    }
+  ]
+}

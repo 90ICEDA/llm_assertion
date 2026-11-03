@@ -1,0 +1,17 @@
+{
+  "assertions": [
+    {
+      "property": "((mvalid && mready && ref_count > 0)) |-> ((mdata == ref_expected))",
+      "obligations": [
+        "order_payload"
+      ],
+      "reason": "Initial assertion for 'order_payload' obligation.",
+      "id": "a0",
+      "derived_antecedent": "((mvalid && mready && ref_count > 0))",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "((mdata == ref_expected))"
+    }
+  ],
+  "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+}

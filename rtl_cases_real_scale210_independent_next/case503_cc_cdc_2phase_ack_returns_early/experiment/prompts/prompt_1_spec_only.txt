@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, req_i, ack_o
+
+Specification:
+
+A newly sampled request must traverse all three destination-domain synchronization stages. The acknowledgement must remain low at the immediately following sample and assert only after the final stage observes the request.

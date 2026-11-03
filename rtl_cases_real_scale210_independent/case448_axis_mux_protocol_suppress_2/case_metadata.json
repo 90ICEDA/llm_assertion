@@ -1,0 +1,74 @@
+{
+  "name": "case448_axis_mux_protocol_suppress_2",
+  "parent_bug_id": "case448_axis_mux_protocol_suppress_2",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_mux",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_mux.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_mux.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "m_axis_tdata combinational/protocol output is forced low",
+  "spec": "A valid beat accepted from the selected source must emerge with the same payload on the multiplexed output and remain stable whenever the output is stalled.",
+  "mutation_edits": [
+    {
+      "line": 188,
+      "search": "assign m_axis_tdata  = m_axis_tdata_reg;",
+      "replace": "assign m_axis_tdata = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "m_axis_tdata",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "enable",
+    "select",
+    "s_axis_tdata",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "m_axis_tdata",
+    "m_axis_tvalid",
+    "m_axis_tready",
+    "md[7:0]"
+  ],
+  "temporal_type": "selected payload preservation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "599c47b8889b6f22a325b3bb27a38b13b64a7ba08b0f4aefea1e2f550389e68a",
+  "buggy_sha256": "80f05b90f9b484b5994a542f58e87cced682eb9bf6457d96ab5f68301d23b6a8",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (m_axis_tvalid && m_axis_tready) |-> (m_axis_tdata == s_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH]));",
+    "temporal_type": "selected payload preservation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 35000,
+      "sample_index": 9,
+      "signals": [
+        "md[7:0]"
+      ],
+      "clock_cycle": 4
+    },
+    "heldout": {
+      "time_ps": 45000,
+      "sample_index": 11,
+      "signals": [
+        "md[7:0]"
+      ],
+      "clock_cycle": 5
+    },
+    "decoy": {
+      "time_ps": 55000,
+      "sample_index": 13,
+      "signals": [
+        "md[7:0]"
+      ],
+      "clock_cycle": 6
+    }
+  }
+}

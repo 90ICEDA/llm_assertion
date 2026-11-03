@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "status": "completed",
+    "evidence": [
+      "unknown_inventory.json",
+      "unknown_reason_detail.csv",
+      "protocol.json",
+      "protocol_freeze.json",
+      "pool_freeze.json"
+    ],
+    "detail": "v2 located; original failure expressions and logs classified; new frozen directory and unchanged 18-slot pool",
+    "reproduce": "wsl -d Ubuntu -- python3 /mnt/d/AssertionForge-main1/scripts/contract_v3_report.py"
+  },
+  {
+    "id": "2",
+    "status": "completed_in_declared_subset",
+    "evidence": [
+      "qualification.json",
+      "code_snapshot/contract_v3_checker.py",
+      "runs/*/normalization.json"
+    ],
+    "detail": "generic unsigned signal popcount and exact delay 0/1/2; no label-based candidate edits; unsupported grammar retained",
+    "reproduce": "wsl -d Ubuntu -- python3 /mnt/d/AssertionForge-main1/scripts/contract_v3_report.py"
+  },
+  {
+    "id": "3",
+    "status": "completed_with_reference_scope_limit",
+    "evidence": [
+      "qualification/",
+      "independent_expression_crosscheck.json",
+      "audit_replays/",
+      "audit.json"
+    ],
+    "detail": "11 tests / 664 expected checks; 1267 matched candidate runs; 3 legacy engineering expressions outside independent parser; 10 actual copied replays",
+    "reproduce": "wsl -d Ubuntu -- python3 /mnt/d/AssertionForge-main1/scripts/contract_v3_report.py"
+  },
+  {
+    "id": "4",
+    "status": "completed",
+    "evidence": [
+      "old_new_run_mapping.csv",
+      "model_calls/",
+      "method_freeze.json",
+      "permission_audit.json",
+      "hidden_evaluations.json"
+    ],
+    "detail": "731 old-run replays plus all 8 methods x 6 parents; 72 fresh repair requests; no regenerated pool",
+    "reproduce": "wsl -d Ubuntu -- python3 /mnt/d/AssertionForge-main1/scripts/contract_v3_report.py"
+  },
+  {
+    "id": "5",
+    "status": "completed_with_explicit_unreached_points",
+    "evidence": [
+      "common_effective_budget_checkpoints.csv",
+      "common_budget_pairwise.csv",
+      "budget_ledger.csv",
+      "physical_model_costs.csv",
+      "physical_validation_costs.csv",
+      "phase_wall_time_envelopes.json"
+    ],
+    "detail": "predeclared exact effective-execution and cycle points; repeated evidence separately counted; no_fp workload differs; no claim of simultaneous all-resource equality",
+    "reproduce": "wsl -d Ubuntu -- python3 /mnt/d/AssertionForge-main1/scripts/contract_v3_report.py"
+  },
+  {
+    "id": "6",
+    "status": "completed_for_frozen_six_parent_cohort",
+    "evidence": [
+      "parent_results.csv",
+      "obligation_acceptance.csv",
+      "branch_acceptance.csv",
+      "conditional_results.json",
+      "unknown_transition_counts.json",
+      "mechanism_analysis.json"
+    ],
+    "detail": "only onehot succeeds across methods; spill/intr remain specification-unknown; additional independent parents not run within this round fixed budget",
+    "reproduce": "wsl -d Ubuntu -- python3 /mnt/d/AssertionForge-main1/scripts/contract_v3_report.py"
+  },
+  {
+    "id": "7",
+    "status": "completed",
+    "evidence": [
+      "REPORT.md",
+      "artifact_manifest.json",
+      "implementation_hashes.json",
+      "audit.json",
+      "delivery_status.json"
+    ],
+    "detail": "raw input/checker/RTL/log/VCD/request/response preserved; independent replay and final raw-data reaggregation completed",
+    "reproduce": "wsl -d Ubuntu -- python3 /mnt/d/AssertionForge-main1/scripts/contract_v3_report.py"
+  }
+]

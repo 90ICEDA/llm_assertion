@@ -1,0 +1,121 @@
+{
+  "name": "case451_prim_clock_timeout_threshold_off_by_one",
+  "parent_bug_id": "case451_prim_clock_timeout_threshold_off_by_one",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_clock_timeout",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_clock_timeout.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_clock_timeout.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "timeout_threshold_off_by_one",
+  "bug_type": "counter threshold crossing",
+  "spec": "When enabled and no checked-clock acknowledgement arrives for TimeOutCnt reference cycles, timeout_o asserts after the output register latency.",
+  "mutation_edits": [
+    {
+      "search": "assign timeout = int'(cnt) >= TimeOutCnt;",
+      "replace": "assign timeout = int'(cnt) > TimeOutCnt;"
+    }
+  ],
+  "mutation_signal": "timeout",
+  "relevant_signals": [
+    "clk_i",
+    "clk_chk_i",
+    "rst_ni",
+    "rst_chk_ni",
+    "en_i",
+    "ack",
+    "cnt",
+    "timeout",
+    "timeout_o"
+  ],
+  "temporal_type": "counter threshold crossing",
+  "mutation_kind": "real_rtl_line_replacement",
+  "dataset_phase": "independent_next_hard_batch1",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "name": "Golden_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (en_i && !ack && cnt == 4) |=> timeout_o);",
+    "temporal_type": "counter threshold crossing"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 75000,
+      "sample_index": 22,
+      "good_row_index": 22,
+      "bad_row_index": 22,
+      "signals": [
+        "cnt[2:0]",
+        "timeout_o"
+      ],
+      "good_values": {
+        "cnt[2:0]": "111",
+        "timeout_o": "1"
+      },
+      "bad_values": {
+        "cnt[2:0]": "101",
+        "timeout_o": "0"
+      },
+      "good_trace_sha256": "1cddbf1671f103a1c081c9d1c643782e73dca6e3ec4c8c8e817db965ccb97d00",
+      "bad_trace_sha256": "7bb5e7db79489f156fe5278d62ff0062954dc0bdd239fb60b766df51f7d72ad2",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 75000,
+      "sample_index": 24,
+      "good_row_index": 24,
+      "bad_row_index": 24,
+      "signals": [
+        "cnt[2:0]",
+        "timeout_o"
+      ],
+      "good_values": {
+        "cnt[2:0]": "111",
+        "timeout_o": "1"
+      },
+      "bad_values": {
+        "cnt[2:0]": "101",
+        "timeout_o": "0"
+      },
+      "good_trace_sha256": "7962e62668115355144f7633cd155cd811c8d4dc42c6918caba4fa5440e9885e",
+      "bad_trace_sha256": "3bf81a9cce6a962ecca7037c212094205374042a6f588b4c456fe40570366688",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 85000,
+      "sample_index": 24,
+      "good_row_index": 24,
+      "bad_row_index": 24,
+      "signals": [
+        "cnt[2:0]",
+        "timeout_o"
+      ],
+      "good_values": {
+        "cnt[2:0]": "111",
+        "timeout_o": "1"
+      },
+      "bad_values": {
+        "cnt[2:0]": "101",
+        "timeout_o": "0"
+      },
+      "good_trace_sha256": "0d14276c79d24e1f75ead00ac7910c54e6ce7c14bf0394393b9b5e979732647b",
+      "bad_trace_sha256": "c16fcb8620bc3e334380e033b32c2efac2796cc6f887f248ff8718cb17a36a3c",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "822df598e3597096cd0ee1a1f2e2f74336e55c042efbf624fbcdb8712e995c62",
+  "buggy_sha256": "a83d185f15f550a29ed5fc18fa152650198c5efc909ac15bb0a2a836e5a43b13",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -54,7 +54,7 @@
+         if (~rst_n) begin
+             synch_regs_q <= 0;
+         end else begin
+-            synch_regs_q <= {synch_regs_q[NumRegs-2:0], 1'b1};
++            synch_regs_q <= synch_regs_q; // ASSERTIONFORGE_MUTATION: state update suppressed
+         end
+     end
+     `ifndef SYNTHESIS

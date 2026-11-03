@@ -1,0 +1,48 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, flush_i, push_i, data_i, valid_o, data_o
+
+Specification:
+
+Flush has priority over a simultaneous push. On the sample after both controls are asserted, the spill register must be empty and must not expose the pushed payload.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_spill_register_flushable(input wire clk_i,input wire rst_ni,input wire flush_i,input wire push_i,input wire [7:0] data_i,output reg valid_o,output reg [7:0] data_o);
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) begin valid_o<=0;data_o<=0; end
+    else if(flush_i) begin valid_o<=0;data_o<=0; end
+    else if(push_i) begin valid_o<=1;data_o<=data_i; end
+  end
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 1: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 2: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 3: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=00000000, flush_i=1, push_i=1, q_o=0, valid_o=0
+cycle 4: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 5: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 6: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 7: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 8: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 1: rst_ni=0, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 2: rst_ni=1, clk_i=1, data_i[7:0]=00000000, data_o[7:0]=00000000, flush_i=0, push_i=0, q_o=0, valid_o=0
+cycle 3: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=01010101, flush_i=1, push_i=1, q_o=1, valid_o=1
+cycle 4: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=01010101, flush_i=0, push_i=0, q_o=1, valid_o=1
+cycle 5: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=01010101, flush_i=0, push_i=0, q_o=1, valid_o=1
+cycle 6: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=01010101, flush_i=0, push_i=0, q_o=1, valid_o=1
+cycle 7: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=01010101, flush_i=0, push_i=0, q_o=1, valid_o=1
+cycle 8: rst_ni=1, clk_i=1, data_i[7:0]=01010101, data_o[7:0]=01010101, flush_i=0, push_i=0, q_o=1, valid_o=1

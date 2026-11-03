@@ -1,0 +1,3604 @@
+[
+  {
+    "scenario": "common:d2:p0:s2026101501",
+    "diagnostic": {
+      "sampling_contract": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+      "fixed": {
+        "mode": "correct",
+        "native_status": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed"
+        },
+        "properties": [
+          {
+            "id": "a0",
+            "property": "((mvalid && mready && ref_count > 0)) |-> ((mdata == ref_expected))",
+            "obligations": [
+              "order_payload"
+            ],
+            "trigger_count": 59,
+            "failure_count": 0,
+            "trigger_cycles": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              47,
+              48,
+              49,
+              52,
+              53,
+              54,
+              57,
+              58,
+              59,
+              65,
+              70,
+              71,
+              74,
+              75,
+              76,
+              77,
+              78,
+              80,
+              82,
+              83,
+              84,
+              85,
+              89,
+              91,
+              93,
+              94,
+              95,
+              99,
+              112,
+              113,
+              114,
+              115
+            ],
+            "failure_cycles": [],
+            "execution_observation": "no_violation_within_execution"
+          },
+          {
+            "id": "a1",
+            "property": "((mvalid && mready)) |-> ((ref_count == 0))",
+            "obligations": [
+              "drain_no_loss"
+            ],
+            "trigger_count": 59,
+            "failure_count": 59,
+            "trigger_cycles": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              47,
+              48,
+              49,
+              52,
+              53,
+              54,
+              57,
+              58,
+              59,
+              65,
+              70,
+              71,
+              74,
+              75,
+              76,
+              77,
+              78,
+              80,
+              82,
+              83,
+              84,
+              85,
+              89,
+              91,
+              93,
+              94,
+              95,
+              99,
+              112,
+              113,
+              114,
+              115
+            ],
+            "failure_cycles": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              47,
+              48,
+              49,
+              52,
+              53,
+              54,
+              57,
+              58,
+              59,
+              65,
+              70,
+              71,
+              74,
+              75,
+              76,
+              77,
+              78,
+              80,
+              82,
+              83,
+              84,
+              85,
+              89,
+              91,
+              93,
+              94,
+              95,
+              99,
+              112,
+              113,
+              114,
+              115
+            ],
+            "execution_observation": "native_violation"
+          }
+        ],
+        "first_oracle_violations": [],
+        "sample_windows": [
+          {
+            "center_cycle": 18,
+            "samples": [
+              {
+                "cycle": 16,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 11993824
+              },
+              {
+                "cycle": 17,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 11993824
+              },
+              {
+                "cycle": 18,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 11993824
+              },
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683108
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t0",
+                "epoch": 1,
+                "accept_cycle": 3,
+                "data": 11993824,
+                "response_cycle": 18,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 15,
+                "observed_data": 11993824
+              }
+            ]
+          },
+          {
+            "center_cycle": 19,
+            "samples": [
+              {
+                "cycle": 17,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 11993824
+              },
+              {
+                "cycle": 18,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 11993824
+              },
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683108
+              },
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942130
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t1",
+                "epoch": 1,
+                "accept_cycle": 4,
+                "data": 683108,
+                "response_cycle": 19,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 15,
+                "observed_data": 683108
+              },
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 19,
+                "data": 3722496,
+                "response_cycle": 21,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 3722496
+              }
+            ]
+          },
+          {
+            "center_cycle": 20,
+            "samples": [
+              {
+                "cycle": 18,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 11993824
+              },
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683108
+              },
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942130
+              },
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722496
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t2",
+                "epoch": 1,
+                "accept_cycle": 5,
+                "data": 7942130,
+                "response_cycle": 20,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 15,
+                "observed_data": 7942130
+              },
+              {
+                "transaction_id": "e1:t4",
+                "epoch": 1,
+                "accept_cycle": 20,
+                "data": 12997280,
+                "response_cycle": 22,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 12997280
+              }
+            ]
+          },
+          {
+            "center_cycle": 21,
+            "samples": [
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683108
+              },
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942130
+              },
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722496
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 12997280,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 14200693,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12997280
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 19,
+                "data": 3722496,
+                "response_cycle": 21,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 3722496
+              },
+              {
+                "transaction_id": "e1:t5",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 16110543,
+                "response_cycle": 23,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 16110543
+              }
+            ]
+          },
+          {
+            "center_cycle": 22,
+            "samples": [
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942130
+              },
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722496
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 12997280,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 14200693,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12997280
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 16110543,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 6005873,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 16110543
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t4",
+                "epoch": 1,
+                "accept_cycle": 20,
+                "data": 12997280,
+                "response_cycle": 22,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 12997280
+              },
+              {
+                "transaction_id": "e1:t6",
+                "epoch": 1,
+                "accept_cycle": 22,
+                "data": 14200693,
+                "response_cycle": 24,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 14200693
+              }
+            ]
+          },
+          {
+            "center_cycle": 23,
+            "samples": [
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722496
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 12997280,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 14200693,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12997280
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 16110543,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 6005873,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 16110543
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 14200693,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 8974600,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 14200693
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t5",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 16110543,
+                "response_cycle": 23,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 16110543
+              },
+              {
+                "transaction_id": "e1:t7",
+                "epoch": 1,
+                "accept_cycle": 23,
+                "data": 6005873,
+                "response_cycle": 25,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 6005873
+              }
+            ]
+          },
+          {
+            "center_cycle": 24,
+            "samples": [
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 12997280,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 14200693,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12997280
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 16110543,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 6005873,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 16110543
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 14200693,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 8974600,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 14200693
+              },
+              {
+                "cycle": 25,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 6005873,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3451453,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 6005873
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t6",
+                "epoch": 1,
+                "accept_cycle": 22,
+                "data": 14200693,
+                "response_cycle": 24,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 14200693
+              },
+              {
+                "transaction_id": "e1:t8",
+                "epoch": 1,
+                "accept_cycle": 24,
+                "data": 8974600,
+                "response_cycle": 26,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 8974600
+              }
+            ]
+          },
+          {
+            "center_cycle": 25,
+            "samples": [
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 16110543,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 6005873,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 16110543
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 14200693,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 8974600,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 14200693
+              },
+              {
+                "cycle": 25,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 6005873,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3451453,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 6005873
+              },
+              {
+                "cycle": 26,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 8974600,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16118496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 8974600
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t7",
+                "epoch": 1,
+                "accept_cycle": 23,
+                "data": 6005873,
+                "response_cycle": 25,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 6005873
+              },
+              {
+                "transaction_id": "e1:t9",
+                "epoch": 1,
+                "accept_cycle": 25,
+                "data": 3451453,
+                "response_cycle": 27,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 3451453
+              }
+            ]
+          }
+        ],
+        "omitted_window_count": 51,
+        "sampling_qualification": {
+          "status": "passed",
+          "checked_samples": 140,
+          "mismatches": [],
+          "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+          "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+        },
+        "oracle_legality": "legal",
+        "oracle_unknown": [],
+        "coverage": {
+          "observed": {
+            "reset_with_pending": 2,
+            "simultaneous_accept_response": 44,
+            "idle": 37,
+            "backpressure": 41,
+            "multi_cycle_response": 59,
+            "accepted_requests": 64,
+            "accepted_responses": 59,
+            "presented_unaccepted_requests": 33,
+            "empty_reference_samples": 28,
+            "max_outstanding_accepted": 3,
+            "drain_checkpoints": 0,
+            "consecutive_request_accept_pairs": 46
+          },
+          "input_legality": "legal",
+          "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+          "full_state_verification": "unknown_without_internal_state_probe",
+          "scope": "finite observed transactions; input intent alone is not acceptance"
+        },
+        "artifacts": {
+          "directory": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_0/correct",
+          "waveform": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_0/correct/wave.vcd",
+          "reference_trace": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_0/correct/reference_trace.json"
+        }
+      },
+      "mutant": {
+        "mode": "corrupt",
+        "native_status": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed"
+        },
+        "properties": [
+          {
+            "id": "a0",
+            "property": "((mvalid && mready && ref_count > 0)) |-> ((mdata == ref_expected))",
+            "obligations": [
+              "order_payload"
+            ],
+            "trigger_count": 59,
+            "failure_count": 59,
+            "trigger_cycles": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              47,
+              48,
+              49,
+              52,
+              53,
+              54,
+              57,
+              58,
+              59,
+              65,
+              70,
+              71,
+              74,
+              75,
+              76,
+              77,
+              78,
+              80,
+              82,
+              83,
+              84,
+              85,
+              89,
+              91,
+              93,
+              94,
+              95,
+              99,
+              112,
+              113,
+              114,
+              115
+            ],
+            "failure_cycles": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              47,
+              48,
+              49,
+              52,
+              53,
+              54,
+              57,
+              58,
+              59,
+              65,
+              70,
+              71,
+              74,
+              75,
+              76,
+              77,
+              78,
+              80,
+              82,
+              83,
+              84,
+              85,
+              89,
+              91,
+              93,
+              94,
+              95,
+              99,
+              112,
+              113,
+              114,
+              115
+            ],
+            "execution_observation": "native_violation"
+          },
+          {
+            "id": "a1",
+            "property": "((mvalid && mready)) |-> ((ref_count == 0))",
+            "obligations": [
+              "drain_no_loss"
+            ],
+            "trigger_count": 59,
+            "failure_count": 59,
+            "trigger_cycles": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              47,
+              48,
+              49,
+              52,
+              53,
+              54,
+              57,
+              58,
+              59,
+              65,
+              70,
+              71,
+              74,
+              75,
+              76,
+              77,
+              78,
+              80,
+              82,
+              83,
+              84,
+              85,
+              89,
+              91,
+              93,
+              94,
+              95,
+              99,
+              112,
+              113,
+              114,
+              115
+            ],
+            "failure_cycles": [
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              47,
+              48,
+              49,
+              52,
+              53,
+              54,
+              57,
+              58,
+              59,
+              65,
+              70,
+              71,
+              74,
+              75,
+              76,
+              77,
+              78,
+              80,
+              82,
+              83,
+              84,
+              85,
+              89,
+              91,
+              93,
+              94,
+              95,
+              99,
+              112,
+              113,
+              114,
+              115
+            ],
+            "execution_observation": "native_violation"
+          }
+        ],
+        "first_oracle_violations": [
+          {
+            "cycle": 18,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e1:t0",
+            "expected": 11993824,
+            "actual": 11993825
+          },
+          {
+            "cycle": 65,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e2:t38",
+            "expected": 5810511,
+            "actual": 5810510
+          },
+          {
+            "cycle": 112,
+            "obligation": "order_payload",
+            "passed": false,
+            "transaction_id": "e3:t60",
+            "expected": 12155521,
+            "actual": 12155520
+          }
+        ],
+        "sample_windows": [
+          {
+            "center_cycle": 18,
+            "samples": [
+              {
+                "cycle": 16,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 11993825
+              },
+              {
+                "cycle": 17,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 11993825
+              },
+              {
+                "cycle": 18,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 11993825
+              },
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683109
+              }
+            ],
+            "oracle_violations": [
+              {
+                "cycle": 18,
+                "obligation": "order_payload",
+                "passed": false,
+                "transaction_id": "e1:t0",
+                "expected": 11993824,
+                "actual": 11993825
+              }
+            ],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t0",
+                "epoch": 1,
+                "accept_cycle": 3,
+                "data": 11993824,
+                "response_cycle": 18,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 15,
+                "observed_data": 11993825
+              }
+            ]
+          },
+          {
+            "center_cycle": 65,
+            "samples": [
+              {
+                "cycle": 63,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 5810511,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 7817768
+              },
+              {
+                "cycle": 64,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 5810511,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 5065434,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 7817768
+              },
+              {
+                "cycle": 65,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 5810511,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 6737040,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 5810510
+              },
+              {
+                "cycle": 66,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3165780,
+                "mvalid": 0,
+                "mready": 0,
+                "mdata": 11022407
+              }
+            ],
+            "oracle_violations": [
+              {
+                "cycle": 65,
+                "obligation": "order_payload",
+                "passed": false,
+                "transaction_id": "e2:t38",
+                "expected": 5810511,
+                "actual": 5810510
+              }
+            ],
+            "associated_transactions": [
+              {
+                "transaction_id": "e2:t38",
+                "epoch": 2,
+                "accept_cycle": 63,
+                "data": 5810511,
+                "response_cycle": 65,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 5810510
+              }
+            ]
+          },
+          {
+            "center_cycle": 112,
+            "samples": [
+              {
+                "cycle": 110,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 12155521,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 11539951,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 12155520
+              },
+              {
+                "cycle": 111,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 12155521,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 11539951,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 12155520
+              },
+              {
+                "cycle": 112,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 12155521,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 11539951,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12155520
+              },
+              {
+                "cycle": 113,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 5831132,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 11539951,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 5831133
+              }
+            ],
+            "oracle_violations": [
+              {
+                "cycle": 112,
+                "obligation": "order_payload",
+                "passed": false,
+                "transaction_id": "e3:t60",
+                "expected": 12155521,
+                "actual": 12155520
+              }
+            ],
+            "associated_transactions": [
+              {
+                "transaction_id": "e3:t60",
+                "epoch": 3,
+                "accept_cycle": 104,
+                "data": 12155521,
+                "response_cycle": 112,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 8,
+                "observed_data": 12155520
+              }
+            ]
+          },
+          {
+            "center_cycle": 19,
+            "samples": [
+              {
+                "cycle": 17,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 0,
+                "mdata": 11993825
+              },
+              {
+                "cycle": 18,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 11993825
+              },
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683109
+              },
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942131
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t1",
+                "epoch": 1,
+                "accept_cycle": 4,
+                "data": 683108,
+                "response_cycle": 19,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 15,
+                "observed_data": 683109
+              },
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 19,
+                "data": 3722496,
+                "response_cycle": 21,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 3722497
+              }
+            ]
+          },
+          {
+            "center_cycle": 20,
+            "samples": [
+              {
+                "cycle": 18,
+                "rst": 0,
+                "ref_count": 3,
+                "ref_expected": 11993824,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 0,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 11993825
+              },
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683109
+              },
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942131
+              },
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722497
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t2",
+                "epoch": 1,
+                "accept_cycle": 5,
+                "data": 7942130,
+                "response_cycle": 20,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 15,
+                "observed_data": 7942131
+              },
+              {
+                "transaction_id": "e1:t4",
+                "epoch": 1,
+                "accept_cycle": 20,
+                "data": 12997280,
+                "response_cycle": 22,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 12997281
+              }
+            ]
+          },
+          {
+            "center_cycle": 21,
+            "samples": [
+              {
+                "cycle": 19,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 683108,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 3722496,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 683109
+              },
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942131
+              },
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722497
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 12997280,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 14200693,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12997281
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 19,
+                "data": 3722496,
+                "response_cycle": 21,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 3722497
+              },
+              {
+                "transaction_id": "e1:t5",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 16110543,
+                "response_cycle": 23,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 16110542
+              }
+            ]
+          },
+          {
+            "center_cycle": 22,
+            "samples": [
+              {
+                "cycle": 20,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 7942130,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 12997280,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 7942131
+              },
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722497
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 12997280,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 14200693,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12997281
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 16110543,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 6005873,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 16110542
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t4",
+                "epoch": 1,
+                "accept_cycle": 20,
+                "data": 12997280,
+                "response_cycle": 22,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 12997281
+              },
+              {
+                "transaction_id": "e1:t6",
+                "epoch": 1,
+                "accept_cycle": 22,
+                "data": 14200693,
+                "response_cycle": 24,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 14200692
+              }
+            ]
+          },
+          {
+            "center_cycle": 23,
+            "samples": [
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 3722496,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 16110543,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3722497
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 12997280,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 14200693,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 12997281
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 16110543,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 6005873,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 16110542
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 2,
+                "ref_expected": 14200693,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 8974600,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 14200692
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t5",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 16110543,
+                "response_cycle": 23,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 16110542
+              },
+              {
+                "transaction_id": "e1:t7",
+                "epoch": 1,
+                "accept_cycle": 23,
+                "data": 6005873,
+                "response_cycle": 25,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 6005872
+              }
+            ]
+          }
+        ],
+        "omitted_window_count": 51,
+        "sampling_qualification": {
+          "status": "passed",
+          "checked_samples": 140,
+          "mismatches": [],
+          "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+          "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+        },
+        "oracle_legality": "legal",
+        "oracle_unknown": [],
+        "coverage": {
+          "observed": {
+            "reset_with_pending": 2,
+            "simultaneous_accept_response": 44,
+            "idle": 37,
+            "backpressure": 41,
+            "multi_cycle_response": 59,
+            "accepted_requests": 64,
+            "accepted_responses": 59,
+            "presented_unaccepted_requests": 33,
+            "empty_reference_samples": 28,
+            "max_outstanding_accepted": 3,
+            "drain_checkpoints": 0,
+            "consecutive_request_accept_pairs": 46
+          },
+          "input_legality": "legal",
+          "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+          "full_state_verification": "unknown_without_internal_state_probe",
+          "scope": "finite observed transactions; input intent alone is not acceptance"
+        },
+        "artifacts": {
+          "directory": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_0/corrupt",
+          "waveform": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_0/corrupt/wave.vcd",
+          "reference_trace": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_0/corrupt/reference_trace.json"
+        }
+      },
+      "target_evidence": [
+        {
+          "evidence_id": "fifo:2a189b6422f51452f09c6aab3f50f33c62495a1cbc482896b828a9801e39f396",
+          "obligation": "order_payload",
+          "cycle": 18,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": null
+            }
+          ],
+          "gap_observation": "triggered_without_confirmed_detection"
+        },
+        {
+          "evidence_id": "fifo:525e80b32857d4e033dcae1587c12258e6374816f36f6cdad50ecd5f997452fd",
+          "obligation": "order_payload",
+          "cycle": 65,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": null
+            }
+          ],
+          "gap_observation": "triggered_without_confirmed_detection"
+        },
+        {
+          "evidence_id": "fifo:6740f181e3dc48918c449275de31234e1def1299300cec17493c12956a4995de",
+          "obligation": "order_payload",
+          "cycle": 112,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": null
+            }
+          ],
+          "gap_observation": "triggered_without_confirmed_detection"
+        }
+      ],
+      "scope": "Native sampled diagnostic evidence. Independent oracle/paired ledger determines validity. Ref_count/ref_expected logs do not replace independent obligation checks. No global proof."
+    }
+  },
+  {
+    "scenario": "search:d2:p0:queries/s2026101507/contract_coverage/q00",
+    "diagnostic": {
+      "sampling_contract": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+      "fixed": {
+        "mode": "correct",
+        "native_status": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed"
+        },
+        "properties": [
+          {
+            "id": "a0",
+            "property": "((mvalid && mready && ref_count > 0)) |-> ((mdata == ref_expected))",
+            "obligations": [
+              "order_payload"
+            ],
+            "trigger_count": 4,
+            "failure_count": 0,
+            "trigger_cycles": [
+              7,
+              15,
+              23,
+              31
+            ],
+            "failure_cycles": [],
+            "execution_observation": "no_violation_within_execution"
+          },
+          {
+            "id": "a1",
+            "property": "((mvalid && mready)) |-> ((ref_count == 0))",
+            "obligations": [
+              "drain_no_loss"
+            ],
+            "trigger_count": 4,
+            "failure_count": 4,
+            "trigger_cycles": [
+              7,
+              15,
+              23,
+              31
+            ],
+            "failure_cycles": [
+              7,
+              15,
+              23,
+              31
+            ],
+            "execution_observation": "native_violation"
+          }
+        ],
+        "first_oracle_violations": [],
+        "sample_windows": [
+          {
+            "center_cycle": 111,
+            "samples": [
+              {
+                "cycle": 109,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2391912500,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 4006402228
+              },
+              {
+                "cycle": 110,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3530587604,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 4006402228
+              },
+              {
+                "cycle": 111,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 1,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 453408180,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 4006402228
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": []
+          },
+          {
+            "center_cycle": 7,
+            "samples": [
+              {
+                "cycle": 5,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 1728997572,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 6,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 1728997572,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 4125594964,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 7,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 1728997572,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3685481668,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 1728997572
+              },
+              {
+                "cycle": 8,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1864527188,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t0",
+                "epoch": 1,
+                "accept_cycle": 5,
+                "data": 1728997572,
+                "response_cycle": 7,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 1728997572
+              }
+            ]
+          },
+          {
+            "center_cycle": 15,
+            "samples": [
+              {
+                "cycle": 13,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 2123208548,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 14,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2123208548,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3943631444,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 15,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2123208548,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1161369844,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 2123208548
+              },
+              {
+                "cycle": 16,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 65960660,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 1728997572
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t1",
+                "epoch": 1,
+                "accept_cycle": 13,
+                "data": 2123208548,
+                "response_cycle": 15,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 2123208548
+              }
+            ]
+          },
+          {
+            "center_cycle": 23,
+            "samples": [
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 4006402228,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 1728997572
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 4006402228,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2395940068,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 1728997572
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 4006402228,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1288837812,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 4006402228
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1643216452,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 2123208548
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t2",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 4006402228,
+                "response_cycle": 23,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 4006402228
+              }
+            ]
+          },
+          {
+            "center_cycle": 31,
+            "samples": [
+              {
+                "cycle": 29,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 2410504788,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 2123208548
+              },
+              {
+                "cycle": 30,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2410504788,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3622401188,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 2123208548
+              },
+              {
+                "cycle": 31,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2410504788,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2127235156,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 2410504788
+              },
+              {
+                "cycle": 32,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 963229972,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 4006402228
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 29,
+                "data": 2410504788,
+                "response_cycle": 31,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 2410504788
+              }
+            ]
+          }
+        ],
+        "omitted_window_count": 0,
+        "sampling_qualification": {
+          "status": "passed",
+          "checked_samples": 112,
+          "mismatches": [],
+          "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+          "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+        },
+        "oracle_legality": "legal",
+        "oracle_unknown": [],
+        "coverage": {
+          "observed": {
+            "reset_with_pending": 0,
+            "simultaneous_accept_response": 0,
+            "idle": 105,
+            "multi_cycle_response": 4,
+            "accepted_requests": 4,
+            "accepted_responses": 4,
+            "presented_unaccepted_requests": 0,
+            "empty_reference_samples": 101,
+            "max_outstanding_accepted": 1,
+            "drain_checkpoints": 1,
+            "consecutive_request_accept_pairs": 0
+          },
+          "input_legality": "legal",
+          "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+          "full_state_verification": "unknown_without_internal_state_probe",
+          "scope": "finite observed transactions; input intent alone is not acceptance"
+        },
+        "artifacts": {
+          "directory": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_1/correct",
+          "waveform": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_1/correct/wave.vcd",
+          "reference_trace": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_1/correct/reference_trace.json"
+        }
+      },
+      "mutant": {
+        "mode": "drop",
+        "native_status": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed"
+        },
+        "properties": [
+          {
+            "id": "a0",
+            "property": "((mvalid && mready && ref_count > 0)) |-> ((mdata == ref_expected))",
+            "obligations": [
+              "order_payload"
+            ],
+            "trigger_count": 3,
+            "failure_count": 0,
+            "trigger_cycles": [
+              7,
+              15,
+              23
+            ],
+            "failure_cycles": [],
+            "execution_observation": "no_violation_within_execution"
+          },
+          {
+            "id": "a1",
+            "property": "((mvalid && mready)) |-> ((ref_count == 0))",
+            "obligations": [
+              "drain_no_loss"
+            ],
+            "trigger_count": 3,
+            "failure_count": 3,
+            "trigger_cycles": [
+              7,
+              15,
+              23
+            ],
+            "failure_cycles": [
+              7,
+              15,
+              23
+            ],
+            "execution_observation": "native_violation"
+          }
+        ],
+        "first_oracle_violations": [
+          {
+            "cycle": 111,
+            "obligation": "drain_no_loss",
+            "passed": false,
+            "transaction_id": null,
+            "outstanding": [
+              "e1:t3"
+            ]
+          }
+        ],
+        "sample_windows": [
+          {
+            "center_cycle": 111,
+            "samples": [
+              {
+                "cycle": 109,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2410504788,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2391912500,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 4006402228
+              },
+              {
+                "cycle": 110,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2410504788,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3530587604,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 4006402228
+              },
+              {
+                "cycle": 111,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2410504788,
+                "drain_due": 1,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 453408180,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 4006402228
+              }
+            ],
+            "oracle_violations": [
+              {
+                "cycle": 111,
+                "obligation": "drain_no_loss",
+                "passed": false,
+                "transaction_id": null,
+                "outstanding": [
+                  "e1:t3"
+                ]
+              }
+            ],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 29,
+                "data": 2410504788,
+                "response_cycle": null,
+                "cancel_cycle": null,
+                "outcome": "pending"
+              }
+            ]
+          },
+          {
+            "center_cycle": 7,
+            "samples": [
+              {
+                "cycle": 5,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 1728997572,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 6,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 1728997572,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 4125594964,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 7,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 1728997572,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3685481668,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 1728997572
+              },
+              {
+                "cycle": 8,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1864527188,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t0",
+                "epoch": 1,
+                "accept_cycle": 5,
+                "data": 1728997572,
+                "response_cycle": 7,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 1728997572
+              }
+            ]
+          },
+          {
+            "center_cycle": 15,
+            "samples": [
+              {
+                "cycle": 13,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 2123208548,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 14,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2123208548,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3943631444,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 15,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2123208548,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1161369844,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 2123208548
+              },
+              {
+                "cycle": 16,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 65960660,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 1728997572
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t1",
+                "epoch": 1,
+                "accept_cycle": 13,
+                "data": 2123208548,
+                "response_cycle": 15,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 2123208548
+              }
+            ]
+          },
+          {
+            "center_cycle": 23,
+            "samples": [
+              {
+                "cycle": 21,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 1,
+                "sready": 1,
+                "sdata": 4006402228,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 1728997572
+              },
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 4006402228,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2395940068,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 1728997572
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 4006402228,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1288837812,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 4006402228
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1643216452,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 2123208548
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t2",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 4006402228,
+                "response_cycle": 23,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 2,
+                "observed_data": 4006402228
+              }
+            ]
+          }
+        ],
+        "omitted_window_count": 0,
+        "sampling_qualification": {
+          "status": "passed",
+          "checked_samples": 112,
+          "mismatches": [],
+          "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+          "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+        },
+        "oracle_legality": "legal",
+        "oracle_unknown": [],
+        "coverage": {
+          "observed": {
+            "reset_with_pending": 0,
+            "simultaneous_accept_response": 0,
+            "idle": 105,
+            "multi_cycle_response": 3,
+            "accepted_requests": 4,
+            "accepted_responses": 3,
+            "presented_unaccepted_requests": 0,
+            "empty_reference_samples": 21,
+            "max_outstanding_accepted": 1,
+            "drain_checkpoints": 1,
+            "consecutive_request_accept_pairs": 0
+          },
+          "input_legality": "legal",
+          "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+          "full_state_verification": "unknown_without_internal_state_probe",
+          "scope": "finite observed transactions; input intent alone is not acceptance"
+        },
+        "artifacts": {
+          "directory": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_1/drop",
+          "waveform": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_1/drop/wave.vcd",
+          "reference_trace": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_1/drop/reference_trace.json"
+        }
+      },
+      "target_evidence": [
+        {
+          "evidence_id": "fifo:3961e11786a9cdd72e46e6d2c753178d62c27bd65c17e458ec60d790d1cad1da",
+          "obligation": "drain_no_loss",
+          "cycle": 111,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [
+            {
+              "id": "a1",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": null
+            }
+          ],
+          "gap_observation": "no_effective_trigger"
+        }
+      ],
+      "scope": "Native sampled diagnostic evidence. Independent oracle/paired ledger determines validity. Ref_count/ref_expected logs do not replace independent obligation checks. No global proof."
+    }
+  },
+  {
+    "scenario": "search:d5:p1:queries/s2026101531/contract_coverage/q02",
+    "diagnostic": {
+      "sampling_contract": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+      "fixed": {
+        "mode": "correct",
+        "native_status": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed"
+        },
+        "properties": [
+          {
+            "id": "a0",
+            "property": "((mvalid && mready && ref_count > 0)) |-> ((mdata == ref_expected))",
+            "obligations": [
+              "order_payload"
+            ],
+            "trigger_count": 4,
+            "failure_count": 0,
+            "trigger_cycles": [
+              8,
+              16,
+              24,
+              32
+            ],
+            "failure_cycles": [],
+            "execution_observation": "no_violation_within_execution"
+          },
+          {
+            "id": "a1",
+            "property": "((mvalid && mready)) |-> ((ref_count == 0))",
+            "obligations": [
+              "drain_no_loss"
+            ],
+            "trigger_count": 4,
+            "failure_count": 4,
+            "trigger_cycles": [
+              8,
+              16,
+              24,
+              32
+            ],
+            "failure_cycles": [
+              8,
+              16,
+              24,
+              32
+            ],
+            "execution_observation": "native_violation"
+          }
+        ],
+        "first_oracle_violations": [],
+        "sample_windows": [
+          {
+            "center_cycle": 111,
+            "samples": [
+              {
+                "cycle": 109,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1367161060,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 110,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3229406372,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 111,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 1,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 4007514580,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": []
+          },
+          {
+            "center_cycle": 8,
+            "samples": [
+              {
+                "cycle": 6,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 458150244,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1444914900,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 7,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 458150244,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1933852644,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 8,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 458150244,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 4067614532,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 458150244
+              },
+              {
+                "cycle": 9,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 32751524,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t0",
+                "epoch": 1,
+                "accept_cycle": 5,
+                "data": 458150244,
+                "response_cycle": 8,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 3,
+                "observed_data": 458150244
+              }
+            ]
+          },
+          {
+            "center_cycle": 16,
+            "samples": [
+              {
+                "cycle": 14,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2214136404,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 633031364,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 15,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2214136404,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1440092820,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 16,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2214136404,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2954426564,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 2214136404
+              },
+              {
+                "cycle": 17,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3321071556,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t1",
+                "epoch": 1,
+                "accept_cycle": 13,
+                "data": 2214136404,
+                "response_cycle": 16,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 3,
+                "observed_data": 2214136404
+              }
+            ]
+          },
+          {
+            "center_cycle": 24,
+            "samples": [
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 3676269524,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1868074148,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 3676269524,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 118116948,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 3676269524,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 580909988,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3676269524
+              },
+              {
+                "cycle": 25,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3799459684,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t2",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 3676269524,
+                "response_cycle": 24,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 3,
+                "observed_data": 3676269524
+              }
+            ]
+          },
+          {
+            "center_cycle": 32,
+            "samples": [
+              {
+                "cycle": 30,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2100518804,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1221252020,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 31,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2100518804,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 665514724,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 32,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2100518804,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2567479796,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 2100518804
+              },
+              {
+                "cycle": 33,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 407229508,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 29,
+                "data": 2100518804,
+                "response_cycle": 32,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 3,
+                "observed_data": 2100518804
+              }
+            ]
+          }
+        ],
+        "omitted_window_count": 0,
+        "sampling_qualification": {
+          "status": "passed",
+          "checked_samples": 112,
+          "mismatches": [],
+          "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+          "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+        },
+        "oracle_legality": "legal",
+        "oracle_unknown": [],
+        "coverage": {
+          "observed": {
+            "reset_with_pending": 0,
+            "simultaneous_accept_response": 0,
+            "idle": 105,
+            "multi_cycle_response": 4,
+            "accepted_requests": 4,
+            "accepted_responses": 4,
+            "presented_unaccepted_requests": 0,
+            "empty_reference_samples": 97,
+            "max_outstanding_accepted": 1,
+            "drain_checkpoints": 1,
+            "consecutive_request_accept_pairs": 0
+          },
+          "input_legality": "legal",
+          "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+          "full_state_verification": "unknown_without_internal_state_probe",
+          "scope": "finite observed transactions; input intent alone is not acceptance"
+        },
+        "artifacts": {
+          "directory": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_2/correct",
+          "waveform": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_2/correct/wave.vcd",
+          "reference_trace": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_2/correct/reference_trace.json"
+        }
+      },
+      "mutant": {
+        "mode": "drop",
+        "native_status": {
+          "compile_status": "passed",
+          "tool_support_status": "supported_for_compiled_constructs",
+          "execution_status": "completed"
+        },
+        "properties": [
+          {
+            "id": "a0",
+            "property": "((mvalid && mready && ref_count > 0)) |-> ((mdata == ref_expected))",
+            "obligations": [
+              "order_payload"
+            ],
+            "trigger_count": 3,
+            "failure_count": 0,
+            "trigger_cycles": [
+              8,
+              16,
+              24
+            ],
+            "failure_cycles": [],
+            "execution_observation": "no_violation_within_execution"
+          },
+          {
+            "id": "a1",
+            "property": "((mvalid && mready)) |-> ((ref_count == 0))",
+            "obligations": [
+              "drain_no_loss"
+            ],
+            "trigger_count": 3,
+            "failure_count": 3,
+            "trigger_cycles": [
+              8,
+              16,
+              24
+            ],
+            "failure_cycles": [
+              8,
+              16,
+              24
+            ],
+            "execution_observation": "native_violation"
+          }
+        ],
+        "first_oracle_violations": [
+          {
+            "cycle": 111,
+            "obligation": "drain_no_loss",
+            "passed": false,
+            "transaction_id": null,
+            "outstanding": [
+              "e1:t3"
+            ]
+          }
+        ],
+        "sample_windows": [
+          {
+            "center_cycle": 111,
+            "samples": [
+              {
+                "cycle": 109,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2100518804,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1367161060,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 110,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2100518804,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3229406372,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 111,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2100518804,
+                "drain_due": 1,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 4007514580,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [
+              {
+                "cycle": 111,
+                "obligation": "drain_no_loss",
+                "passed": false,
+                "transaction_id": null,
+                "outstanding": [
+                  "e1:t3"
+                ]
+              }
+            ],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t3",
+                "epoch": 1,
+                "accept_cycle": 29,
+                "data": 2100518804,
+                "response_cycle": null,
+                "cancel_cycle": null,
+                "outcome": "pending"
+              }
+            ]
+          },
+          {
+            "center_cycle": 8,
+            "samples": [
+              {
+                "cycle": 6,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 458150244,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1444914900,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 7,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 458150244,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1933852644,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 8,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 458150244,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 4067614532,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 458150244
+              },
+              {
+                "cycle": 9,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 32751524,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t0",
+                "epoch": 1,
+                "accept_cycle": 5,
+                "data": 458150244,
+                "response_cycle": 8,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 3,
+                "observed_data": 458150244
+              }
+            ]
+          },
+          {
+            "center_cycle": 16,
+            "samples": [
+              {
+                "cycle": 14,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2214136404,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 633031364,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 15,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2214136404,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1440092820,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 16,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 2214136404,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 2954426564,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 2214136404
+              },
+              {
+                "cycle": 17,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3321071556,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t1",
+                "epoch": 1,
+                "accept_cycle": 13,
+                "data": 2214136404,
+                "response_cycle": 16,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 3,
+                "observed_data": 2214136404
+              }
+            ]
+          },
+          {
+            "center_cycle": 24,
+            "samples": [
+              {
+                "cycle": 22,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 3676269524,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 1868074148,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 23,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 3676269524,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 118116948,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              },
+              {
+                "cycle": 24,
+                "rst": 0,
+                "ref_count": 1,
+                "ref_expected": 3676269524,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 580909988,
+                "mvalid": 1,
+                "mready": 1,
+                "mdata": 3676269524
+              },
+              {
+                "cycle": 25,
+                "rst": 0,
+                "ref_count": 0,
+                "ref_expected": 0,
+                "drain_due": 0,
+                "svalid": 0,
+                "sready": 1,
+                "sdata": 3799459684,
+                "mvalid": 0,
+                "mready": 1,
+                "mdata": 0
+              }
+            ],
+            "oracle_violations": [],
+            "associated_transactions": [
+              {
+                "transaction_id": "e1:t2",
+                "epoch": 1,
+                "accept_cycle": 21,
+                "data": 3676269524,
+                "response_cycle": 24,
+                "cancel_cycle": null,
+                "outcome": "responded",
+                "latency": 3,
+                "observed_data": 3676269524
+              }
+            ]
+          }
+        ],
+        "omitted_window_count": 0,
+        "sampling_qualification": {
+          "status": "passed",
+          "checked_samples": 112,
+          "mismatches": [],
+          "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+          "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+        },
+        "oracle_legality": "legal",
+        "oracle_unknown": [],
+        "coverage": {
+          "observed": {
+            "reset_with_pending": 0,
+            "simultaneous_accept_response": 0,
+            "idle": 105,
+            "multi_cycle_response": 3,
+            "accepted_requests": 4,
+            "accepted_responses": 3,
+            "presented_unaccepted_requests": 0,
+            "empty_reference_samples": 18,
+            "max_outstanding_accepted": 1,
+            "drain_checkpoints": 1,
+            "consecutive_request_accept_pairs": 0
+          },
+          "input_legality": "legal",
+          "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+          "full_state_verification": "unknown_without_internal_state_probe",
+          "scope": "finite observed transactions; input intent alone is not acceptance"
+        },
+        "artifacts": {
+          "directory": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_2/drop",
+          "waveform": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_2/drop/wave.vcd",
+          "reference_trace": "/mnt/d/AssertionForge-main1/deliverables/research18_closed_loop_20261016_r02/core/v0/native/case_2/drop/reference_trace.json"
+        }
+      },
+      "target_evidence": [
+        {
+          "evidence_id": "fifo:63ee82a5d2786ed6bf3cec5d96eaa9f683d5f4286f5c40d19286dc24e65d30ca",
+          "obligation": "drain_no_loss",
+          "cycle": 111,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [
+            {
+              "id": "a1",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": null
+            }
+          ],
+          "gap_observation": "no_effective_trigger"
+        }
+      ],
+      "scope": "Native sampled diagnostic evidence. Independent oracle/paired ledger determines validity. Ref_count/ref_expected logs do not replace independent obligation checks. No global proof."
+    }
+  }
+]

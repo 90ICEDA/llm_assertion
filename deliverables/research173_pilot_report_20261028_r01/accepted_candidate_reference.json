@@ -1,0 +1,52 @@
+{
+  "candidate": [
+    {
+      "label": "nonfinal_full_keep",
+      "antecedent": "m_axis_tvalid && m_axis_tready && !m_axis_tlast",
+      "consequent": "m_axis_tkeep == {M_KEEP_WIDTH{1'b1}}",
+      "timing": "same_sample",
+      "obligations": [
+        "nonfinal_keep"
+      ]
+    },
+    {
+      "label": "final_nonempty_keep",
+      "antecedent": "m_axis_tvalid && m_axis_tready && m_axis_tlast",
+      "consequent": "m_axis_tkeep != {M_KEEP_WIDTH{1'b0}}",
+      "timing": "same_sample",
+      "obligations": [
+        "final_nonempty"
+      ]
+    },
+    {
+      "label": "hold_valid",
+      "antecedent": "m_axis_tvalid && !m_axis_tready && !rst",
+      "consequent": "m_axis_tvalid",
+      "timing": "next_sample",
+      "obligations": [
+        "stall_valid"
+      ]
+    },
+    {
+      "label": "hold_payload",
+      "antecedent": "m_axis_tvalid && !m_axis_tready && !rst",
+      "consequent": "$stable({m_axis_tdata, m_axis_tkeep, m_axis_tlast})",
+      "timing": "next_sample",
+      "obligations": [
+        "stall_payload"
+      ]
+    },
+    {
+      "label": "hold_keep_through_stall",
+      "antecedent": "m_axis_tvalid && !m_axis_tready && !rst",
+      "consequent": "$stable(m_axis_tkeep)",
+      "timing": "next_sample",
+      "obligations": [
+        "stall_payload"
+      ]
+    }
+  ],
+  "hash": "296d99ace33f398f026b7db83efc3e1a060af0199366696d7f0de9bbd317dcb5",
+  "origin": "deliverables/research172_adapter_run_20261028_r01/shared/model_call/model_edit.json",
+  "status": "accepted_on_development_only_not_independently_tested"
+}

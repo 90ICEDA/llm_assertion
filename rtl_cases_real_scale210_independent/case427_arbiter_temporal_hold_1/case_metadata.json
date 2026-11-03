@@ -1,0 +1,71 @@
+{
+  "name": "case427_arbiter_temporal_hold_1",
+  "parent_bug_id": "case427_arbiter_temporal_hold_1",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "arbiter",
+  "source_files": [
+    "external/verilog-axis/rtl/arbiter.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/arbiter.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "grant_reg state update is suppressed",
+  "spec": "When at least one request is pending after reset, the arbiter must publish a one-hot grant for an eligible requester; a granted request remains governed by acknowledge and arbitration policy.",
+  "mutation_edits": [
+    {
+      "line": 144,
+      "search": "    grant_reg <= grant_next;",
+      "replace": "    grant_reg <= grant_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "grant_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "request",
+    "acknowledge",
+    "grant",
+    "grant_valid",
+    "grant_encoded",
+    "grant[3:0]"
+  ],
+  "temporal_type": "registered grant acquisition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "d54d337db4812f927b2e9b5788dfa39f9bd578ad01b7846c5fa7f2610b0923fa",
+  "buggy_sha256": "9ee279fea2c35d1ab714f4c3abfb51c4b0140ca74595cffa14bb5d562a62575d",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) ((|request) && !(|grant)) |=> (|grant));",
+    "temporal_type": "registered grant acquisition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 25000000000000,
+      "sample_index": 6,
+      "signals": [
+        "grant[3:0]"
+      ],
+      "clock_cycle": 3
+    },
+    "heldout": {
+      "time_ps": 35000000000000,
+      "sample_index": 8,
+      "signals": [
+        "grant[3:0]"
+      ],
+      "clock_cycle": 4
+    },
+    "decoy": {
+      "time_ps": 45000000000000,
+      "sample_index": 10,
+      "signals": [
+        "grant[3:0]"
+      ],
+      "clock_cycle": 5
+    }
+  }
+}

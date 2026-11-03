@@ -1,0 +1,15 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, set_crc_i, data_valid_i, crc_in_i, crc_out_o
+
+Specification:
+
+# Behavioral specification
+
+A set_crc_i pulse loads the complemented seed independently of data_valid_i, so crc_out_o equals the sampled crc_in_i on the next cycle.

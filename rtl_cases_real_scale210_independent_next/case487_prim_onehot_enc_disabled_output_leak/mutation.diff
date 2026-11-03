@@ -1,0 +1,12 @@
+--- correct.v
++++ buggy.v
+@@ -6,6 +6,8 @@
+   input wire en_i,
+   output wire [7:0] out_o
+ );
+-  assign out_o = (!rst_ni || !en_i) ? 8'h00 : (8'h01 << in_i);
++  assign out_o = !rst_ni ? 8'h00 : (8'h01 << in_i);
++  // MUTATION: the encoder output is no longer suppressed while disabled.
+   wire unused_clk = clk_i;
++  wire unused_en = en_i;
+ endmodule

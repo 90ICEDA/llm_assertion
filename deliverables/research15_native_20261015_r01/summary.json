@@ -1,0 +1,174 @@
+{
+  "status": "three_actual_model_native_replay_attempts_all_rejected",
+  "versions": [
+    {
+      "model_call": "initial",
+      "model_result": {
+        "status": "response_received",
+        "model": "qwen2.5-coder:7b-instruct",
+        "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+        "prompt_tokens": 7311,
+        "completion_tokens": 70,
+        "model_calls": 1,
+        "retries": 0,
+        "service_total_ns": 281814460697,
+        "done_reason": "stop",
+        "wall_seconds": 281.816728541,
+        "partial_response_characters": 290,
+        "candidate_status": "parsed",
+        "context_budget": {
+          "estimated_prompt_tokens": 12187,
+          "context_tokens": 16384,
+          "estimate_not_exact_tokenization": true
+        }
+      },
+      "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |-> sdata == ref_expected))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+      "candidate": {
+        "assertions": [
+          {
+            "property": "mvalid && mready |-> sdata == ref_expected",
+            "obligations": [
+              "order_payload"
+            ],
+            "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+            "id": "a0",
+            "derived_antecedent": "mvalid && mready",
+            "implication": "|->",
+            "derived_delay": 0,
+            "consequent": "sdata == ref_expected"
+          }
+        ],
+        "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+      },
+      "counts": {
+        "rows": 798,
+        "unknown": 3,
+        "false_positives": 59,
+        "detections": 0,
+        "misses": 0,
+        "triggers": 59
+      },
+      "accepted": false,
+      "compile": "passed",
+      "execution": "completed",
+      "trigger_source": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "evidence_directory": "deliverables/research15_native_20261015_r01/initial_qualification/original"
+    },
+    {
+      "model_call": "initial_semantic_repair",
+      "model_result": {
+        "status": "response_received",
+        "model": "qwen2.5-coder:7b-instruct",
+        "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+        "prompt_tokens": 7938,
+        "completion_tokens": 78,
+        "model_calls": 1,
+        "retries": 0,
+        "service_total_ns": 50044342541,
+        "done_reason": "stop",
+        "wall_seconds": 50.04625697899996,
+        "partial_response_characters": 308,
+        "candidate_status": "parsed",
+        "context_budget": {
+          "estimated_prompt_tokens": 13034,
+          "context_tokens": 16384,
+          "estimate_not_exact_tokenization": true
+        }
+      },
+      "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |=> mdata == ref_expected))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+      "candidate": {
+        "assertions": [
+          {
+            "property": "mvalid && mready |=> mdata == ref_expected",
+            "obligations": [
+              "order_payload"
+            ],
+            "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+            "id": "a0",
+            "derived_antecedent": "mvalid && mready",
+            "implication": "|=>",
+            "derived_delay": 1,
+            "consequent": "mdata == ref_expected"
+          }
+        ],
+        "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+      },
+      "counts": {
+        "rows": 798,
+        "unknown": 0,
+        "false_positives": 2,
+        "detections": 0,
+        "misses": 3,
+        "triggers": 59
+      },
+      "accepted": false,
+      "compile": "passed",
+      "execution": "completed",
+      "trigger_source": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "evidence_directory": "deliverables/research15_native_20261015_r01/initial_qualification/semantic_repair"
+    },
+    {
+      "model_call": "initial_temporal_repair",
+      "model_result": {
+        "status": "response_received",
+        "model": "qwen2.5-coder:7b-instruct",
+        "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+        "prompt_tokens": 8025,
+        "completion_tokens": 124,
+        "model_calls": 1,
+        "retries": 0,
+        "service_total_ns": 59649970640,
+        "done_reason": "stop",
+        "wall_seconds": 59.65194626300001,
+        "partial_response_characters": 469,
+        "candidate_status": "parsed",
+        "context_budget": {
+          "estimated_prompt_tokens": 13011,
+          "context_tokens": 16384,
+          "estimate_not_exact_tokenization": true
+        }
+      },
+      "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |=> mdata == $past(ref_expected)))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+      "candidate": {
+        "assertions": [
+          {
+            "property": "mvalid && mready |=> mdata == $past(ref_expected)",
+            "obligations": [
+              "order_payload"
+            ],
+            "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+            "id": "a0",
+            "derived_antecedent": "mvalid && mready",
+            "implication": "|=>",
+            "derived_delay": 1,
+            "consequent": "mdata == $past(ref_expected)"
+          }
+        ],
+        "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+      },
+      "counts": {
+        "rows": 798,
+        "unknown": 0,
+        "false_positives": 59,
+        "detections": 0,
+        "misses": 3,
+        "triggers": 59
+      },
+      "accepted": false,
+      "compile": "passed",
+      "execution": "completed",
+      "trigger_source": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "evidence_directory": "deliverables/research15_native_20261015_r01/initial_temporal_continuation"
+    }
+  ],
+  "accepted_version": null,
+  "original_two_call_budget_succeeded": false,
+  "extra_temporal_calls": 1,
+  "four_arm_native_ablation": "implemented_not_executed",
+  "final_frozen_independent_test": "not_executed",
+  "blocker": "No shared initial order assertion passed finite native qualification; extra timing repair also failed. No templates substituted.",
+  "audit": "Authoritative initialization counts are readjudicated against legal control alarms. Original first version had 3 raw alleged detections, corrected to attribution unknown; rejection unchanged.",
+  "source_limit": "Exact generated SVA, compiled TB and command logs retained. First qualification Python process imported the earlier adapter; later readjudication has a saved current adapter hash. The delivery source snapshot is not retroactively claimed to be that earlier imported Python version.",
+  "model_provider": "actual local Ollama; generic remote transport inherited but not exercised",
+  "formal_proof": false
+}

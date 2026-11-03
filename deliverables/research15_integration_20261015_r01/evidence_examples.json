@@ -1,0 +1,143 @@
+[
+  {
+    "version": "initial",
+    "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |-> sdata == ref_expected))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+    "native_failure": {
+      "id": "a0",
+      "detail": "cycle=18"
+    },
+    "actual_samples": [
+      {
+        "cycle": 17,
+        "rst": 0,
+        "svalid": 1,
+        "sready": 0,
+        "sdata": 3722496,
+        "mvalid": 1,
+        "mready": 0,
+        "mdata": 11993824
+      },
+      {
+        "cycle": 18,
+        "rst": 0,
+        "svalid": 1,
+        "sready": 0,
+        "sdata": 3722496,
+        "mvalid": 1,
+        "mready": 1,
+        "mdata": 11993824
+      }
+    ],
+    "independent_oracle_checks": [
+      {
+        "cycle": 18,
+        "obligation": "stall_stability",
+        "passed": true,
+        "transaction_id": null
+      },
+      {
+        "cycle": 18,
+        "obligation": "no_unsolicited_output",
+        "passed": true,
+        "transaction_id": null
+      },
+      {
+        "cycle": 18,
+        "obligation": "order_payload",
+        "passed": true,
+        "transaction_id": "e1:t0",
+        "expected": 11993824,
+        "actual": 11993824
+      }
+    ],
+    "correct_rtl_verdict": "no_violation_within_execution",
+    "artifact": "deliverables/research15_native_20261015_r01/initial_qualification/original",
+    "acceptance": "rejected",
+    "independent_test": "not run; no accepted final candidate"
+  },
+  {
+    "version": "initial_semantic_repair",
+    "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |=> mdata == ref_expected))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+    "native_failure": {
+      "id": "a0",
+      "detail": "cycle=66"
+    },
+    "actual_samples": [
+      {
+        "cycle": 65,
+        "rst": 0,
+        "svalid": 0,
+        "sready": 1,
+        "sdata": 6737040,
+        "mvalid": 1,
+        "mready": 1,
+        "mdata": 5810511
+      },
+      {
+        "cycle": 66,
+        "rst": 0,
+        "svalid": 1,
+        "sready": 1,
+        "sdata": 3165780,
+        "mvalid": 0,
+        "mready": 0,
+        "mdata": 11022406
+      }
+    ],
+    "independent_oracle_checks": [],
+    "correct_rtl_verdict": "no_violation_within_execution",
+    "artifact": "deliverables/research15_native_20261015_r01/initial_qualification/semantic_repair",
+    "acceptance": "rejected",
+    "independent_test": "not run; no accepted final candidate"
+  },
+  {
+    "version": "initial_temporal_repair",
+    "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |=> mdata == $past(ref_expected)))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+    "native_failure": {
+      "id": "a0",
+      "detail": "cycle=19"
+    },
+    "actual_samples": [
+      {
+        "cycle": 18,
+        "rst": 0,
+        "svalid": 1,
+        "sready": 0,
+        "sdata": 3722496,
+        "mvalid": 1,
+        "mready": 1,
+        "mdata": 11993824
+      },
+      {
+        "cycle": 19,
+        "rst": 0,
+        "svalid": 1,
+        "sready": 1,
+        "sdata": 3722496,
+        "mvalid": 1,
+        "mready": 1,
+        "mdata": 683108
+      }
+    ],
+    "independent_oracle_checks": [
+      {
+        "cycle": 19,
+        "obligation": "no_unsolicited_output",
+        "passed": true,
+        "transaction_id": null
+      },
+      {
+        "cycle": 19,
+        "obligation": "order_payload",
+        "passed": true,
+        "transaction_id": "e1:t1",
+        "expected": 683108,
+        "actual": 683108
+      }
+    ],
+    "correct_rtl_verdict": "no_violation_within_execution",
+    "artifact": "deliverables/research15_native_20261015_r01/initial_temporal_continuation",
+    "acceptance": "rejected",
+    "independent_test": "not run; no accepted final candidate"
+  }
+]

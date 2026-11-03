@@ -1,0 +1,285 @@
+You are a formal verification engineer.
+Generate exactly one SystemVerilog Assertion in this strict format:
+assert property (@(posedge clk) disable iff (!rst_n) (<ANTECEDENT>) |-> (<CONSEQUENT>));
+
+Rules:
+1) Output only one assertion line. No explanation. No markdown.
+2) Use only allowed signals listed below.
+3) Keep antecedent and consequent purely boolean (no ##, no $past, no sequence operators).
+4) No helper/internal names such as next_state, count_next, count_prev, old(...), S_*.
+5) Do not concatenate multiple assertions. Exactly one assert property statement.
+6) For register-update behavior, prefer next-cycle implication (|=>) instead of same-cycle check.
+7) The assertion should pass on good behavior and fail on bad behavior.
+8) Avoid vacuous antecedent: choose a condition that appears in traces.
+9) Internal RTL names may appear below for understanding only. Never reference any name that is not in Allowed signals.
+10) If the full intent cannot be expressed under these restrictions, emit the strongest single implication over Allowed signals that still distinguishes good and bad traces.
+11) The final assertion line must contain exactly one implication operator total: either one |-> or one |=>.
+12) Treat the trace divergence summary as observational evidence only.
+13) Infer a general relation from the divergence; do not hard-code one observed trace value or one observed transition unless the value is explicitly justified by the spec or RTL.
+14) If "First divergence cycle" is "none", fall back to the strongest RTL/spec-based property you can express with allowed signals.
+
+Allowed signals:
+clk, rst_n, oh_i, addr_i, en_i, err_o
+
+Specification:
+When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.
+
+Additional guidance:
+- Waveform naming hints: addr_i appears in waveforms as column 'addr_i[1:0]'; oh_i appears in waveforms as column 'oh_i[3:0]'.
+
+RTL:
+// Auto-generated real RTL mutation scaffold.
+// case: case101_prim_onehot_multihot_suppressed
+// source_project: opentitan
+// source_module: prim_onehot_check
+
+`ifndef ASSERT_DEFAULT_CLK
+`define ASSERT_DEFAULT_CLK clk_i
+`endif
+`ifndef ASSERT_DEFAULT_RST
+`define ASSERT_DEFAULT_RST !rst_ni
+`endif
+`ifndef ASSERT_I
+`define ASSERT_I(__name, __prop)
+`endif
+`ifndef ASSERT_INIT
+`define ASSERT_INIT(__name, __prop)
+`endif
+`ifndef ASSERT_INIT_NET
+`define ASSERT_INIT_NET(__name, __prop)
+`endif
+`ifndef ASSERT_FINAL
+`define ASSERT_FINAL(__name, __prop)
+`endif
+`ifndef ASSERT_AT_RESET
+`define ASSERT_AT_RESET(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_AT_RESET_AND_FINAL
+`define ASSERT_AT_RESET_AND_FINAL(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT
+`define ASSERT(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_NEVER
+`define ASSERT_NEVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_KNOWN
+`define ASSERT_KNOWN(__name, __sig, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef COVER
+`define COVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME
+`define ASSUME(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME_I
+`define ASSUME_I(__name, __prop)
+`endif
+`ifndef ASSUME_FPV
+`define ASSUME_FPV(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+
+module dut_case101_prim_onehot_multihot_suppressed (
+  input logic clk,
+  input logic rst_n,
+  input logic [3:0] oh_i,
+  input logic [1:0] addr_i,
+  input logic en_i,
+  output logic err_o
+);
+  prim_onehot_check #(
+    .AddrWidth(2),
+    .OneHotWidth(4),
+    .AddrCheck(1),
+    .EnableCheck(1),
+    .StrictCheck(1),
+    .EnableAlertTriggerSVA(0)
+  ) u_dut (
+    .clk_i(clk),
+    .rst_ni(rst_n),
+    .oh_i(oh_i),
+    .addr_i(addr_i),
+    .en_i(en_i),
+    .err_o(err_o)
+  );
+endmodule
+
+// ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim/rtl/prim_onehot_check.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+// Onehot checker.
+//
+// This module checks whether the input vector oh_i is onehot0 and generates an error if not.
+//
+// Optionally, two additional checks can be activated:
+//
+// 1) EnableCheck: this check performs an OR reduction of the onehot vector, and compares
+//    the result with en_i. If there is a mismatch, an error is generated.
+// 2) AddrCheck: this checks whether the onehot bit is in the correct position.
+//    It requires an additional address addr_i to be supplied to the module.
+//
+// All checks make use of an explicit binary tree implementation in order to minimize the delay.
+//
+
+module prim_onehot_check #(
+  parameter int unsigned AddrWidth   = 5,
+  // The onehot width can be <= 2**AddrWidth and does not have to be a power of two.
+  parameter int unsigned OneHotWidth = 2**AddrWidth,
+  // If set to 0, the addr_i input will not be used for the check and can be tied off.
+  parameter bit          AddrCheck   = 1,
+  // If set to 0, the en_i value will not be used for the check and can be tied off.
+  parameter bit          EnableCheck = 1,
+  // If set to 1, the oh_i vector must always be one hot if en_i is set to 1.
+  // If set to 0, the oh_i vector may be 0 if en_i is set to 1 (useful when oh_i can be masked).
+  parameter bit          StrictCheck = 1,
+  // This should only be disabled in special circumstances, for example
+  // in non-comportable IPs where an error does not trigger an alert.
+  parameter bit EnableAlertTriggerSVA = 1
+) (
+  // The module is combinational - the clock and reset are only used for assertions.
+  input                          clk_i,
+  input                          rst_ni,
+
+  input  logic [OneHotWidth-1:0] oh_i,
+  input  logic [AddrWidth-1:0]   addr_i,
+  input  logic                   en_i,
+
+  output logic                   err_o
+);
+
+  ///////////////////////
+  // Binary tree logic //
+  ///////////////////////
+
+  `ASSERT_INIT(NumSources_A, OneHotWidth >= 1)
+  `ASSERT_INIT(AddrWidth_A, AddrWidth >= 1)
+  `ASSERT_INIT(AddrRange_A, OneHotWidth <= 2**AddrWidth)
+  `ASSERT_INIT(AddrImpliesEnable_A, AddrCheck && EnableCheck || !AddrCheck)
+
+  // Align to powers of 2 for simplicity.
+  // A full binary tree with N levels has 2**N + 2**N-1 nodes.
+  localparam int NumLevels = AddrWidth;
+  logic [2**(NumLevels+1)-2:0] or_tree;
+  logic [2**(NumLevels+1)-2:0] and_tree; // Used for the address check
+  logic [2**(NumLevels+1)-2:0] err_tree; // Used for the enable check
+
+  for (genvar level = 0; level < NumLevels+1; level++) begin : gen_tree
+    //
+    // level+1   C0   C1   <- "Base1" points to the first node on "level+1",
+    //            \  /         these nodes are the children of the nodes one level below
+    // level       Pa      <- "Base0", points to the first node on "level",
+    //                         these nodes are the parents of the nodes one level above
+    //
+    // hence we have the following indices for the paPa, C0, C1 nodes:
+    // Pa = 2**level     - 1 + offset       = Base0 + offset
+    // C0 = 2**(level+1) - 1 + 2*offset     = Base1 + 2*offset
+    // C1 = 2**(level+1) - 1 + 2*offset + 1 = Base1 + 2*offset + 1
+    //
+    localparam int Base0 = (2**level)-1;
+    localparam int Base1 = (2**(level+1))-1;
+
+    for (genvar offset = 0; offset < 2**level; offset++) begin : gen_level
+      localparam int Pa = Base0 + offset;
+      localparam int C0 = Base1 + 2*offset;
+      localparam int C1 = Base1 + 2*offset + 1;
+
+      // This assigns the input values, their corresponding IDs and valid signals to the tree leafs.
+      if (level == NumLevels) begin : gen_leafs
+        if (offset < OneHotWidth) begin : gen_assign
+          assign or_tree[Pa]  = oh_i[offset];
+          assign and_tree[Pa] = oh_i[offset];
+        end else begin : gen_tie_off
+          assign or_tree[Pa]  = 1'b0;
+          assign and_tree[Pa] = 1'b0;
+        end
+        assign err_tree[Pa] = 1'b0;
+      // This creates the node assignments.
+      end else begin : gen_nodes
+        assign or_tree[Pa]  = or_tree[C0] || or_tree[C1];
+        assign and_tree[Pa] = (!addr_i[AddrWidth-1-level] && and_tree[C0]) ||
+                              (addr_i[AddrWidth-1-level] && and_tree[C1]);
+        assign err_tree[Pa] = (or_tree[C0] && or_tree[C1]) || err_tree[C0] || err_tree[C1];
+      end
+    end : gen_level
+  end : gen_tree
+
+  ///////////////////
+  // Onehot Checks //
+  ///////////////////
+
+  logic enable_err, addr_err, oh0_err;
+  assign err_o = oh0_err || enable_err || addr_err;
+
+  // Check that no more than 1 bit is set in the vector.
+  assign oh0_err = err_tree[0];
+  `ASSERT(Onehot0Check_A, !$onehot0(oh_i) |-> err_o)
+
+  // Check that en_i agrees with (|oh_i).
+  // Note: if StrictCheck 0, the oh_i vector may be all-zero if en_i == 1 (but not vice versa).
+  if (EnableCheck) begin : gen_enable_check
+    if (StrictCheck) begin : gen_strict
+      assign enable_err = or_tree[0] ^ en_i;
+      `ASSERT(EnableCheck_A, (|oh_i) != en_i |-> err_o)
+    end else begin : gen_not_strict
+      assign enable_err = !en_i && or_tree[0];
+      `ASSERT(EnableCheck_A, !en_i && (|oh_i) |-> err_o)
+    end
+  end else begin : gen_no_enable_check
+    logic unused_or_tree;
+    assign unused_or_tree = ^or_tree;
+    assign enable_err = 1'b0;
+  end
+
+  // Check that the set bit is actually in the correct position.
+  if (AddrCheck) begin : gen_addr_check_strict
+    assign addr_err = or_tree[0] ^ and_tree[0];
+    `ASSERT(AddrCheck_A, oh_i[addr_i] != (|oh_i) |-> err_o)
+  end else begin : gen_no_addr_check_strict
+    logic unused_and_tree;
+    assign unused_and_tree = ^and_tree;
+    assign addr_err = 1'b0;
+  end
+
+  // We want to know that a block that instantiates prim_onehot_check will raise an alert if we set
+  // our err_o output.
+  //
+  // For confidence that this is true, we use the scheme described in "Security Countermeasure
+  // Verification Framework". We expect a user of prim_onehot_check to use the
+  // ASSERT_PRIM_COUNT_ERROR_TRIGGER_ALERT macro to check that they will indeed raise an alert if we
+  // set err_o.
+  //
+  // That macro is also designed to drive our local unused_assert_connected variable to true. We add
+  // an assertion locally that checks (just after the start of time) that it is indeed true. This
+  // gives us confidence that the user has bound up the alert correctly.
+`ifdef INC_ASSERT
+  logic unused_assert_connected;
+  `ASSERT_INIT_NET(AssertConnected_A, unused_assert_connected === 1'b1 || !EnableAlertTriggerSVA)
+`endif
+
+endmodule : prim_onehot_check
+
+
+Trace divergence summary:
+Case: case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed
+First divergence cycle: 2
+Differing signals at first divergence: err_o
+Observed differing signal values (good): err_o=1
+Observed differing signal values (bad): err_o=0
+
+Structured trace summary:
+- first_divergence_cycle: 2
+- differing_signals: err_o
+- first_divergence_time_ps: 25000
+- divergence_observation: posedge_cycle
+- divergence_snapshot:
+  - err_o: good=1, bad=0
+
+Summary-driven construction checklist:
+- Identify the first divergence cycle and the listed differing signal(s).
+- Treat the differing signal(s) as candidate consequent targets.
+- Use the observed divergence to infer a reusable rule rather than a one-off constant match.
+- Choose an antecedent that is actually observed in traces and is as specific as needed to separate good from bad.
+- Avoid consequents that simply restate reset-high, rst_n, or another trivially satisfied condition.
+- Do not copy concrete multi-bit values from the summary directly into the assertion unless the spec or RTL independently justifies them.

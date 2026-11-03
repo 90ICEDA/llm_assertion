@@ -29,15 +29,10 @@ module tb_case132;
     repeat (2) @(posedge clk);
     rst_n = 1'b1;
 
-    @(negedge clk); d_i = 1'b1;
+    @(posedge clk); #1 d_i = 1'b1;
     @(posedge clk);
-    @(negedge clk); d_i = 1'b0;
     @(posedge clk);
-    @(negedge clk); d_i = 1'b1;
-    @(posedge clk);
-    @(negedge clk); d_i = 1'b0;
-    @(posedge clk);
-
+    @(posedge clk); #1 d_i = 1'b0;
     @(posedge clk);
     $finish;
   end

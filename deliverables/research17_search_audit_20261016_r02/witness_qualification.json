@@ -1,0 +1,112 @@
+{
+  "qualified": true,
+  "status": "qualified_finite_missed_violation",
+  "checks": {
+    "fixed_candidate_identity": true,
+    "fixed_native_completed": true,
+    "fixed_trace_and_oracle_reproduced": true,
+    "fixed_legal_and_known": true,
+    "buggy_candidate_identity": true,
+    "buggy_native_completed": true,
+    "buggy_trace_and_oracle_reproduced": true,
+    "buggy_legal_and_known": true,
+    "identical_actual_input_schedule": true,
+    "fixed_contract_passes": true,
+    "fixed_same_obligation_checked": true,
+    "buggy_target_violation": true,
+    "first_violation": true,
+    "fixed_candidate_no_alarm": true,
+    "buggy_candidate_no_alarm_through_target": true,
+    "bounded_parameter_scope": true,
+    "target_transactions_identified": true
+  },
+  "errors": [],
+  "scope": "archived development evidence only; finite simulation; artificial FIFO boundary fault",
+  "target_obligation": "drain_no_loss",
+  "target_cycle": 111,
+  "source_method": "contract_coverage",
+  "source_query_directory": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00",
+  "parameters": {
+    "depth": 2,
+    "pipeline": 0
+  },
+  "transaction_mapping": [
+    {
+      "transaction_id": "e1:t3",
+      "fixed": {
+        "transaction_id": "e1:t3",
+        "epoch": 1,
+        "accept_cycle": 29,
+        "data": 2410504788,
+        "response_cycle": 31,
+        "cancel_cycle": null,
+        "outcome": "responded",
+        "latency": 2,
+        "observed_data": 2410504788
+      },
+      "buggy": {
+        "transaction_id": "e1:t3",
+        "epoch": 1,
+        "accept_cycle": 29,
+        "data": 2410504788,
+        "response_cycle": null,
+        "cancel_cycle": null,
+        "outcome": "pending"
+      }
+    }
+  ],
+  "assertion_triggers": [
+    {
+      "assertion_id": "a0",
+      "obligations": [
+        "order_payload"
+      ],
+      "native_trigger_cycles": [
+        7,
+        15,
+        23
+      ],
+      "trigger_at_target_antecedent": false,
+      "total_triggers": 3
+    }
+  ],
+  "independent_target_violations": [
+    {
+      "cycle": 111,
+      "obligation": "drain_no_loss",
+      "passed": false,
+      "transaction_id": null,
+      "outstanding": [
+        "e1:t3"
+      ]
+    }
+  ],
+  "drain_scope": {
+    "max_ram_depth": 8,
+    "max_ram_pipeline": 2,
+    "output_fifo_enabled": false,
+    "required_fair_samples": 18,
+    "actual_fair_samples": 82
+  },
+  "cost": {
+    "this_query_native_executions": 5,
+    "method_queries_through_discovery": 1,
+    "method_native_executions_through_discovery": 5,
+    "complete_comparative_search_queries": 48,
+    "complete_comparative_search_executions": 240
+  },
+  "artifact_sha256": {
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/initial_candidate.json": "974a16c4f7d8f4627023d3574671ff50b9701cc485a50958e743aa64e084d5bf",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/treatment_witness.json": "6b02337f8ec08297e48975637f2429d608027d555e3927f20971b8140f968323",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/execute.log": "1d8821e43f0439c43e34ddbd9639f1222c0488130b2134ae73a92301c30da10f",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/replay.json": "0df07892fb527227fb5077f45d22410e668b6ac8962a258ab34fb336bc5b553c",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/result.json": "52432d7ee25a5c42c1ef8c19e91c201190428f2740cfbf35c75b6f6b42edcce5",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/wave.vcd": "81b58fd26928e30fbe48d0e6f4016b78ca31dc5aae114666f3d7b71615212d21",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/execute.log": "cda15cae2a46001bd630d7ed519d3a282a6f30ce3d17f059c389532090446d56",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/replay.json": "0cf3583e9f681e46ec1f58d7541bedc0bfeb7b21603c98448ac627330201160e",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/result.json": "7b2f1347265a4569029ddcf83554bf2520b844a3b610dc373a80244ff71354f3",
+    "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/wave.vcd": "c7e4c1203a42655b72f174d6a3d713e27bedae02cf2e9ccec47db139dc3744f1"
+  },
+  "miss_classification": "unprotected_obligation",
+  "candidate_set_observation": "earlier triggers exist, no trigger at target"
+}

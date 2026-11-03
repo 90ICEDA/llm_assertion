@@ -1,0 +1,2 @@
+// WritePointerWraps_A
+assert property (@(posedge clk_i) disable iff (!rst_ni) (incr_wptr_i && (wptr_o == 2'd3)) |=> (wptr_o == 2'd0));

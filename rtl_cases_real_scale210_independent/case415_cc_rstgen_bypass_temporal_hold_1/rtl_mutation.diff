@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -52,7 +52,7 @@
+ 
+     always @(posedge clk_i or negedge rst_n) begin
+         if (~rst_n) begin
+-            synch_regs_q <= 0;
++            synch_regs_q <= synch_regs_q; // ASSERTIONFORGE_MUTATION: state update suppressed
+         end else begin
+             synch_regs_q <= {synch_regs_q[NumRegs-2:0], 1'b1};
+         end

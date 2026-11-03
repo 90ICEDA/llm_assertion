@@ -1,0 +1,53 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case477_axis_ll_bridge_stall_corrupts_frame_state",
+  "source_project": "verilog_axis",
+  "overall_verification_status": "pending",
+  "candidates": [
+    {
+      "id": "weak_single_cycle_implication",
+      "weakening_type": "single_cycle_implication",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (s_valid |-> !$isunknown(ll_src_rdy_n)));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_final_output_only",
+      "weakening_type": "final_output_only",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (ll_src_rdy_n |-> !$isunknown(ll_src_rdy_n)));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_delay_removed",
+      "weakening_type": "delay_removed",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (s_valid |-> !$isunknown(s_valid)));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_antecedent_removed",
+      "weakening_type": "antecedent_removed",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(ll_src_rdy_n)));",
+      "nonempty_antecedent": false,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_simple_invariant",
+      "weakening_type": "simple_invariant",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(clk)));",
+      "nonempty_antecedent": false,
+      "rationale": "Omits the exact trigger, polarity, delay, duration, or accepted-transfer history.",
+      "verification_status": "pending",
+      "catches_bug": null
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, valid_i, ready_o, data_i, sel_i, valid_o, ready_i, data_o
+
+Specification:
+
+Input ready equals the ready signal of the selected output; unselected ready lanes must not acknowledge input.

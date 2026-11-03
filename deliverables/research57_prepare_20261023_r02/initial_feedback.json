@@ -1,0 +1,177 @@
+{
+  "task": "Refine the actual current model OP set to remove its measured false alarms. Retain all target detection.",
+  "last_decision": {
+    "accepted": false,
+    "reasons": [
+      {
+        "kind": "new_legal_false_positive",
+        "evidence_keys": {
+          "total_items": 310,
+          "identifiers_omitted": true
+        }
+      },
+      {
+        "kind": "full_scope_target_legal_trigger_or_unknown_failure"
+      },
+      {
+        "kind": "all_property_false_alarm_or_unknown",
+        "cohort": "history",
+        "details": {
+          "accepted": false,
+          "false_alarms": {
+            "total_items": 226,
+            "representatives": [
+              {
+                "revision": "before",
+                "assertion": "a1",
+                "sample_id": 272,
+                "configuration": {
+                  "RV32E": 0,
+                  "RV32M": 1
+                }
+              },
+              {
+                "revision": "before",
+                "assertion": "a1",
+                "sample_id": 272,
+                "configuration": {
+                  "RV32E": 0,
+                  "RV32M": 0
+                }
+              }
+            ],
+            "omitted_items": 224
+          },
+          "unknown": [],
+          "scope": "All native property failures, regardless of claimed obligation mapping."
+        }
+      },
+      {
+        "kind": "all_property_false_alarm_or_unknown",
+        "cohort": "search",
+        "details": {
+          "accepted": false,
+          "false_alarms": {
+            "total_items": 84,
+            "representatives": [
+              {
+                "revision": "before",
+                "assertion": "a2",
+                "sample_id": 63,
+                "configuration": {
+                  "RV32E": 0,
+                  "RV32M": 1
+                }
+              },
+              {
+                "revision": "before",
+                "assertion": "a2",
+                "sample_id": 63,
+                "configuration": {
+                  "RV32E": 0,
+                  "RV32M": 0
+                }
+              }
+            ],
+            "omitted_items": 82
+          },
+          "unknown": [],
+          "scope": "All native property failures, regardless of claimed obligation mapping."
+        }
+      }
+    ],
+    "shared_gate": {
+      "accepted": false,
+      "reasons": [
+        {
+          "kind": "new_legal_false_positive",
+          "evidence_keys": {
+            "total_items": 310,
+            "identifiers_omitted": true
+          }
+        }
+      ],
+      "prior_unknown_evidence": [],
+      "before_sha256": "24fa0f04dcdf9cddbfdbcf937171b7c67a76dcc782d60efcf1eb3845aa4a93b3",
+      "after_sha256": "636553543e738a27b0a9b8ae283698ebb0dbbee20e4994247dc33f858dcfdfb6",
+      "counts": {
+        "before": {
+          "rows": 3996,
+          "unknown": 0,
+          "triggers": 696,
+          "false_positives": 0,
+          "detections": 270,
+          "misses": 420
+        },
+        "after": {
+          "rows": 3996,
+          "unknown": 0,
+          "triggers": 2082,
+          "false_positives": 310,
+          "detections": 690,
+          "misses": 0
+        }
+      },
+      "obligation_assertion_evidence_mapping": {
+        "illegal_branch_persists": {
+          "assertions": [
+            "a0"
+          ],
+          "trigger_evidence": {
+            "total_items": 696,
+            "identifiers_omitted": true
+          },
+          "violation_evidence": {
+            "total_items": 270,
+            "identifiers_omitted": true
+          },
+          "legal_evidence": {
+            "total_items": 426,
+            "identifiers_omitted": true
+          },
+          "gaps": []
+        },
+        "op_bit28_illegal": {
+          "assertions": [
+            "a1"
+          ],
+          "trigger_evidence": {
+            "total_items": 840,
+            "identifiers_omitted": true
+          },
+          "violation_evidence": {
+            "total_items": 420,
+            "identifiers_omitted": true
+          },
+          "legal_evidence": {
+            "total_items": 420,
+            "identifiers_omitted": true
+          },
+          "gaps": []
+        },
+        "encoding_controls": {
+          "assertions": [
+            "a1",
+            "a2",
+            "a3"
+          ],
+          "trigger_evidence": {
+            "total_items": 546,
+            "identifiers_omitted": true
+          },
+          "violation_evidence": [],
+          "legal_evidence": {
+            "total_items": 2460,
+            "identifiers_omitted": true
+          },
+          "gaps": {
+            "total_items": 310,
+            "identifiers_omitted": true
+          }
+        }
+      },
+      "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+    },
+    "applicability_rule": "Native trigger observations retained; lost-trigger acceptance constraint applies only to independently required obligations."
+  }
+}

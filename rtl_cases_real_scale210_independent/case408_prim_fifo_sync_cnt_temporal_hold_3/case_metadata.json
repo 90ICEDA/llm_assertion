@@ -1,0 +1,114 @@
+{
+  "name": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+  "parent_bug_id": "case408_prim_fifo_sync_cnt_temporal_hold_3",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_fifo_sync_cnt",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_fifo_sync_cnt.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "wptr_wrap_cnt_q state update is suppressed",
+  "spec": "An accepted write advances wptr_o modulo the configured depth. A write accepted at the final pointer position wraps wptr_o to zero on the following sampled cycle while occupancy accounting continues across the wrap.",
+  "golden_sva": {
+    "name": "WritePointerWraps_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (incr_wptr_i && (wptr_o == 2'd3)) |=> (wptr_o == 2'd0));",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (incr_wptr_i && (wptr_o == 2'd3)) |=> (wptr_o == 2'd0));",
+    "temporal_type": "one-cycle delayed state transition"
+  },
+  "mutation_edits": [
+    {
+      "line": 124,
+      "search": "        wptr_wrap_cnt_q <= wptr_wrap_set_cnt;",
+      "replace": "        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "wptr_wrap_cnt_q",
+  "relevant_signals": [
+    "rst_ni",
+    "clk_i",
+    "clr_i",
+    "incr_wptr_i",
+    "wptr_o",
+    "depth_o",
+    "full_o",
+    "empty_o",
+    "depth_o[2:0]",
+    "wptr_o[1:0]"
+  ],
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 85000,
+      "cycle_index": 8,
+      "sample_index": 17,
+      "clock_phase": "rising edge",
+      "signals": [
+        "depth_o[2:0]",
+        "full_o",
+        "wptr_o[1:0]"
+      ],
+      "good_values": {
+        "depth_o[2:0]": "100",
+        "full_o": "1",
+        "wptr_o[1:0]": "00"
+      },
+      "bad_values": {
+        "depth_o[2:0]": "011",
+        "full_o": "0",
+        "wptr_o[1:0]": "11"
+      }
+    },
+    "heldout": {
+      "time_ps": 76000,
+      "cycle_index": 9,
+      "sample_index": 19,
+      "clock_phase": "rising edge",
+      "signals": [
+        "depth_o[2:0]",
+        "wptr_o[1:0]"
+      ],
+      "good_values": {
+        "depth_o[2:0]": "011",
+        "wptr_o[1:0]": "00"
+      },
+      "bad_values": {
+        "depth_o[2:0]": "010",
+        "wptr_o[1:0]": "11"
+      }
+    },
+    "decoy": {
+      "time_ps": 138000,
+      "cycle_index": 11,
+      "sample_index": 23,
+      "clock_phase": "rising edge",
+      "signals": [
+        "depth_o[2:0]",
+        "full_o",
+        "wptr_o[1:0]"
+      ],
+      "good_values": {
+        "depth_o[2:0]": "100",
+        "full_o": "1",
+        "wptr_o[1:0]": "00"
+      },
+      "bad_values": {
+        "depth_o[2:0]": "011",
+        "full_o": "0",
+        "wptr_o[1:0]": "11"
+      }
+    }
+  },
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "be647efa36aa4228db8a9151ac07c83a95cdd9aef71a4488fa619a876d809fbc",
+  "buggy_sha256": "a7bf7cfca81ee48e0226a2b28b19c898ee52b50258fd252fa70665dcce5997b1",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete"
+}

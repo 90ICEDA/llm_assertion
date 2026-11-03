@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, error_valid_i, error_overflow_i, error_payload_i, error_valid_o, error_overflow_o, error_payload_o
+
+Specification:
+
+The lowest-index valid RACL error supplies the output payload. If two or more errors are valid in the same cycle, the selected record remains valid and `error_overflow_o` must assert to report every valid but ungranted error, even when no input overflow bit was already set.

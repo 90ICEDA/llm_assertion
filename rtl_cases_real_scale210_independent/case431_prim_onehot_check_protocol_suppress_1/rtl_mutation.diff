@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -83,7 +83,7 @@
+       // This assigns the input values, their corresponding IDs and valid signals to the tree leafs.
+       if (level == NumLevels) begin : gen_leafs
+         if (offset < OneHotWidth) begin : gen_assign
+-          assign or_tree[Pa]  = oh_i[offset];
++          assign or_tree[Pa] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+           assign and_tree[Pa] = oh_i[offset];
+         end else begin : gen_tie_off
+           assign or_tree[Pa]  = 1'b0;

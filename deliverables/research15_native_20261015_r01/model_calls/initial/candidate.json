@@ -1,0 +1,17 @@
+{
+  "assertions": [
+    {
+      "property": "mvalid && mready |-> sdata == ref_expected",
+      "obligations": [
+        "order_payload"
+      ],
+      "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+      "id": "a0",
+      "derived_antecedent": "mvalid && mready",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "sdata == ref_expected"
+    }
+  ],
+  "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+}

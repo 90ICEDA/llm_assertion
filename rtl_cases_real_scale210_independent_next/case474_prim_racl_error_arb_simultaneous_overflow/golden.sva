@@ -1,0 +1,1 @@
+assert property (@(posedge clk_i) disable iff (!rst_ni) ($countones(error_valid_i) > 1) |-> error_overflow_o);

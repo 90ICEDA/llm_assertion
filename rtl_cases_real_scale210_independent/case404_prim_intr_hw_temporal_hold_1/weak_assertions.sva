@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Checks the current sample and misses registered-output latency.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) (reg2hw_intr_state_q_i && reg2hw_intr_enable_q_i) |-> intr_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Only checks the output endpoint for knownness.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(intr_o));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Collapses the registered response into the event cycle.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (event_intr_i != '0) |-> (intr_o != '0));
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the reset antecedent and becomes a coarse constant-output claim.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) intr_o == '0);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: A mask invariant cannot prove reset or prior-cycle capture semantics.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) (intr_o & ~reg2hw_intr_enable_q_i) == '0);

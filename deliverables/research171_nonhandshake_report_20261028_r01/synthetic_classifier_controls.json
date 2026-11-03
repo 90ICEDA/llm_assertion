@@ -1,0 +1,231 @@
+[
+  {
+    "name": "truncate before actual transfer",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "category": "unknown",
+      "reason": "trace_ended_without_transfer",
+      "reference_applicability": "not_applicable_no_transfer",
+      "sid": 0,
+      "episode_id": 0,
+      "request_ids": [
+        "0:2:3"
+      ],
+      "presentation_cycle": 4,
+      "transfer_cycle": null
+    },
+    "trace_sha256": "7e9fce7371334198da938fd0023c469920096ee1d849756d1a3c10102860ede7"
+  },
+  {
+    "name": "reset before actual transfer",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "category": "unknown",
+      "reason": "reset_cancelled",
+      "reference_applicability": "not_applicable_no_transfer",
+      "sid": 0,
+      "episode_id": 0,
+      "request_ids": [
+        "0:2:3"
+      ],
+      "presentation_cycle": 4,
+      "transfer_cycle": null
+    },
+    "trace_sha256": "6392feb431dd55bf814a0b85000c9161c9131b9d68089f03e64b8e065450b08a"
+  },
+  {
+    "name": "withdraw valid then re-present identical payload",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "category": "unknown",
+      "reason": "valid_withdrawn",
+      "reference_applicability": "not_applicable_no_transfer",
+      "sid": 0,
+      "episode_id": 0,
+      "request_ids": [
+        "0:2:3"
+      ],
+      "presentation_cycle": 4,
+      "transfer_cycle": null
+    },
+    "trace_sha256": "fef46e0efcbf746a65c04b910df45a84e50996cf38d0dbf61cef19316204ff4c"
+  },
+  {
+    "name": "change payload then restore before target",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "category": "unknown",
+      "reason": "changed_payload_before_transfer",
+      "reference_applicability": "not_applicable_no_transfer",
+      "sid": 0,
+      "episode_id": 0,
+      "request_ids": [
+        "0:2:3"
+      ],
+      "presentation_cycle": 4,
+      "transfer_cycle": 9
+    },
+    "trace_sha256": "eb19d08540fd6bbd548544807cc537a355566c9193ece31f65f0bf121124091a"
+  },
+  {
+    "name": "missing sample inside hold interval",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "category": "unknown",
+      "reason": "incomplete_or_unalignable_trace",
+      "reference_applicability": "not_applicable_no_transfer",
+      "sid": 0
+    },
+    "trace_sha256": "1e9ff792014a08a9d1a2db04487ac207e8b07c490141b93bc3e61d17510f447c"
+  },
+  {
+    "name": "scenario boundary cannot reuse following target",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "category": "unknown",
+      "reason": "scenario_boundary_without_transfer",
+      "reference_applicability": "not_applicable_no_transfer",
+      "sid": 0,
+      "episode_id": 0,
+      "request_ids": [
+        "0:2:3"
+      ],
+      "presentation_cycle": 4,
+      "transfer_cycle": null
+    },
+    "trace_sha256": "a27d320409f07027294babe845537c1917a3a4294a0caad02c0bf31bf0895aa3"
+  },
+  {
+    "name": "request presented but never accepted",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "category": "unknown",
+      "reason": "incomplete_or_unalignable_trace",
+      "reference_applicability": "not_applicable_no_transfer",
+      "sid": 0
+    },
+    "trace_sha256": "3d0afa36d8d0db310de852b41f72837c104254881df34d6920a68cc5c48937f6"
+  },
+  {
+    "name": "same_payload_distinct_requests",
+    "origin": "synthetic_python_classifier_control_not_native",
+    "episodes": [
+      {
+        "id": 0,
+        "sid": 0,
+        "epoch": 2,
+        "start_cycle": 4,
+        "request_ids": [
+          "0:2:3"
+        ],
+        "requests": [
+          {
+            "id": "0:2:3",
+            "cycle": 3,
+            "sid": 0,
+            "epoch": 2,
+            "byte": 7,
+            "last": 1
+          }
+        ],
+        "stable": true,
+        "cycles": [
+          4,
+          5,
+          6
+        ],
+        "status": "accepted",
+        "transfer_cycle": 6,
+        "expected_keep": 1,
+        "expected_last": 1,
+        "actual_first": {
+          "md": 7,
+          "mk": 0,
+          "ml": 1
+        },
+        "alignment_known": true,
+        "transfer_reference": {
+          "cycle": 6,
+          "sid": 0,
+          "applicability": "applicable_transfer",
+          "episode": 0,
+          "presented": true,
+          "accepted_output": true,
+          "expected_keep": 1,
+          "request_ids": [
+            "0:2:3"
+          ],
+          "reference_checks": {
+            "keep_mask": false,
+            "frame_boundary": true,
+            "byte_order": true
+          }
+        }
+      },
+      {
+        "id": 1,
+        "sid": 0,
+        "epoch": 2,
+        "start_cycle": 7,
+        "request_ids": [
+          "0:2:4"
+        ],
+        "requests": [
+          {
+            "id": "0:2:4",
+            "cycle": 4,
+            "sid": 0,
+            "epoch": 2,
+            "byte": 7,
+            "last": 1
+          }
+        ],
+        "stable": true,
+        "cycles": [
+          7
+        ],
+        "status": "accepted",
+        "transfer_cycle": 7,
+        "expected_keep": 1,
+        "expected_last": 1,
+        "actual_first": {
+          "md": 7,
+          "mk": 0,
+          "ml": 1
+        },
+        "alignment_known": true,
+        "transfer_reference": {
+          "cycle": 7,
+          "sid": 0,
+          "applicability": "applicable_transfer",
+          "episode": 1,
+          "presented": true,
+          "accepted_output": true,
+          "expected_keep": 1,
+          "request_ids": [
+            "0:2:4"
+          ],
+          "reference_checks": {
+            "keep_mask": false,
+            "frame_boundary": true,
+            "byte_order": true
+          }
+        }
+      }
+    ]
+  }
+]

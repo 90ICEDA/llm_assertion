@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -55,7 +55,7 @@
+     assign usage_o = status_cnt_q;
+ 
+     if (Depth == 0) begin : gen_pass_through
+-        assign empty_o     = ~push_i;
++        assign empty_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+         assign full_o      = ~pop_i;
+     end else begin : gen_fifo
+         assign full_o       = (status_cnt_q == FifoDepth[UsageWidth-1:0]);

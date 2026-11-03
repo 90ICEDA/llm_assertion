@@ -1,0 +1,208 @@
+{
+  "accepted": true,
+  "reasons": [],
+  "stage": "sample_bound_events_then_applicability",
+  "bindings": {
+    "anchor_cycle": "anchor_sample.cycle",
+    "check_cycle": "check_sample.cycle",
+    "anchor_reset": "anchor_sample.rst == 1",
+    "check_reset": "check_sample.rst == 1",
+    "anchor_pending": "anchor_sample.rst == 0 and anchor_sample.mvalid == 1 and anchor_sample.mready == 0"
+  },
+  "anchor_certificates": [
+    {
+      "id": "w0",
+      "sample": "anchor_sample",
+      "cycle": 3,
+      "reset": false
+    },
+    {
+      "id": "w1",
+      "sample": "anchor_sample",
+      "cycle": 5,
+      "reset": false
+    },
+    {
+      "id": "w2",
+      "sample": "anchor_sample",
+      "cycle": 30,
+      "reset": false
+    },
+    {
+      "id": "w3",
+      "sample": "anchor_sample",
+      "cycle": 22,
+      "reset": false
+    },
+    {
+      "id": "w4",
+      "sample": "anchor_sample",
+      "cycle": 14,
+      "reset": false
+    },
+    {
+      "id": "w5",
+      "sample": "anchor_sample",
+      "cycle": 2,
+      "reset": true
+    },
+    {
+      "id": "w6",
+      "sample": "anchor_sample",
+      "cycle": 22,
+      "reset": false
+    },
+    {
+      "id": "w7",
+      "sample": "anchor_sample",
+      "cycle": 18,
+      "reset": false
+    },
+    {
+      "id": "w8",
+      "sample": "anchor_sample",
+      "cycle": 17,
+      "reset": false
+    },
+    {
+      "id": "w9",
+      "sample": "anchor_sample",
+      "cycle": 60,
+      "reset": false
+    },
+    {
+      "id": "w10",
+      "sample": "anchor_sample",
+      "cycle": 30,
+      "reset": false
+    }
+  ],
+  "legacy_gate": {
+    "accepted": true,
+    "reasons": [],
+    "stage": "event_then_applicability",
+    "labels": {
+      "accepted": true,
+      "reasons": [],
+      "stage": "applicability",
+      "windows": 11,
+      "scope": "These development windows only; no general specification understanding claim."
+    },
+    "certificates": [
+      {
+        "id": "w0",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/core/qualification/common/case_0/correct/replay.json",
+        "source_sha256": "9a91afcfda2344d7a3feb660e1f9e286c803541d5961ebd6e8568d1188365f59",
+        "facts": {
+          "pending": false,
+          "reset": false
+        },
+        "independent_label": "not_required"
+      },
+      {
+        "id": "w1",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/core/qualification/common/case_0/correct/replay.json",
+        "source_sha256": "9a91afcfda2344d7a3feb660e1f9e286c803541d5961ebd6e8568d1188365f59",
+        "facts": {
+          "pending": true,
+          "reset": false
+        },
+        "independent_label": "required"
+      },
+      {
+        "id": "w2",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/s4211/core/qualification/acquired/case_1/correct/replay.json",
+        "source_sha256": "1188262023a48a6d752865e7f2a085350372326cc823bd37e86409f623f7c369",
+        "facts": {
+          "pending": true,
+          "reset": false
+        },
+        "independent_label": "required"
+      },
+      {
+        "id": "w3",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/s4211/core/qualification/acquired/case_0/long_valid_withdraw_stalled/replay.json",
+        "source_sha256": "1d9a3ef965e41e5fd67184ad4e6415d7c27d773d175e26b59b003250519259d0",
+        "facts": {
+          "pending": true,
+          "reset": false
+        },
+        "independent_label": "required"
+      },
+      {
+        "id": "w4",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research45_real_20261022_r01/pilot/core/v2/visible_native/case_2/correct/replay.json",
+        "source_sha256": "499a60c3b5a4f3e3c89e8b708a0e76c116e97e4eb5e926b8feecc79d89732816",
+        "facts": {
+          "pending": false,
+          "reset": false
+        },
+        "independent_label": "not_required"
+      },
+      {
+        "id": "w5",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/core/qualification/common/case_0/correct/replay.json",
+        "source_sha256": "9a91afcfda2344d7a3feb660e1f9e286c803541d5961ebd6e8568d1188365f59",
+        "facts": {
+          "pending": false,
+          "reset": false
+        },
+        "independent_label": "not_required"
+      },
+      {
+        "id": "w6",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/s4211/core/qualification/acquired/case_0/correct/replay.json",
+        "source_sha256": "cbd7b2b0b79b09da8bb7a07d8a0721f000758a8c01891a45c79d090d3308284d",
+        "facts": {
+          "pending": true,
+          "reset": false
+        },
+        "independent_label": "required"
+      },
+      {
+        "id": "w7",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/core/qualification/common/case_0/correct/replay.json",
+        "source_sha256": "9a91afcfda2344d7a3feb660e1f9e286c803541d5961ebd6e8568d1188365f59",
+        "facts": {
+          "pending": false,
+          "reset": false
+        },
+        "independent_label": "not_required"
+      },
+      {
+        "id": "w8",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/core/qualification/common/case_0/correct/replay.json",
+        "source_sha256": "9a91afcfda2344d7a3feb660e1f9e286c803541d5961ebd6e8568d1188365f59",
+        "facts": {
+          "pending": true,
+          "reset": false
+        },
+        "independent_label": "required"
+      },
+      {
+        "id": "w9",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/core/qualification/common/case_0/correct/replay.json",
+        "source_sha256": "9a91afcfda2344d7a3feb660e1f9e286c803541d5961ebd6e8568d1188365f59",
+        "facts": {
+          "pending": true,
+          "reset": true
+        },
+        "independent_label": "cancelled"
+      },
+      {
+        "id": "w10",
+        "source": "/mnt/d/AssertionForge-main1/deliverables/research43_prepare_20261022_r02/s4211/core/qualification/acquired/case_1/long_valid_withdraw_release/replay.json",
+        "source_sha256": "38be58788c76b4176cc14290d413b45cf0099a9c22a1dde38c316f0875f33add",
+        "facts": {
+          "pending": true,
+          "reset": false
+        },
+        "independent_label": "required"
+      }
+    ],
+    "windows": 11,
+    "scope": "Qualified development windows only. Original three-way acceptance retained. No property is generated by this validator."
+  },
+  "windows": 11,
+  "scope": "All fields on these development windows only; not independent model generalization or SVA success."
+}

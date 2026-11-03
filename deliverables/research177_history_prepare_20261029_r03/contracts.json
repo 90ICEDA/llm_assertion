@@ -1,0 +1,7 @@
+{
+  "pipeline": "Original AXI pipeline FIFO preserves each actually accepted byte and TLAST in order; output stable under stall. Same fixed legal port stimuli both revisions, but acceptance counts may differ with capacity. No equality of ready or cycles required. Once source ends at cycle100, sink ready stays high; 156 cycles drain exceeds both configured maximum buffers/pipeline; report leftover accepted requests, not mere waveform differences.",
+  "frame_len": "Count only monitor valid&&ready beats. With KEEP_ENABLE1 and contiguous low keep masks, byte count is popcount; with KEEP_ENABLE0,width8 one byte per accepted beat. One cycle after accepted TLAST report that frame length and valid; next frame starts zero; reset discards partial frame. Count sums stay below16-bit wrap.",
+  "limitations": "No protocol latency for axis_switch inferred from whitespace patch. Assignment fix may be simulator/tool scheduling only; no before/fixed functional witness means unknown.",
+  "counts": "Model0/network0. Diagnostic SVA is handwritten, never model-generated. All tests development. No mechanism increment or pilot qualification established.",
+  "budget": "12 compile attempts for fixed6 pairs; global ceiling16, no automatic retries, no replacement cases."
+}

@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reason",
+    "operation",
+    "assertions"
+  ],
+  "properties": {
+    "reason": {
+      "type": "string"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "add"
+      ]
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "property",
+          "obligation"
+        ],
+        "properties": {
+          "property": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "pattern": "^(svalid|sready|sdata|mvalid|mready|mdata|ref_count|ref_expected|drain_due|\\$past|\\$stable|\\$rose|\\$fell|\\$changed|\\$isunknown|\\$unsigned|\\$signed|[0-9]+|&&|\\|\\||==|!=|<=|>=|-|[ ()!<>,+*/%?:.])+(\\|->|\\|=>)(svalid|sready|sdata|mvalid|mready|mdata|ref_count|ref_expected|drain_due|\\$past|\\$stable|\\$rose|\\$fell|\\$changed|\\$isunknown|\\$unsigned|\\$signed|[0-9]+|&&|\\|\\||==|!=|<=|>=|-|[ ()!<>,+*/%?:.])+$"
+          },
+          "obligation": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 2,
+            "items": {
+              "type": "string",
+              "enum": [
+                "order_payload",
+                "drain_no_loss",
+                "no_unsolicited_output",
+                "stall_stability",
+                "reset_cancellation"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

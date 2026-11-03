@@ -1,0 +1,110 @@
+{
+  "name": "case452_prim_clock_timeout_clear_condition",
+  "parent_bug_id": "case452_prim_clock_timeout_clear_condition",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_clock_timeout",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_clock_timeout.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_clock_timeout.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "timeout_clear_condition_conjunction",
+  "bug_type": "conditional counter clear",
+  "spec": "Either an acknowledgement or disabling the monitor clears the timeout counter on the following reference edge.",
+  "mutation_edits": [
+    {
+      "search": "else if(ack || !en_i) cnt<='0;",
+      "replace": "else if(ack && !en_i) cnt<='0;"
+    }
+  ],
+  "mutation_signal": "cnt",
+  "relevant_signals": [
+    "clk_i",
+    "clk_chk_i",
+    "rst_ni",
+    "en_i",
+    "ack",
+    "cnt",
+    "timeout_o"
+  ],
+  "temporal_type": "conditional counter clear",
+  "mutation_kind": "real_rtl_line_replacement",
+  "dataset_phase": "independent_next_hard_batch1",
+  "status": "final_verified_rejected",
+  "golden_sva": {
+    "name": "Golden_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (ack || !en_i) |=> cnt == 0);",
+    "temporal_type": "conditional counter clear"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 35000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "cnt[2:0]"
+      ],
+      "good_values": {
+        "cnt[2:0]": "000"
+      },
+      "bad_values": {
+        "cnt[2:0]": "010"
+      },
+      "good_trace_sha256": "9e1c16e38c3e5e886cc7b7608a5fd8e8e7e0042abf125f964e0467a4ebbc2dc0",
+      "bad_trace_sha256": "2985b9f89507cf736df28bcac4455f00e671483a4638f8a0cb2360d24cd951e0",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 45000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "cnt[2:0]"
+      ],
+      "good_values": {
+        "cnt[2:0]": "000"
+      },
+      "bad_values": {
+        "cnt[2:0]": "100"
+      },
+      "good_trace_sha256": "bf3b74e921151b1d840cdf34c85afcbc217d51398b5bc01d0a2d123d80ede98b",
+      "bad_trace_sha256": "c9fdd725495cd8c956a1e7fc7841c5dd0b719eabf1e2a5d24586c561062e2907",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 35000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "cnt[2:0]"
+      ],
+      "good_values": {
+        "cnt[2:0]": "000"
+      },
+      "bad_values": {
+        "cnt[2:0]": "010"
+      },
+      "good_trace_sha256": "d154a8e55385c2e3ef89f5f55132eb8c64ff8b00a7c6837af2d0e15e3c425b54",
+      "bad_trace_sha256": "609bb8f21d5d8d9c0184a2a62e182f811d2cfcfce7ad9915d70644f027c30b88",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "822df598e3597096cd0ee1a1f2e2f74336e55c042efbf624fbcdb8712e995c62",
+  "buggy_sha256": "68fad0568b47178e54ddf8ca032ba5448b62019efff07e3a4469f24bf9200cc0",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

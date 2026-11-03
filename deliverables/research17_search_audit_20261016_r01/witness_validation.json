@@ -1,0 +1,75 @@
+{
+  "valid": true,
+  "conditions": {
+    "legal_inputs": true,
+    "accepted_transactions_aligned": true,
+    "buggy_violates_confirmed_obligation": true,
+    "fixed_satisfies_same_obligation": true,
+    "candidate_misses_with_accepted_legal_control": true
+  },
+  "native_and_oracle_healthy": true,
+  "native_health": {
+    "correct": {
+      "compile": "passed",
+      "support": "supported_for_compiled_constructs",
+      "execution": "completed",
+      "native_cover": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "oracle_unknown": [],
+      "oracle_matches_archive": true
+    },
+    "drop": {
+      "compile": "passed",
+      "support": "supported_for_compiled_constructs",
+      "execution": "completed",
+      "native_cover": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "oracle_unknown": [],
+      "oracle_matches_archive": true
+    }
+  },
+  "obligation": "drain_no_loss",
+  "fault_mode": "drop",
+  "cycle": 111,
+  "miss_subtype": "no_assertion_mapped_to_obligation",
+  "mapped_assertions": [],
+  "all_candidate_trigger_counts": {
+    "a0": 3
+  },
+  "aligned_transactions": [
+    {
+      "buggy": {
+        "transaction_id": "e1:t3",
+        "epoch": 1,
+        "accept_cycle": 29,
+        "data": 2410504788,
+        "response_cycle": null,
+        "cancel_cycle": null,
+        "outcome": "pending"
+      },
+      "fixed": {
+        "transaction_id": "e1:t3",
+        "epoch": 1,
+        "accept_cycle": 29,
+        "data": 2410504788,
+        "response_cycle": 31,
+        "cancel_cycle": null,
+        "outcome": "responded",
+        "latency": 2,
+        "observed_data": 2410504788
+      },
+      "matched_accept": true
+    }
+  ],
+  "same_accepted_inputs": true,
+  "source_query": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00",
+  "source_hashes": {
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/execute.log": "1d8821e43f0439c43e34ddbd9639f1222c0488130b2134ae73a92301c30da10f",
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/replay.json": "0df07892fb527227fb5077f45d22410e668b6ac8962a258ab34fb336bc5b553c",
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/independent_oracle.json": "534fa0336605618cad88218284bfda2015cd7b9a35a7b98719d6e0b68db60314",
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/wave.vcd": "81b58fd26928e30fbe48d0e6f4016b78ca31dc5aae114666f3d7b71615212d21",
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/execute.log": "cda15cae2a46001bd630d7ed519d3a282a6f30ce3d17f059c389532090446d56",
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/replay.json": "0cf3583e9f681e46ec1f58d7541bedc0bfeb7b21603c98448ac627330201160e",
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/independent_oracle.json": "cd8b66bdf9e3e8f286f96d2c1e909d338b1f64806186502610b48bef6ce726d2",
+    "deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/wave.vcd": "c7e4c1203a42655b72f174d6a3d713e27bedae02cf2e9ccec47db139dc3744f1"
+  },
+  "scope": "Finite native replay of artificial FIFO boundary fault; no original FIFO presented bug claim or formal proof."
+}

@@ -17,6 +17,10 @@ def parse_vcd(vcd_path: Path):
     in_header = True
     current_time = 0
 
+    def is_pulse_sid(sid: str) -> bool:
+        names = id_to_names.get(sid, [])
+        return any(name.endswith(".q_posedge_pulse_o") or name.endswith(".q_negedge_pulse_o") for name in names)
+
     def full_name(name: str) -> str:
         if scope_stack:
             return ".".join(scope_stack + [name])
@@ -80,7 +84,11 @@ def parse_vcd(vcd_path: Path):
                 if sid in values:
                     values[sid] = val
                     if times and rows and rows[-1][0] == current_time:
-                        rows[-1][1][sid] = val
+                        if is_pulse_sid(sid):
+                            prev_val = rows[-1][1].get(sid, "0")
+                            rows[-1][1][sid] = "1" if prev_val == "1" or val == "1" else "0"
+                        else:
+                            rows[-1][1][sid] = val
                 continue
 
             # vector: b1010 !
@@ -98,7 +106,11 @@ def parse_vcd(vcd_path: Path):
                             val = (fill * (width - len(val))) + val
                     values[sid] = val
                     if times and rows and rows[-1][0] == current_time:
-                        rows[-1][1][sid] = val
+                        if is_pulse_sid(sid):
+                            prev_val = rows[-1][1].get(sid, "0" * width)
+                            rows[-1][1][sid] = val if "1" in prev_val or "1" in val else prev_val
+                        else:
+                            rows[-1][1][sid] = val
                 continue
 
     # Keep only top-level tb signals for cleaner CSV.

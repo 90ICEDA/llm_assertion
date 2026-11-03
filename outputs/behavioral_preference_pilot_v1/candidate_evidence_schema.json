@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "required_candidate_fields": [
+    "candidate_id",
+    "parent_bug_id",
+    "prompt_path",
+    "prompt_sha256",
+    "sva_path",
+    "sva_sha256",
+    "correct_rtl_sha256",
+    "buggy_rtl_sha256",
+    "mutation_diff_sha256",
+    "stimulus_paths",
+    "stimulus_sha256",
+    "seed",
+    "commands",
+    "tool_versions",
+    "raw_log_paths",
+    "raw_log_sha256",
+    "compile_ok",
+    "signal_legal",
+    "fixed_safe",
+    "target_detect",
+    "antecedent_hit",
+    "non_vacuous",
+    "fp_probe_ids",
+    "tp_mutant_ids",
+    "probe_policy",
+    "wall_clock_seconds"
+  ],
+  "set_semantics": {
+    "fp_probe_ids": "legal behaviors falsely rejected",
+    "tp_mutant_ids": "same-family buggy mutants detected"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "seeds": [
+    4201,
+    4211,
+    4217
+  ],
+  "arms": {
+    "A": {
+      "search": false,
+      "gate": false
+    },
+    "B": {
+      "search": true,
+      "gate": false
+    },
+    "C": {
+      "search": false,
+      "gate": true
+    },
+    "D": {
+      "search": true,
+      "gate": true
+    }
+  },
+  "physical_model_calls": 6,
+  "logical_arm_calls": 12,
+  "proposal_pairing": "A/C share ordinary real proposal; B/D share search real proposal. One call per stream, no retries, no choosing among outputs.",
+  "initial_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+  "history_cases": 105,
+  "temperature": 0.2,
+  "max_output_tokens": 2048,
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "preview_hashes": {
+    "s4201/ordinary/request.preview.json": "d08a72cbea2dee75cb6b65d408e92f0db0f1b8208ca1f3d27b54b5b325a6c7fe",
+    "s4201/search/request.preview.json": "4914d9ecf2b79a4b5094f084c9db6056d9f9673be00398a3109dace1ef342614",
+    "s4211/ordinary/request.preview.json": "ea8421cc9f8a28cdc36708e6dda642502592dd353926b8bcc0379e326875d26a",
+    "s4211/search/request.preview.json": "25349f198baed97415a61df6d263bd75e14cced2db8a05dd57e7715466eac380",
+    "s4217/ordinary/request.preview.json": "32e209fe4da931d8c8fe3b02ec6e93fc23072d6f9b73248bc877b730fce4ee64",
+    "s4217/search/request.preview.json": "4a7a7b94c6fc341c0fa0ddaabec89802cb1c1ec70c819478d84aa6834a37ba11"
+  },
+  "admission": "plain visible-current gate is identical; gated acceptance additionally requires full-history healthy and reset-aware history gate. All rejected/keep versions retained and tested.",
+  "gate_benefit": "Count only current-pass/full-history-reject proposals with concrete FP/lost detection/required trigger loss. Interface/current failures and unknown-only rejects reported separately.",
+  "background": "Public RTL, all fault modes, specification, shared weak initial candidate and common case. No research36 applicability windows or research40/41 success outputs.",
+  "independent": "All 12 arms freeze first, then one new shared 56-case batch; exact duplicate frozen candidates share physical replay with bindings. Never feedback or select.",
+  "search_cost": "Research42 contract queries physically acquired once, logically charged to B and D. Ordinary arms do not access oracle/search evidence. Report setup and postdecision measurement separately.",
+  "limits": "Known FIFO plus artificial faults; three model seed requests; one-step paired gate decision effect, not multi-round policy effect or a guarantee of advantage. Service seed behavior unverified.",
+  "authorization": "Requires a new six-call grant. No unused restricted prior grants are automatically transferred.",
+  "experiment": "research50_prospective_paired_one_step_three_seed",
+  "interface": "research44_interface: reason metadata preserved; executable AST restrictions retained",
+  "logical_groups": "A ordinary, B search, C ordinary+history gate, D search+history gate. A/C share one real proposal; B/D share one real proposal per seed.",
+  "estimand": "One-step paired admission effect, not multi-round adaptive feedback policy effect. Six physical model calls,12 logical arms; no manufactured proposal.",
+  "eligibility": "Gate benefit only for current-pass/full-history-reject real proposals with independently confirmed loss. Report current-pass keeps separately from changed eligible proposals; zero changed eligibility means repair gate benefit not estimable.",
+  "no_pilot_selection": "All six preregistered streams run regardless of previous proposal success; no successful pilot is selected or supplied.",
+  "cost_alignment": "One model call per stream/seed, same2048 cap. Search4 queries per B/D logical arm,105 history for C/D treatment; A/B history is postdecision measurement only. Shared physical work charged once, logical costs separately.",
+  "holdout": "All12 accepted-or-retained versions freeze before one fresh common56-case batch. Exact candidate duplicates share physical replay, not independent samples. Rejected versions are not reported as new accepted repairs.",
+  "historical_results": "research42 negative search result and research43 interface failures remain unchanged; this is a new protocol with corrected interface and output cap."
+}

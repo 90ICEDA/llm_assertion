@@ -1,0 +1,105 @@
+{
+  "name": "case509_axis_switch_overlap_route_priority",
+  "parent_bug_id": "case509_axis_switch_overlap_route_priority",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_switch",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_switch.v"
+  ],
+  "bug_class": "combination_protocol",
+  "bug_family": "overlapping_route_priority",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "s_valid",
+    "route_match",
+    "s_data",
+    "m_ready",
+    "m_valid",
+    "m_data"
+  ],
+  "temporal_type": "same-cycle deterministic route selection when two decode regions overlap",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ((s_valid && route_match==2'b11 && m_ready[0]) |-> (m_valid==2'b01)));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 30000,
+      "sample_index": 7,
+      "good_row_index": 7,
+      "bad_row_index": 7,
+      "signals": [
+        "m_valid[1:0]",
+        "q_o"
+      ],
+      "good_values": {
+        "m_valid[1:0]": "01",
+        "q_o": "1"
+      },
+      "bad_values": {
+        "m_valid[1:0]": "10",
+        "q_o": "0"
+      },
+      "good_trace_sha256": "52c3084fa3b61ca54ea3ae03047117b1042c8c5b2b80385e5cb5d6439882f598",
+      "bad_trace_sha256": "ba79cae5f8c8fcf21fcd3d369533e9adfd8dc10915e27ab184798aec7812db7d",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 40000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "m_valid[1:0]",
+        "q_o"
+      ],
+      "good_values": {
+        "m_valid[1:0]": "01",
+        "q_o": "1"
+      },
+      "bad_values": {
+        "m_valid[1:0]": "10",
+        "q_o": "0"
+      },
+      "good_trace_sha256": "58a85e68e039b074c086c41464b48cddc72732d61ba166ad94d9e985f169f90f",
+      "bad_trace_sha256": "2e06980aecdbe89e2f414dc492e93d4fa5cb032dfe14ed5ba11dcb6f7b0e9143",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 30000,
+      "sample_index": 7,
+      "good_row_index": 7,
+      "bad_row_index": 7,
+      "signals": [
+        "m_valid[1:0]",
+        "q_o"
+      ],
+      "good_values": {
+        "m_valid[1:0]": "01",
+        "q_o": "1"
+      },
+      "bad_values": {
+        "m_valid[1:0]": "10",
+        "q_o": "0"
+      },
+      "good_trace_sha256": "6a1b11d6ac7a15c77aa2d775cb7db888a5c7150c8cc1d0fab530c80ae74a39d0",
+      "bad_trace_sha256": "4b696e8d985e561ec525dfa5347528e2f774e1e741746c34ae9a263c35040533",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "6cab2aab7dd84d8242e29ea951806b59781b43d490c4f19084d921c17609ecd5",
+  "buggy_sha256": "866beaa66ec90260528433a42fc279042ef29d1df16bbbc8191be05e26508838"
+}

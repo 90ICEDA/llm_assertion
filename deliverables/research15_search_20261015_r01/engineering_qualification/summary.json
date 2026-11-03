@@ -1,0 +1,83 @@
+{
+  "provenance": "engineering_controls_not_LLM",
+  "native_compilations": 1,
+  "native_replays": 5,
+  "oracle_verdicts": {
+    "correct": "no_violation_within_execution",
+    "corrupt": "violation",
+    "duplicate_payload": "violation",
+    "drop": "violation",
+    "reset_residue": "violation"
+  },
+  "unknown": [],
+  "legal_control_false_positives": 0,
+  "reset_cancelled_payload_witnesses": [
+    {
+      "semantic_key": "reset_residue/reset_cancellation/false_negative",
+      "kind": "false_negative",
+      "obligation": "reset_cancellation",
+      "variant": "reset_residue",
+      "scenario": "engineering_qualification",
+      "cycle": 30,
+      "transaction_id": "e1:t1",
+      "transaction": {
+        "transaction_id": "e1:t1",
+        "epoch": 1,
+        "accept_cycle": 5,
+        "data": 3166769268,
+        "response_cycle": null,
+        "cancel_cycle": 28,
+        "outcome": "reset_cancelled"
+      },
+      "oracle_details": {
+        "cycle": 30,
+        "obligation": "reset_cancellation",
+        "passed": false,
+        "transaction_id": "e1:t1",
+        "cancelled_accept_cycle": 5,
+        "cancel_cycle": 28,
+        "observed_data": 3166769268
+      },
+      "legal": true,
+      "same_input_schedule": true,
+      "independent_fixed": "no_violation_within_execution",
+      "independent_buggy": "violation",
+      "assertion_ids": [],
+      "trigger_measurement": "native cover action for parsed assertion antecedent",
+      "clean_first_violation_credit": false
+    }
+  ],
+  "policy_feedback_unit_check": {
+    "before": {
+      "family": "reset_pending",
+      "target_obligation": "no_unsolicited_output",
+      "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+      "deficit_scores": {
+        "order_payload": 8.0,
+        "no_unsolicited_output": 8.0,
+        "stall_stability": 8.0,
+        "drain_no_loss": 8.0,
+        "reset_cancellation": 8.0
+      },
+      "history_queries": 0,
+      "selection_uses_no_unexecuted_oracle": true
+    },
+    "after": {
+      "family": "backpressure",
+      "target_obligation": "stall_stability",
+      "reason": "maximum current obligation deficit / prior attempts; recomputed from own acquired evidence",
+      "deficit_scores": {
+        "order_payload": 1.0,
+        "no_unsolicited_output": 0.5,
+        "stall_stability": 8.0,
+        "drain_no_loss": 1.0,
+        "reset_cancellation": 1.0
+      },
+      "history_queries": 1,
+      "selection_uses_no_unexecuted_oracle": true
+    },
+    "explicit_synthetic_policy_input_not_experimental_evidence": true,
+    "passed": true
+  },
+  "passed": true
+}

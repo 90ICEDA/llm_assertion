@@ -1,0 +1,115 @@
+{
+  "name": "case480_axis_cobs_decode_ff_zero_suppression",
+  "parent_bug_id": "case480_axis_cobs_decode_ff_zero_suppression",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_cobs_decode",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_cobs_decode.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_cobs_decode.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "cobs_max_run_zero_suppression",
+  "bug_type": "A COBS code byte 255 suppresses the implicit zero between segments; code 254 does not.",
+  "spec": "A COBS code byte 255 suppresses the implicit zero between segments; code 254 does not.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) ((s_valid && s_ready && s_data == 8'd255) |=> dut.suppress_zero_reg));",
+    "temporal_type": "exact sampled protocol relation"
+  },
+  "mutation_edits": [
+    {
+      "search": "                    suppress_zero_next = (s_axis_tdata == 8'd255);",
+      "replace": "                    // ASSERTIONFORGE_MUTATION: wrong COBS maximum-run code\n                    suppress_zero_next = (s_axis_tdata == 8'd254);"
+    }
+  ],
+  "mutation_signal": "protocol state or polarity",
+  "relevant_signals": [
+    "s_valid",
+    "s_ready",
+    "s_data",
+    "m_valid",
+    "m_ready",
+    "m_data"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 5155000,
+      "sample_index": 1031,
+      "good_row_index": 1031,
+      "bad_row_index": 1031,
+      "signals": [
+        "m_last",
+        "m_valid"
+      ],
+      "good_values": {
+        "m_last": "0",
+        "m_valid": "0"
+      },
+      "bad_values": {
+        "m_last": "1",
+        "m_valid": "1"
+      },
+      "good_trace_sha256": "5ee3c7499ae703d3ec7720d17d3d75cafb5708d1266b3c35f481ea89f2bb4546",
+      "bad_trace_sha256": "efb4f577bfddbc26fd108b44e247c3a4f5b265f7aa05c7bb6219261710c4f302",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 5155000,
+      "sample_index": 1031,
+      "good_row_index": 1031,
+      "bad_row_index": 1031,
+      "signals": [
+        "m_last",
+        "m_valid"
+      ],
+      "good_values": {
+        "m_last": "0",
+        "m_valid": "0"
+      },
+      "bad_values": {
+        "m_last": "1",
+        "m_valid": "1"
+      },
+      "good_trace_sha256": "612a196cb47977eb5c42a2cf9e02cdc34395bd91de0a9e43855ae4d1e3408856",
+      "bad_trace_sha256": "68b392221218c46be0e099e62f30078d825aa2c75e3fe140fcb8f44e12a82307",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 5165000,
+      "sample_index": 1033,
+      "good_row_index": 1033,
+      "bad_row_index": 1033,
+      "signals": [
+        "m_last",
+        "m_valid"
+      ],
+      "good_values": {
+        "m_last": "0",
+        "m_valid": "0"
+      },
+      "bad_values": {
+        "m_last": "1",
+        "m_valid": "1"
+      },
+      "good_trace_sha256": "5f93cfdf26efe080e715534da95ddf8880687cc9d4c19b496382b7b461775d1c",
+      "bad_trace_sha256": "72b007cb9e95581917d08b0f7c2d4d880a3dceb134d3748d441db6e72df9cd04",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "combinational protocol relation",
+  "mutation_kind": "real_rtl_mutation",
+  "correct_sha256": "045dcec3b9421e5aadf69a4e9bf03c8dbd7732a9f6fe6812c6e53d9811eb07b5",
+  "buggy_sha256": "a6b27b1487f7ab05bc405b960148d61dfb05c6274fb7d87ac62b04959f36f863",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_admitted",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

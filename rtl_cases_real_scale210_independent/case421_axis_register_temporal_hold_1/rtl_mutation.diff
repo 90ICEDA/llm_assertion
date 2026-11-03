@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -157,7 +157,7 @@
+     end
+ 
+     always @(posedge clk) begin
+-        s_axis_tready_reg <= s_axis_tready_early;
++        s_axis_tready_reg <= s_axis_tready_reg; // ASSERTIONFORGE_MUTATION: state update suppressed
+         m_axis_tvalid_reg <= m_axis_tvalid_next;
+         temp_m_axis_tvalid_reg <= temp_m_axis_tvalid_next;
+ 

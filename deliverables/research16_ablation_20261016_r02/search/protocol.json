@@ -1,0 +1,45 @@
+{
+  "methods": [
+    "ordinary",
+    "candidate_disagreement",
+    "raw_difference",
+    "contract_coverage"
+  ],
+  "specs": [
+    {
+      "seed": 2026101507,
+      "depth": 2,
+      "pipeline": 0
+    },
+    {
+      "seed": 2026101531,
+      "depth": 5,
+      "pipeline": 1
+    }
+  ],
+  "queries_per_method_per_seed": 6,
+  "query_cost": "one input schedule, correct plus four artificial faults = five native executions; all executed queries charged including unknown/duplicates",
+  "planned_queries": 48,
+  "planned_replays": 240,
+  "compile_bootstrap_executions": 2,
+  "finite_drain_scope": "actual RAM<=8, RAM_PIPELINE<=2, OUTPUT_FIFO_ENABLE=0; require >=18 true input-idle/ready samples, generated suffix24",
+  "source_sha256": "b29a492b29dcb6b060a3d40d77206e490533433b23d2a954d3b84b08985db16e",
+  "candidate_sha256": "974a16c4f7d8f4627023d3574671ff50b9701cc485a50958e743aa64e084d5bf",
+  "candidate_source_path": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/shared_initial.json",
+  "candidate_origin": "real_model_generated_external_candidate",
+  "input_grammar": [
+    "random",
+    "overlap",
+    "backpressure",
+    "reset_pending",
+    "drain",
+    "tail_loss"
+  ],
+  "shared_information": "identical candidate/specification/RTL/interface/grammar and budgets; method-specific feedback view restricted in Policy.update",
+  "dedup": "one independent gap per artificial fault mode and violated obligation; repeated cycles, seeds, families and configurations are replications",
+  "candidate_disagreement_eligible": false,
+  "candidate_disagreement_limit": "one initial property has no candidate pairs; baseline then explicitly uniform fallback",
+  "split": "development_only; not independent testing; do not leak acquired feedback to no-search ablation arms",
+  "historical_fifo_presented": "unknown, these are artificial output-boundary mutations",
+  "parameter_capacity": "depth5 rounds to8; depth2 actual2; pipeline storage additional"
+}

@@ -1,0 +1,85 @@
+{
+  "name": "case413_cc_edge_propagator_tx_temporal_hold_2",
+  "parent_bug_id": "case413_cc_edge_propagator_tx_temporal_hold_2",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_edge_propagator_tx",
+  "source_files": [
+    "external/common_cells/src/cc_edge_propagator_tx.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_edge_propagator_tx.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "sync_a state update is suppressed",
+  "spec": "Reset clears both stages of the exposed synchronizer state. No valid output may be reported while reset is asserted.",
+  "mutation_edits": [
+    {
+      "line": 31,
+      "search": "            sync_a      <= 2'b00;",
+      "replace": "            sync_a <= sync_a; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "sync_a",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "valid_i",
+    "ack_i",
+    "valid_o",
+    "sync_a[1:0]"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "d7322999d9e68f4c6decbf65f644895281b016f11c21864e71ba8b8e178f0409",
+  "buggy_sha256": "7983da01397d4fa0af59a7f273bbb5b0b950c47cf816557d69f5407a034c8d2a",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk_i) !rst_ni |-> (!valid_o && sync_a == 2'b00));",
+    "temporal_type": "cross-cycle sequential state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "sync_a[1:0]"
+      ],
+      "good": {
+        "sync_a[1:0]": "00"
+      },
+      "bad": {
+        "sync_a[1:0]": "xx"
+      }
+    },
+    "heldout": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "sync_a[1:0]"
+      ],
+      "good": {
+        "sync_a[1:0]": "00"
+      },
+      "bad": {
+        "sync_a[1:0]": "xx"
+      }
+    },
+    "decoy": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "sync_a[1:0]"
+      ],
+      "good": {
+        "sync_a[1:0]": "00"
+      },
+      "bad": {
+        "sync_a[1:0]": "xx"
+      }
+    }
+  },
+  "contract_status": "formal_complete"
+}

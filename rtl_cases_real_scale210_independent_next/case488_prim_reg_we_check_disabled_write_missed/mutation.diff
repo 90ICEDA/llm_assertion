@@ -1,0 +1,12 @@
+--- correct.v
++++ buggy.v
+@@ -8,6 +8,8 @@
+ );
+   wire any_oh = |oh_i;
+   wire multi_oh = |(oh_i & (oh_i - 4'b0001));
+-  assign err_o = rst_ni && (multi_oh || (!en_i && any_oh));
++  assign err_o = rst_ni && en_i && multi_oh;
++  // MUTATION: disabled nonzero write strobes are treated as harmless.
+   wire unused_clk = clk_i;
++  wire unused_any = any_oh;
+ endmodule

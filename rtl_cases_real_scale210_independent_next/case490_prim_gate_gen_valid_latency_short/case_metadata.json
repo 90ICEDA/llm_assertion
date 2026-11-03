@@ -1,0 +1,95 @@
+{
+  "name": "case490_prim_gate_gen_valid_latency_short",
+  "parent_bug_id": "case490_prim_gate_gen_valid_latency_short",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_gate_gen",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_gate_gen.sv"
+  ],
+  "bug_class": "temporal",
+  "bug_family": "valid_pipeline_one_cycle_short",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "valid_i",
+    "data_i",
+    "valid_o",
+    "data_o",
+    "valid_q"
+  ],
+  "temporal_type": "exact three-cycle valid-token latency",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) valid_i |-> ##3 valid_o);"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "valid_o"
+      ],
+      "good_values": {
+        "valid_o": "0"
+      },
+      "bad_values": {
+        "valid_o": "1"
+      },
+      "good_trace_sha256": "7d7a8428805d7515a326cbcbfc5577fffcf55cb521af6d0e1dd55ee226eac956",
+      "bad_trace_sha256": "abc38430ef4bcf90e34cb24368e552c37bd35dac460bbe0bd1e7a77619f325eb",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 11,
+      "good_row_index": 11,
+      "bad_row_index": 11,
+      "signals": [
+        "valid_o"
+      ],
+      "good_values": {
+        "valid_o": "0"
+      },
+      "bad_values": {
+        "valid_o": "1"
+      },
+      "good_trace_sha256": "002be0d429195d6bc5eccad61bdf9eccd89a3969f93e43293e3ddb881602b0c4",
+      "bad_trace_sha256": "7edeae8634f5d39db456d8c667fa9dd30ea7d91ad19a26294337cbe40011363c",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 45000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "valid_o"
+      ],
+      "good_values": {
+        "valid_o": "0"
+      },
+      "bad_values": {
+        "valid_o": "1"
+      },
+      "good_trace_sha256": "a90bd6663711023ad181d9e7c64fd97b5c567b72194f58a586eb261fb01cc3ce",
+      "bad_trace_sha256": "2ef8baa0aa29c58b6239018b3c16594932b1668cc7376578a9e494443327c05f",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "95323a0bf74ab3f8ae9d5d6e8debd3558d43fb0fc860f3d6f941125ffb8c642e",
+  "buggy_sha256": "19e3573cad9681cace6a269779c8f8ee295187af990e2092277e66603e54bfcd"
+}

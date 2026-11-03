@@ -1,0 +1,5 @@
+# OpenTitan Cryptography Library
+
+The OpenTitan project includes a platform-specific library of cryptographic functions designed to make use of available hardware acceleration.
+For details about the library's interface, see the [API documentation page](cryptolib_api.md).
+The security countermeasures of the libary are documented in the [security hardening page](security.md).

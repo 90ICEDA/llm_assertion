@@ -1,0 +1,57 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, clr_i, set_cnt_i, clr_cnt_i, is_zero_o, count_o
+
+Specification:
+
+A successful-trial clear has priority over a simultaneous failed-trial set; the next state is zero with reset mask.
+
+RTL:
+
+module cc_exp_backoff(input clk_i,input rst_ni,input clr_i,input set_cnt_i,input clr_cnt_i,output is_zero_o,output [3:0] count_o);
+  reg [3:0] count_q;
+  reg [3:0] mask_q;
+  assign count_o = count_q;
+  assign is_zero_o = count_q==0;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin count_q<=0; mask_q<=1; end
+    else if (clr_i) begin count_q<=0; mask_q<=1; end
+    else if (clr_cnt_i) begin count_q<=0; mask_q<=1; end
+    else if (set_cnt_i) begin count_q<=mask_q; mask_q<={mask_q[2:0],1'b1}; end
+    else if (count_q!=0) count_q<=count_q-1'b1;
+  end
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 1: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 2: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0001, is_zero_o=0, set_cnt_i=1
+cycle 3: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 4: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 5: rst_ni=1, clk_i=1, clr_cnt_i=1, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=1
+cycle 6: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 7: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 8: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 9: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 10: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 1: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 2: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0001, is_zero_o=0, set_cnt_i=1
+cycle 3: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 4: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 5: rst_ni=1, clk_i=1, clr_cnt_i=1, clr_i=0, count_o[3:0]=0011, is_zero_o=0, set_cnt_i=1
+cycle 6: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0010, is_zero_o=0, set_cnt_i=0
+cycle 7: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0001, is_zero_o=0, set_cnt_i=0
+cycle 8: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 9: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0
+cycle 10: rst_ni=1, clk_i=1, clr_cnt_i=0, clr_i=0, count_o[3:0]=0000, is_zero_o=1, set_cnt_i=0

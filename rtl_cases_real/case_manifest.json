@@ -230,9 +230,9 @@
       },
       "loose_negative_controls": [
         {
-          "name": "nonempty_has_depth",
-          "sva": "assert property (@(posedge clk) disable iff (!rst_n) (!empty_o) |-> (depth_o != 3'd0));",
-          "why_it_should_miss": "A depth output biased high by one can still satisfy a coarse nonzero-when-nonempty check."
+          "name": "write_makes_fifo_nonempty",
+          "sva": "assert property (@(posedge clk) disable iff (!rst_n) (incr_wptr_i && !incr_rptr_i && !clr_i) |-> !empty_o);",
+          "why_it_should_miss": "A depth output biased high by one can still leave the empty flag behavior looking reasonable after writes."
         },
         {
           "name": "full_empty_exclusive",
@@ -548,7 +548,7 @@
         "q_negedge_pulse_o"
       ],
       "golden_sva": {
-        "sva": "assert property (@(posedge clk) disable iff (!rst_n) ($past(q_sync_o) && !q_sync_o) |-> q_negedge_pulse_o);",
+        "sva": "assert property (@(posedge clk) disable iff (!rst_n) ($past(d_i) && !d_i) |-> q_negedge_pulse_o);",
         "expected_behavior": "A sampled falling input edge must create a negedge pulse rather than a posedge pulse.",
         "temporal_type": "cross-cycle edge relation"
       },
@@ -588,7 +588,7 @@
         "q_negedge_pulse_o"
       ],
       "golden_sva": {
-        "sva": "assert property (@(posedge clk) disable iff (!rst_n) ($past(q_sync_o) && !q_sync_o) |-> !q_posedge_pulse_o);",
+        "sva": "assert property (@(posedge clk) disable iff (!rst_n) ($past(d_i) && !d_i) |-> !q_posedge_pulse_o);",
         "expected_behavior": "A falling edge must not leak into the posedge pulse output.",
         "temporal_type": "cross-cycle edge suppression check"
       },
@@ -635,7 +635,7 @@
       "loose_negative_controls": [
         {
           "name": "eventual_switch",
-          "sva": "assert property (@(posedge clk) disable iff (!rst_n) (enable_i && filter_i) |-> (filter_o || $past(filter_o)));",
+          "sva": "assert property (@(posedge clk) disable iff (!rst_n) (enable_i && filter_i && $past(filter_o)) |-> filter_o);",
           "why_it_should_miss": "It allows the output to lag by an unspecified amount."
         },
         {
@@ -754,7 +754,7 @@
       "loose_negative_controls": [
         {
           "name": "two_or_more_highs_eventually_high",
-          "sva": "assert property (@(posedge clk) disable iff (!rst_n) (enable_i && filter_i) |-> (filter_o || $past(filter_o)));",
+          "sva": "assert property (@(posedge clk) disable iff (!rst_n) (enable_i && filter_i && $past(filter_o)) |-> filter_o);",
           "why_it_should_miss": "It permits an unspecified extra cycle of latency."
         },
         {
@@ -1316,7 +1316,7 @@
         "q_negedge_pulse_o"
       ],
       "golden_sva": {
-        "sva": "assert property (@(posedge clk) disable iff (!rst_n) ($past(q_sync_o) && !q_sync_o) |-> q_negedge_pulse_o);",
+        "sva": "assert property (@(posedge clk) disable iff (!rst_n) ($past(d_i) && !d_i) |-> q_negedge_pulse_o);",
         "expected_behavior": "Every sampled falling edge must create a visible negedge pulse.",
         "temporal_type": "cross-cycle edge presence check"
       },

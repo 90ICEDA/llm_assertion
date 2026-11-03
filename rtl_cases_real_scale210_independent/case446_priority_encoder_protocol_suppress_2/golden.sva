@@ -1,0 +1,2 @@
+// Temporal type: combinational priority encoding
+assert property (@(input_unencoded) output_valid |-> (output_unencoded == (1'b1 << output_encoded)) && input_unencoded[output_encoded]);

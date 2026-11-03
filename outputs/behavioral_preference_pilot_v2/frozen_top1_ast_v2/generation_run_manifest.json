@@ -1,0 +1,33 @@
+{
+  "status": "complete",
+  "version": "frozen_top1_ast_v2_generation",
+  "created_utc": "2026-08-24T10:54:07.532136+00:00",
+  "seed": 20260815,
+  "query_manifest_sha256": "137a58c4b891ff7df1104ac73a7c0e42d39fd3bc856af90c8958fbfcf9fd8aa3",
+  "adapter_manifest_sha256": "ee02a76d3d872adf81c6e5c9e1cae8b928c721184f11275b6e819a149da527f3",
+  "expected_generation_count": 240,
+  "decode": {
+    "temperature": 0.0,
+    "do_sample": false,
+    "num_return_sequences": 1,
+    "max_new_tokens": 128,
+    "reranker": false,
+    "repair": false,
+    "selector": false,
+    "heldout_information": false,
+    "constraint": "complete schema-valid canonical JSON trie; closing brace followed by forced EOS"
+  },
+  "command": [
+    "/root/miniconda3/bin/python3",
+    "src/generate_pilot_v2_frozen_ast_top1.py",
+    "--resume"
+  ],
+  "python": "3.12.3",
+  "torch": "2.5.1+cu124",
+  "transformers": "4.53.2",
+  "peft": "0.15.2",
+  "gpu": "NVIDIA GeForce RTX 4090 D",
+  "once_only_policy": "valid existing evidence is skipped under --resume and never regenerated",
+  "completed_generation_count": 240,
+  "completed_utc": "2026-08-24T11:09:55.934055+00:00"
+}

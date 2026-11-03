@@ -1,0 +1,20 @@
+{
+  "case_id": "lowRISC/ibex#54",
+  "prior_source_manifest_verified": true,
+  "before_commit": "cd15ce88beba8ed8496f414af361f664764f47e2",
+  "after_commit": "5319734180ac4844e43d31ad19dc108aac503037",
+  "fix_commit": "687952e42f3eff68348770ae0c55bc5c0f036d3e",
+  "source": "https://github.com/lowRISC/ibex/pull/54",
+  "spec": "https://riscv.github.io/riscv-isa-manual/snapshot/spec/",
+  "reference_rule": "C.SLLI rd=x0 or shamt=0 are HINTs; RV32 shamt[5]=1 is reserved for custom extensions, not enabled in this fixed historical decoder.",
+  "legal_input": "Any instruction word is permitted at the combinational decoder input; reserved encodings must set illegal, uncompressed words pass through this decoder and are not certified full-ISA legal.",
+  "parameters": "Original module has no parameters; fixed RV32 historical decoder. No invented parameter sweep.",
+  "novelty": "New compressed inputs differ in their semantic low16 encoding from the 223 old boundary records and 5 original benchmark encodings. Random upper16 is not counted as additional novelty.",
+  "new_boundary_count": 119,
+  "old_anchor_count": 5,
+  "seed": 202610150054,
+  "split": "Old anchors are development. New vectors are frozen before replay, validating engineering properties only; not independent validation of LLM-generated assertions.",
+  "native_assertion_origin": "Handwritten properties derived from independent encoding oracle, not model output",
+  "formal_proof": false,
+  "model_calls": 0
+}

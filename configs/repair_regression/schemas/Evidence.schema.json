@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "Evidence"
+    },
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "previous_revision_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revision_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rtl_version": {
+      "enum": [
+        "buggy",
+        "fixed"
+      ]
+    },
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "behavior_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "label": {
+      "enum": [
+        "legal",
+        "target_violation",
+        "unknown"
+      ]
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "judge": {
+      "type": "object"
+    },
+    "unknown_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "transaction": {
+      "type": "object",
+      "properties": {
+        "reset_epoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "transaction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_cycle": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deadline_cycle": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "response_cycle": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "actual_response": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "expected_response": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "alignment": {
+          "enum": [
+            "matched",
+            "missing_response",
+            "extra_response",
+            "unalignable",
+            "cancelled",
+            "not_applicable"
+          ]
+        }
+      },
+      "required": [
+        "reset_epoch",
+        "transaction_id",
+        "trigger_cycle",
+        "deadline_cycle",
+        "response_cycle",
+        "actual_response",
+        "expected_response",
+        "alignment"
+      ],
+      "additionalProperties": false
+    },
+    "artifacts": {
+      "type": "object",
+      "properties": {
+        "stimulus": {
+          "type": "string",
+          "minLength": 1
+        },
+        "waveform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "log": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reproduce": {
+          "type": "string",
+          "minLength": 1
+        },
+        "run": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "stimulus",
+        "waveform",
+        "trace",
+        "log",
+        "reproduce",
+        "run"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "evidence_id",
+    "revision",
+    "previous_revision_hash",
+    "revision_reason",
+    "case_id",
+    "obligation_ids",
+    "branch",
+    "sources",
+    "rtl_version",
+    "input_hash",
+    "config_hash",
+    "behavior_hash",
+    "label",
+    "scope",
+    "judge",
+    "unknown_reason",
+    "transaction",
+    "artifacts"
+  ],
+  "additionalProperties": false
+}

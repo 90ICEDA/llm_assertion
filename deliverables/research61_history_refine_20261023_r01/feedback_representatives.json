@@ -1,0 +1,78 @@
+[
+  {
+    "sample": {
+      "sample_id": 10,
+      "transaction_id": 2,
+      "phase": 0,
+      "instruction": 441615203,
+      "instr_new": 1,
+      "family": "branch_legal",
+      "cohort": "history"
+    },
+    "configuration": {
+      "RV32E": 0,
+      "RV32M": 1
+    },
+    "revision": "before",
+    "fields": {
+      "opcode": 99,
+      "bit28": 1,
+      "bit31": 0,
+      "funct3": 0
+    },
+    "expected_illegal": 0,
+    "actual_illegal": 0,
+    "native_assertions": [
+      {
+        "id": "a0",
+        "trigger": false,
+        "failed": false,
+        "causal_detection": false
+      },
+      {
+        "id": "a1",
+        "trigger": true,
+        "failed": true,
+        "causal_detection": false
+      }
+    ]
+  },
+  {
+    "sample": {
+      "sample_id": 11,
+      "transaction_id": 2,
+      "phase": 1,
+      "instruction": 441615203,
+      "instr_new": 0,
+      "family": "branch_legal",
+      "cohort": "history"
+    },
+    "configuration": {
+      "RV32E": 0,
+      "RV32M": 1
+    },
+    "revision": "before",
+    "fields": {
+      "opcode": 99,
+      "bit28": 1,
+      "bit31": 0,
+      "funct3": 0
+    },
+    "expected_illegal": 0,
+    "actual_illegal": 0,
+    "native_assertions": [
+      {
+        "id": "a0",
+        "trigger": false,
+        "failed": false,
+        "causal_detection": false
+      },
+      {
+        "id": "a1",
+        "trigger": true,
+        "failed": true,
+        "causal_detection": false
+      }
+    ]
+  }
+]

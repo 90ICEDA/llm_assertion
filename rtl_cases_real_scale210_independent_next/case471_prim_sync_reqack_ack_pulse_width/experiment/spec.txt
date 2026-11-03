@@ -1,0 +1,1 @@
+The source-side acknowledgement of an accepted request is a one-source-clock pulse. A destination acknowledgement held high must complete the transaction once, clear the forwarded request, and must not stretch `src_ack_o` into later cycles.

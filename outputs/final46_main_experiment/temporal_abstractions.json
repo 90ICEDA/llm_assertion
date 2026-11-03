@@ -1,0 +1,1294 @@
+[
+  {
+    "case_id": "case451_prim_clock_timeout_threshold_off_by_one",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: en_i changes to an observed onehot state in the seen trace.\n- Polarity: en_i changes to an observed onehot state; at divergence cnt is observed as good=111 and bad=101; at divergence timeout_o is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: en_i holds its observed post-trigger state for 4 sampled cycles.\n- Reset: rst_chk_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 7, cnt: good=111, bad=101; timeout_o: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case451_prim_clock_timeout_threshold_off_by_one",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "en_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 7,
+      "differing_signals": [
+        "cnt",
+        "timeout_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case454_prim_count_simultaneous_command",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: decr_en_i has an observed rising transition; incr_en_i has an observed rising transition; set_i has an observed falling transition in the seen trace.\n- Polarity: decr_en_i rising transition; incr_en_i rising transition; set_i falling transition; at divergence cnt_after_commit_o is observed as good=0111 and bad=0101; at divergence cnt_o is observed as good=0111 and bad=0110.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: decr_en_i holds its observed post-trigger state for 5 sampled cycles, incr_en_i holds its observed post-trigger state for 5 sampled cycles, set_i holds its observed post-trigger state for 5 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 2, cnt_after_commit_o: good=0111, bad=0101; cnt_o: good=0111, bad=0110.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case454_prim_count_simultaneous_command",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "decr_en_i",
+        "incr_en_i",
+        "set_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 2,
+      "differing_signals": [
+        "cnt_after_commit_o",
+        "cnt_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case455_prim_crc32_set_enable_coupling",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: crc_in_i changes to an observed multihot state; set_crc_i has an observed rising transition; data_valid_i is observed deasserted in the seen trace.\n- Polarity: crc_in_i changes to an observed multihot state; set_crc_i rising transition; data_valid_i is low in the observed trigger context; at divergence crc_out_o is observed as good=00010010001101000101011001111000 and bad=00000000000000000000000000000000.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: crc_in_i holds its observed post-trigger state for 6 sampled cycles, set_crc_i holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 1, crc_out_o: good=00010010001101000101011001111000, bad=00000000000000000000000000000000.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case455_prim_crc32_set_enable_coupling",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "crc_in_i",
+        "set_crc_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 1,
+      "differing_signals": [
+        "crc_out_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case457_cc_delta_counter_load_enable_priority",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: d_i changes to an observed multihot state; delta_i changes to an observed onehot state; en_i has an observed rising transition in the seen trace.\n- Polarity: d_i changes to an observed multihot state; delta_i changes to an observed onehot state; en_i rising transition; at divergence q_o is observed as good=1001 and bad=0010.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: d_i holds its observed post-trigger state for 5 sampled cycles, delta_i holds its observed post-trigger state for 5 sampled cycles, en_i holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 2, q_o: good=1001, bad=0010.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case457_cc_delta_counter_load_enable_priority",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "d_i",
+        "delta_i",
+        "en_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 2,
+      "differing_signals": [
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: d_i changes to an observed multihot state; load_i has an observed rising transition in the seen trace.\n- Polarity: d_i changes to an observed multihot state; load_i rising transition; at divergence overflow_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: d_i holds its observed post-trigger state for 5 sampled cycles, load_i holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 5, overflow_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "d_i",
+        "load_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 5,
+      "differing_signals": [
+        "overflow_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case459_cc_trip_counter_trip_one_cycle_late",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: en_i has an observed rising transition in the seen trace.\n- Polarity: en_i rising transition; at divergence trip_o is observed as good=1 and bad=0.\n- Ordering: the observed trigger precedes the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 2 sampled cycles from the selected trigger to first divergence.\n- Duration: en_i holds its observed post-trigger state for 5 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, trip_o: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case459_cc_trip_counter_trip_one_cycle_late",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "en_i"
+      ],
+      "observed_delay": 2,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "trip_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case461_axis_adapter_segment_boundary_early",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: mv changes to an observed all-zero state in the seen trace.\n- Polarity: mv changes to an observed all-zero state; at divergence mv is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: mv holds its observed post-trigger state for 2 sampled cycles.\n- Reset: rst is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 8, mv: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case461_axis_adapter_segment_boundary_early",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "mv"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 8,
+      "differing_signals": [
+        "mv"
+      ]
+    }
+  },
+  {
+    "case_id": "case462_axis_broadcast_partial_ready_loss",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: mv changes to an observed multihot state in the seen trace.\n- Polarity: mv changes to an observed multihot state; at divergence mv is observed as good=1110 and bad=0000.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: mv holds its observed post-trigger state for 2 sampled cycles.\n- Reset: rst is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 6, mv: good=1110, bad=0000.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case462_axis_broadcast_partial_ready_loss",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "mv"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 6,
+      "differing_signals": [
+        "mv"
+      ]
+    }
+  },
+  {
+    "case_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: count changes to an observed onehot state in the seen trace.\n- Polarity: count changes to an observed onehot state; at divergence count is observed as good=010 and bad=011; at divergence md is observed as good=01010010 and bad=01010001.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: count holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 8, count: good=010, bad=011; md: good=01010010, bad=01010001.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "count"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 8,
+      "differing_signals": [
+        "count",
+        "md"
+      ]
+    }
+  },
+  {
+    "case_id": "case466_cc_ring_buffer_write_advance_collision",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: advance_i has an observed rising transition; wdata_i changes to an observed multihot state; wvalid_i has an observed rising transition in the seen trace.\n- Polarity: advance_i rising transition; wdata_i changes to an observed multihot state; wvalid_i rising transition; at divergence rptr_o is observed as good=001 and bad=000.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: advance_i holds its observed post-trigger state for 1 sampled cycles, wdata_i holds its observed post-trigger state for 6 sampled cycles, wvalid_i holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, rptr_o: good=001, bad=000.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case466_cc_ring_buffer_write_advance_collision",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "advance_i",
+        "wdata_i",
+        "wvalid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "rptr_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case468_cc_spill_register_drain_refill_duplicate",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: ready_i has an observed rising transition; valid_i has an observed falling transition in the seen trace.\n- Polarity: ready_i rising transition; valid_i falling transition; at divergence valid_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: ready_i holds its observed post-trigger state for 2 sampled cycles, valid_i holds its observed post-trigger state for 7 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, valid_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case468_cc_spill_register_drain_refill_duplicate",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "ready_i",
+        "valid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "valid_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case469_cc_stream_register_stall_overwrite",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: data_i changes to an observed multihot state in the seen trace.\n- Polarity: data_i changes to an observed multihot state; at divergence data_o is observed as good=01100001 and bad=01110010.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: data_i holds its observed post-trigger state for 8 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, data_o: good=01100001, bad=01110010.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case469_cc_stream_register_stall_overwrite",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "data_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "data_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case471_prim_sync_reqack_ack_pulse_width",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: dst_ack_i has an observed rising transition in the seen trace.\n- Polarity: dst_ack_i rising transition; at divergence dst_req_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger precedes the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 1 sampled cycles from the selected trigger to first divergence.\n- Duration: dst_ack_i holds its observed post-trigger state for 7 sampled cycles.\n- Reset: rst_dst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 12, dst_req_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case471_prim_sync_reqack_ack_pulse_width",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "dst_ack_i"
+      ],
+      "observed_delay": 1,
+      "first_divergence_cycle": 12,
+      "differing_signals": [
+        "dst_req_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case472_prim_pulse_sync_destination_single_cycle",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: src_pulse_i has an observed falling transition in the seen trace.\n- Polarity: src_pulse_i falling transition; at divergence dst_pulse_o is observed as good=0 and bad=1; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger precedes the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 5 sampled cycles from the selected trigger to first divergence.\n- Duration: src_pulse_i holds its observed post-trigger state for 15 sampled cycles.\n- Reset: rst_dst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 14, dst_pulse_o: good=0, bad=1; q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case472_prim_pulse_sync_destination_single_cycle",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "src_pulse_i"
+      ],
+      "observed_delay": 5,
+      "first_divergence_cycle": 14,
+      "differing_signals": [
+        "dst_pulse_o",
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: ds changes to an observed multihot state in the seen trace.\n- Polarity: ds changes to an observed multihot state; at divergence ds is observed as good=11110000 and bad=11111111; at divergence q is observed as good=11110000 and bad=11111111; at divergence q_o is observed as good=11110000 and bad=11111111; at divergence qs is observed as good=11110000 and bad=11111111.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: ds holds its observed post-trigger state for 4 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 5, ds: good=11110000, bad=11111111; q: good=11110000, bad=11111111; q_o: good=11110000, bad=11111111; qs: good=11110000, bad=11111111.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "ds"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 5,
+      "differing_signals": [
+        "ds",
+        "q",
+        "q_o",
+        "qs"
+      ]
+    }
+  },
+  {
+    "case_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: error_valid_i changes to an observed multihot state in the seen trace.\n- Polarity: error_valid_i changes to an observed multihot state; at divergence error_overflow_o is observed as good=1 and bad=0; at divergence q_o is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: error_valid_i holds its observed post-trigger state for 2 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, error_overflow_o: good=1, bad=0; q_o: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "error_valid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "error_overflow_o",
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case475_prim_clock_gating_sync_enable_latency",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: async_en_i has an observed rising transition; test_en_i is observed deasserted in the seen trace.\n- Polarity: async_en_i rising transition; test_en_i is low in the observed trigger context; at divergence clk_o is observed as good=0 and bad=1; at divergence en_o is observed as good=0 and bad=1; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: async_en_i holds its observed post-trigger state for 5 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, clk_o: good=0, bad=1; en_o: good=0, bad=1; q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case475_prim_clock_gating_sync_enable_latency",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "async_en_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "clk_o",
+        "en_o",
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case476_sync_reset_release_one_cycle_early",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: sync_out changes to an observed onehot state in the seen trace.\n- Polarity: sync_out changes to an observed onehot state; at divergence sync_out is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: sync_out holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, sync_out: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case476_sync_reset_release_one_cycle_early",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "sync_out"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "sync_out"
+      ]
+    }
+  },
+  {
+    "case_id": "case478_axis_srl_register_ready_recovery",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: s_ready changes to an observed onehot state in the seen trace.\n- Polarity: s_ready changes to an observed onehot state; at divergence s_ready is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: s_ready holds its observed post-trigger state for 10 sampled cycles.\n- Reset: rst is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 5, s_ready: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case478_axis_srl_register_ready_recovery",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "s_ready"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 5,
+      "differing_signals": [
+        "s_ready"
+      ]
+    }
+  },
+  {
+    "case_id": "case479_ll_axis_bridge_ready_polarity",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: ll_dst_rdy_n changes to an observed onehot state in the seen trace.\n- Polarity: ll_dst_rdy_n changes to an observed onehot state; at divergence ll_dst_rdy_n is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: ll_dst_rdy_n holds its observed post-trigger state for 3 sampled cycles.\n- Reset: rst is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 0, ll_dst_rdy_n: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case479_ll_axis_bridge_ready_polarity",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "ll_dst_rdy_n"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 0,
+      "differing_signals": [
+        "ll_dst_rdy_n"
+      ]
+    }
+  },
+  {
+    "case_id": "case480_axis_cobs_decode_ff_zero_suppression",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: m_last changes to an observed all-zero state in the seen trace.\n- Polarity: m_last changes to an observed all-zero state; at divergence m_last is observed as good=0 and bad=1; at divergence m_valid is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: m_last holds its observed post-trigger state for 10 sampled cycles.\n- Reset: rst is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 515, m_last: good=0, bad=1; m_valid: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case480_axis_cobs_decode_ff_zero_suppression",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "m_last"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 515,
+      "differing_signals": [
+        "m_last",
+        "m_valid"
+      ]
+    }
+  },
+  {
+    "case_id": "case482_cc_stream_demux_unselected_ready_accept",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: data_i changes to an observed multihot state; ready_i changes to an observed onehot state; sel_i changes to an observed onehot state in the seen trace.\n- Polarity: data_i changes to an observed multihot state; ready_i changes to an observed onehot state; sel_i changes to an observed onehot state; at divergence ready_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: data_i holds its observed post-trigger state for 7 sampled cycles, ready_i holds its observed post-trigger state for 7 sampled cycles, sel_i holds its observed post-trigger state for 7 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 2, ready_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case482_cc_stream_demux_unselected_ready_accept",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "data_i",
+        "ready_i",
+        "sel_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 2,
+      "differing_signals": [
+        "ready_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case484_cc_exp_backoff_clear_set_priority",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: clr_cnt_i has an observed rising transition; set_cnt_i has an observed rising transition in the seen trace.\n- Polarity: clr_cnt_i rising transition; set_cnt_i rising transition; at divergence count_o is observed as good=0000 and bad=0011; at divergence is_zero_o is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: clr_cnt_i holds its observed post-trigger state for 1 sampled cycles, set_cnt_i holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 5, count_o: good=0000, bad=0011; is_zero_o: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case484_cc_exp_backoff_clear_set_priority",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "clr_cnt_i",
+        "set_cnt_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 5,
+      "differing_signals": [
+        "count_o",
+        "is_zero_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: req_i changes to an observed onehot state; ready_i is observed deasserted in the seen trace.\n- Polarity: req_i changes to an observed onehot state; ready_i is low in the observed trigger context; at divergence gnt_o is observed as good=0000 and bad=0100.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: req_i holds its observed post-trigger state for 4 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, gnt_o: good=0000, bad=0100.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "req_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "gnt_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case487_prim_onehot_enc_disabled_output_leak",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: en_i changes to an observed all-zero state; in_i changes to an observed all-zero state in the seen trace.\n- Polarity: en_i changes to an observed all-zero state; in_i changes to an observed all-zero state; at divergence out_o is observed as good=00000000 and bad=00000001.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: en_i holds its observed post-trigger state for 1 sampled cycles, in_i holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 2, out_o: good=00000000, bad=00000001.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case487_prim_onehot_enc_disabled_output_leak",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "en_i",
+        "in_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 2,
+      "differing_signals": [
+        "out_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case488_prim_reg_we_check_disabled_write_missed",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: en_i has an observed falling transition in the seen trace.\n- Polarity: en_i falling transition; at divergence err_o is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: en_i holds its observed post-trigger state for 3 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, err_o: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case488_prim_reg_we_check_disabled_write_missed",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "en_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "err_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case489_prim_max_tree_invalid_source_selected",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: valid_i changes to an observed multihot state in the seen trace.\n- Polarity: valid_i changes to an observed multihot state; at divergence max_idx_o is observed as good=01 and bad=11; at divergence max_value_o is observed as good=01000000 and bad=11100000.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: valid_i holds its observed post-trigger state for 3 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 2, max_idx_o: good=01, bad=11; max_value_o: good=01000000, bad=11100000.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case489_prim_max_tree_invalid_source_selected",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "valid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 2,
+      "differing_signals": [
+        "max_idx_o",
+        "max_value_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case490_prim_gate_gen_valid_latency_short",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: valid_i has an observed falling transition in the seen trace.\n- Polarity: valid_i falling transition; at divergence valid_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: valid_i holds its observed post-trigger state for 6 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, valid_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case490_prim_gate_gen_valid_latency_short",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "valid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "valid_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case491_axis_pipeline_register_valid_latency",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: s_valid_i has an observed falling transition in the seen trace.\n- Polarity: s_valid_i falling transition; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: s_valid_i holds its observed post-trigger state for 10 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case491_axis_pipeline_register_valid_latency",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "s_valid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case492_axis_async_fifo_gray_visibility",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: write_toggle_i has an observed falling transition in the seen trace.\n- Polarity: write_toggle_i falling transition; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: write_toggle_i holds its observed post-trigger state for 10 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case492_axis_async_fifo_gray_visibility",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "write_toggle_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case493_axis_stat_counter_frame_commit_delay",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: frame_end_i has an observed rising transition; ready_i has an observed rising transition; valid_i has an observed rising transition in the seen trace.\n- Polarity: frame_end_i rising transition; ready_i rising transition; valid_i rising transition; at divergence q_o is observed as good=0 and bad=1; at divergence state_o is observed as good=00000000 and bad=00000001.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: frame_end_i holds its observed post-trigger state for 1 sampled cycles, ready_i holds its observed post-trigger state for 2 sampled cycles, valid_i holds its observed post-trigger state for 2 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, q_o: good=0, bad=1; state_o: good=00000000, bad=00000001.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case493_axis_stat_counter_frame_commit_delay",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "frame_end_i",
+        "ready_i",
+        "valid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "q_o",
+        "state_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case494_axis_ram_switch_response_pipeline",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: grant_i has an observed falling transition in the seen trace.\n- Polarity: grant_i falling transition; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: grant_i holds its observed post-trigger state for 10 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case494_axis_ram_switch_response_pipeline",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "grant_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case495_axis_fifo_adapter_commit_pulse_width",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: delimiter_i has an observed falling transition in the seen trace.\n- Polarity: delimiter_i falling transition; at divergence q_o is observed as good=0 and bad=1; at divergence state_o is observed as good=00000000 and bad=00000001.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: delimiter_i holds its observed post-trigger state for 10 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, q_o: good=0, bad=1; state_o: good=00000000, bad=00000001.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case495_axis_fifo_adapter_commit_pulse_width",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "delimiter_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "q_o",
+        "state_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case497_cc_cdc_4phase_ack_sync_depth",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: async_ack_i has an observed falling transition in the seen trace.\n- Polarity: async_ack_i falling transition; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: async_ack_i holds its observed post-trigger state for 10 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case497_cc_cdc_4phase_ack_sync_depth",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "async_ack_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case498_cc_serial_deglitch_qualification_short",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: noisy_i has an observed rising transition; sample_enable_i has an observed rising transition in the seen trace.\n- Polarity: noisy_i rising transition; sample_enable_i rising transition; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger precedes the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 1 sampled cycles from the selected trigger to first divergence.\n- Duration: noisy_i holds its observed post-trigger state for 3 sampled cycles, sample_enable_i holds its observed post-trigger state for 4 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case498_cc_serial_deglitch_qualification_short",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "noisy_i",
+        "sample_enable_i"
+      ],
+      "observed_delay": 1,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case499_cc_shift_reg_gated_stage_bypass",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: data_i has an observed rising transition; enable_i has an observed rising transition in the seen trace.\n- Polarity: data_i rising transition; enable_i rising transition; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger precedes the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 1 sampled cycles from the selected trigger to first divergence.\n- Duration: data_i holds its observed post-trigger state for 3 sampled cycles, enable_i holds its observed post-trigger state for 4 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case499_cc_shift_reg_gated_stage_bypass",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "data_i",
+        "enable_i"
+      ],
+      "observed_delay": 1,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case500_cc_isochronous_handshake_early_drop",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: ack_i has an observed rising transition in the seen trace.\n- Polarity: ack_i rising transition; at divergence q_o is observed as good=1 and bad=0; at divergence state_o is observed as good=00000011 and bad=00000010.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: ack_i holds its observed post-trigger state for 2 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 5, q_o: good=1, bad=0; state_o: good=00000011, bad=00000010.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case500_cc_isochronous_handshake_early_drop",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "ack_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 5,
+      "differing_signals": [
+        "q_o",
+        "state_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: m_axis_tvalid changes to an observed onehot state in the seen trace.\n- Polarity: m_axis_tvalid changes to an observed onehot state; at divergence m_axis_tvalid is observed as good=1 and bad=0; at divergence q_o is observed as good=1 and bad=0; at divergence s_axis_tready is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: m_axis_tvalid holds its observed post-trigger state for 3 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, m_axis_tvalid: good=1, bad=0; q_o: good=1, bad=0; s_axis_tready: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "m_axis_tvalid"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "m_axis_tvalid",
+        "q_o",
+        "s_axis_tready"
+      ]
+    }
+  },
+  {
+    "case_id": "case503_cc_cdc_2phase_ack_returns_early",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: req_i has an observed rising transition in the seen trace.\n- Polarity: req_i rising transition; at divergence ack_o is observed as good=0 and bad=1; at divergence q_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: req_i holds its observed post-trigger state for 3 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, ack_o: good=0, bad=1; q_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case503_cc_cdc_2phase_ack_returns_early",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "req_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "ack_o",
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: wr_gray_i changes to an observed onehot state in the seen trace.\n- Polarity: wr_gray_i changes to an observed onehot state; at divergence q_o is observed as good=0 and bad=1; at divergence rd_gray_o is observed as good=000 and bad=001.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: wr_gray_i holds its observed post-trigger state for 4 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, q_o: good=0, bad=1; rd_gray_o: good=000, bad=001.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "wr_gray_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "q_o",
+        "rd_gray_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case505_axis_stat_counter_frame_pulse_early",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: frame_done_i has an observed rising transition; frame_len_i changes to an observed multihot state in the seen trace.\n- Polarity: frame_done_i rising transition; frame_len_i changes to an observed multihot state; at divergence q_o is observed as good=0 and bad=1; at divergence stat_valid_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: frame_done_i holds its observed post-trigger state for 1 sampled cycles, frame_len_i holds its observed post-trigger state for 7 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, q_o: good=0, bad=1; stat_valid_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case505_axis_stat_counter_frame_pulse_early",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "frame_done_i",
+        "frame_len_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "q_o",
+        "stat_valid_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case506_axis_crosspoint_simultaneous_source_priority",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: m_data changes to an observed multihot state in the seen trace.\n- Polarity: m_data changes to an observed multihot state; at divergence m_data is observed as good=00010010 and bad=11100001; at divergence q_o is observed as good=1 and bad=0; at divergence s0_ready is observed as good=1 and bad=0; at divergence s1_ready is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: m_data holds its observed post-trigger state for 2 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, m_data: good=00010010, bad=11100001; q_o: good=1, bad=0; s0_ready: good=1, bad=0; s1_ready: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case506_axis_crosspoint_simultaneous_source_priority",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "m_data"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "m_data",
+        "q_o",
+        "s0_ready",
+        "s1_ready"
+      ]
+    }
+  },
+  {
+    "case_id": "case507_cc_rr_arb_tree_locked_grant_replaced",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: req_i changes to an observed onehot state in the seen trace.\n- Polarity: req_i changes to an observed onehot state; at divergence gnt_o is observed as good=01 and bad=10; at divergence q_o is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: req_i holds its observed post-trigger state for 5 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 4, gnt_o: good=01, bad=10; q_o: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "req_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 4,
+      "differing_signals": [
+        "gnt_o",
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case508_cc_stream_fork_partial_ready_accept",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: ready_i changes to an observed onehot state; valid_i has an observed rising transition in the seen trace.\n- Polarity: ready_i changes to an observed onehot state; valid_i rising transition; at divergence q_o is observed as good=0 and bad=1; at divergence ready_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: ready_i holds its observed post-trigger state for 2 sampled cycles, valid_i holds its observed post-trigger state for 4 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, q_o: good=0, bad=1; ready_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case508_cc_stream_fork_partial_ready_accept",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "ready_i",
+        "valid_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "q_o",
+        "ready_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case509_axis_switch_overlap_route_priority",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: m_valid changes to an observed onehot state in the seen trace.\n- Polarity: m_valid changes to an observed onehot state; at divergence m_valid is observed as good=01 and bad=10; at divergence q_o is observed as good=1 and bad=0.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: m_valid holds its observed post-trigger state for 2 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, m_valid: good=01, bad=10; q_o: good=1, bad=0.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case509_axis_switch_overlap_route_priority",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "m_valid"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "m_valid",
+        "q_o"
+      ]
+    }
+  },
+  {
+    "case_id": "case510_cc_spill_register_flush_push_priority",
+    "abstracted_summary": "Temporal-relation abstraction:\n- Trigger: data_i changes to an observed multihot state; flush_i has an observed rising transition; push_i has an observed rising transition in the seen trace.\n- Polarity: data_i changes to an observed multihot state; flush_i rising transition; push_i rising transition; at divergence data_o is observed as good=00000000 and bad=01010101; at divergence q_o is observed as good=0 and bad=1; at divergence valid_o is observed as good=0 and bad=1.\n- Ordering: the observed trigger coincides with the first good/bad divergence.\n- Observed delay: the seen trace has an observed delay of exactly 0 sampled cycles from the selected trigger to first divergence.\n- Duration: data_i holds its observed post-trigger state for 6 sampled cycles, flush_i holds its observed post-trigger state for 1 sampled cycles, push_i holds its observed post-trigger state for 1 sampled cycles.\n- Reset: rst_ni is active-high and is observed deasserted before the trigger.\n- Good/bad divergence: at observed cycle 3, data_o: good=00000000, bad=01010101; q_o: good=0, bad=1; valid_o: good=0, bad=1.\n- Generalization boundary: do not infer a universal property from absolute cycle indices or one-off literal constants; preserve only the observed polarity, ordering, delay, duration, reset context, and good/bad relation.",
+    "source": "deterministic_seen_trace_contract_v1",
+    "provenance": {
+      "case_id": "case510_cc_spill_register_flush_push_priority",
+      "source_inputs": [
+        "experiment/spec.txt",
+        "experiment/trace_good.txt",
+        "experiment/trace_bad.txt"
+      ],
+      "uses_golden_sva": false,
+      "uses_expected_behavior": false,
+      "uses_buggy_rtl": false,
+      "uses_mutation_diff": false,
+      "uses_heldout_trace": false,
+      "uses_decoy_trace": false,
+      "trigger_signals": [
+        "data_i",
+        "flush_i",
+        "push_i"
+      ],
+      "observed_delay": 0,
+      "first_divergence_cycle": 3,
+      "differing_signals": [
+        "data_o",
+        "q_o",
+        "valid_o"
+      ]
+    }
+  }
+]

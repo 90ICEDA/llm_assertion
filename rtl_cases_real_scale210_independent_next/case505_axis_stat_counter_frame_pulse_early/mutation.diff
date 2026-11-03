@@ -1,0 +1,10 @@
+--- correct.v
++++ buggy.v
+@@ -4,5 +4,6 @@
+   always @(posedge clk_i or negedge rst_ni) begin
+     if(!rst_ni) begin valid_pipe<=0;stat_len_o<=0; end else begin valid_pipe<={valid_pipe[0],frame_done_i}; if(frame_done_i) stat_len_o<=frame_len_i; end
+   end
+-  assign stat_valid_o=valid_pipe[1];
++  // MUTATION: reports completion from the first pipeline stage.
++  assign stat_valid_o=valid_pipe[0];
+ endmodule

@@ -1,0 +1,254 @@
+{
+  "outcome": {
+    "status": "sva_rejected_previous_version_retained",
+    "accepted": false,
+    "model_calls": 3,
+    "plan_calls": 0,
+    "frozen_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+    "independent_test_run": false,
+    "prior_versions_unchanged": true
+  },
+  "attempts": [
+    {
+      "version": "v0",
+      "accepted": false,
+      "executable_hash": "d221650b8cdc2fe1bbe934a9ca0b55fb2a9595474e49901519ea34024d5bb660",
+      "repeated": false,
+      "reason_kinds": [
+        "current_gap_not_confirmed_repaired",
+        "history_native_unhealthy",
+        "legal_window_false_alarm",
+        "lost_obligation_trigger",
+        "lost_target_detection",
+        "native_or_sampling_or_legal_control_failure",
+        "new_legal_false_positive",
+        "required_transition_not_triggered",
+        "target_not_causally_detected",
+        "unconfirmed_replay",
+        "validated_required_window_not_triggered",
+        "visible_false_positives",
+        "visible_native_or_legal_control_failure",
+        "visible_unknown"
+      ],
+      "current_counts": {
+        "rows": 2150,
+        "unknown": 2,
+        "triggers": 635,
+        "false_positives": 16,
+        "detections": 3,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 95
+      },
+      "history_counts": {
+        "rows": 69124,
+        "unknown": 61,
+        "triggers": 16309,
+        "false_positives": 918,
+        "detections": 139,
+        "misses": 14,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1177
+      },
+      "edit": {
+        "operation": "replace_one",
+        "assertion_id": "a4",
+        "assertions": [
+          {
+            "antecedent": {
+              "op": "&&",
+              "args": [
+                {
+                  "signal": "mvalid"
+                },
+                {
+                  "op": "!",
+                  "args": [
+                    {
+                      "signal": "mready"
+                    }
+                  ]
+                },
+                {
+                  "op": "$past",
+                  "args": [
+                    {
+                      "signal": "mvalid"
+                    }
+                  ]
+                },
+                {
+                  "op": "!",
+                  "args": [
+                    {
+                      "signal": "rst"
+                    }
+                  ]
+                }
+              ]
+            },
+            "consequent": {
+              "op": "==",
+              "args": [
+                {
+                  "signal": "mdata"
+                },
+                {
+                  "op": "$past",
+                  "args": [
+                    {
+                      "signal": "mdata"
+                    }
+                  ]
+                }
+              ]
+            },
+            "timing": "same_sample",
+            "obligation": [
+              "stall_stability"
+            ]
+          }
+        ],
+        "reason": "Ensures that the output data (mdata) remains stable during backpressure (mready is low) and across consecutive cycles, as required by the stall_stability obligation. The timing is adjusted to the same sample to ensure immediate stability during backpressure, and the reset condition is explicitly excluded."
+      }
+    },
+    {
+      "version": "v1",
+      "accepted": false,
+      "executable_hash": null,
+      "repeated": false,
+      "reason_kinds": [
+        "history_native_unhealthy",
+        "history_unavailable",
+        "native_window_check_unavailable",
+        "unusable_model_output"
+      ],
+      "current_counts": null,
+      "history_counts": null,
+      "edit": null
+    },
+    {
+      "version": "v2",
+      "accepted": false,
+      "executable_hash": "8818cc2f4255f516eacd38b4a9a3e7e09d43c16b9fff78b97955ee5dfc240b3d",
+      "repeated": false,
+      "reason_kinds": [
+        "current_gap_not_confirmed_repaired",
+        "lost_obligation_trigger",
+        "lost_target_detection",
+        "required_transition_not_triggered",
+        "target_not_causally_detected",
+        "validated_required_window_not_triggered",
+        "visible_misses"
+      ],
+      "current_counts": {
+        "rows": 2150,
+        "unknown": 0,
+        "triggers": 619,
+        "false_positives": 0,
+        "detections": 3,
+        "misses": 2,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 95
+      },
+      "history_counts": {
+        "rows": 69124,
+        "unknown": 0,
+        "triggers": 15421,
+        "false_positives": 0,
+        "detections": 183,
+        "misses": 31,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1177
+      },
+      "edit": {
+        "operation": "replace_one",
+        "assertion_id": "a4",
+        "assertions": [
+          {
+            "antecedent": {
+              "op": "&&",
+              "args": [
+                {
+                  "signal": "mvalid"
+                },
+                {
+                  "op": "!",
+                  "args": [
+                    {
+                      "signal": "mready"
+                    }
+                  ]
+                },
+                {
+                  "op": "$past",
+                  "args": [
+                    {
+                      "op": "&&",
+                      "args": [
+                        {
+                          "signal": "mvalid"
+                        },
+                        {
+                          "op": "!",
+                          "args": [
+                            {
+                              "signal": "mready"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "consequent": {
+              "op": "==",
+              "args": [
+                {
+                  "signal": "mdata"
+                },
+                {
+                  "op": "$past",
+                  "args": [
+                    {
+                      "signal": "mdata"
+                    }
+                  ]
+                }
+              ]
+            },
+            "timing": "same_sample",
+            "obligation": [
+              "stall_stability"
+            ]
+          }
+        ],
+        "reason": "The existing a4 assertion does not fully capture the stall stability requirement, especially in the case of repeated backpressure cycles. The new assertion ensures that mdata remains stable during backpressure, even if the backpressure persists for multiple cycles."
+      }
+    }
+  ],
+  "cost": {
+    "model_calls": 3,
+    "prompt_tokens_known_subtotal": 54855,
+    "completion_tokens_known_subtotal": 559,
+    "usage_unavailable_calls": 1,
+    "prompt_tokens_total": null,
+    "completion_tokens_total": null,
+    "model_wall_seconds_known_subtotal": 50.455463841000025,
+    "model_wall_seconds_unavailable_calls": 0,
+    "model_status": {
+      "response_received": 2,
+      "service_http_error": 1
+    },
+    "native_compile_calls": 12,
+    "native_execute_calls": 444,
+    "compile_smoke_execute_calls": 12,
+    "native_compile_wall_seconds": 113.37139317299996,
+    "native_execute_wall_seconds": 9.820783481000376,
+    "native_commands_failed_or_timed_out": 0,
+    "tool_version_query_calls": 12,
+    "formal_calls": 0
+  }
+}

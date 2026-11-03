@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -27,6 +27,7 @@
+         data_q2 <= {data_q1[6:0], data_q1[7]} ^ 8'ha5;
+     end
+   end
+-  assign valid_o = valid_q[2];
++  assign valid_o = valid_q[1];
++  // MUTATION: valid_o bypasses the final registered outer round.
+   assign data_o = data_q2;
+ endmodule

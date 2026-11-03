@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -23,7 +23,7 @@
+ );
+   // trivial base case
+   if (Width == 1) begin : gen_degenerated_onehot
+-    assign is_onehot_o = d_i;
++    assign is_onehot_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+   end else begin : gen_onehot
+     localparam int unsigned Lvls = $clog2(Width) + 1;
+ 

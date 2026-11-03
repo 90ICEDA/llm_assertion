@@ -1,0 +1,15 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, clk_chk_i, rst_ni, rst_chk_ni, en_i, ack, cnt, timeout_o
+
+Specification:
+
+# Behavioral specification
+
+When enabled and no checked-clock acknowledgement arrives for TimeOutCnt reference cycles, timeout_o asserts after the output register latency.

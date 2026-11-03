@@ -1,0 +1,66 @@
+[
+  {
+    "requirement": "four_policy_search_11_pairs",
+    "status": "verified_bounded",
+    "code": "scripts/research_search_compare.py",
+    "command": "research_pipeline.py search --run NEW --action prepare/run/report",
+    "artifact": "research_search_20261014_r01",
+    "limit": "procedural diagnosis; finite template/exposure policy; no superiority shown"
+  },
+  {
+    "requirement": "complex_fifo",
+    "status": "verified_bounded",
+    "code": "scripts/research_fifo_experiment.py",
+    "command": "research_pipeline.py fifo --run NEW",
+    "artifact": "research_fifo_20261014_r01",
+    "limit": "artificial boundary faults; depth3 rounds4; reset residue mutation missing"
+  },
+  {
+    "requirement": "real_model_native_sva_loop",
+    "status": "executed_with_recorded_outcomes",
+    "code": "scripts/research_native_closed_loop.py",
+    "command": "research_pipeline.py native --run NEW",
+    "artifact": "research_native_20261014_r01/closed_loop",
+    "limit": "status/acceptance must be read from summary; interrupted oversized request counted; compact continuation separate; simulation only; not native 2x2 ablation"
+  },
+  {
+    "requirement": "four_arms_with_acceptance_gate",
+    "status": "executed_with_recorded_failures",
+    "code": "scripts/research_gate_experiment.py",
+    "command": "research_pipeline.py gate --run NEW --action prepare/develop/acceptance",
+    "artifact": "research_gate_20261014_r01",
+    "limit": "stat conditional scoped contract; procedural checker; 5 model interface errors; actual cost differs"
+  },
+  {
+    "requirement": "generic_remote_provider",
+    "status": "implemented_only",
+    "code": "scripts/research_native_closed_loop.py",
+    "command": "--provider openai_compatible --endpoint URL --key-env ENV_NAME",
+    "artifact": null,
+    "limit": "not run; no configured remote provider used; local Ollama alone verified"
+  },
+  {
+    "requirement": "ibex_original_reproduction",
+    "status": "verified_bounded",
+    "code": "scripts/research_historical_replay.py",
+    "command": "research_pipeline.py ibex --run NEW",
+    "artifact": "research_ibex_20261014_r01",
+    "limit": "4 historical tests only; not model-generated SVA protection"
+  },
+  {
+    "requirement": "full_requested_evidence_chain_all_parents",
+    "status": "incomplete",
+    "code": null,
+    "command": null,
+    "artifact": null,
+    "limit": [
+      "Native four-arm search x non-regression factorial on complex FIFO not executed.",
+      "Full confirmed repair-obligation coverage for six parent bugs and generated assertions on historical Ibex not established.",
+      "spill invalid-payload and intr mask semantics remain unresolved; stat overlap historical semantics unconfirmed.",
+      "FIFO presented original defect remains unknown without a definitive original-target violation witness.",
+      "Contract search remains a finite scheduling policy, not a complete general obligation-solving engine.",
+      "No formal proof runs; supported native SVA simulation is bounded to Verilator feature subset.",
+      "No additional historical bug admitted beyond freshly replayed Ibex #54."
+    ]
+  }
+]

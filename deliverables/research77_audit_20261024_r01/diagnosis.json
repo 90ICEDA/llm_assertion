@@ -1,0 +1,141 @@
+{
+  "status": "plan_failed",
+  "window_judgments_correct": 9,
+  "total_windows": 11,
+  "rule_outputs_correct": 2,
+  "rule_window_agreements": 2,
+  "actual_rules": {
+    "trigger_condition": {
+      "sample": "anchor",
+      "mvalid": 1,
+      "mready": 0,
+      "rst": 0
+    },
+    "reset_cancellation": {
+      "sample": "check",
+      "rst": 0
+    },
+    "hold_requirement": {
+      "sample": "check",
+      "mvalid": 1,
+      "data_reference": {
+        "sample": "anchor",
+        "signal": "mdata"
+      }
+    }
+  },
+  "examples": [
+    {
+      "id": "w0",
+      "executed_rule": {
+        "id": "w0",
+        "anchor_cycle": 49,
+        "check_cycle": 50,
+        "applicability": "cancelled",
+        "expected_data": null,
+        "observed_data": 3883009060,
+        "observed_valid": 1,
+        "verdict": "not_applicable"
+      },
+      "model_window": {
+        "id": "w0",
+        "anchor_cycle": 49,
+        "check_cycle": 50,
+        "applicability": "required",
+        "expected_data": 3883009060,
+        "observed_data": 3883009060,
+        "observed_valid": 1,
+        "verdict": "satisfied"
+      },
+      "rule_matches_certificate": false,
+      "window_matches_certificate": false,
+      "rule_matches_window": false
+    },
+    {
+      "id": "w2",
+      "executed_rule": {
+        "id": "w2",
+        "anchor_cycle": 7,
+        "check_cycle": 8,
+        "applicability": "cancelled",
+        "expected_data": null,
+        "observed_data": 267114575,
+        "observed_valid": 1,
+        "verdict": "not_applicable"
+      },
+      "model_window": {
+        "id": "w2",
+        "anchor_cycle": 7,
+        "check_cycle": 8,
+        "applicability": "required",
+        "expected_data": 267114575,
+        "observed_data": 267114575,
+        "observed_valid": 1,
+        "verdict": "satisfied"
+      },
+      "rule_matches_certificate": false,
+      "window_matches_certificate": false,
+      "rule_matches_window": false
+    },
+    {
+      "id": "w5",
+      "executed_rule": {
+        "id": "w5",
+        "anchor_cycle": 16,
+        "check_cycle": 17,
+        "applicability": "cancelled",
+        "expected_data": null,
+        "observed_data": 3773356146,
+        "observed_valid": 0,
+        "verdict": "not_applicable"
+      },
+      "model_window": {
+        "id": "w5",
+        "anchor_cycle": 16,
+        "check_cycle": 17,
+        "applicability": "required",
+        "expected_data": 3773356146,
+        "observed_data": 3773356146,
+        "observed_valid": 0,
+        "verdict": "violated"
+      },
+      "rule_matches_certificate": false,
+      "window_matches_certificate": true,
+      "rule_matches_window": false
+    },
+    {
+      "id": "w10",
+      "executed_rule": {
+        "id": "w10",
+        "anchor_cycle": 60,
+        "check_cycle": 61,
+        "applicability": "required",
+        "expected_data": 7817769,
+        "observed_data": 7817769,
+        "observed_valid": 1,
+        "verdict": "satisfied"
+      },
+      "model_window": {
+        "id": "w10",
+        "anchor_cycle": 60,
+        "check_cycle": 61,
+        "applicability": "cancelled",
+        "expected_data": null,
+        "observed_data": 7817769,
+        "observed_valid": 1,
+        "verdict": "not_applicable"
+      },
+      "rule_matches_certificate": false,
+      "window_matches_certificate": true,
+      "rule_matches_window": false
+    }
+  ],
+  "calls_used": 1,
+  "remaining_calls": 1,
+  "remaining_scope": "SVA only after complete judgment; no additional judgment authorized",
+  "native_compiles": 0,
+  "native_executions": 0,
+  "formal_calls": 0,
+  "accepted_new_version": false,
+  "independent_performed": false
+}

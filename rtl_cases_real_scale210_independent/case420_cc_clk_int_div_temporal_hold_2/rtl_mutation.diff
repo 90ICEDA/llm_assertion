@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -364,7 +364,7 @@
+     if (!rst_ni) begin
+       gate_is_open_q <= 1'b0;
+     end else begin
+-      gate_is_open_q <= gate_en_q & en_i;
++      gate_is_open_q <= gate_is_open_q; // ASSERTIONFORGE_MUTATION: state update suppressed
+     end
+   end
+ 

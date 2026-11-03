@@ -1,0 +1,1142 @@
+[
+  {
+    "config": 0,
+    "revision": "before",
+    "path": "deliverables/research178_partial_run_20261029_r01/0/before",
+    "result": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "15e7b3cd530a9ed3d418a41f36b3b29792e930a669014a5d6789b5474d91ab95",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/before/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/before/tb.sv",
+          "/mnt/d/AssertionForge-main1/deliverables/research177_history_prepare_20261029_r03/frame_len_consecutive/before/axis_frame_len.v"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/before",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 9.068899369
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/before/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/before",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.02095692700000029
+      },
+      "failures": [
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=24"
+        }
+      ],
+      "triggers": [
+        {
+          "id": "valid_check",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=7"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=8"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=9"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=10"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=11"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=14"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=15"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=24"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=25"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=26"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=27"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=28"
+        }
+      ]
+    }
+  },
+  {
+    "config": 0,
+    "revision": "after",
+    "path": "deliverables/research178_partial_run_20261029_r01/0/after",
+    "result": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "15e7b3cd530a9ed3d418a41f36b3b29792e930a669014a5d6789b5474d91ab95",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/after/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/after/tb.sv",
+          "/mnt/d/AssertionForge-main1/deliverables/research177_history_prepare_20261029_r03/frame_len_consecutive/after/axis_frame_len.v"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/after",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 8.956287756999998
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/after/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/0/after",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.01945127300000138
+      },
+      "failures": [
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=24"
+        }
+      ],
+      "triggers": [
+        {
+          "id": "valid_check",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=7"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=8"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=9"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=10"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=11"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=14"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=15"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=24"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=25"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=26"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=27"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=28"
+        }
+      ]
+    }
+  },
+  {
+    "config": 1,
+    "revision": "before",
+    "path": "deliverables/research178_partial_run_20261029_r01/1/before",
+    "result": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "e213b9741e9f7dc645be9b14c432fbf585875382eb0e558959ba046d076fcedd",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/before/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/before/tb.sv",
+          "/mnt/d/AssertionForge-main1/deliverables/research177_history_prepare_20261029_r03/frame_len_consecutive/before/axis_frame_len.v"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/before",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 8.359433570999997
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/before/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/before",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.015750208000000043
+      },
+      "failures": [
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=24"
+        }
+      ],
+      "triggers": [
+        {
+          "id": "valid_check",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=7"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=8"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=9"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=10"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=11"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=14"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=15"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=24"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=25"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=26"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=27"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=28"
+        }
+      ]
+    }
+  },
+  {
+    "config": 1,
+    "revision": "after",
+    "path": "deliverables/research178_partial_run_20261029_r01/1/after",
+    "result": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "e213b9741e9f7dc645be9b14c432fbf585875382eb0e558959ba046d076fcedd",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/after/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/after/tb.sv",
+          "/mnt/d/AssertionForge-main1/deliverables/research177_history_prepare_20261029_r03/frame_len_consecutive/after/axis_frame_len.v"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/after",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 8.240919253999998
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/after/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research178_partial_run_20261029_r01/1/after",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.015230635000001769
+      },
+      "failures": [
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=24"
+        }
+      ],
+      "triggers": [
+        {
+          "id": "valid_check",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=3"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=4"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=5"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=6"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=7"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=8"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=9"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=10"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=11"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=12"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=13"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=14"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=15"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=16"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=17"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=20"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "adjacent_length",
+          "detail": "cycle=21"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=22"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "all_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "single_beat_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "separated_length",
+          "detail": "cycle=23"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=24"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=25"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=26"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=27"
+        },
+        {
+          "id": "valid_check",
+          "detail": "cycle=28"
+        }
+      ]
+    }
+  }
+]

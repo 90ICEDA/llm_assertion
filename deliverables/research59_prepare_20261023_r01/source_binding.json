@@ -1,0 +1,17 @@
+{
+  "case_id": "lowRISC/ibex#166",
+  "upstream": "https://github.com/lowRISC/ibex/pull/166",
+  "before_commit": "c96ece04296c3c69df578d760aa8a66f9b886fef",
+  "after_commit": "3bcbb50630a7cb0278623a8a1f5d262e0220dd86",
+  "merge_commit": "59254498489d441f64c24e6b344fce73d0d8bbce",
+  "legal_stimulus": "Decoder interface accepts any instruction bits, including illegal encodings. An instruction is first presented with instr_new_i=1, then held stable with instr_new_i=0 for its remaining execution samples. illegal_c_insn_i=0. These are module-interface stimuli, not a demonstrated full-core fetch/retire protocol.",
+  "source_sha256": {
+    "before/ibex_decoder.sv": "a0921dfe3033510812e7f6fb0602adaad707f7cc297393aa2738d1e3b8688223",
+    "before/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f",
+    "after/ibex_decoder.sv": "2ea8bbc1b2268954ad9c980a05f78428da7d6bd456fb2b4dbf3559e694c61427",
+    "after/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f"
+  },
+  "fresh_reproduction": "/mnt/d/AssertionForge-main1/deliverables/research51_original_20261022_r01",
+  "upstream_verification": "/mnt/d/AssertionForge-main1/deliverables/research51_upstream_20261022_r01",
+  "scope": "Original historical module, not full-core exception; stat and FIFO presented remain unknown."
+}

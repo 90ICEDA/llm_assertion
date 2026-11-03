@@ -1,0 +1,1094 @@
+{
+  "stage_complete": false,
+  "native": {
+    "status": "three_actual_model_native_replay_attempts_all_rejected",
+    "versions": [
+      {
+        "model_call": "initial",
+        "model_result": {
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+          "prompt_tokens": 7311,
+          "completion_tokens": 70,
+          "model_calls": 1,
+          "retries": 0,
+          "service_total_ns": 281814460697,
+          "done_reason": "stop",
+          "wall_seconds": 281.816728541,
+          "partial_response_characters": 290,
+          "candidate_status": "parsed",
+          "context_budget": {
+            "estimated_prompt_tokens": 12187,
+            "context_tokens": 16384,
+            "estimate_not_exact_tokenization": true
+          }
+        },
+        "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |-> sdata == ref_expected))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+        "candidate": {
+          "assertions": [
+            {
+              "property": "mvalid && mready |-> sdata == ref_expected",
+              "obligations": [
+                "order_payload"
+              ],
+              "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+              "id": "a0",
+              "derived_antecedent": "mvalid && mready",
+              "implication": "|->",
+              "derived_delay": 0,
+              "consequent": "sdata == ref_expected"
+            }
+          ],
+          "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+        },
+        "counts": {
+          "rows": 798,
+          "unknown": 3,
+          "false_positives": 59,
+          "detections": 0,
+          "misses": 0,
+          "triggers": 59
+        },
+        "accepted": false,
+        "compile": "passed",
+        "execution": "completed",
+        "trigger_source": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+        "evidence_directory": "deliverables/research15_native_20261015_r01/initial_qualification/original"
+      },
+      {
+        "model_call": "initial_semantic_repair",
+        "model_result": {
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+          "prompt_tokens": 7938,
+          "completion_tokens": 78,
+          "model_calls": 1,
+          "retries": 0,
+          "service_total_ns": 50044342541,
+          "done_reason": "stop",
+          "wall_seconds": 50.04625697899996,
+          "partial_response_characters": 308,
+          "candidate_status": "parsed",
+          "context_budget": {
+            "estimated_prompt_tokens": 13034,
+            "context_tokens": 16384,
+            "estimate_not_exact_tokenization": true
+          }
+        },
+        "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |=> mdata == ref_expected))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+        "candidate": {
+          "assertions": [
+            {
+              "property": "mvalid && mready |=> mdata == ref_expected",
+              "obligations": [
+                "order_payload"
+              ],
+              "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+              "id": "a0",
+              "derived_antecedent": "mvalid && mready",
+              "implication": "|=>",
+              "derived_delay": 1,
+              "consequent": "mdata == ref_expected"
+            }
+          ],
+          "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+        },
+        "counts": {
+          "rows": 798,
+          "unknown": 0,
+          "false_positives": 2,
+          "detections": 0,
+          "misses": 3,
+          "triggers": 59
+        },
+        "accepted": false,
+        "compile": "passed",
+        "execution": "completed",
+        "trigger_source": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+        "evidence_directory": "deliverables/research15_native_20261015_r01/initial_qualification/semantic_repair"
+      },
+      {
+        "model_call": "initial_temporal_repair",
+        "model_result": {
+          "status": "response_received",
+          "model": "qwen2.5-coder:7b-instruct",
+          "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+          "prompt_tokens": 8025,
+          "completion_tokens": 124,
+          "model_calls": 1,
+          "retries": 0,
+          "service_total_ns": 59649970640,
+          "done_reason": "stop",
+          "wall_seconds": 59.65194626300001,
+          "partial_response_characters": 469,
+          "candidate_status": "parsed",
+          "context_budget": {
+            "estimated_prompt_tokens": 13011,
+            "context_tokens": 16384,
+            "estimate_not_exact_tokenization": true
+          }
+        },
+        "sva": "a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready |=> mdata == $past(ref_expected)))\n  else $display(\"ASSERT_FAIL a0 cycle=%0d\", $sampled(native_cycle));\ncv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready))\n  $display(\"TRIGGER a0 cycle=%0d\", $sampled(native_cycle));\n",
+        "candidate": {
+          "assertions": [
+            {
+              "property": "mvalid && mready |=> mdata == $past(ref_expected)",
+              "obligations": [
+                "order_payload"
+              ],
+              "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+              "id": "a0",
+              "derived_antecedent": "mvalid && mready",
+              "implication": "|=>",
+              "derived_delay": 1,
+              "consequent": "mdata == $past(ref_expected)"
+            }
+          ],
+          "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+        },
+        "counts": {
+          "rows": 798,
+          "unknown": 0,
+          "false_positives": 59,
+          "detections": 0,
+          "misses": 3,
+          "triggers": 59
+        },
+        "accepted": false,
+        "compile": "passed",
+        "execution": "completed",
+        "trigger_source": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+        "evidence_directory": "deliverables/research15_native_20261015_r01/initial_temporal_continuation"
+      }
+    ],
+    "accepted_version": null,
+    "original_two_call_budget_succeeded": false,
+    "extra_temporal_calls": 1,
+    "four_arm_native_ablation": "implemented_not_executed",
+    "final_frozen_independent_test": "not_executed",
+    "blocker": "No shared initial order assertion passed finite native qualification; extra timing repair also failed. No templates substituted.",
+    "audit": "Authoritative initialization counts are readjudicated against legal control alarms. Original first version had 3 raw alleged detections, corrected to attribution unknown; rejection unchanged.",
+    "source_limit": "Exact generated SVA, compiled TB and command logs retained. First qualification Python process imported the earlier adapter; later readjudication has a saved current adapter hash. The delivery source snapshot is not retroactively claimed to be that earlier imported Python version.",
+    "model_provider": "actual local Ollama; generic remote transport inherited but not exercised",
+    "formal_proof": false
+  },
+  "search": [
+    {
+      "method": "ordinary",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [],
+      "independent_gap_count": 0,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "legal/a0/false_positive",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/order_payload/attribution_unknown",
+        "reset_residue/order_payload/causal_detection",
+        "reset_residue/reset_cancellation/attribution_unknown"
+      ],
+      "duplicate_gap_observations": 0,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.289450791000263,
+      "selected_families": {
+        "reset_pending": 6,
+        "overlap": 2,
+        "random": 3,
+        "backpressure": 1
+      }
+    },
+    {
+      "method": "candidate_disagreement",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [],
+      "independent_gap_count": 0,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "legal/a0/false_positive",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/order_payload/attribution_unknown",
+        "reset_residue/order_payload/causal_detection",
+        "reset_residue/reset_cancellation/attribution_unknown"
+      ],
+      "duplicate_gap_observations": 0,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.3077813880011036,
+      "selected_families": {
+        "reset_pending": 4,
+        "random": 2,
+        "drain": 2,
+        "tail_loss": 1,
+        "backpressure": 2,
+        "overlap": 1
+      }
+    },
+    {
+      "method": "raw_difference",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [],
+      "independent_gap_count": 0,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "legal/a0/false_positive",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/reset_cancellation/attribution_unknown"
+      ],
+      "duplicate_gap_observations": 0,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.284669694998911,
+      "selected_families": {
+        "reset_pending": 5,
+        "overlap": 2,
+        "backpressure": 5
+      }
+    },
+    {
+      "method": "contract_coverage",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [],
+      "independent_gap_count": 0,
+      "semantic_classes": [
+        "corrupt/order_payload/attribution_unknown",
+        "drop/drain_no_loss/attribution_unknown",
+        "drop/order_payload/attribution_unknown",
+        "duplicate_payload/order_payload/attribution_unknown",
+        "legal/a0/false_positive",
+        "reset_residue/no_unsolicited_output/attribution_unknown",
+        "reset_residue/reset_cancellation/attribution_unknown"
+      ],
+      "duplicate_gap_observations": 0,
+      "unknown_queries": 0,
+      "native_simulation_wall_seconds": 1.2906994999996186,
+      "selected_families": {
+        "tail_loss": 2,
+        "reset_pending": 6,
+        "backpressure": 2,
+        "overlap": 2
+      }
+    }
+  ],
+  "search_attribution": {
+    "ordinary": {
+      "queries": 12,
+      "event_classes": {
+        "false_positive": 616,
+        "attribution_unknown": 1205,
+        "causal_detection": 1
+      },
+      "semantic_classes_by_kind": {
+        "attribution_unknown": 7,
+        "causal_detection": 1,
+        "false_positive": 1
+      },
+      "independent_missed_gap_classes": 0,
+      "unknown_queries": 0
+    },
+    "candidate_disagreement": {
+      "queries": 12,
+      "event_classes": {
+        "false_positive": 509,
+        "attribution_unknown": 997,
+        "causal_detection": 2
+      },
+      "semantic_classes_by_kind": {
+        "attribution_unknown": 7,
+        "causal_detection": 1,
+        "false_positive": 1
+      },
+      "independent_missed_gap_classes": 0,
+      "unknown_queries": 0
+    },
+    "raw_difference": {
+      "queries": 12,
+      "event_classes": {
+        "false_positive": 630,
+        "attribution_unknown": 1240
+      },
+      "semantic_classes_by_kind": {
+        "attribution_unknown": 6,
+        "false_positive": 1
+      },
+      "independent_missed_gap_classes": 0,
+      "unknown_queries": 0
+    },
+    "contract_coverage": {
+      "queries": 12,
+      "event_classes": {
+        "false_positive": 538,
+        "attribution_unknown": 1053
+      },
+      "semantic_classes_by_kind": {
+        "attribution_unknown": 6,
+        "false_positive": 1
+      },
+      "independent_missed_gap_classes": 0,
+      "unknown_queries": 0
+    }
+  },
+  "historical": {
+    "ibex166": {
+      "case_id": "lowRISC/ibex#166",
+      "results": [
+        {
+          "revision": "before",
+          "compile_status": "passed",
+          "execution_status": "completed",
+          "native_property_status": "violation",
+          "checks": 1374,
+          "violations": 423,
+          "transactions_with_violation": 42,
+          "family_results": {
+            "benchmark_illegal_alu": {
+              "checks": 15,
+              "violations": 15
+            },
+            "branch_legal": {
+              "checks": 570,
+              "violations": 0
+            },
+            "branch_reserved": {
+              "checks": 177,
+              "violations": 129
+            },
+            "issue_163_illegal_branch": {
+              "checks": 15,
+              "violations": 12
+            },
+            "nop_control": {
+              "checks": 9,
+              "violations": 0
+            },
+            "op_bit28": {
+              "checks": 267,
+              "violations": 267
+            },
+            "op_control": {
+              "checks": 321,
+              "violations": 0
+            }
+          },
+          "compile_wall_seconds": 30.68437949600002,
+          "simulation_wall_seconds": 0.01919348199999149,
+          "version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+        },
+        {
+          "revision": "after",
+          "compile_status": "passed",
+          "execution_status": "completed",
+          "native_property_status": "no_violation_within_executed_scope",
+          "checks": 1374,
+          "violations": 0,
+          "transactions_with_violation": 0,
+          "family_results": {
+            "benchmark_illegal_alu": {
+              "checks": 15,
+              "violations": 0
+            },
+            "branch_legal": {
+              "checks": 570,
+              "violations": 0
+            },
+            "branch_reserved": {
+              "checks": 177,
+              "violations": 0
+            },
+            "issue_163_illegal_branch": {
+              "checks": 15,
+              "violations": 0
+            },
+            "nop_control": {
+              "checks": 9,
+              "violations": 0
+            },
+            "op_bit28": {
+              "checks": 267,
+              "violations": 0
+            },
+            "op_control": {
+              "checks": 321,
+              "violations": 0
+            }
+          },
+          "compile_wall_seconds": 20.141219406000005,
+          "simulation_wall_seconds": 0.02105942899999036,
+          "version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+        }
+      ],
+      "admitted_original_module": true,
+      "repair_witnesses": 423,
+      "covered_repair_obligations": [
+        "illegal_branch_persists",
+        "op_bit28_illegal"
+      ],
+      "full_core_trap_reproduction": false,
+      "abstract_model": false,
+      "model_calls": 0,
+      "formal_calls": 0,
+      "source_sha256": {
+        "before/ibex_decoder.sv": "a0921dfe3033510812e7f6fb0602adaad707f7cc297393aa2738d1e3b8688223",
+        "before/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f",
+        "after/ibex_decoder.sv": "2ea8bbc1b2268954ad9c980a05f78428da7d6bd456fb2b4dbf3559e694c61427",
+        "after/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f"
+      }
+    },
+    "ibex54_new_boundaries": {
+      "results": [
+        {
+          "revision": "before",
+          "cohort": "new_boundary",
+          "vectors": 119,
+          "violating_vectors": 32,
+          "failures": 32,
+          "by_family": {
+            "legal_li": {
+              "vectors": 20,
+              "violating_vectors": 0
+            },
+            "legal_lui": {
+              "vectors": 16,
+              "violating_vectors": 0
+            },
+            "legal_slli": {
+              "vectors": 16,
+              "violating_vectors": 0
+            },
+            "legal_srai": {
+              "vectors": 9,
+              "violating_vectors": 0
+            },
+            "legal_srli": {
+              "vectors": 9,
+              "violating_vectors": 0
+            },
+            "lui_zero_reserved": {
+              "vectors": 4,
+              "violating_vectors": 0
+            },
+            "new_c_slli_x0_hint": {
+              "vectors": 32,
+              "violating_vectors": 32
+            },
+            "rv32_high_shift_reserved": {
+              "vectors": 9,
+              "violating_vectors": 0
+            },
+            "uncompressed_passthrough": {
+              "vectors": 4,
+              "violating_vectors": 0
+            }
+          },
+          "compile_status": "passed",
+          "execution_status": "completed"
+        },
+        {
+          "revision": "before",
+          "cohort": "old_anchor",
+          "vectors": 5,
+          "violating_vectors": 5,
+          "failures": 5,
+          "by_family": {
+            "original_repair_anchor": {
+              "vectors": 5,
+              "violating_vectors": 5
+            }
+          },
+          "compile_status": "passed",
+          "execution_status": "completed"
+        },
+        {
+          "revision": "after",
+          "cohort": "new_boundary",
+          "vectors": 119,
+          "violating_vectors": 0,
+          "failures": 0,
+          "by_family": {
+            "legal_li": {
+              "vectors": 20,
+              "violating_vectors": 0
+            },
+            "legal_lui": {
+              "vectors": 16,
+              "violating_vectors": 0
+            },
+            "legal_slli": {
+              "vectors": 16,
+              "violating_vectors": 0
+            },
+            "legal_srai": {
+              "vectors": 9,
+              "violating_vectors": 0
+            },
+            "legal_srli": {
+              "vectors": 9,
+              "violating_vectors": 0
+            },
+            "lui_zero_reserved": {
+              "vectors": 4,
+              "violating_vectors": 0
+            },
+            "new_c_slli_x0_hint": {
+              "vectors": 32,
+              "violating_vectors": 0
+            },
+            "rv32_high_shift_reserved": {
+              "vectors": 9,
+              "violating_vectors": 0
+            },
+            "uncompressed_passthrough": {
+              "vectors": 4,
+              "violating_vectors": 0
+            }
+          },
+          "compile_status": "passed",
+          "execution_status": "completed"
+        },
+        {
+          "revision": "after",
+          "cohort": "old_anchor",
+          "vectors": 5,
+          "violating_vectors": 0,
+          "failures": 0,
+          "by_family": {
+            "original_repair_anchor": {
+              "vectors": 5,
+              "violating_vectors": 0
+            }
+          },
+          "compile_status": "passed",
+          "execution_status": "completed"
+        }
+      ],
+      "source_module_original": true,
+      "abstract_model": false,
+      "model_calls": 0,
+      "formal_calls": 0,
+      "native_SVA": true,
+      "learned_assertion_holdout": false,
+      "new_parameter_configurations": 0
+    },
+    "stat_spec": "upstream_timing_and_overlap_not_confirmed",
+    "screened_metadata_rows": 35,
+    "new_historical_parent_admissions": 1,
+    "newly_admitted": "lowRISC/ibex#166",
+    "previously_admitted_extended": "lowRISC/ibex#54",
+    "remaining_screened_cases_not_executed": 33,
+    "whole_processor_reproductions": 0,
+    "model_calls": 0,
+    "formal_calls": 0,
+    "acceptance_review": "acceptance_adapter_review.json"
+  },
+  "parent_status": {
+    "original_parent_denominator": 6,
+    "complete_native_llm_parent_passes": 0,
+    "unresolved_or_not_fully_verified_parents": 6,
+    "parents": [
+      {
+        "parent": "onehot",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Regression only this round; no new complete native LLM assertion-set acceptance for this parent.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 7,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "multihot_detect"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "fifo",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Original FIFO presented defect still lacks confirmed target witness. Depth>=2 artificial boundary mutants are a separate engineering cohort.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 5,
+            "fn_gaps": 7,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "empty_when_idle",
+              "nonempty_when_present"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "filter",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Previous four-policy candidate diagnostics exist; complete native LLM obligation coverage not established.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 1,
+            "fp_gaps": 1,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 2,
+            "fp_gaps": 1,
+            "fn_gaps": 1,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 2,
+            "fp_gaps": 1,
+            "fn_gaps": 1,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 1,
+            "fp_gaps": 1,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 72,
+            "covered_obligations": [
+              "qualified_value"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "stat",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Cited upstream module has a different interface from the local two-cycle synthetic example. Upstream timing/overlap provenance unconfirmed.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 6,
+            "fp_gaps": 3,
+            "fn_gaps": 3,
+            "unknown_spec_queries": 35,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "captured_length",
+              "valid_latency"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 6,
+            "fp_gaps": 3,
+            "fn_gaps": 3,
+            "unknown_spec_queries": 24,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "captured_length",
+              "valid_latency"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "spill",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Collision-empty subset has witnesses; invalid-payload obligation specification remains unresolved.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 11,
+            "fp_gaps": 6,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 11,
+            "fp_gaps": 6,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 11,
+            "fp_gaps": 6,
+            "fn_gaps": 5,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 12,
+            "fp_gaps": 6,
+            "fn_gaps": 6,
+            "unknown_spec_queries": 0,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": [
+              "collision_empty"
+            ]
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      },
+      {
+        "parent": "intr",
+        "whole_parent_native_llm_pass": false,
+        "whole_parent_status": "not_established",
+        "reason": "Mask/timing specification remains unresolved; cannot claim whole-parent success.",
+        "previous_development_search": [
+          {
+            "method": "ordinary",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "disagreement",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "differential",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          },
+          {
+            "method": "contract",
+            "queries": 36,
+            "gap_count": 0,
+            "fp_gaps": 0,
+            "fn_gaps": 0,
+            "unknown_spec_queries": 36,
+            "unsupported_candidate_query_entries": 0,
+            "covered_obligations": []
+          }
+        ],
+        "previous_execution_scope": "Procedural diagnostic candidate search, not native SVA full parent success.",
+        "new_independent_test_status": "not_run_for_this_original_parent"
+      }
+    ],
+    "separate_cohorts": [
+      {
+        "name": "complex_axis_fifo_boundary_mutants",
+        "historical_original_bug": false,
+        "status_source": "research15_native_20261015_r01/summary.json"
+      },
+      {
+        "name": "Ibex54_original_compressed_decoder",
+        "historical_original_bug": true,
+        "learned_assertion_set": false
+      },
+      {
+        "name": "Ibex166_original_decoder",
+        "historical_original_bug": true,
+        "learned_assertion_set": false
+      }
+    ],
+    "scope": "Do not merge local obligation improvements or engineered fault witnesses into the original six-parent full-success denominator."
+  },
+  "costs": {
+    "native": {
+      "compile": {
+        "attempts": 4,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 39.39462559399999,
+        "unavailable_wall_records": 0
+      },
+      "simulation": {
+        "attempts": 10,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 0.1750734820001032,
+        "unavailable_wall_records": 0
+      }
+    },
+    "search": {
+      "compile": {
+        "attempts": 3,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 33.724120994999936,
+        "unavailable_wall_records": 0
+      },
+      "simulation": {
+        "attempts": 250,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 5.407241455000076,
+        "unavailable_wall_records": 0
+      }
+    },
+    "history": {
+      "compile": {
+        "attempts": 4,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 67.66131222399997,
+        "unavailable_wall_records": 0
+      },
+      "simulation": {
+        "attempts": 4,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 0.07604171299993823,
+        "unavailable_wall_records": 0
+      }
+    },
+    "regression": {
+      "compile": {
+        "attempts": 4,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 0.12847987100002456,
+        "unavailable_wall_records": 0
+      },
+      "simulation": {
+        "attempts": 4,
+        "nonzero_or_unknown_exit": 0,
+        "known_wall_seconds": 0.10113233200007699,
+        "unavailable_wall_records": 0
+      }
+    }
+  },
+  "model_costs": {
+    "attempts": 3,
+    "completed": 3,
+    "known_prompt_tokens": 23274,
+    "known_completion_tokens": 272,
+    "token_unavailable_attempts": 0,
+    "known_wall_seconds": 391.51493178299995
+  },
+  "formal_calls": 0,
+  "monetary_cost": null,
+  "completion_matrix": [
+    {
+      "requirement": "真实LLM→原生SVA反馈链",
+      "status": "已运行，未通过",
+      "result": "3次真实模型生成/修改均原生编译执行并拒绝；无可接受最终版本。",
+      "code": "scripts/research15_native_models.py",
+      "artifact": "research15_native_20261015_r01/summary.json"
+    },
+    {
+      "requirement": "契约反馈驱动四法搜索",
+      "status": "已验证有限运行，负结果",
+      "result": "48查询/240原生回放；首个真实候选固定；无可导出的有效tail-loss细化见证。",
+      "code": "scripts/research15_search_experiment.py",
+      "artifact": "research15_search_20261015_r01/fixed_initial_negative/summary.json"
+    },
+    {
+      "requirement": "原11对候选四法对比",
+      "status": "此前已运行，本轮复用",
+      "result": "旧36/37/43/43独立候选缺口；不是本轮原生结果，无总体优势结论。",
+      "code": "scripts/research_search_compare.py",
+      "artifact": "research_search_20261014_r01/pair_results.json"
+    },
+    {
+      "requirement": "多SVA义务证据库/接受门",
+      "status": "已实现与定向资格检查，完整机制未验证",
+      "result": "12个门检查+13个适配器检查；实际模型版本无历史有效保护可供完整集合细化验收。",
+      "code": "scripts/research15_acceptance.py",
+      "artifact": "research15_integration_20261015_r01/gate_qualification.json"
+    },
+    {
+      "requirement": "复杂FIFO及复位取消",
+      "status": "已验证有限工程范围",
+      "result": "本轮Depth2与Depth5(实际8)、pipeline0/1；明确人工reset residue和tail loss故障，不能计原始presented bug成功。",
+      "code": "scripts/research15_search_runtime.py",
+      "artifact": "research15_search_20261015_r01/engineering_qualification/summary.json"
+    },
+    {
+      "requirement": "原生四组消融",
+      "status": "仅实现，尚未执行",
+      "result": "缺少通过资格检查的公共初始候选，且严格搜索treatment_witness为空；旧stat过程检查器四臂不能替代。",
+      "code": "scripts/research15_native_experiment.py",
+      "artifact": null
+    },
+    {
+      "requirement": "最终冻结断言独立测试",
+      "status": "尚未执行",
+      "result": "没有接受版本；未生成或查看预定本轮holdout，不以历史工程测试替代。",
+      "code": "scripts/research15_native_experiment.py",
+      "artifact": null
+    },
+    {
+      "requirement": "Ibex原始RTL案例",
+      "status": "已验证模块级有限范围",
+      "result": "#166新增，#54扩展新边界；手写原生SVA/独立ISA oracle，尚未纳入LLM细化。",
+      "code": "scripts/research15_history.py",
+      "artifact": "research15_history_20261015_r01/combined_summary.json"
+    },
+    {
+      "requirement": "六原始父Bug完整保护",
+      "status": "未完成，0/6已证完整成功",
+      "result": "stat来源接口不符；FIFO presented未见证；spill/intr部分语义unknown；其余未完成原生整体验收。",
+      "code": null,
+      "artifact": "research15_integration_20261015_r01/parent_status.json"
+    }
+  ]
+}

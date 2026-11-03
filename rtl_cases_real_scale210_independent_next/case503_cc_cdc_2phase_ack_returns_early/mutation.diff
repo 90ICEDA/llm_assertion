@@ -1,0 +1,10 @@
+--- correct.v
++++ buggy.v
+@@ -4,5 +4,6 @@
+   always @(posedge clk_i or negedge rst_ni) begin
+     if(!rst_ni) req_sync<=3'b000; else req_sync<={req_sync[1:0],req_i};
+   end
+-  assign ack_o=req_sync[2];
++  // MUTATION: acknowledges from the first synchronizer stage.
++  assign ack_o=req_sync[0];
+ endmodule

@@ -1,0 +1,219 @@
+{
+  "model": "qwen2.5-coder:7b-instruct",
+  "stream": true,
+  "format": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "operation",
+      "reason",
+      "assertions"
+    ],
+    "properties": {
+      "operation": {
+        "type": "string",
+        "enum": [
+          "replace_op"
+        ]
+      },
+      "reason": {
+        "type": "string"
+      },
+      "assertions": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "antecedent",
+            "consequent",
+            "timing",
+            "obligations"
+          ],
+          "properties": {
+            "antecedent": {
+              "$ref": "#/$defs/expression"
+            },
+            "consequent": {
+              "$ref": "#/$defs/expression"
+            },
+            "timing": {
+              "type": "string",
+              "enum": [
+                "same_sample",
+                "next_sample"
+              ]
+            },
+            "obligations": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "op_bit28_illegal"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "$defs": {
+      "expression": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "signal"
+            ],
+            "properties": {
+              "signal": {
+                "type": "string",
+                "enum": [
+                  "instr",
+                  "illegal_insn",
+                  "instr_new",
+                  "rv32e",
+                  "rv32m",
+                  "instr[6:0]",
+                  "instr[14:12]",
+                  "instr[0]",
+                  "instr[1]",
+                  "instr[2]",
+                  "instr[3]",
+                  "instr[4]",
+                  "instr[5]",
+                  "instr[6]",
+                  "instr[7]",
+                  "instr[8]",
+                  "instr[9]",
+                  "instr[10]",
+                  "instr[11]",
+                  "instr[12]",
+                  "instr[13]",
+                  "instr[14]",
+                  "instr[15]",
+                  "instr[16]",
+                  "instr[17]",
+                  "instr[18]",
+                  "instr[19]",
+                  "instr[20]",
+                  "instr[21]",
+                  "instr[22]",
+                  "instr[23]",
+                  "instr[24]",
+                  "instr[25]",
+                  "instr[26]",
+                  "instr[27]",
+                  "instr[28]",
+                  "instr[29]",
+                  "instr[30]",
+                  "instr[31]"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "int"
+            ],
+            "properties": {
+              "int": {
+                "type": "integer",
+                "minimum": -2147483648,
+                "maximum": 2147483647
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "op",
+              "args"
+            ],
+            "properties": {
+              "op": {
+                "type": "string",
+                "enum": [
+                  "!",
+                  "$past",
+                  "$stable",
+                  "$rose",
+                  "$fell",
+                  "$changed"
+                ]
+              },
+              "args": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 1,
+                "items": {
+                  "$ref": "#/$defs/expression"
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "op",
+              "args"
+            ],
+            "properties": {
+              "op": {
+                "type": "string",
+                "enum": [
+                  "&&",
+                  "||",
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">=",
+                  "+",
+                  "-"
+                ]
+              },
+              "args": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "$ref": "#/$defs/expression"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "keep_alive": "30m",
+  "options": {
+    "seed": 6001,
+    "temperature": 0,
+    "num_predict": 1024,
+    "num_ctx": 12288,
+    "num_gpu": 0,
+    "num_thread": 8
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Return one JSON edit containing AST expressions for OP hardware assertions. Every operand and timing must implement the confirmed OP obligation. No raw expression strings. The original RTL and real development observations determine the semantics."
+    },
+    {
+      "role": "user",
+      "content": "{\"case\":\"Original upstream Ibex #166, fixes #163; no artificial faults\",\"source\":{\"case_id\":\"lowRISC/ibex#166\",\"upstream\":\"https://github.com/lowRISC/ibex/pull/166\",\"before_commit\":\"c96ece04296c3c69df578d760aa8a66f9b886fef\",\"after_commit\":\"3bcbb50630a7cb0278623a8a1f5d262e0220dd86\",\"merge_commit\":\"59254498489d441f64c24e6b344fce73d0d8bbce\",\"legal_stimulus\":\"Decoder interface accepts any instruction bits, including illegal encodings. An instruction is first presented with instr_new_i=1, then held stable with instr_new_i=0 for its remaining execution samples. illegal_c_insn_i=0. These are module-interface stimuli, not a demonstrated full-core fetch/retire protocol.\",\"source_sha256\":{\"before/ibex_decoder.sv\":\"a0921dfe3033510812e7f6fb0602adaad707f7cc297393aa2738d1e3b8688223\",\"before/ibex_defines.sv\":\"cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f\",\"after/ibex_decoder.sv\":\"2ea8bbc1b2268954ad9c980a05f78428da7d6bd456fb2b4dbf3559e694c61427\",\"after/ibex_defines.sv\":\"cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f\"},\"fresh_reproduction\":\"/mnt/d/AssertionForge-main1/deliverables/research51_original_20261022_r01\",\"upstream_verification\":\"/mnt/d/AssertionForge-main1/deliverables/research51_upstream_20261022_r01\",\"scope\":\"Original historical module, not full-core exception; stat and FIFO presented remain unknown.\"},\"rtl\":{\"input_scope\":\"Exact OP-case excerpts and signal assignments, NOT entire decoder in this prompt. Full original files are hashed and used for native execution.\",\"before_op\":{\"file\":\"deliverables/research59_prepare_20261023_r01/before/ibex_decoder.sv\",\"file_sha256\":\"a0921dfe3033510812e7f6fb0602adaad707f7cc297393aa2738d1e3b8688223\",\"start_line\":418,\"end_line\":506,\"text\":\"      OPCODE_OP: begin  // Register-Register ALU operation\\n        alu_op_a_mux_sel_o = OP_A_REG_A;\\n        alu_op_b_mux_sel_o = OP_B_REG_B;\\n        regfile_we         = 1'b1;\\n\\n        if (instr[31]) begin\\n          illegal_insn = 1'b1;\\n        end else if (!instr[28]) begin // non bit-manipulation instructions\\n          unique case ({instr[30:25], instr[14:12]})\\n            // RV32I ALU operations\\n            {6'b00_0000, 3'b000}: alu_operator_o = ALU_ADD;   // Add\\n            {6'b10_0000, 3'b000}: alu_operator_o = ALU_SUB;   // Sub\\n            {6'b00_0000, 3'b010}: alu_operator_o = ALU_SLT;   // Set Lower Than\\n            {6'b00_0000, 3'b011}: alu_operator_o = ALU_SLTU;  // Set Lower Than Unsigned\\n            {6'b00_0000, 3'b100}: alu_operator_o = ALU_XOR;   // Xor\\n            {6'b00_0000, 3'b110}: alu_operator_o = ALU_OR;    // Or\\n            {6'b00_0000, 3'b111}: alu_operator_o = ALU_AND;   // And\\n            {6'b00_0000, 3'b001}: alu_operator_o = ALU_SLL;   // Shift Left Logical\\n            {6'b00_0000, 3'b101}: alu_operator_o = ALU_SRL;   // Shift Right Logical\\n            {6'b10_0000, 3'b101}: alu_operator_o = ALU_SRA;   // Shift Right Arithmetic\\n\\n            // supported RV32M instructions\\n            {6'b00_0001, 3'b000}: begin // mul\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_MULL;\\n              mult_en_o             = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b00;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            {6'b00_0001, 3'b001}: begin // mulh\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_MULH;\\n              mult_en_o             = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b11;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            {6'b00_0001, 3'b010}: begin // mulhsu\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_MULH;\\n              mult_en_o             = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b01;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            {6'b00_0001, 3'b011}: begin // mulhu\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_MULH;\\n              mult_en_o             = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b00;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            {6'b00_0001, 3'b100}: begin // div\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_DIV;\\n              div_en_o              = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b11;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            {6'b00_0001, 3'b101}: begin // divu\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_DIV;\\n              div_en_o              = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b00;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            {6'b00_0001, 3'b110}: begin // rem\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_REM;\\n              div_en_o              = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b11;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            {6'b00_0001, 3'b111}: begin // remu\\n              alu_operator_o        = ALU_ADD;\\n              multdiv_operator_o    = MD_OP_REM;\\n              div_en_o              = RV32M ? 1'b1 : 1'b0;\\n              multdiv_signed_mode_o = 2'b00;\\n              illegal_insn          = RV32M ? 1'b0 : 1'b1;\\n            end\\n            default: begin\\n              illegal_insn = 1'b1;\\n            end\\n          endcase\\n        end\\n      end\\n\\n      /////////////\\n      // Special //\\n      /////////////\\n\\n\"},\"after_op\":{\"file\":\"deliverables/research59_prepare_20261023_r01/after/ibex_decoder.sv\",\"file_sha256\":\"2ea8bbc1b2268954ad9c980a05f78428da7d6bd456fb2b4dbf3559e694c61427\",\"start_line\":419,\"end_line\":507},\"after_op_reconstruction\":{\"base\":\"before_op.text\",\"edits\":[{\"before_start_zero_based\":7,\"before_end_exclusive\":8,\"replacement_lines\":[\"        end else begin\\n\"]}],\"rule\":\"Apply replacements in reverse index order to original before text split into lines retaining line endings.\"},\"signal_assignments\":{\"before\":[{\"line\":114,\"text\":\"  assign instr = instr_rdata_i;\"},{\"line\":622,\"text\":\"  assign illegal_insn_o = illegal_insn | illegal_reg_rv32e;\"}],\"after\":[{\"line\":114,\"text\":\"  assign instr = instr_rdata_i;\"},{\"line\":623,\"text\":\"  assign illegal_insn_o = illegal_insn | illegal_reg_rv32e;\"}]},\"omitted\":\"Unrelated opcode blocks, package enums and unused signal declarations. The confirmed public OP/BRANCH obligations and interface semantics are unchanged; this is not a controlled comparison to full-context generation.\"},\"confirmed_obligations\":{\"op_bit28_illegal\":\"Register-register OP encodings with bit28 set are illegal in this historical RV32I/M decoder on every sample.\"},\"interface\":\"instr=instr_rdata_i, instr_new=instr_new_i, illegal_insn=illegal_insn_o. illegal_c_insn_i=0. rv32m/rv32e are the DUT parameters. Decoder has no clock/reset/ready ports. Test clock samples settled combinational output; inputs change on prior negedge. New instruction: instr_new=1; hold same bits with instr_new=0 for remaining phases. Illegal instruction words are legal decoder stimuli.\",\"legal_controls\":\"Do not report failures on legal BRANCH and OP words or NOP. No full-core handshake/trap completion assumed.\",\"timing\":\"same_sample is overlapped |->; next_sample is nonoverlapped |=>. All required held samples must be protected. Predicates are never repaired by the harness.\",\"actual_model_op_rule\":{\"opcode\":51,\"bit_index\":28,\"bit_value\":true,\"phase\":\"every_sample\"},\"sampling_semantics\":\"Original combinational decoder. instr_new=1 first sample; instr_new=0 held samples. No ready/valid handshake is invented. Both first and held samples have independently confirmed OP obligations. A property that never triggers does not protect them.\",\"current_assertions\":{\"assertions\":[{\"id\":\"a0\",\"preserved_externally\":true}]},\"task\":\"Generate a new OP property from the actual verified model OP rule and measured legal/illegal pairs. Previous model proposals tested unrelated funct3 conditions and wrongly failed legal instructions. Do not imitate them or BRANCH conditions. Preserve all first and held targets and avoid all legal false alarms. BRANCH is fixed outside this task and is still checked by native replay. Return model-owned AST operands and timing; no successful predicate is supplied.\",\"output_contract\":{\"schema\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"operation\",\"reason\",\"assertions\"],\"properties\":{\"operation\":{\"type\":\"string\",\"enum\":[\"replace_op\"]},\"reason\":{\"type\":\"string\"},\"assertions\":{\"type\":\"array\",\"minItems\":1,\"maxItems\":3,\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"antecedent\",\"consequent\",\"timing\",\"obligations\"],\"properties\":{\"antecedent\":{\"$ref\":\"#/$defs/expression\"},\"consequent\":{\"$ref\":\"#/$defs/expression\"},\"timing\":{\"type\":\"string\",\"enum\":[\"same_sample\",\"next_sample\"]},\"obligations\":{\"type\":\"array\",\"minItems\":1,\"maxItems\":1,\"items\":{\"type\":\"string\",\"enum\":[\"op_bit28_illegal\"]}}}}}},\"$defs\":{\"expression\":{\"anyOf\":[{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"signal\"],\"properties\":{\"signal\":{\"type\":\"string\",\"enum\":[\"instr\",\"illegal_insn\",\"instr_new\",\"rv32e\",\"rv32m\",\"instr[6:0]\",\"instr[14:12]\",\"instr[0]\",\"instr[1]\",\"instr[2]\",\"instr[3]\",\"instr[4]\",\"instr[5]\",\"instr[6]\",\"instr[7]\",\"instr[8]\",\"instr[9]\",\"instr[10]\",\"instr[11]\",\"instr[12]\",\"instr[13]\",\"instr[14]\",\"instr[15]\",\"instr[16]\",\"instr[17]\",\"instr[18]\",\"instr[19]\",\"instr[20]\",\"instr[21]\",\"instr[22]\",\"instr[23]\",\"instr[24]\",\"instr[25]\",\"instr[26]\",\"instr[27]\",\"instr[28]\",\"instr[29]\",\"instr[30]\",\"instr[31]\"]}}},{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"int\"],\"properties\":{\"int\":{\"type\":\"integer\",\"minimum\":-2147483648,\"maximum\":2147483647}}},{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"op\",\"args\"],\"properties\":{\"op\":{\"type\":\"string\",\"enum\":[\"!\",\"$past\",\"$stable\",\"$rose\",\"$fell\",\"$changed\"]},\"args\":{\"type\":\"array\",\"minItems\":1,\"maxItems\":1,\"items\":{\"$ref\":\"#/$defs/expression\"}}}},{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"op\",\"args\"],\"properties\":{\"op\":{\"type\":\"string\",\"enum\":[\"&&\",\"||\",\"==\",\"!=\",\"<\",\">\",\"<=\",\">=\",\"+\",\"-\"]},\"args\":{\"type\":\"array\",\"minItems\":2,\"maxItems\":2,\"items\":{\"$ref\":\"#/$defs/expression\"}}}}]}}},\"allowed_signals\":[\"instr\",\"illegal_insn\",\"instr_new\",\"rv32e\",\"rv32m\",\"instr[6:0]\",\"instr[14:12]\",\"instr[0]\",\"instr[1]\",\"instr[2]\",\"instr[3]\",\"instr[4]\",\"instr[5]\",\"instr[6]\",\"instr[7]\",\"instr[8]\",\"instr[9]\",\"instr[10]\",\"instr[11]\",\"instr[12]\",\"instr[13]\",\"instr[14]\",\"instr[15]\",\"instr[16]\",\"instr[17]\",\"instr[18]\",\"instr[19]\",\"instr[20]\",\"instr[21]\",\"instr[22]\",\"instr[23]\",\"instr[24]\",\"instr[25]\",\"instr[26]\",\"instr[27]\",\"instr[28]\",\"instr[29]\",\"instr[30]\",\"instr[31]\"],\"syntax\":\"Expression is exactly {signal:string}, {int:integer}, or {op:string,args:[expressions]}. Choose every operand/operator/constant; never output text expressions. Renderer only adds parentheses.\"},\"acceptance\":\"Native first3+held9 detection and triggers, all9 development transactions without false alarms or unknown, then complete115 history+36 search and preservation of420 OP+270 BRANCH detections.\",\"actual_feedback\":null,\"op_development_pairs\":[{\"transaction\":1,\"instruction_hex\":\"0x50b1e633\",\"fields\":{\"opcode\":51,\"bit28\":1,\"bit31\":0,\"funct3\":6},\"observations\":[{\"revision\":\"before\",\"expected_illegal\":1,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]},{\"revision\":\"after\",\"expected_illegal\":1,\"actual_illegal\":1,\"sva_failed\":false,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]}],\"sample_ids\":[6,7,8,9],\"phase_and_instr_new\":[{\"phases\":[0],\"instr_new\":1},{\"phases\":[1,2,3],\"instr_new\":0}]},{\"transaction\":3,\"instruction_hex\":\"0x00a6c4b3\",\"fields\":{\"opcode\":51,\"bit28\":0,\"bit31\":0,\"funct3\":4},\"observations\":[{\"revision\":\"before\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]},{\"revision\":\"after\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]}],\"sample_ids\":[18,19,20],\"phase_and_instr_new\":[{\"phases\":[0],\"instr_new\":1},{\"phases\":[1,2],\"instr_new\":0}]},{\"transaction\":1000,\"instruction_hex\":\"0x40200233\",\"fields\":{\"opcode\":51,\"bit28\":0,\"bit31\":0,\"funct3\":0},\"observations\":[{\"revision\":\"before\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":false,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]},{\"revision\":\"after\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":false,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]}],\"sample_ids\":[21,22],\"phase_and_instr_new\":[{\"phases\":[0],\"instr_new\":1},{\"phases\":[1],\"instr_new\":0}]},{\"transaction\":1001,\"instruction_hex\":\"0x001127b3\",\"fields\":{\"opcode\":51,\"bit28\":0,\"bit31\":0,\"funct3\":2},\"observations\":[{\"revision\":\"before\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]},{\"revision\":\"after\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]}],\"sample_ids\":[23,24,25,26],\"phase_and_instr_new\":[{\"phases\":[0],\"instr_new\":1},{\"phases\":[1,2,3],\"instr_new\":0}]},{\"transaction\":1002,\"instruction_hex\":\"0x0085b3b3\",\"fields\":{\"opcode\":51,\"bit28\":0,\"bit31\":0,\"funct3\":3},\"observations\":[{\"revision\":\"before\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]},{\"revision\":\"after\",\"expected_illegal\":0,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]}],\"sample_ids\":[27,28,29,30,31,32],\"phase_and_instr_new\":[{\"phases\":[0],\"instr_new\":1},{\"phases\":[1,2,3,4,5],\"instr_new\":0}]},{\"transaction\":2002,\"instruction_hex\":\"0x161121b3\",\"fields\":{\"opcode\":51,\"bit28\":1,\"bit31\":0,\"funct3\":2},\"observations\":[{\"revision\":\"before\",\"expected_illegal\":1,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]},{\"revision\":\"after\",\"expected_illegal\":1,\"actual_illegal\":1,\"sva_failed\":false,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]}],\"sample_ids\":[33,34,35,36,37],\"phase_and_instr_new\":[{\"phases\":[0],\"instr_new\":1},{\"phases\":[1,2,3,4],\"instr_new\":0}]},{\"transaction\":2003,\"instruction_hex\":\"0x10a7b4b3\",\"fields\":{\"opcode\":51,\"bit28\":1,\"bit31\":0,\"funct3\":3},\"observations\":[{\"revision\":\"before\",\"expected_illegal\":1,\"actual_illegal\":0,\"sva_failed\":true,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]},{\"revision\":\"after\",\"expected_illegal\":1,\"actual_illegal\":1,\"sva_failed\":false,\"configurations\":[{\"RV32E\":0,\"RV32M\":1},{\"RV32E\":0,\"RV32M\":0},{\"RV32E\":1,\"RV32M\":1}]}],\"sample_ids\":[38,39],\"phase_and_instr_new\":[{\"phases\":[0],\"instr_new\":1},{\"phases\":[1],\"instr_new\":0}]}]}"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -259,7 +259,7 @@
+ 
+ // Write logic
+ always @(posedge clk) begin
+-    overflow_reg <= 1'b0;
++    overflow_reg <= overflow_reg; // ASSERTIONFORGE_MUTATION: state update suppressed
+     bad_frame_reg <= 1'b0;
+     good_frame_reg <= 1'b0;
+ 

@@ -1,0 +1,110 @@
+{
+  "name": "case455_prim_crc32_set_enable_coupling",
+  "parent_bug_id": "case455_prim_crc32_set_enable_coupling",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_crc32",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_crc32.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_crc32.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "crc_set_update_enable_coupled",
+  "bug_type": "set-only state update",
+  "spec": "A set_crc_i pulse loads the complemented seed independently of data_valid_i, so crc_out_o equals the sampled crc_in_i on the next cycle.",
+  "mutation_edits": [
+    {
+      "search": "assign crc_en = set_crc_i | data_valid_i;",
+      "replace": "assign crc_en = set_crc_i & data_valid_i;"
+    }
+  ],
+  "mutation_signal": "crc_en",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "set_crc_i",
+    "data_valid_i",
+    "crc_in_i",
+    "crc_en",
+    "crc_out_o"
+  ],
+  "temporal_type": "set-only state update",
+  "mutation_kind": "real_rtl_line_replacement",
+  "dataset_phase": "independent_next_hard_batch1",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "name": "Golden_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) set_crc_i && !data_valid_i |=> crc_out_o == $past(crc_in_i));",
+    "temporal_type": "set-only state update"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 15000,
+      "sample_index": 4,
+      "good_row_index": 4,
+      "bad_row_index": 4,
+      "signals": [
+        "crc_out_o[31:0]"
+      ],
+      "good_values": {
+        "crc_out_o[31:0]": "00010010001101000101011001111000"
+      },
+      "bad_values": {
+        "crc_out_o[31:0]": "00000000000000000000000000000000"
+      },
+      "good_trace_sha256": "989b72326851fbb766ee32b407abdf0936922a21e529d42a02b9b6f3664c39c6",
+      "bad_trace_sha256": "209b96704e8636110831cdd9c76ffd1c2967a0a3a9692863437484b85001c58a",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 15000,
+      "sample_index": 4,
+      "good_row_index": 4,
+      "bad_row_index": 4,
+      "signals": [
+        "crc_out_o[31:0]"
+      ],
+      "good_values": {
+        "crc_out_o[31:0]": "10100101101001010101101001011010"
+      },
+      "bad_values": {
+        "crc_out_o[31:0]": "00000000000000000000000000000000"
+      },
+      "good_trace_sha256": "5a631b2aae96c71ce103dbd71382e89ce17fd6b264b45f52312689d5f0e83a60",
+      "bad_trace_sha256": "636147f3136f969ea0fe9a3c2beb4714efcb2217693c5498d73b6d472141804c",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 15000,
+      "sample_index": 4,
+      "good_row_index": 4,
+      "bad_row_index": 4,
+      "signals": [
+        "crc_out_o[31:0]"
+      ],
+      "good_values": {
+        "crc_out_o[31:0]": "11100101101011100111101011101110"
+      },
+      "bad_values": {
+        "crc_out_o[31:0]": "00000000000000000000000000000000"
+      },
+      "good_trace_sha256": "24b12ecd4183f82b90aa3eccd225fbe57e94a3805333664fe590d95ffb6dfb58",
+      "bad_trace_sha256": "60a4b8e34cac65377a06e6016650d22302d61969f5a4dd95f03006dab3c6e239",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "26367fe9d9608c56ae9b5b9ab02be8cdf979a223d89418886aefcc1038573dcf",
+  "buggy_sha256": "1adc34e0240796d2e984412e4475020db0159fa7dc7a318ef492db85e4affff9",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

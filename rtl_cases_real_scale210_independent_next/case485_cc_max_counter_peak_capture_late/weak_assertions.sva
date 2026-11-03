@@ -1,0 +1,10 @@
+// single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) (!en_i |-> max_o>=q_o));
+// final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) (max_o>=q_o || en_i));
+// delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (en_i |-> !$isunknown(max_o)));
+// antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (max_o<=15));
+// simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) (clr_max_i |=> max_o==0));

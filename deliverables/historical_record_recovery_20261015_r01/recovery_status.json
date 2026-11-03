@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "id": "historical_python_source",
+      "status": "recovered_and_reproduced",
+      "result": "从原始编辑日志重建2文件7个源码状态；三份原始ledger全JSON一致；启动命令时序与版本相符。",
+      "artifact": "source_history/replay_validation.json",
+      "remaining": "没有旧进程内存转储；结论为有原始编辑链及行为验证的历史源码重建。"
+    },
+    {
+      "id": "fifo_upstream_revision",
+      "status": "recovered_and_verified",
+      "result": "精确提交48ff7a7e2ef782cf778d47910cf85835c64b1bce；本地Git blob与GitHub固定URL下载字节一致；实验源码仅CRLF/LF不同。",
+      "artifact": "git_provenance/result.json",
+      "remaining": "这是使用版本的确认，不证明该文件只存在于此唯一历史提交，也不把人工故障变成上游Bug。"
+    },
+    {
+      "id": "root_experiment_git_commit",
+      "status": "partially_recovered_original_commit_unavailable",
+      "result": "找到相邻旧仓库49da13029efe7d0080866457d75a3a5bf68811c9，但它没有本轮研究代码。为3份关键历史运行补建内容寻址版本清单。",
+      "artifact": "content_versions.json",
+      "remaining": "缺失原工作区Git HEAD/refs/objects或完整当时备份；不能凭相关仓库README相同认定实验提交。"
+    },
+    {
+      "id": "cancelled_call_usage",
+      "status": "partially_recovered_final_usage_unavailable",
+      "result": "补录HTTP服务耗时258秒、截断前18354与截断后16383的日志计数、slot释放值8196；最终usage仍null。",
+      "artifact": "cancelled_usage/recovered_cost_record.json",
+      "remaining": "需要原服务最终task usage或按请求usage回执；重新分词/重跑均不能恢复历史实际消耗。"
+    },
+    {
+      "id": "stat_upstream_derivation",
+      "status": "unrecoverable_from_checked_records_mismatch_confirmed",
+      "result": "官方固定源码再次核验通过，确认与本地8行pipeline接口不同；已追加有效来源更正，历史admission=false。",
+      "artifact": "stat_origin/effective_provenance.json",
+      "remaining": "缺创建脚本/补丁、输入上游blob、约简过程和事件等价映射；旧元数据不能充当证明。"
+    }
+  ],
+  "model_calls": 0,
+  "rtl_simulation_calls": 0,
+  "replay_validation": "Python recomputation of archived actual RTL observations only",
+  "old_experiment_outcomes_changed": false,
+  "scope": "The five historical-record gaps identified in the prior response; future unexecuted experiments are outside this recovery task."
+}

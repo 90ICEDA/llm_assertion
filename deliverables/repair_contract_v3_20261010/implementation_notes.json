@@ -1,0 +1,20 @@
+{
+  "kind": "descriptive_metadata_clarification_not_experiment_amendment",
+  "protocol_or_candidate_bytes_changed": false,
+  "notes": [
+    {
+      "field": "protocol.cases[*].pool_policy and protocol.pool_cost",
+      "issue": "These descriptive fields were inherited from v2 and describe the original pool creation. In v3 spill/intr are not regenerated.",
+      "operative_pre_result_evidence": "protocol.reuse, pool_freeze.policy and every pool_freeze entry explicitly freeze the same 18 slots with reuse=true and new_physical_generation_cost=0. shared_pool_costs records the logical original cost separately."
+    },
+    {
+      "field": "candidate.provenance=v2_fresh_model_generated",
+      "issue": "The retained v2 request implementation emits this legacy label for new v3 repair calls.",
+      "interpretation": "Use the saved v3 request/response paths, timestamps, hashes and fresh_context=true to identify actual new v3 generation. It is not evidence of reuse of v2 repaired candidates. No old repaired candidate is used in the new method pool or initial context."
+    },
+    {
+      "field": "assertions.sva",
+      "interpretation": "This preserves the original candidate expression, including popcount. Executable helper declarations and exact delay queues are in checker_tb.sv; normalization.json records the translation. No claim is made that the standalone raw snippet is accepted by a native SVA engine without its helper declarations."
+    }
+  ]
+}

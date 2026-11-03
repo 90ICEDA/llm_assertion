@@ -1,0 +1,20 @@
+a0: assert property (@(posedge clk) disable iff (rst) (mvalid && mready && ref_count > 0 |-> mdata == ref_expected))
+  else $display("ASSERT_FAIL a0 cycle=%0d", $sampled(native_cycle));
+cv_a0: cover property (@(posedge clk) disable iff (rst) (mvalid && mready && ref_count > 0))
+  $display("TRIGGER a0 cycle=%0d", $sampled(native_cycle));
+a1: assert property (@(posedge clk) disable iff (rst) (drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected))
+  else $display("ASSERT_FAIL a1 cycle=%0d", $sampled(native_cycle));
+cv_a1: cover property (@(posedge clk) disable iff (rst) (drain_due && ref_count > 0))
+  $display("TRIGGER a1 cycle=%0d", $sampled(native_cycle));
+a2: assert property (@(posedge clk) disable iff (rst) (mvalid && !mready && $past(mvalid && !mready) |-> mdata == $past(mdata)))
+  else $display("ASSERT_FAIL a2 cycle=%0d", $sampled(native_cycle));
+cv_a2: cover property (@(posedge clk) disable iff (rst) (mvalid && !mready && $past(mvalid && !mready)))
+  $display("TRIGGER a2 cycle=%0d", $sampled(native_cycle));
+a3: assert property (@(posedge clk) disable iff (rst) (mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)))
+  else $display("ASSERT_FAIL a3 cycle=%0d", $sampled(native_cycle));
+cv_a3: cover property (@(posedge clk) disable iff (rst) (mready && mvalid))
+  $display("TRIGGER a3 cycle=%0d", $sampled(native_cycle));
+a4: assert property (@(posedge clk) disable iff (rst) ((mvalid && !mready) |=> mvalid && mdata == $past(mdata)))
+  else $display("ASSERT_FAIL a4 cycle=%0d", $sampled(native_cycle));
+cv_a4: cover property (@(posedge clk) disable iff (rst) ((mvalid && !mready)))
+  $display("TRIGGER a4 cycle=%0d", $sampled(native_cycle));

@@ -1,0 +1,45 @@
+{
+  "case_id": "overfit03_103_onehot_addr_mismatch_suppressed",
+  "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+  "primary_source_case": "case226_onehot_addr_bad_v2_from_case103_prim_onehot_addr_mismatch_suppressed",
+  "heldout_source_cases": [
+    "case103_prim_onehot_addr_mismatch_suppressed",
+    "case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "case227_onehot_addr_bad_v3_from_case103_prim_onehot_addr_mismatch_suppressed"
+  ],
+  "bait_kind": "legal fixed address",
+  "bait_signal": "addr_i[1:0]",
+  "primary_bait_value": "01",
+  "heldout_bait_values": [
+    "00",
+    "10",
+    "11"
+  ],
+  "heldout_count": 3,
+  "first_divergence_rows": {
+    "primary": 5,
+    "heldout_1": 5,
+    "heldout_2": 5,
+    "heldout_3": 5
+  },
+  "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+  "buggy_rtl_sha256": "74a1e2b28f881f505e257cc6bd2f72129a479802df20221c4e8dcbc9cc43718e",
+  "bug_value_independence_evidence": "The exact same correct and buggy RTL binaries are exercised at four distinct legal bait values, and every trace pair diverges.",
+  "candidate_generalization_rule": "A candidate generalizes only if it passes correct and detects buggy behavior on primary and all three held-outs; regex hardcoding labels are auxiliary only.",
+  "artifact_sha256": {
+    "correct.v": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+    "buggy.v": "74a1e2b28f881f505e257cc6bd2f72129a479802df20221c4e8dcbc9cc43718e",
+    "tb.v": "18d83385b726eb2522602294eec27e52b9e32d6a87fda0ce78cc0be1ee206dd1",
+    "waveform_good.csv": "710e7a9a6e80444104563080fabea7c7fa8dfc7b6f41029e1d5138a0214819eb",
+    "waveform_bad.csv": "4bf42a9cdd8ade5c077b896f05d0c5e93d0187896538b2d6a43d309179209fab",
+    "tb_holdout_1.v": "6b7328f50c19870488dc5a13833dcecc04308ee26259dc8ad7f1a050387c25bf",
+    "waveform_good_holdout_1.csv": "9fca75631185edb380de7276a0bdbb856347c7a45355b6ce46eaf5afd01dc8d2",
+    "waveform_bad_holdout_1.csv": "8f184fa9f84fba0e018b18943ec87a04e075cfe3e43f6d31587a52d03920b502",
+    "tb_holdout_2.v": "93c335192ed97d539e34f061b5e3c60d3e30e2c4e3023c9d68f0cb7cdd37e0db",
+    "waveform_good_holdout_2.csv": "19db1cc3f29a8ba0193c408e03928ae37c915020fa252baf14f4d994546e2999",
+    "waveform_bad_holdout_2.csv": "c28ac5a595efd1439b61cca79eea6a17d74f9caba6c46e4a9398ba4ed4e37741",
+    "tb_holdout_3.v": "15ee2f87eccaffbf0ab5a54f26d2d90e6fc90ce80b48c59bdb10117fd44eb6c0",
+    "waveform_good_holdout_3.csv": "d4c61d255edc1c18d16335e25d0b684f7f276a7bc8c699b6088112c6dbcb9ae5",
+    "waveform_bad_holdout_3.csv": "3ba28945bd568c5da6678b4a9850e8e8e8c47aa7f02e3078b12951793f8a829e"
+  }
+}

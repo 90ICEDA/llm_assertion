@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -14,7 +14,7 @@
+     if (!rst_ni) begin pending<=0; count<=0; end
+     else begin
+       pending <= frame_end_i && valid_i && ready_i;
+-      if (pending) count <= count + 1'b1;
++      if (frame_end_i && valid_i && ready_i) count <= count + 1'b1;
+     end
+   end
+   assign q_o = count[0];

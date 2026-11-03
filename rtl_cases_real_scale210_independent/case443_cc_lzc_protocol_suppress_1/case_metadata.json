@@ -1,0 +1,82 @@
+{
+  "name": "case443_cc_lzc_protocol_suppress_1",
+  "parent_bug_id": "case443_cc_lzc_protocol_suppress_1",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_lzc",
+  "source_files": [
+    "external/common_cells/src/cc_lzc.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_lzc.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "cnt_o[0] combinational/protocol output is forced low",
+  "spec": "For the one-bit leading-zero counter, cnt_o is one for input zero and zero for input one; empty_o identifies the all-zero input.",
+  "golden_sva": {
+    "sva": "assert property (@(*) (cnt_o == !in_i && empty_o == !in_i));",
+    "temporal_type": "same-cycle combinational/protocol relation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 5,
+      "observation_index": 1,
+      "signals": [
+        "cnt_o"
+      ],
+      "good": {
+        "cnt_o": "1"
+      },
+      "bad": {
+        "cnt_o": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "cnt_o"
+      ],
+      "good": {
+        "cnt_o": "1"
+      },
+      "bad": {
+        "cnt_o": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 2,
+      "observation_index": 1,
+      "signals": [
+        "cnt_o"
+      ],
+      "good": {
+        "cnt_o": "1"
+      },
+      "bad": {
+        "cnt_o": "0"
+      }
+    }
+  },
+  "mutation_edits": [
+    {
+      "line": 41,
+      "search": "    assign cnt_o[0] = !in_i[0];",
+      "replace": "    assign cnt_o[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "cnt_o[0]",
+  "relevant_signals": [
+    "in_i",
+    "cnt_o",
+    "empty_o"
+  ],
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "62119065b214b01d98f47d8c2f342e16cae537e3eacfc41bfd5f4b709482f51e",
+  "buggy_sha256": "f903235d83c29e70cf302c12ceb94aafbf8088748eb549ba48d3dd71d9d083f7",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "contract_status": "formal_complete"
+}

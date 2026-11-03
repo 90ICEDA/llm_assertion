@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -14,7 +14,7 @@
+     if (!rst_ni) begin count<=0; retry<=0; end
+     else if (enable_i) begin
+       retry <= (count == 1);
+-      if (start_i) count <= 3;
++      if (start_i) count <= 2;
+       else if (count != 0) count <= count - 1'b1;
+     end
+   end

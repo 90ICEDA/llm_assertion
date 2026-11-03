@@ -1,0 +1,138 @@
+{
+  "maximum": 4,
+  "seed": 8107,
+  "stopped": false,
+  "events": [
+    {
+      "kind": "model_reserved",
+      "arm": "P",
+      "at": 1792865976.0950456,
+      "stage": "plan",
+      "request_sha256": "98491fe65fe64f9cbcfd06a975ca0113c39afb0720e9e14f47bae847b412db07",
+      "characters": 50531
+    },
+    {
+      "kind": "call_completed",
+      "arm": "P",
+      "at": 1792866020.8321059,
+      "stage": "plan",
+      "accepted": false
+    },
+    {
+      "kind": "freeze",
+      "arm": "P",
+      "at": 1792866020.8678136,
+      "candidate_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1"
+    },
+    {
+      "kind": "model_reserved",
+      "arm": "D",
+      "at": 1792866020.9192817,
+      "stage": "generate",
+      "request_sha256": "b0e46b9749e7fa8e11f298d0f2eee5b97906cb66b73435339635abe6939e7fb0",
+      "characters": 47153
+    },
+    {
+      "kind": "native_reserved",
+      "arm": "D",
+      "at": 1792866034.821785,
+      "stage": "generate",
+      "phase": "windows",
+      "cases": 5
+    },
+    {
+      "kind": "native_passed",
+      "arm": "D",
+      "at": 1792866079.0583599,
+      "stage": "generate",
+      "phase": "windows"
+    },
+    {
+      "kind": "native_reserved",
+      "arm": "D",
+      "at": 1792866079.0763745,
+      "stage": "generate",
+      "phase": "public",
+      "cases": 14
+    },
+    {
+      "kind": "native_passed",
+      "arm": "D",
+      "at": 1792866104.0110087,
+      "stage": "generate",
+      "phase": "public"
+    },
+    {
+      "kind": "native_reserved",
+      "arm": "D",
+      "at": 1792866104.0472693,
+      "stage": "generate",
+      "phase": "history",
+      "cases": 105
+    },
+    {
+      "kind": "native_passed",
+      "arm": "D",
+      "at": 1792866242.4645736,
+      "stage": "generate",
+      "phase": "history"
+    },
+    {
+      "kind": "call_completed",
+      "arm": "D",
+      "at": 1792866242.7818303,
+      "stage": "generate",
+      "accepted": true
+    },
+    {
+      "kind": "freeze",
+      "arm": "D",
+      "at": 1792866242.818657,
+      "candidate_hash": "d26cff98c4196dc916da4642a29d8417f4aec2fb154fe0ba5fb22eece398bc47"
+    },
+    {
+      "kind": "independent_started",
+      "arm": null,
+      "at": 1792866242.9101412,
+      "scenarios": 56
+    }
+  ],
+  "arms": {
+    "P": {
+      "calls": [
+        "plan"
+      ],
+      "completed": [
+        "plan"
+      ],
+      "plan_passed": false,
+      "accepted": false,
+      "terminal": true,
+      "frozen": true,
+      "phases": [],
+      "passed": []
+    },
+    "D": {
+      "calls": [
+        "generate"
+      ],
+      "completed": [
+        "generate"
+      ],
+      "plan_passed": false,
+      "accepted": true,
+      "terminal": true,
+      "frozen": true,
+      "phases": [
+        "generate:windows",
+        "generate:public",
+        "generate:history"
+      ],
+      "passed": [
+        "generate:windows",
+        "generate:public",
+        "generate:history"
+      ]
+    }
+  }
+}

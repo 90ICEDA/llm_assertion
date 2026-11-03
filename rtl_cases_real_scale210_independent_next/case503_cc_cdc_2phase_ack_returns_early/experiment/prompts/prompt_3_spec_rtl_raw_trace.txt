@@ -1,0 +1,52 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, req_i, ack_o
+
+Specification:
+
+A newly sampled request must traverse all three destination-domain synchronization stages. The acknowledgement must remain low at the immediately following sample and assert only after the final stage observes the request.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_cdc_2phase(input wire clk_i,input wire rst_ni,input wire req_i,output wire ack_o);
+  reg [2:0] req_sync;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) req_sync<=3'b000; else req_sync<={req_sync[1:0],req_i};
+  end
+  assign ack_o=req_sync[2];
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 1: rst_ni=0, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 2: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 3: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=1
+cycle 4: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=1
+cycle 5: rst_ni=1, ack_o=1, clk_i=1, q_o=1, req_i=1
+cycle 6: rst_ni=1, ack_o=1, clk_i=1, q_o=1, req_i=0
+cycle 7: rst_ni=1, ack_o=1, clk_i=1, q_o=1, req_i=0
+cycle 8: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 9: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 10: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 1: rst_ni=0, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 2: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 3: rst_ni=1, ack_o=1, clk_i=1, q_o=1, req_i=1
+cycle 4: rst_ni=1, ack_o=1, clk_i=1, q_o=1, req_i=1
+cycle 5: rst_ni=1, ack_o=1, clk_i=1, q_o=1, req_i=1
+cycle 6: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 7: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 8: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 9: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0
+cycle 10: rst_ni=1, ack_o=0, clk_i=1, q_o=0, req_i=0

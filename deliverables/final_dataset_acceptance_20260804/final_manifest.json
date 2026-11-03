@@ -1,0 +1,1041 @@
+{
+  "schema_version": 2,
+  "dataset_status": "final_verified",
+  "finalized_at": "2026-08-05",
+  "canonical_unit": "parent_bug_id",
+  "trace_variants_count_as_independent_bugs": false,
+  "candidate_count": 60,
+  "admitted_parent_bug_count": 46,
+  "rejected_parent_bug_count": 14,
+  "pending_or_unverified_count": 0,
+  "unique_parent_bug_count": 46,
+  "parent_bug_ids_unique": true,
+  "required_trace_variants": [
+    "primary",
+    "heldout",
+    "decoy"
+  ],
+  "admission_rule": "all three correct/buggy traces present and divergent; golden passes correct, fails buggy, and has hit antecedent on all three; five weak kinds and >=2 nonvacuous weak misses across all three; provenance audit passes",
+  "cases": [
+    {
+      "name": "case451_prim_clock_timeout_threshold_off_by_one",
+      "case_name": "case451_prim_clock_timeout_threshold_off_by_one",
+      "parent_bug_id": "case451_prim_clock_timeout_threshold_off_by_one",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_clock_timeout",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "822df598e3597096cd0ee1a1f2e2f74336e55c042efbf624fbcdb8712e995c62",
+      "buggy_sha256": "a83d185f15f550a29ed5fc18fa152650198c5efc909ac15bb0a2a836e5a43b13",
+      "mutation_diff_sha256": "9723fa3ab765055a970dfaa5cd84a6035c0592a479902c8ba2f9add5f787188c",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "timeout_threshold_off_by_one",
+      "mutation_operator": "real_rtl_line_replacement",
+      "mutation_edits": [
+        {
+          "search": "assign timeout = int'(cnt) >= TimeOutCnt;",
+          "replace": "assign timeout = int'(cnt) > TimeOutCnt;"
+        }
+      ]
+    },
+    {
+      "name": "case454_prim_count_simultaneous_command",
+      "case_name": "case454_prim_count_simultaneous_command",
+      "parent_bug_id": "case454_prim_count_simultaneous_command",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_count",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "5f6d3c50a168e2cbba0c02159754052000b67752d7dc502ca8477fe581d66b2b",
+      "buggy_sha256": "cfdb2a96a7708e494ce63a27eab558f373c9e120aa27ef018ca0666e115bb330",
+      "mutation_diff_sha256": "6e0186f779fb6ddeea1df5c81c9ac51f6530614a9581b6416bff5bb59d5ca09d",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_increment_decrement_not_suppressed",
+      "mutation_operator": "real_rtl_line_replacement",
+      "mutation_edits": [
+        {
+          "search": "assign cnt_en=(incr_en_i ^ decr_en_i)",
+          "replace": "assign cnt_en=(incr_en_i | decr_en_i)"
+        }
+      ]
+    },
+    {
+      "name": "case455_prim_crc32_set_enable_coupling",
+      "case_name": "case455_prim_crc32_set_enable_coupling",
+      "parent_bug_id": "case455_prim_crc32_set_enable_coupling",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_crc32",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "26367fe9d9608c56ae9b5b9ab02be8cdf979a223d89418886aefcc1038573dcf",
+      "buggy_sha256": "1adc34e0240796d2e984412e4475020db0159fa7dc7a318ef492db85e4affff9",
+      "mutation_diff_sha256": "4934fad6bd7beb8bf1c494a1a47edfa3133ef2265b25b374bcd5afdffc1d7590",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "crc_set_update_enable_coupled",
+      "mutation_operator": "real_rtl_line_replacement",
+      "mutation_edits": [
+        {
+          "search": "assign crc_en = set_crc_i | data_valid_i;",
+          "replace": "assign crc_en = set_crc_i & data_valid_i;"
+        }
+      ]
+    },
+    {
+      "name": "case457_cc_delta_counter_load_enable_priority",
+      "case_name": "case457_cc_delta_counter_load_enable_priority",
+      "parent_bug_id": "case457_cc_delta_counter_load_enable_priority",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_delta_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "76bf7a239e312b2702bdc21cfd412451724aba4d63a47788f705763c4c1a2b18",
+      "buggy_sha256": "dc91a3fe1dc91d33892d4303eb1c6326d0c416ee6b770daf4a403404db9c6f0f",
+      "mutation_diff_sha256": "ee0e33f86d20d1428aa32027d2bd78a8e9b771f4ffc941415e62315164817b73",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "load_enable_priority",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "case_name": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "parent_bug_id": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_delta_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "76bf7a239e312b2702bdc21cfd412451724aba4d63a47788f705763c4c1a2b18",
+      "buggy_sha256": "1547cc80cdc82b4b99e7458e6f386308503769a0a00edab856c5377cb50e0f26",
+      "mutation_diff_sha256": "26806b4f306c652838ed70f68241d9c88e4799c48f6c13b6706855ed36d219e7",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sticky_status_clear_on_load",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case459_cc_trip_counter_trip_one_cycle_late",
+      "case_name": "case459_cc_trip_counter_trip_one_cycle_late",
+      "parent_bug_id": "case459_cc_trip_counter_trip_one_cycle_late",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_trip_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "f163279ff552b728a27f8ace57e82622bcdfff4779c7b79005a2efeb70f73725",
+      "buggy_sha256": "17b06a6b7a92b7b3afec890ce3439fcac69dde1a6105e79c5a0917f70003cbc0",
+      "mutation_diff_sha256": "bea3e907bc54260e209c60c8efb754444b7779a5c582fb541edbfdd5899c7f04",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "trip_pulse_and_clear_timing",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case461_axis_adapter_segment_boundary_early",
+      "case_name": "case461_axis_adapter_segment_boundary_early",
+      "parent_bug_id": "case461_axis_adapter_segment_boundary_early",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_adapter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "84ee7ffadb5fc521c2aa85c1b82b15e019d7fea125e4dee37787204430b26c2b",
+      "buggy_sha256": "29a3f366e1d1b84c9351400dc2d0b7a267e4042c8b495832564d61ad3a6cf26d",
+      "mutation_diff_sha256": "1b828350671003267608b985a0296d65901e62eaa20917bcc4a7107d16f243da",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "segment_boundary_early",
+      "mutation_operator": "real_rtl_control_mutation",
+      "mutation_edits": [
+        {
+          "search": "                if (s_axis_tlast_reg || seg_reg == SEG_COUNT-1) begin",
+          "replace": "                if (s_axis_tlast_reg || seg_reg == SEG_COUNT-2) begin // ASSERTIONFORGE_MUTATION"
+        },
+        {
+          "search": "                if (s_axis_tlast || seg_reg == SEG_COUNT-1) begin",
+          "replace": "                if (s_axis_tlast || seg_reg == SEG_COUNT-2) begin // ASSERTIONFORGE_MUTATION: direct path ends one segment early"
+        }
+      ]
+    },
+    {
+      "name": "case462_axis_broadcast_partial_ready_loss",
+      "case_name": "case462_axis_broadcast_partial_ready_loss",
+      "parent_bug_id": "case462_axis_broadcast_partial_ready_loss",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_broadcast",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "68fcdb4fdef33f8ca380ab735ad1c9385821d4a13cf64848cfa458eaf452a324",
+      "buggy_sha256": "0ab2b697c4eb16473fb02f611bd587a054ed77fded70c7028eb685544e020044",
+      "mutation_diff_sha256": "abcdae0cd9c87165df9e1b17c0689f1bb0fb39649d9a01e011b848bd0ea44b42",
+      "bug_class": "combination_protocol",
+      "bug_family": "partial_sink_acknowledgement",
+      "mutation_operator": "real_rtl_control_mutation",
+      "mutation_edits": [
+        {
+          "search": "        if (((m_axis_tready & m_axis_tvalid) == m_axis_tvalid) || !m_axis_tvalid) begin",
+          "replace": "        if ((|(m_axis_tready & m_axis_tvalid)) || !m_axis_tvalid) begin // ASSERTIONFORGE_MUTATION"
+        }
+      ]
+    },
+    {
+      "name": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "case_name": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "parent_bug_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_srl_fifo",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "92f9e58d38a9536cea326cc04230455bbb9e999fa4b1787a977ded1a5d655223",
+      "buggy_sha256": "a616e5c614a624c26f183cebfc1cf609bc923101d8ad367ce05808f4629b8e76",
+      "mutation_diff_sha256": "18001f9d6ed089e5ff7d4b8b8ab719d86b1cf6ad17a4127ab9a2d7c614911bcd",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "simultaneous_push_pop_occupancy",
+      "mutation_operator": "real_rtl_control_mutation",
+      "mutation_edits": [
+        {
+          "search": "        inc = ptr_empty;",
+          "replace": "        inc = 1'b1; // ASSERTIONFORGE_MUTATION"
+        }
+      ]
+    },
+    {
+      "name": "case466_cc_ring_buffer_write_advance_collision",
+      "case_name": "case466_cc_ring_buffer_write_advance_collision",
+      "parent_bug_id": "case466_cc_ring_buffer_write_advance_collision",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_ring_buffer",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "6b5cc6c5025e10f67b02f40c93e2fbe4e439e1c84b84fa9958ee7fa7e3f374b7",
+      "buggy_sha256": "9942e357b147f7f49217e7cf0d26d45c13ba72cb7a382db85b87ba9de948516a",
+      "mutation_diff_sha256": "8f1b8cbcaaf9f17187d5d84c293a763030a2a50cdc1062356d03011c7a0ded2d",
+      "bug_class": "combination_protocol",
+      "bug_family": "independent_updates_wrongly_exclusive",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case468_cc_spill_register_drain_refill_duplicate",
+      "case_name": "case468_cc_spill_register_drain_refill_duplicate",
+      "parent_bug_id": "case468_cc_spill_register_drain_refill_duplicate",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_spill_register",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "42dbe4f2105c7861b5a540eb1f470d77035cdb657f8d774050fee60bd234f250",
+      "buggy_sha256": "84cae04c357ef9ed297234532dace3b92bad75a3d251d9a542f2297ddeee1041",
+      "mutation_diff_sha256": "d8ebee769e027241c8197cb32538766362bda6bb907bd42e5f86f70fe429f504",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_internal_drain_and_output_consume",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case469_cc_stream_register_stall_overwrite",
+      "case_name": "case469_cc_stream_register_stall_overwrite",
+      "parent_bug_id": "case469_cc_stream_register_stall_overwrite",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_register",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "6469db8939558e98628d2decceeeb68d343efd5379918d19b2819a9d594d0544",
+      "buggy_sha256": "562c1dfb36fa2bbcf1100b453efab513ec3bc24f16daa55d83156a7d51467c9c",
+      "mutation_diff_sha256": "21796edf0d488d465e71dd576eac3bd9c2119e4223560f8291e2aa4fa66767fc",
+      "bug_class": "combination_protocol",
+      "bug_family": "backpressure_payload_stability",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case471_prim_sync_reqack_ack_pulse_width",
+      "case_name": "case471_prim_sync_reqack_ack_pulse_width",
+      "parent_bug_id": "case471_prim_sync_reqack_ack_pulse_width",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_sync_reqack",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "efffffde5f69647a18e10f541bc78f740c77b0fa6c3cf3cf9a820cb65210b077",
+      "buggy_sha256": "c047ee0b0f0566e172c33d866bc9f20e9ae4c26a267ba3fc3f265cdd4a2bced8",
+      "mutation_diff_sha256": "33a6bfcffe32b848ebee9a516e0423ea2df632fb490fcd6a5d0dbbb48f8dd44d",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "handshake_ack_pulse_width",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case472_prim_pulse_sync_destination_single_cycle",
+      "case_name": "case472_prim_pulse_sync_destination_single_cycle",
+      "parent_bug_id": "case472_prim_pulse_sync_destination_single_cycle",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_pulse_sync",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "8f58e4904a4156ce877a926f680ee3ac8400c942876fcc71917173a4eb42a096",
+      "buggy_sha256": "f893481d2ab3ed8c709026ec684ca1c58b3b9597073c42990a8273b355cf594c",
+      "mutation_diff_sha256": "54015bc34443081cdeab934851272e542607e1d51728a774f117f9366a6de26a",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "cdc_destination_pulse_width",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "case_name": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "parent_bug_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_subreg",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "eba16675270aedc717e3084d146b7f003e16b9afa99ae610da3f9eed2bb94ccb",
+      "buggy_sha256": "67c862a888bda501e88a44bc58b3aba75d562a5d9f72721d2412ad258f6056d5",
+      "mutation_diff_sha256": "fd848d6441682172c8a83935e40567dadf60c753f49eef966e0ef7f349a470f9",
+      "bug_class": "combination_protocol",
+      "bug_family": "w1c_simultaneous_hw_set_sw_clear",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "case_name": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "parent_bug_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_racl_error_arb",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "2b552791282e008f18e9244f5bc232fea7bd99ff30e6cfda23113e8900eeda1e",
+      "buggy_sha256": "e97b3c655dc7f4a2f8ab878bab6d8f3b27e88d938fde85f632e776614fe85734",
+      "mutation_diff_sha256": "71d898d96739992227412bac6ab13de3e94561fb796f7e54a96a35ec38f1069b",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_error_overflow_aggregation",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case475_prim_clock_gating_sync_enable_latency",
+      "case_name": "case475_prim_clock_gating_sync_enable_latency",
+      "parent_bug_id": "case475_prim_clock_gating_sync_enable_latency",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_clock_gating_sync",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "7181dd7a4b3a2ae6f0b4353e216dae37f11192605fd793b24e09402588a6fea8",
+      "buggy_sha256": "bd099bf41bf60869e4442082572341b9ebdc27e0645d8bc5c843250deb06106c",
+      "mutation_diff_sha256": "67f27979adb4adcd82434e24ee3d01243e74b16185a992fb56a4524273163134",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "two_stage_enable_sync_bypass",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case476_sync_reset_release_one_cycle_early",
+      "case_name": "case476_sync_reset_release_one_cycle_early",
+      "parent_bug_id": "case476_sync_reset_release_one_cycle_early",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "sync_reset",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "3c333fc4596a932c3ec3a1541e3d8ceec91ed1d5119b64724cad9b5fae4b7322",
+      "buggy_sha256": "77348add7eccbcdc615c1a30844737adb9a7ef17ba128eaa9c9546ea49ee2aa3",
+      "mutation_diff_sha256": "68e4175c28a047f2a9793b226eb8793b3c5191c650eda679839b7a3b79dc447b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "reset_release_latency",
+      "mutation_operator": "real_rtl_mutation",
+      "mutation_edits": [
+        {
+          "search": "        sync_reg <= {sync_reg[N-2:0], 1'b0};",
+          "replace": "        // ASSERTIONFORGE_MUTATION: shift two zeros per clock\n        sync_reg <= {sync_reg[N-3:0], 2'b00};"
+        }
+      ]
+    },
+    {
+      "name": "case478_axis_srl_register_ready_recovery",
+      "case_name": "case478_axis_srl_register_ready_recovery",
+      "parent_bug_id": "case478_axis_srl_register_ready_recovery",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_srl_register",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "a58e93479a93be4bea064046d588156b58a2ef36437d6a10215f3c0b22d78f58",
+      "buggy_sha256": "1b35f751387b72464c7bb63feb1d3707a63e75bd49fa3e5f20b8cd57432b22c9",
+      "mutation_diff_sha256": "70372f6715051b5b6385ddd21644819b7554caf1dff6f55b180704154d9970ba",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "backpressure_ready_recovery",
+      "mutation_operator": "real_rtl_mutation",
+      "mutation_edits": [
+        {
+          "search": "    full_reg <= !m_axis_tready && m_axis_tvalid;",
+          "replace": "    // ASSERTIONFORGE_MUTATION: ready transfer cannot clear full state\n    full_reg <= !m_axis_tready || m_axis_tvalid;"
+        }
+      ]
+    },
+    {
+      "name": "case479_ll_axis_bridge_ready_polarity",
+      "case_name": "case479_ll_axis_bridge_ready_polarity",
+      "parent_bug_id": "case479_ll_axis_bridge_ready_polarity",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "ll_axis_bridge",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "dca9ea8b547142568baa94066ad0c5e37dcb157ed39069802b0f9391a19c791d",
+      "buggy_sha256": "3d8bde46951722955e99a1d6a297e3a7cf92a4b68c50060da4f57761780637f9",
+      "mutation_diff_sha256": "011db50e2ed0888d1ca3e3ec82822c3af6a31d460f1502e5705270d2b0fde722",
+      "bug_class": "combination_protocol",
+      "bug_family": "active_low_ready_polarity",
+      "mutation_operator": "real_rtl_mutation",
+      "mutation_edits": [
+        {
+          "search": "assign ll_dst_rdy_out_n = !m_axis_tready;",
+          "replace": "// ASSERTIONFORGE_MUTATION: active-low ready polarity inverted\nassign ll_dst_rdy_out_n = m_axis_tready;"
+        }
+      ]
+    },
+    {
+      "name": "case480_axis_cobs_decode_ff_zero_suppression",
+      "case_name": "case480_axis_cobs_decode_ff_zero_suppression",
+      "parent_bug_id": "case480_axis_cobs_decode_ff_zero_suppression",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_cobs_decode",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "045dcec3b9421e5aadf69a4e9bf03c8dbd7732a9f6fe6812c6e53d9811eb07b5",
+      "buggy_sha256": "a6b27b1487f7ab05bc405b960148d61dfb05c6274fb7d87ac62b04959f36f863",
+      "mutation_diff_sha256": "4b06ffb85ea8be20211bc29279c4df0d6a4ace53e56d96f63f4d4e98e2c1d31f",
+      "bug_class": "combination_protocol",
+      "bug_family": "cobs_max_run_zero_suppression",
+      "mutation_operator": "real_rtl_mutation",
+      "mutation_edits": [
+        {
+          "search": "                    suppress_zero_next = (s_axis_tdata == 8'd255);",
+          "replace": "                    // ASSERTIONFORGE_MUTATION: wrong COBS maximum-run code\n                    suppress_zero_next = (s_axis_tdata == 8'd254);"
+        }
+      ]
+    },
+    {
+      "name": "case482_cc_stream_demux_unselected_ready_accept",
+      "case_name": "case482_cc_stream_demux_unselected_ready_accept",
+      "parent_bug_id": "case482_cc_stream_demux_unselected_ready_accept",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_demux",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "39cf076e129415ea5752d585f2898a9d2a039ecdc766649f8486b6a55c667da4",
+      "buggy_sha256": "c4a21e84c22080730886945c1c334e991b9e189305bbab28a87061fc14170d0f",
+      "mutation_diff_sha256": "eece3b7f5a77e60bbda7052c712b3cf66d77aee19147ef5a32e809086a9bd5bd",
+      "bug_class": "combination_protocol",
+      "bug_family": "unselected_lane_backpressure_leak",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case484_cc_exp_backoff_clear_set_priority",
+      "case_name": "case484_cc_exp_backoff_clear_set_priority",
+      "parent_bug_id": "case484_cc_exp_backoff_clear_set_priority",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_exp_backoff",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "cb224a138ad8068b778cc0d6397b1c1222290f85d364bd6ca0609d5a46a04de7",
+      "buggy_sha256": "da075648260692c5a2f795cadb78d9ee576bd5a3bc204546376b930775752a61",
+      "mutation_diff_sha256": "d687543700579eba0b6d2b5f18b5afb80c4e311d5ad7bc4cdf93f82549e943e6",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "simultaneous_clear_set_priority",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "case_name": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "parent_bug_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_arbiter_fixed",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "b5520e3a23cfbf0257bec929148cfa0c30c0646aed488befbc0195abba542ea8",
+      "buggy_sha256": "d56a420d54c4ac654b87a34246fbce889208944c8f419af04ba16575be8a6d6e",
+      "mutation_diff_sha256": "918f2b69af7c6e767703eb4c3002e228c84695a9372a187628b3338b8ab1eba9",
+      "bug_class": "combination_protocol",
+      "bug_family": "grant_ready_gating_removed",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case487_prim_onehot_enc_disabled_output_leak",
+      "case_name": "case487_prim_onehot_enc_disabled_output_leak",
+      "parent_bug_id": "case487_prim_onehot_enc_disabled_output_leak",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_enc",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "83fac46d57e499d25c2c30d17180b16d2473f1ace743151ae6386bd1367b2e9a",
+      "buggy_sha256": "4b089c12b61b4fcc6e3e71d039cfae26997e704fdd15c823a76b74be115e051e",
+      "mutation_diff_sha256": "0865371ff99cc5b21f6373f5adc4604491ec5bae8066139eb5376e2e9389b7d1",
+      "bug_class": "combination_protocol",
+      "bug_family": "disabled_onehot_output_not_suppressed",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case488_prim_reg_we_check_disabled_write_missed",
+      "case_name": "case488_prim_reg_we_check_disabled_write_missed",
+      "parent_bug_id": "case488_prim_reg_we_check_disabled_write_missed",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_reg_we_check",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "7c412f5c971288af88bc32339e406605f812d5cd826072334cb055c505b78730",
+      "buggy_sha256": "b2f414c03f40d5e6a10eff557d3e3339be8ef370c2c11d9879114ccaa42bfba9",
+      "mutation_diff_sha256": "aab12dc5341f9d389dbf04e63bafc1825f082e47e5e9c81043af9cf66d52276a",
+      "bug_class": "combination_protocol",
+      "bug_family": "disabled_write_enable_error_suppressed",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case489_prim_max_tree_invalid_source_selected",
+      "case_name": "case489_prim_max_tree_invalid_source_selected",
+      "parent_bug_id": "case489_prim_max_tree_invalid_source_selected",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_max_tree",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "2507ee0dce3641beb8d6de336d1c00f358fd77b36d98a4928210670231e81be3",
+      "buggy_sha256": "bfb644969c965ed68b4e413d4a7056677f4dce34ff7d458b0cb4004edebc3eea",
+      "mutation_diff_sha256": "915ec2783370ab9e2d5dfc3987f25ef713b9aeeb8cfb4d29bc6ed83753b05fbe",
+      "bug_class": "combination_protocol",
+      "bug_family": "invalid_source_included_in_maximum",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case490_prim_gate_gen_valid_latency_short",
+      "case_name": "case490_prim_gate_gen_valid_latency_short",
+      "parent_bug_id": "case490_prim_gate_gen_valid_latency_short",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "opentitan",
+      "source_module": "prim_gate_gen",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "correct_sha256": "95323a0bf74ab3f8ae9d5d6e8debd3558d43fb0fc860f3d6f941125ffb8c642e",
+      "buggy_sha256": "19e3573cad9681cace6a269779c8f8ee295187af990e2092277e66603e54bfcd",
+      "mutation_diff_sha256": "0e897424ac24c18fda5ed6ee1d8ac063e44c28d3d72585d577592676d5feb7d1",
+      "bug_class": "temporal",
+      "bug_family": "valid_pipeline_one_cycle_short",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case491_axis_pipeline_register_valid_latency",
+      "case_name": "case491_axis_pipeline_register_valid_latency",
+      "parent_bug_id": "case491_axis_pipeline_register_valid_latency",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_pipeline_register",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "fc878062cac92d24582f58ed99739c075028d498a1fb10dd00e22e3292a0e56f",
+      "buggy_sha256": "84970814f8a958461cb87a38ea220957429d5f21608fe6c409f586fe344802df",
+      "mutation_diff_sha256": "4f14e776a465d0de8b9ba0eff3ac31f0f81d19b642fd4638995121e9507dca6f",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "three_stage_valid_bypassed",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case492_axis_async_fifo_gray_visibility",
+      "case_name": "case492_axis_async_fifo_gray_visibility",
+      "parent_bug_id": "case492_axis_async_fifo_gray_visibility",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_async_fifo",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "b698816ccff933f17a57b69f46f935da2c1322600a243e10e14a84797832eeb9",
+      "buggy_sha256": "17c90a6ea92268fc8d4546af8162997b3de9aa70111637c73fa3c0b12e9dfa31",
+      "mutation_diff_sha256": "4fcd238edc785438a185ef4719b6aafc467b1db32518286505707edc201ce59f",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "gray_pointer_sync_stage_removed",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case493_axis_stat_counter_frame_commit_delay",
+      "case_name": "case493_axis_stat_counter_frame_commit_delay",
+      "parent_bug_id": "case493_axis_stat_counter_frame_commit_delay",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_stat_counter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "e0e6f90fe1fb4a30887f105dcbcbe0f42de316d8b278c6dae4fca37132a1d651",
+      "buggy_sha256": "c8d71f9145e9fdbb06e7ce698a60c389d46d2c178faf3573991de598fdbc2e51",
+      "mutation_diff_sha256": "f3c195a6d76fbc095d4c359417f63b37f6de5231182f608894da905df5724ec8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "frame_count_committed_same_cycle",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case494_axis_ram_switch_response_pipeline",
+      "case_name": "case494_axis_ram_switch_response_pipeline",
+      "parent_bug_id": "case494_axis_ram_switch_response_pipeline",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_ram_switch",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "565ddec3d2896bfc523a17abd6a88d569224a91fd330648c4146f1c89ced1c7f",
+      "buggy_sha256": "4dc61df9612261751c59af7eb4f2a3f9d1876f77bcf2b77fea4e244ff82c8d70",
+      "mutation_diff_sha256": "0c1d93f5989718102f5e19d73993c9a68dd1507971f75d0d50e3cdf8162065dd",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "response_pipeline_stage_skipped",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case495_axis_fifo_adapter_commit_pulse_width",
+      "case_name": "case495_axis_fifo_adapter_commit_pulse_width",
+      "parent_bug_id": "case495_axis_fifo_adapter_commit_pulse_width",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_fifo_adapter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "3882e570fb9f88da7d6f85a750965777351ad10dc85076871290b56459b419c5",
+      "buggy_sha256": "410925a5c0ac39a2645163a6998358bde098016226684e1daf9c3f9e05604f0c",
+      "mutation_diff_sha256": "cb8c6fe8ec97323c287a45d55090a69649c6ad419db08d074009296d0d95ba64",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "adapter_commit_pulse_stretched",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case497_cc_cdc_4phase_ack_sync_depth",
+      "case_name": "case497_cc_cdc_4phase_ack_sync_depth",
+      "parent_bug_id": "case497_cc_cdc_4phase_ack_sync_depth",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_4phase",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "4d4dca6e8e03cdceadde6af25a3d65a1de16684ca2b85557173d6069c069956f",
+      "buggy_sha256": "5bb04ae3961c3d1494165ba8d6514078c9c5cb3ab7cc36451d3f90803a5b89fa",
+      "mutation_diff_sha256": "137daf5421a8f2fa0da0601eadd9008c464cf6025c362cc3083a5105e8fa739b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "ack_synchronizer_stage_removed",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case498_cc_serial_deglitch_qualification_short",
+      "case_name": "case498_cc_serial_deglitch_qualification_short",
+      "parent_bug_id": "case498_cc_serial_deglitch_qualification_short",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_serial_deglitch",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "13ed4df1a385e24fa7d15cd88348a74d47d7bf7de81abadc4c23a9601a988fa1",
+      "buggy_sha256": "4280f1d7e804fe782f1a813b741d52f51f5942344e470f4b12a232190c4cc0bb",
+      "mutation_diff_sha256": "9b62fd8231935b89e8165d2b01ec599a2b2df2f7813deb511836639c212da48b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "qualification_count_reduced",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case499_cc_shift_reg_gated_stage_bypass",
+      "case_name": "case499_cc_shift_reg_gated_stage_bypass",
+      "parent_bug_id": "case499_cc_shift_reg_gated_stage_bypass",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_shift_register_gated",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "ec583c43d1e5993c743b2c473711b563936cf6957f9185534f91062af85bf562",
+      "buggy_sha256": "ec842959a3dda6f54148a4f31c17b488befa826324471b91e48fc66b09b2df0d",
+      "mutation_diff_sha256": "c1b43231c8cd0c2a5014bb486f1dbd375e45407aa996a74d4a73fa00896b99ea",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "enabled_shift_stage_bypassed",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case500_cc_isochronous_handshake_early_drop",
+      "case_name": "case500_cc_isochronous_handshake_early_drop",
+      "parent_bug_id": "case500_cc_isochronous_handshake_early_drop",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_isochronous_4phase_handshake",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "538160e0aa9becdfcfdf87c8b20daddafad3f6287f7b3f2dc0196222d229f777",
+      "buggy_sha256": "790d0bf96cea1a7e66fd418cf7deb5659cee47bddb466846eca74a1bd4c385ea",
+      "mutation_diff_sha256": "488bd0a310cff2d349ffa0bdf19c59b6bcd1238af5a13d33bb488065b1d524a0",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "request_drops_on_unsynchronized_ack",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "case_name": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "parent_bug_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_pipeline_fifo",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "ad3b5c0af3d5ee0724a0a2eb3b4efd6554120b4926b06c213148024a3f09ef23",
+      "buggy_sha256": "609a92a279fa44764c91282518dcd07d6729b96e64ec8edbe967cd05886056df",
+      "mutation_diff_sha256": "386f6fb95472fc0342a9e4052c5677d263b97bfff50b8845cd2a334956d6e895",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "backpressure_valid_persistence",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case503_cc_cdc_2phase_ack_returns_early",
+      "case_name": "case503_cc_cdc_2phase_ack_returns_early",
+      "parent_bug_id": "case503_cc_cdc_2phase_ack_returns_early",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_2phase",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "87bb51be05f13838be72f6c4cf098739a52d9d7382e04b3c1dd607ca69e2762f",
+      "buggy_sha256": "752fc7f4308cd5b5b28636aa93f8848ca421e8f236a21de15e5e987eb2564efb",
+      "mutation_diff_sha256": "738b88b4da244e4391c9b2b7550a88e43964d7c567388389f5fcd0cd126eae2a",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "cdc_ack_synchronizer_depth",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "case_name": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "parent_bug_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_fifo_gray",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "25854fe3ebddd5cb661c0987df4a8432d1aa1cf2af6f791ec2cc1013b3bbfae8",
+      "buggy_sha256": "4ba248e4d3a2e15a735234daa9fec91039117c235a7c7fe2d4a610165f1ff09d",
+      "mutation_diff_sha256": "0e7d77ab80084bc5551f276efd523492ed542c2fdf01be6466c91c53629a078d",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "gray_pointer_synchronizer_depth",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case505_axis_stat_counter_frame_pulse_early",
+      "case_name": "case505_axis_stat_counter_frame_pulse_early",
+      "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_stat_counter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "95572170f99b38279d312a3f063fb6d2ddf468dba1c4fbd3888729974a73c34b",
+      "buggy_sha256": "6f375b4de3c411d5449f540ff3f11559f85e4b0be81c21ef22479bb4c4e54eb6",
+      "mutation_diff_sha256": "5bed34aa1f70d1105cca3e1d1e963590f95070931dcf2a458ee97fc039f76ab6",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "frame_status_pipeline_latency",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case506_axis_crosspoint_simultaneous_source_priority",
+      "case_name": "case506_axis_crosspoint_simultaneous_source_priority",
+      "parent_bug_id": "case506_axis_crosspoint_simultaneous_source_priority",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_crosspoint",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "624fad934f584ec7a4441b197b36d436df6dfe6831b2db6825a6d634a9773715",
+      "buggy_sha256": "2371a200cccb548f3b9cde932080011449ad67b74f82e4da70f404e3caca2178",
+      "mutation_diff_sha256": "274cf1949cb66caff0a45afce386270ebaccf88440d18446a35b57379de16816",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_contender_priority",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "case_name": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "parent_bug_id": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_rr_arb_tree",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "3795ad9d1dbbac6977beb18eb6773496b0ab733bd6f71b73b251ba0c8986151d",
+      "buggy_sha256": "f36a247b55a306fc1f27e472ecf7c39a049c313f198f1675ab593a27386a6acf",
+      "mutation_diff_sha256": "f5f1d7e3eeb57a838d2381a310cac4d12d1e221b2dd8bf177f984cd1de24b806",
+      "bug_class": "combination_protocol",
+      "bug_family": "locked_grant_persistence",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case508_cc_stream_fork_partial_ready_accept",
+      "case_name": "case508_cc_stream_fork_partial_ready_accept",
+      "parent_bug_id": "case508_cc_stream_fork_partial_ready_accept",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_fork",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "e1ef0c40bf01f219e971894debf23de1772a5ccc9551355d05d1df15681a702c",
+      "buggy_sha256": "adccb17ec21bd263e02ec25044075f0df1f20a1b0344d119f044b3830ab377bd",
+      "mutation_diff_sha256": "4cb4924d76bb26f292b98102970bdadcb075d3ff423c40a905c2440219aec09c",
+      "bug_class": "combination_protocol",
+      "bug_family": "fork_atomic_ready_conjunction",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case509_axis_switch_overlap_route_priority",
+      "case_name": "case509_axis_switch_overlap_route_priority",
+      "parent_bug_id": "case509_axis_switch_overlap_route_priority",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "verilog_axis",
+      "source_module": "axis_switch",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "correct_sha256": "6cab2aab7dd84d8242e29ea951806b59781b43d490c4f19084d921c17609ecd5",
+      "buggy_sha256": "866beaa66ec90260528433a42fc279042ef29d1df16bbbc8191be05e26508838",
+      "mutation_diff_sha256": "105afdacac0c04752095be2f2540832f660522a5d1dd9865937dcdcd3ec8e1cf",
+      "bug_class": "combination_protocol",
+      "bug_family": "overlapping_route_priority",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    },
+    {
+      "name": "case510_cc_spill_register_flush_push_priority",
+      "case_name": "case510_cc_spill_register_flush_push_priority",
+      "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+      "trace_variants": [
+        "primary",
+        "heldout",
+        "decoy"
+      ],
+      "trace_variant_semantics": "three stimulus variants belonging to one parent bug; never independent bug samples",
+      "source_project": "common_cells",
+      "source_module": "cc_spill_register_flushable",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "correct_sha256": "d5b868635488b8aa46597930b7ef8d25e962402b9e9dae8a830b30cffc1fffae",
+      "buggy_sha256": "e39b0ec11a478413680a5e8ed5f26676e9e18bd1b3f4bbdc1197563ff0d6a8f7",
+      "mutation_diff_sha256": "ee0a58c72dacf3f5d189ae10d79449df38d68d8ef69a8ecf46c5985438082db8",
+      "bug_class": "combination_protocol",
+      "bug_family": "flush_over_push_priority",
+      "mutation_operator": "actual_rtl_logic_change",
+      "mutation_edits": []
+    }
+  ]
+}

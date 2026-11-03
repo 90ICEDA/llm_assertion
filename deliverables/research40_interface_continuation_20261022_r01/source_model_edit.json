@@ -1,0 +1,61 @@
+{
+  "operation": "replace_one",
+  "assertion_id": "a2",
+  "assertions": [
+    {
+      "antecedent": {
+        "op": "&&",
+        "args": [
+          {
+            "signal": "mvalid"
+          },
+          {
+            "op": "!",
+            "args": [
+              {
+                "signal": "mready"
+              }
+            ]
+          },
+          {
+            "op": "!",
+            "args": [
+              {
+                "signal": "rst"
+              }
+            ]
+          }
+        ]
+      },
+      "consequent": {
+        "op": "&&",
+        "args": [
+          {
+            "signal": "mvalid"
+          },
+          {
+            "op": "==",
+            "args": [
+              {
+                "signal": "mdata"
+              },
+              {
+                "op": "$past",
+                "args": [
+                  {
+                    "signal": "mdata"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "timing": "next_sample",
+      "obligation": [
+        "stall_stability"
+      ]
+    }
+  ],
+  "reason": "Ensure mvalid and mdata stability during backpressure, except on reset."
+}

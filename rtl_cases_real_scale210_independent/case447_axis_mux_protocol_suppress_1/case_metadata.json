@@ -1,0 +1,71 @@
+{
+  "name": "case447_axis_mux_protocol_suppress_1",
+  "parent_bug_id": "case447_axis_mux_protocol_suppress_1",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_mux",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_mux.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_mux.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "s_axis_tready combinational/protocol output is forced low",
+  "spec": "When routing is enabled and the downstream output can accept a beat, ready must be returned only on the currently selected source lane.",
+  "mutation_edits": [
+    {
+      "line": 110,
+      "search": "assign s_axis_tready = s_axis_tready_reg;",
+      "replace": "assign s_axis_tready = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "s_axis_tready",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "enable",
+    "select",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "m_axis_tready",
+    "sr[3:0]"
+  ],
+  "temporal_type": "selected-lane ready propagation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "599c47b8889b6f22a325b3bb27a38b13b64a7ba08b0f4aefea1e2f550389e68a",
+  "buggy_sha256": "6883eeafe29add214385390b6f00ecaf896f69b6037621faf6e1582903e19f9a",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (enable && m_axis_tready) |-> s_axis_tready[select]);",
+    "temporal_type": "selected-lane ready propagation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 25000,
+      "sample_index": 6,
+      "signals": [
+        "sr[3:0]"
+      ],
+      "clock_cycle": 3
+    },
+    "heldout": {
+      "time_ps": 35000,
+      "sample_index": 8,
+      "signals": [
+        "sr[3:0]"
+      ],
+      "clock_cycle": 4
+    },
+    "decoy": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "signals": [
+        "sr[3:0]"
+      ],
+      "clock_cycle": 5
+    }
+  }
+}

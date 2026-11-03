@@ -1,0 +1,47 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, frame_end_i, ready_i, q_o, state_o
+
+Specification:
+
+A terminal transfer first records a pending frame event. The public frame counter commits on the following clock, never in the terminal-transfer clock itself.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_stat_counter(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire frame_end_i,
+  input wire ready_i,
+  input wire valid_i,
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg pending;
+  reg [7:0] count;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin pending<=0; count<=0; end
+    else begin
+      pending <= frame_end_i && valid_i && ready_i;
+      if (pending) count <= count + 1'b1;
+    end
+  end
+  assign q_o = count[0];
+  assign state_o = count;
+endmodule
+
+Waveform evidence:
+
+Case: case493_axis_stat_counter_frame_commit_delay
+First divergence cycle: 8
+First divergence time_ps: 35000
+Differing signals at first divergence: q_o, state_o[7:0]
+Observed differing signal values (good): q_o=0, state_o[7:0]=00000000
+Observed differing signal values (bad): q_o=1, state_o[7:0]=00000001

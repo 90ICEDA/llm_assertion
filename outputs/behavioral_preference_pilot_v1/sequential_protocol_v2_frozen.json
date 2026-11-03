@@ -1,0 +1,36 @@
+{
+  "protocol_version": "sequential_structured_v2_visible_compile_gate",
+  "status": "frozen_before_attempt_2_supplement",
+  "frozen_at_utc": "2026-08-18T14:12:49Z",
+  "supersedes": "sequential_structured_v1",
+  "v1_evidence_archive": "outputs/behavioral_preference_pilot_v1/protocol_v1_archive",
+  "corrections": [
+    "allowed identifiers are declarations visible at the testbench top level",
+    "Icarus include path contains external/common_cells/include",
+    "a candidate is accepted only after correct and buggy monitor compilation succeeds",
+    "fixed-safe, target-detect, and non-vacuity remain measured outcomes and do not select candidates"
+  ],
+  "generation_unchanged": {
+    "model": "qwen3-8b-pilot:q4_K_M",
+    "temperature": 0.7,
+    "num_predict": 512,
+    "seed": 20260815,
+    "num_ctx": 8192,
+    "think": false,
+    "maximum_attempts_per_slot": 4
+  },
+  "attempt_1_reingest": {
+    "target_slots": 240,
+    "accepted_compile_legal": 23,
+    "missing_slots": 217
+  },
+  "supplement_rule": "For attempts 2 through 4, issue requests only for slots listed by the immediately preceding v2 missing_slots.json.",
+  "hashes": {
+    "pilot_source_sha256": "2fdab3f577613dd2b264141b932e8ddbd3e55089388adfff4df63148d026e814",
+    "runner_sha256": "7013cefea291256b386fe872e2b3c6fc47f8e02932cf4e38f9fa3567b8016624",
+    "request_index_sha256": "5d717955444261789eba5b692d6b4ea09e1310b06a3865a481bc2b15d46087dc",
+    "attempt1_accepted_index_sha256": "f5fc115c57b3ac9534e80cd2e039cda935ae27948f20f289b4114bcea1286e5e",
+    "attempt1_audit_sha256": "09c30f0cf6ff70f82b2034908d5513d7e4f427ad236b688c6bc6ce67a54dc65c",
+    "attempt1_missing_slots_sha256": "38c1227c820ab1a93765a79872518ad39ed4c7a29a673a9622108ae755488220"
+  }
+}

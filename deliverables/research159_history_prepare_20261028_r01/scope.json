@@ -1,0 +1,29 @@
+{
+  "axis_adapter_keep": {
+    "configs": "8->8 and 8->32, S_KEEP_ENABLE=0, M_KEEP_ENABLE=1, byte size8",
+    "contract": "Input keep is ignored when disabled (pinned parameter documentation); each accepted input byte and frame boundary preserved on accepted output, legal source held through stall; output valid/payload stable during backpressure.",
+    "public": "ignored_keep_zero / ignored_keep_alternating",
+    "history": "control and reset_cancel",
+    "excluded": "No downsize or arbitrary byte size; no preexisting model candidate is inferred."
+  },
+  "axis_fifo_pause": {
+    "configs": "Depth4, RAM_PIPELINE0/1, FRAME_FIFO0, PAUSE_ENABLE1, FRAME_PAUSE1, width8",
+    "contract": "Pause between frames; already presented output valid and payload remain stable until handshake except reset. Accepted data/order preserved, reset cancels pending queue. No exact-cycle pause_ack latency claim.",
+    "public": "pause_first_stall",
+    "history": "control, pause_during_frame, reset_cancel",
+    "excluded": "Async FIFO touched by same commit is not executed; no extrapolation to async or all depths."
+  },
+  "ibex54": {
+    "configs": "Original combinational RV32 compressed decoder, no parameters",
+    "contract": "Pinned PR54/51: compressed HINTs decode as base HINTs, not illegal; independently derive encoding expansions. Reserved high shift bit remains illegal in this historic configuration.",
+    "public": "li_hint and lui_hint",
+    "history": "slli_hint,srli_hint,srai_hint,legal_slli,reserved_slli,passthrough",
+    "excluded": "No whole core, no new independent holdout; selected original inputs may repeat old development vectors."
+  },
+  "candidate_policy": "Handwritten oracle/SVA diagnostics only; no existing generated candidate for these new mechanisms is presumed. Reproduction admission and pilot admission are separate. Stop if qualified editable partial baseline+frontend+meaningful non-whitelist discrimination is not actually established.",
+  "max_compiles": 10,
+  "max_executions": 10,
+  "model_calls": 0,
+  "formal_calls": 0,
+  "dataset": "development qualification"
+}

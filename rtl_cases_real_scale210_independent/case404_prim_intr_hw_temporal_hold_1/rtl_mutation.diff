@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -95,7 +95,7 @@
+     // flop the interrupt output
+     always_ff @(posedge clk_i or negedge rst_ni) begin
+       if (!rst_ni) begin
+-        intr_o <= '0;
++        intr_o <= intr_o; // ASSERTIONFORGE_MUTATION: state update suppressed
+       end else begin
+         intr_o <= status & reg2hw_intr_enable_q_i;
+       end

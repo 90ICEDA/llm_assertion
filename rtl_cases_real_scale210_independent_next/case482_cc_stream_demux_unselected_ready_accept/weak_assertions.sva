@@ -1,0 +1,10 @@
+// single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) (valid_i |-> $onehot(valid_o)));
+// final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) (data_o==data_i));
+// delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (ready_i[sel_i] |-> ready_o));
+// antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (!valid_i || $onehot(valid_o)));
+// simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) (|valid_o |-> valid_i));

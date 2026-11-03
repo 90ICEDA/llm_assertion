@@ -1,0 +1,111 @@
+{
+  "purpose": "standalone_independent_acceptance_after_both_accept_not_recovery",
+  "seed": 17407,
+  "original_pilot_unchanged": true,
+  "model_calls": 0,
+  "formal_calls": 0,
+  "max_compiles": 2,
+  "max_executions": 2,
+  "rerolls": 0,
+  "retries": 0,
+  "config": {
+    "S_DATA_WIDTH": 8,
+    "S_KEEP_ENABLE": 0,
+    "S_KEEP_WIDTH": 1,
+    "M_DATA_WIDTH": 32,
+    "M_KEEP_ENABLE": 1,
+    "M_KEEP_WIDTH": 4
+  },
+  "cycles_per_scenario": 96,
+  "strata": {
+    "short_target": 8,
+    "long_target": 8,
+    "legal_transfer": 16,
+    "reset_cancel": 8
+  },
+  "generation": {
+    "short_lengths": [
+      2
+    ],
+    "short_gaps": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "short_delays": [
+      14,
+      19
+    ],
+    "long_lengths": [
+      6,
+      7,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "long_gaps": [
+      2,
+      3
+    ],
+    "long_delay": 21,
+    "legal_lengths": [
+      2,
+      6,
+      7,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "legal_gaps": [
+      2,
+      3
+    ],
+    "legal_delays": [
+      14,
+      19
+    ],
+    "reset_length": 14,
+    "reset_gaps": [
+      2,
+      3
+    ],
+    "reset_cycles": [
+      20,
+      24
+    ],
+    "reset_keeps": [
+      0,
+      1
+    ],
+    "reset_ready_delay": 40,
+    "stall_period_choices": [
+      2,
+      3,
+      5
+    ],
+    "selection": "Draw period/gap choices then shuffle all descriptors after freeze; no observed-outcome selection."
+  },
+  "checks": [
+    "native both revisions complete",
+    "same legal inputs",
+    "new actual semantic transaction signatures ignoring payload",
+    "short targets final_nonempty exposure and direct detection",
+    "long targets nonfinal_keep AND final_nonempty exposure and direct detection",
+    "legal partial tails explicitly exposed",
+    "actual backpressure and release observed",
+    "reset cancels actual pending input and stalled output; no unsolicited postreset output",
+    "fixed independent reference clean",
+    "no false positives or key unknown",
+    "frozen SVA unchanged"
+  ],
+  "expected_scope": "Two original KEEP fault obligations; stall and reset are legal-behavior tests only, no injected stall/reset faults.",
+  "novelty": "Compare each before/after trace to development and other tests in same revision; ignore payload/seed/IDs. Preserve duplicates, failures, no-exposure, unknown; never redraw.",
+  "acceptance": "All40 scenarios must meet own exposure, execution, novelty and finite-scope checks. Separately report per-obligation and scenario scope. No formal/global guarantee.",
+  "failure_policy": "No feedback to model or candidate changes; if later used for improvement, entire batch must be reclassified as development and new holdout prepared."
+}

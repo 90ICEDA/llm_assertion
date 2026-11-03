@@ -1,0 +1,18 @@
+{
+  "stage": "sva_only_after_actual_accepted_plan",
+  "max_calls": 3,
+  "plan_calls": 0,
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "seed": 4601,
+  "temperature": 0.2,
+  "max_tokens": 2048,
+  "retries": 0,
+  "acceptance": "Native current targets, all11 required/legal windows,105 scenario history and trigger retention all pass; any critical unknown, repeated rejected executable or false positive rejects.",
+  "iteration": "At most3 real SVA edits. Same previous accepted set retained on rejection. Only actual current/history/window diagnoses feed next round. Stop on first acceptance.",
+  "interface": "Reuse existing replace_one/keep AST interface and multi-SVA set. No complementary-add operation introduced in this bounded trial.",
+  "history": "Run105 history scenarios for each native-admitted proposal even when current target gate fails, to expose real regression diagnostics.",
+  "independence": "Development acceptance only. Freeze terminal candidate; new independent tests are a later task and are not sent to model.",
+  "authorization": "Requires explicit reassignment/new SVA call budget; research47 unused1 is plan-only; research45 other4 conditional-ablation calls not automatically reusable.",
+  "provenance": "Actual axis_fifo RTL plus explicit artificial boundary faults; not original historical bug reproduction."
+}

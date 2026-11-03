@@ -1,0 +1,118 @@
+{
+  "status": "gate_validated_on_recorded_scope",
+  "checks": [
+    {
+      "name": "valid_B",
+      "expected": true,
+      "accepted": true,
+      "reasons": [],
+      "exempt_trigger_losses": 2
+    },
+    {
+      "name": "unrepaired_D",
+      "expected": false,
+      "accepted": false,
+      "reasons": [
+        "current_gap_not_confirmed_repaired"
+      ],
+      "exempt_trigger_losses": 2
+    },
+    {
+      "name": "data_only_C_no_search_target",
+      "expected": true,
+      "accepted": true,
+      "reasons": [],
+      "exempt_trigger_losses": 2
+    },
+    {
+      "name": "missing_native_source",
+      "expected": false,
+      "accepted": false,
+      "reasons": [
+        "lost_obligation_trigger"
+      ],
+      "exempt_trigger_losses": 1
+    },
+    {
+      "name": "unknown_native_execution",
+      "expected": false,
+      "accepted": false,
+      "reasons": [
+        "unconfirmed_replay"
+      ],
+      "exempt_trigger_losses": 2
+    },
+    {
+      "name": "changed_evidence_identity",
+      "expected": false,
+      "accepted": false,
+      "reasons": [
+        "changed_evidence_identity",
+        "lost_obligation_trigger"
+      ],
+      "exempt_trigger_losses": 1
+    },
+    {
+      "name": "missing_historical_row",
+      "expected": false,
+      "accepted": false,
+      "reasons": [
+        "missing_historical_replay",
+        "lost_obligation_trigger"
+      ],
+      "exempt_trigger_losses": 1
+    },
+    {
+      "name": "valid_B",
+      "expected": true,
+      "accepted": true,
+      "reasons": [],
+      "exempt_trigger_losses": 2
+    },
+    {
+      "name": "suppressed_antecedent",
+      "expected": false,
+      "accepted": false,
+      "reasons": [
+        "lost_target_detection",
+        "current_gap_not_confirmed_repaired"
+      ],
+      "exempt_trigger_losses": 0
+    }
+  ],
+  "native_counts": {
+    "initial": {
+      "rows": 3695,
+      "unknown": 0,
+      "triggers": 1079,
+      "false_positives": 0,
+      "detections": 13,
+      "misses": 2,
+      "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+      "later_attribution_unknown": 103
+    },
+    "valid_B": {
+      "rows": 3695,
+      "unknown": 0,
+      "triggers": 1077,
+      "false_positives": 0,
+      "detections": 15,
+      "misses": 0,
+      "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+      "later_attribution_unknown": 103
+    },
+    "suppressed": {
+      "rows": 3695,
+      "unknown": 0,
+      "triggers": 1077,
+      "false_positives": 0,
+      "detections": 13,
+      "misses": 2,
+      "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+      "later_attribution_unknown": 103
+    }
+  },
+  "formal_calls": 0,
+  "model_calls": 0,
+  "independent_tests_used": false
+}

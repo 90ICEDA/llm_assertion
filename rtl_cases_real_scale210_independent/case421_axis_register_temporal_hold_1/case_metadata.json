@@ -1,0 +1,68 @@
+{
+  "name": "case421_axis_register_temporal_hold_1",
+  "parent_bug_id": "case421_axis_register_temporal_hold_1",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_register",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_register.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_register.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "s_axis_tready_reg state update is suppressed",
+  "spec": "After reset is released, an idle output with downstream ready must cause the registered source-ready output to assert on the next clock. Accepted source beats must subsequently obey ready/valid backpressure.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (m_axis_tready && !m_axis_tvalid) |=> s_axis_tready);",
+    "temporal_type": "one-cycle registered readiness"
+  },
+  "mutation_edits": [
+    {
+      "line": 160,
+      "search": "        s_axis_tready_reg <= s_axis_tready_early;",
+      "replace": "        s_axis_tready_reg <= s_axis_tready_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "s_axis_tready_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "s_axis_tready",
+    "m_axis_tvalid",
+    "m_axis_tready"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 25000,
+      "sample_index": 6,
+      "signals": [
+        "s_axis_tready"
+      ],
+      "clock_cycle": 3
+    },
+    "heldout": {
+      "time_ps": 35000,
+      "sample_index": 8,
+      "signals": [
+        "s_axis_tready"
+      ],
+      "clock_cycle": 4
+    },
+    "decoy": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "signals": [
+        "s_axis_tready"
+      ],
+      "clock_cycle": 5
+    }
+  },
+  "temporal_type": "one-cycle registered readiness",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+  "buggy_sha256": "315e03ac970dac1f0ac5e3f66591e75df22190c247c9e3b13a960b9e81a095ba",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "pristine_trace_validated"
+}

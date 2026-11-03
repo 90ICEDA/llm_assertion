@@ -1,0 +1,849 @@
+{
+  "passed": true,
+  "compilations": 3,
+  "replays": 24,
+  "model_calls": 0,
+  "results": [
+    {
+      "depth": 2,
+      "pipeline": 0,
+      "family": "tail_loss",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:53e4ad049226a918870295db0c8a7df96ce6693581200189606a41599a3fc275",
+          "obligation": "drain_no_loss",
+          "cycle": 111,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 0,
+          "idle": 106,
+          "multi_cycle_response": 4,
+          "accepted_requests": 4,
+          "accepted_responses": 4,
+          "presented_unaccepted_requests": 0,
+          "empty_reference_samples": 102,
+          "max_outstanding_accepted": 1,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 0
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 2,
+      "pipeline": 0,
+      "family": "backpressure",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:9d847f05e582f182a7270f2a1c0d68d9765e3ba3abbdb63c6c5af49b6b891670",
+          "obligation": "order_payload",
+          "cycle": 10,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            }
+          ],
+          "gap_observation": "detected"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 24,
+          "idle": 27,
+          "backpressure": 49,
+          "multi_cycle_response": 36,
+          "accepted_requests": 36,
+          "accepted_responses": 36,
+          "presented_unaccepted_requests": 47,
+          "empty_reference_samples": 22,
+          "max_outstanding_accepted": 3,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 26
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 2,
+      "pipeline": 0,
+      "family": "reset_pending",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:0b3f2c7890670d8fd7e8511c88b7a138f6ddfb696b88cc63b2309acee877ed6a",
+          "obligation": "no_unsolicited_output",
+          "cycle": 32,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        },
+        {
+          "evidence_id": "fifo:c298bc5a3f230c86311487f469fe2a61b82ecfbdcec2c64e84a92353e3c74520",
+          "obligation": "reset_cancellation",
+          "cycle": 32,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 1,
+          "simultaneous_accept_response": 45,
+          "idle": 35,
+          "backpressure": 22,
+          "multi_cycle_response": 48,
+          "accepted_requests": 51,
+          "accepted_responses": 48,
+          "presented_unaccepted_requests": 22,
+          "empty_reference_samples": 35,
+          "max_outstanding_accepted": 3,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 48
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 2,
+      "pipeline": 0,
+      "family": "overlap",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:4069f2b3e1e75eebf64f0d8d923609f250e524bed550cbf94ad5fe207c056afd",
+          "obligation": "order_payload",
+          "cycle": 4,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            }
+          ],
+          "gap_observation": "detected"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 69,
+          "idle": 32,
+          "multi_cycle_response": 78,
+          "accepted_requests": 78,
+          "accepted_responses": 78,
+          "presented_unaccepted_requests": 0,
+          "empty_reference_samples": 24,
+          "max_outstanding_accepted": 2,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 70
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 5,
+      "pipeline": 1,
+      "family": "tail_loss",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:f22f3ffb561a45528a4cdd476377d03f54d09a99b2e12fd199eb3df79a5be299",
+          "obligation": "drain_no_loss",
+          "cycle": 111,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 0,
+          "idle": 106,
+          "multi_cycle_response": 4,
+          "accepted_requests": 4,
+          "accepted_responses": 4,
+          "presented_unaccepted_requests": 0,
+          "empty_reference_samples": 98,
+          "max_outstanding_accepted": 1,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 0
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 5,
+      "pipeline": 1,
+      "family": "backpressure",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:6bd261e6c92fc86bf5a08ab54a5562a865b84ccad57776e691b5ce073a66e2b9",
+          "obligation": "order_payload",
+          "cycle": 10,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            }
+          ],
+          "gap_observation": "detected"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 27,
+          "idle": 28,
+          "backpressure": 48,
+          "multi_cycle_response": 46,
+          "accepted_requests": 46,
+          "accepted_responses": 46,
+          "presented_unaccepted_requests": 36,
+          "empty_reference_samples": 14,
+          "max_outstanding_accepted": 10,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 37
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 5,
+      "pipeline": 1,
+      "family": "reset_pending",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:a5ac8817cef2f25b9094fe6e33e869e5b566d2e16f663bc88f18e32ed9cceb7f",
+          "obligation": "no_unsolicited_output",
+          "cycle": 32,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        },
+        {
+          "evidence_id": "fifo:d2d99add57edfe0c6614242d29f8302cfc1daa85f7c52c76d1bf01b75138ff94",
+          "obligation": "reset_cancellation",
+          "cycle": 32,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 1,
+          "simultaneous_accept_response": 44,
+          "idle": 35,
+          "backpressure": 21,
+          "multi_cycle_response": 48,
+          "accepted_requests": 58,
+          "accepted_responses": 48,
+          "presented_unaccepted_requests": 15,
+          "empty_reference_samples": 34,
+          "max_outstanding_accepted": 10,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 55
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 5,
+      "pipeline": 1,
+      "family": "overlap",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:ceed4d6611ab15e792e4c5979b593e95547f65859a34cbc376d2fc752faf98ad",
+          "obligation": "order_payload",
+          "cycle": 5,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            }
+          ],
+          "gap_observation": "detected"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 68,
+          "idle": 32,
+          "multi_cycle_response": 78,
+          "accepted_requests": 78,
+          "accepted_responses": 78,
+          "presented_unaccepted_requests": 0,
+          "empty_reference_samples": 23,
+          "max_outstanding_accepted": 3,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 70
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 4,
+      "pipeline": 2,
+      "family": "tail_loss",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:f7499a4561f3e0d5caa173d36aeb09c5d29598d2d28bf120e2ab35e643995335",
+          "obligation": "drain_no_loss",
+          "cycle": 111,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 0,
+          "idle": 106,
+          "multi_cycle_response": 4,
+          "accepted_requests": 4,
+          "accepted_responses": 4,
+          "presented_unaccepted_requests": 0,
+          "empty_reference_samples": 94,
+          "max_outstanding_accepted": 1,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 0
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 4,
+      "pipeline": 2,
+      "family": "backpressure",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:ac5fcf8e8a19fa6883a1588ffbd607ebc7459a725f117e6e7eb2f5767ac20fe6",
+          "obligation": "order_payload",
+          "cycle": 10,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            }
+          ],
+          "gap_observation": "detected"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 27,
+          "idle": 27,
+          "backpressure": 47,
+          "multi_cycle_response": 43,
+          "accepted_requests": 43,
+          "accepted_responses": 43,
+          "presented_unaccepted_requests": 40,
+          "empty_reference_samples": 17,
+          "max_outstanding_accepted": 7,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 33
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 4,
+      "pipeline": 2,
+      "family": "reset_pending",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:d065d29688e0e37c735cbead717edcf0b1ab397c62dd3a81ca35a4dfd48e6463",
+          "obligation": "no_unsolicited_output",
+          "cycle": 32,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        },
+        {
+          "evidence_id": "fifo:0ea7581fd4ba3cacfe48dae28d39a0c2ed9e4d47e236ac8905efcdbc079bf79f",
+          "obligation": "reset_cancellation",
+          "cycle": 32,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "unknown",
+          "assertions": [],
+          "gap_observation": "no_property_mapped"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 1,
+          "simultaneous_accept_response": 43,
+          "idle": 35,
+          "backpressure": 20,
+          "multi_cycle_response": 48,
+          "accepted_requests": 55,
+          "accepted_responses": 48,
+          "presented_unaccepted_requests": 18,
+          "empty_reference_samples": 33,
+          "max_outstanding_accepted": 7,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 52
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    },
+    {
+      "depth": 4,
+      "pipeline": 2,
+      "family": "overlap",
+      "fixed_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "mutant_sampling": {
+        "status": "passed",
+        "checked_samples": 112,
+        "mismatches": [],
+        "sampling": "All REF_TRACE values use $sampled at posedge, before nonblocking reference updates; same sampling edge as native concurrent properties.",
+        "empty_ref_expected": "undefined meaning when ref_count is zero; excluded from queue value comparison"
+      },
+      "fixed_oracle": {
+        "legality": "legal",
+        "violations": 0,
+        "unknown": []
+      },
+      "fixed_assertion_failures": 0,
+      "targets": [
+        {
+          "evidence_id": "fifo:64ee808f10a7c58c19f6d65581d434015d88d8cf73866f755ed69bc1703b9eb5",
+          "obligation": "order_payload",
+          "cycle": 6,
+          "oracle": {
+            "legality": "legal",
+            "verdict": "violated",
+            "validator": "independent_fifo_port_history_queue",
+            "paired_control_pass": true,
+            "identical_input_handshakes": true,
+            "first_violation_in_epoch": true
+          },
+          "attribution": "confirmed",
+          "assertions": [
+            {
+              "id": "a0",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            }
+          ],
+          "gap_observation": "detected"
+        }
+      ],
+      "coverage": {
+        "observed": {
+          "reset_with_pending": 0,
+          "simultaneous_accept_response": 67,
+          "idle": 32,
+          "multi_cycle_response": 78,
+          "accepted_requests": 78,
+          "accepted_responses": 78,
+          "presented_unaccepted_requests": 0,
+          "empty_reference_samples": 22,
+          "max_outstanding_accepted": 4,
+          "drain_checkpoints": 1,
+          "consecutive_request_accept_pairs": 70
+        },
+        "input_legality": "legal",
+        "full_boundary": "Input backpressure is observable; exact internal RAM-full state is not inferred from reference occupancy (read pipeline also stores data).",
+        "full_state_verification": "unknown_without_internal_state_probe",
+        "scope": "finite observed transactions; input intent alone is not acceptance"
+      }
+    }
+  ],
+  "scope": "Native diagnostic instrumentation qualification, not automated refinement or independent holdout"
+}

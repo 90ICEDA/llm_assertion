@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -261,7 +261,7 @@
+ always @(posedge clk) begin
+     overflow_reg <= 1'b0;
+     bad_frame_reg <= 1'b0;
+-    good_frame_reg <= 1'b0;
++    good_frame_reg <= good_frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed
+ 
+     if (s_axis_tready && s_axis_tvalid && LAST_ENABLE) begin
+         // track input frame status

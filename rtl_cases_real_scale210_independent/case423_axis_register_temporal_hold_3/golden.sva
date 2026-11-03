@@ -1,0 +1,2 @@
+// Temporal type: skid-buffer occupancy across backpressure
+assert property (@(posedge clk) disable iff (rst) (m_axis_tvalid && !m_axis_tready && s_axis_tvalid && s_axis_tready) |-> ##2 !s_axis_tready);

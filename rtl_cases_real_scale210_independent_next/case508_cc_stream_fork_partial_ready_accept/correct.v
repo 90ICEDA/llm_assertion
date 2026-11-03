@@ -1,0 +1,4 @@
+`timescale 1ns/1ps
+module cc_stream_fork(input wire clk_i,input wire rst_ni,input wire valid_i,input wire [1:0] ready_i,output wire [1:0] valid_o,output wire ready_o);
+  assign ready_o=&ready_i; assign valid_o={2{valid_i}};
+endmodule

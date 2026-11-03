@@ -1,0 +1,81 @@
+{
+  "model": "qwen3-8b-pilot:q4_K_M",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Return only the constrained JSON AST."
+    },
+    {
+      "role": "user",
+      "content": "Return exactly one JSON AST matching the schema. Choose only enum values; do not emit SystemVerilog or prose.\nThis is candidate slot 1/8. Prefer two behaviorally related, distinct top-level signals. Avoid clock/reset.\nParent: case438_cc_fifo_protocol_suppress_2 Project: common_cells Bug family: combinational_protocol_output_suppressed\nSpecification: # Behavioral specification\n\nFor the zero-depth FIFO configuration, emptiness is the inverse of an active push in the same cycle; a presented item makes the combinational FIFO non-empty.\n\nTemporal type: `same-cycle combinational/protocol relation`\n\nVisible semantic signals: clr_i, flush_i, full_o, empty_o, push_i, pop_i, usage_o, data_i, data_o\n"
+    }
+  ],
+  "stream": false,
+  "think": false,
+  "format": {
+    "type": "object",
+    "properties": {
+      "antecedent_signal": {
+        "type": "string",
+        "enum": [
+          "clr_i",
+          "flush_i",
+          "full_o",
+          "empty_o",
+          "push_i",
+          "pop_i",
+          "usage_o",
+          "data_i",
+          "data_o"
+        ]
+      },
+      "antecedent_polarity": {
+        "type": "string",
+        "enum": [
+          "high",
+          "low"
+        ]
+      },
+      "consequent_signal": {
+        "type": "string",
+        "enum": [
+          "clr_i",
+          "flush_i",
+          "full_o",
+          "empty_o",
+          "push_i",
+          "pop_i",
+          "usage_o",
+          "data_i",
+          "data_o"
+        ]
+      },
+      "implication": {
+        "type": "string",
+        "enum": [
+          "|->"
+        ]
+      },
+      "relation": {
+        "type": "string",
+        "enum": [
+          "high"
+        ]
+      }
+    },
+    "required": [
+      "antecedent_signal",
+      "antecedent_polarity",
+      "consequent_signal",
+      "implication",
+      "relation"
+    ],
+    "additionalProperties": false
+  },
+  "options": {
+    "temperature": 0.7,
+    "num_predict": 512,
+    "seed": 20260815,
+    "num_ctx": 8192
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "CaseInput"
+    },
+    "case_id": {
+      "enum": [
+        "onehot",
+        "fifo"
+      ]
+    },
+    "bug_description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "top_module": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rtl": {
+      "type": "object",
+      "properties": {
+        "buggy": {
+          "type": "object",
+          "properties": {
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "include_dirs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "defines": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "sources",
+            "include_dirs",
+            "defines"
+          ],
+          "additionalProperties": false
+        },
+        "fixed": {
+          "type": "object",
+          "properties": {
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "include_dirs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "defines": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "sources",
+            "include_dirs",
+            "defines"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "buggy",
+        "fixed"
+      ],
+      "additionalProperties": false
+    },
+    "existing_tests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "clock": {
+      "type": "object",
+      "properties": {
+        "signal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event": {
+          "const": "posedge_pre_NBA"
+        },
+        "input_drive": {
+          "const": "negedge"
+        }
+      },
+      "required": [
+        "signal",
+        "event",
+        "input_drive"
+      ],
+      "additionalProperties": false
+    },
+    "reset": {
+      "type": "object",
+      "properties": {
+        "signal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active": {
+          "const": 0
+        },
+        "cancel_pending": {
+          "const": true
+        },
+        "initial_samples": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "signal",
+        "active",
+        "cancel_pending",
+        "initial_samples"
+      ],
+      "additionalProperties": false
+    },
+    "signals": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "type": "object"
+        },
+        "outputs": {
+          "type": "object"
+        },
+        "mapping": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "inputs",
+        "outputs",
+        "mapping"
+      ],
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "location",
+          "basis"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "tool_config": {
+      "type": "object",
+      "properties": {
+        "backend": {
+          "enum": [
+            "iverilog",
+            "jasper"
+          ]
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "iverilog": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vvp": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jasper": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_url": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "backend",
+        "timeout_seconds",
+        "iverilog",
+        "vvp",
+        "jasper",
+        "model_url"
+      ],
+      "additionalProperties": false
+    },
+    "input_hashes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "obligation_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "case_id",
+    "bug_description",
+    "top_module",
+    "rtl",
+    "existing_tests",
+    "parameters",
+    "clock",
+    "reset",
+    "signals",
+    "environment",
+    "tool_config",
+    "input_hashes",
+    "obligation_source",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Omits the one-hot requirement and therefore ignores other asserted bits.
+W1_single_cycle_implication: assert property (@(oh_i or addr_i or en_i or rst_ni) disable iff (!rst_ni) (en_i && oh_i[addr_i]) |-> !err_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Checks only output knownness and omits address agreement.
+W2_final_output_only: assert property (@(oh_i or addr_i or en_i or rst_ni) disable iff (!rst_ni) (en_i && $onehot(oh_i)) |-> !$isunknown(err_o));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Moves a same-cycle protocol relation to the next sample.
+W3_delay_removed: assert property (@(oh_i or addr_i or en_i or rst_ni) disable iff (!rst_ni) (en_i && $onehot(oh_i) && oh_i[addr_i]) |=> !err_o);
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops enable, one-hot, and matching-address conditions.
+W4_antecedent_removed: assert property (@(oh_i or addr_i or en_i or rst_ni) disable iff (!rst_ni) !err_o);
+
+// W5_simple_invariant
+// antecedent_nonempty: true
+// expected weakness: Only constrains the disabled mode and says nothing about address checking.
+W5_simple_invariant: assert property (@(oh_i or addr_i or en_i or rst_ni) disable iff (!rst_ni) !en_i |-> !err_o);

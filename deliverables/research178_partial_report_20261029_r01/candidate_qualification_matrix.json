@@ -1,0 +1,24 @@
+[
+  {
+    "case": "pipeline_offbyone",
+    "source_and_pair": "verified research177 original pair",
+    "candidate": "existing hold_valid + hold_data",
+    "editable": true,
+    "old_target_detections": 0,
+    "current_missed_loss_traces": 2,
+    "non_whitelist_discrimination": "not established",
+    "qualified": false,
+    "reason": "Stall property triggers are not old error detections. Frame-boundary and drain symptoms of the same undetected loss do not create separate historical/current transactions. No new fault is injected to force qualification."
+  },
+  {
+    "case": "frame_len_consecutive",
+    "source_and_pair": "verified original pair in both configurations",
+    "candidate": "partial_adjacent",
+    "editable": true,
+    "old_target_detections": 6,
+    "current_missed_targets": 2,
+    "non_whitelist_discrimination": "input completion adjacency versus temporal separation; replacement O accepted/H rejected",
+    "qualified": true,
+    "reason": "Local structural qualification only; all properties editable. Same root count-carryover defect, distinct frame transactions and temporal contexts; counts are not independent bugs. No real model recovery or prospective value established."
+  }
+]

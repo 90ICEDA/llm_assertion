@@ -1,0 +1,124 @@
+{
+  "name": "case506_axis_crosspoint_simultaneous_source_priority",
+  "parent_bug_id": "case506_axis_crosspoint_simultaneous_source_priority",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_crosspoint",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_crosspoint.v"
+  ],
+  "bug_class": "combination_protocol",
+  "bug_family": "simultaneous_contender_priority",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "s0_valid",
+    "s1_valid",
+    "s0_data",
+    "s1_data",
+    "m_ready",
+    "m_valid",
+    "m_data"
+  ],
+  "temporal_type": "same-cycle arbitration under simultaneous valid sources and ready sink",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) ((s0_valid && s1_valid && m_ready) |-> (m_valid && m_data==s0_data)));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 30000,
+      "sample_index": 7,
+      "good_row_index": 7,
+      "bad_row_index": 7,
+      "signals": [
+        "m_data[7:0]",
+        "q_o",
+        "s0_ready",
+        "s1_ready"
+      ],
+      "good_values": {
+        "m_data[7:0]": "00010010",
+        "q_o": "1",
+        "s0_ready": "1",
+        "s1_ready": "0"
+      },
+      "bad_values": {
+        "m_data[7:0]": "11100001",
+        "q_o": "0",
+        "s0_ready": "0",
+        "s1_ready": "1"
+      },
+      "good_trace_sha256": "1e80c07203c99af88d6f6f21a6655e3f5f3d3efe6887642e8fc72df0ec64ec48",
+      "bad_trace_sha256": "98fd2fdd5278fe1d599a61e8647de41d464fedeeed7e94bdec3d3105034a16b5",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 40000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "m_data[7:0]",
+        "q_o",
+        "s0_ready",
+        "s1_ready"
+      ],
+      "good_values": {
+        "m_data[7:0]": "01000101",
+        "q_o": "1",
+        "s0_ready": "1",
+        "s1_ready": "0"
+      },
+      "bad_values": {
+        "m_data[7:0]": "10100100",
+        "q_o": "0",
+        "s0_ready": "0",
+        "s1_ready": "1"
+      },
+      "good_trace_sha256": "f8c440bc1e70fa13cc4bfdb6d28f3fcf4166bf5f410d06f849bc65e3694c92e7",
+      "bad_trace_sha256": "971d3ea64d3e864c1a0b45bc9730b562ea194de7cdc9b8b4cccec1a0c1b8bf77",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 30000,
+      "sample_index": 7,
+      "good_row_index": 7,
+      "bad_row_index": 7,
+      "signals": [
+        "m_data[7:0]",
+        "q_o",
+        "s0_ready",
+        "s1_ready"
+      ],
+      "good_values": {
+        "m_data[7:0]": "01110111",
+        "q_o": "1",
+        "s0_ready": "1",
+        "s1_ready": "0"
+      },
+      "bad_values": {
+        "m_data[7:0]": "10001000",
+        "q_o": "0",
+        "s0_ready": "0",
+        "s1_ready": "1"
+      },
+      "good_trace_sha256": "efdfa0f218c90f13cfcb562d813b5c24ca42b68ed207eb3d2e0637ff1c1f0d5e",
+      "bad_trace_sha256": "d83a4010c4c790ea74c8ad7b5da9ad01229520d98bda8bbc0c3eb4499c71c3a5",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "624fad934f584ec7a4441b197b36d436df6dfe6831b2db6825a6d634a9773715",
+  "buggy_sha256": "2371a200cccb548f3b9cde932080011449ad67b74f82e4da70f404e3caca2178"
+}

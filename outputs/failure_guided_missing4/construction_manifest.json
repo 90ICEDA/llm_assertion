@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "purpose": "Empirical one-step repair coverage for the four previously empty diagnosis categories",
+  "candidate_count": 4,
+  "required_categories": [
+    "compile_fail",
+    "unsupported",
+    "signal_missing",
+    "reset_misuse"
+  ],
+  "one_repair_call_per_candidate": true,
+  "does_not_modify_original_repair_freeze": true,
+  "candidates": [
+    {
+      "primary_missing_category": "compile_fail",
+      "model": "GPT",
+      "case_id": "case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "constructed_assertion": "assert property (@(posedge clk) disable iff (!rst_n) (1'b1) |-> );",
+      "expected_overlap_note": "compile failure may overlap unsupported or missing-signal diagnosis"
+    },
+    {
+      "primary_missing_category": "unsupported",
+      "model": "Claude",
+      "case_id": "case106_prim_fifo_depth_off_by_one",
+      "parent_bug_id": "case106_prim_fifo_depth_off_by_one",
+      "constructed_assertion": "assert final (1'b1);",
+      "expected_overlap_note": "compile failure may overlap unsupported or missing-signal diagnosis"
+    },
+    {
+      "primary_missing_category": "signal_missing",
+      "model": "GPT",
+      "case_id": "case107_prim_arbiter_priority_reversed",
+      "parent_bug_id": "case107_prim_arbiter_priority_reversed",
+      "constructed_assertion": "assert property (@(posedge clk) disable iff (!rst_n) ghost_signal |-> 1'b1);",
+      "expected_overlap_note": "compile failure may overlap unsupported or missing-signal diagnosis"
+    },
+    {
+      "primary_missing_category": "reset_misuse",
+      "model": "Claude",
+      "case_id": "case109_prim_arbiter_valid_depends_on_ready",
+      "parent_bug_id": "case109_prim_arbiter_valid_depends_on_ready",
+      "constructed_assertion": "assert property (@(posedge clk) (|req_i && !ready_i) |-> (valid_o));",
+      "expected_overlap_note": "compile failure may overlap unsupported or missing-signal diagnosis"
+    }
+  ]
+}

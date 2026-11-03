@@ -1,0 +1,1943 @@
+{
+  "status": "frozen_before_any_top1_generation",
+  "version": "frozen_top1_ast_v2_strict_trie_eos",
+  "source_query_manifest_sha256": "4b57a42c1d06d7ea8a967cd7753ca610368f21698e21564c075a02c4fbafe4ec",
+  "test_universe_unchanged": true,
+  "query_count": 48,
+  "split_counts": {
+    "unseen_parent": 35,
+    "unseen_bug_family": 25
+  },
+  "strict_group_counts": {
+    "unseen_parent_parents": 18,
+    "unseen_bug_family_parents": 9,
+    "unseen_bug_families": 8
+  },
+  "project_ood": {
+    "status": "not_constructible",
+    "reason": "Pilot training covers all three frozen projects"
+  },
+  "decode": {
+    "temperature": 0.0,
+    "do_sample": false,
+    "num_return_sequences": 1,
+    "max_new_tokens": 128,
+    "reranker": false,
+    "repair": false,
+    "selector": false,
+    "heldout_information": false,
+    "constraint": "complete schema-valid canonical JSON trie; closing brace followed by forced EOS"
+  },
+  "records": [
+    {
+      "query_id": "01ce0ce4a505e8cbbc89c547",
+      "case_id": "case237_onehot_addr_legal_v5_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case237_onehot_addr_legal_v5_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "b83b95317dc1b653e1573f0ffd2021ad88a79cdb3dc93b9bd7e611b57d54a755",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case237_onehot_addr_legal_v5_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "53412aa95f22808d79d92fb39a59f82493ecd62c7834057797e5dfe78afa5c26",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "12e4097f79e92b88b61f2493",
+      "case_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "144f398920d35ac9ccf22b5fd1f967599fe7a4e2dddaf07ea2fbedc831772140",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "be17e32ff6853a8ab49fbbb7b4101f2d524b180e6cb8166bb0a03bcfa53b9cff",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "19ceec50d18a6f090b630684",
+      "case_id": "case230_onehot_addr_bad_v6_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case230_onehot_addr_bad_v6_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "ee60872b4c9168d6e2421d4d20f53a71c6d0ba85df6b3e5ce6644cabbc04097f",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case230_onehot_addr_bad_v6_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "48985c5ea5c459fac07ebf166c68ed2447aecae0f19f9607af576f8cecbf2530",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "1d70cf07330bce62ec9be20f",
+      "case_id": "case253_fifo_v6_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case253_fifo_v6_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "ead3864c7cd71c8d41f10b37e3117c2135dd90176498d3d71647e8158800db75",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case253_fifo_v6_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "648e8a5113db386ee650199f111f238fceb119f927538816970d39ed94c66098",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "209b500670953ffcb40b5097",
+      "case_id": "case131_prim_filter_disabled_bypass_stale_alt",
+      "parent_bug_id": "case131_prim_filter_disabled_bypass_stale_alt",
+      "source_project": "opentitan",
+      "source_module": "prim_filter",
+      "bug_family": "filter_bypass_control",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case131_prim_filter_disabled_bypass_stale_alt/prompt.txt",
+      "prompt_sha256": "b40bc33ad5aef521184abee950a64ddbfa378f37f25b9fe3c54a92190d2d6ab6",
+      "spec_sha256": "635e34b525c90e2f8e2a20c6ae9438ef2f00d78d49830589b75d154a2af0a691",
+      "spec_path": "rtl_cases_real_scale120/case131_prim_filter_disabled_bypass_stale_alt/experiment/spec.txt",
+      "correct_rtl_sha256": "44ad4ed04beca957bedeec3c8733700b2cadb501f8d8476cdf086c85bdccda21",
+      "tb_sha256": "690e5ee631869ff7e2b2ea8d6bac18d53cf79de141269f4a5aa0729432d09a3e",
+      "visible_signal_count": 5,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "enable_i",
+        "filter_i",
+        "filter_o"
+      ],
+      "semantic_signals": [
+        "enable_i",
+        "filter_i",
+        "filter_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "29fb4018a0697ec15fa0dbd4",
+      "case_id": "case256_fifo_v9_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case256_fifo_v9_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "9d3c45d48148ee9d20d2130ceda5fe5c1f47172b3e432b109540b3c15131f534",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case256_fifo_v9_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "3fd6020b180ec70fb23ac3fa890038d8747f80ca1285e93394ac5aadf3cd2232",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "2ff067e71d502bd33cb24ee8",
+      "case_id": "case501_axis_async_fifo_reset_release_skew",
+      "parent_bug_id": "case501_axis_async_fifo_reset_release_skew",
+      "source_project": "verilog_axis",
+      "source_module": "axis_async_fifo",
+      "bug_family": "reset_release_synchronizer_depth",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case501_axis_async_fifo_reset_release_skew/prompt.txt",
+      "prompt_sha256": "c80a83aafaa553b31e987bdc330c9ccabb27e322e8bdfc6c07fe7e65d43eb54f",
+      "spec_sha256": "4bad453128a8ff21032411808652336353344a1f7403929576510d3f5eff5e67",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case501_axis_async_fifo_reset_release_skew/spec.md",
+      "correct_rtl_sha256": "bd8ad10b7cfec1c94ab15b072e2bc909167fd3062544d1bb30b9013911bd7dd5",
+      "tb_sha256": "4d474a80841e269149fdf84ef0a7d14f37a4c2d82b50defde223f21505f927d6",
+      "visible_signal_count": 8,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "s_axis_tvalid",
+        "s_axis_tdata",
+        "s_axis_tready",
+        "m_axis_tvalid",
+        "m_axis_tdata",
+        "q_o"
+      ],
+      "semantic_signals": [
+        "s_axis_tvalid",
+        "s_axis_tdata",
+        "s_axis_tready",
+        "m_axis_tvalid",
+        "m_axis_tdata",
+        "q_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "31c9ca5f0cb07137a97b7521",
+      "case_id": "case248_fifo_v1_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case248_fifo_v1_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "bbf5d5b4e5f0aa52c355cccc79ffcbb280c9f2065a29c7f815c7e79ae7b307f0",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case248_fifo_v1_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "a1695228fe75e6eed79f07cdabad6d1bae0dffef6916f97ba93a020c789bb519",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "35b6055b5aa0590b955295c7",
+      "case_id": "case229_onehot_addr_bad_v5_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case229_onehot_addr_bad_v5_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "9f1c22b7460e8996845aeb41b1c8a58cf5777f3308504497a48b6e3905ddc4e0",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case229_onehot_addr_bad_v5_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "7aeceb98debeeecdd58fa183c2aa00c1d352ae130a6df028688a3d39dd8cc9a6",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "3d5036c3a77a60f8ab0c3b20",
+      "case_id": "case466_cc_ring_buffer_write_advance_collision",
+      "parent_bug_id": "case466_cc_ring_buffer_write_advance_collision",
+      "source_project": "common_cells",
+      "source_module": "cc_ring_buffer",
+      "bug_family": "independent_updates_wrongly_exclusive",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case466_cc_ring_buffer_write_advance_collision/prompt.txt",
+      "prompt_sha256": "9f260386dfec7698e85eb948362b595c51d5ee0b69582ac32ac348096e0494fb",
+      "spec_sha256": "cb4a2262057be17f72ceef3c7b03d312b25214766bee11a3a0111c1ee996dfc8",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case466_cc_ring_buffer_write_advance_collision/spec.md",
+      "correct_rtl_sha256": "6b5cc6c5025e10f67b02f40c93e2fbe4e439e1c84b84fa9958ee7fa7e3f374b7",
+      "tb_sha256": "82d223a0803f48a7a83959967acc9002b748cbac90f415ca7ae776ce1bb38f09",
+      "visible_signal_count": 12,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "clr_i",
+        "wvalid_i",
+        "advance_i",
+        "wdata_i",
+        "step_i",
+        "wready_o",
+        "empty_o",
+        "full_o",
+        "wptr_o",
+        "rptr_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "wvalid_i",
+        "advance_i",
+        "wdata_i",
+        "step_i",
+        "wready_o",
+        "empty_o",
+        "full_o",
+        "wptr_o",
+        "rptr_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "3e1aa561d30b6d3be6a1f6f8",
+      "case_id": "case487_prim_onehot_enc_disabled_output_leak",
+      "parent_bug_id": "case487_prim_onehot_enc_disabled_output_leak",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_enc",
+      "bug_family": "disabled_onehot_output_not_suppressed",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case487_prim_onehot_enc_disabled_output_leak/prompt.txt",
+      "prompt_sha256": "fdd3b1866db58ce8c590adacf56ea2f38233a4044222c4cc16f0a4f3805b76ea",
+      "spec_sha256": "bbf4997f1e2c74a2c8b4a325e6d4c10f7f38edf470dd4552071439c966869c0c",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case487_prim_onehot_enc_disabled_output_leak/spec.md",
+      "correct_rtl_sha256": "83fac46d57e499d25c2c30d17180b16d2473f1ace743151ae6386bd1367b2e9a",
+      "tb_sha256": "c9e3e18125b4fd3102b47e80da3f38b35c4c1b02aa9056f8a1eb884d57c079b4",
+      "visible_signal_count": 5,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "in_i",
+        "en_i",
+        "out_o"
+      ],
+      "semantic_signals": [
+        "in_i",
+        "en_i",
+        "out_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "42729df4256a3077b55ee63b",
+      "case_id": "case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "b301aab9bd529eda286ca6a6a3dbbe82145cdcc325390cee221a76845757d72b",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "9c827ba96ba393e02906db4ee3c6e4e7b5105b0783d29a77cec9f6a9037bd0b6",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "42b5f51978941f8ada4f894c",
+      "case_id": "case495_axis_fifo_adapter_commit_pulse_width",
+      "parent_bug_id": "case495_axis_fifo_adapter_commit_pulse_width",
+      "source_project": "verilog_axis",
+      "source_module": "axis_fifo_adapter",
+      "bug_family": "adapter_commit_pulse_stretched",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case495_axis_fifo_adapter_commit_pulse_width/prompt.txt",
+      "prompt_sha256": "893b9c438419e6aed6b3d81d1b4deccbe4358ef5090f16d2eac72c0ac228d8d4",
+      "spec_sha256": "214a0051e4129dc1131a2c436c3e27deabdcd4e4486cbfa1645d14bd2a7d5c0d",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case495_axis_fifo_adapter_commit_pulse_width/spec.md",
+      "correct_rtl_sha256": "3882e570fb9f88da7d6f85a750965777351ad10dc85076871290b56459b419c5",
+      "tb_sha256": "6251d4c83a2f74bb1f8f0649afae1d6a8127f57fffd979770a5f061486bd79a3",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "delimiter_i",
+        "output_ready_i",
+        "q_o",
+        "state_o"
+      ],
+      "semantic_signals": [
+        "delimiter_i",
+        "output_ready_i",
+        "q_o",
+        "state_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "44247ad892a84817399f5913",
+      "case_id": "case238_onehot_addr_legal_v6_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case238_onehot_addr_legal_v6_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "67ecfe969fdac78b0975e42a9c801d61ff3df08ee421e273240d82a760f18f55",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case238_onehot_addr_legal_v6_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "37f3b348704b08536e6095c3e48ab7a08da0b9b6fdfafadd95afa30870a7ce30",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "46b9f8ce4f695e0a2cf5b229",
+      "case_id": "case469_cc_stream_register_stall_overwrite",
+      "parent_bug_id": "case469_cc_stream_register_stall_overwrite",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_register",
+      "bug_family": "backpressure_payload_stability",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case469_cc_stream_register_stall_overwrite/prompt.txt",
+      "prompt_sha256": "9a140dda7570d349b524811028ffef59d3ddbc47d276f3c18d7228fe2cc71d5c",
+      "spec_sha256": "fe60d6dd81789f9176e9abdc4314b7e596b33305737cabc7775464ae8ae409c0",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case469_cc_stream_register_stall_overwrite/spec.md",
+      "correct_rtl_sha256": "6469db8939558e98628d2decceeeb68d343efd5379918d19b2819a9d594d0544",
+      "tb_sha256": "3a2731926d3f114959dff9b6baa8fbeff25f5b7ef0299ec0cbba6f20959d4df6",
+      "visible_signal_count": 9,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "clr_i",
+        "valid_i",
+        "ready_i",
+        "data_i",
+        "ready_o",
+        "valid_o",
+        "data_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "valid_i",
+        "ready_i",
+        "data_i",
+        "ready_o",
+        "valid_o",
+        "data_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "470b194ef06c0acd41a84449",
+      "case_id": "case249_fifo_v2_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case249_fifo_v2_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "4b53cc8abf6a70e4192c06e8257d7e441b4b3ae865152ab6d7f07dbc2f0b9aab",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case249_fifo_v2_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "bb5ff330ea00509b357dc6130169dce9d6ad865d39244a1cc170379dc44bef56",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "61026ff5841fba752c93b11b",
+      "case_id": "case503_cc_cdc_2phase_ack_returns_early",
+      "parent_bug_id": "case503_cc_cdc_2phase_ack_returns_early",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_2phase",
+      "bug_family": "cdc_ack_synchronizer_depth",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case503_cc_cdc_2phase_ack_returns_early/prompt.txt",
+      "prompt_sha256": "0de8d7cf8ab20b437418ea8029bd3e6ac824e654af8da61b0b771183b0651dd7",
+      "spec_sha256": "b2816e24d0cedac39131736008a6654002a41a422edf1a40e36a6ee6a59506a7",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case503_cc_cdc_2phase_ack_returns_early/spec.md",
+      "correct_rtl_sha256": "87bb51be05f13838be72f6c4cf098739a52d9d7382e04b3c1dd607ca69e2762f",
+      "tb_sha256": "8e468cdf3c1e7c130caa18c79bef48490def099ec8ebc659ff65918208b6dd12",
+      "visible_signal_count": 5,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "req_i",
+        "ack_o",
+        "q_o"
+      ],
+      "semantic_signals": [
+        "req_i",
+        "ack_o",
+        "q_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "6a97b7cce82b2d5561315a99",
+      "case_id": "case110_prim_intr_event_overwrite",
+      "parent_bug_id": "case110_prim_intr_event_overwrite",
+      "source_project": "opentitan",
+      "source_module": "prim_intr_hw",
+      "bug_family": "event_state_accumulation",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case110_prim_intr_event_overwrite/prompt.txt",
+      "prompt_sha256": "2fd898f5c36a6a8daca25c830dc670b57febcb11fea322a2788e8b7a85bfef46",
+      "spec_sha256": "d0c64798c5b45d264a63b435a6bcf2804e9f6ffaefc1b5ca7296b86080f4ce69",
+      "spec_path": "rtl_cases_real_scale120/case110_prim_intr_event_overwrite/experiment/spec.txt",
+      "correct_rtl_sha256": "a113a066c7aeeec53f448820cf0849f7696166ab2989dfadedf2fb72f578cd94",
+      "tb_sha256": "e7e3893d170c837f3dc84a4464d875b580409d8bc7547fa81d5e1dfdbe127033",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "event_intr_i",
+        "reg2hw_intr_enable_q_i",
+        "reg2hw_intr_test_q_i",
+        "reg2hw_intr_test_qe_i",
+        "reg2hw_intr_state_q_i",
+        "sw_clear",
+        "hw2reg_intr_state_de_o",
+        "hw2reg_intr_state_d_o",
+        "intr_o"
+      ],
+      "semantic_signals": [
+        "event_intr_i",
+        "reg2hw_intr_enable_q_i",
+        "reg2hw_intr_test_q_i",
+        "reg2hw_intr_test_qe_i",
+        "reg2hw_intr_state_q_i",
+        "sw_clear",
+        "hw2reg_intr_state_de_o",
+        "hw2reg_intr_state_d_o",
+        "intr_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "7394d486c9c5cdf27491b04b",
+      "case_id": "case240_onehot_addr_legal_v8_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case240_onehot_addr_legal_v8_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "b2b18dd2e73c89ad09f529c5d7532cc2273003a504c263adf9edc307c48e0561",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case240_onehot_addr_legal_v8_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "5e08bf4903483d05bb8d6d813b7b20201a1fd4297b7f2a656550a0efbc8c0940",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "77460812479e97710c2353d6",
+      "case_id": "case232_onehot_addr_bad_v8_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case232_onehot_addr_bad_v8_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "a943b05809b3df0df2e2c6456d7cf7a84468c2e1572a1a7ca9f48e9f155e8363",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case232_onehot_addr_bad_v8_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "bd8943b58f50abaa9006145669d14ac830bac06ecc98e62ce2e46fabb46f3024",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "7e7fc4a4529677ab9706e2f9",
+      "case_id": "case235_onehot_addr_legal_v3_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case235_onehot_addr_legal_v3_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "9b8a9e2a666cdc8769f7c78acffa72c40f6ca3a1195d29dfeed4bbe736d4e1de",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case235_onehot_addr_legal_v3_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "75580818a6e2ee601e441a5d334b2353a09ac86d38d1155e3140e66b9ad9909a",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "7efb0427aefd563ca6597523",
+      "case_id": "case239_onehot_addr_legal_v7_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case239_onehot_addr_legal_v7_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "dd9539c24273c8efed5453369c4f783ac10bc28ff3546dab4ca347a7ab55843f",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case239_onehot_addr_legal_v7_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "6eb64ef6e5cb7df16786ac3dbda36217cfa6aeda6aa786b9b04bcf892dc00f08",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "7f07a16c1bae364bd4f7b1b3",
+      "case_id": "case132_prim_edge_posedge_missing",
+      "parent_bug_id": "case132_prim_edge_posedge_missing",
+      "source_project": "opentitan",
+      "source_module": "prim_edge_detector",
+      "bug_family": "edge_presence",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case132_prim_edge_posedge_missing/prompt.txt",
+      "prompt_sha256": "e06cf587213bc53a2fb3dc66fcda43022f45694cf3bab1cc3aff7f5914584d89",
+      "spec_sha256": "6aeab668ef4418799dd7ee5f2df7854b46910d684f7db421f36e2ba7193d19c9",
+      "spec_path": "rtl_cases_real_scale120/case132_prim_edge_posedge_missing/experiment/spec.txt",
+      "correct_rtl_sha256": "0746047f5488a2339f2ceb85bb4806aa832eebac7870bda0c91102da332351dd",
+      "tb_sha256": "131f7d25231b84592e02c1f738408c0f951486e3c08f74c1fd9e469de7847e18",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "d_i",
+        "q_sync_o",
+        "q_posedge_pulse_o",
+        "q_negedge_pulse_o"
+      ],
+      "semantic_signals": [
+        "d_i",
+        "q_sync_o",
+        "q_posedge_pulse_o",
+        "q_negedge_pulse_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "7f3e555b7f60ed43dff6599b",
+      "case_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "parent_bug_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "source_project": "opentitan",
+      "source_module": "prim_racl_error_arb",
+      "bug_family": "simultaneous_error_overflow_aggregation",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case474_prim_racl_error_arb_simultaneous_overflow/prompt.txt",
+      "prompt_sha256": "04879cd5fe7dad3795775bae505ba98851887119490f7d9d8f41007d2e0254e7",
+      "spec_sha256": "7756bb5b15fd4837d329852e503383fdd00b46903691f050a8ba9e9897ca2b3e",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case474_prim_racl_error_arb_simultaneous_overflow/spec.md",
+      "correct_rtl_sha256": "2b552791282e008f18e9244f5bc232fea7bd99ff30e6cfda23113e8900eeda1e",
+      "tb_sha256": "903ff63536c16a77ba75b33d842772151a96ec74ec35affe0ee26c8cbf82d770",
+      "visible_signal_count": 9,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "error_valid_i",
+        "error_overflow_i",
+        "error_payload_i",
+        "error_valid_o",
+        "error_overflow_o",
+        "error_payload_o",
+        "q_o"
+      ],
+      "semantic_signals": [
+        "error_valid_i",
+        "error_overflow_i",
+        "error_payload_i",
+        "error_valid_o",
+        "error_overflow_o",
+        "error_payload_o",
+        "q_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "8c8be2c4a5183545ca2ed64d",
+      "case_id": "case255_fifo_v8_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case255_fifo_v8_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "887d5732b08ff8c3dff8460f7b35448fa3ac2874790bb0ca4834f3432a8ce243",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case255_fifo_v8_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "81520ef67b55a422d1795eb61e70d773eb8726c25664ff576823ba2dcd8c8047",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "8d59a81842da7e689be72906",
+      "case_id": "case252_fifo_v5_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case252_fifo_v5_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "9f98f46958964bf871a5abbaa746046b41b0c14319fee87fa7b1be29f9ab13cd",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case252_fifo_v5_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "c69d6aea9e8da1f58dd5d7c0adbacb4a804809ab22a59d46b0a38c5b78989d31",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "8e7d69406421b817f6bfabc2",
+      "case_id": "case136_prim_filter_ctr_disabled_bypass_stale_alt",
+      "parent_bug_id": "case136_prim_filter_ctr_disabled_bypass_stale_alt",
+      "source_project": "opentitan",
+      "source_module": "prim_filter_ctr",
+      "bug_family": "filter_bypass_control",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case136_prim_filter_ctr_disabled_bypass_stale_alt/prompt.txt",
+      "prompt_sha256": "4e58a92b87b6311a12b1e53ac9f4f8253e77fdef37c22bd994fb4d9399be1cec",
+      "spec_sha256": "e0baf48e3e21bcdd2f632cf7e3a2a0bcb2cf4c5b5cf732fb3e0a1d923a9a26f9",
+      "spec_path": "rtl_cases_real_scale120/case136_prim_filter_ctr_disabled_bypass_stale_alt/experiment/spec.txt",
+      "correct_rtl_sha256": "eafde5450b051ad9c90447297494301ffd46181bfb5884f5ac4776c446fbf736",
+      "tb_sha256": "013d1c3fb33f5d66046e71d5d08894a981b346ab64e2bea4a9ed02b8f86927f0",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "enable_i",
+        "filter_i",
+        "thresh_i",
+        "filter_o"
+      ],
+      "semantic_signals": [
+        "enable_i",
+        "filter_i",
+        "thresh_i",
+        "filter_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "99b8a8940544c58a1ff24c23",
+      "case_id": "case500_cc_isochronous_handshake_early_drop",
+      "parent_bug_id": "case500_cc_isochronous_handshake_early_drop",
+      "source_project": "common_cells",
+      "source_module": "cc_isochronous_4phase_handshake",
+      "bug_family": "request_drops_on_unsynchronized_ack",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case500_cc_isochronous_handshake_early_drop/prompt.txt",
+      "prompt_sha256": "cc482a2701bf17a1ab583088c455ef58695c9a85586985fb11d9ea9e328ba4be",
+      "spec_sha256": "39d565dcde65c5278deaf7709f3bed1efc76fea1aa874089275ebcd95f3aa68b",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case500_cc_isochronous_handshake_early_drop/spec.md",
+      "correct_rtl_sha256": "538160e0aa9becdfcfdf87c8b20daddafad3f6287f7b3f2dc0196222d229f777",
+      "tb_sha256": "519745882ff5751e33542dd9eeed29887529df5cdb5afd9f004a48e251a11425",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "ack_i",
+        "start_i",
+        "q_o",
+        "state_o"
+      ],
+      "semantic_signals": [
+        "ack_i",
+        "start_i",
+        "q_o",
+        "state_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "99dfab4889d736d403213051",
+      "case_id": "case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "f24982c49042cbdd54dee0c6c4777e3d06f55f7bf1bd0fa9b7a28b73c56022ab",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "1d4fb7620ad305dc753a4917f17680b2edf007245c762bee65f0f394bdb94e5c",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "a02ed4c607c8e10311235b76",
+      "case_id": "case488_prim_reg_we_check_disabled_write_missed",
+      "parent_bug_id": "case488_prim_reg_we_check_disabled_write_missed",
+      "source_project": "opentitan",
+      "source_module": "prim_reg_we_check",
+      "bug_family": "disabled_write_enable_error_suppressed",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case488_prim_reg_we_check_disabled_write_missed/prompt.txt",
+      "prompt_sha256": "f1ef4473bd64f06424fffb712eb76ef7c59475993a88ee1b7b328b5a2b8bc24f",
+      "spec_sha256": "3b953470790e44dff641682d365c3277eb3cf9c3db67d5eabfca525b404dcf1d",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case488_prim_reg_we_check_disabled_write_missed/spec.md",
+      "correct_rtl_sha256": "7c412f5c971288af88bc32339e406605f812d5cd826072334cb055c505b78730",
+      "tb_sha256": "62fdbba3d6495a5eee7f61208f0639ee5a08922aded4f8a7b0316bfb4d7fa140",
+      "visible_signal_count": 5,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "oh_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "aaac647d6c45fa8482c733a8",
+      "case_id": "case114_prim_edge_negedge_misdecoded",
+      "parent_bug_id": "case114_prim_edge_negedge_misdecoded",
+      "source_project": "opentitan",
+      "source_module": "prim_edge_detector",
+      "bug_family": "edge_direction",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case114_prim_edge_negedge_misdecoded/prompt.txt",
+      "prompt_sha256": "b851d48a08c1f81d788667c83526184f1b348119abce26d4bf884af1bca8b731",
+      "spec_sha256": "3521884efd5a3975544c2bddac7b7a4cd59bb693541f5c60b7781c19f93a374b",
+      "spec_path": "rtl_cases_real_scale120/case114_prim_edge_negedge_misdecoded/experiment/spec.txt",
+      "correct_rtl_sha256": "624844a4808a6d9456a679edd99da8f8bc64395a5fc2cc589a5e2aa2c40a8f20",
+      "tb_sha256": "aa2ea9359ac815f6a1568e105cf3437bff322118f87b2aaa1a591d5dad1ad896",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "d_i",
+        "q_sync_o",
+        "q_posedge_pulse_o",
+        "q_negedge_pulse_o"
+      ],
+      "semantic_signals": [
+        "d_i",
+        "q_sync_o",
+        "q_posedge_pulse_o",
+        "q_negedge_pulse_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "b1d392a3879db01c88f6418b",
+      "case_id": "case125_prim_fifo_wrap_late",
+      "parent_bug_id": "case125_prim_fifo_wrap_late",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "pointer_wrap",
+      "bug_class": "temporal_cross_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case125_prim_fifo_wrap_late/prompt.txt",
+      "prompt_sha256": "def0f5778ced2ce8a59b183d6c8eb2fcce8d7dd0c8a538c475ea8c909a82969e",
+      "spec_sha256": "9e2126d66ec98280a371e0d0a7bd99cecd3c6ea8d5b8941c9f79d06ec199d0f7",
+      "spec_path": "rtl_cases_real_scale120/case125_prim_fifo_wrap_late/experiment/spec.txt",
+      "correct_rtl_sha256": "b4f165da4f48f51c434c681552bdc7f21d45c6141a5b1afd6c96478b6836a2ad",
+      "tb_sha256": "19d25e0bf6e050ae8f52bf7b829ce821f87f0edfe2dac8a3bb3c49df22f9d9dc",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "ba91845483a23dce0c9a1e72",
+      "case_id": "case250_fifo_v3_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case250_fifo_v3_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "d8e63826c3c994dfc042029a207969d50c21309bf929db88a5135816dbb5da94",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case250_fifo_v3_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "7bd6b0af09af8bd3534a5347f4f28ecf4e6933b2074c2bf1180021b4b1ef5ea9",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "c8e546fab87ff9c11e61254d",
+      "case_id": "case226_onehot_addr_bad_v2_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case226_onehot_addr_bad_v2_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "b0b13587ee304f404d67f939f0424714db589baf2c123445881bef8d026adc40",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case226_onehot_addr_bad_v2_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "18d83385b726eb2522602294eec27e52b9e32d6a87fda0ce78cc0be1ee206dd1",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "c9ee80c8f64a35dec72a12d7",
+      "case_id": "case233_onehot_addr_legal_v1_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case233_onehot_addr_legal_v1_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "cb57080b3fe44676eb0479ba06772943bbf81824e6608d73517019142fbbd68e",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case233_onehot_addr_legal_v1_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "a7d8af4afc6566ca533690c88f37158dfeb48deee78324e296e5b982cced4556",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "ca49915c9e51cddb0d962904",
+      "case_id": "case251_fifo_v4_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case251_fifo_v4_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "55749011aa1c3a3f25f1304245eeda110e6879278f3934ac98a5b103ce7261ac",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case251_fifo_v4_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "ee569adedc53c53064addc1c04052fdbeb906b2104b979aaf2af7db91e20e700",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "cfb63ba935b4311bb9d1f789",
+      "case_id": "case234_onehot_addr_legal_v2_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case234_onehot_addr_legal_v2_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "97d48a86decf61fc399e039c1b196c21000cb2b1fe86026ee46f8407ada20e29",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case234_onehot_addr_legal_v2_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "3dc4d0f61aea4d895d4b74314d13b799b496da973b9140cfda9774da6a520c30",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "d20091b5f08ca4f598f00ced",
+      "case_id": "case254_fifo_v7_from_case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case254_fifo_v7_from_case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "58464cc2bb81a0a82e4924934b2c548eaae0789141b04246bfa11297a1390543",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case254_fifo_v7_from_case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "0cd1e01afe03d0dbe6e171e5255e95021cd0c3f99efe92901b23117bfc873e8d",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "def93161d289540172b653e9",
+      "case_id": "case236_onehot_addr_legal_v4_from_case137_prim_onehot_addr_false_positive",
+      "parent_bug_id": "case137_prim_onehot_addr_false_positive",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case236_onehot_addr_legal_v4_from_case137_prim_onehot_addr_false_positive/prompt.txt",
+      "prompt_sha256": "63dd7bd4a79d1b2dcef846b605cc951a43851157a83a8c66ee7201b44fbda9a0",
+      "spec_sha256": "2e9722a19fa01b4bd1994f618fca222fd5510dcc7b3b47c9b9cf8680d9bd3b6c",
+      "spec_path": "rtl_cases_real_scale120/case236_onehot_addr_legal_v4_from_case137_prim_onehot_addr_false_positive/experiment/spec.txt",
+      "correct_rtl_sha256": "7b4a659f6cad43181e8ed1d3724947d1bfe14e4748470018624e25e8776f77d9",
+      "tb_sha256": "c7bc759f6b4f55df81182234f2250c5d53d91f540506a4acd6658c9c25fcc0ba",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "df6fbf8f4d160463a84ce534",
+      "case_id": "case490_prim_gate_gen_valid_latency_short",
+      "parent_bug_id": "case490_prim_gate_gen_valid_latency_short",
+      "source_project": "opentitan",
+      "source_module": "prim_gate_gen",
+      "bug_family": "valid_pipeline_one_cycle_short",
+      "bug_class": "temporal",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case490_prim_gate_gen_valid_latency_short/prompt.txt",
+      "prompt_sha256": "6d4a237ea94949c0f9944aeb5f423d83b31251750ae87e0c3db7a0af39a5d2a6",
+      "spec_sha256": "c8fb3fe2b33b5ca40e32e6a907ae8f607438e25e118331ffc4ae6eed3d56df29",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case490_prim_gate_gen_valid_latency_short/spec.md",
+      "correct_rtl_sha256": "95323a0bf74ab3f8ae9d5d6e8debd3558d43fb0fc860f3d6f941125ffb8c642e",
+      "tb_sha256": "5370ef936bebeee7ddfdde10d894f67c0a6e6510d7802220677ad44200da2892",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "valid_i",
+        "data_i",
+        "valid_o",
+        "data_o"
+      ],
+      "semantic_signals": [
+        "valid_i",
+        "data_i",
+        "valid_o",
+        "data_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    },
+    {
+      "query_id": "e00fcce8bfa36fd041b844d0",
+      "case_id": "case462_axis_broadcast_partial_ready_loss",
+      "parent_bug_id": "case462_axis_broadcast_partial_ready_loss",
+      "source_project": "verilog_axis",
+      "source_module": "axis_broadcast",
+      "bug_family": "partial_sink_acknowledgement",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_bug_family"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case462_axis_broadcast_partial_ready_loss/prompt.txt",
+      "prompt_sha256": "05d6e179b11fa8aac9f07a8bba12949f64f660f1aacd3273c07deac29997694d",
+      "spec_sha256": "ea39ee3232819fa2eb8d74327eb409e717f500b10e3840b4c7d4235f21b4c5d8",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case462_axis_broadcast_partial_ready_loss/spec.md",
+      "correct_rtl_sha256": "68fcdb4fdef33f8ca380ab735ad1c9385821d4a13cf64848cfa458eaf452a324",
+      "tb_sha256": "5759b4d3a46811029669e3595b17a26d3f7d70df0accf695368a76fbb8f071e9",
+      "visible_signal_count": 8,
+      "visible_signals": [
+        "clk",
+        "rst",
+        "sd",
+        "sv",
+        "mr",
+        "sr",
+        "mv",
+        "md"
+      ],
+      "semantic_signals": [
+        "sd",
+        "sv",
+        "mr",
+        "sr",
+        "mv",
+        "md"
+      ],
+      "clock": "clk",
+      "reset": "rst"
+    },
+    {
+      "query_id": "e13757e939f4b96d7be8ff18",
+      "case_id": "case227_onehot_addr_bad_v3_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case227_onehot_addr_bad_v3_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "2512c2f3fcd00ea4eb79ed00f2a7383a62dcf8e76a841623ff8c642d20417f82",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case227_onehot_addr_bad_v3_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "ed4d525f4e9febae60b22a44f06d4c470122395c17f84bffb5a815339a1b3512",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "e1fde9466249dea4b0dc8174",
+      "case_id": "case111_prim_intr_output_or_mask",
+      "parent_bug_id": "case111_prim_intr_output_or_mask",
+      "source_project": "opentitan",
+      "source_module": "prim_intr_hw",
+      "bug_family": "interrupt_masking",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case111_prim_intr_output_or_mask/prompt.txt",
+      "prompt_sha256": "3eed7e6f85ff2e561e1a017334a0030377793499969d8ab0b585275dc2dd29e9",
+      "spec_sha256": "f07ef1f70e88c55a94439c23ac10b10c52991e8f21f3a73b787b39c64c2db524",
+      "spec_path": "rtl_cases_real_scale120/case111_prim_intr_output_or_mask/experiment/spec.txt",
+      "correct_rtl_sha256": "91b979df4ec94cd3b22d524aecf8ce337c932368f3be323c6459c71907b41f52",
+      "tb_sha256": "9ead4cf4fac9643ed9604f3dfcff10c8e7daa9bc3e8f1f5f6f764646fccf06d7",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "event_intr_i",
+        "reg2hw_intr_enable_q_i",
+        "reg2hw_intr_test_q_i",
+        "reg2hw_intr_test_qe_i",
+        "reg2hw_intr_state_q_i",
+        "sw_clear",
+        "hw2reg_intr_state_de_o",
+        "hw2reg_intr_state_d_o",
+        "intr_o"
+      ],
+      "semantic_signals": [
+        "event_intr_i",
+        "reg2hw_intr_enable_q_i",
+        "reg2hw_intr_test_q_i",
+        "reg2hw_intr_test_qe_i",
+        "reg2hw_intr_state_q_i",
+        "sw_clear",
+        "hw2reg_intr_state_de_o",
+        "hw2reg_intr_state_d_o",
+        "intr_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "e3604b5ad770420c01a56f0a",
+      "case_id": "case231_onehot_addr_bad_v7_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case231_onehot_addr_bad_v7_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "6da58159ea0f550c4700931cd11de815e140a56d132dd8a45ebf3c97b2dc868f",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case231_onehot_addr_bad_v7_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "ee561df8c877e8bd46878d9907cca69cd41751a0e9c6ea6b72317c1de1d22c91",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "e3cb3b765f30367e2ccc796c",
+      "case_id": "case104_prim_fifo_full_early",
+      "parent_bug_id": "case104_prim_fifo_full_early",
+      "source_project": "opentitan",
+      "source_module": "prim_fifo_sync_cnt",
+      "bug_family": "fifo_boundary_flag",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case104_prim_fifo_full_early/prompt.txt",
+      "prompt_sha256": "7d684c1f99573cb2855f8dfe041f0fdb729f83063e9dc921a2791881ee6c4996",
+      "spec_sha256": "2297bbbb8e6461863638b736fccf777a70741619941686d460b7c2fc4484fd95",
+      "spec_path": "rtl_cases_real_scale120/case104_prim_fifo_full_early/experiment/spec.txt",
+      "correct_rtl_sha256": "a7c630c37ae6c913b2fa3c2d3f6320598dce1f1d6907d74bfa9c7da3d339a86d",
+      "tb_sha256": "1ab022dc4df6f6b32038d33fea6361388e0b19d73862576b84a2256c2ce94ef6",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "clr_i",
+        "incr_wptr_i",
+        "incr_rptr_i",
+        "wptr_o",
+        "rptr_o",
+        "full_o",
+        "empty_o",
+        "depth_o",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "e3f24b53aa5bba180c39e315",
+      "case_id": "case121_prim_intr_test_qe_ignored",
+      "parent_bug_id": "case121_prim_intr_test_qe_ignored",
+      "source_project": "opentitan",
+      "source_module": "prim_intr_hw",
+      "bug_family": "event_test_gate",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case121_prim_intr_test_qe_ignored/prompt.txt",
+      "prompt_sha256": "be4e11cab1f11ab5a4d78854b39d5860fa861c2d9dc190f52ad4330930294c73",
+      "spec_sha256": "4361dd6ba2a6d98398e532e17e84c943b313c0ec6b454c878d77002b8e0507da",
+      "spec_path": "rtl_cases_real_scale120/case121_prim_intr_test_qe_ignored/experiment/spec.txt",
+      "correct_rtl_sha256": "30a0c5469fae5a41b5dce9d52394cc346d158bf6585de63fe01d74602b03a6bf",
+      "tb_sha256": "453c755f17cbdb43c3d017d755a3cc4231d47a883d3ccfc67afbf7805b640a0b",
+      "visible_signal_count": 11,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "event_intr_i",
+        "reg2hw_intr_enable_q_i",
+        "reg2hw_intr_test_q_i",
+        "reg2hw_intr_test_qe_i",
+        "reg2hw_intr_state_q_i",
+        "sw_clear",
+        "hw2reg_intr_state_de_o",
+        "hw2reg_intr_state_d_o",
+        "intr_o"
+      ],
+      "semantic_signals": [
+        "event_intr_i",
+        "reg2hw_intr_enable_q_i",
+        "reg2hw_intr_test_q_i",
+        "reg2hw_intr_test_qe_i",
+        "reg2hw_intr_state_q_i",
+        "sw_clear",
+        "hw2reg_intr_state_de_o",
+        "hw2reg_intr_state_d_o",
+        "intr_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "e974f5b8d39d842294e53fcd",
+      "case_id": "case225_onehot_addr_bad_v1_from_case103_prim_onehot_addr_mismatch_suppressed",
+      "parent_bug_id": "case103_prim_onehot_addr_mismatch_suppressed",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_check",
+      "bug_family": "decoded_index_consistency",
+      "bug_class": "combination_same_cycle",
+      "dataset_root": "rtl_cases_real_scale120",
+      "memberships": [
+        "unseen_bug_family",
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case225_onehot_addr_bad_v1_from_case103_prim_onehot_addr_mismatch_suppressed/prompt.txt",
+      "prompt_sha256": "8f9a630036558af878fc38fb4b28a74f3290e2e09f4ad7b03d5ebef0fb6ff391",
+      "spec_sha256": "18bb651fb860c6a07a5525407b739e622a083a6829710344d0cfe306c98363e1",
+      "spec_path": "rtl_cases_real_scale120/case225_onehot_addr_bad_v1_from_case103_prim_onehot_addr_mismatch_suppressed/experiment/spec.txt",
+      "correct_rtl_sha256": "19456025de72dd4149ed0155b1dc67d94029726e8bd1f8423bb3498edca28a45",
+      "tb_sha256": "a43d2ba3e62ecd3db8c697189fc032759e143415558867427144d5e14bbdc028",
+      "visible_signal_count": 6,
+      "visible_signals": [
+        "clk",
+        "rst_n",
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "semantic_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "err_o"
+      ],
+      "clock": "clk",
+      "reset": "rst_n"
+    },
+    {
+      "query_id": "ffb58e65b26b55b509dd89ef",
+      "case_id": "case509_axis_switch_overlap_route_priority",
+      "parent_bug_id": "case509_axis_switch_overlap_route_priority",
+      "source_project": "verilog_axis",
+      "source_module": "axis_switch",
+      "bug_family": "overlapping_route_priority",
+      "bug_class": "combination_protocol",
+      "dataset_root": "rtl_cases_real_scale210_independent_next",
+      "memberships": [
+        "unseen_parent"
+      ],
+      "prompt_path": "outputs/behavioral_preference_pilot_v2/frozen_top1_ast_v2/queries/case509_axis_switch_overlap_route_priority/prompt.txt",
+      "prompt_sha256": "213f9e19f10a0c6bef1060f0f56a31c6c802bf3c81df28eac7e4471a720562ac",
+      "spec_sha256": "ef7120396fd3191cc3b4e66de00ab282a30d56066dd3e7f1a9e7ec4555b95e38",
+      "spec_path": "rtl_cases_real_scale210_independent_next/case509_axis_switch_overlap_route_priority/spec.md",
+      "correct_rtl_sha256": "6cab2aab7dd84d8242e29ea951806b59781b43d490c4f19084d921c17609ecd5",
+      "tb_sha256": "0acf2ec6fcd6c5d106eaa88610f06e0f7dbfc91369dd9ade31cc0106072e104e",
+      "visible_signal_count": 9,
+      "visible_signals": [
+        "clk_i",
+        "rst_ni",
+        "s_valid",
+        "route_match",
+        "m_ready",
+        "s_data",
+        "m_valid",
+        "m_data",
+        "q_o"
+      ],
+      "semantic_signals": [
+        "s_valid",
+        "route_match",
+        "m_ready",
+        "s_data",
+        "m_valid",
+        "m_data",
+        "q_o"
+      ],
+      "clock": "clk_i",
+      "reset": "rst_ni"
+    }
+  ]
+}

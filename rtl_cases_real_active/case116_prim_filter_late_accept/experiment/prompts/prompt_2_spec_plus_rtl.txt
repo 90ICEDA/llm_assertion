@@ -15,10 +15,10 @@ Rules:
 10) The final assertion line must contain exactly one implication operator total: either one |-> or one |=>.
 
 Allowed signals:
-clk, rst_n, enable_i, filter_i, filter_o
+clk, rst_n, enable_i, filter_i, filter_o, accept_boundary_dbg
 
 Specification:
-With filtering enabled, filter_o shall adopt a new stable input after exactly Cycles consecutive opposite samples, not one cycle later.
+With filtering enabled, filter_o shall adopt a new stable input at the exact acceptance boundary, not one sampled cycle later.
 
 Additional guidance:
 - Use only the allowed interface-visible signals in the final assertion.
@@ -80,7 +80,8 @@ module dut_case116_prim_filter_late_accept (
   input logic rst_n,
   input logic enable_i,
   input logic filter_i,
-  output logic filter_o
+  output logic filter_o,
+  output logic accept_boundary_dbg
 );
   prim_filter #(
     .AsyncOn(1'b0),
@@ -92,6 +93,18 @@ module dut_case116_prim_filter_late_accept (
     .filter_i(filter_i),
     .filter_o(filter_o)
   );
+
+  // Pulse exactly on the sampled cycle where the filter is supposed to accept
+  // a new stable value. Use the pre-update internal state so the pulse is
+  // one-shot rather than staying high for every stable cycle.
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      accept_boundary_dbg <= 1'b0;
+    end else begin
+      accept_boundary_dbg <= enable_i && u_dut.update_stored_value &&
+                             (u_dut.stored_value_q != u_dut.filter_synced);
+    end
+  end
 endmodule
 
 // ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop.sv -----

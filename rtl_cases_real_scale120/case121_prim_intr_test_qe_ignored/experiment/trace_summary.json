@@ -1,0 +1,28 @@
+{
+  "case_name": "case121_prim_intr_test_qe_ignored",
+  "first_divergence_cycle": 4,
+  "first_divergence_time_ps": "45000",
+  "differing_signals": [
+    "reg2hw_intr_state_q_i",
+    "hw2reg_intr_state_de_o",
+    "hw2reg_intr_state_d_o"
+  ],
+  "divergence_snapshot": [
+    {
+      "signal": "reg2hw_intr_state_q_i",
+      "good": "0",
+      "bad": "1"
+    },
+    {
+      "signal": "hw2reg_intr_state_de_o",
+      "good": "0",
+      "bad": "1"
+    },
+    {
+      "signal": "hw2reg_intr_state_d_o",
+      "good": "0",
+      "bad": "1"
+    }
+  ],
+  "divergence_observation": "posedge_cycle"
+}

@@ -1,0 +1,153 @@
+{
+  "results": [
+    {
+      "revision": "before",
+      "cohort": "benchmark",
+      "source_sha256": {
+        "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+        "ibex_compressed_decoder.sv": "b2b3ee1349c9c933dc7735ce004ce078cf3732d7b8e29a641e004bd684fd8166",
+        "tb.sv": "fc78fabb032bf3c2d1e60f9a1f5123c0c9bcdd49c2361b372758f997e158a1a1"
+      },
+      "compile": {
+        "argv": [
+          "iverilog",
+          "-g2012",
+          "-s",
+          "tb",
+          "-o",
+          "sim.out",
+          "ibex_defines.sv",
+          "ibex_compressed_decoder.sv",
+          "tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/benchmark",
+        "exit_code": 0,
+        "wall_seconds": 0.0749656689999938
+      },
+      "execute": {
+        "argv": [
+          "vvp",
+          "sim.out"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/benchmark",
+        "exit_code": 1,
+        "wall_seconds": 0.05469956899992212
+      },
+      "original_log_matches": true,
+      "expected_behavior_reproduced": true
+    },
+    {
+      "revision": "before",
+      "cohort": "boundary",
+      "source_sha256": {
+        "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+        "ibex_compressed_decoder.sv": "b2b3ee1349c9c933dc7735ce004ce078cf3732d7b8e29a641e004bd684fd8166",
+        "tb.sv": "ec89c24f5b4ed1598b64affaec5ee6e36bf7ee42bfbeeb402baf73458c4e087d"
+      },
+      "compile": {
+        "argv": [
+          "iverilog",
+          "-g2012",
+          "-s",
+          "tb",
+          "-o",
+          "sim.out",
+          "ibex_defines.sv",
+          "ibex_compressed_decoder.sv",
+          "tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/boundary",
+        "exit_code": 0,
+        "wall_seconds": 0.1621803909999926
+      },
+      "execute": {
+        "argv": [
+          "vvp",
+          "sim.out"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/boundary",
+        "exit_code": 1,
+        "wall_seconds": 0.09953258999996706
+      },
+      "original_log_matches": true,
+      "expected_behavior_reproduced": true
+    },
+    {
+      "revision": "after",
+      "cohort": "benchmark",
+      "source_sha256": {
+        "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+        "ibex_compressed_decoder.sv": "b568caec0b093981f499c4ea3a514c88c33969fe8e86e3e47a63a74fa275297c",
+        "tb.sv": "fc78fabb032bf3c2d1e60f9a1f5123c0c9bcdd49c2361b372758f997e158a1a1"
+      },
+      "compile": {
+        "argv": [
+          "iverilog",
+          "-g2012",
+          "-s",
+          "tb",
+          "-o",
+          "sim.out",
+          "ibex_defines.sv",
+          "ibex_compressed_decoder.sv",
+          "tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/benchmark",
+        "exit_code": 0,
+        "wall_seconds": 0.08002343800001199
+      },
+      "execute": {
+        "argv": [
+          "vvp",
+          "sim.out"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/benchmark",
+        "exit_code": 0,
+        "wall_seconds": 0.05001699199999621
+      },
+      "original_log_matches": true,
+      "expected_behavior_reproduced": true
+    },
+    {
+      "revision": "after",
+      "cohort": "boundary",
+      "source_sha256": {
+        "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+        "ibex_compressed_decoder.sv": "b568caec0b093981f499c4ea3a514c88c33969fe8e86e3e47a63a74fa275297c",
+        "tb.sv": "ec89c24f5b4ed1598b64affaec5ee6e36bf7ee42bfbeeb402baf73458c4e087d"
+      },
+      "compile": {
+        "argv": [
+          "iverilog",
+          "-g2012",
+          "-s",
+          "tb",
+          "-o",
+          "sim.out",
+          "ibex_defines.sv",
+          "ibex_compressed_decoder.sv",
+          "tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/boundary",
+        "exit_code": 0,
+        "wall_seconds": 0.12414822200003073
+      },
+      "execute": {
+        "argv": [
+          "vvp",
+          "sim.out"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/boundary",
+        "exit_code": 0,
+        "wall_seconds": 0.0812812210000402
+      },
+      "original_log_matches": true,
+      "expected_behavior_reproduced": true
+    }
+  ],
+  "all_expected_reproduced": true,
+  "model_calls": 0,
+  "native_sva_calls": 0,
+  "formal_calls": 0,
+  "scope": "Original historical benchmark/boundary regression; procedural RTL testbench, not native concurrent SVA or proof."
+}

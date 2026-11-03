@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case403_prim_filter_temporal_hold_3",
+  "parent_bug_id": "case403_prim_filter_temporal_hold_3",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "weakness_class": "single_cycle_implication",
+      "property": "filter_i |-> stored_vector_q[0]",
+      "antecedent": "filter_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Looks at one history bit in one sample, not the complete shift operation.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W1_single_cycle_implication"
+    },
+    {
+      "weakness_class": "final_output_only",
+      "property": "rst_ni |-> !$isunknown(stored_vector_q)",
+      "antecedent": "rst_ni",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Only checks that the final vector is known.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W2_final_output_only"
+    },
+    {
+      "weakness_class": "delay_removed",
+      "property": "filter_i |-> (stored_vector_q != '0)",
+      "antecedent": "filter_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Uses an immediate coarse nonzero check instead of next-cycle append and shift.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W3_delay_removed"
+    },
+    {
+      "weakness_class": "antecedent_removed",
+      "property": "stored_vector_q == '0",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Drops the reset trigger and cannot distinguish reset behavior from an incidental zero history.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W4_antecedent_removed"
+    },
+    {
+      "weakness_class": "simple_invariant",
+      "property": "!$isunknown(stored_vector_q)",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Knownness does not constrain reset clearing or sample order.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W5_simple_invariant"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "name": "case423_axis_register_temporal_hold_3",
+  "parent_bug_id": "case423_axis_register_temporal_hold_3",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_register",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_register.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_register.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "temp_m_axis_tvalid_reg state update is suppressed",
+  "spec": "When a second source beat is accepted while a prior output beat is stalled, backpressure must be asserted once the temporary capacity is occupied; both accepted beats must remain available in order as downstream readiness returns.",
+  "mutation_edits": [
+    {
+      "line": 162,
+      "search": "        temp_m_axis_tvalid_reg <= temp_m_axis_tvalid_next;",
+      "replace": "        temp_m_axis_tvalid_reg <= temp_m_axis_tvalid_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "temp_m_axis_tvalid_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "s_axis_tdata",
+    "m_axis_tvalid",
+    "m_axis_tready",
+    "m_axis_tdata"
+  ],
+  "temporal_type": "skid-buffer occupancy across backpressure",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+  "buggy_sha256": "daa6b9186bdd221395e422210a0ff35057ce0c7003d095cee0d4131bb4165f66",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (m_axis_tvalid && !m_axis_tready && s_axis_tvalid && s_axis_tready) |-> ##2 !s_axis_tready);",
+    "temporal_type": "skid-buffer occupancy across backpressure"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 55000,
+      "sample_index": 15,
+      "signals": [
+        "s_axis_tready"
+      ],
+      "clock_cycle": 6
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 17,
+      "signals": [
+        "s_axis_tready"
+      ],
+      "clock_cycle": 7
+    },
+    "decoy": {
+      "time_ps": 75000,
+      "sample_index": 19,
+      "signals": [
+        "s_axis_tready"
+      ],
+      "clock_cycle": 8
+    }
+  }
+}

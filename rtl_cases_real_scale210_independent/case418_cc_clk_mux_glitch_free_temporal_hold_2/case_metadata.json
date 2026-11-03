@@ -1,0 +1,85 @@
+{
+  "name": "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+  "parent_bug_id": "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_clk_mux_glitch_free",
+  "source_files": [
+    "external/common_cells/src/cc_clk_mux_glitch_free.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_clk_mux_glitch_free.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "async_reset_bypass_active_q[i] state update is suppressed",
+  "spec": "Reasserting asynchronous reset disables clock propagation promptly: clk_o is low during reset and does not retain a previously selected clock transition.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clks_i[0]) $rose(async_rstn_i) |-> ##[1:5] !dut.async_reset_bypass_active_q[0]);",
+    "temporal_type": "cross-cycle sequential state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45,
+      "observation_index": 24,
+      "signals": [
+        "clk_o"
+      ],
+      "good": {
+        "clk_o": "0"
+      },
+      "bad": {
+        "clk_o": "1"
+      }
+    },
+    "heldout": {
+      "time_ps": 63,
+      "observation_index": 32,
+      "signals": [
+        "clk_o"
+      ],
+      "good": {
+        "clk_o": "0"
+      },
+      "bad": {
+        "clk_o": "1"
+      }
+    },
+    "decoy": {
+      "time_ps": 56,
+      "observation_index": 30,
+      "signals": [
+        "clk_o"
+      ],
+      "good": {
+        "clk_o": "0"
+      },
+      "bad": {
+        "clk_o": "1"
+      }
+    }
+  },
+  "mutation_edits": [
+    {
+      "line": 202,
+      "search": "          async_reset_bypass_active_q[i] <= 1'b0;",
+      "replace": "          async_reset_bypass_active_q[i] <= async_reset_bypass_active_q[i]; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "async_reset_bypass_active_q[i]",
+  "relevant_signals": [
+    "async_rstn_i",
+    "async_sel_i",
+    "clks_i[1:0]",
+    "test_clk_i",
+    "test_en_i",
+    "clk_o"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "44763ddf2f5ce9658499475a79f04c69474ed70d7131d875ccd93cbe422609e0",
+  "buggy_sha256": "d3c5b12a4b03109c1233738a5328a25229a8bc7c0d64b26677525218e045c6fb",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "contract_status": "formal_complete"
+}

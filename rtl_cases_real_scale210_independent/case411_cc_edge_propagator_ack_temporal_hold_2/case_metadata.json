@@ -1,0 +1,86 @@
+{
+  "name": "case411_cc_edge_propagator_ack_temporal_hold_2",
+  "parent_bug_id": "case411_cc_edge_propagator_ack_temporal_hold_2",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_edge_propagator_ack",
+  "source_files": [
+    "external/common_cells/src/cc_edge_propagator_ack.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_edge_propagator_ack.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "sync_a state update is suppressed",
+  "spec": "The receive-domain synchronizer is cleared by receive reset. After reset, edge_o remains low until a new request has propagated from edge_i through the clock-domain crossing.",
+  "mutation_edits": [
+    {
+      "line": 36,
+      "search": "      sync_a      <= 2'b00;",
+      "replace": "      sync_a <= sync_a; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "sync_a",
+  "relevant_signals": [
+    "clk_rx_i",
+    "rst_rx_ni",
+    "edge_i",
+    "edge_o",
+    "clk_tx_i",
+    "rst_tx_ni",
+    "ack_tx_o"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "28e1c1b5096b0f98963f27d0e0fbdf2dd204ba453b836e033d2efc87f0e05161",
+  "buggy_sha256": "a55452a7826858503d6211c7305a0a2e4c26a6a9e36014f78a654f0f42caf134",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk_tx_i) !rst_tx_ni |=> (dut.sync_a == 2'b00));",
+    "temporal_type": "cross-cycle sequential state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "ack_tx_o"
+      ],
+      "good": {
+        "ack_tx_o": "0"
+      },
+      "bad": {
+        "ack_tx_o": "x"
+      }
+    },
+    "heldout": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "ack_tx_o"
+      ],
+      "good": {
+        "ack_tx_o": "0"
+      },
+      "bad": {
+        "ack_tx_o": "x"
+      }
+    },
+    "decoy": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "ack_tx_o"
+      ],
+      "good": {
+        "ack_tx_o": "0"
+      },
+      "bad": {
+        "ack_tx_o": "x"
+      }
+    }
+  },
+  "contract_status": "formal_complete"
+}

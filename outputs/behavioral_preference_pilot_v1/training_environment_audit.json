@@ -1,0 +1,85 @@
+{
+  "status": "training_environment_installed_smoke_pass_formal_dpo_not_started",
+  "pilot_scope": true,
+  "base_model": {
+    "name": "Qwen3-8B",
+    "local_path": "outputs/checkpoints/Qwen3-8B",
+    "weights_present": true,
+    "weight_shards": 5
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "memory_mib": 8192,
+    "driver": "546.30",
+    "wsl_visible": true
+  },
+  "required_training_mode": "4-bit QLoRA for all five methods; full-parameter Qwen3-8B is not feasible in 8 GiB",
+  "pilot_venv_missing_packages": [],
+  "installed_versions": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.53.2",
+    "trl": "0.19.1",
+    "peft": "0.15.2",
+    "accelerate": "1.8.1",
+    "datasets": "3.6.0",
+    "bitsandbytes": "0.46.0"
+  },
+  "installation_attempts": [
+    {
+      "package": "torch==2.5.1+cu121",
+      "source": "https://download.pytorch.org/whl/cu121",
+      "wheel_size_mb": 780.4,
+      "observed_partial_mb": 59,
+      "outcome": "cancelled_due_to_impractical_download_rate_before_install"
+    },
+    {
+      "package": "torch==2.5.1",
+      "source": "PyPI",
+      "wheel_size_mb": 906.4,
+      "observed_partial_mb": 7.6,
+      "outcome": "cancelled_due_to_slower_download_rate_before_install"
+    }
+  ],
+  "resolved_installation": {
+    "torch_source": "https://mirrors.aliyun.com/pytorch-wheels/cu121/torch-2.5.1%2Bcu121-cp312-cp312-linux_x86_64.whl",
+    "python_package_index": "https://mirrors.aliyun.com/pypi/simple",
+    "requirements": "requirements-pilot-train.txt"
+  },
+  "smoke_gates": {
+    "cuda_tensor_backward": "pass",
+    "qwen3_8b_nf4_load": "pass",
+    "qwen3_8b_lora_forward_backward_optimizer_step": "pass",
+    "evidence": "outputs/behavioral_preference_pilot_v1/training_environment_smoke.json",
+    "scope_warning": "Smoke used 19 tokens. It does not establish feasibility of 512-token DPO chosen/rejected batches on an 8 GiB GPU."
+  },
+  "training_artifacts_created": false,
+  "optimizer_steps_executed": 1,
+  "optimizer_step_scope": "environment smoke only; no training dataset or checkpoint used",
+  "metrics_claimed": false,
+  "remaining_blockers": [
+    "Representative 512-token Qwen3-8B DPO is not feasible on the local 8 GiB RTX 3070; use a larger-memory GPU without changing the frozen 512-token protocol."
+  ],
+  "baseline_definitions": {
+    "status": "frozen",
+    "path": "outputs/behavioral_preference_pilot_v1/training_baseline_definitions_v1_frozen.json"
+  },
+  "dpo_512_memory_gate": {
+    "status": "no_go_on_local_8_gib_gpu",
+    "standard_r16_all_linear": {
+      "status": "oom",
+      "evidence": "outputs/behavioral_preference_pilot_v1/training_dpo_512_smoke.json",
+      "peak_allocated_mib": 14746.0
+    },
+    "r8_qv_sequential_with_fp32_prepare": {
+      "status": "oom_during_prepare_model_for_kbit_training",
+      "evidence": "outputs/behavioral_preference_pilot_v1/training_dpo_512_smoke_r8_qv_sequential.json",
+      "peak_allocated_mib": 6979.2
+    },
+    "r8_qv_exact_sequential_no_global_fp32_cast": {
+      "status": "oom_during_first_policy_gradient_forward",
+      "evidence": "outputs/behavioral_preference_pilot_v1/training_dpo_512_smoke_r8_qv_sequential_no_fp32_cast.json",
+      "peak_allocated_mib": 7399.9
+    },
+    "decision": "Do not launch the five formal trainings on this GPU. Do not reduce the frozen 512-token protocol to manufacture a pass."
+  }
+}

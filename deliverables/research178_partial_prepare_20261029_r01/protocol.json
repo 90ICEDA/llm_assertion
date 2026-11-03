@@ -1,0 +1,26 @@
+{
+  "stage": "local_development_qualification_not_model_pilot",
+  "models": 0,
+  "network": 0,
+  "population": [
+    "pipeline_offbyone",
+    "frame_len_consecutive"
+  ],
+  "source_population": "research177 fixed original history population; no new outcome-based case substitution",
+  "configs": [
+    0,
+    1
+  ],
+  "stimulus": "unchanged research177 development stimuli",
+  "native_compile_budget": 4,
+  "native_execution_budget": 4,
+  "retries": 0,
+  "ordinary": "Same complete native execution, legal-source validation, all reference-correct samples guarded against false positives, completion-valid checks, and all separated-completion target transactions detected with actual antecedent samples. Unknown rejects.",
+  "historical": "Ordinary rule plus preservation of the partial_adjacent baseline detections on adjacent-completion target transactions. Same executable and legal guards; no input-value/sample-ID whitelist.",
+  "roles": "Adjacent means previous CLOCK also accepted TLAST; separated includes idle, stalled or multi-beat separation. Partition defined from accepted input events, not observed output or candidate outcome. All frame-length properties and valid_check editable; passive counter has no assert/veto.",
+  "qualification": "Partial baseline has old detections and other wholly undetected transactions; replacement passes O and fails H for lost old detections; union passes both, with zero reference-correct false alarms and no critical unknown. Handwritten controls establish distinguishability only.",
+  "pipeline_scope": "Audit all existing development diagnostic hold properties; no historical violation detection means ineligible. Frame-boundary error and later drain failure of the SAME loss trace are not independent current/historical targets.",
+  "isolation": "Only research177 original source/development evidence. research174/175 and all independent results excluded.",
+  "stopping": "Fixed four native jobs; tool failure stops execution, no replacement run. No model pilot/request/budget authorization generated.",
+  "limitations": "Finite simulation, one frame-length root mechanism split by temporal context; not two bugs or contract-search new discoveries. H/R equivalent. Conditional real model recovery remains 0/0."
+}

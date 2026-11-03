@@ -1,0 +1,390 @@
+[
+  {
+    "case": "spill",
+    "candidate_id": "slot_07",
+    "obligation": "collision_empty",
+    "query_id": "spill/3113/contract/00",
+    "run": "deliverables/research_search_20261014_r01/runs/search/spill/3113/contract/00/spill/buggy",
+    "cycle": 5,
+    "original_sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (flush_i) |=> ((data_o == flush_i)));",
+    "candidate_sha256": "fe2316837d63ab952f08aea44e312acc806484070cdd8a7d63a286a30606abdb",
+    "buggy_trace": [
+      {
+        "cycle": 1,
+        "rst_ni": 0,
+        "flush_i": 0,
+        "push_i": 0,
+        "data_i": 0,
+        "valid_o": 0,
+        "data_o": 0
+      },
+      {
+        "cycle": 2,
+        "rst_ni": 1,
+        "flush_i": 0,
+        "push_i": 0,
+        "data_i": 0,
+        "valid_o": 0,
+        "data_o": 0
+      },
+      {
+        "cycle": 3,
+        "rst_ni": 1,
+        "flush_i": 0,
+        "push_i": 1,
+        "data_i": 0,
+        "valid_o": 0,
+        "data_o": 0
+      },
+      {
+        "cycle": 4,
+        "rst_ni": 1,
+        "flush_i": 1,
+        "push_i": 1,
+        "data_i": 0,
+        "valid_o": 1,
+        "data_o": 0
+      },
+      {
+        "cycle": 5,
+        "rst_ni": 1,
+        "flush_i": 0,
+        "push_i": 0,
+        "data_i": 0,
+        "valid_o": 1,
+        "data_o": 0
+      }
+    ],
+    "fixed_trace": [
+      {
+        "cycle": 1,
+        "rst_ni": 0,
+        "flush_i": 0,
+        "push_i": 0,
+        "data_i": 0,
+        "valid_o": 0,
+        "data_o": 0
+      },
+      {
+        "cycle": 2,
+        "rst_ni": 1,
+        "flush_i": 0,
+        "push_i": 0,
+        "data_i": 0,
+        "valid_o": 0,
+        "data_o": 0
+      },
+      {
+        "cycle": 3,
+        "rst_ni": 1,
+        "flush_i": 0,
+        "push_i": 1,
+        "data_i": 0,
+        "valid_o": 0,
+        "data_o": 0
+      },
+      {
+        "cycle": 4,
+        "rst_ni": 1,
+        "flush_i": 1,
+        "push_i": 1,
+        "data_i": 0,
+        "valid_o": 1,
+        "data_o": 0
+      },
+      {
+        "cycle": 5,
+        "rst_ni": 1,
+        "flush_i": 0,
+        "push_i": 0,
+        "data_i": 0,
+        "valid_o": 0,
+        "data_o": 0
+      }
+    ],
+    "checker_events": [
+      {
+        "cycle": 2,
+        "trigger": 0,
+        "fail": 0
+      },
+      {
+        "cycle": 3,
+        "trigger": 0,
+        "fail": 0
+      },
+      {
+        "cycle": 4,
+        "trigger": 1,
+        "fail": 0
+      },
+      {
+        "cycle": 5,
+        "trigger": 0,
+        "fail": 0
+      }
+    ],
+    "independent_reference": [
+      {
+        "cycle": 2,
+        "checks": [],
+        "legal_prefix": true,
+        "first_violation": false,
+        "classification": "scoped_legal_sample"
+      },
+      {
+        "cycle": 3,
+        "checks": [],
+        "legal_prefix": true,
+        "first_violation": false,
+        "classification": "scoped_legal_sample"
+      },
+      {
+        "cycle": 4,
+        "checks": [],
+        "legal_prefix": true,
+        "first_violation": false,
+        "classification": "scoped_legal_sample"
+      },
+      {
+        "cycle": 5,
+        "checks": [
+          {
+            "obligation": "collision_empty",
+            "expected": 0,
+            "actual": 1,
+            "trigger_cycle": 4,
+            "due_cycle": 5,
+            "transaction_id": "spill:e2:t4",
+            "branch": "flush_push",
+            "conditional": false,
+            "passed": false
+          }
+        ],
+        "legal_prefix": false,
+        "first_violation": true,
+        "classification": "target_violation"
+      }
+    ],
+    "repair_witnesses": [
+      {
+        "obligation": "collision_empty",
+        "cycle": 5,
+        "transaction_id": "spill:e2:t4",
+        "trigger_cycle": 4,
+        "buggy": {
+          "obligation": "collision_empty",
+          "expected": 0,
+          "actual": 1,
+          "trigger_cycle": 4,
+          "due_cycle": 5,
+          "transaction_id": "spill:e2:t4",
+          "branch": "flush_push",
+          "conditional": false,
+          "passed": false
+        },
+        "fixed": {
+          "obligation": "collision_empty",
+          "expected": 0,
+          "actual": 0,
+          "trigger_cycle": 4,
+          "due_cycle": 5,
+          "transaction_id": "spill:e2:t4",
+          "branch": "flush_push",
+          "conditional": false,
+          "passed": true
+        }
+      }
+    ],
+    "spec_status": "scoped",
+    "modified_sva": null,
+    "reason": "Search-only arm; no model call or candidate edit was performed"
+  },
+  {
+    "case": "stat",
+    "candidate_id": "slot_05",
+    "obligation": "valid_latency",
+    "query_id": "stat/3113/contract/00",
+    "run": "deliverables/research_search_20261014_r01/runs/search/stat/3113/contract/00/stat/buggy",
+    "cycle": 4,
+    "original_sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (frame_done_i) |=> (stat_valid_o));",
+    "candidate_sha256": "de82f6002b47b285ec0828755273d3029c6cf0b9c9e4a382265fdacaab76c79c",
+    "buggy_trace": [
+      {
+        "cycle": 1,
+        "rst_ni": 0,
+        "frame_done_i": 0,
+        "frame_len_i": 0,
+        "stat_valid_o": 0,
+        "stat_len_o": 0
+      },
+      {
+        "cycle": 2,
+        "rst_ni": 1,
+        "frame_done_i": 0,
+        "frame_len_i": 0,
+        "stat_valid_o": 0,
+        "stat_len_o": 0
+      },
+      {
+        "cycle": 3,
+        "rst_ni": 1,
+        "frame_done_i": 1,
+        "frame_len_i": 0,
+        "stat_valid_o": 0,
+        "stat_len_o": 0
+      },
+      {
+        "cycle": 4,
+        "rst_ni": 1,
+        "frame_done_i": 0,
+        "frame_len_i": 0,
+        "stat_valid_o": 1,
+        "stat_len_o": 0
+      }
+    ],
+    "fixed_trace": [
+      {
+        "cycle": 1,
+        "rst_ni": 0,
+        "frame_done_i": 0,
+        "frame_len_i": 0,
+        "stat_valid_o": 0,
+        "stat_len_o": 0
+      },
+      {
+        "cycle": 2,
+        "rst_ni": 1,
+        "frame_done_i": 0,
+        "frame_len_i": 0,
+        "stat_valid_o": 0,
+        "stat_len_o": 0
+      },
+      {
+        "cycle": 3,
+        "rst_ni": 1,
+        "frame_done_i": 1,
+        "frame_len_i": 0,
+        "stat_valid_o": 0,
+        "stat_len_o": 0
+      },
+      {
+        "cycle": 4,
+        "rst_ni": 1,
+        "frame_done_i": 0,
+        "frame_len_i": 0,
+        "stat_valid_o": 0,
+        "stat_len_o": 0
+      }
+    ],
+    "checker_events": [
+      {
+        "cycle": 2,
+        "trigger": 0,
+        "fail": 0
+      },
+      {
+        "cycle": 3,
+        "trigger": 1,
+        "fail": 0
+      },
+      {
+        "cycle": 4,
+        "trigger": 0,
+        "fail": 0
+      }
+    ],
+    "independent_reference": [
+      {
+        "cycle": 2,
+        "checks": [
+          {
+            "obligation": "valid_latency",
+            "expected": 0,
+            "actual": 0,
+            "trigger_cycle": 2,
+            "due_cycle": 2,
+            "transaction_id": "stat:e2:t2",
+            "branch": "no_event_due",
+            "conditional": false,
+            "passed": true
+          }
+        ],
+        "legal_prefix": true,
+        "first_violation": false,
+        "classification": "scoped_legal_sample"
+      },
+      {
+        "cycle": 3,
+        "checks": [
+          {
+            "obligation": "valid_latency",
+            "expected": 0,
+            "actual": 0,
+            "trigger_cycle": 3,
+            "due_cycle": 3,
+            "transaction_id": "stat:e2:t3",
+            "branch": "no_event_due",
+            "conditional": false,
+            "passed": true
+          }
+        ],
+        "legal_prefix": true,
+        "first_violation": false,
+        "classification": "scoped_legal_sample"
+      },
+      {
+        "cycle": 4,
+        "checks": [
+          {
+            "obligation": "valid_latency",
+            "expected": 0,
+            "actual": 1,
+            "trigger_cycle": 4,
+            "due_cycle": 4,
+            "transaction_id": "stat:e2:t4",
+            "branch": "no_event_due",
+            "conditional": false,
+            "passed": false
+          }
+        ],
+        "legal_prefix": false,
+        "first_violation": true,
+        "classification": "target_violation"
+      }
+    ],
+    "repair_witnesses": [
+      {
+        "obligation": "valid_latency",
+        "cycle": 4,
+        "transaction_id": "stat:e2:t4",
+        "trigger_cycle": 4,
+        "buggy": {
+          "obligation": "valid_latency",
+          "expected": 0,
+          "actual": 1,
+          "trigger_cycle": 4,
+          "due_cycle": 4,
+          "transaction_id": "stat:e2:t4",
+          "branch": "no_event_due",
+          "conditional": false,
+          "passed": false
+        },
+        "fixed": {
+          "obligation": "valid_latency",
+          "expected": 0,
+          "actual": 0,
+          "trigger_cycle": 4,
+          "due_cycle": 4,
+          "transaction_id": "stat:e2:t4",
+          "branch": "no_event_due",
+          "conditional": false,
+          "passed": true
+        }
+      }
+    ],
+    "spec_status": "scoped",
+    "modified_sva": null,
+    "reason": "Search-only arm; no model call or candidate edit was performed"
+  }
+]

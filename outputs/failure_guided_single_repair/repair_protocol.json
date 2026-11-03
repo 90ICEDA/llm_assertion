@@ -1,0 +1,34 @@
+{
+  "repair_limit_per_candidate": 1,
+  "retry_policy": "no semantic repair retry; transport retries may occur inside HTTP client without producing another candidate",
+  "target_selection": "seen/static diagnoses only",
+  "feedback_allowlist": {
+    "compile_fail": "The assertion did not compile.",
+    "unsupported": "The assertion uses syntax unsupported by the evaluation parser.",
+    "vacuity": "The assertion was vacuous on the seen executions.",
+    "antecedent_not_triggered": "The antecedent did not trigger on the seen buggy execution.",
+    "too_strong": "The assertion failed on the seen correct execution.",
+    "too_weak": "The assertion did not fail on the seen buggy execution.",
+    "signal_missing": "The assertion references a signal absent from the allowed interface.",
+    "reset_misuse": "Reset handling is inconsistent with the allowed reset convention.",
+    "hardcoding": "The assertion relies on trace-specific literal hardcoding."
+  },
+  "forbidden_feedback": [
+    "golden assertion",
+    "expected property",
+    "mutation line",
+    "buggy RTL line",
+    "heldout outcome"
+  ],
+  "error_categories": [
+    "compile_fail",
+    "unsupported",
+    "vacuity",
+    "antecedent_not_triggered",
+    "too_strong",
+    "too_weak",
+    "signal_missing",
+    "reset_misuse",
+    "hardcoding"
+  ]
+}

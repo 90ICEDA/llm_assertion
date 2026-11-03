@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case500_cc_isochronous_handshake_early_drop",
+  "parent_bug_id": "case500_cc_isochronous_handshake_early_drop",
+  "source_project": "common_cells",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "id": "W1_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "property": "ack_i |-> (ack_i == ack_i)",
+      "antecedent": "ack_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Checks only the trigger level and ignores the delayed response.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W2_final_output_only",
+      "weakness_class": "final_output_only",
+      "property": "1'b1 |-> !$isunknown(q_o)",
+      "antecedent": "1'b1",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Knownness of the final output does not constrain response timing.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W3_delay_removed",
+      "weakness_class": "delay_removed",
+      "property": "start_i |-> (q_o == q_o)",
+      "antecedent": "start_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Removing the delay turns the response check into a tautology.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W4_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "property": "q_o == q_o",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Dropping the trigger loses the causal obligation.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W5_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "property": "state_o <= 8'hff",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "A range invariant cannot distinguish the temporal mutation.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    }
+  ]
+}

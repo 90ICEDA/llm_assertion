@@ -1,0 +1,721 @@
+{
+  "schema_version": 2,
+  "dataset_status": "final46_main_experiment_ready",
+  "case_count": 46,
+  "parent_bug_count": 46,
+  "cases": [
+    {
+      "name": "case451_prim_clock_timeout_threshold_off_by_one",
+      "parent_bug_id": "case451_prim_clock_timeout_threshold_off_by_one",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "opentitan",
+      "bug_family": "timeout_threshold_off_by_one",
+      "relevant_signals": [
+        "clk_i",
+        "clk_chk_i",
+        "rst_ni",
+        "rst_chk_ni",
+        "en_i",
+        "ack",
+        "cnt",
+        "timeout_o"
+      ]
+    },
+    {
+      "name": "case454_prim_count_simultaneous_command",
+      "parent_bug_id": "case454_prim_count_simultaneous_command",
+      "bug_class": "combination_protocol",
+      "source_project": "opentitan",
+      "bug_family": "simultaneous_increment_decrement_not_suppressed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "incr_en_i",
+        "decr_en_i",
+        "cnt_o",
+        "cnt_after_commit_o"
+      ]
+    },
+    {
+      "name": "case455_prim_crc32_set_enable_coupling",
+      "parent_bug_id": "case455_prim_crc32_set_enable_coupling",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "opentitan",
+      "bug_family": "crc_set_update_enable_coupled",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "set_crc_i",
+        "data_valid_i",
+        "crc_in_i",
+        "crc_out_o"
+      ]
+    },
+    {
+      "name": "case457_cc_delta_counter_load_enable_priority",
+      "parent_bug_id": "case457_cc_delta_counter_load_enable_priority",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "load_enable_priority",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "clr_i",
+        "en_i",
+        "load_i",
+        "down_i",
+        "delta_i",
+        "d_i",
+        "q_o"
+      ]
+    },
+    {
+      "name": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "parent_bug_id": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "sticky_status_clear_on_load",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "clr_i",
+        "en_i",
+        "load_i",
+        "q_o",
+        "overflow_o"
+      ]
+    },
+    {
+      "name": "case459_cc_trip_counter_trip_one_cycle_late",
+      "parent_bug_id": "case459_cc_trip_counter_trip_one_cycle_late",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "trip_pulse_and_clear_timing",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "clr_i",
+        "en_i",
+        "delta_i",
+        "bound_i",
+        "q_o",
+        "last_o",
+        "trip_o"
+      ]
+    },
+    {
+      "name": "case461_axis_adapter_segment_boundary_early",
+      "parent_bug_id": "case461_axis_adapter_segment_boundary_early",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "segment_boundary_early",
+      "relevant_signals": [
+        "clk",
+        "rst",
+        "sv",
+        "sr",
+        "mv",
+        "mr"
+      ]
+    },
+    {
+      "name": "case462_axis_broadcast_partial_ready_loss",
+      "parent_bug_id": "case462_axis_broadcast_partial_ready_loss",
+      "bug_class": "combination_protocol",
+      "source_project": "verilog_axis",
+      "bug_family": "partial_sink_acknowledgement",
+      "relevant_signals": [
+        "clk",
+        "rst",
+        "sv",
+        "sr",
+        "mv",
+        "mr"
+      ]
+    },
+    {
+      "name": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "parent_bug_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "simultaneous_push_pop_occupancy",
+      "relevant_signals": [
+        "clk",
+        "rst",
+        "sv",
+        "sr",
+        "mv",
+        "mr",
+        "count",
+        "md"
+      ]
+    },
+    {
+      "name": "case466_cc_ring_buffer_write_advance_collision",
+      "parent_bug_id": "case466_cc_ring_buffer_write_advance_collision",
+      "bug_class": "combination_protocol",
+      "source_project": "common_cells",
+      "bug_family": "independent_updates_wrongly_exclusive",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "wvalid_i",
+        "wready_o",
+        "advance_i",
+        "step_i",
+        "wptr_o",
+        "rptr_o"
+      ]
+    },
+    {
+      "name": "case468_cc_spill_register_drain_refill_duplicate",
+      "parent_bug_id": "case468_cc_spill_register_drain_refill_duplicate",
+      "bug_class": "combination_protocol",
+      "source_project": "common_cells",
+      "bug_family": "simultaneous_internal_drain_and_output_consume",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "valid_i",
+        "ready_o",
+        "ready_i",
+        "valid_o",
+        "data_o"
+      ]
+    },
+    {
+      "name": "case469_cc_stream_register_stall_overwrite",
+      "parent_bug_id": "case469_cc_stream_register_stall_overwrite",
+      "bug_class": "combination_protocol",
+      "source_project": "common_cells",
+      "bug_family": "backpressure_payload_stability",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "valid_i",
+        "ready_o",
+        "data_i",
+        "valid_o",
+        "ready_i",
+        "data_o"
+      ]
+    },
+    {
+      "name": "case471_prim_sync_reqack_ack_pulse_width",
+      "parent_bug_id": "case471_prim_sync_reqack_ack_pulse_width",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "opentitan",
+      "bug_family": "handshake_ack_pulse_width",
+      "relevant_signals": [
+        "clk_src_i",
+        "rst_src_ni",
+        "rst_dst_ni",
+        "src_req_i",
+        "dst_req_o",
+        "dst_ack_i",
+        "src_ack_o"
+      ]
+    },
+    {
+      "name": "case472_prim_pulse_sync_destination_single_cycle",
+      "parent_bug_id": "case472_prim_pulse_sync_destination_single_cycle",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "opentitan",
+      "bug_family": "cdc_destination_pulse_width",
+      "relevant_signals": [
+        "clk_src_i",
+        "rst_src_ni",
+        "src_pulse_i",
+        "clk_dst_i",
+        "rst_dst_ni",
+        "dst_pulse_o"
+      ]
+    },
+    {
+      "name": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "parent_bug_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "bug_class": "combination_protocol",
+      "source_project": "opentitan",
+      "bug_family": "w1c_simultaneous_hw_set_sw_clear",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "we",
+        "wd",
+        "de",
+        "d",
+        "q",
+        "ds",
+        "qs"
+      ]
+    },
+    {
+      "name": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "parent_bug_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "bug_class": "combination_protocol",
+      "source_project": "opentitan",
+      "bug_family": "simultaneous_error_overflow_aggregation",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "error_valid_i",
+        "error_overflow_i",
+        "error_payload_i",
+        "error_valid_o",
+        "error_overflow_o",
+        "error_payload_o"
+      ]
+    },
+    {
+      "name": "case475_prim_clock_gating_sync_enable_latency",
+      "parent_bug_id": "case475_prim_clock_gating_sync_enable_latency",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "opentitan",
+      "bug_family": "two_stage_enable_sync_bypass",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "test_en_i",
+        "async_en_i",
+        "en_o",
+        "clk_o"
+      ]
+    },
+    {
+      "name": "case476_sync_reset_release_one_cycle_early",
+      "parent_bug_id": "case476_sync_reset_release_one_cycle_early",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "reset_release_latency",
+      "relevant_signals": [
+        "rst",
+        "sync_out"
+      ]
+    },
+    {
+      "name": "case478_axis_srl_register_ready_recovery",
+      "parent_bug_id": "case478_axis_srl_register_ready_recovery",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "backpressure_ready_recovery",
+      "relevant_signals": [
+        "s_valid",
+        "s_ready",
+        "m_valid",
+        "m_ready",
+        "m_data"
+      ]
+    },
+    {
+      "name": "case479_ll_axis_bridge_ready_polarity",
+      "parent_bug_id": "case479_ll_axis_bridge_ready_polarity",
+      "bug_class": "combination_protocol",
+      "source_project": "verilog_axis",
+      "bug_family": "active_low_ready_polarity",
+      "relevant_signals": [
+        "m_ready",
+        "ll_dst_rdy_n",
+        "m_valid",
+        "m_data"
+      ]
+    },
+    {
+      "name": "case480_axis_cobs_decode_ff_zero_suppression",
+      "parent_bug_id": "case480_axis_cobs_decode_ff_zero_suppression",
+      "bug_class": "combination_protocol",
+      "source_project": "verilog_axis",
+      "bug_family": "cobs_max_run_zero_suppression",
+      "relevant_signals": [
+        "s_valid",
+        "s_ready",
+        "s_data",
+        "m_valid",
+        "m_ready",
+        "m_data"
+      ]
+    },
+    {
+      "name": "case482_cc_stream_demux_unselected_ready_accept",
+      "parent_bug_id": "case482_cc_stream_demux_unselected_ready_accept",
+      "bug_class": "combination_protocol",
+      "source_project": "common_cells",
+      "bug_family": "unselected_lane_backpressure_leak",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "valid_i",
+        "ready_o",
+        "data_i",
+        "sel_i",
+        "valid_o",
+        "ready_i",
+        "data_o"
+      ]
+    },
+    {
+      "name": "case484_cc_exp_backoff_clear_set_priority",
+      "parent_bug_id": "case484_cc_exp_backoff_clear_set_priority",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "simultaneous_clear_set_priority",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "clr_i",
+        "set_cnt_i",
+        "clr_cnt_i",
+        "is_zero_o",
+        "count_o"
+      ]
+    },
+    {
+      "name": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "parent_bug_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "bug_class": "combination_protocol",
+      "source_project": "opentitan",
+      "bug_family": "grant_ready_gating_removed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "req_i",
+        "data_i",
+        "ready_i",
+        "gnt_o",
+        "idx_o",
+        "valid_o",
+        "data_o"
+      ]
+    },
+    {
+      "name": "case487_prim_onehot_enc_disabled_output_leak",
+      "parent_bug_id": "case487_prim_onehot_enc_disabled_output_leak",
+      "bug_class": "combination_protocol",
+      "source_project": "opentitan",
+      "bug_family": "disabled_onehot_output_not_suppressed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "in_i",
+        "en_i",
+        "out_o"
+      ]
+    },
+    {
+      "name": "case488_prim_reg_we_check_disabled_write_missed",
+      "parent_bug_id": "case488_prim_reg_we_check_disabled_write_missed",
+      "bug_class": "combination_protocol",
+      "source_project": "opentitan",
+      "bug_family": "disabled_write_enable_error_suppressed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "oh_i",
+        "en_i",
+        "err_o"
+      ]
+    },
+    {
+      "name": "case489_prim_max_tree_invalid_source_selected",
+      "parent_bug_id": "case489_prim_max_tree_invalid_source_selected",
+      "bug_class": "combination_protocol",
+      "source_project": "opentitan",
+      "bug_family": "invalid_source_included_in_maximum",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "values_i",
+        "valid_i",
+        "max_value_o",
+        "max_idx_o",
+        "max_valid_o"
+      ]
+    },
+    {
+      "name": "case490_prim_gate_gen_valid_latency_short",
+      "parent_bug_id": "case490_prim_gate_gen_valid_latency_short",
+      "bug_class": "temporal",
+      "source_project": "opentitan",
+      "bug_family": "valid_pipeline_one_cycle_short",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "valid_i",
+        "data_i",
+        "valid_o",
+        "data_o"
+      ]
+    },
+    {
+      "name": "case491_axis_pipeline_register_valid_latency",
+      "parent_bug_id": "case491_axis_pipeline_register_valid_latency",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "three_stage_valid_bypassed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "s_valid_i",
+        "ready_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case492_axis_async_fifo_gray_visibility",
+      "parent_bug_id": "case492_axis_async_fifo_gray_visibility",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "gray_pointer_sync_stage_removed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "write_toggle_i",
+        "sample_enable_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case493_axis_stat_counter_frame_commit_delay",
+      "parent_bug_id": "case493_axis_stat_counter_frame_commit_delay",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "frame_count_committed_same_cycle",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "frame_end_i",
+        "ready_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case494_axis_ram_switch_response_pipeline",
+      "parent_bug_id": "case494_axis_ram_switch_response_pipeline",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "response_pipeline_stage_skipped",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "grant_i",
+        "output_ready_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case495_axis_fifo_adapter_commit_pulse_width",
+      "parent_bug_id": "case495_axis_fifo_adapter_commit_pulse_width",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "adapter_commit_pulse_stretched",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "delimiter_i",
+        "output_ready_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case497_cc_cdc_4phase_ack_sync_depth",
+      "parent_bug_id": "case497_cc_cdc_4phase_ack_sync_depth",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "ack_synchronizer_stage_removed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "async_ack_i",
+        "sample_enable_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case498_cc_serial_deglitch_qualification_short",
+      "parent_bug_id": "case498_cc_serial_deglitch_qualification_short",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "qualification_count_reduced",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "noisy_i",
+        "sample_enable_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case499_cc_shift_reg_gated_stage_bypass",
+      "parent_bug_id": "case499_cc_shift_reg_gated_stage_bypass",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "enabled_shift_stage_bypassed",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "data_i",
+        "enable_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case500_cc_isochronous_handshake_early_drop",
+      "parent_bug_id": "case500_cc_isochronous_handshake_early_drop",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "request_drops_on_unsynchronized_ack",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "ack_i",
+        "start_i",
+        "q_o",
+        "state_o"
+      ]
+    },
+    {
+      "name": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "parent_bug_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "backpressure_valid_persistence",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "s_axis_tvalid",
+        "s_axis_tready",
+        "m_axis_tvalid",
+        "m_axis_tready",
+        "m_axis_tdata"
+      ]
+    },
+    {
+      "name": "case503_cc_cdc_2phase_ack_returns_early",
+      "parent_bug_id": "case503_cc_cdc_2phase_ack_returns_early",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "cdc_ack_synchronizer_depth",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "req_i",
+        "ack_o"
+      ]
+    },
+    {
+      "name": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "parent_bug_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "common_cells",
+      "bug_family": "gray_pointer_synchronizer_depth",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "wr_gray_i",
+        "rd_gray_o"
+      ]
+    },
+    {
+      "name": "case505_axis_stat_counter_frame_pulse_early",
+      "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+      "bug_class": "temporal_cross_cycle",
+      "source_project": "verilog_axis",
+      "bug_family": "frame_status_pipeline_latency",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "frame_done_i",
+        "frame_len_i",
+        "stat_valid_o",
+        "stat_len_o"
+      ]
+    },
+    {
+      "name": "case506_axis_crosspoint_simultaneous_source_priority",
+      "parent_bug_id": "case506_axis_crosspoint_simultaneous_source_priority",
+      "bug_class": "combination_protocol",
+      "source_project": "verilog_axis",
+      "bug_family": "simultaneous_contender_priority",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "s0_valid",
+        "s1_valid",
+        "s0_data",
+        "s1_data",
+        "m_ready",
+        "m_valid",
+        "m_data"
+      ]
+    },
+    {
+      "name": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "parent_bug_id": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "bug_class": "combination_protocol",
+      "source_project": "common_cells",
+      "bug_family": "locked_grant_persistence",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "req_i",
+        "ready_i",
+        "gnt_o"
+      ]
+    },
+    {
+      "name": "case508_cc_stream_fork_partial_ready_accept",
+      "parent_bug_id": "case508_cc_stream_fork_partial_ready_accept",
+      "bug_class": "combination_protocol",
+      "source_project": "common_cells",
+      "bug_family": "fork_atomic_ready_conjunction",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "valid_i",
+        "ready_i",
+        "valid_o",
+        "ready_o"
+      ]
+    },
+    {
+      "name": "case509_axis_switch_overlap_route_priority",
+      "parent_bug_id": "case509_axis_switch_overlap_route_priority",
+      "bug_class": "combination_protocol",
+      "source_project": "verilog_axis",
+      "bug_family": "overlapping_route_priority",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "s_valid",
+        "route_match",
+        "s_data",
+        "m_ready",
+        "m_valid",
+        "m_data"
+      ]
+    },
+    {
+      "name": "case510_cc_spill_register_flush_push_priority",
+      "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+      "bug_class": "combination_protocol",
+      "source_project": "common_cells",
+      "bug_family": "flush_over_push_priority",
+      "relevant_signals": [
+        "clk_i",
+        "rst_ni",
+        "flush_i",
+        "push_i",
+        "data_i",
+        "valid_o",
+        "data_o"
+      ]
+    }
+  ]
+}

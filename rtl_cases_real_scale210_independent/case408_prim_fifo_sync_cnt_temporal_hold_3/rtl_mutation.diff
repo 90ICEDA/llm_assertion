@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -121,7 +121,7 @@
+       end else if (clr_i) begin
+         wptr_wrap_cnt_q <= {WrapPtrW{1'b0}};
+       end else if (wptr_wrap_set) begin
+-        wptr_wrap_cnt_q <= wptr_wrap_set_cnt;
++        wptr_wrap_cnt_q <= wptr_wrap_cnt_q; // ASSERTIONFORGE_MUTATION: state update suppressed
+       end else if (incr_wptr_i) begin
+         wptr_wrap_cnt_q <= wptr_wrap_cnt_q + {{(WrapPtrW-1){1'b0}}, 1'b1};
+       end

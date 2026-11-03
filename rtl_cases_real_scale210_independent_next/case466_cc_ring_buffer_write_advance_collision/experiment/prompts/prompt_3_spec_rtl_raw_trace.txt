@@ -1,0 +1,43 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, wvalid_i, wready_o, advance_i, step_i, wptr_o, rptr_o
+
+Specification:
+
+Accepted write and independent advance in the same cycle must update both pointers.
+
+RTL:
+
+module cc_ring_buffer #(parameter Depth=4,parameter Width=8)(input clk_i,rst_ni,clr_i,input wvalid_i,output wready_o,input [Width-1:0] wdata_i,input advance_i,input [2:0] step_i,output [2:0] wptr_o,rptr_o,output empty_o,full_o);reg [2:0] wp,rp;reg [Width-1:0] mem[0:Depth-1];wire wa=wvalid_i&&wready_o;assign empty_o=wp==rp;assign full_o=(wp[1:0]==rp[1:0])&&(wp[2]!=rp[2]);assign wready_o=!full_o;assign wptr_o=wp;assign rptr_o=rp;always @(posedge clk_i or negedge rst_ni)if(!rst_ni)begin wp<=0;rp<=0;end else if(clr_i)begin wp<=0;rp<=0;end else begin if(wa)begin mem[wp[1:0]]<=wdata_i;wp<=wp+1;end if(advance_i)rp<=rp+step_i;end endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, advance_i=0, clk_i=1, clr_i=0, empty_o=1, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00000000, wptr_o[2:0]=000, wready_o=1, wvalid_i=0
+cycle 1: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=1, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00000000, wptr_o[2:0]=000, wready_o=1, wvalid_i=0
+cycle 2: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00010001, wptr_o[2:0]=001, wready_o=1, wvalid_i=1
+cycle 3: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00010001, wptr_o[2:0]=001, wready_o=1, wvalid_i=0
+cycle 4: rst_ni=1, advance_i=1, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=001, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=1
+cycle 5: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=001, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 6: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=001, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 7: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=001, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 8: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=001, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 9: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=001, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, advance_i=0, clk_i=1, clr_i=0, empty_o=1, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00000000, wptr_o[2:0]=000, wready_o=1, wvalid_i=0
+cycle 1: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=1, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00000000, wptr_o[2:0]=000, wready_o=1, wvalid_i=0
+cycle 2: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00010001, wptr_o[2:0]=001, wready_o=1, wvalid_i=1
+cycle 3: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00010001, wptr_o[2:0]=001, wready_o=1, wvalid_i=0
+cycle 4: rst_ni=1, advance_i=1, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=1
+cycle 5: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 6: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 7: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 8: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0
+cycle 9: rst_ni=1, advance_i=0, clk_i=1, clr_i=0, empty_o=0, full_o=0, rptr_o[2:0]=000, step_i[2:0]=001, wdata_i[7:0]=00100010, wptr_o[2:0]=010, wready_o=1, wvalid_i=0

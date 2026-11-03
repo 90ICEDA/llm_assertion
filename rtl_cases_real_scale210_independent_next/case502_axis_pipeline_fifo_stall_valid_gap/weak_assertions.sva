@@ -1,0 +1,10 @@
+// single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) ((m_axis_tvalid && !m_axis_tready) |-> 1'b1));
+// final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) (1'b1 |-> !$isunknown(q_o)));
+// delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (m_axis_tvalid |-> (q_o==q_o)));
+// antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (q_o==q_o));
+// simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) (q_o>=0));

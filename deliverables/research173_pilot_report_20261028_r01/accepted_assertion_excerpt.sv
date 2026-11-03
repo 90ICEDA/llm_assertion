@@ -1,0 +1,6 @@
+// Exact lines from actually executed tb.sv. Requires that sealed host/parameter context.
+nonfinal_full_keep: assert property (@(posedge clk) disable iff(rst) (m_axis_tvalid && m_axis_tready && !m_axis_tlast) |-> (m_axis_tkeep == {M_KEEP_WIDTH{1'b1}})) else $display("ASSERT_FAIL nonfinal_full_keep cycle=%0d",$sampled(cycle));
+final_nonempty_keep: assert property (@(posedge clk) disable iff(rst) (m_axis_tvalid && m_axis_tready && m_axis_tlast) |-> (m_axis_tkeep != {M_KEEP_WIDTH{1'b0}})) else $display("ASSERT_FAIL final_nonempty_keep cycle=%0d",$sampled(cycle));
+hold_valid: assert property (@(posedge clk) disable iff(rst) (m_axis_tvalid && !m_axis_tready && !rst) |=> (m_axis_tvalid)) else $display("ASSERT_FAIL hold_valid cycle=%0d",$sampled(cycle));
+hold_payload: assert property (@(posedge clk) disable iff(rst) (m_axis_tvalid && !m_axis_tready && !rst) |=> ($stable({m_axis_tdata, m_axis_tkeep, m_axis_tlast}))) else $display("ASSERT_FAIL hold_payload cycle=%0d",$sampled(cycle));
+hold_keep_through_stall: assert property (@(posedge clk) disable iff(rst) (m_axis_tvalid && !m_axis_tready && !rst) |=> ($stable(m_axis_tkeep))) else $display("ASSERT_FAIL hold_keep_through_stall cycle=%0d",$sampled(cycle));

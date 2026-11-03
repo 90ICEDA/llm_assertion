@@ -1,0 +1,2 @@
+case_name,bug_type,compile_ok,pass_on_correct,fail_on_buggy,non_vacuous,antecedent_triggered,correct_antecedent_hits,buggy_antecedent_hits,correct_fail_count,buggy_fail_count,non_trivial,non_trivial_reason,golden_ok,status,failure_reason,compile_error,assertion_line
+case115_prim_edge_both_edges_collapsed,posedge output fires on both edges,True,True,True,True,True,2,2,0,1,True,,True,pass,,,assert property (@(posedge clk) disable iff (!rst_n) ($past(d_i) && !d_i) |-> !q_posedge_pulse_o);

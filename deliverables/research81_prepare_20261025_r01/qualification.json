@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "controls": [
+    {
+      "name": "archived_positive",
+      "accepted": true,
+      "expected": true,
+      "candidate_source": "/mnt/d/AssertionForge-main1/deliverables/research41_real_20261022_r01/s4103/core/v0/model_call/candidate.json",
+      "source_sha256": "155cccc0f802d9559d436c4ae898571c94b32aa8c47edcf7e0f72f31ddd88086",
+      "windows": {
+        "rows": 3482,
+        "unknown": 0,
+        "triggers": 968,
+        "false_positives": 0,
+        "detections": 12,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 139
+      },
+      "public": {
+        "rows": 13838,
+        "unknown": 0,
+        "triggers": 5298,
+        "false_positives": 0,
+        "detections": 3,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 151
+      },
+      "history": {
+        "rows": 69124,
+        "unknown": 0,
+        "triggers": 16467,
+        "false_positives": 0,
+        "detections": 214,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 1177
+      }
+    },
+    {
+      "name": "archived_queue_head_negative",
+      "accepted": false,
+      "expected": false,
+      "candidate_source": "/mnt/d/AssertionForge-main1/deliverables/research36_real_20261022_r01/core/v1/model_call/candidate.json",
+      "source_sha256": "6814b4b0906eaed945b24ba1cd258bb400a6ab6e7ad7a94f5fbf06b7834765ce",
+      "windows": {
+        "rows": 3482,
+        "unknown": 3,
+        "triggers": 946,
+        "false_positives": 18,
+        "detections": 7,
+        "misses": 2,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 139
+      },
+      "public": null,
+      "history": null
+    }
+  ],
+  "checks": [
+    "/mnt/d/AssertionForge-main1/deliverables/research81_prepare_20261025_r01/native_controls/archived_positive/windows:raw records and independent counts recomputed",
+    "/mnt/d/AssertionForge-main1/deliverables/research81_prepare_20261025_r01/native_controls/archived_positive/public:raw records and independent counts recomputed",
+    "/mnt/d/AssertionForge-main1/deliverables/research81_prepare_20261025_r01/native_controls/archived_positive/history:raw records and independent counts recomputed",
+    "/mnt/d/AssertionForge-main1/deliverables/research81_prepare_20261025_r01/native_controls/archived_queue_head_negative/windows:raw records and independent counts recomputed"
+  ],
+  "raw_native_records": 258,
+  "new_model_calls": 0,
+  "new_model_acceptances": 0,
+  "scope": "Fresh native replays of archived controls only; positive never supplied to either model arm. Not recovery success."
+}

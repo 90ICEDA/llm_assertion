@@ -1,0 +1,50 @@
+{
+  "candidate_source": "/mnt/d/AssertionForge-main1/deliverables/research19_closed_loop_20261016_r03/shared_initial.json",
+  "candidate_sha256": "12b2fb5171272b0d742079b791f1cfead3cbb55dc9df9eb18b94b671ce506882",
+  "parameters": [
+    [
+      2,
+      0
+    ],
+    [
+      5,
+      1
+    ]
+  ],
+  "families": [
+    [
+      "tail_loss",
+      "drop",
+      2026101801,
+      "drain_no_loss"
+    ],
+    [
+      "reset_pending",
+      "reset_residue",
+      2026101802,
+      "reset_cancellation"
+    ],
+    [
+      "backpressure",
+      "duplicate_payload",
+      2026101803,
+      "stall_stability"
+    ],
+    [
+      "overlap",
+      "duplicate_payload",
+      2026101804,
+      "order_payload"
+    ]
+  ],
+  "scope": "Fresh fixed-seed development evidence only; no model calls or independent results read.",
+  "failure_model": "Actual vendored axis_fifo plus existing artificial output boundary mutations; not a historical upstream defect.",
+  "rules": {
+    "legality": "Source driver holds valid/data until actual ready handshake; reset cancels presentation.",
+    "responses": "Output transaction acceptance requires mvalid && mready.",
+    "reset": "Synchronous reset cancels outstanding accepted inputs; unique accepted payload identity used for residue attribution.",
+    "stall": "Previous mvalid && !mready requires current valid and same payload, unless reset.",
+    "loss": "Finite fair drain >=18 ready/input-idle samples, RAM depth <=8 and pipeline <=2.",
+    "target_credit": "First independent violation per reset epoch; later events remain attribution unknown."
+  }
+}

@@ -1,0 +1,44 @@
+# case120_prim_filter_ctr_bypass_stale
+
+- `bug_class`: temporal_cross_cycle
+- `bug_family`: filter_bypass_control
+- `bug_type`: counter-based filter bypass returns stale state
+
+## Spec
+
+When enable_i is low, filter_o shall bypass to the current input rather than stay at the previously stored filtered value.
+
+## Hardness Rationale
+
+Like the shift-register filter bypass case, this bug hides in control gating rather than headline functionality.
+
+## Stimulus Notes
+
+Prime the counter-based stored state under enable_i, then disable from a `negedge` and flip `filter_i` so the first disabled sampled cycle must reveal whether bypass is live or stale. Held-out should reverse the stored polarity.
+
+## Loose Negative Controls
+
+- `enabled_eventual_accept`: It only constrains the enabled filtering path.
+  Assertion: `assert property (@(posedge clk_i) disable iff (!rst_ni) enable_i && filter_i |-> (filter_o || $past(filter_o)));`
+- `threshold_nonzero`: It is effectively unconstrained and misses the bypass bug entirely.
+  Assertion: `assert property (@(posedge clk_i) disable iff (!rst_ni) enable_i |-> (thresh_i != '0 || thresh_i == '0));`
+
+## Next Step
+
+Create `tb.v`, `tb_holdout.v`, regenerate waveforms, then run golden self-check and hardness gates before admitting this case.
+
+## Overfit Decoy
+
+- Source: `self held-out trace with a decoy idle perturbation`
+- Lure: Decoy trace preserves the same temporal trigger for counter-based filter bypass returns stale state through self held-out trace with a decoy idle perturbation, but shifts surrounding prelude timing so the assertion must generalize beyond the seen trace.
+- Files: `tb_decoy.v`, `waveform_good_decoy.csv`, `waveform_bad_decoy.csv`
+
+## Temporal Bootstrap Variant
+
+- Variant case: `case320_seen_holdout_from_case120_prim_filter_ctr_bypass_stale`
+- Seed case: `case120_prim_filter_ctr_bypass_stale`
+- Track plan: `seen_from_holdout`
+- Primary trace source: `holdout`
+- Held-out trace source: `primary`
+- Decoy trace source: `decoy`
+- Validation basis: inherited from the seed case's track-level formal golden report and hardness/divergence gates.

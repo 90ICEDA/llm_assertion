@@ -1,0 +1,22 @@
+// Weak assertion candidates for case419_cc_clk_int_div_temporal_hold_1
+// STATUS: PENDING FORMAL VALIDATION; this file makes no admission claim.
+
+// weak_01_single_cycle_implication [single_cycle_implication]
+// nonempty_antecedent=true
+assert property (@(posedge clk_i) disable iff (!rst_ni) en_i |-> !$isunknown(cycl_count_o));
+
+// weak_02_final_output_only [final_output_only]
+// nonempty_antecedent=false
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(cycl_count_o));
+
+// weak_03_delay_removed [delay_removed]
+// nonempty_antecedent=true
+assert property (@(posedge clk_i) disable iff (!rst_ni) en_i |-> cycl_count_o);
+
+// weak_04_antecedent_removed [antecedent_removed]
+// nonempty_antecedent=false
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(cycl_count_o));
+
+// weak_05_simple_invariant [simple_invariant]
+// nonempty_antecedent=false
+assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(en_i) && !$isunknown(cycl_count_o));

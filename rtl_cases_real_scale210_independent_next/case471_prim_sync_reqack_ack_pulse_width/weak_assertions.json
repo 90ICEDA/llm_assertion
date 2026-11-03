@@ -1,0 +1,15 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case471_prim_sync_reqack_ack_pulse_width",
+  "parent_bug_id": "case471_prim_sync_reqack_ack_pulse_width",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {"id":"W1_single_cycle_implication","weakness_class":"single_cycle_implication","property":"src_req_i |-> 1'b1","antecedent":"src_req_i","antecedent_nonempty":true,"expected_weakness":"Checks only that the request cycle is legal, not ACK width.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W2_final_output_only","weakness_class":"final_output_only","property":"1'b1 |-> !$isunknown(q_o)","antecedent":"1'b1","antecedent_nonempty":true,"expected_weakness":"Knownness cannot establish a one-cycle pulse.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W3_delay_removed","weakness_class":"delay_removed","property":"dst_ack_i |-> q_o==q_o","antecedent":"dst_ack_i","antecedent_nonempty":true,"expected_weakness":"Drops the next-cycle deassertion obligation.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W4_antecedent_removed","weakness_class":"antecedent_removed","property":"q_o==q_o","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"Drops the ACK trigger entirely.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W5_simple_invariant","weakness_class":"simple_invariant","property":"q_o>=0","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"A range invariant cannot check pulse width.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false}
+  ]
+}

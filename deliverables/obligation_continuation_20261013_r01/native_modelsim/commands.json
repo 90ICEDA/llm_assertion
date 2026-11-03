@@ -1,0 +1,31 @@
+[
+  {
+    "wall_seconds": 0.263558,
+    "tool": "vlib",
+    "args": [
+      "work"
+    ],
+    "exit_code": 0
+  },
+  {
+    "wall_seconds": 0.2560935,
+    "tool": "vlog",
+    "args": [
+      "-sv",
+      "qa.sv"
+    ],
+    "exit_code": 0
+  },
+  {
+    "wall_seconds": 8.2610682,
+    "tool": "vsim",
+    "args": [
+      "-c",
+      "-novopt",
+      "work.tb",
+      "-do",
+      "run -all; quit -f"
+    ],
+    "exit_code": 0
+  }
+]

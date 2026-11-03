@@ -1,0 +1,3183 @@
+[
+  {
+    "parent_bug_id": "case101_prim_onehot_multihot_suppressed",
+    "allowed_signals": [
+      "oh_i",
+      "addr_i",
+      "en_i",
+      "err_o"
+    ],
+    "initialization": "two reset samples; auxiliary history registers initialized zero",
+    "sample_count": 136,
+    "levels": [
+      {
+        "history_depth": 0,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 0
+      },
+      {
+        "history_depth": 1,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 8
+      },
+      {
+        "history_depth": 2,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 16
+      },
+      {
+        "history_depth": 3,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 24
+      },
+      {
+        "history_depth": "complete",
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": null
+      }
+    ],
+    "scope": "bounded observations include EVERY allowed signal for EVERY allowed history position; complete means full prefix since reset. No-conflict is not a global separability proof."
+  },
+  {
+    "parent_bug_id": "case122_prim_filter_ctr_streak_reset_ignored",
+    "allowed_signals": [
+      "enable_i",
+      "filter_i",
+      "thresh_i",
+      "filter_o"
+    ],
+    "initialization": "two reset samples; auxiliary history registers initialized zero",
+    "sample_count": 134,
+    "levels": [
+      {
+        "history_depth": 0,
+        "status": "conflict_found",
+        "conflict_groups": 3,
+        "witnesses": [
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 4,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/filter/buggy",
+              "cycle": 21,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 9,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 7,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/filter/buggy",
+              "cycle": 20,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/filter/buggy",
+              "cycle": 7,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ]
+              ]
+            }
+          }
+        ],
+        "extra_register_bits": 0
+      },
+      {
+        "history_depth": 1,
+        "status": "conflict_found",
+        "conflict_groups": 6,
+        "witnesses": [
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 5,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/filter/buggy",
+              "cycle": 28,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/correct",
+              "cycle": 9,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 7,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 9,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 8,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            }
+          }
+        ],
+        "extra_register_bits": 5
+      },
+      {
+        "history_depth": 2,
+        "status": "conflict_found",
+        "conflict_groups": 4,
+        "witnesses": [
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/correct",
+              "cycle": 10,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/filter/buggy",
+              "cycle": 8,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/filter/correct",
+              "cycle": 26,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/filter/buggy",
+              "cycle": 7,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/filter/buggy",
+              "cycle": 9,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/filter/buggy",
+              "cycle": 28,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  2,
+                  0
+                ]
+              ]
+            }
+          }
+        ],
+        "extra_register_bits": 10
+      },
+      {
+        "history_depth": 3,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 15
+      },
+      {
+        "history_depth": "complete",
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": null
+      }
+    ],
+    "scope": "bounded observations include EVERY allowed signal for EVERY allowed history position; complete means full prefix since reset. No-conflict is not a global separability proof."
+  },
+  {
+    "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+    "allowed_signals": [
+      "push_i",
+      "pop_i",
+      "data_i",
+      "full_o",
+      "empty_o",
+      "usage_o",
+      "data_o",
+      "clr_i",
+      "flush_i"
+    ],
+    "initialization": "two reset samples; auxiliary history registers initialized zero",
+    "sample_count": 140,
+    "levels": [
+      {
+        "history_depth": 0,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 0
+      },
+      {
+        "history_depth": 1,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 23
+      },
+      {
+        "history_depth": 2,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 46
+      },
+      {
+        "history_depth": 3,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 69
+      },
+      {
+        "history_depth": "complete",
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": null
+      }
+    ],
+    "scope": "bounded observations include EVERY allowed signal for EVERY allowed history position; complete means full prefix since reset. No-conflict is not a global separability proof."
+  },
+  {
+    "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+    "allowed_signals": [
+      "flush_i",
+      "push_i",
+      "data_i",
+      "valid_o",
+      "data_o"
+    ],
+    "initialization": "two reset samples; auxiliary history registers initialized zero",
+    "sample_count": 136,
+    "levels": [
+      {
+        "history_depth": 0,
+        "status": "conflict_found",
+        "conflict_groups": 5,
+        "witnesses": [
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/spill/buggy",
+              "cycle": 9,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  85,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  0,
+                  0,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  0,
+                  0,
+                  85,
+                  1,
+                  85
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/spill/buggy",
+              "cycle": 8,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  85,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  1,
+                  1,
+                  85,
+                  1,
+                  85
+                ],
+                [
+                  0,
+                  0,
+                  85,
+                  1,
+                  85
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/spill/buggy",
+              "cycle": 16,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  246,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  0,
+                  1,
+                  75,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  1,
+                  75
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  33,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  1,
+                  33
+                ],
+                [
+                  0,
+                  1,
+                  255,
+                  1,
+                  33
+                ],
+                [
+                  0,
+                  1,
+                  1,
+                  1,
+                  255
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/spill/buggy",
+              "cycle": 4,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  1,
+                  1,
+                  255
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/spill/buggy",
+              "cycle": 32,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  246,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  0,
+                  1,
+                  75,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  1,
+                  75
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  33,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  1,
+                  33
+                ],
+                [
+                  0,
+                  1,
+                  255,
+                  1,
+                  33
+                ],
+                [
+                  0,
+                  1,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  1,
+                  0,
+                  113,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  0,
+                  1,
+                  19,
+                  1,
+                  255
+                ],
+                [
+                  1,
+                  1,
+                  0,
+                  1,
+                  19
+                ],
+                [
+                  1,
+                  0,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  238,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  1,
+                  238
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  1,
+                  238
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  227,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  1,
+                  1,
+                  255
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/spill/buggy",
+              "cycle": 8,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  1,
+                  1,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  246,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  255,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  1,
+                  1,
+                  255
+                ]
+              ]
+            }
+          }
+        ],
+        "extra_register_bits": 0
+      },
+      {
+        "history_depth": 1,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 19
+      },
+      {
+        "history_depth": 2,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 38
+      },
+      {
+        "history_depth": 3,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 57
+      },
+      {
+        "history_depth": "complete",
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": null
+      }
+    ],
+    "scope": "bounded observations include EVERY allowed signal for EVERY allowed history position; complete means full prefix since reset. No-conflict is not a global separability proof."
+  },
+  {
+    "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+    "allowed_signals": [
+      "frame_done_i",
+      "frame_len_i",
+      "stat_valid_o",
+      "stat_len_o"
+    ],
+    "initialization": "two reset samples; auxiliary history registers initialized zero",
+    "sample_count": 130,
+    "levels": [
+      {
+        "history_depth": 0,
+        "status": "conflict_found",
+        "conflict_groups": 4,
+        "witnesses": [
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/stat/buggy",
+              "cycle": 4,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  7,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/stat/buggy",
+              "cycle": 3,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  7,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/stat/buggy",
+              "cycle": 7,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  7,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  0,
+                  7
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/stat/buggy",
+              "cycle": 6,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  7,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  0,
+                  7
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/stat/correct",
+              "cycle": 4,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  29,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  29,
+                  0,
+                  29
+                ],
+                [
+                  0,
+                  29,
+                  1,
+                  29
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/stat/buggy",
+              "cycle": 3,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  29,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  29,
+                  1,
+                  29
+                ]
+              ]
+            }
+          }
+        ],
+        "extra_register_bits": 0
+      },
+      {
+        "history_depth": 1,
+        "status": "conflict_found",
+        "conflict_groups": 2,
+        "witnesses": [
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/stat/correct",
+              "cycle": 7,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  7,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  7,
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  0,
+                  7
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/stat/buggy",
+              "cycle": 6,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  7,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  1,
+                  7
+                ],
+                [
+                  0,
+                  7,
+                  0,
+                  7
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/stat/correct",
+              "cycle": 5,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  29,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  29,
+                  0,
+                  29
+                ],
+                [
+                  0,
+                  29,
+                  1,
+                  29
+                ],
+                [
+                  0,
+                  29,
+                  0,
+                  29
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/stat/buggy",
+              "cycle": 4,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  29,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  29,
+                  1,
+                  29
+                ],
+                [
+                  0,
+                  29,
+                  0,
+                  29
+                ]
+              ]
+            }
+          }
+        ],
+        "extra_register_bits": 18
+      },
+      {
+        "history_depth": 2,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 36
+      },
+      {
+        "history_depth": 3,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 54
+      },
+      {
+        "history_depth": "complete",
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": null
+      }
+    ],
+    "scope": "bounded observations include EVERY allowed signal for EVERY allowed history position; complete means full prefix since reset. No-conflict is not a global separability proof."
+  },
+  {
+    "parent_bug_id": "case135_prim_intr_enable_mask_ignored",
+    "allowed_signals": [
+      "event_intr_i",
+      "reg2hw_intr_enable_q_i",
+      "reg2hw_intr_test_q_i",
+      "reg2hw_intr_test_qe_i",
+      "reg2hw_intr_state_q_i",
+      "intr_o",
+      "sw_clear",
+      "hw2reg_intr_state_de_o",
+      "hw2reg_intr_state_d_o"
+    ],
+    "initialization": "two reset samples; auxiliary history registers initialized zero",
+    "sample_count": 134,
+    "levels": [
+      {
+        "history_depth": 0,
+        "status": "conflict_found",
+        "conflict_groups": 3,
+        "witnesses": [
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/hold_24/intr/buggy",
+              "cycle": 5,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/intr/buggy",
+              "cycle": 4,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/intr/buggy",
+              "cycle": 9,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/e12/held_24/intr/buggy",
+              "cycle": 8,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ]
+              ]
+            }
+          },
+          {
+            "legal": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/intr/buggy",
+              "cycle": 24,
+              "label": false,
+              "history": [
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1,
+                  1,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  1,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            },
+            "violation": {
+              "run": "deliverables/repair_contract_20261009/runs/legacy_regression/intr/buggy",
+              "cycle": 10,
+              "label": true,
+              "history": [
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  0,
+                  0,
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          }
+        ],
+        "extra_register_bits": 0
+      },
+      {
+        "history_depth": 1,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 9
+      },
+      {
+        "history_depth": 2,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 18
+      },
+      {
+        "history_depth": 3,
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": 27
+      },
+      {
+        "history_depth": "complete",
+        "status": "not_found_in_checked_executions",
+        "conflict_groups": 0,
+        "witnesses": [],
+        "extra_register_bits": null
+      }
+    ],
+    "scope": "bounded observations include EVERY allowed signal for EVERY allowed history position; complete means full prefix since reset. No-conflict is not a global separability proof."
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "parent_initial": {
+    "status": "response_received",
+    "model": "qwen2.5-coder:7b-instruct",
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "prompt_tokens": 7226,
+    "completion_tokens": 121,
+    "model_calls": 1,
+    "retries": 0,
+    "service_total_ns": 325810257106,
+    "done_reason": "stop",
+    "wall_seconds": 325.8139003010001,
+    "partial_response_characters": 483,
+    "candidate_status": "parsed"
+  },
+  "parent_aborted": {
+    "status": "cancelled_context_overflow",
+    "model_calls": 1,
+    "retries": 0,
+    "reason": "Service reported n_ctx_slot=16384 and task.n_tokens=16383 for a 56571-byte request. Owned client PID19481 was interrupted before response; no usage receipt available.",
+    "prompt_tokens": null,
+    "completion_tokens": null,
+    "wall_seconds": 388.651028,
+    "note": "Wall time is an upper-bound artifact-recording interval; cancellation preceded this record. Retain service timestamps for exact elapsed interval.",
+    "completed_response": false,
+    "continuation_is_extra_budget": true
+  },
+  "extra_continuation": {
+    "status": "response_received",
+    "model": "qwen2.5-coder:7b-instruct",
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "prompt_tokens": 8257,
+    "completion_tokens": 307,
+    "model_calls": 1,
+    "retries": 0,
+    "service_total_ns": 119302838617,
+    "done_reason": "stop",
+    "wall_seconds": 119.3055504360002,
+    "partial_response_characters": 1193,
+    "candidate_status": "parsed"
+  },
+  "total_real_attempts": 3,
+  "tokens_total": null,
+  "token_total_reason": "aborted second attempt has no service usage receipt"
+}

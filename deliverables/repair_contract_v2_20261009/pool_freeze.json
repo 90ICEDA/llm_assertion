@@ -1,0 +1,290 @@
+{
+  "time": "2026-10-09T14:46:37Z",
+  "entries": [
+    {
+      "case": "onehot",
+      "slot": 0,
+      "candidate": {
+        "antecedent": "(popcount(oh_i) > 1)",
+        "consequent": "err_o == 1",
+        "delay": 0,
+        "id": "pool_onehot_0",
+        "provenance": "new_model_generated",
+        "syntax_status": "unsupported_syntax"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/onehot/0/result.json",
+      "reuse": true,
+      "prompt_tokens": 221,
+      "completion_tokens": 39,
+      "original_wall_seconds": 9.443296631000067
+    },
+    {
+      "case": "onehot",
+      "slot": 1,
+      "candidate": {
+        "antecedent": "(popcount(oh_i) > 1)",
+        "consequent": "err_o == 1",
+        "delay": 0,
+        "id": "pool_onehot_1",
+        "provenance": "new_model_generated",
+        "syntax_status": "unsupported_syntax"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/onehot/1/result.json",
+      "reuse": true,
+      "prompt_tokens": 221,
+      "completion_tokens": 39,
+      "original_wall_seconds": 6.033105671000158
+    },
+    {
+      "case": "onehot",
+      "slot": 2,
+      "candidate": {
+        "antecedent": "(popcount(oh_i) > 1)",
+        "consequent": "err_o == 1",
+        "delay": 0,
+        "id": "pool_onehot_2",
+        "provenance": "new_model_generated",
+        "syntax_status": "unsupported_syntax"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/onehot/2/result.json",
+      "reuse": true,
+      "prompt_tokens": 221,
+      "completion_tokens": 39,
+      "original_wall_seconds": 6.004359290999901
+    },
+    {
+      "case": "filter",
+      "slot": 0,
+      "candidate": {
+        "antecedent": "(enable_i && filter_o == 0) || (enable_i && filter_o == 1)",
+        "consequent": "(filter_i != p2_SIGNAL.filter_i) || (filter_o == p2_SIGNAL.filter_o)",
+        "delay": 1,
+        "id": "pool_filter_0",
+        "provenance": "new_model_generated",
+        "syntax_status": "unsupported_syntax"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/filter/0/result.json",
+      "reuse": true,
+      "prompt_tokens": 251,
+      "completion_tokens": 63,
+      "original_wall_seconds": 13.357527489999939
+    },
+    {
+      "case": "filter",
+      "slot": 1,
+      "candidate": {
+        "antecedent": "(enable_i && filter_o != filter_i) || (thresh_i == 2)",
+        "consequent": "filter_o",
+        "delay": 0,
+        "id": "pool_filter_1",
+        "provenance": "new_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/filter/1/result.json",
+      "reuse": true,
+      "prompt_tokens": 251,
+      "completion_tokens": 43,
+      "original_wall_seconds": 6.7593074530000194
+    },
+    {
+      "case": "filter",
+      "slot": 2,
+      "candidate": {
+        "antecedent": "(enable_i && filter_i == thresh_i) || (filter_o != p1_filter_o)",
+        "consequent": "filter_o",
+        "delay": 0,
+        "id": "pool_filter_2",
+        "provenance": "new_model_generated",
+        "syntax_status": "unsupported_syntax"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/filter/2/result.json",
+      "reuse": true,
+      "prompt_tokens": 251,
+      "completion_tokens": 45,
+      "original_wall_seconds": 7.164862243000016
+    },
+    {
+      "case": "fifo",
+      "slot": 0,
+      "candidate": {
+        "antecedent": "(push_i == 0 && pop_i == 0) || (push_i == 1 && pop_i == 0)",
+        "consequent": "empty_o == !push_i",
+        "delay": 0,
+        "id": "pool_fifo_0",
+        "provenance": "new_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/fifo/0/result.json",
+      "reuse": true,
+      "prompt_tokens": 252,
+      "completion_tokens": 56,
+      "original_wall_seconds": 12.410730932999968
+    },
+    {
+      "case": "fifo",
+      "slot": 1,
+      "candidate": {
+        "antecedent": "(push_i == 0 && pop_i == 0) || (push_i == 1 && pop_i == 0)",
+        "consequent": "data_o == data_i",
+        "delay": 0,
+        "id": "pool_fifo_1",
+        "provenance": "new_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/fifo/1/result.json",
+      "reuse": true,
+      "prompt_tokens": 252,
+      "completion_tokens": 55,
+      "original_wall_seconds": 8.27493739700003
+    },
+    {
+      "case": "fifo",
+      "slot": 2,
+      "candidate": {
+        "antecedent": "(push_i == 0) && (pop_i == 0)",
+        "consequent": "(empty_o == !full_o)",
+        "delay": 0,
+        "id": "pool_fifo_2",
+        "provenance": "new_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/fifo/2/result.json",
+      "reuse": true,
+      "prompt_tokens": 252,
+      "completion_tokens": 44,
+      "original_wall_seconds": 6.600847559000158
+    },
+    {
+      "case": "spill",
+      "slot": 0,
+      "candidate": {
+        "antecedent": "(flush_i == 1) || (push_i == 1)",
+        "consequent": "valid_o == 0",
+        "delay": 0,
+        "id": "pool_spill_0",
+        "provenance": "v2_fresh_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/model_calls/pool/spill/0/result.json",
+      "reuse": false
+    },
+    {
+      "case": "spill",
+      "slot": 1,
+      "candidate": {
+        "antecedent": "(flush_i && valid_o == 1)",
+        "consequent": "valid_o <= 0",
+        "delay": 1,
+        "id": "pool_spill_1",
+        "provenance": "v2_fresh_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/model_calls/pool/spill/1/result.json",
+      "reuse": false
+    },
+    {
+      "case": "spill",
+      "slot": 2,
+      "candidate": {
+        "antecedent": "(flush_i && valid_o)",
+        "consequent": "valid_o = 0",
+        "delay": 1,
+        "id": "pool_spill_2",
+        "provenance": "v2_fresh_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/model_calls/pool/spill/2/result.json",
+      "reuse": false
+    },
+    {
+      "case": "stat",
+      "slot": 0,
+      "candidate": {
+        "antecedent": "(frame_done_i && !stat_valid_o)",
+        "consequent": "(stat_valid_o && stat_len_o == frame_len_i)",
+        "delay": 2,
+        "id": "pool_stat_0",
+        "provenance": "new_model_generated",
+        "syntax_status": "unsupported_syntax"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/stat/0/result.json",
+      "reuse": true,
+      "prompt_tokens": 232,
+      "completion_tokens": 44,
+      "original_wall_seconds": 10.394345509999994
+    },
+    {
+      "case": "stat",
+      "slot": 1,
+      "candidate": {
+        "antecedent": "(frame_done_i && !stat_valid_o)",
+        "consequent": "(stat_valid_o && (stat_len_o == frame_len_i))",
+        "delay": 1,
+        "id": "pool_stat_1",
+        "provenance": "new_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/stat/1/result.json",
+      "reuse": true,
+      "prompt_tokens": 232,
+      "completion_tokens": 46,
+      "original_wall_seconds": 6.9181923520000055
+    },
+    {
+      "case": "stat",
+      "slot": 2,
+      "candidate": {
+        "antecedent": "(frame_done_i && !stat_valid_o)",
+        "consequent": "(stat_valid_o && stat_len_o == frame_len_i)",
+        "delay": 2,
+        "id": "pool_stat_2",
+        "provenance": "new_model_generated",
+        "syntax_status": "unsupported_syntax"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/pool_provenance/stat/2/result.json",
+      "reuse": true,
+      "prompt_tokens": 232,
+      "completion_tokens": 44,
+      "original_wall_seconds": 6.9077219819998845
+    },
+    {
+      "case": "intr",
+      "slot": 0,
+      "candidate": {
+        "antecedent": "(reg2hw_intr_enable_q_i == 0) && (reg2hw_intr_state_q_i != 0)",
+        "consequent": "intr_o == 0",
+        "delay": 1,
+        "id": "pool_intr_0",
+        "provenance": "v2_fresh_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/model_calls/pool/intr/0/result.json",
+      "reuse": false
+    },
+    {
+      "case": "intr",
+      "slot": 1,
+      "candidate": {
+        "antecedent": "(reg2hw_intr_enable_q_i == 0) && (reg2hw_intr_state_q_i != 0)",
+        "consequent": "intr_o == 0",
+        "delay": 1,
+        "id": "pool_intr_1",
+        "provenance": "v2_fresh_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/model_calls/pool/intr/1/result.json",
+      "reuse": false
+    },
+    {
+      "case": "intr",
+      "slot": 2,
+      "candidate": {
+        "antecedent": "(reg2hw_intr_enable_q_i == 0) && (reg2hw_intr_state_q_i != 0)",
+        "consequent": "intr_o == 0",
+        "delay": 1,
+        "id": "pool_intr_2",
+        "provenance": "v2_fresh_model_generated"
+      },
+      "call": "deliverables/repair_contract_v2_20261009/model_calls/pool/intr/2/result.json",
+      "reuse": false
+    }
+  ],
+  "hashes": {
+    "deliverables/repair_contract_v2_20261009/frozen/fifo/model_pool_v2.json": "b341adb344bbc48bcd544becf7808f21fb14883d3296f1a8ea0bf09246f2a382",
+    "deliverables/repair_contract_v2_20261009/frozen/filter/model_pool_v2.json": "5e2d883d7a056a621dbe954dcc24ee57cb0bd8835bf486d747376a003e1b4218",
+    "deliverables/repair_contract_v2_20261009/frozen/intr/model_pool_v2.json": "4b59e22fe9b7ebe84b841304a9bc83ca4a49401dcb64e5fba7a642528b05ac6e",
+    "deliverables/repair_contract_v2_20261009/frozen/onehot/model_pool_v2.json": "0ed4f489b5a1fc952e6be4a2afcc9a4f03c1e5e099375a6c50b22b32ec48d2e1",
+    "deliverables/repair_contract_v2_20261009/frozen/spill/model_pool_v2.json": "ae0c04af30265050317e768db08b8ff0e36a250d83187d21e2776cc358260302",
+    "deliverables/repair_contract_v2_20261009/frozen/stat/model_pool_v2.json": "844c83623852d7c27be13f96163192b80ebebf42ccf31c7d3f1b114d32eef01a"
+  }
+}

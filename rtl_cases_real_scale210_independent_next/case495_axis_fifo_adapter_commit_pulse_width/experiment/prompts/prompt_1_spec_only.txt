@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, delimiter_i, output_ready_i, q_o, state_o
+
+Specification:
+
+Accepting the final segment of an adapted word produces exactly one registered commit-valid cycle. The valid pulse must be low two samples after the boundary trigger.

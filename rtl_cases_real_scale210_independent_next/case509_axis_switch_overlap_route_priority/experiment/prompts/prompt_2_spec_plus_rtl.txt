@@ -1,0 +1,21 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, s_valid, route_match, s_data, m_ready, m_valid, m_data
+
+Specification:
+
+If both route decoders match an incoming beat, output zero has priority. The beat must be presented only on output zero with unchanged payload while the selected sink is ready.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_switch(input wire clk_i,input wire rst_ni,input wire s_valid,input wire [1:0] route_match,input wire [7:0] s_data,input wire [1:0] m_ready,output wire [1:0] m_valid,output wire [15:0] m_data);
+  wire [1:0] sel=route_match[0]?2'b01:(route_match[1]?2'b10:2'b00);
+  assign m_valid=sel&{2{s_valid}}; assign m_data={s_data,s_data};
+endmodule

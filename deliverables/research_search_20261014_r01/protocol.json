@@ -1,0 +1,48 @@
+{
+  "methods": [
+    "ordinary",
+    "disagreement",
+    "differential",
+    "contract"
+  ],
+  "seeds": [
+    3113,
+    3119,
+    3121
+  ],
+  "queries_per_case_seed_method": 12,
+  "cycles_per_variant": 24,
+  "parents": [
+    "onehot",
+    "filter",
+    "fifo",
+    "spill",
+    "stat",
+    "intr"
+  ],
+  "scope": "six synthetic parents; original frozen candidate pool; diagnostic procedural checker only",
+  "common_information": "same frozen RTL variants, port widths, public specifications, candidates and input constraints accessible; no holdout or historical evidence fed to policies",
+  "feedback_used": {
+    "ordinary": "none",
+    "disagreement": "candidate fail XOR count only",
+    "differential": "buggy/fixed output mismatch count only; NOT bug adjudication",
+    "contract": "independent scoped obligation checks, trigger coverage, verified gap identity"
+  },
+  "algorithms": {
+    "ordinary": "unchanged seeded public random generator",
+    "disagreement": "unchanged incumbent mutation, fresh draw every third query",
+    "differential": "same mutation and exploration as disagreement, reward is output differences",
+    "contract": "round-robin repair-differential, legal transaction perturbation, obligation-gap scheduling; least observed template selected on gap steps; retain highest distinct verified-gap/repair-witness score"
+  },
+  "query_accounting": "Every submitted 24-cycle input costs 1, including failures; both RTLs and whole supported frozen candidate pool evaluated; two physical compiles/sims; no cache/retry/solver/model",
+  "evidence_rule": "Input legality first, independent reference next. Repair witness requires buggy first obligation violation and fixed legal prefix plus same obligation satisfied. FP requires legal whole prefix, FN full prefix accepted to first violation. Waveform difference alone is never evidence.",
+  "gap_dedup": "case, candidate bytes hash, FP/FN, obligation; all FP prefixes grouped as legal_prefix. Waveform variants never independent discoveries. Branches recorded but do not multiply gaps.",
+  "trace_dedup": "exact reset-to-evidence input/output prefix excluding absolute cycle and stimulus labels + candidate hash + kind + violated obligation IDs; separate from gap metric",
+  "independence": "all runs development data; no independence or heldout claim; six parent units remain denominator",
+  "stat_scope": "local spec confirms isolated event latency 2 and captured length. It does not explicitly authorize overlap. Entire queries with overlapping frame_done events (spacing <=2 before reset) are unknown_spec and excluded from verified evidence; retained raw diagnostics.",
+  "unknowns": "intr timing unknown; spill only collision_empty; filter unsupported candidates remain denominator; fifo original presented defect repair witness may remain absent",
+  "full_parent_pass": "not established for any parent by this experiment",
+  "native_sva": false,
+  "formal_proof": false,
+  "frozen_at_utc": "2026-10-14T11:37:48Z"
+}

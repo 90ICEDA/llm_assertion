@@ -18,10 +18,10 @@ Rules:
 13) Do not hard-code trace-only multi-bit values or one-off transitions such as a single observed address pair unless the value is explicitly justified by the spec or RTL.
 
 Allowed signals:
-clk, rst_n, enable_i, filter_i, filter_o
+clk, rst_n, enable_i, filter_i, filter_o, accept_boundary_dbg
 
 Specification:
-With filtering enabled, filter_o shall adopt a new stable input after exactly Cycles consecutive opposite samples, not one cycle later.
+With filtering enabled, filter_o shall adopt a new stable input at the exact acceptance boundary, not one sampled cycle later.
 
 Additional guidance:
 - Use only the allowed interface-visible signals in the final assertion.
@@ -83,7 +83,8 @@ module dut_case116_prim_filter_late_accept (
   input logic rst_n,
   input logic enable_i,
   input logic filter_i,
-  output logic filter_o
+  output logic filter_o,
+  output logic accept_boundary_dbg
 );
   prim_filter #(
     .AsyncOn(1'b0),
@@ -95,6 +96,18 @@ module dut_case116_prim_filter_late_accept (
     .filter_i(filter_i),
     .filter_o(filter_o)
   );
+
+  // Pulse exactly on the sampled cycle where the filter is supposed to accept
+  // a new stable value. Use the pre-update internal state so the pulse is
+  // one-shot rather than staying high for every stable cycle.
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      accept_boundary_dbg <= 1'b0;
+    end else begin
+      accept_boundary_dbg <= enable_i && u_dut.update_stored_value &&
+                             (u_dut.stored_value_q != u_dut.filter_synced);
+    end
+  end
 endmodule
 
 // ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop.sv -----
@@ -259,21 +272,19 @@ endmodule
 
 
 Good trace (posedge cycles):
-cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, filter_o=0
-cycle 1: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1
-cycle 2: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1
-cycle 3: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1
-cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=0, filter_o=0
-cycle 5: clk=1, rst_n=1, enable_i=1, filter_i=0, filter_o=0
-cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0
-cycle 7: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0
+cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0
+cycle 1: clk=1, rst_n=0, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0
+cycle 2: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0
+cycle 3: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=0, accept_boundary_dbg=0
+cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1, accept_boundary_dbg=1
+cycle 5: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1, accept_boundary_dbg=0
+cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0
 
 Bad trace (posedge cycles):
-cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, filter_o=0
-cycle 1: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1
-cycle 2: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1
-cycle 3: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1
-cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=0, filter_o=0
-cycle 5: clk=1, rst_n=1, enable_i=1, filter_i=0, filter_o=0
-cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0
-cycle 7: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0
+cycle 0: clk=1, rst_n=0, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0
+cycle 1: clk=1, rst_n=0, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0
+cycle 2: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0
+cycle 3: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=0, accept_boundary_dbg=0
+cycle 4: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=0, accept_boundary_dbg=1
+cycle 5: clk=1, rst_n=1, enable_i=1, filter_i=1, filter_o=1, accept_boundary_dbg=1
+cycle 6: clk=1, rst_n=1, enable_i=0, filter_i=0, filter_o=0, accept_boundary_dbg=0

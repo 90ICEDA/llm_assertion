@@ -1,0 +1,161 @@
+{
+  "full_pass_cases_by_method": {
+    "first": [],
+    "equal_budget_select": [],
+    "existing_feedback": [],
+    "obligation_loop": [],
+    "generic_diff": [],
+    "no_fp_check": [],
+    "no_observation_refinement": [],
+    "equal_information_control": []
+  },
+  "filter_results": [
+    {
+      "method": "equal_budget_select",
+      "fp_cycles_by_view": {
+        "primary": 128
+      },
+      "miss_cycles_by_view": {
+        "primary": 28
+      },
+      "coverage_by_view": {
+        "primary": 0.391304347826087
+      },
+      "history_bits_permission": 0,
+      "prompt_tokens": 753,
+      "completion_tokens": 151
+    },
+    {
+      "method": "equal_information_control",
+      "fp_cycles_by_view": {
+        "primary": 108
+      },
+      "miss_cycles_by_view": {
+        "primary": 0
+      },
+      "coverage_by_view": {
+        "primary": 1.0
+      },
+      "history_bits_permission": 15,
+      "prompt_tokens": 1446,
+      "completion_tokens": 265
+    },
+    {
+      "method": "existing_feedback",
+      "fp_cycles_by_view": {
+        "primary": 32
+      },
+      "miss_cycles_by_view": {
+        "primary": 34
+      },
+      "coverage_by_view": {
+        "primary": 0.2608695652173913
+      },
+      "history_bits_permission": 0,
+      "prompt_tokens": 908,
+      "completion_tokens": 149
+    },
+    {
+      "method": "first",
+      "fp_cycles_by_view": {
+        "primary": 0
+      },
+      "miss_cycles_by_view": {
+        "primary": 0
+      },
+      "coverage_by_view": {
+        "primary": null
+      },
+      "history_bits_permission": 0,
+      "prompt_tokens": 251,
+      "completion_tokens": 63
+    },
+    {
+      "method": "generic_diff",
+      "fp_cycles_by_view": {
+        "primary": 0
+      },
+      "miss_cycles_by_view": {
+        "primary": 46
+      },
+      "coverage_by_view": {
+        "primary": 0.0
+      },
+      "history_bits_permission": 15,
+      "prompt_tokens": 1147,
+      "completion_tokens": 149
+    },
+    {
+      "method": "no_fp_check",
+      "fp_cycles_by_view": {
+        "primary": 32
+      },
+      "miss_cycles_by_view": {
+        "primary": 37
+      },
+      "coverage_by_view": {
+        "primary": 0.1956521739130435
+      },
+      "history_bits_permission": 15,
+      "prompt_tokens": 1166,
+      "completion_tokens": 165
+    },
+    {
+      "method": "no_observation_refinement",
+      "fp_cycles_by_view": {
+        "primary": 64
+      },
+      "miss_cycles_by_view": {
+        "primary": 34
+      },
+      "coverage_by_view": {
+        "primary": 0.2608695652173913
+      },
+      "history_bits_permission": 0,
+      "prompt_tokens": 1500,
+      "completion_tokens": 165
+    },
+    {
+      "method": "obligation_loop",
+      "fp_cycles_by_view": {
+        "primary": 32
+      },
+      "miss_cycles_by_view": {
+        "primary": 37
+      },
+      "coverage_by_view": {
+        "primary": 0.1956521739130435
+      },
+      "history_bits_permission": 15,
+      "prompt_tokens": 1324,
+      "completion_tokens": 165
+    }
+  ],
+  "common_exact_compiler_checkpoints": [
+    [
+      "fifo",
+      4
+    ],
+    [
+      "filter",
+      4
+    ],
+    [
+      "intr",
+      4
+    ],
+    [
+      "onehot",
+      4
+    ],
+    [
+      "spill",
+      4
+    ],
+    [
+      "stat",
+      4
+    ]
+  ],
+  "conclusion": "No method has a complete passing parent in this frozen supplement. Extra history entitlement and lower cycle-miss counts are not a complete-contract improvement. Compare common-resource rows with their token/time differences; no causal superiority is established."
+}

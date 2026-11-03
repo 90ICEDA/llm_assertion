@@ -1,0 +1,62 @@
+{
+  "name": "case483_cc_stream_filter_drop_backpressured",
+  "parent_bug_id": "case483_cc_stream_filter_drop_backpressured",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_stream_filter",
+  "source_files": [
+    "external/common_cells/src/cc_stream_filter.sv"
+  ],
+  "bug_class": "combination_protocol",
+  "bug_family": "drop_must_ignore_downstream_backpressure",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "valid_i",
+    "drop_i",
+    "ready_i",
+    "ready_o",
+    "valid_o"
+  ],
+  "temporal_type": "combinational protocol relation",
+  "status": "final_verified_rejected",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (valid_i && drop_i && !ready_i) |-> (ready_o && !valid_o));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 25000,
+      "sample_index": 6,
+      "good_trace_sha256": "34b0feec512ec2cead025ad17ece0d4550c009b80eccc2388ceadf202c0c6c55",
+      "bad_trace_sha256": "f5f165ef952aba5e1efb1f0c0d309e6379282f3c4bfa831db8b093fce2d75d2d",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 35000,
+      "sample_index": 8,
+      "good_trace_sha256": "687ecdc3355589b3a4db8f8db8dbe1c8f01c7ca910f055577e3472c4b0cf8dbd",
+      "bad_trace_sha256": "02e8bdec0b7c6dfdb8570a1f58c574c4da1798107962e7674933e7ece4da2ae2",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 35000,
+      "sample_index": 8,
+      "good_trace_sha256": "cda255b3388c3e23f72b88ca756e0fdcd4593eaa5487cc8e9be8459bbbf0334b",
+      "bad_trace_sha256": "6f543078586abeb39e61be3f21bd8e08868fecfd743f9ccd9658631cf069c18c",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "3d326748a3d64c8fbf321653487b35578b3802a0e8f0830df06509b499a8bf1b",
+  "buggy_sha256": "2d097a45bb96132895f6b4554931ee5a2f3699eac893a585953ce2fd212dbd0d"
+}

@@ -1,0 +1,95 @@
+{
+  "name": "case435_prim_filter_ctr_protocol_suppress_1",
+  "parent_bug_id": "case435_prim_filter_ctr_protocol_suppress_1",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_filter_ctr",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter_ctr.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "filter_synced combinational/protocol output is forced low",
+  "spec": "When filtering is disabled, filter_o is a transparent view of filter_i. When filtering is enabled, output changes are qualified by the threshold counter rather than bypassing the filter.",
+  "golden_sva": {
+    "name": "DisabledFilterBypasses_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (!enable_i) |-> (filter_o == filter_i));",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (!enable_i) |-> (filter_o == filter_i));",
+    "temporal_type": "same-cycle bypass behavior"
+  },
+  "mutation_edits": [
+    {
+      "line": 46,
+      "search": "    assign filter_synced = filter_i;",
+      "replace": "    assign filter_synced = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "filter_synced",
+  "relevant_signals": [
+    "rst_ni",
+    "clk_i",
+    "enable_i",
+    "filter_i",
+    "filter_o",
+    "thresh_i"
+  ],
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 20000,
+      "cycle_index": 1,
+      "sample_index": 4,
+      "clock_phase": "between rising edges",
+      "signals": [
+        "filter_o"
+      ],
+      "good_values": {
+        "filter_o": "1"
+      },
+      "bad_values": {
+        "filter_o": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 36000,
+      "cycle_index": 4,
+      "sample_index": 9,
+      "clock_phase": "rising edge",
+      "signals": [
+        "filter_o"
+      ],
+      "good_values": {
+        "filter_o": "1"
+      },
+      "bad_values": {
+        "filter_o": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 48000,
+      "cycle_index": 3,
+      "sample_index": 8,
+      "clock_phase": "between rising edges",
+      "signals": [
+        "filter_o"
+      ],
+      "good_values": {
+        "filter_o": "1"
+      },
+      "bad_values": {
+        "filter_o": "0"
+      }
+    }
+  },
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "770a3ae13dc5fc389cb0ab513ab2becc9f1521ea83f55ce4eb517c77b1a7dfde",
+  "buggy_sha256": "b956f9998b57f389ef32c78fc0d995dcdc1092feb92ac0ce0dace5898dc50bf8",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete"
+}

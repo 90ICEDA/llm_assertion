@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Checks only the current empty flag, not the following cleared state.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) clr_i |-> empty_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Checks only one final flag and omits pointer and occupancy.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) clr_i |=> empty_o);
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Removes the next-cycle clear effect.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) clr_i |-> ((wptr_o == '0) && (depth_o == '0)));
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the clear request and cannot tie zero state to the operation.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (wptr_o == '0) && (depth_o == '0));
+
+// W5_simple_invariant
+// antecedent_nonempty: true
+// expected weakness: Only checks flag/depth consistency, not clearing behavior.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) empty_o |-> (depth_o == '0));

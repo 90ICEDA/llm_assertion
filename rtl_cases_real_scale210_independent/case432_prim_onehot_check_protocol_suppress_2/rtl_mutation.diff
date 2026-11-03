@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -84,7 +84,7 @@
+       if (level == NumLevels) begin : gen_leafs
+         if (offset < OneHotWidth) begin : gen_assign
+           assign or_tree[Pa]  = oh_i[offset];
+-          assign and_tree[Pa] = oh_i[offset];
++          assign and_tree[Pa] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+         end else begin : gen_tie_off
+           assign or_tree[Pa]  = 1'b0;
+           assign and_tree[Pa] = 1'b0;

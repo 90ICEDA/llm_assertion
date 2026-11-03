@@ -1,0 +1,21 @@
+{
+  "actual_accepted_research47_plan_reused": "verified",
+  "real_sva_generation": {"http_attempts": 3, "decoded_native_candidates": 2, "service_http400_without_candidate": 1},
+  "native_candidate_execution": "both generated candidates compiled and replayed on actual FIFO RTL",
+  "current_target_acceptance": {"status": "failed", "latest_target_misses": 2, "required_native_windows_untriggered": 4},
+  "history_replay": {"scenarios_per_executable_candidate": 105, "executable_candidates": 2, "acceptance": "failed", "latest_lost_detections": 31, "latest_lost_triggers": 1048},
+  "new_accepted_sva_set": false,
+  "previous_set_preserved": true,
+  "new_independent_test": "not_run_no_new_accepted_candidate",
+  "obligation_mapping": "saved separately for current and historical evidence for every attempt",
+  "critical_unknowns": {"v0_current": 2, "v0_history": 61, "v2_current": 0, "v2_history": 0},
+  "later_attribution_unknowns_per_replayed_candidate": {"current": 95, "history": 1177},
+  "feedback_retention_fix": {"implemented": true, "local_checks_passed": 11, "new_remote_validation": false, "original_run_results_revised": false},
+  "budget": {"authorized": 3, "used": 3, "remaining": 0},
+  "remaining_work": [
+    "Prepare a new bounded continuation using the actual latest native rejection and the feedback-retention fix; do not reuse old authorization or overwrite this failed experiment.",
+    "Obtain a real model property that covers both pending-valid fault windows and retains historical protection; current-sample valid/ready antecedent narrowing still causes misses.",
+    "Only after complete native acceptance, freeze the new assertion set and conduct fresh independent validation."
+  ],
+  "scope": "One actual FIFO RTL parent with explicit artificial faults. Counts are obligation/sample evidence rows, not independent bugs or formal proofs."
+}

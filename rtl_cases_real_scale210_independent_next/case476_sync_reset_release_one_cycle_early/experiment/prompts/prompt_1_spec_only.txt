@@ -1,0 +1,15 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge rst) disable iff (rst).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+rst, sync_out
+
+Specification:
+
+# Behavioral specification
+
+After asynchronous assertion, reset output deasserts only after exactly N active clock edges with rst low.

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "admission_evidence": "hardness_admission_report.csv evaluator revision 5",
+  "targets": {
+    "temporal_cross_cycle": 30,
+    "combination_protocol": 20
+  },
+  "admitted_case_count": 3,
+  "rejected_case_count": 47,
+  "pending_case_count": 0,
+  "admitted_by_bug_class": {
+    "combination_protocol": 3
+  },
+  "deficit_by_bug_class": {
+    "temporal_cross_cycle": 30,
+    "combination_protocol": 17
+  },
+  "replacement_case_count_required": 47,
+  "admitted_project_count": 2,
+  "admitted_module_count": 3,
+  "admitted_cases": [
+    {
+      "case_name": "case434_prim_edge_detector_protocol_suppress_2",
+      "parent_bug_id": "case434_prim_edge_detector_protocol_suppress_2",
+      "source_project": "opentitan",
+      "source_module": "prim_edge_detector",
+      "bug_class": "combination_protocol",
+      "decision": "admitted",
+      "golden_gate_ok": true,
+      "nonvacuous_weak_miss_count": 2,
+      "reason": "golden catches both tracks; weak misses=W1_single_cycle_implication;W2_final_output_only"
+    },
+    {
+      "case_name": "case438_cc_fifo_protocol_suppress_2",
+      "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+      "source_project": "common_cells",
+      "source_module": "cc_fifo",
+      "bug_class": "combination_protocol",
+      "decision": "admitted",
+      "golden_gate_ok": true,
+      "nonvacuous_weak_miss_count": 2,
+      "reason": "golden catches both tracks; weak misses=weak_01_single_cycle_implication;weak_03_delay_removed"
+    },
+    {
+      "case_name": "case441_cc_stream_mux_protocol_suppress_1",
+      "parent_bug_id": "case441_cc_stream_mux_protocol_suppress_1",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_mux",
+      "bug_class": "combination_protocol",
+      "decision": "admitted",
+      "golden_gate_ok": true,
+      "nonvacuous_weak_miss_count": 2,
+      "reason": "golden catches both tracks; weak misses=weak_01_single_cycle_implication;weak_03_delay_removed"
+    }
+  ]
+}

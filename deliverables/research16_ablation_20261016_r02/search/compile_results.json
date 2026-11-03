@@ -1,0 +1,152 @@
+[
+  {
+    "directory": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d2_p0",
+    "candidate": {
+      "assertions": [
+        {
+          "property": "(mvalid && mready) |-> (ref_expected == mdata)",
+          "obligations": [
+            "order_payload"
+          ],
+          "reason": "When an output handshake occurs, the full output payload must match the oldest queued input at that same sample.",
+          "id": "a0",
+          "derived_antecedent": "(mvalid && mready)",
+          "implication": "|->",
+          "derived_delay": 0,
+          "consequent": "(ref_expected == mdata)"
+        }
+      ],
+      "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+    },
+    "native": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "d0199749147d39d4b90b3a4ca6700a12f509dfb20986975b7772c10411e69d54",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "no_trigger_marker_observed",
+      "property_status": "no_violation_within_executed_scope",
+      "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d2_p0/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d2_p0/tb.sv",
+          "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+          "--coverage-user"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d2_p0",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 10.651016214003903
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d2_p0/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d2_p0",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.019230719000915997
+      },
+      "failures": [],
+      "triggers": []
+    }
+  },
+  {
+    "directory": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d5_p1",
+    "candidate": {
+      "assertions": [
+        {
+          "property": "(mvalid && mready) |-> (ref_expected == mdata)",
+          "obligations": [
+            "order_payload"
+          ],
+          "reason": "When an output handshake occurs, the full output payload must match the oldest queued input at that same sample.",
+          "id": "a0",
+          "derived_antecedent": "(mvalid && mready)",
+          "implication": "|->",
+          "derived_delay": 0,
+          "consequent": "(ref_expected == mdata)"
+        }
+      ],
+      "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+    },
+    "native": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "2d589c0ccf3680a735640e87474187b9c1ad8eef82877fa97bcb0a4bcdd849ae",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "no_trigger_marker_observed",
+      "property_status": "no_violation_within_executed_scope",
+      "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d5_p1/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d5_p1/tb.sv",
+          "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+          "--coverage-user"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d5_p1",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 9.90684611100005
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d5_p1/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/compiled/d5_p1",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.017359218996716663
+      },
+      "failures": [],
+      "triggers": []
+    }
+  }
+]

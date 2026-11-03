@@ -1,0 +1,10 @@
+{
+  "command": "python3 scripts/contract_v2_audit.py",
+  "exit_code": 1,
+  "stage": "after checks and four actual replays, before writing audit.json",
+  "error": "NameError: name 'stamp' is not defined",
+  "fix": "import stamp; serialize each replay result immediately; rerun entire audit",
+  "raw_replay_evidence": "deliverables/repair_contract_v2_20261009/audit_attempt_before_stamp_fix",
+  "failed_attempt_replay_wall_seconds": null,
+  "cost_status": "unknown for first successful four replay invocations before final serialization failed; retained as unknown rather than zero"
+}

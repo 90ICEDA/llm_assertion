@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Looks at one history bit in one sample, not the complete shift operation.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) filter_i |-> stored_vector_q[0]);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Only checks that the final vector is known.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) rst_ni |-> !$isunknown(stored_vector_q));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Uses an immediate coarse nonzero check instead of next-cycle append and shift.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) filter_i |-> (stored_vector_q != '0));
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the reset trigger and cannot distinguish reset behavior from an incidental zero history.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) stored_vector_q == '0);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: Knownness does not constrain reset clearing or sample order.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) !$isunknown(stored_vector_q));

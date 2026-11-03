@@ -1,0 +1,15 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+  "parent_bug_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss both buggy tracks.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {"id":"W1_single_cycle_implication","weakness_class":"single_cycle_implication","property":"((|req_i) && ready_i) |-> $onehot(gnt_o)","antecedent":"(|req_i) && ready_i","antecedent_nonempty":true,"expected_weakness":"Checks grants only when the receiver is ready.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W2_final_output_only","weakness_class":"final_output_only","property":"valid_o |-> !$isunknown(idx_o)","antecedent":"valid_o","antecedent_nonempty":true,"expected_weakness":"Index knownness does not constrain stalled grants.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W3_delay_removed","weakness_class":"delay_removed","property":"(valid_o && ready_i) |-> (gnt_o != 4'b0000)","antecedent":"valid_o && ready_i","antecedent_nonempty":true,"expected_weakness":"Observes only accepted transfers.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W4_antecedent_removed","weakness_class":"antecedent_removed","property":"!valid_o || !$isunknown(data_o)","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"Drops the ready condition and checks only data knownness.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false},
+    {"id":"W5_simple_invariant","weakness_class":"simple_invariant","property":"$onehot0(gnt_o)","antecedent":null,"antecedent_nonempty":false,"expected_weakness":"A premature grant remains one-hot.","validation_status":"pending","catches_bug":null,"nonvacuity_verified":false}
+  ]
+}

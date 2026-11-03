@@ -1,0 +1,5 @@
+--- correct.v
++++ buggy.v
+@@ -1 +1 @@
+-module cc_trip_counter #(parameter Width=4)(input clk_i,rst_ni,clr_i,en_i,input [Width-1:0] delta_i,bound_i,output reg [Width-1:0] q_o,output last_o,trip_o); assign last_o=q_o==bound_i; assign trip_o=last_o&&en_i; always @(posedge clk_i or negedge rst_ni) if(!rst_ni) q_o<=0; else if(clr_i||trip_o) q_o<=0; else if(en_i) q_o<=q_o+delta_i; endmodule
++module cc_trip_counter #(parameter Width=4)(input clk_i,rst_ni,clr_i,en_i,input [Width-1:0] delta_i,bound_i,output reg [Width-1:0] q_o,output last_o,trip_o); reg trip_q; assign last_o=q_o==bound_i; assign trip_o=trip_q; always @(posedge clk_i or negedge rst_ni) if(!rst_ni) begin q_o<=0; trip_q<=0; end else begin trip_q<=last_o&&en_i; if(clr_i||trip_q) q_o<=0; else if(en_i) q_o<=q_o+delta_i; end endmodule

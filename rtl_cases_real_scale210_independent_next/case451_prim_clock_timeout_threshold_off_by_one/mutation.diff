@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -10,7 +10,7 @@
+    if(!rst_ni) begin chk_q1<=0; chk_q2<=0; end else begin chk_q1<=chk_seen; chk_q2<=chk_q1; end
+  end
+  assign ack=chk_q1^chk_q2;
+- assign timeout = int'(cnt) >= TimeOutCnt;
++ assign timeout = int'(cnt) > TimeOutCnt;
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) cnt<='0;
+    else if(ack || !en_i) cnt<='0;

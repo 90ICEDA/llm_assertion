@@ -1,0 +1,20 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, valid_i, ready_i, valid_o, ready_o
+
+Specification:
+
+A forked input beat may be accepted only when every output branch is ready. With one ready and one stalled branch, input ready must remain low and neither branch may claim an atomic transfer.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_stream_fork(input wire clk_i,input wire rst_ni,input wire valid_i,input wire [1:0] ready_i,output wire [1:0] valid_o,output wire ready_o);
+  assign ready_o=&ready_i; assign valid_o={2{valid_i}};
+endmodule

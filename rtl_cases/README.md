@@ -7,10 +7,13 @@ Each case directory includes:
 - `buggy.v`
 - `tb.v`
 - `tb_holdout.v`
+- `tb_decoy.v`
 - `waveform_good.csv`
 - `waveform_bad.csv`
 - `waveform_good_holdout.csv`
 - `waveform_bad_holdout.csv`
+- `waveform_good_decoy.csv`
+- `waveform_bad_decoy.csv`
 
 ## Suggested simulation flow
 
@@ -52,13 +55,16 @@ The summary is intentionally observation-only. It should not restate the golden 
 
 ## Held-out trace policy
 
-Each case now has two correct/buggy stimulus tracks:
+Each case now has three correct/buggy stimulus tracks:
 
 - `tb.v` + `waveform_good.csv` / `waveform_bad.csv`
   - used for prompt construction and the in-distribution evaluation path
 - `tb_holdout.v` + `waveform_good_holdout.csv` / `waveform_bad_holdout.csv`
   - never shown to the model
   - used only for held-out generalization checks
+- `tb_decoy.v` + `waveform_good_decoy.csv` / `waveform_bad_decoy.csv`
+  - used as an explicit overfit lure
+  - must preserve the bug family while changing surrounding trace detail
 
 Trace-overfit is now defined by held-out behavior, not just by literal pinning:
 
@@ -84,12 +90,16 @@ This will overwrite:
 - `waveform_bad.csv`
 - `waveform_good_holdout.csv`
 - `waveform_bad_holdout.csv`
+- `waveform_good_decoy.csv`
+- `waveform_bad_decoy.csv`
 
 for every case directory, and also keep:
 - `waveform_good.vcd`
 - `waveform_bad.vcd`
 - `waveform_good_holdout.vcd`
 - `waveform_bad_holdout.vcd`
+- `waveform_good_decoy.vcd`
+- `waveform_bad_decoy.vcd`
 
 ## Prompt + SVA experiment
 

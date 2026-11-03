@@ -1,0 +1,36 @@
+{
+  "task": "valid retention during stall and at release",
+  "action": "run",
+  "config": {
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "options": {
+      "seed": 2026102028,
+      "temperature": 0,
+      "num_predict": 1024,
+      "num_ctx": 16384,
+      "num_gpu": 0,
+      "num_thread": 8
+    },
+    "max_model_calls": 2,
+    "max_tokens": 240000,
+    "max_wall_seconds": 7200,
+    "call_timeout": 180,
+    "max_initial_calls": 2,
+    "max_refinement_calls": 3,
+    "search_budget": 6,
+    "expression_format": "text",
+    "direct_property": true,
+    "preflight_tokens": false,
+    "remote_model": "qwen/qwen-2.5-72b-instruct",
+    "remote_url": "https://api.highwayapi.ai/openai/chat/completions",
+    "key_file": "/mnt/d/AssertionForge-main1/.secrets/qwen_api_key.txt",
+    "backend": "configured-qwen-relay"
+  },
+  "initial_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+  "fault_scope": "Unchanged actual axis_fifo plus two explicit artificial valid-suppression faults.",
+  "history": "Entire 105-case research27 development plan reused; its public 18-case r06 test promoted unchanged.",
+  "independent": "Only after final candidate freezes. Never used in prompts, feedback or selection.",
+  "dedup": "Two boundary mechanisms under stall_stability; seed/depth/reset variants are replications.",
+  "root_git_commit": null,
+  "model_properties": "Only genuine model text; other assertions retained by existing assembler."
+}

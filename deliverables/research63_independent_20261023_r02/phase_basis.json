@@ -1,0 +1,8 @@
+{
+  "before_branch_source": " // Branch\n        branch_in_dec_o       = 1'b1;\n        if (instr_new_i) begin\n          // Evaluate branch condition\n          alu_op_a_mux_sel_o  = OP_A_REG_A;\n          alu_op_b_mux_sel_o  = OP_B_REG_B;\n          unique case (instr[14:12])\n            3'b000:  alu_operator_o = ALU_EQ;\n            3'b001:  alu_operator_o = ALU_NE;\n            3'b100:  alu_operator_o = ALU_LT;\n            3'b101:  alu_operator_o = ALU_GE;\n            3'b110:  alu_operator_o = ALU_LTU;\n            3'b111:  alu_operator_o = ALU_GEU;\n            default: illegal_insn   = 1'b1;\n          endcase\n        end else begin\n          // Calculate jump target in EX\n          alu_op_a_mux_sel_o  = OP_A_CURRPC;\n          alu_op_b_mux_sel_o  = OP_B_IMM;\n          imm_b_mux_sel_o     = IMM_B_B;\n          alu_operator_o      = ALU_ADD;\n          regfile_we          = 1'b0;\n        end\n      end\n\n      ////////////////\n      // Load/store //\n      ////////////////\n\n      ",
+  "explanation": "The original decoder sets illegal_insn=1 for reserved BRANCH in instr_new_i=1, but skips that check in the held phase. Therefore first-cycle violation is not a legitimate requirement for reproducing this original bug. OP missing bit28 qualification affects both phases.",
+  "previous_batch": "deliverables/research63_independent_20261023_r01",
+  "previous_result_stays_failed": true,
+  "candidate_changed": false,
+  "protocol_change_only": true
+}

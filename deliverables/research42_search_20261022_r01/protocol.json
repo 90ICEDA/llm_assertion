@@ -1,0 +1,60 @@
+{
+  "seeds": [
+    4201,
+    4211,
+    4217
+  ],
+  "methods": [
+    "ordinary",
+    "candidate_disagreement",
+    "raw_difference",
+    "contract_coverage"
+  ],
+  "duration_grammar": [
+    0,
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "queries_per_method_seed": 4,
+  "cycles_per_query": 112,
+  "depth": 4,
+  "pipeline": 1,
+  "candidates": {
+    "initial": {
+      "source": "/mnt/d/AssertionForge-main1/deliverables/research41_prepare_20261022_r01/s4103/shared_initial.json",
+      "hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1"
+    },
+    "repaired": {
+      "source": "/mnt/d/AssertionForge-main1/deliverables/research28_valid_closed_loop_20261020_r01/core/frozen_candidate.json",
+      "hash": "2607e416ed0bf4a96b55af757352c2ec63e1d4131fea5235dfbbef300efb67c8"
+    }
+  },
+  "common_information": "Same two complete historically model-generated candidates, RTL, specifications, duration grammar, artificial fault names and q0 no-stall stimulus. No successful research40/41 candidate or independent test is read.",
+  "information_views": {
+    "ordinary": "Own selected durations only.",
+    "candidate_disagreement": "Own durations and XOR count of whole-set native failure-cycle sets between TWO complete candidates.",
+    "raw_difference": "Own durations and count of mvalid/mdata differences between correct and faulty runs.",
+    "contract_coverage": "Own durations and maximum actual stalled run on the correct trace, measured from mvalid && !mready. No hidden oracle verdict or mutation threshold enters selection."
+  },
+  "policies": {
+    "ordinary": "Uniform from six durations with replacement.",
+    "candidate_disagreement": "Probability .65 exploit own largest positive score by replaying that duration; otherwise uniform exploration.",
+    "raw_difference": "Same score/exploration rule as candidate disagreement.",
+    "contract_coverage": "Select first uncovered public short/medium/long bucket 1/4/16 based on own correct-side measured stall coverage."
+  },
+  "comparison_scope": "Equal access to common inputs and six native runs per query; differing allowed observations are the intended mechanism treatment. No claim of equal policy feedback information.",
+  "accounting": "Each query costs six native executions: two candidates times correct and two long-valid faults. All 48 queries, duplicates, no-witness and unknowns charged; 2 fresh compiles and 2 smoke executions separately. No cache.",
+  "dedup": "candidate content hash / FN or FP / obligation / artificial fault mechanism. Across cycles, seeds and waveforms identical keys are one gap. Report repeated observations separately.",
+  "witness": "Independent port-history queue confirms protocol legality, matched accepted handshakes, correct satisfaction and first faulty obligation violation. Native antecedent cover distinguishes empty trigger from triggered but insufficient.",
+  "attribution": "Only first oracle violation per reset epoch is evaluated as confirmed target; later violations retained as attribution_unknown.",
+  "selection_bias": "Known long-stall mutation family selected prospectively for this bounded comparison. Short/medium/long bucket policy was inherited from research32, which already studied this family. This is a transparent development replication, not blind benchmark discovery or a real historical bug.",
+  "model_calls": 0,
+  "formal_calls": 0,
+  "git_commit": null,
+  "independent_test_consumed": false,
+  "all_outputs_split": "development",
+  "prepared_utc": "2026-10-22T05:21:15Z"
+}

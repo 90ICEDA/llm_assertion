@@ -1,0 +1,25 @@
+{
+  "case_id": "lowRISC/ibex#54",
+  "source": "https://github.com/lowRISC/ibex/pull/54",
+  "title": "Fix decoding of C.LI, C.LUI, C.SRLI, C.SRAI, C.SSLI",
+  "base_commit": "cd15ce88beba8ed8496f414af361f664764f47e2",
+  "merge_commit": "5319734180ac4844e43d31ad19dc108aac503037",
+  "fix_commits": [
+    "687952e42f3eff68348770ae0c55bc5c0f036d3e"
+  ],
+  "intent": "In the compressed instruction decoder, several RISC-V compressed HINT encodings are being reported as illegal instructions. In the RISC-V C extension, these encodings are legal HINT/no-op forms: `C.LI` with destination register `x0`, `C.LUI` with destination register `x0` and a non-zero immediate (for example `0x7065`), and `C.SRLI`, `C.SRAI`, or `C.SLLI` with shift amount `0`. Ibex currently treats these compressed instructions as illegal instead of recognizing them as valid compressed HINTs. The bug affects `ibex_compressed_decoder` whenever one of those specific HINT forms is presented. The expected behavior is that these instructions are still recognized as compressed instructions and do not raise the illegal-instruction indication.",
+  "benchmark_reported_result": {
+    "passed_count": 0,
+    "failed_count": 0,
+    "skipped_count": 0,
+    "passed_tests": [],
+    "failed_tests": [],
+    "skipped_tests": []
+  },
+  "status": "deferred",
+  "reason": "No local Docker or Verilator; original benchmark test not run on either revision; reported benchmark pass is not this study reproduction",
+  "before": "not_executed",
+  "after": "not_executed",
+  "admitted": false,
+  "generator_visible": false
+}

@@ -1,0 +1,37 @@
+{
+  "assertions": [
+    {
+      "id": "a0",
+      "antecedent": "instr[6:0] == 7'h63 && (instr[14:12] == 3'b010 || instr[14:12] == 3'b011)",
+      "consequent": "illegal_insn",
+      "timing": "same_sample",
+      "obligations": [
+        "illegal_branch_persists"
+      ],
+      "delay": 0,
+      "property": "(instr[6:0] == 7'h63 && (instr[14:12] == 3'b010 || instr[14:12] == 3'b011)) |-> (illegal_insn)"
+    },
+    {
+      "id": "a1",
+      "antecedent": "instr[6:0] == 7'h33 && instr[31] == 1'b0 && instr[30:25] != 6'b000000 && (instr[14:12] != 3'b010 && instr[14:12] != 3'b011) && (instr[30:25] == 6'b000000 || instr[14:12] == 3'b010 || instr[14:12] == 3'b011)",
+      "consequent": "illegal_insn",
+      "timing": "same_sample",
+      "obligations": [
+        "op_bit28_illegal"
+      ],
+      "delay": 0,
+      "property": "(instr[6:0] == 7'h33 && instr[31] == 1'b0 && instr[30:25] != 6'b000000 && (instr[14:12] != 3'b010 && instr[14:12] != 3'b011) && (instr[30:25] == 6'b000000 || instr[14:12] == 3'b010 || instr[14:12] == 3'b011)) |-> (illegal_insn)"
+    },
+    {
+      "id": "a2",
+      "antecedent": "instr[6:0] == 7'h33 && instr[31] == 1'b0 && instr[30:25] != 6'b000000 && (instr[14:12] == 3'b010 || instr[14:12] == 3'b011)",
+      "consequent": "illegal_insn",
+      "timing": "same_sample",
+      "obligations": [
+        "op_bit28_illegal"
+      ],
+      "delay": 0,
+      "property": "(instr[6:0] == 7'h33 && instr[31] == 1'b0 && instr[30:25] != 6'b000000 && (instr[14:12] == 3'b010 || instr[14:12] == 3'b011)) |-> (illegal_insn)"
+    }
+  ]
+}

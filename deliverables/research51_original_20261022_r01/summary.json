@@ -1,0 +1,105 @@
+{
+  "case_id": "lowRISC/ibex#166",
+  "results": [
+    {
+      "revision": "before",
+      "compile_status": "passed",
+      "execution_status": "completed",
+      "native_property_status": "violation",
+      "checks": 1374,
+      "violations": 423,
+      "transactions_with_violation": 42,
+      "family_results": {
+        "benchmark_illegal_alu": {
+          "checks": 15,
+          "violations": 15
+        },
+        "branch_legal": {
+          "checks": 570,
+          "violations": 0
+        },
+        "branch_reserved": {
+          "checks": 177,
+          "violations": 129
+        },
+        "issue_163_illegal_branch": {
+          "checks": 15,
+          "violations": 12
+        },
+        "nop_control": {
+          "checks": 9,
+          "violations": 0
+        },
+        "op_bit28": {
+          "checks": 267,
+          "violations": 267
+        },
+        "op_control": {
+          "checks": 321,
+          "violations": 0
+        }
+      },
+      "compile_wall_seconds": 21.367154434999996,
+      "simulation_wall_seconds": 0.021950414999999168,
+      "version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    },
+    {
+      "revision": "after",
+      "compile_status": "passed",
+      "execution_status": "completed",
+      "native_property_status": "no_violation_within_executed_scope",
+      "checks": 1374,
+      "violations": 0,
+      "transactions_with_violation": 0,
+      "family_results": {
+        "benchmark_illegal_alu": {
+          "checks": 15,
+          "violations": 0
+        },
+        "branch_legal": {
+          "checks": 570,
+          "violations": 0
+        },
+        "branch_reserved": {
+          "checks": 177,
+          "violations": 0
+        },
+        "issue_163_illegal_branch": {
+          "checks": 15,
+          "violations": 0
+        },
+        "nop_control": {
+          "checks": 9,
+          "violations": 0
+        },
+        "op_bit28": {
+          "checks": 267,
+          "violations": 0
+        },
+        "op_control": {
+          "checks": 321,
+          "violations": 0
+        }
+      },
+      "compile_wall_seconds": 20.918368543999996,
+      "simulation_wall_seconds": 0.01995603199999607,
+      "version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    }
+  ],
+  "admitted_original_module": true,
+  "repair_witnesses": 423,
+  "covered_repair_obligations": [
+    "illegal_branch_persists",
+    "op_bit28_illegal"
+  ],
+  "full_core_trap_reproduction": false,
+  "abstract_model": false,
+  "model_calls": 0,
+  "formal_calls": 0,
+  "source_sha256": {
+    "before/ibex_decoder.sv": "a0921dfe3033510812e7f6fb0602adaad707f7cc297393aa2738d1e3b8688223",
+    "before/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f",
+    "after/ibex_decoder.sv": "2ea8bbc1b2268954ad9c980a05f78428da7d6bd456fb2b4dbf3559e694c61427",
+    "after/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f"
+  }
+}

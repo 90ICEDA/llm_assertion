@@ -1,0 +1,93 @@
+{
+  "thread_id": "019ed9f6-87cf-7830-adb8-595fe2ae140d",
+  "selected_case_ids": [
+    "case408_prim_fifo_sync_cnt_temporal_hold_3",
+    "case410_cc_edge_propagator_ack_temporal_hold_1",
+    "case415_cc_rstgen_bypass_temporal_hold_1",
+    "case416_cc_rstgen_bypass_temporal_hold_2",
+    "case417_cc_clk_mux_glitch_free_temporal_hold_1",
+    "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+    "case421_axis_register_temporal_hold_1",
+    "case425_axis_fifo_temporal_hold_2",
+    "case426_axis_fifo_temporal_hold_3",
+    "case435_prim_filter_ctr_protocol_suppress_1",
+    "case449_axis_demux_protocol_suppress_1"
+  ],
+  "active_model_specs": [
+    {
+      "model_label": "GPT",
+      "provider": "openai",
+      "model_name": "gpt-5.4",
+      "api_key_env": "OPENAI_API_KEY"
+    }
+  ],
+  "active_method_specs": [
+    {
+      "method": "spec_rtl_temporal_relation_abstraction",
+      "trace_input_label": "Temporal-relation abstraction",
+      "representation_label": "temporal_relation_abstraction"
+    }
+  ],
+  "candidates_per_cell": 2,
+  "use_property_compile_mode": false,
+  "write_mode": "upsert_append_by_unique_key",
+  "result_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method",
+    "candidate_index"
+  ],
+  "prompt_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "case_id",
+    "method"
+  ],
+  "summary_key_cols": [
+    "model_label",
+    "provider",
+    "model_name",
+    "method"
+  ],
+  "argv": [
+    "D:\\AssertionForge-main1\\src\\run_trace_representation_ablation.py",
+    "--root",
+    "D:\\AssertionForge-main1\\outputs\\pristine_trace_router_v1\\dispatcher_view",
+    "--output-dir",
+    "D:\\AssertionForge-main1\\outputs\\pristine_trace_router_v1\\dispatch\\generated",
+    "--temporal-summary-json",
+    "D:\\AssertionForge-main1\\outputs\\pristine_trace_router_v1\\dispatcher_temporal_primary.json",
+    "--model",
+    "GPT",
+    "--method",
+    "spec_rtl_temporal_relation_abstraction",
+    "--candidates-per-cell",
+    "2",
+    "--case",
+    "case408_prim_fifo_sync_cnt_temporal_hold_3",
+    "--case",
+    "case410_cc_edge_propagator_ack_temporal_hold_1",
+    "--case",
+    "case415_cc_rstgen_bypass_temporal_hold_1",
+    "--case",
+    "case416_cc_rstgen_bypass_temporal_hold_2",
+    "--case",
+    "case417_cc_clk_mux_glitch_free_temporal_hold_1",
+    "--case",
+    "case418_cc_clk_mux_glitch_free_temporal_hold_2",
+    "--case",
+    "case421_axis_register_temporal_hold_1",
+    "--case",
+    "case425_axis_fifo_temporal_hold_2",
+    "--case",
+    "case426_axis_fifo_temporal_hold_3",
+    "--case",
+    "case435_prim_filter_ctr_protocol_suppress_1",
+    "--case",
+    "case449_axis_demux_protocol_suppress_1",
+    "--generate-only"
+  ]
+}

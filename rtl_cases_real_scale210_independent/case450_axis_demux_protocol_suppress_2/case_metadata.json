@@ -1,0 +1,75 @@
+{
+  "name": "case450_axis_demux_protocol_suppress_2",
+  "parent_bug_id": "case450_axis_demux_protocol_suppress_2",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_demux",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_demux.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_demux.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "m_axis_tdata combinational/protocol output is forced low",
+  "spec": "An accepted source beat must be delivered only to the selected destination with its payload preserved; all unselected destination-valid bits must remain low.",
+  "mutation_edits": [
+    {
+      "line": 222,
+      "search": "assign m_axis_tdata  = {M_COUNT{m_axis_tdata_reg}};",
+      "replace": "assign m_axis_tdata = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "m_axis_tdata",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "enable",
+    "drop",
+    "select",
+    "s_axis_tdata",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "m_axis_tdata",
+    "m_axis_tvalid",
+    "m_axis_tready",
+    "md[31:0]"
+  ],
+  "temporal_type": "demultiplexed payload preservation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "b3ec5e59baa6b29f9d2bd077c262b8f3e57ea1de1162e19614f93dc866d5ba38",
+  "buggy_sha256": "2acfab1481c901c7efecf2e21b4ad8786548c8ec5f408c832303fa8ee0c757ee",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) m_axis_tvalid[select] |-> (m_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH] == s_axis_tdata));",
+    "temporal_type": "demultiplexed payload preservation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 35000,
+      "sample_index": 8,
+      "signals": [
+        "md[31:0]"
+      ],
+      "clock_cycle": 4
+    },
+    "heldout": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "signals": [
+        "md[31:0]"
+      ],
+      "clock_cycle": 5
+    },
+    "decoy": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "signals": [
+        "md[31:0]"
+      ],
+      "clock_cycle": 6
+    }
+  }
+}

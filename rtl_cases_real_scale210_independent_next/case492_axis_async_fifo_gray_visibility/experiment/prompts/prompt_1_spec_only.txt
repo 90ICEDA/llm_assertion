@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, write_toggle_i, sample_enable_i, q_o, state_o
+
+Specification:
+
+A write-toggle crossing into the read domain becomes visible only after all three synchronizer stages; the second-stage value is not externally visible.

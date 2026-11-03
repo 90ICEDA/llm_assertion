@@ -1,0 +1,2 @@
+// Temporal type: cross-cycle sequential state transition
+assert property (@(posedge clk_i) disable iff (!rst_ni) !test_mode_en_i |=> (gate_is_open_q == $past(gate_en_q && en_i)));

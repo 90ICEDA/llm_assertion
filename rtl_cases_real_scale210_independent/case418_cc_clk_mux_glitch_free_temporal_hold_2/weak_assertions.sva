@@ -1,0 +1,22 @@
+// Weak assertion candidates for case418_cc_clk_mux_glitch_free_temporal_hold_2
+// STATUS: PENDING FORMAL VALIDATION; this file makes no admission claim.
+
+// weak_01_single_cycle_implication [single_cycle_implication]
+// nonempty_antecedent=true
+assert property (@(posedge clks_i) async_sel_i |-> !$isunknown(clk_o));
+
+// weak_02_final_output_only [final_output_only]
+// nonempty_antecedent=false
+assert property (@(posedge clks_i) !$isunknown(clk_o));
+
+// weak_03_delay_removed [delay_removed]
+// nonempty_antecedent=true
+assert property (@(posedge clks_i) async_sel_i |-> clk_o);
+
+// weak_04_antecedent_removed [antecedent_removed]
+// nonempty_antecedent=false
+assert property (@(posedge clks_i) !$isunknown(clk_o));
+
+// weak_05_simple_invariant [simple_invariant]
+// nonempty_antecedent=false
+assert property (@(posedge clks_i) !$isunknown(async_sel_i) && !$isunknown(clk_o));

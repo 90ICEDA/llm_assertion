@@ -1,0 +1,116 @@
+{
+  "candidate_sha256": "0e7b96415506a2781e1083cccd5c25b158b59c6b864ed014947e17801a3571e5",
+  "candidate_file_sha256": "bbc3c7f7fef93d32adb000fbb4095d2313b0856dbbfc9691ee64b0950a9363c4",
+  "R0": {
+    "accepted": true,
+    "checks": {
+      "interface": true,
+      "novel": true,
+      "current_native": true,
+      "current_phase_gate": true,
+      "current_all_properties": true,
+      "current_required_phases": true,
+      "current_bound_sampling": true,
+      "search_native": true,
+      "search_all_properties": true
+    }
+  },
+  "R1": {
+    "accepted": false,
+    "reason_kinds": [
+      "new_legal_false_positive",
+      "full_scope_target_legal_trigger_or_unknown_failure",
+      "all_property_false_alarm_or_unknown"
+    ]
+  },
+  "actual_historical_decision": "rejected; no ordinary-arm execution",
+  "sensitivity": {
+    "full151_absolute_accept": false,
+    "remove_only_relative_FP_reason_still_rejected": true,
+    "explanation": "History115 observation is decisive relative to R0. Relative non-regression comparator is NOT uniquely necessary when a full151 absolute no-false-alarm check is also present. Three rejection reason labels must not count as three benefits."
+  },
+  "current": {
+    "counts": {
+      "rows": 240,
+      "triggers": 102,
+      "detections": 48,
+      "misses": 0,
+      "false_positives": 0,
+      "unknown": 0
+    },
+    "required_untriggered": 0,
+    "per_obligation": {
+      "illegal_branch_persists": {
+        "detected": 15,
+        "missed": 0
+      },
+      "op_bit28_illegal": {
+        "detected": 33,
+        "missed": 0
+      }
+    }
+  },
+  "search": {
+    "counts": {
+      "rows": 1248,
+      "triggers": 588,
+      "detections": 267,
+      "misses": 0,
+      "false_positives": 0,
+      "unknown": 0
+    },
+    "required_untriggered": 0,
+    "per_obligation": {
+      "illegal_branch_persists": {
+        "detected": 129,
+        "missed": 0
+      },
+      "op_bit28_illegal": {
+        "detected": 138,
+        "missed": 0
+      }
+    }
+  },
+  "history": {
+    "counts": {
+      "rows": 2748,
+      "triggers": 1584,
+      "detections": 423,
+      "misses": 0,
+      "false_positives": 636,
+      "unknown": 0
+    },
+    "required_untriggered": 0,
+    "per_obligation": {
+      "illegal_branch_persists": {
+        "detected": 141,
+        "missed": 0
+      },
+      "op_bit28_illegal": {
+        "detected": 282,
+        "missed": 0
+      }
+    }
+  },
+  "full": {
+    "counts": {
+      "rows": 3996,
+      "triggers": 2172,
+      "detections": 690,
+      "misses": 0,
+      "false_positives": 636,
+      "unknown": 0
+    },
+    "required_untriggered": 0,
+    "per_obligation": {
+      "illegal_branch_persists": {
+        "detected": 270,
+        "missed": 0
+      },
+      "op_bit28_illegal": {
+        "detected": 420,
+        "missed": 0
+      }
+    }
+  }
+}

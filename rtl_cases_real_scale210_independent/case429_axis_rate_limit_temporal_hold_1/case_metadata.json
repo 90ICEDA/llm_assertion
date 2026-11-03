@@ -1,0 +1,74 @@
+{
+  "name": "case429_axis_rate_limit_temporal_hold_1",
+  "parent_bug_id": "case429_axis_rate_limit_temporal_hold_1",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_rate_limit",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_rate_limit.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_rate_limit.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "acc_reg state update is suppressed",
+  "spec": "In rate-limited operation outside an active frame, sustained valid traffic must consume the configured allowance and apply source backpressure when the allowance is exhausted; forwarding resumes as the accumulator recovers.",
+  "mutation_edits": [
+    {
+      "line": 148,
+      "search": "    acc_reg <= acc_next;",
+      "replace": "    acc_reg <= acc_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "acc_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "by_frame",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "m_axis_tvalid",
+    "m_axis_tready",
+    "sr"
+  ],
+  "temporal_type": "multi-cycle rate-limit accumulation",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "bdfb4e29768c5224c543098765b8d648f3fe774eb42643c289d85b446414d155",
+  "buggy_sha256": "194b4900b8d3b0b59ce1ee9ed1e2d7883ff97e61c4692449b73a3907243b1c63",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (!by_frame && s_axis_tvalid && s_axis_tready) |-> ##2 !s_axis_tready);",
+    "temporal_type": "multi-cycle rate-limit accumulation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 11,
+      "signals": [
+        "s_axis_tready",
+        "sr"
+      ],
+      "clock_cycle": 5
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 13,
+      "signals": [
+        "s_axis_tready",
+        "sr"
+      ],
+      "clock_cycle": 6
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 15,
+      "signals": [
+        "s_axis_tready",
+        "sr"
+      ],
+      "clock_cycle": 7
+    }
+  }
+}

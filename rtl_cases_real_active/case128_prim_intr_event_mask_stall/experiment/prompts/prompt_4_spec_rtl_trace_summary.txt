@@ -22,7 +22,7 @@ Allowed signals:
 clk, rst_n, event_intr_i, reg2hw_intr_enable_q_i, reg2hw_intr_state_q_i, intr_o
 
 Specification:
-With FlopOutput enabled, a fresh event shall appear at intr_o on the next cycle even before software state feedback loops around.
+With FlopOutput enabled in Event mode, intr_o shall be derived from the committed interrupt state feedback, not from the speculative next-state in the same event cycle.
 
 Additional guidance:
 - Use only the allowed interface-visible signals in the final assertion.
@@ -226,13 +226,18 @@ endmodule
 
 Trace divergence summary:
 Case: case128_prim_intr_event_mask_stall
-First divergence cycle: none
-Differing signals at first divergence: (none)
+First divergence cycle: 3
+Differing signals at first divergence: intr_o
+Observed differing signal values (good): intr_o=0
+Observed differing signal values (bad): intr_o=1
 
 Structured trace summary:
-- first_divergence_cycle: none
-- differing_signals: (none)
-- divergence_snapshot: (none)
+- first_divergence_cycle: 3
+- differing_signals: intr_o
+- first_divergence_time_ps: 35000
+- divergence_observation: posedge_cycle
+- divergence_snapshot:
+  - intr_o: good=0, bad=1
 
 Summary-driven construction checklist:
 - Identify the first divergence cycle and the listed differing signal(s).

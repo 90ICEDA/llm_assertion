@@ -1,0 +1,1 @@
+assert property (@(posedge clk) disable iff (rst) ((mv != 0) && ((mr & mv) != mv)) |=> ((mv & ~$past(mr)) != 0));

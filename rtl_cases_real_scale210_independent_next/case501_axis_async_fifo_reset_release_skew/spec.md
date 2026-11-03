@@ -1,0 +1,1 @@
+After reset is released, source traffic must remain blocked through the first sampled clock and may become visible only after both reset-release synchronizer stages have completed. Data must be preserved while the release qualification is pending.

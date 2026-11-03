@@ -1,0 +1,81 @@
+{
+  "name": "case440_cc_onehot_protocol_suppress_2",
+  "parent_bug_id": "case440_cc_onehot_protocol_suppress_2",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_onehot",
+  "source_files": [
+    "external/common_cells/src/cc_onehot.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_onehot.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "sum[0] combinational/protocol output is forced low",
+  "spec": "is_onehot_o is asserted exactly when the four-bit input contains one and only one asserted bit.",
+  "golden_sva": {
+    "sva": "assert property (@(*) (is_onehot_o == $onehot(d_i)));",
+    "temporal_type": "same-cycle combinational/protocol relation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 4,
+      "observation_index": 1,
+      "signals": [
+        "is_onehot_o"
+      ],
+      "good": {
+        "is_onehot_o": "1"
+      },
+      "bad": {
+        "is_onehot_o": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "is_onehot_o"
+      ],
+      "good": {
+        "is_onehot_o": "1"
+      },
+      "bad": {
+        "is_onehot_o": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 2,
+      "observation_index": 1,
+      "signals": [
+        "is_onehot_o"
+      ],
+      "good": {
+        "is_onehot_o": "1"
+      },
+      "bad": {
+        "is_onehot_o": "0"
+      }
+    }
+  },
+  "mutation_edits": [
+    {
+      "line": 34,
+      "search": "    assign sum[0] = d_i;",
+      "replace": "    assign sum[0] = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "sum[0]",
+  "relevant_signals": [
+    "d_i[3:0]",
+    "is_onehot_o"
+  ],
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "e68efe28e677819cd434a32700733b11cb192c935094750a906ceec2041cf19c",
+  "buggy_sha256": "21426056cfa665256c1c83ec3a394ea64a80458be54d4f97728a497ad904d435",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "contract_status": "formal_complete"
+}

@@ -1,0 +1,26 @@
+{
+  "case": "Ibex #54 original compressed decoder",
+  "parent": "cd15ce88beba8ed8496f414af361f664764f47e2",
+  "fixed": "5319734180ac4844e43d31ad19dc108aac503037",
+  "selection": "From frozen three-case inventory: only Ibex54 exposes multiple actual repaired semantic instruction classes. Axis adapter lacks detected historical targets; pause FIFO lacks an additional exposed miss. Do not change RTL or inject faults.",
+  "baseline_origin": "New explicitly handwritten semantic partial seed, not an archived model output, not claimed as natural frequency or real regression proposal.",
+  "design_rationale": "Keep existing shift-HINT legality plus passthrough protection; missing LI/LUI HINT obligation. Split by instruction semantics, never full-word whitelist or sample IDs.",
+  "public": "All immediate-HINT target samples plus ALL legal/reserved/passthrough controls across every selected family.",
+  "history": "Shift-HINT target samples in addition to all public checks; no fixed component prevents shift edits.",
+  "ordinary": "Interface/native success, all public targets detected and triggered, no false positives on public controls or fixed public samples; unknown rejects.",
+  "historical": "Ordinary plus historical targets and necessary triggers retained and no historical false positives; measured actual violations, not property labels.",
+  "local_controls": [
+    "baseline: historical protection with public miss",
+    "replacement: semantic class overwrite loses shift protection",
+    "complementary: retain shift, add immediate",
+    "overbroad: rejects reserved legal controls"
+  ],
+  "cap": {
+    "compiles": 8,
+    "executions": 8,
+    "models": 0
+  },
+  "data": "All generated words are development qualification; no prior independent data consumed.",
+  "holdout": "Not generated this round; only after future real recovery accepts and freezes.",
+  "scope": "Original combinational decoder, selected classes only; not full core or temporal FIFO. Native simulation is not proof."
+}

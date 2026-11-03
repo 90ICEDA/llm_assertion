@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_src_i) disable iff (1'b0).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_src_i, rst_src_ni, rst_dst_ni, src_req_i, dst_req_o, dst_ack_i, src_ack_o
+
+Specification:
+
+The source-side acknowledgement of an accepted request is a one-source-clock pulse. A destination acknowledgement held high must complete the transaction once, clear the forwarded request, and must not stretch `src_ack_o` into later cycles.

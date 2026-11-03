@@ -1,0 +1,19 @@
+{
+  "created_date": "2026-10-28 Asia/Shanghai",
+  "selection_rule": "Bounded population: existing sourced Ibex #54 decoder case plus the two most recent functional datapath/protocol fixes in the already fetched verilog-axis master log, excluding tool-only parameter/synthesis fixes. Selection precedes detailed diff inspection and new witness runs; no expected mechanism gain or independent outcome is used.",
+  "candidates": [
+    {"id":"ibex54","source":"https://github.com/lowRISC/ibex/pull/54","reason":"Previously sourced real compressed-decoder repair; not yet a common-generation mechanism experiment."},
+    {"id":"axis_adapter_keep","fix_prefix":"c1c3dc0","reason":"2024-04-12 Fix tkeep handling in axis_adapter; latest functional data fix."},
+    {"id":"axis_fifo_pause","fix_prefix":"e493c6c","reason":"2024-01-17 Fix FIFO output pause logic; next functional protocol fix."}
+  ],
+  "excluded_recent_commits": [
+    {"prefix":"d4074ed","reason":"Parameter fix for ISE: tool compatibility, not selected functional behavior scope."},
+    {"prefix":"c6ecd77","reason":"Spurious multi-driven net issue: tool/elaboration issue outside functional witness scope."}
+  ],
+  "search_scope":"No repository-wide completeness claim; stat and original FIFO presented remain unknown and excluded as lacking sourced functional repair pairs.",
+  "validation":"Unmodified original Git blobs or independently reverified immutable downloads; same legal stimulus per pair; independent port-level oracle and native SVA; finite module-level observations only.",
+  "mechanism_gate":"Source+fail/pass witness alone does not qualify a prospective anti-regression trial. Require a runnable editable candidate with actual retained protection and unresolved current gap, public/history scope difference, meaningful non-whitelist discrimination control, common generation/frontend readiness. If missing, stop without new model request.",
+  "data_policy":"All this round inputs are development qualification. Do not read prior frozen independent datasets or outcomes for selection. No claim of new independent acceptance.",
+  "model_calls":0,
+  "native_budget":"At most 18 compile/execution pairs in initial local screening; report failed builds and unknowns, do not silently replace cases."
+}

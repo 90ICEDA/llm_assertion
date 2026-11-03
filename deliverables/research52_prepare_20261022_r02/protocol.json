@@ -1,0 +1,22 @@
+{
+  "scope": "research52_ibex_bitfield_then_sva",
+  "max_calls": 4,
+  "plan_max_calls": 2,
+  "sva_max_calls": 2,
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "retries": 0,
+  "early_stop": true,
+  "plan_rule": "All12 samples and obligation bit independently correct before any SVA call.",
+  "duplicate_rule": "Reject exact predicates after whitespace/enclosing-parenthesis normalization; not a general equivalence solver.",
+  "acceptance": "All420 OP violations detected,270 prior BRANCH detections retained, legal false alarms0, critical unknown0 and required native triggers present on identical151 development transactions.",
+  "baseline_is_accepted": false,
+  "holdout": "Not part of this run. Only accepted candidate is saved; independent acceptance is a separate subsequent task.",
+  "exclusions": [
+    "private answer table",
+    "handwritten control SVA",
+    "independent tests",
+    "archived successful FIFO assertions"
+  ],
+  "plan_request_sha256": "16545f67b07d19ed4f13d29f445c5550468abbba0784dcb29ae4c45f8e881837"
+}

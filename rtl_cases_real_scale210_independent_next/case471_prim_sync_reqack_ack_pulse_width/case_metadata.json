@@ -1,0 +1,95 @@
+{
+  "name": "case471_prim_sync_reqack_ack_pulse_width",
+  "parent_bug_id": "case471_prim_sync_reqack_ack_pulse_width",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_sync_reqack",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_sync_reqack.sv"
+  ],
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "handshake_ack_pulse_width",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_src_i",
+    "rst_src_ni",
+    "rst_dst_ni",
+    "src_req_i",
+    "dst_req_o",
+    "dst_ack_i",
+    "src_ack_o"
+  ],
+  "temporal_type": "cross-cycle request/acknowledge protocol",
+  "status": "final_verified_admitted",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_src_i) disable iff (!rst_src_ni || !rst_dst_ni) src_ack_o |=> !src_ack_o);"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_row_index": 12,
+      "bad_row_index": 12,
+      "signals": [
+        "dst_req_o"
+      ],
+      "good_values": {
+        "dst_req_o": "0"
+      },
+      "bad_values": {
+        "dst_req_o": "1"
+      },
+      "good_trace_sha256": "8960fcbaa317da0af79c949f601f984b9a67c61f14824f8d4a5f1747ea45425e",
+      "bad_trace_sha256": "9df5f464f604af0e330d86b5d5798f3d4189b8479f2273299b43800549ebc5ba",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 15,
+      "good_row_index": 15,
+      "bad_row_index": 15,
+      "signals": [
+        "dst_req_o"
+      ],
+      "good_values": {
+        "dst_req_o": "0"
+      },
+      "bad_values": {
+        "dst_req_o": "1"
+      },
+      "good_trace_sha256": "4709b1a1e9919b631f6e1894762a1cd4db73cff231c8ebda8555e466bf51732e",
+      "bad_trace_sha256": "651d3156e78c65b468ed171423dcd0f0221be89812107d3352a8711296bacc86",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 14,
+      "good_row_index": 14,
+      "bad_row_index": 14,
+      "signals": [
+        "dst_req_o"
+      ],
+      "good_values": {
+        "dst_req_o": "0"
+      },
+      "bad_values": {
+        "dst_req_o": "1"
+      },
+      "good_trace_sha256": "61e37de56dbfaf5564b1c11131636eb125f17085efe882e302ac394a66adcbe7",
+      "bad_trace_sha256": "3973d981edffddb81af8fbe884410d34920e31d3ef362488d7a06a067a8ee05a",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "efffffde5f69647a18e10f541bc78f740c77b0fa6c3cf3cf9a820cb65210b077",
+  "buggy_sha256": "c047ee0b0f0566e172c33d866bc9f20e9ae4c26a267ba3fc3f265cdd4a2bced8"
+}

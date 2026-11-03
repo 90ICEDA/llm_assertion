@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case438_cc_fifo_protocol_suppress_2",
+  "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+  "source_project": "common_cells",
+  "purpose": "task4_hardness_screening_candidates",
+  "overall_validation_status": "pending_formal_validation",
+  "admission_decision": null,
+  "admission_rule": "At least two non-vacuous weak assertions must miss the bug before admission.",
+  "assertions": [
+    {
+      "id": "weak_01_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "sva": "assert property (@(*) push_i |-> !$isunknown(data_o));",
+      "nonempty_antecedent": true,
+      "rationale": "Only checks a same-sample consequence and omits the required temporal history or exact functional value.",
+      "validation_status": "pending_formal_validation",
+      "compile_ok": null,
+      "nonvacuous": null,
+      "misses_bug_primary": null,
+      "misses_bug_heldout": null
+    },
+    {
+      "id": "weak_02_final_output_only",
+      "weakness_class": "final_output_only",
+      "sva": "assert property (@(*) !$isunknown(data_o));",
+      "nonempty_antecedent": false,
+      "rationale": "Observes only whether the selected output is known; it ignores the protocol trigger and correct value.",
+      "validation_status": "pending_formal_validation",
+      "compile_ok": null,
+      "nonvacuous": null,
+      "misses_bug_primary": null,
+      "misses_bug_heldout": null
+    },
+    {
+      "id": "weak_03_delay_removed",
+      "weakness_class": "delay_removed",
+      "sva": "assert property (@(*) push_i |-> data_o);",
+      "nonempty_antecedent": true,
+      "rationale": "Checks only an overlapped output polarity, deliberately removing any next-cycle, ranged-delay, or duration requirement.",
+      "validation_status": "pending_formal_validation",
+      "compile_ok": null,
+      "nonvacuous": null,
+      "misses_bug_primary": null,
+      "misses_bug_heldout": null
+    },
+    {
+      "id": "weak_04_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "sva": "assert property (@(*) !$isunknown(data_o));",
+      "nonempty_antecedent": false,
+      "rationale": "Drops the behavioral antecedent entirely and retains only a shallow output-integrity check.",
+      "validation_status": "pending_formal_validation",
+      "compile_ok": null,
+      "nonvacuous": null,
+      "misses_bug_primary": null,
+      "misses_bug_heldout": null
+    },
+    {
+      "id": "weak_05_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "sva": "assert property (@(*) !$isunknown(push_i) && !$isunknown(data_o));",
+      "nonempty_antecedent": false,
+      "rationale": "A shallow signal-integrity invariant that does not encode ordering, polarity, delay, duration, or the expected output value.",
+      "validation_status": "pending_formal_validation",
+      "compile_ok": null,
+      "nonvacuous": null,
+      "misses_bug_primary": null,
+      "misses_bug_heldout": null
+    }
+  ]
+}

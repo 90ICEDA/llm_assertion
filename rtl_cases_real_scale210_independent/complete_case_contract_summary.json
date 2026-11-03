@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "case_count": 50,
+  "complete_case_count": 50,
+  "incomplete_case_count": 0,
+  "all_complete": true,
+  "required_fields": [
+    "parent_bug_id",
+    "source_project",
+    "source_module",
+    "source_commit",
+    "bug_class",
+    "bug_family",
+    "spec",
+    "golden_sva",
+    "first_divergence",
+    "relevant_signals",
+    "temporal_type"
+  ],
+  "required_files": [
+    "correct.v",
+    "buggy.v",
+    "rtl_mutation.diff",
+    "spec.md",
+    "golden.sva",
+    "waveform_good.csv",
+    "waveform_bad.csv",
+    "waveform_good_holdout.csv",
+    "waveform_bad_holdout.csv",
+    "waveform_good_decoy.csv",
+    "waveform_bad_decoy.csv"
+  ],
+  "checks": [
+    "unique parent",
+    "behavioral spec leakage wording",
+    "golden assert property",
+    "three real divergences",
+    "first-divergence match",
+    "relevant signal coverage",
+    "distinct trace variants",
+    "distinct RTL"
+  ]
+}

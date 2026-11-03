@@ -1,0 +1,86 @@
+{
+  "name": "case410_cc_edge_propagator_ack_temporal_hold_1",
+  "parent_bug_id": "case410_cc_edge_propagator_ack_temporal_hold_1",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_edge_propagator_ack",
+  "source_files": [
+    "external/common_cells/src/cc_edge_propagator_ack.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_edge_propagator_ack.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "r_input_reg state update is suppressed",
+  "spec": "A request launched by edge_i is retained across the transmit/receive clock boundary until acknowledgement. Reset in either domain clears the corresponding observable handshake state; no receive pulse or transmit acknowledgement is emitted solely because reset was asserted.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk_tx_i) !rst_tx_ni |=> (dut.r_input_reg == 1'b0));",
+    "temporal_type": "cross-cycle sequential state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 21,
+      "observation_index": 8,
+      "signals": [
+        "edge_o"
+      ],
+      "good": {
+        "edge_o": "0"
+      },
+      "bad": {
+        "edge_o": "x"
+      }
+    },
+    "heldout": {
+      "time_ps": 108,
+      "observation_index": 40,
+      "signals": [
+        "ack_tx_o"
+      ],
+      "good": {
+        "ack_tx_o": "0"
+      },
+      "bad": {
+        "ack_tx_o": "1"
+      }
+    },
+    "decoy": {
+      "time_ps": 15,
+      "observation_index": 6,
+      "signals": [
+        "edge_o"
+      ],
+      "good": {
+        "edge_o": "0"
+      },
+      "bad": {
+        "edge_o": "x"
+      }
+    }
+  },
+  "mutation_edits": [
+    {
+      "line": 35,
+      "search": "      r_input_reg <= 1'b0;",
+      "replace": "      r_input_reg <= r_input_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "r_input_reg",
+  "relevant_signals": [
+    "clk_tx_i",
+    "rst_tx_ni",
+    "edge_i",
+    "ack_tx_o",
+    "clk_rx_i",
+    "rst_rx_ni",
+    "edge_o"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "28e1c1b5096b0f98963f27d0e0fbdf2dd204ba453b836e033d2efc87f0e05161",
+  "buggy_sha256": "39dedd8a9784a487e6b9dcb86165ab2087b0b2cb81e9b2d8b88d0f203a8a1f16",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "contract_status": "formal_complete"
+}

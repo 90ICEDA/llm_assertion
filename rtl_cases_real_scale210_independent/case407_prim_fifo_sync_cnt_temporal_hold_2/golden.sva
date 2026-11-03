@@ -1,0 +1,2 @@
+// FifoClear_A
+assert property (@(posedge clk_i) disable iff (!rst_ni) clr_i |=> ((wptr_o == '0) && (depth_o == '0) && empty_o));

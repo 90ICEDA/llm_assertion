@@ -1,0 +1,152 @@
+[
+  {
+    "directory": "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d2_p0",
+    "candidate": {
+      "assertions": [
+        {
+          "property": "mvalid && mready |-> sdata == ref_expected",
+          "obligations": [
+            "order_payload"
+          ],
+          "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+          "id": "a0",
+          "derived_antecedent": "mvalid && mready",
+          "implication": "|->",
+          "derived_delay": 0,
+          "consequent": "sdata == ref_expected"
+        }
+      ],
+      "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+    },
+    "native": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "2deb63e6b54ad04afaaca77d7a273afac2c5c0937eb112d4b4e005c3a8e616f0",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "no_trigger_marker_observed",
+      "property_status": "no_violation_within_executed_scope",
+      "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d2_p0/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d2_p0/tb.sv",
+          "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+          "--coverage-user"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d2_p0",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 9.43272416900004
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d2_p0/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d2_p0",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.01625646599995889
+      },
+      "failures": [],
+      "triggers": []
+    }
+  },
+  {
+    "directory": "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d5_p1",
+    "candidate": {
+      "assertions": [
+        {
+          "property": "mvalid && mready |-> sdata == ref_expected",
+          "obligations": [
+            "order_payload"
+          ],
+          "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+          "id": "a0",
+          "derived_antecedent": "mvalid && mready",
+          "implication": "|->",
+          "derived_delay": 0,
+          "consequent": "sdata == ref_expected"
+        }
+      ],
+      "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+    },
+    "native": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "b3812cc3f5bb773c125acfa203d49de7769834b273ad01f0d9dca8c8b6cf926a",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "no_trigger_marker_observed",
+      "property_status": "no_violation_within_executed_scope",
+      "trigger_measurement": "native cover property on parsed antecedent; finite sampled trigger evidence, not formal reachability",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-j",
+          "2",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d5_p1/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d5_p1/tb.sv",
+          "/mnt/d/AssertionForge-main1/external/verilog-axis/rtl/axis_fifo.v",
+          "--coverage-user"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d5_p1",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 9.71594577499991
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d5_p1/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research15_search_20261015_r01/fixed_initial_negative/compiled/d5_p1",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.019826558000204386
+      },
+      "failures": [],
+      "triggers": []
+    }
+  }
+]

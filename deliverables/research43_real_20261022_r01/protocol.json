@@ -1,0 +1,49 @@
+{
+  "seeds": [
+    4201,
+    4211,
+    4217
+  ],
+  "arms": {
+    "A": {
+      "search": false,
+      "gate": false
+    },
+    "B": {
+      "search": true,
+      "gate": false
+    },
+    "C": {
+      "search": false,
+      "gate": true
+    },
+    "D": {
+      "search": true,
+      "gate": true
+    }
+  },
+  "physical_model_calls": 6,
+  "logical_arm_calls": 12,
+  "proposal_pairing": "A/C share ordinary real proposal; B/D share search real proposal. One call per stream, no retries, no choosing among outputs.",
+  "initial_hash": "0403e89b8e64798cd758cbb4df8d2def7ccd8a79920b973080927c217873a5b1",
+  "history_cases": 105,
+  "temperature": 0.2,
+  "max_output_tokens": 1024,
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "preview_hashes": {
+    "s4201/ordinary/request.preview.json": "e202d75ab646d4aeae01f1e0b9e7cb45228c1c404aec99fd84d6a2f18a907b1a",
+    "s4201/search/request.preview.json": "28ac11a052e8217efb36cb84f3f764ec9703dc4efb0f2787e5bcdc0fcb20972e",
+    "s4211/ordinary/request.preview.json": "366e4b45605768003278623168e42cdb57fb67fe31f32b3b655831f954732449",
+    "s4211/search/request.preview.json": "13f5431e273aaba672651a59dc35042a6ece0d7153834d58b3b6b740138d5061",
+    "s4217/ordinary/request.preview.json": "50063bd62d1a595b7de90f6a01c3a361999983f799b3cf51f3c27b8c3d14da0f",
+    "s4217/search/request.preview.json": "9f4af053dbfbef36ce1bdb0d3fd19923ee3d8ccce0646b9b4feb0b480a9f92ca"
+  },
+  "admission": "plain visible-current gate is identical; gated acceptance additionally requires full-history healthy and reset-aware history gate. All rejected/keep versions retained and tested.",
+  "gate_benefit": "Count only current-pass/full-history-reject proposals with concrete FP/lost detection/required trigger loss. Interface/current failures and unknown-only rejects reported separately.",
+  "background": "Public RTL, all fault modes, specification, shared weak initial candidate and common case. No research36 applicability windows or research40/41 success outputs.",
+  "independent": "All 12 arms freeze first, then one new shared 56-case batch; exact duplicate frozen candidates share physical replay with bindings. Never feedback or select.",
+  "search_cost": "Research42 contract queries physically acquired once, logically charged to B and D. Ordinary arms do not access oracle/search evidence. Report setup and postdecision measurement separately.",
+  "limits": "Known FIFO plus artificial faults; three model seed requests; one-step paired gate decision effect, not multi-round policy effect or a guarantee of advantage. Service seed behavior unverified.",
+  "authorization": "New six-call grant required. Research41 unused three calls are not transferred."
+}

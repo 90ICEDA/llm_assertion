@@ -1,0 +1,12 @@
+--- correct.v
++++ buggy.v
+@@ -114,7 +114,8 @@
+                 if (s_axis_tdata != 8'd0) begin
+                     // store count value and zero suppress
+                     count_next = s_axis_tdata-1;
+-                    suppress_zero_next = (s_axis_tdata == 8'd255);
++                    // ASSERTIONFORGE_MUTATION: wrong COBS maximum-run code
++                    suppress_zero_next = (s_axis_tdata == 8'd254);
+                     s_axis_tready_next = m_axis_tready_int_early;
+                     if (s_axis_tdata == 8'd1) begin
+                         // next byte will be count value

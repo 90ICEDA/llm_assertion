@@ -1,0 +1,72 @@
+{
+  "name": "case430_axis_rate_limit_temporal_hold_2",
+  "parent_bug_id": "case430_axis_rate_limit_temporal_hold_2",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_rate_limit",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_rate_limit.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_rate_limit.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "frame_reg state update is suppressed",
+  "spec": "With frame-aware limiting enabled, once the first beat of a frame is accepted, an idle gap before the final beat must not cause that continuing frame to be treated as a new frame or spuriously backpressured.",
+  "mutation_edits": [
+    {
+      "line": 149,
+      "search": "    frame_reg <= frame_next;",
+      "replace": "    frame_reg <= frame_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "frame_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "by_frame",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "s_axis_tlast",
+    "m_axis_tvalid",
+    "m_axis_tready",
+    "sr"
+  ],
+  "temporal_type": "frame state across an inter-beat gap",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "bdfb4e29768c5224c543098765b8d648f3fe774eb42643c289d85b446414d155",
+  "buggy_sha256": "d958142d85d7160a01bd1b3dbdfa6b9843201acd2ef5ead0d053dd17b93abb79",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (by_frame && s_axis_tvalid && s_axis_tready && !s_axis_tlast) ##1 !s_axis_tvalid |=> s_axis_tready);",
+    "temporal_type": "frame state across an inter-beat gap"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 11,
+      "signals": [
+        "sr"
+      ],
+      "clock_cycle": 5
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 13,
+      "signals": [
+        "sr"
+      ],
+      "clock_cycle": 6
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 15,
+      "signals": [
+        "sr"
+      ],
+      "clock_cycle": 7
+    }
+  }
+}

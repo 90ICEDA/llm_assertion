@@ -1,0 +1,42 @@
+{
+  "O": [
+    {
+      "label": "valid_check",
+      "antecedent": "1'b1",
+      "consequent": "frame_len_valid == $past(finish)",
+      "timing": "next_sample",
+      "obligations": [
+        "completion_valid"
+      ]
+    },
+    {
+      "label": "adjacent_length",
+      "antecedent": "finish && prev_complete",
+      "consequent": "frame_len_valid && frame_len == $past(acc_bytes+beat_bytes)",
+      "timing": "next_sample",
+      "obligations": [
+        "per_frame_length"
+      ]
+    }
+  ],
+  "H": [
+    {
+      "label": "valid_check",
+      "antecedent": "1'b1",
+      "consequent": "frame_len_valid == $past(finish)",
+      "timing": "next_sample",
+      "obligations": [
+        "completion_valid"
+      ]
+    },
+    {
+      "label": "adjacent_length",
+      "antecedent": "finish && prev_complete",
+      "consequent": "frame_len_valid && frame_len == $past(acc_bytes+beat_bytes)",
+      "timing": "next_sample",
+      "obligations": [
+        "per_frame_length"
+      ]
+    }
+  ]
+}

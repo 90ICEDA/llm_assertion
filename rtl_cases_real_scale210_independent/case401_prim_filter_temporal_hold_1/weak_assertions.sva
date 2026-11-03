@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Only checks the visible output in the reset sample and ignores retained-state timing.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) (!rst_ni) |-> (filter_o == 1'b0));
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Observes only whether the final output is known, not when it may change.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) enable_i |-> !$isunknown(filter_o));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Requires only an immediate sample and discards the qualification interval.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && filter_i) |-> filter_o);
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the reset trigger and therefore describes only a coarse state value.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) stored_value_q == 1'b0);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: A local consistency invariant cannot establish reset or history duration.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) filter_o == stored_value_q || !enable_i);

@@ -1,0 +1,13 @@
+--- correct.v
++++ buggy.v
+@@ -5,7 +5,8 @@
+     if (!rst_ni) release_sync <= 2'b00;
+     else release_sync <= {release_sync[0],1'b1};
+   end
+-  assign s_axis_tready = release_sync[1];
+-  assign m_axis_tvalid = s_axis_tvalid & release_sync[1];
++  // MUTATION: uses the first synchronizer stage and releases traffic one cycle early.
++  assign s_axis_tready = release_sync[0];
++  assign m_axis_tvalid = s_axis_tvalid & release_sync[0];
+   assign m_axis_tdata = s_axis_tdata;
+ endmodule

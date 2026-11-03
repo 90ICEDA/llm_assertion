@@ -1,0 +1,252 @@
+{
+  "ibex166": {
+    "case_id": "lowRISC/ibex#166",
+    "results": [
+      {
+        "revision": "before",
+        "compile_status": "passed",
+        "execution_status": "completed",
+        "native_property_status": "violation",
+        "checks": 1374,
+        "violations": 423,
+        "transactions_with_violation": 42,
+        "family_results": {
+          "benchmark_illegal_alu": {
+            "checks": 15,
+            "violations": 15
+          },
+          "branch_legal": {
+            "checks": 570,
+            "violations": 0
+          },
+          "branch_reserved": {
+            "checks": 177,
+            "violations": 129
+          },
+          "issue_163_illegal_branch": {
+            "checks": 15,
+            "violations": 12
+          },
+          "nop_control": {
+            "checks": 9,
+            "violations": 0
+          },
+          "op_bit28": {
+            "checks": 267,
+            "violations": 267
+          },
+          "op_control": {
+            "checks": 321,
+            "violations": 0
+          }
+        },
+        "compile_wall_seconds": 30.68437949600002,
+        "simulation_wall_seconds": 0.01919348199999149,
+        "version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+      },
+      {
+        "revision": "after",
+        "compile_status": "passed",
+        "execution_status": "completed",
+        "native_property_status": "no_violation_within_executed_scope",
+        "checks": 1374,
+        "violations": 0,
+        "transactions_with_violation": 0,
+        "family_results": {
+          "benchmark_illegal_alu": {
+            "checks": 15,
+            "violations": 0
+          },
+          "branch_legal": {
+            "checks": 570,
+            "violations": 0
+          },
+          "branch_reserved": {
+            "checks": 177,
+            "violations": 0
+          },
+          "issue_163_illegal_branch": {
+            "checks": 15,
+            "violations": 0
+          },
+          "nop_control": {
+            "checks": 9,
+            "violations": 0
+          },
+          "op_bit28": {
+            "checks": 267,
+            "violations": 0
+          },
+          "op_control": {
+            "checks": 321,
+            "violations": 0
+          }
+        },
+        "compile_wall_seconds": 20.141219406000005,
+        "simulation_wall_seconds": 0.02105942899999036,
+        "version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+      }
+    ],
+    "admitted_original_module": true,
+    "repair_witnesses": 423,
+    "covered_repair_obligations": [
+      "illegal_branch_persists",
+      "op_bit28_illegal"
+    ],
+    "full_core_trap_reproduction": false,
+    "abstract_model": false,
+    "model_calls": 0,
+    "formal_calls": 0,
+    "source_sha256": {
+      "before/ibex_decoder.sv": "a0921dfe3033510812e7f6fb0602adaad707f7cc297393aa2738d1e3b8688223",
+      "before/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f",
+      "after/ibex_decoder.sv": "2ea8bbc1b2268954ad9c980a05f78428da7d6bd456fb2b4dbf3559e694c61427",
+      "after/ibex_defines.sv": "cb76ce3d56f8b660d41b8573208e63d573e4e03fe1c8033c884bb0d5f084af7f"
+    }
+  },
+  "ibex54_new_boundaries": {
+    "results": [
+      {
+        "revision": "before",
+        "cohort": "new_boundary",
+        "vectors": 119,
+        "violating_vectors": 32,
+        "failures": 32,
+        "by_family": {
+          "legal_li": {
+            "vectors": 20,
+            "violating_vectors": 0
+          },
+          "legal_lui": {
+            "vectors": 16,
+            "violating_vectors": 0
+          },
+          "legal_slli": {
+            "vectors": 16,
+            "violating_vectors": 0
+          },
+          "legal_srai": {
+            "vectors": 9,
+            "violating_vectors": 0
+          },
+          "legal_srli": {
+            "vectors": 9,
+            "violating_vectors": 0
+          },
+          "lui_zero_reserved": {
+            "vectors": 4,
+            "violating_vectors": 0
+          },
+          "new_c_slli_x0_hint": {
+            "vectors": 32,
+            "violating_vectors": 32
+          },
+          "rv32_high_shift_reserved": {
+            "vectors": 9,
+            "violating_vectors": 0
+          },
+          "uncompressed_passthrough": {
+            "vectors": 4,
+            "violating_vectors": 0
+          }
+        },
+        "compile_status": "passed",
+        "execution_status": "completed"
+      },
+      {
+        "revision": "before",
+        "cohort": "old_anchor",
+        "vectors": 5,
+        "violating_vectors": 5,
+        "failures": 5,
+        "by_family": {
+          "original_repair_anchor": {
+            "vectors": 5,
+            "violating_vectors": 5
+          }
+        },
+        "compile_status": "passed",
+        "execution_status": "completed"
+      },
+      {
+        "revision": "after",
+        "cohort": "new_boundary",
+        "vectors": 119,
+        "violating_vectors": 0,
+        "failures": 0,
+        "by_family": {
+          "legal_li": {
+            "vectors": 20,
+            "violating_vectors": 0
+          },
+          "legal_lui": {
+            "vectors": 16,
+            "violating_vectors": 0
+          },
+          "legal_slli": {
+            "vectors": 16,
+            "violating_vectors": 0
+          },
+          "legal_srai": {
+            "vectors": 9,
+            "violating_vectors": 0
+          },
+          "legal_srli": {
+            "vectors": 9,
+            "violating_vectors": 0
+          },
+          "lui_zero_reserved": {
+            "vectors": 4,
+            "violating_vectors": 0
+          },
+          "new_c_slli_x0_hint": {
+            "vectors": 32,
+            "violating_vectors": 0
+          },
+          "rv32_high_shift_reserved": {
+            "vectors": 9,
+            "violating_vectors": 0
+          },
+          "uncompressed_passthrough": {
+            "vectors": 4,
+            "violating_vectors": 0
+          }
+        },
+        "compile_status": "passed",
+        "execution_status": "completed"
+      },
+      {
+        "revision": "after",
+        "cohort": "old_anchor",
+        "vectors": 5,
+        "violating_vectors": 0,
+        "failures": 0,
+        "by_family": {
+          "original_repair_anchor": {
+            "vectors": 5,
+            "violating_vectors": 0
+          }
+        },
+        "compile_status": "passed",
+        "execution_status": "completed"
+      }
+    ],
+    "source_module_original": true,
+    "abstract_model": false,
+    "model_calls": 0,
+    "formal_calls": 0,
+    "native_SVA": true,
+    "learned_assertion_holdout": false,
+    "new_parameter_configurations": 0
+  },
+  "stat_spec": "upstream_timing_and_overlap_not_confirmed",
+  "screened_metadata_rows": 35,
+  "new_historical_parent_admissions": 1,
+  "newly_admitted": "lowRISC/ibex#166",
+  "previously_admitted_extended": "lowRISC/ibex#54",
+  "remaining_screened_cases_not_executed": 33,
+  "whole_processor_reproductions": 0,
+  "model_calls": 0,
+  "formal_calls": 0,
+  "acceptance_review": "acceptance_adapter_review.json"
+}

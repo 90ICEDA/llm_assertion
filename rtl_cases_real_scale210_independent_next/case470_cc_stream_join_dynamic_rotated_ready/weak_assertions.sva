@@ -1,0 +1,10 @@
+// single_cycle_implication
+assert property (@(posedge clk_i) disable iff (!rst_ni) (oup_valid_o |-> |inp_valid_i));
+// final_output_only
+assert property (@(posedge clk_i) disable iff (!rst_ni) (!$isunknown(inp_ready_o)));
+// delay_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (oup_ready_i |-> oup_ready_i));
+// antecedent_removed
+assert property (@(posedge clk_i) disable iff (!rst_ni) (|sel_i |-> |sel_i));
+// simple_invariant
+assert property (@(posedge clk_i) disable iff (!rst_ni) (|inp_ready_o |-> oup_ready_i));

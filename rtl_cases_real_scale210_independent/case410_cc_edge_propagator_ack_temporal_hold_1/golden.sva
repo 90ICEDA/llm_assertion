@@ -1,0 +1,2 @@
+// Temporal type: cross-cycle sequential state transition
+assert property (@(posedge clk_tx_i) !rst_tx_ni |=> (dut.r_input_reg == 1'b0));

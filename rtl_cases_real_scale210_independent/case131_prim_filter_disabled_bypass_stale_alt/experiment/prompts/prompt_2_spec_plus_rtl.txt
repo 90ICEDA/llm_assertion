@@ -1,0 +1,256 @@
+You are a formal verification engineer.
+Generate exactly one SystemVerilog Assertion in this strict format:
+assert property (@(posedge clk) disable iff (!rst_n) (<ANTECEDENT>) |-> (<CONSEQUENT>));
+
+Rules:
+1) Output only one assertion line. No explanation. No markdown.
+2) Use only allowed signals listed below.
+3) Keep antecedent and consequent purely boolean (no ##, no $past, no sequence operators).
+4) No helper/internal names such as next_state, count_next, count_prev, old(...), S_*.
+5) Do not concatenate multiple assertions. Exactly one assert property statement.
+6) For register-update behavior, prefer next-cycle implication (|=>) instead of same-cycle check.
+7) Target a meaningful safety property (not vacuous).
+8) Internal RTL names may appear below for understanding only. Never reference any name that is not in Allowed signals.
+9) If the full intent cannot be expressed under these restrictions, emit the strongest single implication over Allowed signals that still captures the bug.
+10) The final assertion line must contain exactly one implication operator total: either one |-> or one |=>.
+
+Allowed signals:
+clk, rst_n, enable_i, filter_i, filter_o
+
+Specification:
+When enable_i is low, filter_o shall reflect the live filter_i input immediately rather than the stored filtered value.
+
+Additional guidance:
+- Use only the allowed interface-visible signals in the final assertion.
+
+RTL:
+// Auto-generated real RTL mutation scaffold.
+// case: case131_prim_filter_disabled_bypass_stale_alt
+// source_project: opentitan
+// source_module: prim_filter
+
+`ifndef ASSERT_DEFAULT_CLK
+`define ASSERT_DEFAULT_CLK clk_i
+`endif
+`ifndef ASSERT_DEFAULT_RST
+`define ASSERT_DEFAULT_RST !rst_ni
+`endif
+`ifndef ASSERT_I
+`define ASSERT_I(__name, __prop)
+`endif
+`ifndef ASSERT_INIT
+`define ASSERT_INIT(__name, __prop)
+`endif
+`ifndef ASSERT_INIT_NET
+`define ASSERT_INIT_NET(__name, __prop)
+`endif
+`ifndef ASSERT_FINAL
+`define ASSERT_FINAL(__name, __prop)
+`endif
+`ifndef ASSERT_AT_RESET
+`define ASSERT_AT_RESET(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_AT_RESET_AND_FINAL
+`define ASSERT_AT_RESET_AND_FINAL(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT
+`define ASSERT(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_NEVER
+`define ASSERT_NEVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_KNOWN
+`define ASSERT_KNOWN(__name, __sig, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef COVER
+`define COVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME
+`define ASSUME(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME_I
+`define ASSUME_I(__name, __prop)
+`endif
+`ifndef ASSUME_FPV
+`define ASSUME_FPV(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+
+module dut_case131_prim_filter_disabled_bypass_stale_alt (
+  input logic clk,
+  input logic rst_n,
+  input logic enable_i,
+  input logic filter_i,
+  output logic filter_o
+);
+  prim_filter #(
+    .AsyncOn(1'b0),
+    .Cycles(2)
+  ) u_dut (
+    .clk_i(clk),
+    .rst_ni(rst_n),
+    .enable_i(enable_i),
+    .filter_i(filter_i),
+    .filter_o(filter_o)
+  );
+endmodule
+
+// ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+module prim_flop #(
+  parameter int               Width      = 1,
+  parameter logic [Width-1:0] ResetValue = 0
+) (
+  input                    clk_i,
+  input                    rst_ni,
+  input        [Width-1:0] d_i,
+  output logic [Width-1:0] q_o
+);
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      q_o <= ResetValue;
+    end else begin
+      q_o <= d_i;
+    end
+  end
+
+endmodule
+
+// ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim_generic/rtl/prim_flop_2sync.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+//
+// Double-flop-based synchronizer
+
+module prim_flop_2sync #(
+  parameter int               Width      = 16,
+  parameter logic [Width-1:0] ResetValue = '0,
+  parameter bit               EnablePrimCdcRand = 1
+) (
+  input                    clk_i,
+  input                    rst_ni,
+  input        [Width-1:0] d_i,
+  output logic [Width-1:0] q_o
+);
+
+  logic [Width-1:0] d_o;
+  logic [Width-1:0] intq;
+
+`ifdef SIMULATION
+
+  prim_cdc_rand_delay #(
+    .DataWidth(Width),
+    .Enable(EnablePrimCdcRand)
+  ) u_prim_cdc_rand_delay (
+    .clk_i,
+    .rst_ni,
+    .src_data_i(d_i),
+    .prev_data_i(intq),
+    .dst_data_o(d_o)
+  );
+`else // !`ifdef SIMULATION
+  logic unused_sig;
+  assign unused_sig = EnablePrimCdcRand;
+  always_comb d_o = d_i;
+`endif // !`ifdef SIMULATION
+
+  prim_flop #(
+    .Width(Width),
+    .ResetValue(ResetValue)
+  ) u_sync_1 (
+    .clk_i,
+    .rst_ni,
+    .d_i(d_o),
+    .q_o(intq)
+  );
+
+  prim_flop #(
+    .Width(Width),
+    .ResetValue(ResetValue)
+  ) u_sync_2 (
+    .clk_i,
+    .rst_ni,
+    .d_i(intq),
+    .q_o
+  );
+
+endmodule : prim_flop_2sync
+
+// ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim/rtl/prim_filter.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+//
+// Primitive input filter, with enable.  Configurable number of cycles.
+//
+// when in reset, stored vector is zero
+// when enable is false, output is input
+// when enable is true, output is stored value,
+//   new input must be opposite value from stored value for
+//   #Cycles before switching to new value.
+
+module prim_filter #(
+  // If this parameter is set, an additional 2-stage synchronizer will be
+  // added at the input.
+  parameter bit AsyncOn = 0,
+  parameter int unsigned Cycles = 4
+) (
+  input        clk_i,
+  input        rst_ni,
+  input        enable_i,
+  input        filter_i,
+  output logic filter_o
+);
+
+  logic [Cycles-1:0] stored_vector_q, stored_vector_d;
+  logic stored_value_q, update_stored_value;
+  logic unused_stored_vector_q_msb;
+
+  logic filter_synced;
+
+  if (AsyncOn) begin : gen_async
+    // Run this through a 2 stage synchronizer to
+    // prevent metastability.
+    prim_flop_2sync #(
+      .Width(1)
+    ) prim_flop_2sync (
+      .clk_i,
+      .rst_ni,
+      .d_i(filter_i),
+      .q_o(filter_synced)
+    );
+  end else begin : gen_sync
+    assign filter_synced = filter_i;
+  end
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      stored_value_q <= 1'b0;
+    end else if (update_stored_value) begin
+      stored_value_q <= filter_synced;
+    end
+  end
+
+  assign stored_vector_d = {stored_vector_q[Cycles-2:0],filter_synced};
+  assign unused_stored_vector_q_msb = stored_vector_q[Cycles-1];
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      stored_vector_q <= '0;
+    end else begin
+      stored_vector_q <= stored_vector_d;
+    end
+  end
+
+  assign update_stored_value =
+             (stored_vector_d == {Cycles{1'b0}}) |
+             (stored_vector_d == {Cycles{1'b1}});
+
+  assign filter_o = enable_i ? stored_value_q : filter_synced;
+
+endmodule
+

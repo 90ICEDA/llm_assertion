@@ -1,0 +1,12 @@
+{
+  "reason": "Stop a request whose full RTL context was not preserved by the service, rather than credit a completion under silently truncated input.",
+  "completed_real_semantic_revision": "core/v0",
+  "completed_revision_verdict": "rejected: 73 legal false-positive rows and 5 attribution-unknown rows; initial accepted property retained",
+  "cancelled_call": "core/v1/model_call",
+  "cancelled_usage": "unavailable; transport_result.json retains null final tokens",
+  "service_observation": "server.log warned truncating input prompt, prompt=17356, new=16383, limit=16384",
+  "full_request_tokenization": 25025,
+  "tokenization_source": "deliverables/research18_context_audit_20261016_r01",
+  "interpretation": "The service count may already exclude a dropped message; it is not the complete request length or final billed usage.",
+  "continuation_policy": "Preserve the actual rejected development proposal; allow at most two further core revisions in a fresh run with context preflight. No independent test from this interrupted attempt was generated or consumed."
+}

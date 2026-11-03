@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case484_cc_exp_backoff_clear_set_priority",
+  "parent_bug_id": "case484_cc_exp_backoff_clear_set_priority",
+  "source_project": "common_cells",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "id": "W1_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "property": "set_cnt_i && !clr_cnt_i |=> !is_zero_o",
+      "antecedent": "set_cnt_i && !clr_cnt_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Nonconcurrent set still works.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W2_final_output_only",
+      "weakness_class": "final_output_only",
+      "property": "is_zero_o == (count_o==0)",
+      "antecedent": "1'b1",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Output consistency survives mutation.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W3_delay_removed",
+      "weakness_class": "delay_removed",
+      "property": "clr_cnt_i |-> is_zero_o || !is_zero_o",
+      "antecedent": "clr_cnt_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Removes next-cycle clear.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W4_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "property": "count_o<=15",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "No priority trigger.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W5_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "property": "!is_zero_o |-> count_o!=0",
+      "antecedent": "!is_zero_o",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Local encoding invariant survives.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    }
+  ]
+}

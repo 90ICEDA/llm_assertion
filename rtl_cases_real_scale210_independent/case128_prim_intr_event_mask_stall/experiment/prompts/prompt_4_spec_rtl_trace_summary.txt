@@ -1,0 +1,248 @@
+You are a formal verification engineer.
+Generate exactly one SystemVerilog Assertion in this strict format:
+assert property (@(posedge clk) disable iff (!rst_n) (<ANTECEDENT>) |-> (<CONSEQUENT>));
+
+Rules:
+1) Output only one assertion line. No explanation. No markdown.
+2) Use only allowed signals listed below.
+3) Keep antecedent and consequent purely boolean (no ##, no $past, no sequence operators).
+4) No helper/internal names such as next_state, count_next, count_prev, old(...), S_*.
+5) Do not concatenate multiple assertions. Exactly one assert property statement.
+6) For register-update behavior, prefer next-cycle implication (|=>) instead of same-cycle check.
+7) The assertion should pass on good behavior and fail on bad behavior.
+8) Avoid vacuous antecedent: choose a condition that appears in traces.
+9) Internal RTL names may appear below for understanding only. Never reference any name that is not in Allowed signals.
+10) If the full intent cannot be expressed under these restrictions, emit the strongest single implication over Allowed signals that still distinguishes good and bad traces.
+11) The final assertion line must contain exactly one implication operator total: either one |-> or one |=>.
+12) Treat the trace divergence summary as observational evidence only.
+13) Infer a general relation from the divergence; do not hard-code one observed trace value or one observed transition unless the value is explicitly justified by the spec or RTL.
+14) If "First divergence cycle" is "none", fall back to the strongest RTL/spec-based property you can express with allowed signals.
+
+Allowed signals:
+clk, rst_n, event_intr_i, reg2hw_intr_enable_q_i, reg2hw_intr_state_q_i, intr_o
+
+Specification:
+With FlopOutput enabled in Event mode, intr_o shall be derived from the committed interrupt state feedback, not from the speculative next-state in the same event cycle.
+
+Additional guidance:
+- Use only the allowed interface-visible signals in the final assertion.
+
+RTL:
+// Auto-generated real RTL mutation scaffold.
+// case: case128_prim_intr_event_mask_stall
+// source_project: opentitan
+// source_module: prim_intr_hw
+
+`ifndef ASSERT_DEFAULT_CLK
+`define ASSERT_DEFAULT_CLK clk_i
+`endif
+`ifndef ASSERT_DEFAULT_RST
+`define ASSERT_DEFAULT_RST !rst_ni
+`endif
+`ifndef ASSERT_I
+`define ASSERT_I(__name, __prop)
+`endif
+`ifndef ASSERT_INIT
+`define ASSERT_INIT(__name, __prop)
+`endif
+`ifndef ASSERT_INIT_NET
+`define ASSERT_INIT_NET(__name, __prop)
+`endif
+`ifndef ASSERT_FINAL
+`define ASSERT_FINAL(__name, __prop)
+`endif
+`ifndef ASSERT_AT_RESET
+`define ASSERT_AT_RESET(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_AT_RESET_AND_FINAL
+`define ASSERT_AT_RESET_AND_FINAL(__name, __prop, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT
+`define ASSERT(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_NEVER
+`define ASSERT_NEVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSERT_KNOWN
+`define ASSERT_KNOWN(__name, __sig, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef COVER
+`define COVER(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME
+`define ASSUME(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+`ifndef ASSUME_I
+`define ASSUME_I(__name, __prop)
+`endif
+`ifndef ASSUME_FPV
+`define ASSUME_FPV(__name, __prop, __clk = `ASSERT_DEFAULT_CLK, __rst = `ASSERT_DEFAULT_RST)
+`endif
+
+module dut_case128_prim_intr_event_mask_stall (
+  input logic clk,
+  input logic rst_n,
+  input logic event_intr_i,
+  input logic reg2hw_intr_enable_q_i,
+  input logic reg2hw_intr_test_q_i,
+  input logic reg2hw_intr_test_qe_i,
+  input logic reg2hw_intr_state_q_i,
+  output logic hw2reg_intr_state_de_o,
+  output logic hw2reg_intr_state_d_o,
+  output logic intr_o
+);
+  prim_intr_hw #(
+    .Width(1),
+    .FlopOutput(1),
+    .IntrT("Event")
+  ) u_dut (
+    .clk_i(clk),
+    .rst_ni(rst_n),
+    .event_intr_i(event_intr_i),
+    .reg2hw_intr_enable_q_i(reg2hw_intr_enable_q_i),
+    .reg2hw_intr_test_q_i(reg2hw_intr_test_q_i),
+    .reg2hw_intr_test_qe_i(reg2hw_intr_test_qe_i),
+    .reg2hw_intr_state_q_i(reg2hw_intr_state_q_i),
+    .hw2reg_intr_state_de_o(hw2reg_intr_state_de_o),
+    .hw2reg_intr_state_d_o(hw2reg_intr_state_d_o),
+    .intr_o(intr_o)
+  );
+endmodule
+
+// ----- source: /mnt/d/AssertionForge-main/external/opentitan/hw/ip/prim/rtl/prim_intr_hw.sv -----
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+//
+// Primitive block for generating CIP interrupts in peripherals.
+//
+// This block generates both the level-triggered wired interrupt signal intr_o and also updates
+// the value of the INTR_STATE register. Together, the signal and register make up the two
+// externally-visible indications of of the interrupt state.
+//
+// This assumes the existence of three external controller registers, which
+// interface with this module via the standard reggen reg2hw/hw2reg signals. The 3 registers are:
+// - INTR_ENABLE : enables/masks the output of INTR_STATE as the intr_o signal
+// - INTR_STATE  : the current state of the interrupt (may be RO or W1C depending on "IntrT")
+// - INTR_TEST   : sw-access-only register which asserts the interrupt for testing purposes
+
+module prim_intr_hw # (
+  // This module can be instantiated once per interrupt field (Width == 1), or
+  // "bussified" with all fields of the interrupt vector (Width == $width(vec)).
+  parameter int unsigned Width = 1,
+  parameter bit          FlopOutput = 1,
+
+  // As the wired interrupt signal intr_o is a level-triggered interrupt, the upstream consumer sw
+  // has two options to make forward progress when this signal is asserted:
+  // - Mask the interrupt, by setting INTR_ENABLE = 1'b0 or masking/enabling at an upstream
+  //   consumer.
+  // - Interact with the peripheral in some user-defined way that clears the signal.
+  // To make this user-defined interaction ergonomic from a SW-perspective, we have defined
+  // two common patterns for typical interrupt-triggering events, *Status* and *Event*.
+  // - *Event* is useful for capturing a momentary assertion of the input signal.
+  //   - INTR_STATE/intr_o is set to '1 upon the event occurring.
+  //   - INTR_STATE/intr_o remain set until software writes-1-to-clear to INTR_STATE.
+  // - *Status* captures a persistent conditional assertion that requires intervention to de-assert.
+  //   - Until the root cause is alleviated, the interrupt output (while enabled) is continuously
+  //     asserted.
+  //   - INTR_STATE for *status* interrupts is RO (it simply presents the raw HW input signal).
+  //   - If the root_cause is cleared, INTR_STATE/intr_o also clears automatically.
+  // More details about the interrupt type distinctions can be found in the comportability docs.
+  parameter              IntrT = "Event" // Event or Status
+) (
+  // event
+  input  clk_i,
+  input  rst_ni,
+  input  [Width-1:0]  event_intr_i,
+
+  // register interface
+  input  [Width-1:0]  reg2hw_intr_enable_q_i,
+  input  [Width-1:0]  reg2hw_intr_test_q_i,
+  input               reg2hw_intr_test_qe_i,
+  input  [Width-1:0]  reg2hw_intr_state_q_i,
+  output              hw2reg_intr_state_de_o,
+  output [Width-1:0]  hw2reg_intr_state_d_o,
+
+  // outgoing interrupt
+  output logic [Width-1:0]  intr_o
+);
+
+  logic [Width-1:0] status; // incl. test
+
+  if (IntrT == "Event") begin : g_intr_event
+    logic  [Width-1:0]    new_event;
+    assign new_event =
+               (({Width{reg2hw_intr_test_qe_i}} & reg2hw_intr_test_q_i) | event_intr_i);
+    assign hw2reg_intr_state_de_o = |new_event;
+    // for scalar interrupts, this resolves to '1' with new event
+    // for vector interrupts, new events are OR'd in to existing interrupt state
+    assign hw2reg_intr_state_d_o  =  new_event | reg2hw_intr_state_q_i;
+
+    assign status = reg2hw_intr_state_q_i ;
+  end : g_intr_event
+  else if (IntrT == "Status") begin : g_intr_status
+    logic [Width-1:0] test_q; // Storing test. Cleared by SW
+
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+      if (!rst_ni) test_q <= '0;
+      else if (reg2hw_intr_test_qe_i) test_q <= reg2hw_intr_test_q_i;
+    end
+
+    // TODO: In Status type, INTR_STATE is better to be external type and RO.
+    assign hw2reg_intr_state_de_o = 1'b 1; // always represent the status
+    assign hw2reg_intr_state_d_o  = event_intr_i | test_q;
+
+    assign status = event_intr_i | test_q;
+
+    // To make the timing same to event type, status signal does not use CSR.q,
+    // rather the input of the CSR.
+    logic unused_reg2hw;
+    assign unused_reg2hw = ^reg2hw_intr_state_q_i;
+  end : g_intr_status
+
+
+  if (FlopOutput == 1) begin : gen_flop_intr_output
+    // flop the interrupt output
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+      if (!rst_ni) begin
+        intr_o <= '0;
+      end else begin
+        intr_o <= status & reg2hw_intr_enable_q_i;
+      end
+    end
+
+  end else begin : gen_intr_passthrough_output
+    logic unused_clk;
+    logic unused_rst_n;
+    assign unused_clk = clk_i;
+    assign unused_rst_n = rst_ni;
+    assign intr_o = reg2hw_intr_state_q_i & reg2hw_intr_enable_q_i;
+  end
+
+  `ASSERT_INIT(IntrTKind_A, IntrT inside {"Event", "Status"})
+
+endmodule
+
+
+Trace divergence summary:
+Case: case128_prim_intr_event_mask_stall
+First divergence cycle: 3
+Differing signals at first divergence: intr_o
+Observed differing signal values (good): intr_o=0
+Observed differing signal values (bad): intr_o=1
+
+Structured trace summary:
+- first_divergence_cycle: 3
+- differing_signals: intr_o
+- first_divergence_time_ps: 35000
+- divergence_observation: posedge_cycle
+- divergence_snapshot:
+  - intr_o: good=0, bad=1
+
+Summary-driven construction checklist:
+- Identify the first divergence cycle and the listed differing signal(s).
+- Treat the differing signal(s) as candidate consequent targets.
+- Use the observed divergence to infer a reusable rule rather than a one-off constant match.
+- Choose an antecedent that is actually observed in traces and is as specific as needed to separate good from bad.
+- Avoid consequents that simply restate reset-high, rst_n, or another trivially satisfied condition.
+- Do not copy concrete multi-bit values from the summary directly into the assertion unless the spec or RTL independently justifies them.

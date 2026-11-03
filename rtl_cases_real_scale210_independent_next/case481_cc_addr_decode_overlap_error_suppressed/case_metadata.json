@@ -1,0 +1,62 @@
+{
+  "name": "case481_cc_addr_decode_overlap_error_suppressed",
+  "parent_bug_id": "case481_cc_addr_decode_overlap_error_suppressed",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_addr_decode",
+  "source_files": [
+    "external/common_cells/src/cc_addr_decode.sv"
+  ],
+  "bug_class": "combination_protocol",
+  "bug_family": "overlap_error_suppression",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "addr_i",
+    "en_i",
+    "sel_o",
+    "valid_o",
+    "error_o"
+  ],
+  "temporal_type": "combinational protocol relation",
+  "status": "final_verified_rejected",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (en_i && addr_i>=8'h30 && addr_i<8'h40) |-> error_o);"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 25000,
+      "sample_index": 6,
+      "good_trace_sha256": "8fe2e5072de8807fa9c53623e69272adc9b29bbd73d478038f5fbb69c821a666",
+      "bad_trace_sha256": "99a628579928987d577f01e5fe2d13946a082b9cc213904f201a0d6343bc3734",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 35000,
+      "sample_index": 8,
+      "good_trace_sha256": "ae2e0c3397474c3d9d8e66528c09d51ba495b4ad16b716eb1cdca91c8fd8960a",
+      "bad_trace_sha256": "dec4d5e515f477c4aa044bb5df0f8e6be2a9fd8ffed444a7f20b5367fb6de0eb",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 35000,
+      "sample_index": 8,
+      "good_trace_sha256": "36648d52c12f0d0acdc356468e4604ae1173a13c9121df93bf9f5ba1965cfaf8",
+      "bad_trace_sha256": "7ca08f95028adf45d1e3d598783c767e4b25aff062c4b34f97c37a806b2688b0",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "19658a2b2756b08ee5ae2fed725c624813a063b66af49d5cdee522a916120db0",
+  "buggy_sha256": "258fe9e4f6f6e41d2fe72d980924d7ddee9e74e9fb0b299b4a3acf29acbcc681"
+}

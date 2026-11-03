@@ -1,0 +1,122 @@
+[
+  {
+    "name": "iverilog_version",
+    "argv": [
+      "wsl.exe",
+      "--exec",
+      "iverilog",
+      "-V"
+    ],
+    "exit_code": 0,
+    "stdout_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\iverilog_version.stdout.raw",
+    "stdout_raw_bytes": 3294,
+    "stdout_raw_sha256": "f9199cc8658f4afcec3edeb93f29f23bb2aebf66d3eeb217cdc728aaa692f946",
+    "stderr_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\iverilog_version.stderr.raw",
+    "stderr_raw_bytes": 132,
+    "stderr_raw_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "stdout_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\iverilog_version.stdout.txt",
+    "stderr_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\iverilog_version.stderr.txt"
+  },
+  {
+    "name": "vvp_version",
+    "argv": [
+      "wsl.exe",
+      "--exec",
+      "vvp",
+      "-V"
+    ],
+    "exit_code": 0,
+    "stdout_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\vvp_version.stdout.raw",
+    "stdout_raw_bytes": 0,
+    "stdout_raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\vvp_version.stderr.raw",
+    "stderr_raw_bytes": 946,
+    "stderr_raw_sha256": "6d8610403d30b5044094799ead7ea83a9f0d4ea26e2b43e0d26d4f2044028349",
+    "stdout_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\vvp_version.stdout.txt",
+    "stderr_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\vvp_version.stderr.txt"
+  },
+  {
+    "name": "correct_compile",
+    "argv": [
+      "wsl.exe",
+      "--exec",
+      "iverilog",
+      "-g2012",
+      "-s",
+      "tb",
+      "-o",
+      "/mnt/d/AssertionForge-main1/deliverables/blind_reaudit_20260921/witnesses/case510_held_flush/command_capture_20260922/correct.out",
+      "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/correct.v",
+      "/mnt/d/AssertionForge-main1/deliverables/blind_reaudit_20260921/witnesses/case510_held_flush/tb_held_flush.v"
+    ],
+    "exit_code": 0,
+    "stdout_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_compile.stdout.raw",
+    "stdout_raw_bytes": 0,
+    "stdout_raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_compile.stderr.raw",
+    "stderr_raw_bytes": 132,
+    "stderr_raw_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "stdout_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_compile.stdout.txt",
+    "stderr_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_compile.stderr.txt"
+  },
+  {
+    "name": "correct_simulate",
+    "argv": [
+      "wsl.exe",
+      "--exec",
+      "vvp",
+      "/mnt/d/AssertionForge-main1/deliverables/blind_reaudit_20260921/witnesses/case510_held_flush/command_capture_20260922/correct.out"
+    ],
+    "exit_code": 0,
+    "stdout_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_simulate.stdout.raw",
+    "stdout_raw_bytes": 351,
+    "stdout_raw_sha256": "70abc7551bd6ba8cb338e637e3aea42f3467fb8e258419655c6e0bcbeef18ab3",
+    "stderr_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_simulate.stderr.raw",
+    "stderr_raw_bytes": 132,
+    "stderr_raw_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "stdout_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_simulate.stdout.txt",
+    "stderr_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\correct_simulate.stderr.txt"
+  },
+  {
+    "name": "buggy_compile",
+    "argv": [
+      "wsl.exe",
+      "--exec",
+      "iverilog",
+      "-g2012",
+      "-s",
+      "tb",
+      "-o",
+      "/mnt/d/AssertionForge-main1/deliverables/blind_reaudit_20260921/witnesses/case510_held_flush/command_capture_20260922/buggy.out",
+      "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent_next/case510_cc_spill_register_flush_push_priority/buggy.v",
+      "/mnt/d/AssertionForge-main1/deliverables/blind_reaudit_20260921/witnesses/case510_held_flush/tb_held_flush.v"
+    ],
+    "exit_code": 0,
+    "stdout_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_compile.stdout.raw",
+    "stdout_raw_bytes": 0,
+    "stdout_raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_compile.stderr.raw",
+    "stderr_raw_bytes": 132,
+    "stderr_raw_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "stdout_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_compile.stdout.txt",
+    "stderr_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_compile.stderr.txt"
+  },
+  {
+    "name": "buggy_simulate",
+    "argv": [
+      "wsl.exe",
+      "--exec",
+      "vvp",
+      "/mnt/d/AssertionForge-main1/deliverables/blind_reaudit_20260921/witnesses/case510_held_flush/command_capture_20260922/buggy.out"
+    ],
+    "exit_code": 0,
+    "stdout_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_simulate.stdout.raw",
+    "stdout_raw_bytes": 351,
+    "stdout_raw_sha256": "6142d81c28b73c744bc77d675ba7b01725f96f13e04950d55e9aaef15bdbf9bd",
+    "stderr_raw_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_simulate.stderr.raw",
+    "stderr_raw_bytes": 132,
+    "stderr_raw_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+    "stdout_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_simulate.stdout.txt",
+    "stderr_text_view_path": "deliverables\\blind_reaudit_20260921\\witnesses\\case510_held_flush\\command_capture_20260922\\buggy_simulate.stderr.txt"
+  }
+]

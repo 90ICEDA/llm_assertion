@@ -1,0 +1,53 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case464_axis_frame_length_adjust_truncate_equal",
+  "source_project": "verilog_axis",
+  "overall_verification_status": "pending",
+  "candidates": [
+    {
+      "id": "weak_single_cycle_implication",
+      "weakening_type": "single_cycle_implication",
+      "expression": "assert property (@(posedge clk) disable iff (rst) (sv && sr) |-> !$isunknown(mv));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits exact cross-cycle boundary, occupancy, port order, or per-sink acknowledgement.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_final_output_only",
+      "weakening_type": "final_output_only",
+      "expression": "assert property (@(posedge clk) disable iff (rst) mv |-> !$isunknown(md));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits exact cross-cycle boundary, occupancy, port order, or per-sink acknowledgement.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_delay_removed",
+      "weakening_type": "delay_removed",
+      "expression": "assert property (@(posedge clk) disable iff (rst) sv |-> !$isunknown(sr));",
+      "nonempty_antecedent": true,
+      "rationale": "Omits exact cross-cycle boundary, occupancy, port order, or per-sink acknowledgement.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_antecedent_removed",
+      "weakening_type": "antecedent_removed",
+      "expression": "assert property (@(posedge clk) disable iff (rst) 1'b1 |-> !$isunknown(mv));",
+      "nonempty_antecedent": false,
+      "rationale": "Omits exact cross-cycle boundary, occupancy, port order, or per-sink acknowledgement.",
+      "verification_status": "pending",
+      "catches_bug": null
+    },
+    {
+      "id": "weak_simple_invariant",
+      "weakening_type": "simple_invariant",
+      "expression": "assert property (@(posedge clk) disable iff (rst) 1'b1 |-> !$isunknown(mr));",
+      "nonempty_antecedent": false,
+      "rationale": "Omits exact cross-cycle boundary, occupancy, port order, or per-sink acknowledgement.",
+      "verification_status": "pending",
+      "catches_bug": null
+    }
+  ]
+}

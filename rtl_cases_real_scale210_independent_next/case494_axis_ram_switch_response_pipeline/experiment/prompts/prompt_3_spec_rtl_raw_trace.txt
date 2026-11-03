@@ -1,0 +1,67 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, grant_i, output_ready_i, q_o, state_o
+
+Specification:
+
+A granted RAM-switch command traverses three registered arbitration stages. Response valid cannot rise at the two-cycle observation point.
+
+RTL:
+
+`timescale 1ns/1ps
+module axis_ram_switch(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire grant_i,
+  input wire output_ready_i,
+  
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg [2:0] response_pipe;
+  always @(posedge clk_i or negedge rst_ni)
+    if (!rst_ni) response_pipe <= 3'b000;
+    else if (output_ready_i) response_pipe <= {response_pipe[1:0],grant_i};
+  assign q_o = response_pipe[2];
+  assign state_o = {5'b0,response_pipe};
+endmodule
+
+Waveform evidence:
+
+Good trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000000
+cycle 1: rst_ni=0, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000000
+cycle 2: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000000
+cycle 3: rst_ni=1, clk_i=1, grant_i=1, output_ready_i=1, q_o=0, state_o[7:0]=00000001
+cycle 4: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=1, q_o=0, state_o[7:0]=00000010
+cycle 5: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 6: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 7: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 8: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 9: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 10: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 11: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 12: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+cycle 13: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000010
+
+Bad trace (sampled cycles):
+cycle 0: rst_ni=0, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000000
+cycle 1: rst_ni=0, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000000
+cycle 2: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=0, state_o[7:0]=00000000
+cycle 3: rst_ni=1, clk_i=1, grant_i=1, output_ready_i=1, q_o=0, state_o[7:0]=00000001
+cycle 4: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=1, q_o=1, state_o[7:0]=00000010
+cycle 5: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 6: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 7: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 8: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 9: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 10: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 11: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 12: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010
+cycle 13: rst_ni=1, clk_i=1, grant_i=0, output_ready_i=0, q_o=1, state_o[7:0]=00000010

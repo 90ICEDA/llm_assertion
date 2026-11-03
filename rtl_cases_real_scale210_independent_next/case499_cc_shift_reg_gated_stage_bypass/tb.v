@@ -1,0 +1,19 @@
+`timescale 1ns/1ps
+module tb;
+  reg clk_i=0;
+  always #5 clk_i=~clk_i;
+  reg rst_ni=0;
+  reg data_i=0;
+  reg enable_i=0;
+  
+  wire q_o;
+  wire [7:0] state_o;
+  cc_shift_register_gated dut(.*);
+  initial begin
+    $dumpfile("wave.vcd");
+    $dumpvars(0,tb);
+    #22 rst_ni=1;
+    #8 data_i=1; enable_i=1; #35 data_i=0; #10 enable_i=0;
+    #90 $finish;
+  end
+endmodule

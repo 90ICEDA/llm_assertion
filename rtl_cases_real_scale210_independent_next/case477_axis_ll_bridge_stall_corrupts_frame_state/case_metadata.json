@@ -1,0 +1,71 @@
+{
+  "name": "case477_axis_ll_bridge_stall_corrupts_frame_state",
+  "parent_bug_id": "case477_axis_ll_bridge_stall_corrupts_frame_state",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_ll_bridge",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_ll_bridge.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_ll_bridge.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "handshake_gated_frame_history",
+  "bug_type": "A stalled AXIS beat must not update the accepted-frame history used to generate LocalLink SOF.",
+  "spec": "A stalled AXIS beat must not update the accepted-frame history used to generate LocalLink SOF.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) ((s_valid && !s_ready) |=> $stable(dut.last_tlast)));",
+    "temporal_type": "exact sampled protocol relation"
+  },
+  "mutation_edits": [
+    {
+      "search": "        if (s_axis_tvalid && s_axis_tready) last_tlast = s_axis_tlast;",
+      "replace": "        // ASSERTIONFORGE_MUTATION: stalled beats incorrectly advance frame history\n        if (s_axis_tvalid) last_tlast = s_axis_tlast;"
+    }
+  ],
+  "mutation_signal": "protocol state or polarity",
+  "relevant_signals": [
+    "s_valid",
+    "s_ready",
+    "ll_sof_n",
+    "ll_src_rdy_n"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_trace_sha256": "285ee80efdddd320fa137e91764fbe888aed68fd19cd3c0096604f88da179e00",
+      "bad_trace_sha256": "dca54c2b0bd534a786ae57877c7d1e2fbb1616ed47811b6c63d6a965bc7ea798",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_trace_sha256": "03ab3ed8a6913100689057cccdc54fdf0811d120622e0d9e06cec04c0e587dad",
+      "bad_trace_sha256": "2c58745dfdb44167ad6bc399f2e56b16704a60c794b121f78ae96a21f274ae5a",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_trace_sha256": "3074c22ed8c00fc51254a8f4c9fc6e4a841382303caf85570494c0dccc26fb71",
+      "bad_trace_sha256": "12a437c2b4f74bfd57cb18046b37b1b09e275829c0955b5655fec7703d0d421f",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol relation",
+  "mutation_kind": "real_rtl_mutation",
+  "correct_sha256": "dca615c08206a009b615e6f0d11ca54d424a2610a2e7bffb99571e51a4e43817",
+  "buggy_sha256": "38ce2835abba75a5ee7e84cf9b9a0294f31b9995f0dbb6ed163380d69b96922a",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_rejected",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

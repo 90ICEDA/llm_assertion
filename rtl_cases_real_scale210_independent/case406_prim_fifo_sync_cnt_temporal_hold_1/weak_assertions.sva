@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Checks only one visible flag, omitting pointer, depth, and reset-state timing.
+W1_single_cycle_implication: assert property (@(posedge clk_i) disable iff (!rst_ni) (!rst_ni) |-> empty_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Only relates endpoint flags.
+W2_final_output_only: assert property (@(posedge clk_i) disable iff (!rst_ni) empty_o |-> !full_o);
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Checks clear in the request sample rather than the cleared registered state.
+W3_delay_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) clr_i |-> (depth_o == '0));
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops reset and observes only an occupancy value.
+W4_antecedent_removed: assert property (@(posedge clk_i) disable iff (!rst_ni) depth_o == '0);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: Flag mutual exclusion does not establish pointer/depth reset correctness.
+W5_simple_invariant: assert property (@(posedge clk_i) disable iff (!rst_ni) !(empty_o && full_o));

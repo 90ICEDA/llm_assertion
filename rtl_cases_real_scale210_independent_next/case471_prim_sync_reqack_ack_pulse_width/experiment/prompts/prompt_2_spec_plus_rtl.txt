@@ -1,0 +1,44 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_src_i) disable iff (1'b0).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_src_i, rst_src_ni, rst_dst_ni, src_req_i, dst_req_o, dst_ack_i, src_ack_o
+
+Specification:
+
+The source-side acknowledgement of an accepted request is a one-source-clock pulse. A destination acknowledgement held high must complete the transaction once, clear the forwarded request, and must not stretch `src_ack_o` into later cycles.
+
+RTL:
+
+`timescale 1ns/1ps
+// Icarus-friendly extraction of the OpenTitan NRZ request/acknowledge control.
+module prim_sync_reqack(
+  input wire clk_src_i, rst_src_ni, clk_dst_i, rst_dst_ni,
+  input wire req_chk_i, src_req_i, dst_ack_i,
+  output reg src_ack_o, dst_req_o
+);
+  reg request_pending;
+  wire resets_ok = rst_src_ni & rst_dst_ni;
+  always @(posedge clk_src_i or negedge resets_ok) begin
+    if (!resets_ok) begin
+      request_pending <= 1'b0;
+      dst_req_o <= 1'b0;
+      src_ack_o <= 1'b0;
+    end else begin
+      src_ack_o <= 1'b0;
+      if (!request_pending && src_req_i) begin
+        request_pending <= 1'b1;
+        dst_req_o <= 1'b1;
+      end else if (request_pending && dst_ack_i) begin
+        request_pending <= 1'b0;
+        dst_req_o <= 1'b0;
+        src_ack_o <= 1'b1;
+      end
+    end
+  end
+  wire unused = clk_dst_i ^ req_chk_i;
+endmodule

@@ -1,0 +1,106 @@
+{
+  "name": "case462_axis_broadcast_partial_ready_loss",
+  "parent_bug_id": "case462_axis_broadcast_partial_ready_loss",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_broadcast",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_broadcast.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_broadcast.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "partial_sink_acknowledgement",
+  "bug_type": "A broadcast beat remains valid independently at every sink that has not accepted it.",
+  "spec": "A broadcast beat remains valid independently at every sink that has not accepted it.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) ((mv != 0) && ((mr & mv) != mv)) |=> ((mv & ~$past(mr)) != 0));",
+    "temporal_type": "exact cross-cycle protocol"
+  },
+  "mutation_edits": [
+    {
+      "search": "        if (((m_axis_tready & m_axis_tvalid) == m_axis_tvalid) || !m_axis_tvalid) begin",
+      "replace": "        if ((|(m_axis_tready & m_axis_tvalid)) || !m_axis_tvalid) begin // ASSERTIONFORGE_MUTATION"
+    }
+  ],
+  "mutation_signal": "internal protocol state",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "sv",
+    "sr",
+    "mv",
+    "mr"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_row_index": 13,
+      "bad_row_index": 13,
+      "signals": [
+        "mv[3:0]"
+      ],
+      "good_values": {
+        "mv[3:0]": "1110"
+      },
+      "bad_values": {
+        "mv[3:0]": "0000"
+      },
+      "good_trace_sha256": "8dff66dd17dd2872163edaa74aa8fc2cdc40bad2d579801b04d9907c888ffa81",
+      "bad_trace_sha256": "75cb8eec6c6ba2655494743ae038e888d42c21bc90a7202e5096680decbf1594",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_row_index": 13,
+      "bad_row_index": 13,
+      "signals": [
+        "mv[3:0]"
+      ],
+      "good_values": {
+        "mv[3:0]": "1010"
+      },
+      "bad_values": {
+        "mv[3:0]": "0000"
+      },
+      "good_trace_sha256": "7e9131dd5214d93a5dfa812c906e006552a640f2c8415d67d5b6bba7b8030ed7",
+      "bad_trace_sha256": "bfd389da1a0301052d2caf66621afbad60fe570b92394f68540342499652190b",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "sample_index": 13,
+      "good_row_index": 13,
+      "bad_row_index": 13,
+      "signals": [
+        "mv[3:0]"
+      ],
+      "good_values": {
+        "mv[3:0]": "1101"
+      },
+      "bad_values": {
+        "mv[3:0]": "0000"
+      },
+      "good_trace_sha256": "2b6eda9f06695cc84f256310b87b78be00e2cd0c5a8c500743c3e85ef847c07c",
+      "bad_trace_sha256": "56f1007b584fe3f56b8ddc34545f8f3fff1ab7c0765a8000a36392ba540a0db2",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol boundary",
+  "mutation_kind": "real_rtl_control_mutation",
+  "correct_sha256": "68fcdb4fdef33f8ca380ab735ad1c9385821d4a13cf64848cfa458eaf452a324",
+  "buggy_sha256": "0ab2b697c4eb16473fb02f611bd587a054ed77fded70c7028eb685544e020044",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_admitted",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

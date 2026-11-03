@@ -1,0 +1,2 @@
+// EnabledStatusRegisters_A
+assert property (@(posedge clk_i) disable iff (!rst_ni) (event_intr_i && reg2hw_intr_enable_q_i) |=> intr_o);

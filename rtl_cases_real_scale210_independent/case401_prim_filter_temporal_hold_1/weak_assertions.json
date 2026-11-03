@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case401_prim_filter_temporal_hold_1",
+  "parent_bug_id": "case401_prim_filter_temporal_hold_1",
+  "source_project": "opentitan",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "weakness_class": "single_cycle_implication",
+      "property": "(!rst_ni) |-> (filter_o == 1'b0)",
+      "antecedent": "!rst_ni",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Only checks the visible output in the reset sample and ignores retained-state timing.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W1_single_cycle_implication"
+    },
+    {
+      "weakness_class": "final_output_only",
+      "property": "enable_i |-> !$isunknown(filter_o)",
+      "antecedent": "enable_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Observes only whether the final output is known, not when it may change.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W2_final_output_only"
+    },
+    {
+      "weakness_class": "delay_removed",
+      "property": "(enable_i && filter_i) |-> filter_o",
+      "antecedent": "enable_i && filter_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Requires only an immediate sample and discards the qualification interval.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W3_delay_removed"
+    },
+    {
+      "weakness_class": "antecedent_removed",
+      "property": "stored_value_q == 1'b0",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "Drops the reset trigger and therefore describes only a coarse state value.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W4_antecedent_removed"
+    },
+    {
+      "weakness_class": "simple_invariant",
+      "property": "filter_o == stored_value_q || !enable_i",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "A local consistency invariant cannot establish reset or history duration.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false,
+      "id": "W5_simple_invariant"
+    }
+  ]
+}

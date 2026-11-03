@@ -1,0 +1,381 @@
+{
+  "passed": true,
+  "plan_tests": [
+    {
+      "name": "oracle_fixture_positive_not_model",
+      "decision": {
+        "accepted": true,
+        "reasons": [],
+        "stage": "applicability",
+        "windows": 9,
+        "scope": "These development windows only; no general specification understanding claim."
+      }
+    },
+    {
+      "name": "wrong_anchor",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "incorrect_anchor_cycle",
+            "id": "w0",
+            "expected": 32,
+            "actual": 33
+          }
+        ],
+        "stage": "applicability",
+        "windows": 9,
+        "scope": "These development windows only; no general specification understanding claim."
+      }
+    },
+    {
+      "name": "all_required",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "incorrect_applicability",
+            "id": "w4",
+            "expected": "not_required",
+            "actual": "required"
+          },
+          {
+            "kind": "incorrect_applicability",
+            "id": "w5",
+            "expected": "not_required",
+            "actual": "required"
+          },
+          {
+            "kind": "incorrect_applicability",
+            "id": "w7",
+            "expected": "not_required",
+            "actual": "required"
+          },
+          {
+            "kind": "incorrect_applicability",
+            "id": "w8",
+            "expected": "cancelled",
+            "actual": "required"
+          }
+        ],
+        "stage": "applicability",
+        "windows": 9,
+        "scope": "These development windows only; no general specification understanding claim."
+      }
+    },
+    {
+      "name": "unknown",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "incorrect_applicability",
+            "id": "w0",
+            "expected": "required",
+            "actual": "unknown"
+          },
+          {
+            "kind": "unknown_is_not_a_pass",
+            "id": "w0"
+          }
+        ],
+        "stage": "applicability",
+        "windows": 9,
+        "scope": "These development windows only; no general specification understanding claim."
+      }
+    },
+    {
+      "name": "missing_window",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "missing_or_extra_windows"
+          }
+        ],
+        "stage": "applicability",
+        "windows": 9,
+        "scope": "These development windows only; no general specification understanding claim."
+      }
+    },
+    {
+      "name": "wrong_reset_label",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "incorrect_applicability",
+            "id": "w8",
+            "expected": "cancelled",
+            "actual": "required"
+          }
+        ],
+        "stage": "applicability",
+        "windows": 9,
+        "scope": "These development windows only; no general specification understanding claim."
+      }
+    }
+  ],
+  "native_controls": [
+    {
+      "name": "archived_bad",
+      "source": "/mnt/d/AssertionForge-main1/deliverables/research33_real_20261021_r01/s3203/core/v0/model_call/candidate.json",
+      "sha256": "27733ac3fe690120c7c7280fcfb3481e4d456d5375008728e3c44bf01b87bd55",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "required_transition_not_triggered",
+            "evidence_id": "fifo:453f5976b51b87bffefe35b05372b9228252b62dd6ebdd9600620facc35d6176",
+            "check_cycle": 33,
+            "native_antecedent_cycle": 32,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          },
+          {
+            "kind": "target_not_causally_detected",
+            "evidence_id": "fifo:453f5976b51b87bffefe35b05372b9228252b62dd6ebdd9600620facc35d6176"
+          },
+          {
+            "kind": "required_transition_not_triggered",
+            "evidence_id": "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+            "check_cycle": 8,
+            "native_antecedent_cycle": 7,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          },
+          {
+            "kind": "target_not_causally_detected",
+            "evidence_id": "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2"
+          },
+          {
+            "kind": "required_transition_not_triggered",
+            "evidence_id": "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb",
+            "check_cycle": 10,
+            "native_antecedent_cycle": 9,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          },
+          {
+            "kind": "target_not_causally_detected",
+            "evidence_id": "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb"
+          },
+          {
+            "kind": "required_transition_not_triggered",
+            "evidence_id": "fifo:b1b9b10d249342a44818fa7ea6154cac1d6b20b44b7a7cb47dc72e9499a59cfb",
+            "check_cycle": 25,
+            "native_antecedent_cycle": 24,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          },
+          {
+            "kind": "target_not_causally_detected",
+            "evidence_id": "fifo:b1b9b10d249342a44818fa7ea6154cac1d6b20b44b7a7cb47dc72e9499a59cfb"
+          },
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "fifo:02db6cda91d8bac4b672209eca37aae9422ab5591c437e3e401dd9d79f2541bd",
+              "fifo:1ed9b6322822a7783247970f048436ccde3f12caa7f51cbcce0a09f21231dcdb",
+              "fifo:33329516294478a4b2cf1cf6fe4917a171614896b4cc2c66cf34123ca8a74b5f",
+              "fifo:393606f0c84e35615693b11b6065740ea9fc6794d27acba91a38e448808c80aa",
+              "fifo:40a563b1f1b1014ea86ec031ed87f7c2865fa2a70a745efe3a55d561fa2aeb48",
+              "fifo:453f5976b51b87bffefe35b05372b9228252b62dd6ebdd9600620facc35d6176",
+              "fifo:467c646277ea59664002a283e7af8e81188442f76d346a1c456b8d73edfd9999",
+              "fifo:56112f4b0086cf0af7e28c5a4c60ba2e0aa976daa587cc841355e9274c7bc754",
+              "fifo:59c23c694b6ddad04ca563e558f05142fb11b55e788dd4a550b0bfd0ef89572e",
+              "fifo:5c8def4ef4ea0401509bda7bd9b0a0b2af5fcdeed64fad5e15e1d01a35f3346b",
+              "fifo:6108d3876755af262bfecffbf8a1983b1073302fe4620bfe5bbccbb286221497",
+              "fifo:678ac83d4079cd3c2d5bff192fb46e790571444fea03209c31d152b3e2509561",
+              "fifo:71bf0f9ba0f484eb1be5bfac7b50cc05fc05ddf47b7712fc8476c5950b08cafb",
+              "fifo:72a1fb26ad02986d30d58540b30a4f98ee735d83b325c4f729d250da138d06d3",
+              "fifo:7684f290cfe26331c07f6e3a8bcfb1b155ff13ca090c96e17b2cffeb3e2af979",
+              "fifo:7c1415de19201a3acaf509023fde5bc15513137ca7610c2657fa05bcc728045a",
+              "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+              "fifo:901c1cfb1c6951688253d0e80f0fafabec14d86ccba1b5a2be27ad967ed56468",
+              "fifo:90a1771453806421585ba6886a8a706098da98351f0f11c60997a29f0dbb7193",
+              "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb",
+              "fifo:b1b9b10d249342a44818fa7ea6154cac1d6b20b44b7a7cb47dc72e9499a59cfb",
+              "fifo:b407d25a119b5807b1defcc6beaafa74140ef692989ddc69539348cbce8f5d2c",
+              "fifo:b5d56bdf6ef3862284e57773363fa7ad7c7f63d6033a9d64dec99330fa928dd5",
+              "fifo:ba348888d87f8fb872ce6ed602cd088720b5977db32a963031858347679e5b23",
+              "fifo:bac2499fbc9e73fe737fd42531483b1f095a3fed254aee12caa0736741d80c98",
+              "fifo:bbc5bd18ee8e880a4b723ded635b381eef0cb2c15bc10b4c26fa43b79f421bb2",
+              "fifo:d58a80439e2305f15ac7c0561845c8fd3d871207f3895adf18bccfdf5ce4e89f",
+              "fifo:e7fa72caca8587da1228e0aa69604470320f20da00c4f8d6faed42518eb24b7c",
+              "fifo:e9aca3c75a7f22578f46fd9c69b1f2789ba0792b4a89738d6fd161e04e66d698",
+              "fifo:f8c236cf7d8cc5ceec5d23dfe25dd55dfc07e199e4bf1c99d7be5f91c2644128",
+              "fifo:fa1335c59c2ed325e2bb5b12616a451aabf2f421ba2e7f919b6743e81e920f49"
+            ]
+          },
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "fifo:453f5976b51b87bffefe35b05372b9228252b62dd6ebdd9600620facc35d6176",
+              "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+              "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb",
+              "fifo:b1b9b10d249342a44818fa7ea6154cac1d6b20b44b7a7cb47dc72e9499a59cfb"
+            ]
+          }
+        ],
+        "target_rows": [
+          {
+            "evidence_id": "fifo:453f5976b51b87bffefe35b05372b9228252b62dd6ebdd9600620facc35d6176",
+            "check_cycle": 33,
+            "native_antecedent_cycle": 32,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          },
+          {
+            "evidence_id": "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+            "check_cycle": 8,
+            "native_antecedent_cycle": 7,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          },
+          {
+            "evidence_id": "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb",
+            "check_cycle": 10,
+            "native_antecedent_cycle": 9,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          },
+          {
+            "evidence_id": "fifo:b1b9b10d249342a44818fa7ea6154cac1d6b20b44b7a7cb47dc72e9499a59cfb",
+            "check_cycle": 25,
+            "native_antecedent_cycle": 24,
+            "edited_assertion": {
+              "id": "a4",
+              "trigger": false,
+              "failed": false,
+              "causal_detection": false
+            },
+            "correct_side_trigger": false
+          }
+        ],
+        "stage": "native_target_trigger_and_detection",
+        "full_history_authorized": false,
+        "scope": "Small paired development replay; passing still requires complete history replay."
+      },
+      "counts": {
+        "rows": 3302,
+        "unknown": 0,
+        "triggers": 990,
+        "false_positives": 0,
+        "detections": 3,
+        "misses": 4,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 140
+      }
+    },
+    {
+      "name": "archived_good",
+      "source": "/mnt/d/AssertionForge-main1/deliverables/research32_real_20261021_r01/s3209/core/frozen_candidate.json",
+      "sha256": "efce6a9c7de4298bea9f22097d0e90ada9ba9660cde08e855a9a842a6ab5cef6",
+      "decision": {
+        "accepted": true,
+        "reasons": [],
+        "target_rows": [
+          {
+            "evidence_id": "fifo:453f5976b51b87bffefe35b05372b9228252b62dd6ebdd9600620facc35d6176",
+            "check_cycle": 33,
+            "native_antecedent_cycle": 32,
+            "edited_assertion": {
+              "id": "a2",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            },
+            "correct_side_trigger": true
+          },
+          {
+            "evidence_id": "fifo:8f64b99099278db414b089e4a36b6bf0dee4f53f0d3ff3c2de9b00f91fad46e2",
+            "check_cycle": 8,
+            "native_antecedent_cycle": 7,
+            "edited_assertion": {
+              "id": "a2",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            },
+            "correct_side_trigger": true
+          },
+          {
+            "evidence_id": "fifo:acc5aed0ca2e369b892ca195da176e664cd2f47c0d30c7593150c64000ab2ffb",
+            "check_cycle": 10,
+            "native_antecedent_cycle": 9,
+            "edited_assertion": {
+              "id": "a2",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            },
+            "correct_side_trigger": true
+          },
+          {
+            "evidence_id": "fifo:b1b9b10d249342a44818fa7ea6154cac1d6b20b44b7a7cb47dc72e9499a59cfb",
+            "check_cycle": 25,
+            "native_antecedent_cycle": 24,
+            "edited_assertion": {
+              "id": "a2",
+              "trigger": true,
+              "failed": true,
+              "causal_detection": true
+            },
+            "correct_side_trigger": true
+          }
+        ],
+        "stage": "native_target_trigger_and_detection",
+        "full_history_authorized": true,
+        "scope": "Small paired development replay; passing still requires complete history replay."
+      },
+      "counts": {
+        "rows": 3302,
+        "unknown": 0,
+        "triggers": 996,
+        "false_positives": 0,
+        "detections": 7,
+        "misses": 0,
+        "count_unit": "obligation-by-sampled-cycle evidence rows, not independent discoveries or transactions",
+        "later_attribution_unknown": 140
+      }
+    }
+  ],
+  "model_calls": 0,
+  "scope": "Plan labels are unit-test fixtures, not LLM outputs; native controls are archived real model proposals, not new refinement."
+}

@@ -1,0 +1,1 @@
+module tb;logic in_i,cnt_o,empty_o;string vcd;cc_lzc #(.Width(1))dut(.*);initial begin if(!$value$plusargs("VCD=%s",vcd))vcd="wave.vcd";$dumpfile(vcd);$dumpvars(0,tb);in_i=1;#5;in_i=0;#8;in_i=1;#6;in_i=0;#5;$finish;end endmodule

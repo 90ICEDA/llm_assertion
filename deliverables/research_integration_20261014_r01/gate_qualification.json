@@ -1,0 +1,124 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "complementary_set_repairs_gap_preserves_history",
+      "decision": {
+        "accepted": true,
+        "reasons": [],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3",
+        "after_sha256": "3f49872cf6ff5dafa04b9153fe667d7d8d4c8a0b32fc179cae3463b9e2f2ef21"
+      },
+      "passed": true
+    },
+    {
+      "name": "new_false_alarm_despite_higher_detection",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "new_legal_false_positive",
+            "evidence_keys": [
+              "legal:new"
+            ]
+          }
+        ],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3",
+        "after_sha256": "cfbd9fdd045c9b647957c428d0971daa82f43052ef0cea77c04854ea9f1c01a0"
+      },
+      "passed": true
+    },
+    {
+      "name": "fix_current_loses_historical_detection",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "lost_target_detection",
+            "evidence_keys": [
+              "bug:txn1:data"
+            ]
+          }
+        ],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3",
+        "after_sha256": "5f21b4bf098f41886cd8866a9c59308ed18f85f7b6262c899466f1966200639e"
+      },
+      "passed": true
+    },
+    {
+      "name": "strengthened_mask_evades_trigger",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "lost_effective_trigger",
+            "evidence_keys": [
+              "legal:txn1:data"
+            ]
+          }
+        ],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3",
+        "after_sha256": "edeb6b0d09687b0617a977d363c06d96b12e30a82ccb8ffd0a64017c6f0547e5"
+      },
+      "passed": true
+    },
+    {
+      "name": "unknown_attribution_is_not_target_repair",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "bug:txn2:latency"
+            ]
+          }
+        ],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3",
+        "after_sha256": "dc9dc9fbb5c9f1770e30ac7d053b10232a2f16b19b26c63a477458e10290a901"
+      },
+      "passed": true
+    },
+    {
+      "name": "unsupported_not_pass",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "replay_unknown",
+            "before": "ok",
+            "after": "tool_unsupported"
+          }
+        ],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3",
+        "after_sha256": "e60edfae3771f878786c76c376e45084759d974643723e4c527b8a44de9e7174"
+      },
+      "passed": true
+    },
+    {
+      "name": "unchanged_current_gap_rejected",
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "bug:txn2:latency"
+            ]
+          }
+        ],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3",
+        "after_sha256": "3adc7e6daddab59316d884d3c34f1cad492e16463401b92fea814a8a0d1dbcd3"
+      },
+      "passed": true
+    }
+  ],
+  "limitations": "Logic qualification only; not an end-to-end research result."
+}

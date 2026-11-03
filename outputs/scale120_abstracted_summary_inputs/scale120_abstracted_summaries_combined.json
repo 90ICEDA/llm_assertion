@@ -1,0 +1,1202 @@
+[
+  {
+    "case_id": "case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when enable is active and more than one bit of oh_i is high in the same sampled cycle.\n- Good behavior asserts err_o immediately on that enabled multi-hot cycle. Buggy behavior suppresses err_o even though the onehot legality rule is violated.\n- The first good/bad divergence is the first enabled multi-hot input pattern; before that, legal onehot patterns keep err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-4.1",
+    "source": "reused_legacy_summary",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking is active and en_i does not match whether any bit in oh_i is asserted, specifically the seen mismatch is en_i high while oh_i is all-zero.\n- Good behavior asserts err_o on mismatch cycles, while buggy behavior leaves err_o deasserted and suppresses the enable/onehot agreement error.\n- The first divergence occurs at the first post-reset cycle where en_i remains asserted but the onehot bus has no active bit; earlier cycles with matching en_i and onehot activity keep err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active and oh_i is one-hot, but the selected hot bit does not match the index indicated by addr_i in that same cycle.\n- Good behavior asserts err_o on each enabled one-hot/address-mismatch cycle, while buggy behavior incorrectly leaves err_o deasserted under that mismatch condition.\n- The first divergence occurs at the first enabled one-hot input where addr_i points to a different position than the sole asserted bit of oh_i; earlier, when addr_i matches the one-hot selection, both traces keep err_o low.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- Repeated writes fill the FIFO toward the full boundary without intervening reads.\n- The bug is triggered on the last pre-full write: good behavior keeps full_o low while the FIFO still has exactly one slot remaining, but bad behavior asserts full_o one cycle too early and also reports maximum depth too soon.\n- The first divergence is the first boundary approach cycle where good is still \"not full\" and bad already claims \"full\".",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "reused_legacy_summary",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case104_prim_fifo_full_early\nFirst divergence cycle: 3\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy is zero, including after reset, after a read sequence drains the last entry, or when clr_i clears stored contents.\n- Good behavior asserts empty_o in the same cycle that depth_o indicates zero occupancy. Buggy behavior leaves empty_o deasserted even though the FIFO is already empty.\n- The first divergence occurs at the earliest empty-state observation: both traces show zero depth, but only the good trace marks empty_o high; the same mismatch repeats when occupancy later returns to zero through draining or clear.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed whenever the FIFO is in a zero-occupancy state, such as immediately after reset or after clr_i or after enough reads return it to empty.\n- Good behavior reports depth_o as the exact occupancy, so depth_o is zero when empty and then increments/decrements with writes/reads. Buggy behavior keeps depth_o one count too high around the empty boundary, showing a nonzero depth even while empty_o indicates empty.\n- The first divergence occurs at the earliest empty state: both traces agree on control/status context, but bad depth_o already reflects one extra stored item before any write has occurred; the same mismatch reappears when the FIFO is emptied again or cleared.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case107_prim_arbiter_priority_reversed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when multiple bits in req_i are asserted at once and ready_i is high, so the fixed-priority arbiter must choose among competing requests in the same cycle.\n- Good behavior grants the lowest-index asserted request and reports the matching idx_o; buggy behavior instead grants a higher-index request and outputs the corresponding higher index, effectively reversing the intended priority among active requesters.\n- The first functional divergence appears on the first simultaneous-request arbitration decision after reset release: both traces see a valid request set, but the good trace selects the lowest active requester while the bad trace selects a different higher-priority-in-bug requester.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When multiple requests are high, the fixed arbiter shall grant the lowest index request in the same cycle when ready_i is high.",
+    "normal_trace_summary": "Case: case107_prim_arbiter_priority_reversed\nFirst divergence cycle: 0\nDiffering signals at first divergence: idx_o[1:0]\nObserved differing signal values (good): idx_o[1:0]=11\nObserved differing signal values (bad): idx_o[1:0]=00"
+  },
+  {
+    "case_id": "case108_prim_arbiter_grant_without_ready",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when there is at least one active request in req_i while ready_i is low; arbitration may still identify a requester via idx_o/valid_o, but grant output must remain suppressed.\n- Good behavior keeps gnt_o at zero whenever ready_i is deasserted, even if valid_o indicates a pending request. Buggy behavior drives a one-hot grant for the selected requester despite ready_i being low.\n- The first divergence occurs on the first post-reset cycle with a pending request and ready_i low: both traces agree that a requester is selected, but only the bad trace asserts gnt_o instead of holding it at zero.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "A grant shall only assert when ready_i is high in the same cycle.",
+    "normal_trace_summary": "Case: case108_prim_arbiter_grant_without_ready\nFirst divergence cycle: 4\nDiffering signals at first divergence: gnt_o[3:0]\nObserved differing signal values (good): gnt_o[3:0]=0000\nObserved differing signal values (bad): gnt_o[3:0]=0100"
+  },
+  {
+    "case_id": "case109_prim_arbiter_valid_depends_on_ready",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when at least one req_i bit is asserted while ready_i is low, i.e. there is a pending request under backpressure.\n- Good behavior keeps valid_o asserted to indicate the pending request even when ready_i blocks granting, while gnt_o may remain deasserted. Buggy behavior incorrectly makes valid_o drop when ready_i is low despite req_i being nonzero.\n- The first divergence is the first backpressured pending-request state reached after a normal ready/grant state; both traces agree when ready_i is high, then only bad clears valid_o once ready_i goes low with a request still present.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "valid_o shall reflect pending requests even when ready_i is low; backpressure may block grant_o but not pending-valid indication.",
+    "normal_trace_summary": "Case: case109_prim_arbiter_valid_depends_on_ready\nFirst divergence cycle: 4\nDiffering signals at first divergence: valid_o\nObserved differing signal values (good): valid_o=1\nObserved differing signal values (bad): valid_o=0"
+  },
+  {
+    "case_id": "case110_prim_intr_event_overwrite",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when an event interrupt request sets reg2hw_intr_state_q_i while interrupts are enabled, with no software clear occurring afterward.\n- Good behavior keeps the event interrupt pending and causes intr_o to assert only after the latched interrupt state is observed as set; buggy behavior instead produces a transient/overwritten intr_o response that asserts too early and then drops even though reg2hw_intr_state_q_i remains set.\n- The first divergence occurs immediately after the event has been latched into interrupt state: both traces show the state set, but bad raises intr_o in that first post-latch cycle while good does not, and the next cycle the polarity reverses while the pending state is still unchanged.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "For Event interrupts, once a new event sets the interrupt state, the state shall remain set across subsequent cycles until software clears it.",
+    "normal_trace_summary": "Case: case110_prim_intr_event_overwrite\nFirst divergence cycle: 2\nDiffering signals at first divergence: intr_o\nObserved differing signal values (good): intr_o=0\nObserved differing signal values (bad): intr_o=1"
+  },
+  {
+    "case_id": "case111_prim_intr_output_or_mask",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed whenever event_intr_i is asserted or the interrupt state changes while the intended output condition should still be governed by the conjunction of reg2hw_intr_state_q_i and reg2hw_intr_enable_q_i.\n- Good behavior drives intr_o high only when both reg2hw_intr_state_q_i and reg2hw_intr_enable_q_i are high, and drives it low if either input is low. Buggy behavior lets intr_o assert when only one of those conditions is true, effectively behaving like an OR-masked interrupt output.\n- The first divergence occurs immediately after reset release on a cycle where reg2hw_intr_enable_q_i is high but reg2hw_intr_state_q_i is still low: good keeps intr_o low, while bad raises intr_o early; later bad also stays high when enable drops or state clears but the other term remains high.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "The outgoing interrupt shall assert only when both the interrupt status and enable are high.",
+    "normal_trace_summary": "Case: case111_prim_intr_output_or_mask\nFirst divergence cycle: 1\nDiffering signals at first divergence: intr_o\nObserved differing signal values (good): intr_o=0\nObserved differing signal values (bad): intr_o=1"
+  },
+  {
+    "case_id": "case112_prim_intr_test_pulse_dropped",
+    "abstracted_summary": "Abstracted trace summary:\n- A one-cycle software test pulse is issued through reg2hw_intr_test_qe_i while the interrupt path is enabled.\n- Good behavior captures that test pulse and reflects it in the stored interrupt-test state on the next sampled cycle. Buggy behavior drops the one-cycle pulse, so the next-cycle state update never appears.\n- The first divergence occurs immediately after the trigger pulse: good updates the stored state, bad leaves it unchanged.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "reused_legacy_summary",
+    "spec": "In Status mode, a software test pulse written through reg2hw_intr_test_qe_i shall be captured and reflected in the stored test_q state on the next cycle.",
+    "normal_trace_summary": "Case: case112_prim_intr_test_pulse_dropped\nFirst divergence cycle: 2\nDiffering signals at first divergence: hw2reg_intr_state_d_o\nObserved differing signal values (good): hw2reg_intr_state_d_o=1\nObserved differing signal values (bad): hw2reg_intr_state_d_o=0"
+  },
+  {
+    "case_id": "case113_prim_edge_posedge_misdecoded",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when the sampled input/synchronized value makes a rising transition after reset, i.e. the first 0->1 event on the monitored signal.\n- Good behavior asserts q_posedge_pulse_o only on that 0->1 transition and keeps it low on the later 1->0 transition; buggy behavior misses the pulse on the rise and instead asserts q_posedge_pulse_o on the falling transition.\n- The first divergence occurs at the first rising-edge event: good produces the posedge pulse in the same sampled cycle, while bad leaves q_posedge_pulse_o low until the subsequent opposite-direction transition.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "q_posedge_pulse_o shall pulse for exactly the sampled 0->1 transition and not for 1->0 transitions.",
+    "normal_trace_summary": "Case: case113_prim_edge_posedge_misdecoded\nFirst divergence cycle: 3\nDiffering signals at first divergence: q_posedge_pulse_o\nObserved differing signal values (good): q_posedge_pulse_o=1\nObserved differing signal values (bad): q_posedge_pulse_o=0"
+  },
+  {
+    "case_id": "case114_prim_edge_negedge_misdecoded",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when the sampled signal transitions upward (an effective 0->1 change on the synchronized input/output state) rather than downward.\n- Good behavior keeps q_negedge_pulse_o low on a rising transition and pulses it only on the later falling transition; buggy behavior incorrectly asserts q_negedge_pulse_o on the rising transition and then misses the real negedge pulse.\n- The first divergence is the first upward transition event: q_sync_o updates high and q_posedge_pulse_o indicates a posedge, while only the bad trace also raises q_negedge_pulse_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "q_negedge_pulse_o shall pulse for exactly the sampled 1->0 transition and not for 0->1 transitions.",
+    "normal_trace_summary": "Case: case114_prim_edge_negedge_misdecoded\nFirst divergence cycle: 3\nDiffering signals at first divergence: q_negedge_pulse_o\nObserved differing signal values (good): q_negedge_pulse_o=0\nObserved differing signal values (bad): q_negedge_pulse_o=1"
+  },
+  {
+    "case_id": "case115_prim_edge_both_edges_collapsed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when the sampled input/synchronized value makes a falling transition after reset, i.e. a negedge event is detected rather than a posedge event.\n- Good behavior keeps q_posedge_pulse_o low on that falling-edge detection and only q_negedge_pulse_o pulses; buggy behavior incorrectly also asserts q_posedge_pulse_o on the same falling-edge event.\n- The first divergence is the first high-to-low transition of q_sync_o/d_i after an earlier low-to-high transition has behaved correctly; both traces agree on the rising-edge pulse, then differ when the opposite edge occurs.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "q_posedge_pulse_o shall remain low on falling edges and assert only on rising edges.",
+    "normal_trace_summary": "Case: case115_prim_edge_both_edges_collapsed\nFirst divergence cycle: 5\nDiffering signals at first divergence: q_posedge_pulse_o\nObserved differing signal values (good): q_posedge_pulse_o=0\nObserved differing signal values (bad): q_posedge_pulse_o=1"
+  },
+  {
+    "case_id": "case116_prim_filter_late_accept",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when filtering is enabled and filter_i has remained stable long enough to reach the acceptance boundary.\n- Good behavior updates filter_o to the stable filter_i value on the same cycle that the acceptance boundary is reached, while buggy behavior leaves filter_o unchanged until the following sampled cycle.\n- The first divergence is the first acceptance-boundary event after a stable input run: good already reflects the accepted input on that boundary cycle, but bad still shows the previous output and only catches up one cycle later.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With filtering enabled, filter_o shall adopt a new stable input at the exact acceptance boundary, not one sampled cycle later.",
+    "normal_trace_summary": "Case: case116_prim_filter_late_accept\nFirst divergence cycle: 4\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=1\nObserved differing signal values (bad): filter_o=0"
+  },
+  {
+    "case_id": "case117_prim_filter_bypass_stale",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when enable_i is deasserted after the filter had previously updated and the current filter_i differs from the last stored filtered value.\n- Good behavior makes filter_o immediately bypass to the current filter_i while enable_i is low; buggy behavior leaves filter_o showing the stale previously filtered state for that disable transition.\n- The first divergence is the first cycle with enable_i low after an enabled phase established a different internal filtered value; before that, reset and enabled filtering behavior match in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When enable_i is low, filter_o shall immediately bypass to the current input rather than the stored filtered state.",
+    "normal_trace_summary": "Case: case117_prim_filter_bypass_stale\nFirst divergence cycle: 6\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=0\nObserved differing signal values (bad): filter_o=1"
+  },
+  {
+    "case_id": "case118_prim_filter_ctr_early_accept",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when filtering is enabled and a new input value begins a run of agreeing samples that has not yet reached the programmed threshold.\n- Good behavior keeps filter_o unchanged until the required number of consecutive agreeing enabled samples is accumulated, then updates; buggy behavior accepts on the first agreeing sample and switches filter_o too early.\n- The first divergence is the first enabled sample of a new candidate value: good still holds the previous filtered output, while bad already changes filter_o before the threshold count is satisfied.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With filtering enabled, filter_o shall not switch until thresh_i consecutive agreeing samples have been observed.",
+    "normal_trace_summary": "Case: case118_prim_filter_ctr_early_accept\nFirst divergence cycle: 1\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=0\nObserved differing signal values (bad): filter_o=1"
+  },
+  {
+    "case_id": "case119_prim_filter_ctr_late_accept",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when rst_n is high, filtering is enabled, and filter_i stays asserted long enough to reach the programmed thresh_i acceptance boundary.\n- Good behavior makes filter_o switch on the exact boundary-reaching sample, while buggy behavior leaves filter_o unchanged on that boundary sample and only updates it on the following sample.\n- The first divergence is the first accepted-boundary event: accept_boundary_dbg indicates the threshold has been met, but only the good trace reflects that immediately at filter_o; before that point both traces match with filter_o still low.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With filtering enabled, filter_o shall switch by the exact threshold cycle rather than lagging by one extra sample.",
+    "normal_trace_summary": "Case: case119_prim_filter_ctr_late_accept\nFirst divergence cycle: 2\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=1\nObserved differing signal values (bad): filter_o=0"
+  },
+  {
+    "case_id": "case120_prim_filter_ctr_bypass_stale",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset once filtering has previously driven filter_o to a stored value, and then enable_i is deasserted while filter_i changes.\n- Good behavior makes filter_o bypass directly to the current filter_i whenever enable_i is low. Buggy behavior instead holds the previously filtered/stored filter_o value during the disabled interval.\n- The first divergence is the first disable phase immediately following an active filtering period: good output follows the new input at once, while bad output remains stale from the prior enabled result.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When enable_i is low, filter_o shall bypass to the current input rather than stay at the previously stored filtered value.",
+    "normal_trace_summary": "Case: case120_prim_filter_ctr_bypass_stale\nFirst divergence cycle: 7\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=0\nObserved differing signal values (bad): filter_o=1"
+  },
+  {
+    "case_id": "case121_prim_intr_test_qe_ignored",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered in Event mode after reset when reg2hw_intr_test_q_i is asserted in a cycle where reg2hw_intr_test_qe_i is not asserted and no real event_intr_i is present.\n- Good behavior ignores that ungated test request, leaving hw2reg_intr_state_de_o low and preventing reg2hw_intr_state_q_i / hw2reg_intr_state_d_o from being set; buggy behavior treats reg2hw_intr_test_q_i alone as sufficient and spuriously updates the interrupt state.\n- The first divergence is the first test-only cycle with qe absent: good remains idle with no interrupt-state write, while bad immediately drives the state-update path and latches the interrupt before any actual event arrives.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "In Event mode, reg2hw_intr_test_q_i shall have no effect unless reg2hw_intr_test_qe_i is asserted in the same cycle.",
+    "normal_trace_summary": "Case: case121_prim_intr_test_qe_ignored\nFirst divergence cycle: 4\nDiffering signals at first divergence: reg2hw_intr_state_q_i, hw2reg_intr_state_de_o, hw2reg_intr_state_d_o\nObserved differing signal values (good): reg2hw_intr_state_q_i=0, hw2reg_intr_state_de_o=0, hw2reg_intr_state_d_o=0\nObserved differing signal values (bad): reg2hw_intr_state_q_i=1, hw2reg_intr_state_de_o=1, hw2reg_intr_state_d_o=1"
+  },
+  {
+    "case_id": "case122_prim_filter_ctr_streak_reset_ignored",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when enable_i is active, the filter has accumulated progress toward one candidate value, and then filter_i flips to the opposite polarity before the threshold is reached; stale count from the old polarity must be discarded.\n- Good behavior resets the streak on that polarity change, so two enabled samples of the new filter_i value are still insufficient to make filter_o switch. Buggy behavior carries over prior progress across the flip and lets filter_o switch too early on the new polarity.\n- The first divergence occurs at the first attempt to complete the new-polarity streak after a recent opposite-polarity sample: good still holds filter_o at its old value, while bad already updates filter_o as if the earlier opposite-polarity progress still counted.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When the candidate polarity flips, the counter-based filter shall discard stale progress from the previous polarity; two samples of the new value are still not enough to switch the output at threshold two.",
+    "normal_trace_summary": "Case: case122_prim_filter_ctr_streak_reset_ignored\nFirst divergence cycle: 4\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=0\nObserved differing signal values (bad): filter_o=1"
+  },
+  {
+    "case_id": "case123_prim_edge_sync_output_lag",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when the synchronized input rises and then remains high on the next sampled cycle, i.e. after a single detected 0->1 transition followed by stable-high input.\n- Good behavior makes q_posedge_pulse_o a one-cycle pulse: it is high only on the sampled rising-edge cycle and low on the following stable-high cycle. Buggy behavior lets q_posedge_pulse_o remain asserted beyond the transition instead of clearing immediately.\n- The first divergence is the first cycle after a valid rising-edge pulse, when q_sync_o is still high without a new 0->1 transition; good has q_posedge_pulse_o deasserted, while bad still asserts it.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "q_posedge_pulse_o shall assert only on the sampled 0->1 transition cycle and must return low on the following stable-high cycle.",
+    "normal_trace_summary": "Case: case123_prim_edge_sync_output_lag\nFirst divergence cycle: 3\nDiffering signals at first divergence: q_posedge_pulse_o\nObserved differing signal values (good): q_posedge_pulse_o=0\nObserved differing signal values (bad): q_posedge_pulse_o=1"
+  },
+  {
+    "case_id": "case124_prim_fifo_clear_ignored",
+    "abstracted_summary": "Abstracted trace summary:\n- The FIFO is first driven to a non-empty occupancy, then an operational clear pulse is asserted.\n- Good behavior resets occupancy and pointers on the next sampled cycle after clear, so the FIFO returns to the empty/reset state immediately. Buggy behavior ignores the clear pulse and retains stale occupancy for at least one extra cycle.\n- The first divergence is the first post-clear cycle where good is already empty/reset but bad still looks occupied.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "reused_legacy_summary",
+    "spec": "A clear pulse shall reset the FIFO occupancy and pointers on the next cycle.",
+    "normal_trace_summary": "Case: case124_prim_fifo_clear_ignored\nFirst divergence cycle: 11\nDiffering signals at first divergence: wptr_o[1:0], empty_o, depth_o[2:0]\nObserved differing signal values (good): wptr_o[1:0]=00, empty_o=1, depth_o[2:0]=000\nObserved differing signal values (bad): wptr_o[1:0]=10, empty_o=0, depth_o[2:0]=010"
+  },
+  {
+    "case_id": "case125_prim_fifo_wrap_late",
+    "abstracted_summary": "Abstracted trace summary:\n- Consecutive writes advance the write pointer to the wrap boundary, and then one more write attempts to cross that boundary.\n- Good behavior wraps the pointer immediately on the next state update after the boundary write. Buggy behavior delays that wrap by one cycle, temporarily exposing an out-of-range or otherwise inconsistent post-boundary state.\n- The first divergence is the boundary-crossing write: good performs the wrap on time, bad preserves the pre-wrap progression for one cycle too long.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-4.1",
+    "source": "reused_legacy_summary",
+    "spec": "When the write pointer is at Depth-1 and a write occurs, the internal write pointer shall wrap on the next cycle rather than stepping to an out-of-range state.",
+    "normal_trace_summary": "Case: case125_prim_fifo_wrap_late\nFirst divergence cycle: 5\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=011\nObserved differing signal values (bad): depth_o[2:0]=111"
+  },
+  {
+    "case_id": "case126_prim_regwe_enable_gap",
+    "abstracted_summary": "Abstracted trace summary:\n- The checker observes a legal onehot write-enable vector while the global enable is low.\n- Good behavior treats any nonzero write-enable vector as illegal when enable is low and asserts err_o in the same cycle. Buggy behavior ignores that enable mismatch and keeps err_o low.\n- The first divergence is the first disabled-but-nonzero write-enable observation; zero-valued disabled samples are not the bug trigger.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "reused_legacy_summary",
+    "spec": "When en_i is low, any nonzero onehot write-enable vector shall trigger err_o in the same cycle.",
+    "normal_trace_summary": "Case: case126_prim_regwe_enable_gap\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case127_prim_intr_status_test_qe_ignored",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered in Status mode after a test-induced interrupt state has been set, when reg2hw_intr_test_q_i is later changed while reg2hw_intr_test_qe_i controls whether that change is allowed to update the latched test state.\n- Good behavior updates the latched test state only on cycles with reg2hw_intr_test_qe_i asserted, so intr_o follows the earlier qualified set and later qualified clear. Buggy behavior effectively ignores the qualification rule and lets an unqualified test value keep intr_o asserted.\n- The first divergence occurs when the previously qualified clear should have removed the test contribution to intr_o; good deasserts intr_o, while bad still shows the old asserted state and then continues to do so across the later qe-low test change.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "In Status mode, reg2hw_intr_test_q_i shall affect the latched test state only on cycles where reg2hw_intr_test_qe_i is asserted.",
+    "normal_trace_summary": "Case: case127_prim_intr_status_test_qe_ignored\nFirst divergence cycle: 7\nDiffering signals at first divergence: intr_o\nObserved differing signal values (good): intr_o=0\nObserved differing signal values (bad): intr_o=1"
+  },
+  {
+    "case_id": "case128_prim_intr_event_mask_stall",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when an interrupt event arrives while reg2hw_intr_enable_q_i is asserted but the currently committed reg2hw_intr_state_q_i is still clear.\n- Good behavior keeps intr_o determined by the committed interrupt state feedback, so intr_o stays low during that event cycle and only reflects the interrupt after the state has been committed; buggy behavior lets intr_o respond to the same-cycle event/speculative next-state and asserts intr_o immediately.\n- The first divergence is the first enabled event pulse seen while reg2hw_intr_state_q_i has not yet been updated: both traces match beforehand, then bad raises intr_o on the event cycle whereas good waits until after state feedback indicates the pending interrupt.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With FlopOutput enabled in Event mode, intr_o shall be derived from the committed interrupt state feedback, not from the speculative next-state in the same event cycle.",
+    "normal_trace_summary": "Case: case128_prim_intr_event_mask_stall\nFirst divergence cycle: 3\nDiffering signals at first divergence: intr_o\nObserved differing signal values (good): intr_o=0\nObserved differing signal values (bad): intr_o=1"
+  },
+  {
+    "case_id": "case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when strict checking is active and en_i is asserted while oh_i has no bits set in the sampled cycle.\n- Good behavior asserts err_o in that same enabled zero-hot cycle, while buggy behavior leaves err_o deasserted even though the input is illegal under the onehot check.\n- The first divergence occurs at the first enabled zero-hot condition after reset; earlier enabled valid onehot input keeps err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The FIFO is drained down to exactly one remaining entry before the final read.\n- Good behavior keeps empty_o low while that last entry is still present. Buggy behavior raises empty_o one cycle too early, before the FIFO is actually empty.\n- The first divergence is the one-entry boundary: good still reports \"not empty\", bad already reports \"empty\".",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "reused_legacy_summary",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case131_prim_filter_disabled_bypass_stale_alt",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when enable_i is deasserted after the filter had previously been active and the current filter_i differs from the previously stored filtered value.\n- Good behavior bypasses the stored state and drives filter_o directly from the live filter_i immediately while disabled; buggy behavior instead lets filter_o momentarily reflect the stale prior filtered value.\n- The first divergence occurs on the disable transition where the remembered filtered result and current filter_i no longer agree: good follows the new input at once, while bad still shows the old value.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When enable_i is low, filter_o shall reflect the live filter_i input immediately rather than the stored filtered value.",
+    "normal_trace_summary": "Case: case131_prim_filter_disabled_bypass_stale_alt\nFirst divergence cycle: 6\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=0\nObserved differing signal values (bad): filter_o=1"
+  },
+  {
+    "case_id": "case132_prim_edge_posedge_missing",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when rst_n is deasserted and the sampled input transitions from low to high, equivalently when q_sync_o reflects a 0->1 change.\n- Good behavior generates a one-cycle pulse on q_posedge_pulse_o on that rising-transition sample, while buggy behavior leaves q_posedge_pulse_o low even though the positive edge occurred.\n- The first divergence is the first post-reset rising edge of the tracked signal: both traces agree while the signal stays low, then good reports the edge and bad misses it.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "A sampled 0->1 transition shall generate a one-cycle pulse on q_posedge_pulse_o.",
+    "normal_trace_summary": "Case: case132_prim_edge_posedge_missing\nFirst divergence cycle: 3\nDiffering signals at first divergence: q_posedge_pulse_o\nObserved differing signal values (good): q_posedge_pulse_o=1\nObserved differing signal values (bad): q_posedge_pulse_o=0"
+  },
+  {
+    "case_id": "case133_prim_edge_negedge_missing",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when, after reset is released, the sampled input/output state transitions from high to low across consecutive clock samples.\n- Good behavior generates a one-cycle pulse on q_negedge_pulse_o on that sampled falling-edge event, while buggy behavior leaves q_negedge_pulse_o low and misses the pulse.\n- The first divergence is the first observed 1->0 transition of the sampled signal path: both traces agree on the earlier low level, steady high level, and rising-edge indication, then differ only when the falling-edge pulse should appear.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "A sampled 1->0 transition shall generate a one-cycle pulse on q_negedge_pulse_o.",
+    "normal_trace_summary": "Case: case133_prim_edge_negedge_missing\nFirst divergence cycle: 5\nDiffering signals at first divergence: q_negedge_pulse_o\nObserved differing signal values (good): q_negedge_pulse_o=1\nObserved differing signal values (bad): q_negedge_pulse_o=0"
+  },
+  {
+    "case_id": "case134_prim_intr_event_not_sticky",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after an event has been captured in Event mode, so reg2hw_intr_state_q_i becomes set and the interrupt remains enabled without a software clear.\n- Good behavior keeps the interrupt indication aligned with the latched state while it remains uncleared and enabled; buggy behavior produces only a transient pulse and then drops intr_o even though the captured interrupt state is still set.\n- The first divergence occurs on the first cycle after reg2hw_intr_state_q_i is observed set from a prior event: the bad trace asserts intr_o immediately, while the good trace delays it and then sustains it until disable or clear instead of letting it disappear spontaneously.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "In Event mode, a captured event shall remain latched in the interrupt state until software clears it.",
+    "normal_trace_summary": "Case: case134_prim_intr_event_not_sticky\nFirst divergence cycle: 2\nDiffering signals at first divergence: intr_o\nObserved differing signal values (good): intr_o=0\nObserved differing signal values (bad): intr_o=1"
+  },
+  {
+    "case_id": "case135_prim_intr_enable_mask_ignored",
+    "abstracted_summary": "Abstracted trace summary:\n- Interrupt state has already been raised, and then the enable mask is dropped while the state remains high.\n- Good behavior suppresses intr_o whenever the enable mask is low, even though the stored interrupt state is still set. Buggy behavior ignores the mask and leaves intr_o high.\n- The first divergence is the first masked cycle after the interrupt state is already active: good drives intr_o low, bad keeps it asserted.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "reused_legacy_summary",
+    "spec": "Even if interrupt state is set, intr_o shall be low in any sampled cycle where reg2hw_intr_enable_q_i is low.",
+    "normal_trace_summary": "Case: case135_prim_intr_enable_mask_ignored\nFirst divergence cycle: 4\nDiffering signals at first divergence: intr_o\nObserved differing signal values (good): intr_o=0\nObserved differing signal values (bad): intr_o=1"
+  },
+  {
+    "case_id": "case136_prim_filter_ctr_disabled_bypass_stale_alt",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when enable_i is deasserted after the filter had previously driven filter_o to a different value than the current filter_i.\n- Good behavior bypasses immediately when enable_i is low, so filter_o matches the current filter_i in that same sampled cycle; buggy behavior leaves filter_o at the stale previously filtered value instead of bypassing.\n- The first divergence is the disable transition where the live input changes away from the prior filtered output: good switches filter_o to track filter_i immediately, while bad still shows the old state.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When enable_i is low, the counter-based filter shall bypass to the current input in the same sampled cycle.",
+    "normal_trace_summary": "Case: case136_prim_filter_ctr_disabled_bypass_stale_alt\nFirst divergence cycle: 7\nDiffering signals at first divergence: filter_o\nObserved differing signal values (good): filter_o=0\nObserved differing signal values (bad): filter_o=1"
+  },
+  {
+    "case_id": "case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active, oh_i is exactly one-hot, and addr_i selects the asserted bit of oh_i in that same cycle.\n- Good behavior keeps err_o low for this valid one-hot-address match, while buggy behavior falsely asserts err_o under the same legal condition.\n- The first divergence is the first enabled legal one-hot match after reset release; later both traces still agree that mismatched one-hot selections or multi-hot patterns should assert err_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case138_prim_regwe_zero_enabled_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is asserted while oh_i is the all-zero vector in a sampled cycle after reset is released.\n- Good behavior treats this zero-oh_i enabled case as legal and keeps err_o low in the same cycle, while buggy behavior falsely asserts err_o on that enabled zero input.\n- The first divergence occurs at the first enabled cycle with no selected bit in oh_i; surrounding enabled one-hot cycles agree and keep err_o deasserted.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "For prim_reg_we_check, en_i high with oh_i equal to zero shall remain legal and must not raise err_o in the same cycle.",
+    "normal_trace_summary": "Case: case138_prim_regwe_zero_enabled_false_positive\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case139_prim_regwe_addr_check_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is high and oh_i is a legal onehot write-enable whose single asserted bit is at a nonzero position.\n- Good behavior keeps err_o low for that enabled legal onehot access regardless of which single bit is selected, while buggy behavior falsely asserts err_o for a valid non-bit-0 selection.\n- The first divergence occurs when the trace moves from an enabled onehot on bit 0, which both implementations accept, to an enabled onehot on a different single bit; only the bad trace then raises err_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "For prim_reg_we_check, a legal onehot write-enable vector with en_i high shall not raise err_o even when the hot bit is not bit 0.",
+    "normal_trace_summary": "Case: case139_prim_regwe_addr_check_false_positive\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case140_prim_onehot_legal_request_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when rst_n is high, en_i is asserted, and oh_i is a legal onehot request whose asserted bit matches addr_i in the same cycle.\n- Good behavior keeps err_o low for that legal enabled request, while buggy behavior falsely asserts err_o under the same valid onehot-and-address match condition.\n- The first divergence is the first active legal request after reset release: both traces present a valid matching onehot selection, but only the bad trace raises err_o instead of leaving it deasserted.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With exactly one bit of oh_i high, matching addr_i, and en_i high, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case140_prim_onehot_legal_request_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case201_onehot_multihot_v1_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when, after reset is deasserted, oh_i is multi-hot in a sampled cycle, meaning more than one bit of oh_i is high at once.\n- Good behavior asserts err_o in the same cycle as that multi-hot oh_i condition, while buggy behavior leaves err_o low even though the onehot rule is violated.\n- The first divergence occurs at the first post-reset cycle where oh_i changes from a legal onehot pattern to an illegal multi-hot pattern; before that, both traces agree with err_o low.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case201_onehot_multihot_v1_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case202_onehot_multihot_v2_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The trigger is any sampled cycle after reset where en_i is active and oh_i is multi-hot, meaning more than one bit of oh_i is high simultaneously.\n- Good behavior asserts err_o in that same cycle and keeps it asserted while the multi-hot condition persists; buggy behavior leaves err_o deasserted despite the simultaneous multi-bit violation.\n- The first divergence occurs at the first enabled transition from a legal single-hot oh_i pattern to an illegal multi-hot oh_i pattern; before that, both traces agree with err_o low on non-violating inputs.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case202_onehot_multihot_v2_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case203_onehot_multihot_v3_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when, after reset is released, more than one bit of oh_i is high in the same sampled cycle.\n- Good behavior asserts err_o in that same multihot cycle (and while the multihot condition persists), whereas buggy behavior leaves err_o deasserted despite the illegal oh_i pattern.\n- The first divergence is the first post-reset cycle where oh_i changes from a legal onehot value to a multihot value; before that, both traces agree with err_o low.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case203_onehot_multihot_v3_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case204_onehot_multihot_v4_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when en_i is asserted and oh_i is multi-hot in the same cycle, violating the one-hot requirement.\n- Good behavior asserts err_o in that same cycle whenever more than one bit of oh_i is high; buggy behavior leaves err_o deasserted even though the illegal multi-hot condition is present.\n- The first divergence is the first enabled illegal oh_i pattern after an earlier enabled legal one-hot pattern matched in both traces; from that point, the good trace flags the violation while the bad trace does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case204_onehot_multihot_v4_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case205_onehot_multihot_v5_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when, after reset is released, more than one bit of oh_i is high in the same sampled cycle.\n- Good behavior asserts err_o in that same multihot cycle, while buggy behavior leaves err_o deasserted even though oh_i violates the one-hot condition.\n- The first divergence occurs at the first transition from a legal single-hot oh_i pattern to a multihot oh_i pattern; both traces agree before that and err_o differs immediately once the multihot condition appears.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case205_onehot_multihot_v5_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case206_onehot_multihot_v6_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The trigger is any sampled cycle after reset where oh_i is multi-hot, meaning more than one bit of oh_i is high in the same cycle.\n- Good behavior asserts err_o in that same multi-hot cycle, while buggy behavior leaves err_o deasserted even though the onehot legality condition is violated.\n- The first divergence occurs at the first appearance of a multi-hot oh_i pattern; before that, reset and single-hot or zero-hot inputs keep err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case206_onehot_multihot_v6_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case207_onehot_multihot_v7_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when the design is out of reset and oh_i has multiple bits high in the same cycle.\n- Good behavior asserts err_o in that same multihot cycle, while buggy behavior leaves err_o deasserted even though the onehot rule is violated.\n- The first divergence occurs at the first sampled multihot oh_i event after an earlier legal single-bit-high enabled cycle where both traces still agree.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case207_onehot_multihot_v7_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The trigger is any cycle after reset where oh_i is multi-hot, meaning more than one bit of oh_i is high at once.\n- Good behavior asserts err_o in the same cycle as that multi-hot oh_i condition, while buggy behavior incorrectly leaves err_o deasserted even though the input violates the one-hot requirement.\n- The first divergence occurs at the first sampled multi-hot oh_i event; earlier cycles with reset active or with zero/one hot bit match with err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When more than one bit of oh_i is high in the same cycle, err_o must assert in that same cycle.",
+    "normal_trace_summary": "Case: case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case209_onehot_zerohot_v1_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking is active and en_i indicates an enabled transfer while oh_i is zero-hot, so en_i disagrees with whether any onehot bit is set.\n- Good behavior asserts err_o on that enable/onehot-mismatch condition, while buggy behavior leaves err_o deasserted even though the mismatch persists.\n- The first divergence is the first post-reset cycle where en_i remains asserted but oh_i has no asserted bit; prior aligned cases with en_i matching a valid onehot selection keep err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case209_onehot_zerohot_v1_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case210_onehot_zerohot_v2_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking is active and en_i indicates an enabled transfer while oh_i is zero-hot, i.e. en_i disagrees with whether any onehot bit is set.\n- Good behavior asserts err_o on cycles with that enable/onehot-presence mismatch, while buggy behavior leaves err_o deasserted and thus suppresses the mismatch error.\n- The first divergence occurs at the first post-reset zero-hot cycle with en_i still asserted; earlier, a valid onehot selection with en_i asserted keeps err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case210_onehot_zerohot_v2_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case211_onehot_zerohot_v3_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking is active and en_i does not match whether oh_i has any asserted bit, specifically the enabled zero-hot case.\n- Good behavior asserts err_o when en_i is high while oh_i is all zero; buggy behavior leaves err_o deasserted despite that enable/onehot presence mismatch.\n- The first divergence occurs at the first post-reset cycle where a previously valid enabled onehot condition changes into an enabled zero-hot condition; earlier matching enabled onehot behavior keeps err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case211_onehot_zerohot_v3_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case212_onehot_zerohot_v4_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking is active and en_i indicates an active request while oh_i has no asserted bit, creating an enable-versus-onehot-presence mismatch.\n- Good behavior asserts err_o on the mismatch condition, while buggy behavior leaves err_o deasserted even though en_i disagrees with whether any bit in oh_i is set.\n- The first divergence is the first post-reset cycle where en_i remains asserted but oh_i becomes zero-hot; earlier, a valid onehot with en_i asserted is accepted in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case212_onehot_zerohot_v4_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case213_onehot_zerohot_v5_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking applies and en_i does not match whether any bit of oh_i is asserted, specifically the enabled zero-hot case.\n- Good behavior asserts err_o on cycles where en_i indicates a request but oh_i has no active bit; buggy behavior leaves err_o deasserted even though enable and onehot presence disagree.\n- The first divergence is the first post-reset mismatch instance where a previously valid enabled onehot state is followed by en_i staying asserted while oh_i becomes zero-hot; good raises err_o there, bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case213_onehot_zerohot_v5_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case214_onehot_zerohot_v6_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking applies and en_i disagrees with whether any bit in oh_i is asserted, specifically the enabled zero-hot case.\n- Good behavior asserts err_o whenever en_i indicates an active request but oh_i has no selected bit; buggy behavior leaves err_o deasserted under that mismatch.\n- The first divergence is the first post-reset sample where a previously valid enabled onehot condition changes into enabled zero-hot; both traces match on legal enabled onehot input before that, then only the good trace raises err_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case214_onehot_zerohot_v6_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case215_onehot_zerohot_v7_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking is active and en_i indicates an active transfer while oh_i has no bit set, i.e. en_i disagrees with whether any onehot bit is asserted.\n- Good behavior asserts err_o on cycles with this enable/zerohot mismatch, while buggy behavior leaves err_o deasserted even though the mismatch should be flagged.\n- The first divergence occurs at the first post-reset cycle where en_i remains asserted but oh_i becomes all-zero; earlier, a valid onehot selection with en_i asserted keeps err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case215_onehot_zerohot_v7_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case216_onehot_zerohot_v8_from_case102_prim_onehot_enable_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict enable checking is active and en_i indicates an enabled request while oh_i has no bit set, creating an enable-versus-onehot-presence mismatch.\n- Good behavior asserts err_o on mismatch cycles where en_i disagrees with whether any oh_i bit is high; buggy behavior leaves err_o deasserted for the zero-hot while en_i-high case.\n- The first divergence is the first post-reset cycle in which a previously valid enabled onehot condition changes into an enabled zero-hot condition; signals match before that because en_i and onehot presence agree.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict enable checking enabled, err_o shall assert whenever en_i disagrees with whether any onehot bit is set.",
+    "normal_trace_summary": "Case: case216_onehot_zerohot_v8_from_case102_prim_onehot_enable_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case217_onehot_zerohot_v1_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when strict checking is active through en_i and the sampled one-hot input oh_i is zero-hot (no bits asserted).\n- Good behavior asserts err_o in that same enabled zero-hot cycle, while buggy behavior leaves err_o deasserted and suppresses the required error indication.\n- The first divergence occurs at the first enabled zero-hot occurrence after prior enabled legal one-hot input kept err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case217_onehot_zerohot_v1_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case218_onehot_zerohot_v2_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when strict checking is active after reset, en_i is high, and oh_i is zero in the sampled cycle.\n- Good behavior asserts err_o in that same enabled zero-hot cycle, while buggy behavior leaves err_o deasserted even though the zero-hot condition should be flagged.\n- The first divergence is the first time an enabled legal one-hot input is followed by an enabled zero-hot input: both traces agree during the enabled one-hot case, then only the good trace raises err_o once oh_i becomes zero.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case218_onehot_zerohot_v2_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case219_onehot_zerohot_v3_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when strict checking is active after reset, en_i is high, and oh_i is zero in the sampled cycle.\n- Good behavior asserts err_o in that same enabled zero-hot cycle, while buggy behavior leaves err_o deasserted even though the zero-hot condition is illegal.\n- The first divergence is the first time an enabled legal onehot input is followed by an enabled zero-hot input; both traces agree before that, then only the good trace raises err_o on the zero-hot condition.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case219_onehot_zerohot_v3_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case220_onehot_zerohot_v4_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when strict checking is active via en_i and the one-hot input oh_i is all-zero in a sampled cycle.\n- Good behavior asserts err_o in the same cycle whenever en_i is high and oh_i has no bits set; buggy behavior incorrectly leaves err_o deasserted under that enabled zero-hot condition.\n- The first divergence is the first enabled zero-hot occurrence following an earlier enabled legal one-hot case where both traces still agree that err_o should remain low.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case220_onehot_zerohot_v4_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case221_onehot_zerohot_v5_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when strict checking is enabled by en_i and the sampled one-hot input oh_i is zero after reset is released.\n- Good behavior asserts err_o in the same sampled cycle for an enabled zero-hot input, while buggy behavior leaves err_o deasserted under that same condition.\n- The first divergence occurs at the first enabled zero-hot occurrence; earlier enabled legal one-hot input keeps err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case221_onehot_zerohot_v5_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case222_onehot_zerohot_v6_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when rst_n is high, checking is enabled via en_i, and oh_i is all-zero in the sampled cycle.\n- Good behavior asserts err_o in that same enabled zero-hot cycle, while buggy behavior leaves err_o deasserted even though the zero-hot condition should be flagged.\n- The first divergence occurs at the first enabled transition from a legal one-hot input to an all-zero oh_i input; prior enabled legal one-hot input leaves err_o low in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case222_onehot_zerohot_v6_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case223_onehot_zerohot_v7_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when strict checking is enabled by en_i and oh_i is zero in a sampled cycle after reset is released.\n- Good behavior asserts err_o in that same cycle whenever the enabled onehot input is zero-hot, while buggy behavior leaves err_o deasserted even though the zero-hot condition is illegal.\n- The first divergence occurs at the first enabled zero-hot occurrence; earlier enabled valid onehot input keeps err_o low in both traces, and the mismatch appears only when oh_i transitions to all-zero under en_i.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case223_onehot_zerohot_v7_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case224_onehot_zerohot_v8_from_case129_prim_onehot_zero_enabled_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when strict checking is enabled after reset, en_i is high, and oh_i is zero in the sampled cycle.\n- Good behavior asserts err_o in that same enabled zero-hot cycle, while buggy behavior leaves err_o deasserted even though the zero-hot condition is illegal.\n- The first divergence is the first enabled zero-hot occurrence; earlier enabled onehot input is accepted in both traces, and the mismatch appears only when oh_i has no asserted bit.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "With strict checking enabled, en_i high with oh_i equal to zero shall assert err_o in the same sampled cycle.",
+    "normal_trace_summary": "Case: case224_onehot_zerohot_v8_from_case129_prim_onehot_zero_enabled_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case225_onehot_addr_bad_v1_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active, oh_i is exactly onehot, and addr_i selects a different bit than the asserted one in that same cycle.\n- Good behavior asserts err_o on each enabled onehot/address mismatch cycle and keeps err_o low when addr_i matches the asserted onehot bit; buggy behavior incorrectly leaves err_o low even during the mismatch condition.\n- The first divergence occurs at the first transition from an enabled matching onehot/address relation to an enabled mismatching relation while the same onehot input remains present; good raises err_o there, bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case225_onehot_addr_bad_v1_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case226_onehot_addr_bad_v2_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active and oh_i is one-hot, but addr_i selects a different bit position than the single asserted bit in that same cycle.\n- Good behavior asserts err_o on each enabled one-hot/address mismatch cycle, while buggy behavior leaves err_o deasserted and suppresses the mismatch indication.\n- The first divergence occurs at the first transition from a matching one-hot/address combination to a mismatching one while the same one-hot input remains active; good raises err_o immediately, bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case226_onehot_addr_bad_v2_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case227_onehot_addr_bad_v3_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active, oh_i is exactly onehot, and addr_i selects a different bit position than the asserted bit in that same cycle.\n- Good behavior asserts err_o whenever this onehot/address mismatch occurs, and deasserts err_o when addr_i matches the asserted onehot bit; buggy behavior incorrectly keeps err_o low during the mismatch.\n- The first divergence is the first enabled cycle after a matching onehot/address condition where the onehot bit remains the same but addr_i changes to a non-matching selection; good raises err_o there while bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case227_onehot_addr_bad_v3_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active, oh_i is exactly one-hot, and addr_i selects a different bit than the asserted bit of oh_i in the same cycle.\n- Good behavior asserts err_o on that one-hot address-mismatch cycle and keeps it asserted while the mismatch persists; buggy behavior leaves err_o deasserted despite the mismatch.\n- The first divergence is the first cycle after a matching one-hot selection where the one-hot bit in oh_i stays the same but addr_i changes to a non-matching position; before that, matched one-hot addressing produces no error in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case228_onehot_addr_bad_v4_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case229_onehot_addr_bad_v5_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active, oh_i is exactly one-hot, and addr_i selects a different position than the single asserted bit of oh_i in the same cycle.\n- Good behavior asserts err_o on each enabled onehot/address mismatch cycle, while buggy behavior leaves err_o deasserted even though the selected address does not match the active onehot bit.\n- The first divergence occurs at the first transition from a matching onehot/address pair to a mismatching pair while the same one-hot input remains asserted; before that matching condition, both traces keep err_o low.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case229_onehot_addr_bad_v5_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case230_onehot_addr_bad_v6_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when en_i is active and oh_i is one-hot, but addr_i selects a different bit position than the single asserted bit of oh_i in the same cycle.\n- Good behavior asserts err_o on each enabled one-hot/address-mismatch cycle, while buggy behavior leaves err_o deasserted under that mismatch even though matching one-hot/address cycles keep err_o low.\n- The first divergence occurs at the first transition from an enabled one-hot/address match to an enabled one-hot/address mismatch with oh_i otherwise unchanged; good raises err_o there, bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case230_onehot_addr_bad_v6_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case231_onehot_addr_bad_v7_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is high, oh_i is exactly onehot, and addr_i selects a different bit position than the asserted bit of oh_i in the same cycle.\n- Good behavior asserts err_o on each enabled onehot/address mismatch cycle and deasserts it again when addr_i matches the onehot bit; buggy behavior leaves err_o low even during the mismatch condition.\n- The first divergence occurs at the first transition from a matching onehot/address pair to a mismatching pair while the same onehot request remains active; good raises err_o there, bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case231_onehot_addr_bad_v7_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case232_onehot_addr_bad_v8_from_case103_prim_onehot_addr_mismatch_suppressed",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is asserted, oh_i is exactly onehot, and addr_i selects a different bit position than the sole asserted bit of oh_i in the same cycle.\n- Good behavior asserts err_o on each enabled onehot/address mismatch cycle and deasserts it again when addr_i matches the onehot position; buggy behavior incorrectly leaves err_o low even during the mismatch condition.\n- The first divergence occurs at the first transition from a matching onehot/address pair to a mismatching pair while the same onehot input remains active; good raises err_o immediately, bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high, err_o shall assert when addr_i points to a different bit in the same cycle.",
+    "normal_trace_summary": "Case: case232_onehot_addr_bad_v8_from_case103_prim_onehot_addr_mismatch_suppressed\nFirst divergence cycle: 2\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case233_onehot_addr_legal_v1_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The relevant trigger is an enabled check after reset where oh_i is legal one-hot and addr_i selects the asserted bit of oh_i.\n- Good behavior keeps err_o low on that same cycle because the one-hot/address combination is valid, while buggy behavior falsely asserts err_o under the same valid condition.\n- The first divergence occurs at the first enabled valid one-hot-address match; earlier reset/setup behavior matches, and later truly invalid patterns can assert err_o in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case233_onehot_addr_legal_v1_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case234_onehot_addr_legal_v2_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active and oh_i is a valid one-hot value whose asserted bit is exactly the bit selected by addr_i.\n- Good behavior keeps err_o low on that same-cycle legal one-hot address match, while buggy behavior incorrectly asserts err_o even though the input satisfies the legality rule.\n- The first divergence is the first enabled legal one-hot/matching-address case after reset release; later mismatching or non-one-hot cases do not distinguish the implementations because both can assert err_o there.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case234_onehot_addr_legal_v2_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case235_onehot_addr_legal_v3_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when rst_n is high, en_i is asserted, and oh_i is a legal one-hot value whose single asserted bit is exactly the bit selected by addr_i.\n- Good behavior keeps err_o low on that same cycle because the one-hot/address combination is valid; buggy behavior incorrectly asserts err_o even for this legal match.\n- The first divergence is the first enabled post-reset cycle with a valid one-hot/address alignment; later mismatched-address or multi-hot cases can assert err_o in both traces and are not the distinguishing event.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case235_onehot_addr_legal_v3_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case236_onehot_addr_legal_v4_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active, oh_i is a legal one-hot value, and addr_i selects the asserted bit of oh_i in the same cycle.\n- Good behavior keeps err_o low for that legal one-hot address match, while buggy behavior falsely asserts err_o even though the selected one-hot entry is valid.\n- The first divergence is the first enabled cycle after reset where the one-hot bit position and addr_i agree; earlier reset/idle behavior matches, and later illegal combinations can raise err_o in both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case236_onehot_addr_legal_v4_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case237_onehot_addr_legal_v5_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active and oh_i is a legal one-hot value whose asserted bit is exactly the bit selected by addr_i.\n- Good behavior keeps err_o low on that same cycle because the one-hot/address combination is valid, while buggy behavior falsely asserts err_o even though the selected one-hot bit matches addr_i.\n- The first divergence is the first enabled legal one-hot match after reset release; later traces still agree that genuinely illegal cases should assert err_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case237_onehot_addr_legal_v5_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case238_onehot_addr_legal_v6_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is asserted and oh_i is a legal one-hot value whose asserted bit is exactly the bit selected by addr_i.\n- Good behavior keeps err_o low on that same-cycle legal one-hot address match, while buggy behavior falsely asserts err_o under the same legal condition.\n- The first divergence is the first enabled cycle after reset where the one-hot input and addressed position agree; earlier reset/setup behavior matches, and later traces show the same false-positive repeating on repeated legal matches.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case238_onehot_addr_legal_v6_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case239_onehot_addr_legal_v7_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The trigger is an enabled check after reset where oh_i is a valid one-hot value and addr_i selects the asserted bit of that one-hot vector.\n- Good behavior keeps err_o low in that same cycle for this legal one-hot/address match, while buggy behavior falsely asserts err_o even though the input combination is valid.\n- The first divergence occurs on the first post-reset enabled legal match of addr_i to the sole high bit in oh_i; later mismatched or non-one-hot cases do not distinguish the traces because both can assert err_o there.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case239_onehot_addr_legal_v7_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case240_onehot_addr_legal_v8_from_case137_prim_onehot_addr_false_positive",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is active and oh_i is a legal one-hot value whose asserted bit is exactly the bit selected by addr_i after reset is released.\n- Good behavior keeps err_o low on that same-cycle legal one-hot address match, while buggy behavior raises err_o as a false positive even though the selected one-hot bit is correct.\n- The first divergence is the first enabled legal one-hot-and-matching-address case; later mismatching or illegal patterns can produce error in both traces, so the mismatch appears specifically on the legal case.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "If exactly one bit of oh_i is high and addr_i points to that bit, err_o shall remain low in the same cycle.",
+    "normal_trace_summary": "Case: case240_onehot_addr_legal_v8_from_case137_prim_onehot_addr_false_positive\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=0\nObserved differing signal values (bad): err_o=1"
+  },
+  {
+    "case_id": "case244_regwe_enable_gap_v4_from_case126_prim_regwe_enable_gap",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is low while oh_i is a nonzero onehot write-enable vector in the same sampled cycle.\n- Good behavior asserts err_o immediately for that disabled-but-active onehot request, while buggy behavior leaves err_o deasserted under the same condition.\n- The first divergence occurs at the first post-reset cycle where a onehot bit in oh_i is asserted while en_i remains low; prior idle/reset behavior matches.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When en_i is low, any nonzero onehot write-enable vector shall trigger err_o in the same cycle.",
+    "normal_trace_summary": "Case: case244_regwe_enable_gap_v4_from_case126_prim_regwe_enable_gap\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case245_regwe_enable_gap_v5_from_case126_prim_regwe_enable_gap",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when en_i is low while oh_i is a nonzero onehot write-enable vector in the same sampled cycle.\n- Good behavior asserts err_o in that same cycle whenever a onehot write-enable appears with en_i deasserted, while buggy behavior leaves err_o low under that invalid disabled-write condition.\n- The first divergence is the earliest post-reset disabled cycle carrying any valid onehot write request; prior cycles either are in reset or have no offending write-enable, so both traces match.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When en_i is low, any nonzero onehot write-enable vector shall trigger err_o in the same cycle.",
+    "normal_trace_summary": "Case: case245_regwe_enable_gap_v5_from_case126_prim_regwe_enable_gap\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case246_regwe_enable_gap_v6_from_case126_prim_regwe_enable_gap",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when rst_n is active, en_i is low, and oh_i is a nonzero onehot write-enable vector in the sampled cycle.\n- Good behavior asserts err_o in that same cycle whenever a write-enable bit is set while en_i is low; buggy behavior leaves err_o deasserted under that illegal disabled-write condition.\n- The first divergence is the first post-reset occurrence of a disabled nonzero onehot oh_i: inputs match, but good flags the error immediately and bad does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When en_i is low, any nonzero onehot write-enable vector shall trigger err_o in the same cycle.",
+    "normal_trace_summary": "Case: case246_regwe_enable_gap_v6_from_case126_prim_regwe_enable_gap\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case247_regwe_enable_gap_v7_from_case126_prim_regwe_enable_gap",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when en_i is low while oh_i is a nonzero onehot write-enable vector in the same sampled cycle.\n- Good behavior asserts err_o immediately on each disabled-yet-active onehot request, while buggy behavior leaves err_o deasserted despite that invalid condition.\n- The first divergence occurs at the first post-reset cycle where a onehot oh_i appears under en_i low; before that, reset/idle behavior matches and later enabled onehot activity is accepted by both traces.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "When en_i is low, any nonzero onehot write-enable vector shall trigger err_o in the same cycle.",
+    "normal_trace_summary": "Case: case247_regwe_enable_gap_v7_from_case126_prim_regwe_enable_gap\nFirst divergence cycle: 1\nDiffering signals at first divergence: err_o\nObserved differing signal values (good): err_o=1\nObserved differing signal values (bad): err_o=0"
+  },
+  {
+    "case_id": "case248_fifo_v1_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered by consecutive write increments after reset, with no reads or clear, as the FIFO occupancy approaches the full boundary.\n- Good behavior keeps full_o deasserted while the FIFO still has one free slot and only asserts full_o when the FIFO actually contains Depth entries; buggy behavior asserts full_o one write too early and advances depth_o to the full count prematurely.\n- The first divergence is the first boundary-approach state where occupancy should still be Depth-1: good shows not-full with depth_o indicating one remaining slot, while bad already reports full and a full depth count.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case248_fifo_v1_from_case104_prim_fifo_full_early\nFirst divergence cycle: 3\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case249_fifo_v2_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when writes advance the FIFO up to the last available slot after reset, with no simultaneous read and no clear intervening.\n- Good behavior keeps full_o low while the FIFO is still one entry short of full and only asserts full_o once the FIFO actually reaches full depth; buggy behavior reports the full condition one write early and then deasserts full_o afterward even though depth_o indicates the FIFO is full.\n- The first divergence is the boundary write that should move occupancy from below-full to just-before-full: good shows a pre-full depth with full_o still low, while bad jumps to a full depth/full_o state immediately.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case249_fifo_v2_from_case104_prim_fifo_full_early\nFirst divergence cycle: 4\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case250_fifo_v3_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered by consecutive write-side increments with no read-side increment or clear, as the FIFO occupancy advances to the full boundary.\n- Good behavior keeps full_o deasserted while the FIFO is still one entry short of full and asserts it only when depth_o reaches the true full count; buggy behavior asserts full_o and advances depth_o to the full count one write too early, then later drops full_o even while depth_o remains at the full count.\n- The first divergence is the boundary-approach write where occupancy should still be pre-full: the good trace shows a not-full state with depth_o below capacity, while the bad trace already reports full_o and a full depth_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case250_fifo_v3_from_case104_prim_fifo_full_early\nFirst divergence cycle: 4\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case251_fifo_v4_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered by consecutive write-side increments after reset, with no read-side increments or clear, as the FIFO occupancy approaches the full boundary.\n- Good behavior keeps full_o deasserted while the FIFO is still one entry short of full and increments depth_o by one per write; buggy behavior asserts full_o at that pre-full state and advances depth_o as if the FIFO were already full.\n- The first divergence is the boundary-approach write where occupancy should move into the Depth-1 state: good still reports not-full, while bad reports full one write too early and shows the corresponding premature depth count.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case251_fifo_v4_from_case104_prim_fifo_full_early\nFirst divergence cycle: 3\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case252_fifo_v5_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered by successive write increments with no read increments after reset, bringing the FIFO from not-full up to the full boundary.\n- Good behavior keeps full_o low while depth_o indicates one remaining slot and asserts full_o only once depth_o reaches the true full count; buggy behavior asserts full_o on the boundary-approach write and then deasserts it after the FIFO is actually full.\n- The first divergence occurs on the write that should move occupancy from below-full to just one entry short of full: good still reports not full with intermediate depth_o, while bad jumps to a full indication and full depth_o too early.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case252_fifo_v5_from_case104_prim_fifo_full_early\nFirst divergence cycle: 4\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case253_fifo_v6_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered by write-only progression after reset, with successive incr_wptr_i assertions and no incr_rptr_i, as the FIFO advances from partially filled to the last remaining slot before full.\n- Good behavior keeps full_o low while the FIFO is still at Depth-1 and only asserts full_o once the FIFO actually contains Depth entries; buggy behavior asserts full_o one write too early at the pre-full state and then deasserts full_o after the FIFO reaches the actually full state.\n- The first divergence is the boundary-approach write that should leave exactly one slot remaining: good shows the FIFO as not full with depth_o indicating pre-full occupancy, while bad already reports full_o and a full depth_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case253_fifo_v6_from_case104_prim_fifo_full_early\nFirst divergence cycle: 4\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case254_fifo_v7_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered by consecutive write-side increments after reset, with no read-side increments or clear, as the FIFO advances toward the full boundary.\n- Good behavior keeps full_o deasserted while the FIFO still has one remaining slot and only reports the full depth once that boundary is actually reached; buggy behavior asserts full_o early and advances depth_o to the full count on that last pre-full write.\n- The first divergence is the write that should leave the FIFO at Depth-1: good shows a still-not-full state, while bad already reports a full state and corresponding full depth.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case254_fifo_v7_from_case104_prim_fifo_full_early\nFirst divergence cycle: 3\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case255_fifo_v8_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when repeated write-side increments with no concurrent read advance the FIFO from a non-full occupancy to the last remaining slot before full.\n- Good behavior keeps full_o deasserted while depth_o indicates one entry short of capacity, then asserts full_o only once the FIFO actually reaches capacity; buggy behavior reports the full condition one write early and then drops full_o after depth_o reaches the full count.\n- The first divergence is the write that should leave the FIFO at the pre-full boundary: good still shows not-full with depth_o below capacity, while bad already jumps to a full indication and an over-advanced depth report.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case255_fifo_v8_from_case104_prim_fifo_full_early\nFirst divergence cycle: 4\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case256_fifo_v9_from_case104_prim_fifo_full_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered when consecutive write increments advance the FIFO to the last available slot, with no simultaneous reads or clear/reset activity changing occupancy.\n- Good behavior keeps full_o low while depth_o indicates the FIFO is one entry short of full, then asserts full_o only once the FIFO actually reaches full. Buggy behavior asserts full_o and reports full depth one write too early, then deasserts full_o afterward even though depth_o remains at the full count.\n- The first divergence is the boundary-approach write where the good trace is still at the pre-full occupancy state, while the bad trace already jumps to the full state and raises full_o.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "full_o shall assert if and only if the FIFO currently contains Depth entries; it must remain low at Depth-1.",
+    "normal_trace_summary": "Case: case256_fifo_v9_from_case104_prim_fifo_full_early\nFirst divergence cycle: 4\nDiffering signals at first divergence: full_o, depth_o[2:0]\nObserved differing signal values (good): full_o=0, depth_o[2:0]=011\nObserved differing signal values (bad): full_o=1, depth_o[2:0]=100"
+  },
+  {
+    "case_id": "case257_fifo_v1_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy is zero, including reset/initial empty state and after a sequence of reads drains previously written entries back to zero.\n- Good behavior asserts empty_o in the same cycle that depth_o indicates zero occupancy. Buggy behavior leaves empty_o deasserted even though the FIFO is empty.\n- The first divergence is at the earliest zero-occupancy observation: both traces agree on non-empty operation while depth_o is above zero, then differ exactly when occupancy reaches or starts at zero and empty_o should reflect that immediately.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case257_fifo_v1_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case258_fifo_v2_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO is empty, including after reset and when reads reduce the occupancy back to zero.\n- Good behavior asserts empty_o in the same cycle that depth_o indicates zero occupancy; buggy behavior leaves empty_o deasserted even though the FIFO is empty.\n- The first divergence appears at the earliest empty state: both traces show zero depth, but only the good trace reflects that state on empty_o, and the same mismatch repeats when a read returns the FIFO to empty.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case258_fifo_v2_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case259_fifo_v3_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy is zero, including initialization/reset-empty state and after reads drain the last stored entry.\n- Good behavior asserts empty_o in the same cycle that depth_o indicates zero occupancy; buggy behavior leaves empty_o deasserted even though the FIFO is empty.\n- The first divergence appears at the earliest empty-state observation: both traces show zero depth, but only the good trace reports empty_o asserted, and the same mismatch recurs when a read returns occupancy to zero.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case259_fifo_v3_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case260_fifo_v4_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy is zero, including initialization/reset state and after reads drain the last remaining entry, with no clear or write offsetting that empty condition.\n- Good behavior asserts empty_o in the same cycle that depth_o indicates zero occupancy; buggy behavior leaves empty_o deasserted even though the FIFO is empty.\n- The first divergence appears at the earliest zero-occupancy state, and the same mismatch repeats when a sequence of reads brings the FIFO back to empty after previously holding data.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case260_fifo_v4_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case261_fifo_v5_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy becomes zero, including immediately under reset and after reads drain the last remaining entry.\n- Good behavior asserts empty_o in the same cycle that depth_o returns to zero. Buggy behavior leaves empty_o deasserted even though the FIFO is already empty.\n- The first divergence is at the earliest empty state: depth_o indicates zero occupancy while good reports empty_o asserted and bad does not; the same mismatch reappears when a later read transitions the FIFO from non-empty back to empty.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case261_fifo_v5_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case262_fifo_v6_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO is empty, including after reset and when a read-side decrement returns the occupancy to zero.\n- Good behavior asserts empty_o in the same cycle that depth_o indicates zero occupancy. Buggy behavior leaves empty_o deasserted even though the FIFO is empty.\n- The first divergence appears immediately on an empty state, and the same mismatch reappears at the drain-to-empty transition after prior writes and reads; before the FIFO reaches zero occupancy, both traces agree with empty_o low.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case262_fifo_v6_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case263_fifo_v7_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO becomes empty, including reset/initial empty state and after a sequence of reads removes the last stored entry so occupancy returns to zero.\n- Good behavior asserts empty_o in that same cycle that depth_o indicates zero occupancy; buggy behavior leaves empty_o deasserted even though the FIFO is empty.\n- The first divergence is at the earliest empty condition: both traces already show zero depth, but only the good trace reports empty_o asserted; the same late-empty symptom reappears when a read causes the final transition back to empty.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case263_fifo_v7_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case264_fifo_v8_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The relevant situations are whenever the FIFO is empty, including immediately under reset/initial empty state and when reads reduce occupancy back to zero with no simultaneous compensating write.\n- Good behavior drives empty_o high in the same cycle that depth_o indicates zero occupancy; buggy behavior leaves empty_o low even though the FIFO is already empty.\n- The first divergence appears at the earliest empty-state observation: both traces show zero depth, but only the good trace reflects that emptiness on empty_o, and the same late-empty symptom repeats when the final read drains the FIFO.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case264_fifo_v8_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case265_fifo_v9_from_case105_prim_fifo_empty_late",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever FIFO occupancy is zero, including the reset-empty state and when read-side progression drains the last stored entry so depth_o returns to zero.\n- Good behavior asserts empty_o in the same cycle that the FIFO is empty; buggy behavior leaves empty_o deasserted even though depth_o indicates zero occupancy.\n- The first divergence appears at the earliest zero-occupancy observation: both traces agree on non-empty operation while depth_o is above zero, then disagree exactly when the FIFO is empty.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall assert in the same cycle the FIFO occupancy returns to zero.",
+    "normal_trace_summary": "Case: case265_fifo_v9_from_case105_prim_fifo_empty_late\nFirst divergence cycle: 0\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=1\nObserved differing signal values (bad): empty_o=0"
+  },
+  {
+    "case_id": "case266_fifo_v1_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered from reset/empty initialization and then persists through subsequent write and read pointer updates; depth_o should always represent the current FIFO occupancy implied by incr_wptr_i and incr_rptr_i.\n- Good behavior reports the true occupancy each cycle, starting empty after reset, incrementing on a write, holding when idle, and decrementing on a read. Buggy behavior reports depth_o consistently one count higher than the true occupancy across the same sequence.\n- The first divergence appears immediately in the reset state: good depth_o matches an empty FIFO, while bad depth_o already indicates one stored entry, and later write/read transitions remain shifted by that same offset.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case266_fifo_v1_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case267_fifo_v2_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed by reset/initial empty-state handling and then persists through later write and read operations: depth_o should always track FIFO occupancy derived from the net effect of incr_wptr_i and incr_rptr_i.\n- Good behavior reports depth_o equal to the true occupancy, starting from empty after reset and updating by +1 on write-only cycles and -1 on read-only cycles. Buggy behavior reports depth_o consistently one higher than the true occupancy while full_o and empty_o still reflect the actual state.\n- The first divergence occurs immediately in the reset empty condition: good depth_o matches an empty FIFO, while bad depth_o already indicates one stored entry before any write; subsequent operations preserve that same offset.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case267_fifo_v2_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case268_fifo_v3_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed from reset/empty state and throughout subsequent write/read activity because depth_o is required to equal the true FIFO occupancy in every cycle.\n- Good behavior reports zero occupancy when the FIFO is empty, increments depth_o by one on a write, and returns to zero on the matching read; buggy behavior reports depth_o consistently one higher than the actual occupancy even though empty_o/full_o follow the empty state correctly.\n- The first divergence appears immediately in the empty reset condition: good depth_o matches empty occupancy, while bad depth_o already indicates a nonzero count, and that offset then persists across later occupancy updates.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case268_fifo_v3_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case269_fifo_v4_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed whenever FIFO occupancy is observed from reset onward and then updated by write-only and read-only pointer increments; depth_o should track the true item count each cycle.\n- Good behavior reports the exact occupancy, including empty after reset and incrementing/decrementing by one for isolated incr_wptr_i or incr_rptr_i events. Buggy behavior reports depth_o with a consistent +1 offset relative to the true occupancy.\n- The first divergence appears immediately in the reset/empty state: good depth_o matches an empty FIFO, while bad depth_o already indicates one stored entry; the same offset remains through the subsequent write and read transitions.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case269_fifo_v4_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case270_fifo_v5_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed from reset/empty initialization and then persists through subsequent write-only, read-only, and idle cycles as depth_o is expected to track true FIFO occupancy exactly.\n- Good behavior reports depth_o equal to occupancy, including zero occupancy after reset and when empty_o indicates empty; buggy behavior reports depth_o consistently one count too high across the same sequence.\n- The first divergence occurs immediately at the initial empty state: both traces agree the FIFO is empty, but only the bad trace shows a nonzero depth_o, and later increments/decrements remain offset by that same extra count.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case270_fifo_v5_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case271_fifo_v6_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed from reset/empty conditions and remains visible through simple occupancy changes caused by a write followed by a read.\n- Good behavior reports depth_o as the true FIFO occupancy each cycle: empty after reset, incremented by a write, then returned to empty by a read. Buggy behavior reports depth_o consistently one higher than the actual occupancy, even while empty_o/full_o indicate the FIFO status correctly.\n- The first divergence occurs immediately in the reset-empty state, where the FIFO is empty but bad depth_o already shows a nonzero count; subsequent write and read operations preserve that same +1 offset relative to the true occupancy.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case271_fifo_v6_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case272_fifo_v7_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever FIFO occupancy is observed or updated, including immediately after reset and after write/read pointer increments; depth_o is expected to track the true element count at all times.\n- Good behavior reports the exact occupancy, starting empty after reset and then changing by one with each isolated incr_wptr_i or incr_rptr_i event. Buggy behavior reports depth_o with a constant +1 offset relative to the true occupancy.\n- The first divergence appears already in the reset state: when the FIFO is empty, good depth_o matches emptiness while bad depth_o already indicates one stored entry; the same offset persists through the subsequent write hold and read transitions.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case272_fifo_v7_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case273_fifo_v8_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed from reset/empty initialization onward and throughout subsequent write-only, read-only, and idle cycles: depth_o should always represent the current FIFO occupancy implied by incr_wptr_i and incr_rptr_i.\n- Good behavior reports zero occupancy when the FIFO is empty and then increments/decrements depth_o in step with net writes and reads. Buggy behavior reports depth_o consistently one higher than the true occupancy across the whole sequence.\n- The first divergence occurs immediately in the empty reset state: empty_o indicates an empty FIFO in both traces, but only the bad trace shows a nonempty depth_o, after which every occupancy change remains offset by the same extra count.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case273_fifo_v8_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case274_fifo_v9_from_case106_prim_fifo_depth_off_by_one",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is exposed from reset/empty conditions and remains visible through a simple write then read sequence, so the key trigger is any situation where FIFO occupancy should be known exactly, including immediately after reset and after balanced enqueue/dequeue activity.\n- Good behavior makes depth_o match true occupancy in every cycle: zero when the FIFO is reset or emptied, incrementing on a write, and decrementing on a read. Buggy behavior reports depth_o consistently one count too high across those same states.\n- The first divergence appears immediately in the reset/empty state: status signals indicate an empty FIFO, but only the bad trace shows a nonzero depth_o, and the same offset persists after the subsequent write and read.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "depth_o shall equal the exact FIFO occupancy in every cycle.",
+    "normal_trace_summary": "Case: case274_fifo_v9_from_case106_prim_fifo_depth_off_by_one\nFirst divergence cycle: 0\nDiffering signals at first divergence: depth_o[2:0]\nObserved differing signal values (good): depth_o[2:0]=000\nObserved differing signal values (bad): depth_o[2:0]=001"
+  },
+  {
+    "case_id": "case275_fifo_v1_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever FIFO occupancy reaches or remains at exactly one entry after reset is released, whether by a write into an empty FIFO or by a read from a deeper occupancy down to one remaining entry.\n- Good behavior keeps empty_o deasserted while depth_o indicates one stored entry. Buggy behavior asserts empty_o already at that one-entry state, treating the FIFO as empty too early.\n- The first divergence is the first transition from empty to single-entry occupancy: depth_o shows one entry in both traces, but only the bad trace raises empty_o; the same mismatch repeats when the FIFO later returns to one-entry occupancy.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case275_fifo_v1_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case276_fifo_v2_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy reaches or remains at exactly one entry after reset is released, including after a write into an empty FIFO and after a read from a deeper non-empty state down to one remaining entry.\n- Good behavior keeps empty_o deasserted while depth_o indicates one stored entry; buggy behavior asserts empty_o even though the FIFO is not empty.\n- The first divergence appears at the first transition from empty to single-entry occupancy: depth_o shows one entry in both traces, but only the bad trace reports empty_o as if the FIFO were empty, and the same mismatch recurs when occupancy returns to one.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case276_fifo_v2_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case277_fifo_v3_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever FIFO occupancy becomes exactly one entry after reset is released, whether by a write into an empty FIFO or by a read that reduces occupancy from more than one entry to one.\n- Good behavior keeps empty_o deasserted while depth_o indicates one remaining entry; buggy behavior asserts empty_o already at that one-entry state, as if the FIFO were empty.\n- The first good/bad divergence is the first transition into the one-entry occupancy region: both traces agree when truly empty and when occupancy is greater than one, but diverge as soon as depth_o corresponds to a single stored item.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case277_fifo_v3_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case278_fifo_v4_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy becomes or remains exactly one entry after reset is released, such as after a write into an empty FIFO or after a read reduces occupancy from more than one entry down to one.\n- Good behavior keeps empty_o deasserted while that single entry is still present. Buggy behavior asserts empty_o even though depth_o indicates one remaining entry and the FIFO is not actually empty.\n- The first divergence is the first transition from empty to one stored item: good immediately reflects non-empty status, while bad still reports empty; the same wrong relation reappears when occupancy later returns to one.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case278_fifo_v4_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case279_fifo_v5_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever FIFO occupancy becomes or remains exactly one entry after reset is released, such as after a write into an empty FIFO or after a read from two entries down to one.\n- Good behavior keeps empty_o deasserted while depth_o indicates one remaining entry; buggy behavior asserts empty_o already at that one-entry state, as if the FIFO were empty.\n- The first divergence occurs at the earliest transition into the single-entry state: both traces agree the FIFO is no longer at zero depth, but only the bad trace raises empty_o at that boundary.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case279_fifo_v5_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case280_fifo_v6_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever normal operation leaves the FIFO with exactly one stored entry after reset is released, whether by a write into an empty FIFO or by a read from a deeper occupancy down to one remaining entry.\n- Good behavior keeps empty_o deasserted while that last entry is still present; buggy behavior asserts empty_o as soon as occupancy becomes one and continues to treat the FIFO as empty too early.\n- The first divergence is the first transition into the one-entry state: both traces agree on reset-empty behavior and on non-empty behavior at higher occupancy, then bad raises empty_o at the one-entry boundary while good does not.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case280_fifo_v6_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case281_fifo_v7_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered after reset when FIFO activity leaves exactly one stored entry remaining, whether by the first write into an empty FIFO or by a read that reduces occupancy from more than one entry down to one.\n- Good behavior keeps empty_o deasserted while that single entry is still present. Buggy behavior asserts empty_o early even though depth_o indicates one remaining entry.\n- The first divergence occurs at the first transition into the one-entry state: depth_o shows the FIFO is no longer empty, but only the bad trace reports empty_o as asserted.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case281_fifo_v7_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case282_fifo_v8_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever the FIFO occupancy reaches or remains at exactly one entry after reset is released, such as after a write into an empty FIFO or after a read from a deeper non-empty state down to one remaining entry.\n- Good behavior keeps empty_o deasserted while depth_o indicates one stored entry. Buggy behavior asserts empty_o even though the FIFO still contains that last entry.\n- The first divergence occurs at the first transition from empty to singly occupied: the write side advances occupancy to one entry, depth_o reflects nonzero content, but only the bad trace reports empty_o as if the FIFO were still empty.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case282_fifo_v8_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  },
+  {
+    "case_id": "case283_fifo_v9_from_case130_prim_fifo_empty_early",
+    "abstracted_summary": "Abstracted trace summary:\n- The bug is triggered whenever FIFO occupancy has just become exactly one entry after reset is released, whether by the first accepted write into an empty FIFO or by a read that reduces occupancy from more than one entry down to one.\n- Good behavior keeps empty_o deasserted while that single entry remains stored. Buggy behavior asserts empty_o as soon as the FIFO reaches the one-entry state, effectively treating one remaining item as empty.\n- The first divergence is the first transition into the boundary state \"one entry present\": good reports not empty at that boundary, while bad reports empty even though depth_o indicates one item is still buffered.",
+    "summary_model_label": "GPT",
+    "summary_provider": "openai",
+    "summary_model_name": "gpt-5.4",
+    "source": "generated",
+    "spec": "empty_o shall remain low while the FIFO still contains exactly one entry.",
+    "normal_trace_summary": "Case: case283_fifo_v9_from_case130_prim_fifo_empty_early\nFirst divergence cycle: 1\nDiffering signals at first divergence: empty_o\nObserved differing signal values (good): empty_o=0\nObserved differing signal values (bad): empty_o=1"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "maximum_model_calls": 11,
+  "pilot_maximum": 3,
+  "arm_maximum": 2,
+  "pilot_seed": 4401,
+  "ablation_seed": 4411,
+  "arms": {
+    "A": {
+      "search": false,
+      "gate": false
+    },
+    "B": {
+      "search": true,
+      "gate": false
+    },
+    "C": {
+      "search": false,
+      "gate": true
+    },
+    "D": {
+      "search": true,
+      "gate": true
+    }
+  },
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "temperature": 0.2,
+  "max_output_tokens": 2048,
+  "retries": 0,
+  "interface": "Reason text saved without semantic length rejection. AST fields, signal and arity restrictions unchanged. No predicate rewriting.",
+  "sequence": "Pilot bounded refinement, strict current+105-history gate, freeze, fresh56 holdout. Stop on any failure. Only on pilot holdout pass run four independent arms, each <=2 calls, same old initial candidate.",
+  "isolation": "A/C and B/D first requests byte-identical but calls independent. Gate diagnostics only C/D subsequent requests; search witnesses only B/D. No pilot output enters any arm. A/B history is measurement after all freeze.",
+  "measurement": "All arm versions freeze before common fresh56 holdout and hidden-history audit. All failures retained. Actual unequal token/native costs reported. Same candidate hash may share measurement, not sample counts.",
+  "scope": "Single-case, single-seed small causal pilot, not a multiseed stability claim. Continuation after successful pilot is explicitly conditional; outcomes need not favor either mechanism.",
+  "budget": "All previous general-purpose grants exhausted. New explicit maximum11 grant required; prior research41 restricted remainder is not transferred."
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "AssertionSet"
+    },
+    "set_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "environment_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "assertions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "assertion_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "obligation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "antecedent": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consequent": {
+            "type": "string",
+            "minLength": 1
+          },
+          "delay": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authorized_history_depth": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tool_support": {
+            "enum": [
+              "restricted_monitor",
+              "unsupported",
+              "unverified"
+            ]
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "assertion_id",
+          "version",
+          "obligation_ids",
+          "antecedent",
+          "consequent",
+          "delay",
+          "authorized_history_depth",
+          "source",
+          "tool_support",
+          "content_hash"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "set_id",
+    "version",
+    "case_id",
+    "contract_hash",
+    "environment_hash",
+    "assertions",
+    "source"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -97,7 +97,7 @@
+       if (!rst_ni) begin
+         intr_o <= '0;
+       end else begin
+-        intr_o <= status & reg2hw_intr_enable_q_i;
++        intr_o <= intr_o; // ASSERTIONFORGE_MUTATION: state update suppressed
+       end
+     end
+ 

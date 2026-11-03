@@ -1,0 +1,1 @@
+module v3_checker; integer ant_hits=0,fail_hits=0; reg ant_d=0; always @(posedge tb.clk_i) begin if(!tb.rst_ni) ant_d<=0; else begin if(tb.push_i) ant_hits=ant_hits+1; if((tb.push_i) && !(tb.empty_o)) fail_hits=fail_hits+1; ant_d<=(tb.push_i); end end final $display("V3_METRIC ant_hits=%0d fail_hits=%0d",ant_hits,fail_hits); endmodule

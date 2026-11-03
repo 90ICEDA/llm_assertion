@@ -1,0 +1,41 @@
+﻿model,case_id,candidate_index,assertion_text,regex_literal_hardcoding_auxiliary,primary_success,heldout_1_success,heldout_2_success,heldout_3_success,all_three_heldouts_generalize,behavioral_overfit
+Claude,overfit01_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && !oh_i[addr_i]) |-> err_o);,False,True,True,True,True,True,False
+GPT,overfit01_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && (oh_i[addr_i] == 1'b0)) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit02_103_onehot_addr_mismatch_suppressed,3,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && (addr_i == '0) && !oh_i[0]) |-> err_o);,False,True,False,False,False,False,True
+GPT,overfit02_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && (oh_i[addr_i] == 1'b0)) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit03_103_onehot_addr_mismatch_suppressed,2,assert property (@(posedge clk) disable iff (!rst_n) (oh_i[addr_i] != (|oh_i)) |-> err_o);,False,True,True,True,True,True,False
+GPT,overfit03_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && (oh_i[addr_i] == 1'b0)) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit04_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && !oh_i[addr_i]) |-> (err_o));,False,True,True,True,True,True,False
+GPT,overfit04_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && (oh_i[addr_i] == 1'b0)) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit05_103_onehot_addr_mismatch_suppressed,2,assert property (@(posedge clk) disable iff (!rst_n) (oh_i[addr_i] != (|oh_i)) |-> (err_o));,False,True,True,True,True,True,False
+GPT,overfit05_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && (oh_i[addr_i] == 1'b0)) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit06_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && !oh_i[addr_i]) |-> (err_o));,False,True,True,True,True,True,False
+GPT,overfit06_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && (oh_i[addr_i] == 1'b0)) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit07_103_onehot_addr_mismatch_suppressed,2,assert property (@(posedge clk) disable iff (!rst_n) (oh_i[addr_i] != (|oh_i)) |-> err_o);,False,True,True,True,True,True,False
+GPT,overfit07_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && (oh_i[addr_i] == 1'b0)) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit08_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && !oh_i[addr_i]) |-> (err_o));,False,True,True,True,True,True,False
+GPT,overfit08_103_onehot_addr_mismatch_suppressed,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && !oh_i[addr_i]) |-> (err_o));,False,True,True,True,True,True,False
+Claude,overfit09_126_regwe_enable_gap,1,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+GPT,overfit09_126_regwe_enable_gap,3,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && $onehot(oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+Claude,overfit10_126_regwe_enable_gap,1,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+GPT,overfit10_126_regwe_enable_gap,2,assert property (@(posedge clk) disable iff (!rst_n) ((oh_i != 4'b0000) && !en_i) |=> (err_o));,True,True,True,True,True,True,False
+Claude,overfit11_126_regwe_enable_gap,1,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+GPT,overfit11_126_regwe_enable_gap,2,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+Claude,overfit12_126_regwe_enable_gap,1,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+GPT,overfit12_126_regwe_enable_gap,3,assert property (@(posedge clk) disable iff (!rst_n) ((!en_i) && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+Claude,overfit13_126_regwe_enable_gap,1,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+GPT,overfit13_126_regwe_enable_gap,1,assert property (@(posedge clk) disable iff (!rst_n) (!en_i && (|oh_i)) |-> (err_o));,False,False,False,False,False,False,False
+Claude,overfit14_137_onehot_addr_false_positive,2,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && (oh_i[addr_i] == (|oh_i)) && ((|oh_i) == en_i)) |-> (err_o == 1'b0));,False,True,True,True,True,True,False
+GPT,overfit14_137_onehot_addr_false_positive,3,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && oh_i[addr_i]) |-> (!err_o));,False,True,True,True,True,True,False
+Claude,overfit15_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && oh_i[addr_i] && en_i) |-> (!err_o));,False,True,True,True,True,True,False
+GPT,overfit15_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && ($onehot(oh_i)) && oh_i[addr_i]) |-> (!err_o));,False,True,True,True,True,True,False
+Claude,overfit16_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && oh_i[addr_i] && en_i) |-> (!err_o));,False,True,True,True,True,True,False
+GPT,overfit16_137_onehot_addr_false_positive,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i && (oh_i == 4'b0010) && (addr_i == 2'b01)) |-> (!err_o));,True,True,False,False,False,False,True
+Claude,overfit17_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && oh_i[addr_i] && en_i) |-> (!err_o));,False,True,True,True,True,True,False
+GPT,overfit17_137_onehot_addr_false_positive,3,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && oh_i[addr_i]) |-> (!err_o));,False,True,True,True,True,True,False
+Claude,overfit18_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && oh_i[addr_i] && en_i) |-> (!err_o));,False,True,True,True,True,True,False
+GPT,overfit18_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && oh_i[addr_i]) |-> (!err_o));,False,True,True,True,True,True,False
+Claude,overfit19_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && oh_i[addr_i] && en_i) |-> (!err_o));,False,True,True,True,True,True,False
+GPT,overfit19_137_onehot_addr_false_positive,2,assert property (@(posedge clk) disable iff (!rst_n) (en_i && (oh_i == 4'b0010) && (addr_i == 2'b01)) |-> (!err_o));,True,True,False,False,False,False,True
+Claude,overfit20_137_onehot_addr_false_positive,1,assert property (@(posedge clk) disable iff (!rst_n) ($onehot(oh_i) && oh_i[addr_i] && en_i) |-> (!err_o));,False,True,True,True,True,True,False
+GPT,overfit20_137_onehot_addr_false_positive,3,assert property (@(posedge clk) disable iff (!rst_n) (en_i && $onehot(oh_i) && oh_i[addr_i]) |-> (!err_o));,False,True,True,True,True,True,False

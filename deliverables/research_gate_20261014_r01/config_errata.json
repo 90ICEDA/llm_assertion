@@ -1,0 +1,14 @@
+{
+  "kind": "postrun_metadata_correction_no_result_or_config_overwrite",
+  "reason": "prepare inherited obsolete fields from continuation common_config; protocol and executed loops used the new 2x2 design",
+  "actual_acquisitions_per_round": 2,
+  "maximum_development_paired_queries_per_arm": 20,
+  "history_replay_inputs_by_round": [4, 6],
+  "actual_development_paired_queries": {"A": 10, "B": 20, "C": 10, "D": 14},
+  "actual_selection": "C/D last gate-accepted proposal, A/B last executable proposal; invalid candidates retain prior set",
+  "obsolete_fields_in_immutable_config": ["active_queries_per_round", "query_budget_per_parent_arm", "regression_queries_per_round", "final_selection"],
+  "executed_source": "research_gate_experiment.py in this output directory, frozen before execution",
+  "postrun_source_change": "Future prepare metadata corrected, live source guard added, interface-error feedback provided equally to all arms and gate reason context bounded",
+  "postrun_source_validation": "prepare-only validation and existing acceptance logic qualification; updated feedback not yet run as a new stat experiment",
+  "preserve_prior_results": true
+}

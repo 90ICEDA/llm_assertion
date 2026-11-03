@@ -1,0 +1,63 @@
+{
+  "name": "case467_cc_lossy_stream_overwrite_wrong_slot",
+  "parent_bug_id": "case467_cc_lossy_stream_overwrite_wrong_slot",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_lossy_valid_to_stream",
+  "source_files": [
+    "external/common_cells/src/cc_lossy_valid_to_stream.sv"
+  ],
+  "bug_class": "combination_protocol",
+  "bug_family": "full_queue_latest_item_overwrite",
+  "mutation_kind": "actual_rtl_logic_change",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "valid_i",
+    "ready_i",
+    "data_i",
+    "valid_o",
+    "data_o",
+    "busy_o"
+  ],
+  "temporal_type": "cross-cycle ready-valid/state protocol",
+  "status": "final_verified_rejected",
+  "golden_sva": {
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (dut.cnt==2 && valid_i && !ready_i) |=> dut.mem[$past(dut.wp)-1'b1]==$past(data_i));"
+  },
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "good_trace_sha256": "cd57a8b545e2aa173261f870c3dc79236c0e1edf6652619ac843305c7df90c73",
+      "bad_trace_sha256": "597b8bcbcce72e8a28cfce426af4d74bbeef9f827f18135041605fc7b15250d6",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 45000,
+      "sample_index": 10,
+      "good_trace_sha256": "2ac2fdf80f5ba95f947b877eff1da91ca8b996fd7fcb13bb539a0d845086bd22",
+      "bad_trace_sha256": "982236a13ef2b048a851f527f5b9892b0daa2283e7da0044c814d308f8c28dc8",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 55000,
+      "sample_index": 12,
+      "good_trace_sha256": "93fb2109231b44ab0dbfafd446dfcc034621c87912c4e2616fad97a1ca73bd53",
+      "bad_trace_sha256": "e303e2c4789f4ab7f5787d626d081e8717fa4aacc9fc1d242de982315569a88a",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "correct_sha256": "1faa20bc9600060eb3276461668ae78c982604eb6fdd2dafd316aa677054ff87",
+  "buggy_sha256": "e535701c76b05a52619b834f00ea94dc7436ed8aa02197e0c127f3486c0f4f3f"
+}

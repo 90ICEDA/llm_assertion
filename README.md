@@ -1,5 +1,65 @@
 # AssertionForge
 
+## 本地整理副本：安装与运行
+
+此副本保留当前源代码和基准输入，不包含 Git 历史、安装环境、模型权重或完整历史实验目录。下文原始说明及 `docs/` 中的历史结果是原项目记录，**不是本次整理重新验证的结果**。整理范围及本次验证见 [LOCAL_COPY_REPORT.md](LOCAL_COPY_REPORT.md)。
+
+### 环境与安装
+
+- 主项目是 Python 研究原型；RTL 仿真/形式验证流程主要面向 Linux/WSL。建议用 Python 3.10 的独立环境尝试原始主流程；本次静态及离线验证使用 Python 3.13，未重新安装整个依赖集合。
+- 根目录的四份 `requirements*.txt` 均保留。`requirements.txt` 是较大的历史环境清单，含 Linux 专用依赖及部分未固定版本，不能视为已验证的跨平台锁文件；原项目没有根级依赖锁文件。
+- `requirements-pilot-train.txt` 单独用于训练，包含 CPython 3.12、Linux x86_64、CUDA 12.1 的 wheel 地址，不适用于上述 Python 3.10 环境，也无需为基础验证安装。
+
+Linux/WSL，从项目根目录运行（先切换到本副本的实际目录）：
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+安装失败时应根据所选 Python、CUDA 和系统环境解决兼容性；本次未执行联网依赖安装。RTL 基础仿真需要 `iverilog`、`vvp`；原生 SVA 实验需要支持相关断言语法的 Verilator。JasperGold 流程需要另行安装及有效许可。Ollama 流程需自行启动服务并准备脚本指定模型。模型、商业工具、GraphRAG 工作目录、设计 PDF 和已构建的知识图谱不会随本副本提供。
+
+### 配置
+
+`.env.example` 只有占位符，不能直接作为有效凭据使用。按所用后端在 shell 中设置 `OPENAI_API_KEY`、`ANTHROPIC_API_KEY` 或 `QWEN_API_KEY`；并非所有入口会自动读取 `.env`。部分旧实验入口读取 `.secrets/*_api_key.txt`，使用它们时需自行在本机创建对应文件；该目录已忽略且未复制。默认远程服务地址和模型名称来自原代码，使用付费后端前需按自己的服务配置。
+
+主流程修改 `src/config.py` 中的设计、规格 PDF、RTL、KG、GraphRAG 模板路径和模型设置后运行：
+
+```bash
+cd src
+python main.py
+```
+
+`task='build_KG'` 构建知识图谱，`task='gen_plan'` 生成计划；SVA/formal 选项还需匹配设计信号及工具配置。可参考 `src/config_mvp_qwen_wsl2_template.py`。两个 `configs/repair_regression/*.json` 已改为项目根目录相对路径；其他研究脚本保留原有路径约定，运行前检查 `/mnt/d/AssertionForge-main*` 等历史绝对路径。个人运行授权记录未包含，不应复用原作者的额度或调用授权。
+
+### 不调用模型的基础验证
+
+在项目根目录执行已有测试：
+
+```bash
+python -B -m unittest discover -s scripts -p 'test_*.py' -v
+```
+
+安装 Icarus Verilog 后，可在任意临时工作目录运行一个基准案例；将下面 `REPO` 改成本副本的绝对路径：
+
+```bash
+REPO=/absolute/path/to/llm_assertion
+mkdir -p /tmp/assertionforge-smoke
+cd /tmp/assertionforge-smoke
+iverilog -g2012 -o sim_good "$REPO/rtl_cases/case01_reset_omission/correct.v" "$REPO/rtl_cases/case01_reset_omission/tb.v"
+vvp sim_good
+```
+
+完整基准波形可用 `python rtl_cases/regenerate_waveforms_for_root.py --root rtl_cases` 再生。基准目录中已有 VCD、CSV、trace/spec 文本是实验输入，特意保留；根目录散落的调试 VCD 未保留。`outputs/`、`deliverables/` 只保留源码/配置直接引用的固定输入与小型历史资料；历史报告的完整证据链、旧 SHA256 清单和续跑结果不保证可在本裁剪副本中核验。历史实验重现还需要原始运行归档；新实验使用新的输出目录。
+
+JavaScript 报表导出脚本也保留，但原项目没有根级 `package.json` 或 npm 锁文件，部分脚本依赖外部 artifact runtime；这些导出流程本次未验证。
+
+---
+
+
+Local RTL/SVA FIFO experiments: see [the native FIFO experiment guide](docs/rtl_sva_fifo_native.md) for the real-model continuation command, artifact layout, and validation scope. Experiment success is reported from saved native executions, not inferred from implementation availability.
+
 AssertionForge is a research prototype for **generating high‑quality SystemVerilog Assertions (SVAs)** from natural‑language specifications and RTL.  It constructs a joint knowledge graph that bridges the semantic gap between spec and implementation, then leverages LLMs to produce a focused test plan and candidate SVAs.
 
 ## Project Overview

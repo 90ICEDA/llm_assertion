@@ -1,0 +1,23 @@
+`timescale 1ns/1ps
+module cc_spill_register #(parameter Width=8)(
+  input clk_i,rst_ni,clr_i,input valid_i,output ready_o,
+  input [Width-1:0] data_i,output valid_o,input ready_i,
+  output [Width-1:0] data_o
+);
+  reg af,bf; reg [Width-1:0] ad,bd;
+  wire adrain=af&&!bf;
+  wire afill=valid_i&&ready_o;
+  // MUTATION: cache a drained item even when it is consumed immediately.
+  wire bfill=adrain;
+  assign ready_o=!af||!bf;
+  assign valid_o=af||bf;
+  assign data_o=bf?bd:ad;
+  always @(posedge clk_i or negedge rst_ni) begin
+    if(!rst_ni) begin af<=0;bf<=0; end
+    else if(clr_i) begin af<=0;bf<=0; end
+    else begin
+      if(afill) begin af<=1;ad<=data_i;end else if(adrain) af<=0;
+      if(bfill) begin bf<=1;bd<=ad;end else if(bf&&ready_i) bf<=0;
+    end
+  end
+endmodule

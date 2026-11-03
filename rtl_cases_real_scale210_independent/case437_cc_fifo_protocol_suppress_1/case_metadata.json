@@ -1,0 +1,96 @@
+{
+  "name": "case437_cc_fifo_protocol_suppress_1",
+  "parent_bug_id": "case437_cc_fifo_protocol_suppress_1",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_fifo",
+  "source_files": [
+    "external/common_cells/src/cc_fifo.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_fifo.sv",
+  "bug_class": "combination_protocol",
+  "bug_family": "combinational_protocol_output_suppressed",
+  "bug_type": "usage_o combinational/protocol output is forced low",
+  "spec": "usage_o reports the current FIFO occupancy. A successful push into an empty FIFO without a simultaneous pop increases the reported usage on the next clock edge.",
+  "mutation_edits": [
+    {
+      "line": 55,
+      "search": "    assign usage_o = status_cnt_q;",
+      "replace": "    assign usage_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed"
+    }
+  ],
+  "mutation_signal": "usage_o",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "push_i",
+    "pop_i",
+    "flush_i",
+    "clr_i",
+    "empty_o",
+    "full_o",
+    "usage_o[1:0]",
+    "data_i[7:0]",
+    "data_o[7:0]"
+  ],
+  "temporal_type": "same-cycle combinational/protocol relation",
+  "mutation_kind": "combinational_force_zero",
+  "iverilog_compatibility_edits": [
+    {
+      "search": "{FifoDepth{data_t'('0)}}",
+      "replace": "'0",
+      "semantic_change": false
+    }
+  ],
+  "correct_sha256": "630c118b2e513b78456b47f6b0334601679a722ee9dc3a23b5971478441d565c",
+  "buggy_sha256": "06f183f9f8fa38c7c316c98c65ae4ff797ba19477d4439cb608a7adeab81aa6c",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (push_i && !pop_i && empty_o) |=> (usage_o != 0));",
+    "temporal_type": "same-cycle combinational/protocol relation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 25,
+      "observation_index": 6,
+      "signals": [
+        "usage_o[1:0]"
+      ],
+      "good": {
+        "usage_o[1:0]": "01"
+      },
+      "bad": {
+        "usage_o[1:0]": "00"
+      }
+    },
+    "heldout": {
+      "time_ps": 20,
+      "observation_index": 6,
+      "signals": [
+        "usage_o[1:0]"
+      ],
+      "good": {
+        "usage_o[1:0]": "01"
+      },
+      "bad": {
+        "usage_o[1:0]": "00"
+      }
+    },
+    "decoy": {
+      "time_ps": 30,
+      "observation_index": 6,
+      "signals": [
+        "usage_o[1:0]"
+      ],
+      "good": {
+        "usage_o[1:0]": "01"
+      },
+      "bad": {
+        "usage_o[1:0]": "00"
+      }
+    }
+  },
+  "contract_status": "formal_complete"
+}

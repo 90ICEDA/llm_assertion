@@ -1,0 +1,106 @@
+{
+  "name": "case463_axis_frame_join_port_skip",
+  "parent_bug_id": "case463_axis_frame_join_port_skip",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_frame_join",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_frame_join.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_frame_join.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "frame_join_port_order",
+  "bug_type": "After an input frame ends, the joiner advances exactly one input port.",
+  "spec": "After an input frame ends, the joiner advances exactly one input port.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (mv && mr && ml && dut.port_sel_reg < 2) |=> (dut.port_sel_reg == $past(dut.port_sel_reg)+1));",
+    "temporal_type": "exact cross-cycle protocol"
+  },
+  "mutation_edits": [
+    {
+      "search": "                    port_sel_next = port_sel_reg + 1;",
+      "replace": "                    port_sel_next = port_sel_reg + 2; // ASSERTIONFORGE_MUTATION"
+    }
+  ],
+  "mutation_signal": "internal protocol state",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "sv",
+    "sr",
+    "mv",
+    "mr"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 45000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "sr[2:0]"
+      ],
+      "good_values": {
+        "sr[2:0]": "010"
+      },
+      "bad_values": {
+        "sr[2:0]": "100"
+      },
+      "good_trace_sha256": "343db027a12f99fce66a854dcc0ca8150e8cbb86a1f840882c0e4c47d21fb2ce",
+      "bad_trace_sha256": "a044b4aeec6982cda3a502c2fe2130a8fb55a5820d34d8001e1a6272ecab5c21",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 45000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "sr[2:0]"
+      ],
+      "good_values": {
+        "sr[2:0]": "010"
+      },
+      "bad_values": {
+        "sr[2:0]": "100"
+      },
+      "good_trace_sha256": "209683b5dfb7ae7bf5e7b43f148f05089ba0f31327dbbd5d5c9fde58997aff1e",
+      "bad_trace_sha256": "d2ac8054a155bb4f2797919656f679a3992cbccd9c387fe5661e9e14b2a2334e",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 45000,
+      "sample_index": 9,
+      "good_row_index": 9,
+      "bad_row_index": 9,
+      "signals": [
+        "sr[2:0]"
+      ],
+      "good_values": {
+        "sr[2:0]": "010"
+      },
+      "bad_values": {
+        "sr[2:0]": "100"
+      },
+      "good_trace_sha256": "a321b5184d0e09aaef1492911c7cfc569d2db036db1e5cdf02e850b7e1a26d54",
+      "bad_trace_sha256": "696f06e69cffbb19b6fed4369dbcadc17202232ee6292808c9100678f248ab83",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol boundary",
+  "mutation_kind": "real_rtl_control_mutation",
+  "correct_sha256": "ec6e959eedec3257dff477ac4a32f2aca755b726d0ce9c284e799886de993766",
+  "buggy_sha256": "9fff6d8d56f10d46f832638a80cab18b578c24cc31a153b31587771d4f9a1d1b",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_rejected",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

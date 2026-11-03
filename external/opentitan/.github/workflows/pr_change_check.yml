@@ -1,0 +1,48 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+name: 'Check for and block unauthorized changes'
+
+on:
+  pull_request_target:
+
+permissions:
+  contents: read
+  # Needed to read comments for authorizations
+  pull-requests: read
+
+jobs:
+  check-changes:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout the default branch
+        uses: actions/checkout@v6
+
+      - name: Checkout the target branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          path: "target-branch"
+          fetch-depth: 1
+
+      - name: Show target branch BLOCKFILE
+        run: cat target-branch/BLOCKFILE
+
+      - name: Determine changed files
+        run: |
+          pr_url="https://github.com/${{ github.repository }}/pull/${{ github.event.number }}"
+          echo $pr_url
+          gh pr diff $pr_url --name-only > $HOME/changed_files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show files changed
+        run: cat $HOME/changed_files
+
+      - name: Check for blocked changes
+        run: |
+          ./ci/scripts/check-pr-changes-allowed.py $HOME/changed_files \
+            --block-file target-branch/BLOCKFILE \
+            --gh-repo ${{ github.repository }} \
+            --gh-token ${{ secrets.GITHUB_TOKEN }} \
+            --pr-number ${{ github.event.number }}

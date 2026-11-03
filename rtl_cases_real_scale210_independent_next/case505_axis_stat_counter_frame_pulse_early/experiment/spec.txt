@@ -1,0 +1,1 @@
+A frame-completion event and its captured length must pass through the two-entry status pipeline. The status-valid pulse must be absent in the cycle immediately following the sampled event and appear one cycle later with the original length.

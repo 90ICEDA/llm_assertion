@@ -1,0 +1,15 @@
+--- correct.v
++++ buggy.v
+@@ -30,9 +30,11 @@
+         idx_o = 2'd3;
+         data_o = data_i[31:24];
+       end
+-      if (valid_o && ready_i)
++      if (valid_o)
+         gnt_o[idx_o] = 1'b1;
++      // MUTATION: grant propagation ignores downstream ready_i.
+     end
+   end
+   wire unused_clk = clk_i;
++  wire unused_ready = ready_i;
+ endmodule

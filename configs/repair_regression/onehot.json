@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "kind": "CaseInput",
+  "case_id": "onehot",
+  "bug_description": "At every active sample with popcount(oh_i)>1, err_o must be 1 in that sample. All bit patterns are legal stimuli for an error detector. With zero/one-hot inputs, additional address/enable checks may legally assert err_o; do not prohibit those errors.",
+  "top_module": "dut_case101_prim_onehot_multihot_suppressed",
+  "rtl": {
+    "fixed": {
+      "sources": [
+        "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/correct.v"
+      ],
+      "include_dirs": [
+        "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed",
+        "external/common_cells/include"
+      ],
+      "defines": []
+    },
+    "buggy": {
+      "sources": [
+        "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/buggy.v"
+      ],
+      "include_dirs": [
+        "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed",
+        "external/common_cells/include"
+      ],
+      "defines": []
+    }
+  },
+  "existing_tests": [
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/tb.v",
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/tb_decoy.v",
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/tb_holdout.v"
+  ],
+  "parameters": {
+    "OneHotWidth": 4,
+    "StrictCheck": 1
+  },
+  "clock": {
+    "signal": "clk",
+    "event": "posedge_pre_NBA",
+    "input_drive": "negedge"
+  },
+  "reset": {
+    "signal": "rst_n",
+    "active": 0,
+    "cancel_pending": true,
+    "initial_samples": 2
+  },
+  "signals": {
+    "inputs": {
+      "oh_i": 4,
+      "addr_i": 2,
+      "en_i": 1
+    },
+    "outputs": {
+      "err_o": 1
+    },
+    "mapping": {
+      "oh_i": {
+        "buggy": "oh_i",
+        "fixed": "oh_i",
+        "width": 4
+      },
+      "addr_i": {
+        "buggy": "addr_i",
+        "fixed": "addr_i",
+        "width": 2
+      },
+      "en_i": {
+        "buggy": "en_i",
+        "fixed": "en_i",
+        "width": 1
+      },
+      "err_o": {
+        "buggy": "err_o",
+        "fixed": "err_o",
+        "width": 1
+      },
+      "clk": {
+        "buggy": "clk",
+        "fixed": "clk",
+        "width": 1
+      },
+      "rst_n": {
+        "buggy": "rst_n",
+        "fixed": "rst_n",
+        "width": 1
+      }
+    }
+  },
+  "environment": [
+    {
+      "path": "scripts/contract_v2_spec.py",
+      "sha256": "637ebe13f81dd65c4162833e450bbf4229c7ff0e2ec52176658f911adbfbccfa",
+      "location": "contract(): legal_inputs, reset_cancellation",
+      "basis": "Imported confirmed experiment interface: unsigned samples; FIFO must hold push/data while stalled until acceptance or reset."
+    }
+  ],
+  "tool_config": {
+    "backend": "iverilog",
+    "timeout_seconds": 30,
+    "iverilog": "iverilog",
+    "vvp": "vvp",
+    "jasper": "jg",
+    "model_url": "http://127.0.0.1:11434"
+  },
+  "input_hashes": {
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/correct.v": "b5c95a781ddf984856291a8aa548d4f5077cb3594d405fd42d6b87d67834396e",
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/buggy.v": "0bb57910fff5b3b42edd77f7bfd5b4ebcdb573448d25d66f74c5082889e75fe1",
+    "rtl_cases_real_scale120/case101_prim_onehot_multihot_suppressed/STIMULUS_NOTES.md": "03d7cb16150dfb594df58f1de0cf1af7f6b599fb30505418f0c820ca2ca5466f",
+    "scripts/contract_v2_spec.py": "637ebe13f81dd65c4162833e450bbf4229c7ff0e2ec52176658f911adbfbccfa",
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/tb.v": "db1b6f859ca1818ef366ed9b0534ecd6552530edc5799fc07687b5e7a11fae63",
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/tb_decoy.v": "508ce77cc3eb9bf8b6a9729dd3af0bd496612b7d8d95687acc10fcac2aa44fab",
+    "rtl_cases_real_scale120/case208_onehot_multihot_v8_from_case101_prim_onehot_multihot_suppressed/tb_holdout.v": "5d7718c25ccbebc2365042fc0c90a4bbb97517e28e33e59ab49619b160de1f53"
+  },
+  "obligation_source": "rtl_cases_real_scale120/case101_prim_onehot_multihot_suppressed/STIMULUS_NOTES.md",
+  "limitations": [
+    "Existing artificial RTL mutation; no historical repair commit or universal correctness claim.",
+    "Restricted sampled monitor, not native concurrent SVA or formal proof."
+  ]
+}

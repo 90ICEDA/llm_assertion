@@ -1,0 +1,12 @@
+--- correct.v
++++ buggy.v
+@@ -63,7 +63,8 @@
+     if (rst) begin
+         last_tlast = 1'b1;
+     end else begin
+-        if (s_axis_tvalid && s_axis_tready) last_tlast = s_axis_tlast;
++        // ASSERTIONFORGE_MUTATION: stalled beats incorrectly advance frame history
++        if (s_axis_tvalid) last_tlast = s_axis_tlast;
+     end
+ end
+ 

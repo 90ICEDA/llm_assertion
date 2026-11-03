@@ -1,0 +1,226 @@
+{
+  "version": "2.1",
+  "frozen_at": "2026-10-09T14:41:38Z",
+  "cases": [
+    {
+      "case": "onehot",
+      "parent_bug_id": "case101_prim_onehot_multihot_suppressed",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "filter",
+      "parent_bug_id": "case122_prim_filter_ctr_streak_reset_ignored",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "fifo",
+      "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "spill",
+      "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+      "spec_status": "spec_unresolved",
+      "views": [
+        "validity_gated",
+        "raw_payload"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "regenerate_due_to_contract_revision"
+    },
+    {
+      "case": "stat",
+      "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+      "spec_status": "scoped_contract",
+      "views": [
+        "primary"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "reuse_permission_audited_initial_pool_only"
+    },
+    {
+      "case": "intr",
+      "parent_bug_id": "case135_prim_intr_enable_mask_ignored",
+      "spec_status": "spec_unresolved",
+      "views": [
+        "registered_mask",
+        "same_sample_mask"
+      ],
+      "source": "existing_artificial_mutation",
+      "pool_policy": "regenerate_due_to_contract_revision"
+    }
+  ],
+  "model": "qwen2.5-coder:7b-instruct",
+  "model_digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+  "options": {
+    "seed": 20261009,
+    "temperature": 0.2,
+    "num_predict": 192,
+    "num_ctx": 4096,
+    "num_gpu": 0,
+    "num_thread": 8
+  },
+  "seed": 20261009,
+  "model_access": {
+    "messages": 2,
+    "tools": [],
+    "files": [],
+    "conversation_history": false,
+    "server_side_context_ids": false,
+    "rtl_or_comments": false,
+    "waveforms": "only projected allowed interface values",
+    "diagnostics": "normalized category only; raw compiler diagnostics not sent",
+    "candidate_history": "current accepted property only if its identifiers are permitted",
+    "independent_evaluator": "full trace, independent contract labels, hidden scenarios; never sent wholesale"
+  },
+  "arms": [
+    "first",
+    "equal_budget_select",
+    "existing_feedback",
+    "obligation_loop",
+    "generic_diff",
+    "no_fp_check",
+    "no_observation_refinement",
+    "equal_information_control"
+  ],
+  "primary_budget": "actual compiler invocations on candidate/RTL/scenario cells; unsupported output still consumes a real compile attempt when safely representable",
+  "budget_limits": {
+    "initial_pool_size": 3,
+    "repair_calls": 2,
+    "total_logical_model_calls": 3,
+    "max_compile_invocations": 12,
+    "max_completion_tokens_per_call": 192,
+    "context_tokens": 4096,
+    "model_timeout_seconds": 180,
+    "retry_count": 0
+  },
+  "checkpoints": {
+    "exact_compiles": [
+      2,
+      4,
+      6,
+      8,
+      12
+    ],
+    "token_envelopes": [
+      2048,
+      4096,
+      8192,
+      12864
+    ],
+    "simulation_envelopes": [
+      0,
+      2,
+      4,
+      8,
+      12
+    ],
+    "rules": "record after each complete candidate evaluation; compare exact common observed compiler-count checkpoints when available, plus last completed output within each common token/simulation envelope. No padding; unused resources and token/time differences reported. First baseline may terminate earlier. Exact positive-simulation intersection may be empty."
+  },
+  "validation": "each proposed candidate rechecked on all train/held witnesses; no_fp arm does not simulate fixed RTL or compute legal FP during method decisions; independent final evaluator does",
+  "acceptance": "same lexicographic (unknown, FP unless no_fp, miss, missing per-obligation branch triggers); generic_diff changes ONLY serialized feedback, not rank/update/refinement/budget. Existing_feedback uses its sealed v1 fixed/buggy fail-hit rule with unknown first.",
+  "existing_feedback_identity": "the prior sealed experiment existing_feedback arm in scripts/run_repair_contract.py lines 333-364, adapted to enforce the corrected whitelist; not claimed equivalent to every historical repository repair pipeline",
+  "refinement": "trigger only if current candidate has an observed miss and a strict legal-prefix/violation-prefix collision exists at current depth on train/held traces. Choose minimum resolving depth from 1..3. No extra signals. Same algorithm for obligation/generic/no_fp; no_observation disables only this action. Equal_information uses obligation arm final authorization depth from its first repair call; this entitlement is logged, without passing its candidates or feedback. Baseline delay=1 already retains an antecedent bit: refinement collision search therefore starts at full one-cycle port history (a conservative capability superset), not memoryless history=0.",
+  "pool_cost": "old unpolluted initial generation charged logically by original request/response token counts; copied evidence has zero new physical inference cost. New spill/intr pool physical cost shared once and charged per consumed slot logically.",
+  "hidden_access": "inputs presealed; methods only load train/held. Hidden runner refuses execution until all final outputs and actual checker templates are hashed. Hidden seeds/schedules never in model requests. Prior v1 traces all declared seen to investigator; new hidden files are not sent to methods.",
+  "acceptance_scope": "finite frozen scenarios; exercise all declared scenario branches, but require assertion antecedent witnesses only on required_assertion_trigger_branches. Negative/legal controls and reset cancellation need not trigger a target antecedent. All target components activated, no misses/FP, no unknown/spec ambiguity for complete pass.",
+  "unknowns": [
+    "timeout",
+    "tool_error",
+    "unsupported_syntax",
+    "spec_unresolved",
+    "missing_required_witness",
+    "pending_out_of_window"
+  ],
+  "controlled_mutants": "final candidates also checked against frozen component-isolating mutants; these are controls attached to same parent, never new parent samples",
+  "reuse": "E2 original 12 window comparisons retained; raw traces for E1/E3 relabelled without changing RTL/checker. Old repaired candidates are never reused.",
+  "versions": {
+    "python3": {
+      "argv": [
+        "python3",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v2_20261009",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v2_20261009/version_python3.stdout",
+      "stderr": "deliverables/repair_contract_v2_20261009/version_python3.stderr",
+      "wall_seconds": 0.009188936999635189
+    },
+    "iverilog": {
+      "argv": [
+        "iverilog",
+        "-V"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v2_20261009",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v2_20261009/version_iverilog.stdout",
+      "stderr": "deliverables/repair_contract_v2_20261009/version_iverilog.stderr",
+      "wall_seconds": 0.01710045099935087
+    },
+    "vvp": {
+      "argv": [
+        "vvp",
+        "-V"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v2_20261009",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v2_20261009/version_vvp.stdout",
+      "stderr": "deliverables/repair_contract_v2_20261009/version_vvp.stderr",
+      "wall_seconds": 0.011476051000499865
+    },
+    "ollama": {
+      "argv": [
+        "ollama",
+        "--version"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v2_20261009",
+      "timeout_seconds": 15,
+      "exit_code": 0,
+      "status": "ok",
+      "stdout": "deliverables/repair_contract_v2_20261009/version_ollama.stdout",
+      "stderr": "deliverables/repair_contract_v2_20261009/version_ollama.stderr",
+      "wall_seconds": 0.133961328998339
+    },
+    "git": {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/repair_contract_v2_20261009",
+      "timeout_seconds": 15,
+      "exit_code": 128,
+      "status": "tool_error",
+      "stdout": "deliverables/repair_contract_v2_20261009/version_git.stdout",
+      "stderr": "deliverables/repair_contract_v2_20261009/version_git.stderr",
+      "wall_seconds": 0.02483016500082158
+    }
+  },
+  "AGENTS": "rg search of repository outside caches plus parent/root checks found no applicable AGENTS.md",
+  "git": "no valid HEAD; content hashes pin code and design",
+  "preexecution_amendment": {
+    "time": "2026-10-09T14:45:25Z",
+    "reason": "static protocol review distinguishes negative controls from necessary antecedent branches, and accounts for the one-bit delay=1 memory before declaring an observation collision; no model calls or supplemental outcomes observed"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "name": "case402_prim_filter_temporal_hold_2",
+  "parent_bug_id": "case402_prim_filter_temporal_hold_2",
+  "source_project": "opentitan",
+  "source_url": "https://github.com/lowRISC/opentitan.git",
+  "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+  "source_module": "prim_filter",
+  "source_files": [
+    "external/opentitan/hw/ip/prim/rtl/prim_filter.sv"
+  ],
+  "top_file": "external/opentitan/hw/ip/prim/rtl/prim_filter.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "stored_value_q state update is suppressed",
+  "spec": "With filtering enabled, once the input has held one polarity for the configured filter length, the retained value and filter_o adopt that polarity and remain there until an equally qualified opposite input is observed.",
+  "mutation_edits": [
+    {
+      "line": 51,
+      "search": "      stored_value_q <= filter_synced;",
+      "replace": "      stored_value_q <= stored_value_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "stored_value_q",
+  "relevant_signals": [
+    "rst_ni",
+    "clk_i",
+    "enable_i",
+    "filter_i",
+    "filter_o",
+    "stored_value_q",
+    "stored_vector_q"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "a93454041ca882103395f8b1ce418591368de67b6e60edd395a8a158494c554a",
+  "buggy_sha256": "cefb793c0a593956116f2d7effaefec7a6a0a6863f58f924c1e96df78810904e",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "trace_validated_metadata_complete",
+  "golden_sva": {
+    "name": "QualifiedInputUpdates_A",
+    "clock": "@(posedge clk_i)",
+    "disable_iff": "!rst_ni",
+    "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && (&stored_vector_q)) |=> (stored_value_q && filter_o));",
+    "assertion": "assert property (@(posedge clk_i) disable iff (!rst_ni) (enable_i && (&stored_vector_q)) |=> (stored_value_q && filter_o));",
+    "temporal_type": "qualified multi-cycle update"
+  },
+  "first_divergence": {
+    "cycle_definition": "cycle_index is the zero-based ordinal of the rising clk_i edge; sample_index is the zero-based CSV data-row index",
+    "primary": {
+      "time_ps": 45000,
+      "cycle_index": 4,
+      "sample_index": 9,
+      "clock_phase": "rising edge",
+      "signals": [
+        "filter_o",
+        "stored_value_q"
+      ],
+      "good_values": {
+        "filter_o": "1",
+        "stored_value_q": "1"
+      },
+      "bad_values": {
+        "filter_o": "0",
+        "stored_value_q": "0"
+      }
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "cycle_index": 5,
+      "sample_index": 11,
+      "clock_phase": "rising edge",
+      "signals": [
+        "filter_o",
+        "stored_value_q"
+      ],
+      "good_values": {
+        "filter_o": "1",
+        "stored_value_q": "1"
+      },
+      "bad_values": {
+        "filter_o": "0",
+        "stored_value_q": "0"
+      }
+    },
+    "decoy": {
+      "time_ps": 65000,
+      "cycle_index": 6,
+      "sample_index": 13,
+      "clock_phase": "rising edge",
+      "signals": [
+        "filter_o",
+        "stored_value_q"
+      ],
+      "good_values": {
+        "filter_o": "1",
+        "stored_value_q": "1"
+      },
+      "bad_values": {
+        "filter_o": "0",
+        "stored_value_q": "0"
+      }
+    }
+  }
+}

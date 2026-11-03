@@ -1,0 +1,650 @@
+{
+  "source_search": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search",
+  "split": "reused development data",
+  "new_model_calls": 0,
+  "new_native_executions": 0,
+  "formal_calls": 0,
+  "witness": {
+    "qualified": true,
+    "status": "qualified_finite_missed_violation",
+    "checks": {
+      "fixed_candidate_identity": true,
+      "fixed_native_completed": true,
+      "fixed_trace_and_oracle_reproduced": true,
+      "fixed_legal_and_known": true,
+      "buggy_candidate_identity": true,
+      "buggy_native_completed": true,
+      "buggy_trace_and_oracle_reproduced": true,
+      "buggy_legal_and_known": true,
+      "identical_actual_input_schedule": true,
+      "fixed_contract_passes": true,
+      "fixed_same_obligation_checked": true,
+      "buggy_target_violation": true,
+      "first_violation": true,
+      "fixed_candidate_no_alarm": true,
+      "buggy_candidate_no_alarm_through_target": true,
+      "bounded_parameter_scope": true,
+      "target_transactions_identified": true
+    },
+    "errors": [],
+    "scope": "archived development evidence only; finite simulation; artificial FIFO boundary fault",
+    "target_obligation": "drain_no_loss",
+    "target_cycle": 111,
+    "source_method": "contract_coverage",
+    "source_query_directory": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00",
+    "parameters": {
+      "depth": 2,
+      "pipeline": 0
+    },
+    "transaction_mapping": [
+      {
+        "transaction_id": "e1:t3",
+        "fixed": {
+          "transaction_id": "e1:t3",
+          "epoch": 1,
+          "accept_cycle": 29,
+          "data": 2410504788,
+          "response_cycle": 31,
+          "cancel_cycle": null,
+          "outcome": "responded",
+          "latency": 2,
+          "observed_data": 2410504788
+        },
+        "buggy": {
+          "transaction_id": "e1:t3",
+          "epoch": 1,
+          "accept_cycle": 29,
+          "data": 2410504788,
+          "response_cycle": null,
+          "cancel_cycle": null,
+          "outcome": "pending"
+        }
+      }
+    ],
+    "assertion_triggers": [
+      {
+        "assertion_id": "a0",
+        "obligations": [
+          "order_payload"
+        ],
+        "native_trigger_cycles": [
+          7,
+          15,
+          23
+        ],
+        "trigger_at_target_antecedent": false,
+        "total_triggers": 3
+      }
+    ],
+    "independent_target_violations": [
+      {
+        "cycle": 111,
+        "obligation": "drain_no_loss",
+        "passed": false,
+        "transaction_id": null,
+        "outstanding": [
+          "e1:t3"
+        ]
+      }
+    ],
+    "drain_scope": {
+      "max_ram_depth": 8,
+      "max_ram_pipeline": 2,
+      "output_fifo_enabled": false,
+      "required_fair_samples": 18,
+      "actual_fair_samples": 82
+    },
+    "cost": {
+      "this_query_native_executions": 5,
+      "method_queries_through_discovery": 1,
+      "method_native_executions_through_discovery": 5,
+      "complete_comparative_search_queries": 48,
+      "complete_comparative_search_executions": 240
+    },
+    "artifact_sha256": {
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/initial_candidate.json": "974a16c4f7d8f4627023d3574671ff50b9701cc485a50958e743aa64e084d5bf",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/treatment_witness.json": "6b02337f8ec08297e48975637f2429d608027d555e3927f20971b8140f968323",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/execute.log": "1d8821e43f0439c43e34ddbd9639f1222c0488130b2134ae73a92301c30da10f",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/replay.json": "0df07892fb527227fb5077f45d22410e668b6ac8962a258ab34fb336bc5b553c",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/result.json": "52432d7ee25a5c42c1ef8c19e91c201190428f2740cfbf35c75b6f6b42edcce5",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/correct/wave.vcd": "81b58fd26928e30fbe48d0e6f4016b78ca31dc5aae114666f3d7b71615212d21",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/execute.log": "cda15cae2a46001bd630d7ed519d3a282a6f30ce3d17f059c389532090446d56",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/replay.json": "0cf3583e9f681e46ec1f58d7541bedc0bfeb7b21603c98448ac627330201160e",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/result.json": "7b2f1347265a4569029ddcf83554bf2520b844a3b610dc373a80244ff71354f3",
+      "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/search/queries/s2026101507/contract_coverage/q00/drop/wave.vcd": "c7e4c1203a42655b72f174d6a3d713e27bedae02cf2e9ccec47db139dc3744f1"
+    },
+    "miss_classification": "unprotected_obligation",
+    "candidate_set_observation": "earlier triggers exist, no trigger at target"
+  },
+  "methods": [
+    {
+      "method": "ordinary",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "first_discoveries": [
+        {
+          "gap_key": "reset_residue/no_unsolicited_output",
+          "source_query": "queries/s2026101507/ordinary/q01",
+          "seed": 2026101507,
+          "query": 1,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/no_unsolicited_output/false_negative",
+            "kind": "false_negative",
+            "obligation": "no_unsolicited_output",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/ordinary/q01",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": null,
+            "transaction": null,
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "no_unsolicited_output",
+              "passed": false,
+              "transaction_id": null
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        },
+        {
+          "gap_key": "reset_residue/reset_cancellation",
+          "source_query": "queries/s2026101507/ordinary/q01",
+          "seed": 2026101507,
+          "query": 1,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/reset_cancellation/false_negative",
+            "kind": "false_negative",
+            "obligation": "reset_cancellation",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/ordinary/q01",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": "e1:t0",
+            "transaction": {
+              "transaction_id": "e1:t0",
+              "epoch": 1,
+              "accept_cycle": 2,
+              "data": 3203352964,
+              "response_cycle": null,
+              "cancel_cycle": 24,
+              "outcome": "reset_cancelled"
+            },
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "reset_cancellation",
+              "passed": false,
+              "transaction_id": "e1:t0",
+              "cancelled_accept_cycle": 2,
+              "cancel_cycle": 24,
+              "observed_data": 3203352964
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        }
+      ],
+      "duplicate_gap_observations_global_method": 4,
+      "unknown_queries": 0,
+      "false_positive_classes": [],
+      "simulation_wall_seconds": 1.5195435440982692,
+      "contract_additional_gap_keys": [
+        "drop/drain_no_loss"
+      ]
+    },
+    {
+      "method": "candidate_disagreement",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "drop/drain_no_loss",
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "first_discoveries": [
+        {
+          "gap_key": "drop/drain_no_loss",
+          "source_query": "queries/s2026101507/candidate_disagreement/q04",
+          "seed": 2026101507,
+          "query": 4,
+          "family": "tail_loss",
+          "sample": {
+            "semantic_key": "drop/drain_no_loss/false_negative",
+            "kind": "false_negative",
+            "obligation": "drain_no_loss",
+            "variant": "drop",
+            "scenario": "queries/s2026101507/candidate_disagreement/q04",
+            "cycle": 111,
+            "epoch": 1,
+            "first_violation_in_epoch": true,
+            "transaction_id": null,
+            "transaction": null,
+            "oracle_details": {
+              "cycle": 111,
+              "obligation": "drain_no_loss",
+              "passed": false,
+              "transaction_id": null,
+              "outstanding": [
+                "e1:t3"
+              ]
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        },
+        {
+          "gap_key": "reset_residue/no_unsolicited_output",
+          "source_query": "queries/s2026101507/candidate_disagreement/q05",
+          "seed": 2026101507,
+          "query": 5,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/no_unsolicited_output/false_negative",
+            "kind": "false_negative",
+            "obligation": "no_unsolicited_output",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/candidate_disagreement/q05",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": null,
+            "transaction": null,
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "no_unsolicited_output",
+              "passed": false,
+              "transaction_id": null
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        },
+        {
+          "gap_key": "reset_residue/reset_cancellation",
+          "source_query": "queries/s2026101507/candidate_disagreement/q05",
+          "seed": 2026101507,
+          "query": 5,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/reset_cancellation/false_negative",
+            "kind": "false_negative",
+            "obligation": "reset_cancellation",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/candidate_disagreement/q05",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": "e1:t0",
+            "transaction": {
+              "transaction_id": "e1:t0",
+              "epoch": 1,
+              "accept_cycle": 2,
+              "data": 2037781204,
+              "response_cycle": null,
+              "cancel_cycle": 24,
+              "outcome": "reset_cancelled"
+            },
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "reset_cancellation",
+              "passed": false,
+              "transaction_id": "e1:t0",
+              "cancelled_accept_cycle": 2,
+              "cancel_cycle": 24,
+              "observed_data": 2037781204
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        }
+      ],
+      "duplicate_gap_observations_global_method": 0,
+      "unknown_queries": 0,
+      "false_positive_classes": [],
+      "simulation_wall_seconds": 1.3448012309963815,
+      "contract_additional_gap_keys": []
+    },
+    {
+      "method": "raw_difference",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "first_discoveries": [
+        {
+          "gap_key": "reset_residue/no_unsolicited_output",
+          "source_query": "queries/s2026101507/raw_difference/q01",
+          "seed": 2026101507,
+          "query": 1,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/no_unsolicited_output/false_negative",
+            "kind": "false_negative",
+            "obligation": "no_unsolicited_output",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/raw_difference/q01",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": null,
+            "transaction": null,
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "no_unsolicited_output",
+              "passed": false,
+              "transaction_id": null
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        },
+        {
+          "gap_key": "reset_residue/reset_cancellation",
+          "source_query": "queries/s2026101507/raw_difference/q01",
+          "seed": 2026101507,
+          "query": 1,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/reset_cancellation/false_negative",
+            "kind": "false_negative",
+            "obligation": "reset_cancellation",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/raw_difference/q01",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": "e1:t0",
+            "transaction": {
+              "transaction_id": "e1:t0",
+              "epoch": 1,
+              "accept_cycle": 2,
+              "data": 3203352964,
+              "response_cycle": null,
+              "cancel_cycle": 24,
+              "outcome": "reset_cancelled"
+            },
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "reset_cancellation",
+              "passed": false,
+              "transaction_id": "e1:t0",
+              "cancelled_accept_cycle": 2,
+              "cancel_cycle": 24,
+              "observed_data": 3203352964
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        }
+      ],
+      "duplicate_gap_observations_global_method": 4,
+      "unknown_queries": 0,
+      "false_positive_classes": [],
+      "simulation_wall_seconds": 1.3355179819773184,
+      "contract_additional_gap_keys": [
+        "drop/drain_no_loss"
+      ]
+    },
+    {
+      "method": "contract_coverage",
+      "queries": 12,
+      "native_replays": 60,
+      "independent_gap_keys": [
+        "drop/drain_no_loss",
+        "reset_residue/no_unsolicited_output",
+        "reset_residue/reset_cancellation"
+      ],
+      "first_discoveries": [
+        {
+          "gap_key": "drop/drain_no_loss",
+          "source_query": "queries/s2026101507/contract_coverage/q00",
+          "seed": 2026101507,
+          "query": 0,
+          "family": "tail_loss",
+          "sample": {
+            "semantic_key": "drop/drain_no_loss/false_negative",
+            "kind": "false_negative",
+            "obligation": "drain_no_loss",
+            "variant": "drop",
+            "scenario": "queries/s2026101507/contract_coverage/q00",
+            "cycle": 111,
+            "epoch": 1,
+            "first_violation_in_epoch": true,
+            "transaction_id": null,
+            "transaction": null,
+            "oracle_details": {
+              "cycle": 111,
+              "obligation": "drain_no_loss",
+              "passed": false,
+              "transaction_id": null,
+              "outstanding": [
+                "e1:t3"
+              ]
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        },
+        {
+          "gap_key": "reset_residue/no_unsolicited_output",
+          "source_query": "queries/s2026101507/contract_coverage/q01",
+          "seed": 2026101507,
+          "query": 1,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/no_unsolicited_output/false_negative",
+            "kind": "false_negative",
+            "obligation": "no_unsolicited_output",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/contract_coverage/q01",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": null,
+            "transaction": null,
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "no_unsolicited_output",
+              "passed": false,
+              "transaction_id": null
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        },
+        {
+          "gap_key": "reset_residue/reset_cancellation",
+          "source_query": "queries/s2026101507/contract_coverage/q01",
+          "seed": 2026101507,
+          "query": 1,
+          "family": "reset_pending",
+          "sample": {
+            "semantic_key": "reset_residue/reset_cancellation/false_negative",
+            "kind": "false_negative",
+            "obligation": "reset_cancellation",
+            "variant": "reset_residue",
+            "scenario": "queries/s2026101507/contract_coverage/q01",
+            "cycle": 26,
+            "epoch": 2,
+            "first_violation_in_epoch": true,
+            "transaction_id": "e1:t0",
+            "transaction": {
+              "transaction_id": "e1:t0",
+              "epoch": 1,
+              "accept_cycle": 2,
+              "data": 3203352964,
+              "response_cycle": null,
+              "cancel_cycle": 24,
+              "outcome": "reset_cancelled"
+            },
+            "oracle_details": {
+              "cycle": 26,
+              "obligation": "reset_cancellation",
+              "passed": false,
+              "transaction_id": "e1:t0",
+              "cancelled_accept_cycle": 2,
+              "cancel_cycle": 24,
+              "observed_data": 3203352964
+            },
+            "legal": true,
+            "same_input_schedule": true,
+            "independent_fixed": "no_violation_within_execution",
+            "independent_buggy": "violation",
+            "assertion_ids": [],
+            "all_native_failure_ids_same_cycle": [],
+            "candidate_prefix_accepted": true,
+            "trigger_measurement": "native cover action for parsed assertion antecedent",
+            "clean_first_violation_credit": false
+          }
+        }
+      ],
+      "duplicate_gap_observations_global_method": 4,
+      "unknown_queries": 0,
+      "false_positive_classes": [],
+      "simulation_wall_seconds": 1.3410526549560018,
+      "contract_additional_gap_keys": []
+    }
+  ],
+  "cost": {
+    "queries": 48,
+    "native_replays": 240,
+    "native_compilations": 2,
+    "native_compile_wall_seconds": 20.557862325003953,
+    "native_simulation_wall_seconds": 5.540915412027971,
+    "bootstrap_native_executions": 2,
+    "model_calls_in_search": 0,
+    "model_tokens_in_search": null,
+    "shared_model_generation_cost": "external initial generation/qualification; see candidate_source_path and native experiment model-call artifacts",
+    "formal_calls": 0
+  },
+  "protocol": {
+    "methods": [
+      "ordinary",
+      "candidate_disagreement",
+      "raw_difference",
+      "contract_coverage"
+    ],
+    "specs": [
+      {
+        "seed": 2026101507,
+        "depth": 2,
+        "pipeline": 0
+      },
+      {
+        "seed": 2026101531,
+        "depth": 5,
+        "pipeline": 1
+      }
+    ],
+    "queries_per_method_per_seed": 6,
+    "query_cost": "one input schedule, correct plus four artificial faults = five native executions; all executed queries charged including unknown/duplicates",
+    "planned_queries": 48,
+    "planned_replays": 240,
+    "compile_bootstrap_executions": 2,
+    "finite_drain_scope": "actual RAM<=8, RAM_PIPELINE<=2, OUTPUT_FIFO_ENABLE=0; require >=18 true input-idle/ready samples, generated suffix24",
+    "source_sha256": "b29a492b29dcb6b060a3d40d77206e490533433b23d2a954d3b84b08985db16e",
+    "candidate_sha256": "974a16c4f7d8f4627023d3574671ff50b9701cc485a50958e743aa64e084d5bf",
+    "candidate_source_path": "/mnt/d/AssertionForge-main1/deliverables/research16_ablation_20261016_r02/shared_initial.json",
+    "candidate_origin": "real_model_generated_external_candidate",
+    "input_grammar": [
+      "random",
+      "overlap",
+      "backpressure",
+      "reset_pending",
+      "drain",
+      "tail_loss"
+    ],
+    "shared_information": "identical candidate/specification/RTL/interface/grammar and budgets; method-specific feedback view restricted in Policy.update",
+    "dedup": "one independent gap per artificial fault mode and violated obligation; repeated cycles, seeds, families and configurations are replications",
+    "candidate_disagreement_eligible": false,
+    "candidate_disagreement_limit": "one initial property has no candidate pairs; baseline then explicitly uniform fallback",
+    "split": "development_only; not independent testing; do not leak acquired feedback to no-search ablation arms",
+    "historical_fifo_presented": "unknown, these are artificial output-boundary mutations",
+    "parameter_capacity": "depth5 rounds to8; depth2 actual2; pipeline storage additional"
+  },
+  "parent_bug_status": {
+    "onehot": "regression only",
+    "fifo_presented": "original historical target witness unknown; this audit concerns artificial faults",
+    "filter": "full native obligation protection not established",
+    "stat": "synthetic source mapping and timing specification unconfirmed; unknown",
+    "spill": "local collision-empty evidence only; remaining semantics unknown",
+    "intr": "mask and timing semantics unknown",
+    "ibex54": "original RTL module finite reproduction exists; not yet an LLM refinement result",
+    "ibex166": "original RTL module finite reproduction exists; not yet an LLM refinement result"
+  },
+  "parent_status_source": "/mnt/d/AssertionForge-main1/deliverables/completion_audit_20261016_r01/REPORT.md",
+  "limit": "Single-property candidate-disagreement arm is uniform fallback. Results are small fixed-budget observations, not a demonstrated general search advantage. Reset-cancellation and no-unsolicited-output are distinct obligations for one reset-residue failure mechanism, not two independent parent bugs."
+}

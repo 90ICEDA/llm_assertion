@@ -1,0 +1,238 @@
+[
+  {
+    "name": "no own trigger cannot borrow another assertion",
+    "origin": "synthetic_classifier_unit_test_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "obligations": [
+        "final_nonempty",
+        "nonfinal_keep"
+      ],
+      "category": "unknown",
+      "matched_obligations": [],
+      "reason": "no_own_effective_trigger",
+      "transaction": null
+    }
+  },
+  {
+    "name": "trace truncation rejects",
+    "origin": "synthetic_classifier_unit_test_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "obligations": [
+        "final_nonempty",
+        "nonfinal_keep"
+      ],
+      "category": "unknown",
+      "matched_obligations": [],
+      "reason": "trace_ended_without_transfer",
+      "transaction": {
+        "cycle": 4,
+        "assertion": "keep_never_zero_when_valid",
+        "category": "unknown",
+        "reason": "trace_ended_without_transfer",
+        "reference_applicability": "not_applicable_no_transfer",
+        "sid": 0,
+        "episode_id": 0,
+        "request_ids": [
+          "0:2:3"
+        ],
+        "presentation_cycle": 4,
+        "transfer_cycle": null
+      },
+      "reference_states": {
+        "final_nonempty": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        },
+        "nonfinal_keep": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        }
+      }
+    }
+  },
+  {
+    "name": "reset cancels early witness",
+    "origin": "synthetic_classifier_unit_test_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "obligations": [
+        "final_nonempty",
+        "nonfinal_keep"
+      ],
+      "category": "unknown",
+      "matched_obligations": [],
+      "reason": "reset_cancelled",
+      "transaction": {
+        "cycle": 4,
+        "assertion": "keep_never_zero_when_valid",
+        "category": "unknown",
+        "reason": "reset_cancelled",
+        "reference_applicability": "not_applicable_no_transfer",
+        "sid": 0,
+        "episode_id": 0,
+        "request_ids": [
+          "0:2:3"
+        ],
+        "presentation_cycle": 4,
+        "transfer_cycle": null
+      },
+      "reference_states": {
+        "final_nonempty": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        },
+        "nonfinal_keep": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        }
+      }
+    }
+  },
+  {
+    "name": "unstable payload rejects",
+    "origin": "synthetic_classifier_unit_test_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "obligations": [
+        "final_nonempty",
+        "nonfinal_keep"
+      ],
+      "category": "unknown",
+      "matched_obligations": [],
+      "reason": "changed_payload_before_transfer",
+      "transaction": {
+        "cycle": 4,
+        "assertion": "keep_never_zero_when_valid",
+        "category": "unknown",
+        "reason": "changed_payload_before_transfer",
+        "reference_applicability": "not_applicable_no_transfer",
+        "sid": 0,
+        "episode_id": 0,
+        "request_ids": [
+          "0:2:3"
+        ],
+        "presentation_cycle": 4,
+        "transfer_cycle": 9
+      },
+      "reference_states": {
+        "final_nonempty": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        },
+        "nonfinal_keep": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        }
+      }
+    }
+  },
+  {
+    "name": "valid withdrawal rejects",
+    "origin": "synthetic_classifier_unit_test_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "obligations": [
+        "final_nonempty",
+        "nonfinal_keep"
+      ],
+      "category": "unknown",
+      "matched_obligations": [],
+      "reason": "valid_withdrawn",
+      "transaction": {
+        "cycle": 4,
+        "assertion": "keep_never_zero_when_valid",
+        "category": "unknown",
+        "reason": "valid_withdrawn",
+        "reference_applicability": "not_applicable_no_transfer",
+        "sid": 0,
+        "episode_id": 0,
+        "request_ids": [
+          "0:2:3"
+        ],
+        "presentation_cycle": 4,
+        "transfer_cycle": null
+      },
+      "reference_states": {
+        "final_nonempty": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        },
+        "nonfinal_keep": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        }
+      }
+    }
+  },
+  {
+    "name": "missing sample rejects",
+    "origin": "synthetic_classifier_unit_test_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "obligations": [
+        "final_nonempty",
+        "nonfinal_keep"
+      ],
+      "category": "unknown",
+      "matched_obligations": [],
+      "reason": "trace_incomplete",
+      "transaction": null
+    }
+  },
+  {
+    "name": "wrong obligation cannot borrow first-presentation target",
+    "origin": "synthetic_classifier_unit_test_not_native",
+    "result": {
+      "cycle": 4,
+      "assertion": "keep_never_zero_when_valid",
+      "obligations": [
+        "stall_valid"
+      ],
+      "category": "unknown",
+      "matched_obligations": [],
+      "reason": "no_applicable_mapped_obligation",
+      "transaction": null,
+      "reference_states": {
+        "stall_valid": {
+          "applicable": false,
+          "verdict": null,
+          "reason": "not_applicable",
+          "expected": null,
+          "observed": null
+        }
+      }
+    }
+  }
+]

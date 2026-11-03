@@ -1,0 +1,13 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, clr_i, en_i, delta_i, bound_i, q_o, last_o, trip_o
+
+Specification:
+
+When enable is asserted on the bound, trip is asserted in that cycle and the counter clears on the following edge.

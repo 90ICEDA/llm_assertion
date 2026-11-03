@@ -19,9 +19,14 @@ except ImportError:
 from rtl_parsing import refine_kg_from_rtl
 from utils_gen_plan import (
     extract_proof_status,
+    extract_antecedent_reachability,
+    format_antecedent_reachability,
+    get_effective_formal_score,
+    get_effective_proof_status,
     analyze_coverage_of_proven_svas,
     count_tokens_in_file,
     find_original_tcl_file,
+    extract_top_module,
 )
 from design_context_summarizer import DesignContextSummarizer
 import os, math
@@ -43,14 +48,6 @@ from pathlib import Path
 from tqdm import tqdm
 
 print = saver.log_info
-
-FORMAL_STATUS_PRIORITY = {
-    'proven': 3,
-    'inconclusive': 2,
-    'cex': 1,
-    'error': 0,
-}
-
 
 def gen_plan():
     """
@@ -920,6 +917,41 @@ def build_candidate_file_stem(signal_name: str, plan_idx: int, candidate_idx: in
     return f"{safe_signal_name}_p{plan_idx + 1}_c{candidate_idx + 1}"
 
 
+def split_top_level_implication(sva_text: str) -> Tuple[str, str, str]:
+    body = sva_text.strip().rstrip(";").strip()
+    depth_paren = 0
+    depth_brack = 0
+    depth_brace = 0
+
+    for idx in range(len(body)):
+        ch = body[idx]
+        if ch == "(":
+            depth_paren += 1
+        elif ch == ")":
+            depth_paren = max(0, depth_paren - 1)
+        elif ch == "[":
+            depth_brack += 1
+        elif ch == "]":
+            depth_brack = max(0, depth_brack - 1)
+        elif ch == "{":
+            depth_brace += 1
+        elif ch == "}":
+            depth_brace = max(0, depth_brace - 1)
+
+        if depth_paren == 0 and depth_brack == 0 and depth_brace == 0:
+            if body.startswith("|->", idx):
+                return body[:idx].rstrip(), "|->", body[idx + 3 :].lstrip()
+            if body.startswith("|=>", idx):
+                return body[:idx].rstrip(), "|=>", body[idx + 3 :].lstrip()
+
+    raise ValueError(f"No top-level implication operator found in SVA: {sva_text}")
+
+
+def build_antecedent_cover_body(sva_text: str) -> str:
+    antecedent_body, _, _ = split_top_level_implication(sva_text)
+    return antecedent_body.rstrip(";").strip() + ";"
+
+
 def rerank_sva_candidates(
     candidate_records: List[Dict], jasper_reports: List[str]
 ) -> Tuple[List[Dict], List[Dict], List[Dict]]:
@@ -929,10 +961,20 @@ def rerank_sva_candidates(
             report_content = f.read()
 
         proof_status = extract_proof_status(report_content)
+        antecedent_reachability = extract_antecedent_reachability(report_content)
         ranked_record = dict(record)
         ranked_record['report_path'] = report_path
         ranked_record['proof_status'] = proof_status
-        ranked_record['formal_score'] = FORMAL_STATUS_PRIORITY.get(proof_status, -1)
+        ranked_record['antecedent_reachability'] = antecedent_reachability
+        ranked_record['antecedent_reachability_label'] = format_antecedent_reachability(
+            report_content
+        )
+        ranked_record['effective_proof_status'] = get_effective_proof_status(
+            proof_status, antecedent_reachability
+        )
+        ranked_record['formal_score'] = get_effective_formal_score(
+            proof_status, antecedent_reachability
+        )
         ranked_candidate_records.append(ranked_record)
 
     grouped_candidates = defaultdict(list)
@@ -979,6 +1021,9 @@ def save_candidate_rerank_report(
                 'plan_text': record['plan_text'],
                 'generation_order': record['generation_order'] + 1,
                 'proof_status': record['proof_status'],
+                'effective_proof_status': record['effective_proof_status'],
+                'antecedent_reachability': record['antecedent_reachability_label'],
+                'formal_score': record['formal_score'],
                 'selected_by_baseline': baseline_lookup[key]['generation_order']
                 == record['generation_order'],
                 'selected_by_formal_rerank': reranked_lookup[key]['generation_order']
@@ -995,8 +1040,10 @@ def save_candidate_rerank_report(
 
 def print_candidate_selection_summary(records: List[Dict], label: str) -> None:
     counts = defaultdict(int)
+    effective_counts = defaultdict(int)
     for record in records:
         counts[record['proof_status']] += 1
+        effective_counts[record['effective_proof_status']] += 1
 
     total = len(records)
     print(f"\n{label} summary:")
@@ -1004,7 +1051,14 @@ def print_candidate_selection_summary(records: List[Dict], label: str) -> None:
     for status in ['proven', 'inconclusive', 'cex', 'error']:
         print(f"  {status}: {counts[status]}")
     if total:
-        print(f"  Proven rate: {counts['proven'] / total:.2%}")
+        print(f"  Non-vacuous proven: {effective_counts['proven']}")
+        print(f"  Vacuous/unreachable proven: {effective_counts['proven_vacuous']}")
+        print(
+            "  Proven with unknown reachability: "
+            f"{effective_counts['proven_unknown_reachability']}"
+        )
+    if total:
+        print(f"  Non-vacuous proven rate: {effective_counts['proven'] / total:.2%}")
 
 
 def generate_static_svas(
@@ -1257,12 +1311,24 @@ def write_svas_to_file(
 
         # Format the SVA as a property
         property_name = f"a{i}"
+        cover_property_name = f"{property_name}_antecedent_cover"
         sva_file_content += f"property {property_name};\n"
         sva_file_content += f"{sva}\n"
         sva_file_content += f"endproperty\n"
         sva_file_content += (
             f"assert_{property_name}: assert property({property_name});\n\n"
         )
+        try:
+            antecedent_cover_body = build_antecedent_cover_body(sva)
+            sva_file_content += f"property {cover_property_name};\n"
+            sva_file_content += f"{antecedent_cover_body}\n"
+            sva_file_content += f"endproperty\n"
+            sva_file_content += (
+                f"cover_{cover_property_name}: cover property({cover_property_name});\n\n"
+            )
+        except ValueError:
+            # Leave the assertion intact even if we cannot derive a standalone antecedent cover.
+            pass
         sva_file_content += "endmodule\n"
 
         stem = (
@@ -1336,7 +1402,83 @@ def modify_tcl_content(original_content: str, new_sva_path: str) -> str:
         original_content,
     )
 
+    modified_content = inject_checker_coverage_init(modified_content)
+    modified_content = inject_vacuity_reporting_block(modified_content)
+
     return modified_content
+
+
+def inject_checker_coverage_init(tcl_content: str) -> str:
+    if 'check_cov -init -model all -type all' in tcl_content:
+        return tcl_content
+
+    top_module = extract_top_module(tcl_content)
+    exclude_module = f" -exclude_module {top_module}_tb" if top_module else ""
+    coverage_init = f"check_cov -init -model all -type all{exclude_module}"
+
+    clear_all_pattern = re.compile(r'(?m)^(\s*clear\s+-all\s*)$')
+    if clear_all_pattern.search(tcl_content):
+        return clear_all_pattern.sub(rf"\1\n{coverage_init}", tcl_content, count=1)
+
+    return f"{coverage_init}\n{tcl_content}"
+
+
+def inject_vacuity_reporting_block(tcl_content: str) -> str:
+    if '### AF_ANTECEDENT_COVER_STATUS_START ###' in tcl_content:
+        return tcl_content
+
+    report_block = """
+
+# AssertionForge vacuity-aware metadata for reranking
+if {[catch {cover -all -time_limit 1m} af_cover_run_msg]} {
+    puts "### AF_COVER_RUN_ERROR ###"
+    puts $af_cover_run_msg
+}
+
+set af_cover_props [get_property_list -include {type {cover} disabled {0}}]
+set af_cover_status "__AF_NONE__"
+if {[llength $af_cover_props] > 0} {
+    if {[catch {set af_cover_status [get_status $af_cover_props]} af_cover_status_msg]} {
+        set af_cover_status "__AF_ERROR__ $af_cover_status_msg"
+    }
+}
+puts "### AF_ANTECEDENT_COVER_STATUS_START ###"
+puts $af_cover_status
+puts "### AF_ANTECEDENT_COVER_STATUS_END ###"
+
+if {[catch {check_cov -measure -type all -verbose} af_cov_measure_msg]} {
+    puts "### AF_COVERAGE_MEASURE_ERROR ###"
+    puts $af_cov_measure_msg
+}
+
+set af_undetectable ""
+if {[catch {set af_undetectable [check_cov -list -status undetectable -checker_mode coi]} af_cov_undetectable_msg]} {
+    set af_undetectable "__AF_ERROR__ $af_cov_undetectable_msg"
+}
+puts "### AF_UNDETECTABLE_START ###"
+puts $af_undetectable
+puts "### AF_UNDETECTABLE_END ###"
+
+set af_unprocessed ""
+if {[catch {set af_unprocessed [check_cov -list -status unprocessed -checker_mode coi]} af_cov_unprocessed_msg]} {
+    set af_unprocessed "__AF_ERROR__ $af_cov_unprocessed_msg"
+}
+puts "### AF_UNPROCESSED_START ###"
+puts $af_unprocessed
+puts "### AF_UNPROCESSED_END ###"
+"""
+
+    exit_matches = list(re.finditer(r'(?im)^\s*(exit|quit)\b.*$', tcl_content))
+    if exit_matches:
+        last_match = exit_matches[-1]
+        return (
+            tcl_content[: last_match.start()]
+            + report_block
+            + "\n"
+            + tcl_content[last_match.start() :]
+        )
+
+    return tcl_content + report_block
 
 
 def run_jaspergold(tcl_file_paths: List[str]) -> List[str]:
@@ -1453,21 +1595,23 @@ def analyze_results(
     with open(detailed_report_path, 'r') as f:
         df = pd.read_csv(f)
 
-    proven_count = sum(df['Proof Status'] == 'proven')
+    proven_count = sum(df['Effective Proof Status'] == 'proven')
+    vacuous_proven_count = sum(df['Effective Proof Status'] == 'proven_vacuous')
     cex_count = sum(df['Proof Status'] == 'cex')
     inconclusive_count = sum(df['Proof Status'] == 'inconclusive')
     error_count = sum(df['Proof Status'] == 'error')
     syntax_correct_count = len(svas) - error_count
 
     print(f"  Total SVAs evaluated: {len(jasper_reports)}")
-    print(f"  Proven: {proven_count}")
+    print(f"  Non-vacuous proven: {proven_count}")
+    print(f"  Vacuous/unreachable proven: {vacuous_proven_count}")
     print(f"  Counterexample found: {cex_count}")
     print(f"  Inconclusive: {inconclusive_count}")
     print(f"  Errors: {error_count}")
     print(f"  Syntax-correct SVAs: {syntax_correct_count}")
 
     success_rate = proven_count / len(jasper_reports) if jasper_reports else 0
-    print(f"  Success rate: {success_rate:.2%}")
+    print(f"  Non-vacuous proven rate: {success_rate:.2%}")
 
     print("\nDetailed results saved in:")
     print(f"  SVA files: {os.path.join(saver.logdir, 'tbs')}")
@@ -1501,9 +1645,9 @@ def analyze_results(
     metric_names = [
         "# Assertions",
         "# Syntax Correct Assertions",
-        "# Proven Assertions",
+        "# Non-Vacuous Proven Assertions",
         "Syntax Correction Rate",
-        "Pass/Proven Rate",
+        "Non-Vacuous Proven Rate",
         "Stimuli Statement Coverage",
         "Stimuli Branch Coverage",
         "Stimuli Functional Coverage",
@@ -1633,6 +1777,10 @@ def generate_detailed_sva_report(svas: List[str], jasper_reports: List[str]) -> 
             report_content = f.read()
 
         proof_status = extract_proof_status(report_content)
+        antecedent_reachability = extract_antecedent_reachability(report_content)
+        effective_proof_status = get_effective_proof_status(
+            proof_status, antecedent_reachability
+        )
 
         if proof_status != "error":
             syntax_correct_count += 1
@@ -1644,7 +1792,13 @@ def generate_detailed_sva_report(svas: List[str], jasper_reports: List[str]) -> 
             )
 
         sva_details.append(
-            {"SVA ID": i, "Proof Status": proof_status, "Error Message": error_message}
+            {
+                "SVA ID": i,
+                "Proof Status": proof_status,
+                "Antecedent Reachability": format_antecedent_reachability(report_content),
+                "Effective Proof Status": effective_proof_status,
+                "Error Message": error_message,
+            }
         )
 
     # Create a DataFrame and save it as a CSV

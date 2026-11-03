@@ -1,0 +1,6573 @@
+{
+  "before": {
+    "engine": "Verilator native SVA simulation",
+    "formal_proof": false,
+    "source_sha256": "4538e61e0d0f9f602ccde571727e78ab4ae01c045e157c3f75bc0898b75da38b",
+    "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "compile_status": "passed",
+    "tool_support_status": "supported_for_compiled_constructs",
+    "execution_status": "completed",
+    "trigger_status": "observed",
+    "property_status": "violation",
+    "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+    "formal_cost": {
+      "calls": 0,
+      "wall_seconds": 0
+    },
+    "native_simulation_calls": 1,
+    "compile": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/before/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/before/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_prepare_20261028_r01/rtl/before/axis_adapter.v"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 10.070757795999999
+    },
+    "execute": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/before/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/before",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.036337991999999986
+    },
+    "failures": [
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=214"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=224"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=241"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=244"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=502"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=512"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=529"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=536"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=883"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=979"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1262"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1558"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1567"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1579"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1651"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1846"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1856"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1864"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1942"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1945"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2227"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2325"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2332"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2798"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2895"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2990"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3094"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3104"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3116"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3477"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3485"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3497"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3507"
+      }
+    ],
+    "triggers": [
+      {
+        "id": "hold_valid",
+        "detail": "cycle=8"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=8"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=8"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=9"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=9"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=9"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=10"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=10"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=10"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=11"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=11"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=11"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=12"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=12"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=12"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=13"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=13"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=13"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=14"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=14"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=14"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=15"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=15"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=15"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=16"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=16"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=16"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=17"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=17"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=17"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=18"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=18"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=18"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=19"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=112"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=128"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=144"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=148"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=208"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=208"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=208"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=209"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=209"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=209"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=210"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=210"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=210"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=211"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=211"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=211"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=212"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=212"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=212"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=213"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=213"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=213"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=214"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=224"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=240"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=240"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=240"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=241"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=244"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=304"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=304"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=304"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=305"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=305"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=305"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=306"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=306"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=306"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=307"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=307"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=307"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=308"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=308"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=308"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=309"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=309"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=309"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=310"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=310"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=310"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=311"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=311"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=311"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=397"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=397"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=397"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=398"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=398"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=398"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=399"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=399"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=399"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=400"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=400"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=400"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=401"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=401"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=401"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=402"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=402"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=402"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=403"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=411"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=411"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=411"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=412"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=423"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=423"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=423"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=424"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=426"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=426"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=426"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=427"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=496"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=496"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=496"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=497"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=497"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=497"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=498"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=498"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=498"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=499"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=499"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=499"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=500"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=500"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=500"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=501"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=501"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=501"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=502"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=512"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=528"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=528"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=528"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=529"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=536"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=589"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=589"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=589"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=590"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=590"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=590"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=591"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=591"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=591"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=592"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=592"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=592"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=593"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=593"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=593"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=594"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=594"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=594"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=595"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=595"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=595"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=596"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=596"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=596"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=597"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=597"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=597"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=598"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=598"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=598"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=599"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=599"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=599"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=688"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=700"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=781"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=781"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=781"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=782"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=793"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=793"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=793"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=794"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=799"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=873"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=873"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=873"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=874"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=874"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=874"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=875"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=875"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=875"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=876"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=876"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=876"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=877"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=877"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=877"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=878"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=878"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=878"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=879"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=879"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=879"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=880"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=880"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=880"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=881"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=881"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=881"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=882"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=882"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=882"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=883"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=970"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=970"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=970"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=971"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=971"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=971"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=972"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=972"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=972"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=973"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=973"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=973"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=974"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=974"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=974"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=975"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=975"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=975"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=976"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=976"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=976"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=977"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=977"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=977"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=978"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=978"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=978"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=979"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1069"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1069"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1069"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1070"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1070"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1070"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1071"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1081"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1093"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1168"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1168"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1168"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1169"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1169"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1169"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1170"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1170"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1170"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1171"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1171"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1171"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1172"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1172"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1172"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1173"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1173"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1173"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1174"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1174"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1174"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1175"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1175"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1175"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1258"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1258"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1258"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1259"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1259"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1259"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1260"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1260"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1260"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1261"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1261"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1261"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1262"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1360"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1376"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1392"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1392"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1392"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1393"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1456"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1456"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1456"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1457"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1457"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1457"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1458"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1458"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1458"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1459"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1459"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1459"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1549"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1549"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1549"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1550"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1550"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1550"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1551"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1551"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1551"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1552"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1552"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1552"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1553"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1553"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1553"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1554"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1554"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1554"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1555"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1555"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1555"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1556"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1556"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1556"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1557"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1557"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1557"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1558"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1566"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1566"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1566"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1567"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1578"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1578"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1578"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1579"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1640"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1640"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1640"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1641"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1641"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1641"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1642"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1642"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1642"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1643"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1643"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1643"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1644"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1644"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1644"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1645"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1645"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1645"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1646"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1646"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1646"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1647"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1647"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1647"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1648"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1648"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1648"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1649"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1649"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1649"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1650"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1650"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1650"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1651"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1741"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1741"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1741"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1742"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1742"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1742"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1743"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1743"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1743"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1744"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1744"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1744"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1745"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1745"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1745"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1746"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1746"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1746"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1747"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1747"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1747"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1840"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1840"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1840"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1841"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1841"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1841"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1842"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1842"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1842"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1843"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1843"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1843"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1844"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1844"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1844"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1845"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1845"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1845"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1846"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1856"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1864"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1933"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1933"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1933"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1934"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1934"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1934"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1935"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1935"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1935"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1936"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1936"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1936"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1937"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1937"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1937"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1938"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1938"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1938"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1939"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1939"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1939"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1940"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1940"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1940"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1941"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1941"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1941"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1942"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1944"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1944"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1944"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1945"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2029"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2029"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2029"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2030"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2030"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2030"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2031"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2031"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2031"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2032"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2032"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2032"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2033"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2033"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2033"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2034"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2034"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2034"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2035"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2035"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2035"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2036"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2036"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2036"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2037"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2037"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2037"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2038"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2038"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2038"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2039"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2039"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2039"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2128"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2136"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2215"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2215"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2215"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2216"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2216"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2216"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2217"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2217"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2217"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2218"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2218"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2218"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2219"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2219"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2219"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2220"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2220"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2220"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2221"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2221"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2221"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2222"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2222"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2222"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2223"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2223"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2223"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2224"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2224"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2224"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2225"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2225"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2225"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2226"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2226"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2226"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2227"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2320"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2320"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2320"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2321"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2321"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2321"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2322"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2322"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2322"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2323"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2323"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2323"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2324"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2324"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2324"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2325"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2332"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2407"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2407"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2407"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2408"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2408"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2408"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2409"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2409"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2409"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2410"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2410"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2410"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2411"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2411"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2411"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2412"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2412"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2412"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2413"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2413"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2413"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2414"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2512"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2528"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2544"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2544"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2544"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2545"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2552"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2605"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2605"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2605"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2606"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2611"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2704"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2704"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2704"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2705"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2705"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2705"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2706"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2706"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2706"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2707"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2707"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2707"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2792"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2792"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2792"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2793"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2793"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2793"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2794"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2794"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2794"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2795"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2795"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2795"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2796"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2796"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2796"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2797"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2797"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2797"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2798"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2889"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2889"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2889"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2890"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2890"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2890"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2891"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2891"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2891"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2892"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2892"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2892"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2893"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2893"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2893"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2894"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2894"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2894"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2895"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2983"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2983"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2983"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2984"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2984"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2984"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2985"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2985"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2985"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2986"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2986"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2986"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2987"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2987"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2987"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2988"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2988"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2988"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2989"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2989"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2989"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2990"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3088"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3088"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3088"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3089"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3089"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3089"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3090"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3090"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3090"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3091"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3091"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3091"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3092"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3092"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3092"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3093"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3093"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3093"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3094"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3104"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3116"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3181"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3181"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3181"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3182"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3182"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3182"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3183"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3183"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3183"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3184"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3184"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3184"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3185"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3185"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3185"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3186"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3186"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3186"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3187"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3187"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3187"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3277"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3277"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3277"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3278"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3278"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3278"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3279"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3286"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3286"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3286"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3287"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3376"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3376"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3376"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3377"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3377"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3377"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3378"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3378"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3378"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3379"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3392"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3404"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3469"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3469"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3469"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3470"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3470"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3470"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3471"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3471"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3471"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3472"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3472"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3472"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3473"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3473"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3473"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3474"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3474"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3474"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3475"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3475"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3475"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3476"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3476"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3476"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3477"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3485"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3497"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3506"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3506"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3506"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3507"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3568"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3568"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3568"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3569"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3569"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3569"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3570"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3570"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3570"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3571"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3584"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3592"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3592"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3592"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3593"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3661"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3661"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3661"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3662"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3662"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3662"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3663"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3663"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3663"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3664"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3664"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3664"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3665"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3665"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3665"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3666"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3666"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3666"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3667"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3675"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3687"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3693"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3757"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3757"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3757"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3758"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3769"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3769"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3769"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3770"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3778"
+      }
+    ]
+  },
+  "after": {
+    "engine": "Verilator native SVA simulation",
+    "formal_proof": false,
+    "source_sha256": "4538e61e0d0f9f602ccde571727e78ab4ae01c045e157c3f75bc0898b75da38b",
+    "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "compile_status": "passed",
+    "tool_support_status": "supported_for_compiled_constructs",
+    "execution_status": "completed",
+    "trigger_status": "observed",
+    "property_status": "no_violation_within_executed_scope",
+    "trigger_measurement": "procedural antecedent diagnostic; not native cover proof",
+    "formal_cost": {
+      "calls": 0,
+      "wall_seconds": 0
+    },
+    "native_simulation_calls": 1,
+    "compile": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+        "--binary",
+        "--timing",
+        "--assert",
+        "--trace",
+        "-j",
+        "2",
+        "-Wno-fatal",
+        "--top-module",
+        "tb",
+        "--Mdir",
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/after/obj_dir",
+        "-o",
+        "native_sim",
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/after/tb.sv",
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_prepare_20261028_r01/rtl/after/axis_adapter.v"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 9.261253620999998
+    },
+    "execute": {
+      "argv": [
+        "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/after/obj_dir/native_sim"
+      ],
+      "cwd": "/mnt/d/AssertionForge-main1/deliverables/research174_independent_run_20261028_r01/native/after",
+      "timeout_seconds": 240,
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.03906870500000181
+    },
+    "failures": [],
+    "triggers": [
+      {
+        "id": "hold_valid",
+        "detail": "cycle=8"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=8"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=8"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=9"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=9"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=9"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=10"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=10"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=10"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=11"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=11"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=11"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=12"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=12"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=12"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=13"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=13"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=13"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=14"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=14"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=14"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=15"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=15"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=15"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=16"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=16"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=16"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=17"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=17"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=17"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=18"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=18"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=18"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=19"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=112"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=128"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=144"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=148"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=208"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=208"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=208"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=209"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=209"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=209"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=210"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=210"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=210"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=211"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=211"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=211"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=212"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=212"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=212"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=213"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=213"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=213"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=214"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=224"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=240"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=240"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=240"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=241"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=244"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=304"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=304"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=304"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=305"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=305"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=305"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=306"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=306"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=306"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=307"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=307"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=307"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=308"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=308"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=308"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=309"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=309"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=309"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=310"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=310"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=310"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=311"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=311"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=311"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=397"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=397"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=397"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=398"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=398"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=398"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=399"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=399"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=399"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=400"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=400"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=400"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=401"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=401"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=401"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=402"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=402"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=402"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=403"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=411"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=411"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=411"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=412"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=423"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=423"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=423"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=424"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=426"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=426"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=426"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=427"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=496"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=496"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=496"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=497"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=497"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=497"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=498"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=498"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=498"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=499"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=499"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=499"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=500"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=500"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=500"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=501"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=501"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=501"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=502"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=512"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=528"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=528"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=528"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=529"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=536"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=589"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=589"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=589"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=590"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=590"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=590"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=591"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=591"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=591"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=592"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=592"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=592"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=593"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=593"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=593"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=594"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=594"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=594"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=595"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=595"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=595"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=596"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=596"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=596"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=597"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=597"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=597"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=598"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=598"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=598"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=599"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=599"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=599"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=688"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=700"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=781"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=781"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=781"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=782"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=793"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=793"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=793"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=794"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=799"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=873"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=873"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=873"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=874"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=874"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=874"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=875"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=875"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=875"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=876"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=876"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=876"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=877"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=877"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=877"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=878"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=878"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=878"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=879"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=879"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=879"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=880"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=880"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=880"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=881"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=881"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=881"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=882"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=882"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=882"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=883"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=970"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=970"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=970"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=971"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=971"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=971"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=972"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=972"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=972"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=973"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=973"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=973"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=974"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=974"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=974"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=975"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=975"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=975"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=976"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=976"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=976"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=977"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=977"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=977"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=978"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=978"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=978"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=979"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1069"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1069"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1069"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1070"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1070"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1070"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1071"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1081"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1093"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1168"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1168"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1168"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1169"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1169"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1169"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1170"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1170"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1170"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1171"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1171"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1171"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1172"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1172"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1172"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1173"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1173"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1173"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1174"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1174"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1174"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1175"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1175"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1175"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1258"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1258"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1258"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1259"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1259"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1259"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1260"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1260"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1260"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1261"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1261"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1261"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1262"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1360"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1376"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1392"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1392"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1392"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1393"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1456"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1456"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1456"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1457"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1457"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1457"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1458"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1458"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1458"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1459"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1459"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1459"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1549"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1549"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1549"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1550"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1550"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1550"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1551"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1551"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1551"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1552"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1552"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1552"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1553"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1553"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1553"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1554"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1554"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1554"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1555"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1555"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1555"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1556"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1556"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1556"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1557"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1557"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1557"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1558"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1566"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1566"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1566"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1567"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1578"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1578"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1578"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1579"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1640"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1640"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1640"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1641"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1641"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1641"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1642"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1642"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1642"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1643"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1643"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1643"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1644"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1644"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1644"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1645"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1645"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1645"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1646"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1646"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1646"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1647"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1647"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1647"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1648"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1648"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1648"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1649"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1649"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1649"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1650"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1650"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1650"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1651"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1741"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1741"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1741"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1742"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1742"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1742"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1743"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1743"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1743"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1744"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1744"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1744"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1745"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1745"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1745"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1746"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1746"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1746"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1747"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1747"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1747"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1840"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1840"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1840"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1841"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1841"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1841"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1842"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1842"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1842"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1843"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1843"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1843"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1844"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1844"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1844"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1845"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1845"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1845"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1846"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1856"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1864"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1933"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1933"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1933"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1934"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1934"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1934"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1935"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1935"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1935"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1936"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1936"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1936"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1937"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1937"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1937"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1938"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1938"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1938"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1939"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1939"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1939"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1940"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1940"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1940"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1941"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1941"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1941"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=1942"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=1944"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=1944"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=1944"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=1945"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2029"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2029"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2029"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2030"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2030"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2030"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2031"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2031"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2031"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2032"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2032"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2032"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2033"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2033"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2033"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2034"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2034"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2034"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2035"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2035"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2035"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2036"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2036"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2036"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2037"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2037"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2037"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2038"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2038"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2038"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2039"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2039"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2039"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2128"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2136"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2215"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2215"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2215"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2216"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2216"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2216"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2217"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2217"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2217"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2218"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2218"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2218"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2219"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2219"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2219"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2220"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2220"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2220"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2221"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2221"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2221"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2222"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2222"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2222"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2223"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2223"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2223"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2224"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2224"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2224"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2225"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2225"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2225"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2226"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2226"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2226"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2227"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2320"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2320"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2320"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2321"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2321"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2321"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2322"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2322"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2322"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2323"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2323"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2323"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2324"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2324"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2324"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2325"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2332"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2407"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2407"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2407"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2408"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2408"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2408"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2409"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2409"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2409"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2410"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2410"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2410"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2411"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2411"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2411"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2412"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2412"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2412"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2413"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2413"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2413"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2414"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2512"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2528"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2544"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2544"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2544"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2545"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2552"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2605"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2605"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2605"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=2606"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2611"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2704"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2704"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2704"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2705"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2705"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2705"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2706"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2706"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2706"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2707"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2707"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2707"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2792"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2792"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2792"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2793"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2793"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2793"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2794"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2794"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2794"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2795"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2795"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2795"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2796"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2796"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2796"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2797"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2797"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2797"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2798"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2889"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2889"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2889"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2890"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2890"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2890"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2891"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2891"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2891"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2892"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2892"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2892"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2893"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2893"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2893"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2894"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2894"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2894"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2895"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2983"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2983"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2983"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2984"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2984"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2984"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2985"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2985"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2985"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2986"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2986"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2986"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2987"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2987"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2987"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2988"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2988"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2988"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=2989"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=2989"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=2989"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=2990"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3088"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3088"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3088"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3089"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3089"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3089"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3090"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3090"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3090"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3091"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3091"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3091"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3092"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3092"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3092"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3093"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3093"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3093"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3094"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3104"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3116"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3181"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3181"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3181"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3182"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3182"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3182"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3183"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3183"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3183"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3184"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3184"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3184"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3185"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3185"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3185"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3186"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3186"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3186"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3187"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3187"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3187"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3277"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3277"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3277"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3278"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3278"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3278"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3279"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3286"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3286"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3286"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3287"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3376"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3376"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3376"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3377"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3377"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3377"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3378"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3378"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3378"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3379"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3392"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3404"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3469"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3469"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3469"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3470"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3470"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3470"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3471"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3471"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3471"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3472"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3472"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3472"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3473"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3473"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3473"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3474"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3474"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3474"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3475"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3475"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3475"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3476"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3476"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3476"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3477"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3485"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3497"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3506"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3506"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3506"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3507"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3568"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3568"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3568"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3569"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3569"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3569"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3570"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3570"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3570"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3571"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3584"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3592"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3592"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3592"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3593"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3661"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3661"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3661"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3662"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3662"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3662"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3663"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3663"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3663"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3664"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3664"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3664"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3665"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3665"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3665"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3666"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3666"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3666"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3667"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3675"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3687"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3693"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3757"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3757"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3757"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3758"
+      },
+      {
+        "id": "hold_valid",
+        "detail": "cycle=3769"
+      },
+      {
+        "id": "hold_payload",
+        "detail": "cycle=3769"
+      },
+      {
+        "id": "hold_keep_through_stall",
+        "detail": "cycle=3769"
+      },
+      {
+        "id": "nonfinal_full_keep",
+        "detail": "cycle=3770"
+      },
+      {
+        "id": "final_nonempty_keep",
+        "detail": "cycle=3778"
+      }
+    ]
+  }
+}

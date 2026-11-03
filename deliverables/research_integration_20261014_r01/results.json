@@ -1,0 +1,1433 @@
+{
+  "date": "2026-10-14",
+  "scope": "stage continuation; not all requested research completed",
+  "fifo": {
+    "runs": 96,
+    "paired_witnesses": 72,
+    "unique_artificial_obligation_gaps": [
+      [
+        "corrupt",
+        "order_payload"
+      ],
+      [
+        "drop",
+        "drain_no_loss"
+      ],
+      [
+        "drop",
+        "order_payload"
+      ],
+      [
+        "duplicate_payload",
+        "order_payload"
+      ]
+    ],
+    "illegal_runs": 0,
+    "native_sva_runs": 0,
+    "model_calls": 0,
+    "formal_runs": 0,
+    "coverage": {
+      "reset_with_pending": 48,
+      "simultaneous_accept_output": 1062,
+      "idle": 824,
+      "backpressure": 941,
+      "multi_cycle_response": 1463
+    },
+    "counts": [
+      {
+        "split": "development",
+        "mutation": "correct",
+        "verdict": "no_violation_in_execution",
+        "count": 12
+      },
+      {
+        "split": "development",
+        "mutation": "corrupt",
+        "verdict": "violation",
+        "count": 12
+      },
+      {
+        "split": "development",
+        "mutation": "drop",
+        "verdict": "violation",
+        "count": 12
+      },
+      {
+        "split": "development",
+        "mutation": "duplicate_payload",
+        "verdict": "violation",
+        "count": 12
+      },
+      {
+        "split": "independent_test",
+        "mutation": "correct",
+        "verdict": "no_violation_in_execution",
+        "count": 12
+      },
+      {
+        "split": "independent_test",
+        "mutation": "corrupt",
+        "verdict": "violation",
+        "count": 12
+      },
+      {
+        "split": "independent_test",
+        "mutation": "drop",
+        "verdict": "violation",
+        "count": 12
+      },
+      {
+        "split": "independent_test",
+        "mutation": "duplicate_payload",
+        "verdict": "violation",
+        "count": 12
+      }
+    ],
+    "limitations": [
+      "No real LLM generation/refinement in this experiment.",
+      "Concurrent native SVA unsupported by installed Icarus; auxiliary predicate diagnostics are not native assertion results.",
+      "No original historical FIFO defect validated.",
+      "No formal proof.",
+      "Independent engineering test uses fresh seeds after freeze but same generator family."
+    ]
+  },
+  "search": {
+    "queries": 864,
+    "parents": 6,
+    "focused_pairs": 11,
+    "native_sva": false,
+    "model_calls": 0,
+    "per_method": {
+      "ordinary": {
+        "gaps": 36,
+        "pairs": 6,
+        "unknown_spec_queries": 72
+      },
+      "disagreement": {
+        "gaps": 37,
+        "pairs": 6,
+        "unknown_spec_queries": 72
+      },
+      "differential": {
+        "gaps": 43,
+        "pairs": 8,
+        "unknown_spec_queries": 71
+      },
+      "contract": {
+        "gaps": 43,
+        "pairs": 8,
+        "unknown_spec_queries": 60
+      }
+    },
+    "total_costs": {
+      "compile_attempts": 1728,
+      "simulation_attempts": 1728,
+      "sim_cycles": 41472,
+      "wall_seconds": 2742.7422958420007,
+      "cpu_seconds": 329.4310619999999,
+      "audit_wall_seconds": 142.04945053100192
+    },
+    "full_parent_passes": 0
+  },
+  "native": {
+    "status": "native_revision_executed_rejected_proposal_diagnostic_holdout",
+    "original_two_call_budget_succeeded": false,
+    "formal_proof": false,
+    "initial": {
+      "status": "ok",
+      "false_positives": 45,
+      "detections": 0,
+      "misses": 78,
+      "attribution_unknown": 65,
+      "effective_triggers": null,
+      "diagnostic_trigger_keys": 139,
+      "trigger_semantics": "mismatch; actual native effective trigger coverage unavailable",
+      "legal_prefix_samples_by_mode": {
+        "correct": 134,
+        "corrupt": 26,
+        "duplicate_payload": 39,
+        "drop": 65
+      },
+      "false_positives_by_mode": {
+        "correct": 29,
+        "corrupt": 3,
+        "duplicate_payload": 6,
+        "drop": 7
+      },
+      "legal_prefix_samples": 264,
+      "missed_fault_obligation_classes": [
+        "corrupt/order_payload",
+        "drop/drain_no_loss",
+        "drop/order_payload",
+        "duplicate_payload/order_payload"
+      ],
+      "causal_detection_classes": []
+    },
+    "final_development": {
+      "status": "ok",
+      "false_positives": 45,
+      "detections": 0,
+      "misses": 78,
+      "attribution_unknown": 65,
+      "effective_triggers": null,
+      "diagnostic_trigger_keys": 139,
+      "trigger_semantics": "mismatch; actual native effective trigger coverage unavailable",
+      "legal_prefix_samples_by_mode": {
+        "correct": 134,
+        "corrupt": 26,
+        "duplicate_payload": 39,
+        "drop": 65
+      },
+      "false_positives_by_mode": {
+        "correct": 29,
+        "corrupt": 3,
+        "duplicate_payload": 6,
+        "drop": 7
+      },
+      "legal_prefix_samples": 264,
+      "missed_fault_obligation_classes": [
+        "corrupt/order_payload",
+        "drop/drain_no_loss",
+        "drop/order_payload",
+        "duplicate_payload/order_payload"
+      ],
+      "causal_detection_classes": []
+    },
+    "independent_test": {
+      "status": "ok",
+      "false_positives": 61,
+      "detections": 0,
+      "misses": 79,
+      "attribution_unknown": 75,
+      "effective_triggers": null,
+      "diagnostic_trigger_keys": 156,
+      "trigger_semantics": "mismatch; actual native effective trigger coverage unavailable",
+      "legal_prefix_samples_by_mode": {
+        "correct": 134,
+        "corrupt": 27,
+        "duplicate_payload": 42,
+        "drop": 45
+      },
+      "false_positives_by_mode": {
+        "correct": 37,
+        "corrupt": 5,
+        "duplicate_payload": 8,
+        "drop": 11
+      },
+      "legal_prefix_samples": 248,
+      "missed_fault_obligation_classes": [
+        "corrupt/order_payload",
+        "drop/drain_no_loss",
+        "drop/order_payload",
+        "duplicate_payload/order_payload"
+      ],
+      "causal_detection_classes": []
+    },
+    "tested_version": "frozen rejected proposal, not accepted final set",
+    "accepted_version": null,
+    "proposal_assertion_count": 3,
+    "unique_proposal_assertions": 1,
+    "duplicate_properties": 2,
+    "complementary_coverage_added": false,
+    "corrected_acceptance_audit": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/compact_continuation/corrected_acceptance_audit.json",
+    "frozen_sva_sha256": "5863dcda93e79fd9f9d543bb95098ee9335b9d08d0e85ebcf4fba22ee5459096",
+    "history": [
+      {
+        "version": "initial",
+        "accepted": false,
+        "reason": "confirmed legal false positives and trigger metadata mismatch"
+      },
+      {
+        "version": "original_revision",
+        "accepted": false,
+        "reason": "context overflow cancelled"
+      },
+      {
+        "version": "compact_revision",
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "d2_p0_s2026101431/correct/cycle5/native_failure_without_oracle_violation"
+            ]
+          },
+          {
+            "kind": "remaining_legal_false_positive",
+            "keys": [
+              "d2_p0_s2026101431/correct/cycle100/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle105/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle19/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle20/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle23/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle24/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle26/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle27/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle28/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle33/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle39/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle40/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle43/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle44/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle49/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle5/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle50/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle55/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle59/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle60/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle63/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle68/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle71/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle75/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle82/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle85/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle92/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle93/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/correct/cycle99/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle100/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle105/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle5/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle50/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle55/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle60/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle63/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle68/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle71/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle75/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle82/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/corrupt/cycle85/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle100/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle105/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle19/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle20/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle33/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle5/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle50/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle55/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle59/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle60/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle63/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle68/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle71/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle75/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle82/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle85/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle93/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/drop/cycle99/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle105/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle19/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle20/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle23/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle24/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle26/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle27/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle28/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle34/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle39/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle40/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle43/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle44/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle49/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle5/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle50/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle55/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle63/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle68/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle74/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle75/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle92/native_failure_without_oracle_violation",
+              "d2_p0_s2026101431/duplicate_payload/cycle94/native_failure_without_oracle_violation"
+            ]
+          },
+          {
+            "kind": "trigger_semantics_unconfirmed",
+            "detail": "Initial unconditional property and supplied diagnostic trigger mismatch. Full trigger-preservation gate cannot be certified."
+          }
+        ],
+        "scope": "Only the replayed evidence; no global non-regression or formal proof.",
+        "before_sha256": "73358205227e3084f174cbb0e10c3179dd04f2a0e67fa1c17796f63c1b33bb22",
+        "after_sha256": "4ea50d4b2d1a64fdd4fcbcd753b9488200da6d31213c858bd1303d3829ac0b5d"
+      }
+    ],
+    "model_cost": {
+      "actual_attempts": 3,
+      "completed_calls": 2,
+      "cancelled_calls": 1,
+      "retries": 0,
+      "known_prompt_tokens": 15483,
+      "known_completion_tokens": 428,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "unknown_usage_attempts": 1,
+      "completed_wall_seconds": 445.1194507370003,
+      "cancelled_wall_seconds_upper_bound": 388.651028,
+      "cancelled_service_duration_display": "4m18s",
+      "cancelled_service_seconds_approx": 258,
+      "monetary_cost": "unavailable_local_inference"
+    },
+    "native_cost": {
+      "compile_calls": 3,
+      "simulation_calls": 12,
+      "compile_wall_seconds": 71.20467238699962,
+      "simulation_wall_seconds": 0.26523232800059304
+    },
+    "native_cost_scope": "actual model trajectory only; qualification costs listed separately",
+    "qualification_cost": {
+      "compile_calls": 9,
+      "simulation_calls": 7,
+      "compile_wall_seconds": 197.29206326800013,
+      "simulation_wall_seconds": 0.21660929800003714
+    },
+    "formal_cost": {
+      "calls": 0,
+      "wall_seconds": 0
+    },
+    "attribution_unknown": {
+      "initial": 65,
+      "final_development": 65,
+      "independent_test": 75
+    },
+    "unprotected_obligations": [
+      "drain_no_loss",
+      "order_payload"
+    ],
+    "aborted_attempt": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/closed_loop/model_calls/revision/cancellation.json",
+    "compact_summary": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/compact_continuation/summary.json",
+    "adjudication_notes": [
+      "Only independently legal reset-epoch prefixes contribute false positives; reset restarts prefix qualification. After-violation unmatched alarms are attribution_unknown.",
+      "Raw model feedback and actual gate decision are unchanged. This is a reporting audit, not post-test model selection.",
+      "Diagnostic triggers remain non-native coverage metadata. Initial unconditional property has a mismatched reported trigger.",
+      "Counts are replay observation keys; independent gaps require fault-family/obligation deduplication, not one gap per cycle.",
+      "Compact feedback gave only correct-design legal FP examples, but its raw aggregate FP count included post-violation symptoms. This feedback-label limitation is retained.",
+      "Full trigger-preservation gate rejected on unconfirmed/mismatched initial trigger metadata. No accepted final assertion set is claimed.",
+      "Independent test ran a frozen rejected proposal only, with no subsequent edits or candidate selection.",
+      "3 real model attempts exceed the original 2-call budget; only the continuation used compact feedback."
+    ],
+    "scope": "Native finite simulation of actual axis_fifo with artificial boundary faults. Not historical FIFO defect validation, not four-arm native comparison."
+  },
+  "native_probes": {
+    "nonoverlap_positive": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "59d73b75477fe4f2e127f5438bc2f772584211508fcf3045e4d3e00dcc6889fd",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_positive/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_positive/tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_positive",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 54.39816295199998
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_positive/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_positive",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.05282166000000643
+      },
+      "failures": [],
+      "triggers": [
+        {
+          "id": "probe",
+          "detail": "time=25"
+        }
+      ]
+    },
+    "nonoverlap_negative": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "9abf751a8df804e8fc179b5349c78d891ce8e7828c493ca5f197521e5f4b70b0",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "violation",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_negative/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_negative/tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_negative",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 45.167787721000025
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_negative/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/nonoverlap_negative",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.039879803000019365
+      },
+      "failures": [
+        {
+          "id": "probe",
+          "detail": "time=35"
+        }
+      ],
+      "triggers": [
+        {
+          "id": "probe",
+          "detail": "time=25"
+        }
+      ]
+    },
+    "past_positive": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "757568900a5273a62a83ed9b784e29ff0ba0be1b5db1f7f33d888dc77941ecf6",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "passed",
+      "tool_support_status": "supported_for_compiled_constructs",
+      "execution_status": "completed",
+      "trigger_status": "observed",
+      "property_status": "no_violation_within_executed_scope",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 1,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/past_positive/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/past_positive/tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/past_positive",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 51.59651067100003
+      },
+      "execute": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/past_positive/obj_dir/native_sim"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/past_positive",
+        "timeout_seconds": 240,
+        "exit_code": 0,
+        "status": "completed",
+        "wall_seconds": 0.039135401000010006
+      },
+      "failures": [],
+      "triggers": [
+        {
+          "id": "probe",
+          "detail": "time=35"
+        },
+        {
+          "id": "probe",
+          "detail": "time=45"
+        },
+        {
+          "id": "probe",
+          "detail": "time=55"
+        },
+        {
+          "id": "probe",
+          "detail": "time=65"
+        }
+      ]
+    },
+    "sequence_delay": {
+      "engine": "Verilator native SVA simulation",
+      "formal_proof": false,
+      "source_sha256": "37738661afdcc391bbe033472b7fc7c33cd568f057aff12573acb2526dafe478",
+      "tool_version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "compile_status": "failed",
+      "tool_support_status": "unsupported_construct",
+      "execution_status": "not_run",
+      "trigger_status": "unknown",
+      "property_status": "unknown",
+      "formal_cost": {
+        "calls": 0,
+        "wall_seconds": 0
+      },
+      "native_simulation_calls": 0,
+      "compile": {
+        "argv": [
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/tools/unpack/usr/bin/verilator",
+          "--binary",
+          "--timing",
+          "--assert",
+          "--trace",
+          "-Wno-fatal",
+          "--top-module",
+          "tb",
+          "--Mdir",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/sequence_delay/obj_dir",
+          "-o",
+          "native_sim",
+          "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/sequence_delay/tb.sv"
+        ],
+        "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/probes_r02/sequence_delay",
+        "timeout_seconds": 240,
+        "exit_code": 1,
+        "status": "completed",
+        "wall_seconds": 0.5005415979999839
+      }
+    }
+  },
+  "gate": {
+    "completed_model_calls": 8,
+    "call_status": {
+      "candidate_language_error": 5,
+      "parsed": 3
+    },
+    "decisions": [
+      {
+        "arm": "A",
+        "round": 0,
+        "accepted": false,
+        "model_status": "candidate_language_error",
+        "gate_enabled": false,
+        "gate_reasons": [
+          {
+            "kind": "model_or_candidate_error",
+            "status": "candidate_language_error"
+          }
+        ]
+      },
+      {
+        "arm": "A",
+        "round": 1,
+        "accepted": false,
+        "model_status": "candidate_language_error",
+        "gate_enabled": false,
+        "gate_reasons": [
+          {
+            "kind": "model_or_candidate_error",
+            "status": "candidate_language_error"
+          }
+        ]
+      },
+      {
+        "arm": "B",
+        "round": 0,
+        "accepted": true,
+        "model_status": "parsed",
+        "gate_enabled": false,
+        "gate_reasons": [
+          {
+            "kind": "new_legal_false_positive",
+            "evidence_keys": [
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/10/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/11/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/12/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/13/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/14/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/15/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/16/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/17/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/18/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/19/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/2/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/20/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/21/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/22/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/23/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/3/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/4/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/7/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/10/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/12/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/14/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/16/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/17/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/18/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/19/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/2/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/20/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/21/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/22/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/23/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/3/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/4/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/6/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/7/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/8/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/10/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/13/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/14/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/15/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/16/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/17/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/18/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/19/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/2/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/20/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/21/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/22/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/23/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/3/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/6/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/9/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/10/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/11/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/12/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/13/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/14/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/15/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/16/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/17/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/18/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/19/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/2/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/20/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/21/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/22/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/23/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/3/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/6/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/9/legal"
+            ]
+          },
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/4/legal"
+            ]
+          }
+        ]
+      },
+      {
+        "arm": "B",
+        "round": 1,
+        "accepted": true,
+        "model_status": "parsed",
+        "gate_enabled": false,
+        "gate_reasons": [
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "15a675aa10a2780e977dd6f9f132907c1c3b9b0518a635651e779641fab8a095/correct/10/legal"
+            ]
+          }
+        ]
+      },
+      {
+        "arm": "C",
+        "round": 0,
+        "accepted": false,
+        "model_status": "candidate_language_error",
+        "gate_enabled": true,
+        "gate_reasons": [
+          {
+            "kind": "model_or_candidate_error",
+            "status": "candidate_language_error"
+          }
+        ]
+      },
+      {
+        "arm": "C",
+        "round": 1,
+        "accepted": false,
+        "model_status": "candidate_language_error",
+        "gate_enabled": true,
+        "gate_reasons": [
+          {
+            "kind": "model_or_candidate_error",
+            "status": "candidate_language_error"
+          }
+        ]
+      },
+      {
+        "arm": "D",
+        "round": 0,
+        "accepted": false,
+        "model_status": "parsed",
+        "gate_enabled": true,
+        "gate_reasons": [
+          {
+            "kind": "new_legal_false_positive",
+            "evidence_keys": [
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/10/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/11/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/12/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/13/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/14/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/15/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/16/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/17/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/18/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/19/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/2/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/20/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/21/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/22/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/23/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/3/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/4/legal",
+              "1905267c16b0a665ba964ef0fd2dc2b2803f5c550e38ff9486baef17bf3bc6a0/correct/7/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/10/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/12/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/14/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/16/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/17/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/18/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/19/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/2/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/20/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/21/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/22/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/23/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/3/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/4/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/6/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/7/legal",
+              "7b7010ce64c0cf64a1c3cac2a61874b920fbd9ed8103ef235ba0ba12b1b5b132/correct/8/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/10/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/13/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/14/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/15/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/16/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/17/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/18/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/19/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/2/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/20/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/21/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/22/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/23/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/3/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/6/legal",
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/9/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/10/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/11/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/12/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/13/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/14/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/15/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/16/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/17/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/18/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/19/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/2/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/20/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/21/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/22/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/23/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/3/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/6/legal",
+              "f9c9d6846e34b55fae1e11a81bdbf524083e0451f3b4903c14daa5ae9108b23e/correct/9/legal"
+            ]
+          },
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "d2552ac95228a4c6a9910b321ff6f87c76163dc425b90b4eb8ad44e72e5b4a26/correct/4/legal"
+            ]
+          }
+        ]
+      },
+      {
+        "arm": "D",
+        "round": 1,
+        "accepted": false,
+        "model_status": "candidate_language_error",
+        "gate_enabled": true,
+        "gate_reasons": [
+          {
+            "kind": "model_or_candidate_error",
+            "status": "candidate_language_error"
+          }
+        ]
+      }
+    ],
+    "independent_test": [
+      {
+        "arm": "A",
+        "cohort": "original_target",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        }
+      },
+      {
+        "arm": "A",
+        "cohort": "new_payload_fault",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        }
+      },
+      {
+        "arm": "B",
+        "cohort": "original_target",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 103,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        }
+      },
+      {
+        "arm": "B",
+        "cohort": "new_payload_fault",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 103,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        }
+      },
+      {
+        "arm": "C",
+        "cohort": "original_target",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        }
+      },
+      {
+        "arm": "C",
+        "cohort": "new_payload_fault",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        }
+      },
+      {
+        "arm": "D",
+        "cohort": "original_target",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 146,
+          "unknown_scenarios": 0
+        }
+      },
+      {
+        "arm": "D",
+        "cohort": "new_payload_fault",
+        "parent_pass": false,
+        "initial": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        },
+        "final": {
+          "fp": 59,
+          "first_misses": 0,
+          "later_misses": 0,
+          "causal_detections": 0,
+          "attribution_unknown": 97,
+          "unknown_scenarios": 0
+        }
+      }
+    ],
+    "costs": {
+      "model_calls": 8,
+      "model_retries": 0,
+      "known_prompt_tokens": 28214,
+      "known_completion_tokens": 1155,
+      "token_unavailable_calls": 0,
+      "model_wall_seconds": 874.7100765940002,
+      "queries": 150,
+      "compile_attempts": 300,
+      "simulation_attempts": 300,
+      "sim_cycles": 9696,
+      "cpu_seconds": 27.234814999999994,
+      "wall_seconds": 248.92222729200066,
+      "formal_calls": 0,
+      "monetary_cost": null
+    },
+    "limitation": "Procedural checker only. Stat overlap is a conditional engineered contract, not upstream-confirmed. Trigger relevance is an evaluation proxy, not entailment. Gate repairs one designated gap and preserves confirmed replay protection, not all missed obligations.",
+    "feedback_limitation": "r01 parser errors retained; plain arms receive status but not detailed offending identifier on next call. This is a documented interface limitation, not mechanism superiority evidence.",
+    "config_errata": {
+      "kind": "postrun_metadata_correction_no_result_or_config_overwrite",
+      "reason": "prepare inherited obsolete fields from continuation common_config; protocol and executed loops used the new 2x2 design",
+      "actual_acquisitions_per_round": 2,
+      "maximum_development_paired_queries_per_arm": 20,
+      "history_replay_inputs_by_round": [
+        4,
+        6
+      ],
+      "actual_development_paired_queries": {
+        "A": 10,
+        "B": 20,
+        "C": 10,
+        "D": 14
+      },
+      "actual_selection": "C/D last gate-accepted proposal, A/B last executable proposal; invalid candidates retain prior set",
+      "obsolete_fields_in_immutable_config": [
+        "active_queries_per_round",
+        "query_budget_per_parent_arm",
+        "regression_queries_per_round",
+        "final_selection"
+      ],
+      "executed_source": "research_gate_experiment.py in this output directory, frozen before execution",
+      "postrun_source_change": "Future prepare metadata corrected, live source guard added, interface-error feedback provided equally to all arms and gate reason context bounded",
+      "postrun_source_validation": "prepare-only validation and existing acceptance logic qualification; updated feedback not yet run as a new stat experiment",
+      "preserve_prior_results": true
+    },
+    "per_arm_costs": [
+      {
+        "arm": "A",
+        "model_calls": 2,
+        "known_input_tokens": 5472,
+        "known_output_tokens": 297,
+        "development_queries": 10,
+        "compile_attempts": 20,
+        "simulation_attempts": 20,
+        "accepted": 0
+      },
+      {
+        "arm": "B",
+        "model_calls": 2,
+        "known_input_tokens": 7274,
+        "known_output_tokens": 278,
+        "development_queries": 20,
+        "compile_attempts": 40,
+        "simulation_attempts": 40,
+        "accepted": 2
+      },
+      {
+        "arm": "C",
+        "model_calls": 2,
+        "known_input_tokens": 5489,
+        "known_output_tokens": 303,
+        "development_queries": 10,
+        "compile_attempts": 20,
+        "simulation_attempts": 20,
+        "accepted": 0
+      },
+      {
+        "arm": "D",
+        "model_calls": 2,
+        "known_input_tokens": 9979,
+        "known_output_tokens": 277,
+        "development_queries": 14,
+        "compile_attempts": 28,
+        "simulation_attempts": 28,
+        "accepted": 0
+      }
+    ],
+    "independent_denominators": {
+      "A/initial/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "A/initial/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      },
+      "A/final/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "A/final/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      },
+      "B/initial/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "B/initial/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      },
+      "B/final/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "B/final/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      },
+      "C/initial/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "C/initial/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      },
+      "C/final/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "C/final/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      },
+      "D/initial/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "D/initial/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      },
+      "D/final/original_target": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 128,
+        "unknown_queries": 0
+      },
+      "D/final/new_payload_fault": {
+        "scenarios": 6,
+        "legal_control_samples": 198,
+        "first_target_events": 18,
+        "later_target_events": 79,
+        "unknown_queries": 0
+      }
+    }
+  },
+  "ibex": {
+    "results": [
+      {
+        "revision": "before",
+        "cohort": "benchmark",
+        "source_sha256": {
+          "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+          "ibex_compressed_decoder.sv": "b2b3ee1349c9c933dc7735ce004ce078cf3732d7b8e29a641e004bd684fd8166",
+          "tb.sv": "fc78fabb032bf3c2d1e60f9a1f5123c0c9bcdd49c2361b372758f997e158a1a1"
+        },
+        "compile": {
+          "argv": [
+            "iverilog",
+            "-g2012",
+            "-s",
+            "tb",
+            "-o",
+            "sim.out",
+            "ibex_defines.sv",
+            "ibex_compressed_decoder.sv",
+            "tb.sv"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/benchmark",
+          "exit_code": 0,
+          "wall_seconds": 0.0749656689999938
+        },
+        "execute": {
+          "argv": [
+            "vvp",
+            "sim.out"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/benchmark",
+          "exit_code": 1,
+          "wall_seconds": 0.05469956899992212
+        },
+        "original_log_matches": true,
+        "expected_behavior_reproduced": true
+      },
+      {
+        "revision": "before",
+        "cohort": "boundary",
+        "source_sha256": {
+          "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+          "ibex_compressed_decoder.sv": "b2b3ee1349c9c933dc7735ce004ce078cf3732d7b8e29a641e004bd684fd8166",
+          "tb.sv": "ec89c24f5b4ed1598b64affaec5ee6e36bf7ee42bfbeeb402baf73458c4e087d"
+        },
+        "compile": {
+          "argv": [
+            "iverilog",
+            "-g2012",
+            "-s",
+            "tb",
+            "-o",
+            "sim.out",
+            "ibex_defines.sv",
+            "ibex_compressed_decoder.sv",
+            "tb.sv"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/boundary",
+          "exit_code": 0,
+          "wall_seconds": 0.1621803909999926
+        },
+        "execute": {
+          "argv": [
+            "vvp",
+            "sim.out"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/before/boundary",
+          "exit_code": 1,
+          "wall_seconds": 0.09953258999996706
+        },
+        "original_log_matches": true,
+        "expected_behavior_reproduced": true
+      },
+      {
+        "revision": "after",
+        "cohort": "benchmark",
+        "source_sha256": {
+          "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+          "ibex_compressed_decoder.sv": "b568caec0b093981f499c4ea3a514c88c33969fe8e86e3e47a63a74fa275297c",
+          "tb.sv": "fc78fabb032bf3c2d1e60f9a1f5123c0c9bcdd49c2361b372758f997e158a1a1"
+        },
+        "compile": {
+          "argv": [
+            "iverilog",
+            "-g2012",
+            "-s",
+            "tb",
+            "-o",
+            "sim.out",
+            "ibex_defines.sv",
+            "ibex_compressed_decoder.sv",
+            "tb.sv"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/benchmark",
+          "exit_code": 0,
+          "wall_seconds": 0.08002343800001199
+        },
+        "execute": {
+          "argv": [
+            "vvp",
+            "sim.out"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/benchmark",
+          "exit_code": 0,
+          "wall_seconds": 0.05001699199999621
+        },
+        "original_log_matches": true,
+        "expected_behavior_reproduced": true
+      },
+      {
+        "revision": "after",
+        "cohort": "boundary",
+        "source_sha256": {
+          "ibex_defines.sv": "88653467ca0a045a8e4875dd9c1c21b0afdcf045dd5ae7371cccbeb7370ef667",
+          "ibex_compressed_decoder.sv": "b568caec0b093981f499c4ea3a514c88c33969fe8e86e3e47a63a74fa275297c",
+          "tb.sv": "ec89c24f5b4ed1598b64affaec5ee6e36bf7ee42bfbeeb402baf73458c4e087d"
+        },
+        "compile": {
+          "argv": [
+            "iverilog",
+            "-g2012",
+            "-s",
+            "tb",
+            "-o",
+            "sim.out",
+            "ibex_defines.sv",
+            "ibex_compressed_decoder.sv",
+            "tb.sv"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/boundary",
+          "exit_code": 0,
+          "wall_seconds": 0.12414822200003073
+        },
+        "execute": {
+          "argv": [
+            "vvp",
+            "sim.out"
+          ],
+          "cwd": "/mnt/d/AssertionForge-main1/deliverables/research_ibex_20261014_r01/after/boundary",
+          "exit_code": 0,
+          "wall_seconds": 0.0812812210000402
+        },
+        "original_log_matches": true,
+        "expected_behavior_reproduced": true
+      }
+    ],
+    "all_expected_reproduced": true,
+    "model_calls": 0,
+    "native_sva_calls": 0,
+    "formal_calls": 0,
+    "scope": "Original historical benchmark/boundary regression; procedural RTL testbench, not native concurrent SVA or proof."
+  },
+  "full_parent_passes": 0,
+  "repository_commit": null,
+  "repository_version_reason": "Workspace .git is empty; use source hashes and frozen snapshots.",
+  "pending": [
+    "Native four-arm search x non-regression factorial on complex FIFO not executed.",
+    "Full confirmed repair-obligation coverage for six parent bugs and generated assertions on historical Ibex not established.",
+    "spill invalid-payload and intr mask semantics remain unresolved; stat overlap historical semantics unconfirmed.",
+    "FIFO presented original defect remains unknown without a definitive original-target violation witness.",
+    "Contract search remains a finite scheduling policy, not a complete general obligation-solving engine.",
+    "No formal proof runs; supported native SVA simulation is bounded to Verilator feature subset.",
+    "No additional historical bug admitted beyond freshly replayed Ibex #54."
+  ]
+}

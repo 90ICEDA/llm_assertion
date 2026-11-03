@@ -1,0 +1,2 @@
+// Temporal type: demultiplexed payload preservation
+assert property (@(posedge clk) disable iff (rst) m_axis_tvalid[select] |-> (m_axis_tdata[select*DATA_WIDTH +: DATA_WIDTH] == s_axis_tdata));

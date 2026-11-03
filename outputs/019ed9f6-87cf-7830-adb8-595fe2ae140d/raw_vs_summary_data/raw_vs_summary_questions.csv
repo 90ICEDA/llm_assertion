@@ -1,6 +1,0 @@
-question,short_answer,evidence
-raw trace 是否更容易 literal hardcoding？,不明显，至少不是系统性更高。,"overall literal_hardcoding_rate: raw=7.9%, summary=7.8%; 在 17 个重叠 case 中，raw 更高 2 个，summary 更高 2 个。"
-trace summary 是否减少 hardcoding？,只在少数 case 有所减少，但没有形成稳定总体改善。,"summary 在 2/17 个重叠 case 上降低 literal_hardcoding；但 overall literal_hardcoding_rate 仍几乎持平（raw=7.9%, summary=7.8%）。"
-trace summary 是否丢失关键时序信息？,是，丢时序触发信息是它最明显的问题之一。,在 17 个重叠 case 中，summary 在 9 个 case 上 出现 antecedent_hit 或 fail_on_buggy 下降；overlap-only 的 antecedent_hit_rate 从 61.1% 降到 46.3%，fail_on_buggy_rate 从 61.1% 降到 46.3%。
-trace summary 是否让 assertion 更保守？,是，但这种保守往往伴随着 bug 检测下降。,在 17 个重叠 case 中，有 8 个 case 满足 summary 的 correct_pass 更高但 fail_on_buggy / antecedent_hit 更低；overall_union 上 correct_pass_rate=58.8% 略高于 raw 的 57.9%，但 fail_on_buggy_rate 从 60.5% 降到 43.1%。
-trace summary 是否提高 held-out generalization？,没有，甚至整体更差。,overall_union 的 heldout_success_rate 从 raw 的 15.8% 降到 summary 的 7.8%；overlap-only 也从 16.7% 降到 4.9%。虽然 trace_overfit_rate 从 5.3% 降到 3.9%，但这没有换来更高的 held-out success；summary 真正优于 raw 的泛化 case 只有 0 个。

@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "dataset_status": "candidate_pending_wsl_trace_and_hardness_validation",
+  "admission_policy": "No case is admitted until all three correct/buggy trace variants diverge, the golden catches primary and heldout, and at least two nonvacuous weak assertions miss both buggy tracks.",
+  "case_count": 60,
+  "cases": [
+    {
+      "name": "case451_prim_clock_timeout_threshold_off_by_one",
+      "parent_bug_id": "case451_prim_clock_timeout_threshold_off_by_one",
+      "source_project": "opentitan",
+      "source_module": "prim_clock_timeout",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "timeout_threshold_off_by_one",
+      "temporal_type": "counter threshold crossing"
+    },
+    {
+      "name": "case452_prim_clock_timeout_clear_condition",
+      "parent_bug_id": "case452_prim_clock_timeout_clear_condition",
+      "source_project": "opentitan",
+      "source_module": "prim_clock_timeout",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "timeout_clear_condition_conjunction",
+      "temporal_type": "conditional counter clear"
+    },
+    {
+      "name": "case453_prim_count_commit_inversion",
+      "parent_bug_id": "case453_prim_count_commit_inversion",
+      "source_project": "opentitan",
+      "source_module": "prim_count",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "deferred_commit_polarity_inversion",
+      "temporal_type": "commit-gated state transition"
+    },
+    {
+      "name": "case454_prim_count_simultaneous_command",
+      "parent_bug_id": "case454_prim_count_simultaneous_command",
+      "source_project": "opentitan",
+      "source_module": "prim_count",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_increment_decrement_not_suppressed",
+      "temporal_type": "mutually exclusive command arbitration"
+    },
+    {
+      "name": "case455_prim_crc32_set_enable_coupling",
+      "parent_bug_id": "case455_prim_crc32_set_enable_coupling",
+      "source_project": "opentitan",
+      "source_module": "prim_crc32",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "crc_set_update_enable_coupled",
+      "temporal_type": "set-only state update"
+    },
+    {
+      "name": "case456_cc_credit_counter_simultaneous_credit",
+      "parent_bug_id": "case456_cc_credit_counter_simultaneous_credit",
+      "source_project": "common_cells",
+      "source_module": "cc_credit_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "simultaneous_handshake_cancellation",
+      "temporal_type": "cross-cycle protocol/state transition"
+    },
+    {
+      "name": "case457_cc_delta_counter_load_enable_priority",
+      "parent_bug_id": "case457_cc_delta_counter_load_enable_priority",
+      "source_project": "common_cells",
+      "source_module": "cc_delta_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "load_enable_priority",
+      "temporal_type": "cross-cycle protocol/state transition"
+    },
+    {
+      "name": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "parent_bug_id": "case458_cc_delta_counter_sticky_overflow_clear_delay",
+      "source_project": "common_cells",
+      "source_module": "cc_delta_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "sticky_status_clear_on_load",
+      "temporal_type": "cross-cycle protocol/state transition"
+    },
+    {
+      "name": "case459_cc_trip_counter_trip_one_cycle_late",
+      "parent_bug_id": "case459_cc_trip_counter_trip_one_cycle_late",
+      "source_project": "common_cells",
+      "source_module": "cc_trip_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "trip_pulse_and_clear_timing",
+      "temporal_type": "cross-cycle protocol/state transition"
+    },
+    {
+      "name": "case460_cc_stream_delay_exact_delay_minus_one",
+      "parent_bug_id": "case460_cc_stream_delay_exact_delay_minus_one",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_delay",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "exact_configured_latency",
+      "temporal_type": "cross-cycle protocol/state transition"
+    },
+    {
+      "name": "case461_axis_adapter_segment_boundary_early",
+      "parent_bug_id": "case461_axis_adapter_segment_boundary_early",
+      "source_project": "verilog_axis",
+      "source_module": "axis_adapter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "segment_boundary_early",
+      "temporal_type": "cross-cycle protocol boundary"
+    },
+    {
+      "name": "case462_axis_broadcast_partial_ready_loss",
+      "parent_bug_id": "case462_axis_broadcast_partial_ready_loss",
+      "source_project": "verilog_axis",
+      "source_module": "axis_broadcast",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "combination_protocol",
+      "bug_family": "partial_sink_acknowledgement",
+      "temporal_type": "cross-cycle protocol boundary"
+    },
+    {
+      "name": "case463_axis_frame_join_port_skip",
+      "parent_bug_id": "case463_axis_frame_join_port_skip",
+      "source_project": "verilog_axis",
+      "source_module": "axis_frame_join",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "combination_protocol",
+      "bug_family": "frame_join_port_order",
+      "temporal_type": "cross-cycle protocol boundary"
+    },
+    {
+      "name": "case464_axis_frame_length_adjust_truncate_equal",
+      "parent_bug_id": "case464_axis_frame_length_adjust_truncate_equal",
+      "source_project": "verilog_axis",
+      "source_module": "axis_frame_length_adjust",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "combination_protocol",
+      "bug_family": "truncate_equality_boundary",
+      "temporal_type": "cross-cycle protocol boundary"
+    },
+    {
+      "name": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "parent_bug_id": "case465_axis_srl_fifo_simultaneous_occupancy",
+      "source_project": "verilog_axis",
+      "source_module": "axis_srl_fifo",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "simultaneous_push_pop_occupancy",
+      "temporal_type": "cross-cycle protocol boundary"
+    },
+    {
+      "name": "case466_cc_ring_buffer_write_advance_collision",
+      "parent_bug_id": "case466_cc_ring_buffer_write_advance_collision",
+      "source_project": "common_cells",
+      "source_module": "cc_ring_buffer",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "independent_updates_wrongly_exclusive",
+      "temporal_type": "cross-cycle ready-valid/state protocol"
+    },
+    {
+      "name": "case467_cc_lossy_stream_overwrite_wrong_slot",
+      "parent_bug_id": "case467_cc_lossy_stream_overwrite_wrong_slot",
+      "source_project": "common_cells",
+      "source_module": "cc_lossy_valid_to_stream",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "full_queue_latest_item_overwrite",
+      "temporal_type": "cross-cycle ready-valid/state protocol"
+    },
+    {
+      "name": "case468_cc_spill_register_drain_refill_duplicate",
+      "parent_bug_id": "case468_cc_spill_register_drain_refill_duplicate",
+      "source_project": "common_cells",
+      "source_module": "cc_spill_register",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_internal_drain_and_output_consume",
+      "temporal_type": "cross-cycle ready-valid/state protocol"
+    },
+    {
+      "name": "case469_cc_stream_register_stall_overwrite",
+      "parent_bug_id": "case469_cc_stream_register_stall_overwrite",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_register",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "backpressure_payload_stability",
+      "temporal_type": "cross-cycle ready-valid/state protocol"
+    },
+    {
+      "name": "case470_cc_stream_join_dynamic_rotated_ready",
+      "parent_bug_id": "case470_cc_stream_join_dynamic_rotated_ready",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_join_dynamic",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "selected_lane_ready_routing",
+      "temporal_type": "cross-cycle ready-valid/state protocol"
+    },
+    {
+      "name": "case471_prim_sync_reqack_ack_pulse_width",
+      "parent_bug_id": "case471_prim_sync_reqack_ack_pulse_width",
+      "source_project": "opentitan",
+      "source_module": "prim_sync_reqack",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "handshake_ack_pulse_width",
+      "temporal_type": "cross-cycle request/acknowledge protocol"
+    },
+    {
+      "name": "case472_prim_pulse_sync_destination_single_cycle",
+      "parent_bug_id": "case472_prim_pulse_sync_destination_single_cycle",
+      "source_project": "opentitan",
+      "source_module": "prim_pulse_sync",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "cdc_destination_pulse_width",
+      "temporal_type": "CDC toggle-to-pulse reconstruction"
+    },
+    {
+      "name": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "parent_bug_id": "case473_prim_subreg_w1c_simultaneous_set_clear",
+      "source_project": "opentitan",
+      "source_module": "prim_subreg",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "combination_protocol",
+      "bug_family": "w1c_simultaneous_hw_set_sw_clear",
+      "temporal_type": "simultaneous update arbitration and next-state transition"
+    },
+    {
+      "name": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "parent_bug_id": "case474_prim_racl_error_arb_simultaneous_overflow",
+      "source_project": "opentitan",
+      "source_module": "prim_racl_error_arb",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_error_overflow_aggregation",
+      "temporal_type": "same-cycle arbitration collision reporting"
+    },
+    {
+      "name": "case475_prim_clock_gating_sync_enable_latency",
+      "parent_bug_id": "case475_prim_clock_gating_sync_enable_latency",
+      "source_project": "opentitan",
+      "source_module": "prim_clock_gating_sync",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "two_stage_enable_sync_bypass",
+      "temporal_type": "two-cycle synchronizer response latency"
+    },
+    {
+      "name": "case476_sync_reset_release_one_cycle_early",
+      "parent_bug_id": "case476_sync_reset_release_one_cycle_early",
+      "source_project": "verilog_axis",
+      "source_module": "sync_reset",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "reset_release_latency",
+      "temporal_type": "cross-cycle protocol relation"
+    },
+    {
+      "name": "case477_axis_ll_bridge_stall_corrupts_frame_state",
+      "parent_bug_id": "case477_axis_ll_bridge_stall_corrupts_frame_state",
+      "source_project": "verilog_axis",
+      "source_module": "axis_ll_bridge",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "handshake_gated_frame_history",
+      "temporal_type": "cross-cycle protocol relation"
+    },
+    {
+      "name": "case478_axis_srl_register_ready_recovery",
+      "parent_bug_id": "case478_axis_srl_register_ready_recovery",
+      "source_project": "verilog_axis",
+      "source_module": "axis_srl_register",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "backpressure_ready_recovery",
+      "temporal_type": "cross-cycle protocol relation"
+    },
+    {
+      "name": "case479_ll_axis_bridge_ready_polarity",
+      "parent_bug_id": "case479_ll_axis_bridge_ready_polarity",
+      "source_project": "verilog_axis",
+      "source_module": "ll_axis_bridge",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "combination_protocol",
+      "bug_family": "active_low_ready_polarity",
+      "temporal_type": "combinational protocol relation"
+    },
+    {
+      "name": "case480_axis_cobs_decode_ff_zero_suppression",
+      "parent_bug_id": "case480_axis_cobs_decode_ff_zero_suppression",
+      "source_project": "verilog_axis",
+      "source_module": "axis_cobs_decode",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "combination_protocol",
+      "bug_family": "cobs_max_run_zero_suppression",
+      "temporal_type": "combinational protocol relation"
+    },
+    {
+      "name": "case481_cc_addr_decode_overlap_error_suppressed",
+      "parent_bug_id": "case481_cc_addr_decode_overlap_error_suppressed",
+      "source_project": "common_cells",
+      "source_module": "cc_addr_decode",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "overlap_error_suppression",
+      "temporal_type": "combinational protocol relation"
+    },
+    {
+      "name": "case482_cc_stream_demux_unselected_ready_accept",
+      "parent_bug_id": "case482_cc_stream_demux_unselected_ready_accept",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_demux",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "unselected_lane_backpressure_leak",
+      "temporal_type": "combinational protocol relation"
+    },
+    {
+      "name": "case483_cc_stream_filter_drop_backpressured",
+      "parent_bug_id": "case483_cc_stream_filter_drop_backpressured",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_filter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "drop_must_ignore_downstream_backpressure",
+      "temporal_type": "combinational protocol relation"
+    },
+    {
+      "name": "case484_cc_exp_backoff_clear_set_priority",
+      "parent_bug_id": "case484_cc_exp_backoff_clear_set_priority",
+      "source_project": "common_cells",
+      "source_module": "cc_exp_backoff",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "simultaneous_clear_set_priority",
+      "temporal_type": "cross-cycle state transition"
+    },
+    {
+      "name": "case485_cc_max_counter_peak_capture_late",
+      "parent_bug_id": "case485_cc_max_counter_peak_capture_late",
+      "source_project": "common_cells",
+      "source_module": "cc_max_counter",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "new_peak_capture_delayed",
+      "temporal_type": "cross-cycle state transition"
+    },
+    {
+      "name": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "parent_bug_id": "case486_prim_arbiter_fixed_grant_ignores_ready",
+      "source_project": "opentitan",
+      "source_module": "prim_arbiter_fixed",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "combination_protocol",
+      "bug_family": "grant_ready_gating_removed",
+      "temporal_type": "combinational ready/grant protocol relation"
+    },
+    {
+      "name": "case487_prim_onehot_enc_disabled_output_leak",
+      "parent_bug_id": "case487_prim_onehot_enc_disabled_output_leak",
+      "source_project": "opentitan",
+      "source_module": "prim_onehot_enc",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "combination_protocol",
+      "bug_family": "disabled_onehot_output_not_suppressed",
+      "temporal_type": "combinational enable/output protocol relation"
+    },
+    {
+      "name": "case488_prim_reg_we_check_disabled_write_missed",
+      "parent_bug_id": "case488_prim_reg_we_check_disabled_write_missed",
+      "source_project": "opentitan",
+      "source_module": "prim_reg_we_check",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "combination_protocol",
+      "bug_family": "disabled_write_enable_error_suppressed",
+      "temporal_type": "combinational write-enable/error protocol relation"
+    },
+    {
+      "name": "case489_prim_max_tree_invalid_source_selected",
+      "parent_bug_id": "case489_prim_max_tree_invalid_source_selected",
+      "source_project": "opentitan",
+      "source_module": "prim_max_tree",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "combination_protocol",
+      "bug_family": "invalid_source_included_in_maximum",
+      "temporal_type": "combinational valid/data selection protocol"
+    },
+    {
+      "name": "case490_prim_gate_gen_valid_latency_short",
+      "parent_bug_id": "case490_prim_gate_gen_valid_latency_short",
+      "source_project": "opentitan",
+      "source_module": "prim_gate_gen",
+      "source_commit": "3d0ce04455d4568c3d140517555ad95db4fb04c8",
+      "bug_class": "temporal",
+      "bug_family": "valid_pipeline_one_cycle_short",
+      "temporal_type": "exact three-cycle valid-token latency"
+    },
+    {
+      "name": "case491_axis_pipeline_register_valid_latency",
+      "parent_bug_id": "case491_axis_pipeline_register_valid_latency",
+      "source_project": "verilog_axis",
+      "source_module": "axis_pipeline_register",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "three_stage_valid_bypassed",
+      "temporal_type": "exact three-cycle ready/valid pipeline latency"
+    },
+    {
+      "name": "case492_axis_async_fifo_gray_visibility",
+      "parent_bug_id": "case492_axis_async_fifo_gray_visibility",
+      "source_project": "verilog_axis",
+      "source_module": "axis_async_fifo",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "gray_pointer_sync_stage_removed",
+      "temporal_type": "three-stage CDC pointer visibility latency"
+    },
+    {
+      "name": "case493_axis_stat_counter_frame_commit_delay",
+      "parent_bug_id": "case493_axis_stat_counter_frame_commit_delay",
+      "source_project": "verilog_axis",
+      "source_module": "axis_stat_counter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "frame_count_committed_same_cycle",
+      "temporal_type": "deferred frame-count commit after terminal handshake"
+    },
+    {
+      "name": "case494_axis_ram_switch_response_pipeline",
+      "parent_bug_id": "case494_axis_ram_switch_response_pipeline",
+      "source_project": "verilog_axis",
+      "source_module": "axis_ram_switch",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "response_pipeline_stage_skipped",
+      "temporal_type": "three-stage arbitration response latency"
+    },
+    {
+      "name": "case495_axis_fifo_adapter_commit_pulse_width",
+      "parent_bug_id": "case495_axis_fifo_adapter_commit_pulse_width",
+      "source_project": "verilog_axis",
+      "source_module": "axis_fifo_adapter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "adapter_commit_pulse_stretched",
+      "temporal_type": "single-cycle width-adapter commit pulse"
+    },
+    {
+      "name": "case496_cc_stream_throttle_release_early",
+      "parent_bug_id": "case496_cc_stream_throttle_release_early",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_throttle",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "throttle_counter_loaded_one_short",
+      "temporal_type": "exact stream-throttle release interval"
+    },
+    {
+      "name": "case497_cc_cdc_4phase_ack_sync_depth",
+      "parent_bug_id": "case497_cc_cdc_4phase_ack_sync_depth",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_4phase",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "ack_synchronizer_stage_removed",
+      "temporal_type": "three-stage four-phase acknowledgement synchronization"
+    },
+    {
+      "name": "case498_cc_serial_deglitch_qualification_short",
+      "parent_bug_id": "case498_cc_serial_deglitch_qualification_short",
+      "source_project": "common_cells",
+      "source_module": "cc_serial_deglitch",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "qualification_count_reduced",
+      "temporal_type": "three-consecutive-sample glitch qualification"
+    },
+    {
+      "name": "case499_cc_shift_reg_gated_stage_bypass",
+      "parent_bug_id": "case499_cc_shift_reg_gated_stage_bypass",
+      "source_project": "common_cells",
+      "source_module": "cc_shift_register_gated",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "enabled_shift_stage_bypassed",
+      "temporal_type": "three accepted-shift data latency"
+    },
+    {
+      "name": "case500_cc_isochronous_handshake_early_drop",
+      "parent_bug_id": "case500_cc_isochronous_handshake_early_drop",
+      "source_project": "common_cells",
+      "source_module": "cc_isochronous_4phase_handshake",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "request_drops_on_unsynchronized_ack",
+      "temporal_type": "synchronized four-phase request release ordering"
+    },
+    {
+      "name": "case501_axis_async_fifo_reset_release_skew",
+      "parent_bug_id": "case501_axis_async_fifo_reset_release_skew",
+      "source_project": "verilog_axis",
+      "source_module": "axis_async_fifo",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "reset_release_synchronizer_depth",
+      "temporal_type": "two-stage reset-release qualification before accepting a source beat"
+    },
+    {
+      "name": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "parent_bug_id": "case502_axis_pipeline_fifo_stall_valid_gap",
+      "source_project": "verilog_axis",
+      "source_module": "axis_pipeline_fifo",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "backpressure_valid_persistence",
+      "temporal_type": "valid and payload persistence across an arbitrary multi-cycle downstream stall"
+    },
+    {
+      "name": "case503_cc_cdc_2phase_ack_returns_early",
+      "parent_bug_id": "case503_cc_cdc_2phase_ack_returns_early",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_2phase",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "cdc_ack_synchronizer_depth",
+      "temporal_type": "request acknowledgement after three destination samples rather than two"
+    },
+    {
+      "name": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "parent_bug_id": "case504_cc_cdc_fifo_gray_pointer_visible_early",
+      "source_project": "common_cells",
+      "source_module": "cc_cdc_fifo_gray",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "gray_pointer_synchronizer_depth",
+      "temporal_type": "three-sample Gray-pointer visibility delay across a clock-domain boundary"
+    },
+    {
+      "name": "case505_axis_stat_counter_frame_pulse_early",
+      "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+      "source_project": "verilog_axis",
+      "source_module": "axis_stat_counter",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "temporal_cross_cycle",
+      "bug_family": "frame_status_pipeline_latency",
+      "temporal_type": "two-cycle registered frame-completion notification"
+    },
+    {
+      "name": "case506_axis_crosspoint_simultaneous_source_priority",
+      "parent_bug_id": "case506_axis_crosspoint_simultaneous_source_priority",
+      "source_project": "verilog_axis",
+      "source_module": "axis_crosspoint",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "combination_protocol",
+      "bug_family": "simultaneous_contender_priority",
+      "temporal_type": "same-cycle arbitration under simultaneous valid sources and ready sink"
+    },
+    {
+      "name": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "parent_bug_id": "case507_cc_rr_arb_tree_locked_grant_replaced",
+      "source_project": "common_cells",
+      "source_module": "cc_rr_arb_tree",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "locked_grant_persistence",
+      "temporal_type": "grant ownership across a stalled arbitration transaction"
+    },
+    {
+      "name": "case508_cc_stream_fork_partial_ready_accept",
+      "parent_bug_id": "case508_cc_stream_fork_partial_ready_accept",
+      "source_project": "common_cells",
+      "source_module": "cc_stream_fork",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "fork_atomic_ready_conjunction",
+      "temporal_type": "atomic same-cycle fanout acceptance across independently backpressured branches"
+    },
+    {
+      "name": "case509_axis_switch_overlap_route_priority",
+      "parent_bug_id": "case509_axis_switch_overlap_route_priority",
+      "source_project": "verilog_axis",
+      "source_module": "axis_switch",
+      "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+      "bug_class": "combination_protocol",
+      "bug_family": "overlapping_route_priority",
+      "temporal_type": "same-cycle deterministic route selection when two decode regions overlap"
+    },
+    {
+      "name": "case510_cc_spill_register_flush_push_priority",
+      "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+      "source_project": "common_cells",
+      "source_module": "cc_spill_register_flushable",
+      "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+      "bug_class": "combination_protocol",
+      "bug_family": "flush_over_push_priority",
+      "temporal_type": "next-cycle state after simultaneous flush and input acceptance"
+    }
+  ]
+}

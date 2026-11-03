@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -145,7 +145,7 @@
+ end
+ 
+ always @(posedge clk) begin
+-    acc_reg <= acc_next;
++    acc_reg <= acc_reg; // ASSERTIONFORGE_MUTATION: state update suppressed
+     frame_reg <= frame_next;
+     s_axis_tready_reg <= s_axis_tready_next;
+ 

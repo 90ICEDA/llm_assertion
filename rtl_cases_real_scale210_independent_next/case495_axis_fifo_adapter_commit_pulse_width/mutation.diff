@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -13,7 +13,7 @@
+   always @(posedge clk_i or negedge rst_ni) begin
+     if (!rst_ni) begin valid_reg<=0; hold_reg<=0; end
+     else if (output_ready_i) begin
+-      valid_reg <= delimiter_i | 1'b0;
++      valid_reg <= delimiter_i | hold_reg;
+       hold_reg <= delimiter_i;
+     end
+   end

@@ -1,0 +1,2 @@
+// Temporal type: registered demultiplexer readiness
+assert property (@(posedge clk) disable iff (rst) (enable && !drop && m_axis_tready[select] && !(|m_axis_tvalid)) |=> s_axis_tready);

@@ -1,0 +1,111 @@
+[
+  {
+    "candidate": "partial_adjacent",
+    "origin": "handwritten local control, not model output",
+    "labels": [
+      "valid_check",
+      "adjacent_length"
+    ],
+    "history_targets": 6,
+    "history_detected": 6,
+    "current_targets": 2,
+    "current_detected": 0,
+    "false_alarm_samples": 0,
+    "critical_unknown": 0,
+    "current_missing_trigger": 2,
+    "ordinary_accept": false,
+    "history_accept": false,
+    "decision_reason": "current targets + all reference-correct sample guards + current triggers; H additionally preserves adjacent detections"
+  },
+  {
+    "candidate": "replacement_separated",
+    "origin": "handwritten local control, not model output",
+    "labels": [
+      "valid_check",
+      "separated_length"
+    ],
+    "history_targets": 6,
+    "history_detected": 0,
+    "current_targets": 2,
+    "current_detected": 2,
+    "false_alarm_samples": 0,
+    "critical_unknown": 0,
+    "current_missing_trigger": 0,
+    "ordinary_accept": true,
+    "history_accept": false,
+    "decision_reason": "current targets + all reference-correct sample guards + current triggers; H additionally preserves adjacent detections"
+  },
+  {
+    "candidate": "union",
+    "origin": "handwritten local control, not model output",
+    "labels": [
+      "valid_check",
+      "adjacent_length",
+      "separated_length"
+    ],
+    "history_targets": 6,
+    "history_detected": 6,
+    "current_targets": 2,
+    "current_detected": 2,
+    "false_alarm_samples": 0,
+    "critical_unknown": 0,
+    "current_missing_trigger": 0,
+    "ordinary_accept": true,
+    "history_accept": true,
+    "decision_reason": "current targets + all reference-correct sample guards + current triggers; H additionally preserves adjacent detections"
+  },
+  {
+    "candidate": "full_length",
+    "origin": "handwritten local control, not model output",
+    "labels": [
+      "valid_check",
+      "all_length"
+    ],
+    "history_targets": 6,
+    "history_detected": 6,
+    "current_targets": 2,
+    "current_detected": 2,
+    "false_alarm_samples": 0,
+    "critical_unknown": 0,
+    "current_missing_trigger": 0,
+    "ordinary_accept": true,
+    "history_accept": true,
+    "decision_reason": "current targets + all reference-correct sample guards + current triggers; H additionally preserves adjacent detections"
+  },
+  {
+    "candidate": "overbroad_single_beat",
+    "origin": "handwritten local control, not model output",
+    "labels": [
+      "valid_check",
+      "single_beat_length"
+    ],
+    "history_targets": 6,
+    "history_detected": 6,
+    "current_targets": 2,
+    "current_detected": 2,
+    "false_alarm_samples": 8,
+    "critical_unknown": 0,
+    "current_missing_trigger": 0,
+    "ordinary_accept": false,
+    "history_accept": false,
+    "decision_reason": "current targets + all reference-correct sample guards + current triggers; H additionally preserves adjacent detections"
+  },
+  {
+    "candidate": "vacuous",
+    "origin": "handwritten local control, not model output",
+    "labels": [
+      "valid_check",
+      "never_length"
+    ],
+    "history_targets": 6,
+    "history_detected": 0,
+    "current_targets": 2,
+    "current_detected": 0,
+    "false_alarm_samples": 0,
+    "critical_unknown": 0,
+    "current_missing_trigger": 2,
+    "ordinary_accept": false,
+    "history_accept": false,
+    "decision_reason": "current targets + all reference-correct sample guards + current triggers; H additionally preserves adjacent detections"
+  }
+]

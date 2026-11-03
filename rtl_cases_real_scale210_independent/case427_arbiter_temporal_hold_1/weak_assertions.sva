@@ -1,0 +1,17 @@
+// Deliberately weak admission candidates for case427_arbiter_temporal_hold_1.
+// PENDING VALIDATION: presence in this file is not evidence that a candidate misses the bug.
+
+// weak_single_cycle_implication: Checks only the current sample after a reduced trigger and cannot enforce the required cross-cycle history.
+assert property (@(posedge clk) disable iff (rst) (|request) |-> (|grant));
+
+// weak_final_output_only: Observes only that the final output is known when already asserted; it ignores how and when that output was reached.
+assert property (@(posedge clk) disable iff (rst) (|grant) |-> !$isunknown(|grant));
+
+// weak_delay_removed: Removes the next-cycle or multi-cycle delay from the intended temporal relationship.
+assert property (@(posedge clk) disable iff (rst) ((|request) && !(|grant)) |-> (|grant));
+
+// weak_antecedent_removed: Drops the behavioral trigger and reduces the check to output definedness.
+assert property (@(posedge clk) disable iff (rst) 1'b1 |-> !$isunknown(|grant));
+
+// weak_simple_invariant: A generic signal-integrity invariant contains no ordering, exact delay, duration, or protocol condition.
+assert property (@(posedge clk) disable iff (rst) 1'b1 |-> !$isunknown(|request));

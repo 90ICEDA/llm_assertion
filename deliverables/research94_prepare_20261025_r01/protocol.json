@@ -1,0 +1,38 @@
+{
+  "name": "research94_prospective_three_rule_pilot",
+  "parent": "original Ibex #166 decoder",
+  "retrospective_task_selection": "Known OP repair task and initial partial BRANCH baseline. Future model outputs are not selected or filtered after observation. Not a new historical bug sample.",
+  "first_proposal": "ONE fresh shared real response. No reuse of research61/92 success or failure responses as the first proposal. Initial request byte-identical O/H/R.",
+  "arms": {
+    "O": "R0: current9 sampling/trigger/all-property + search36 acceptance; history is measurement only.",
+    "H": "R0 plus absolute full151: native healthy, zero false alarms/misses/critical unknown and complete required triggers.",
+    "R": "R0 plus existing obligation-preservation gate and all-property history guard; same151 evidence and same strict full scope."
+  },
+  "contrasts": "Paired first-proposal decision effect separately from independently sampled second-round policy outcomes. H/R receive exactly the same historical facts and message construction; decision rules alone differ.",
+  "comparator_overlap": "R already includes full absolute acceptance. On complete identity-preserving fixed evidence H/R may be equivalent. Agreement is not relative-comparator gain. No weakening H to force discrimination.",
+  "feedback": "O only current9/search36 raw diagnostics. H/R same current9/search36/history115 diagnostics. No arm names, hidden gate results, other responses or independent outcomes in prompts.",
+  "maximum_calls": 4,
+  "maximum_per_trajectory": 2,
+  "first_shared_physical_calls": 1,
+  "maximum_independent_continuations_per_arm": 1,
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "endpoint": "https://api.highwayapi.ai/openai/chat/completions",
+  "seeds": [
+    9407,
+    9408
+  ],
+  "temperature": 0.2,
+  "token_cap": 120000,
+  "output_token_cap": 1024,
+  "timeout_seconds": 300,
+  "retries": 0,
+  "maximum_native_compile_run": 30,
+  "maximum_native_execute_run": 30,
+  "preparation_native_compiles": 18,
+  "stopping": "Accepting arms stop; each rejected arm gets at most one independent continuation. Any transport failure stops entire pilot. No duplicate-call retry, replenishment, field-specific plan loop or automatic next seed.",
+  "qualification": "Baseline executes, has real public OP gap and270 BRANCH protections. Native positive/negative decision controls pass. This is preflight, not successful model generation.",
+  "terminal": "All arms stop and freeze before one fresh96-word four-config test batch. Only run holdout if at least one arm accepts; failed/fallback arms remain in denominator. Same words do not become independent samples by being replayed for3 arms.",
+  "expansion_gate": "All arms complete without infrastructure error; shared fresh proposal ordinary-accepts but a historical rule extra-rejects; that SAME rejected historical arm subsequently accepts within2 logical calls and passes new independent tests. Otherwise stop, keep negative/non-discriminating result. Passing does NOT authorize expansion.",
+  "scope": "One prospective pilot on known task; no stable generation or recovery rate, no formal proof. Old research93 tests protected and not used to tune rules.",
+  "created": 1792923203.4208043
+}

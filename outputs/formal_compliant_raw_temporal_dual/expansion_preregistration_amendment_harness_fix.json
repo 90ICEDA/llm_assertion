@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "locked_before_restarted_generation",
+  "amends": "expansion_preregistration.json",
+  "scope_change": false,
+  "models_change": false,
+  "methods_change": false,
+  "k_change": false,
+  "case_selection_change": false,
+  "outcome_inspected": false,
+  "persisted_candidate_count_before_fix": 0,
+  "failed_execution": {
+    "case_id": "case426_axis_fifo_temporal_hold_3",
+    "model": "GPT",
+    "method": "spec_rtl_raw_trace",
+    "failure": "testbench module parser did not follow a local Verilog include",
+    "candidate_persisted": false
+  },
+  "technical_fixes": [
+    "resolve the testbench module through local include files",
+    "supply the case directory as the Icarus include path",
+    "derive reset polarity from allowed signals instead of hard-coding rst_n",
+    "use an event-driven procedural monitor for sealed combinational cases without a clock or reset",
+    "remove unused DUT-module-name parsing so legal SystemVerilog module import syntax is accepted",
+    "accept the corresponding reset expression in the evaluator",
+    "persist generated candidates before compilation or elaboration"
+  ],
+  "prompt_change_reason": "The sealed pristine cases use either active-high rst or active-low reset names. The prior template required rst_n even when rst_n was absent from allowed signals, making the prompt internally inconsistent.",
+  "sha256_after_fix": {
+    "src/run_multi_model_small_eval.py": "b93023fd7a8de97dcc0dd5ae9cd5c19e9102e362ce2c3b6d2ab1f89b7454eed1",
+    "src/run_trace_abstraction_prototype.py": "f63d22024496d58e106f25351210b9e8bc161fb553d755e88d154f8a8ba77a91",
+    "src/run_trace_representation_ablation.py": "f12ba59fc86c56d9b1555959ac82b73b8ef6ffac591e11dd449703db60943b50"
+  },
+  "representative_prompt_sha256": {
+    "before_invalid_rst_n": "3ec8befa1c930c12858120d3b3bc9e82e1a44df803d7a59b8d4e392bde941c55",
+    "after_active_high_rst": "4384bbc8d29c7b8856d381c9bff1442944d59edb24df2f16c5695d30f6480b42"
+  }
+}

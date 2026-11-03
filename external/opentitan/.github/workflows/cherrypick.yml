@@ -1,0 +1,83 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Cherry-pick Pull Request
+on:
+  pull_request_target:
+    types: [closed, labeled]
+
+permissions:
+  contents: read
+
+# 2 backport jobs may be running simultaneously if the merge and label event happen in quick
+# succession. Serialize them based on PR number to avoid this.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  cherrypick:
+    # NOTE: We currently need these permissions because we create pull request with the repo-scoped
+    # default token. We should in the future move to a PAT owned by lowrisc-bot and create pull request
+    # on its behalf.
+    permissions:
+      # Needed for authentication.
+      id-token: write
+      # Needed for the action to create branch.
+      contents: write
+
+    name: Cherry-pick Pull Request
+    if: github.event.pull_request.merged == true && (github.event_name != 'labeled' || startsWith('CherryPick:', github.event.label.name))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Downgrade Git version
+        run: |
+          # FIXME: Due to a regression in Git 2.54.0, we temporarily pin a downgraded version.
+          # Ubuntu maintains an apt-repository for candidate/stable releases, but otherwise older
+          # versions are not available. We could optionally compile Git 2.53.0 from source, but
+          # instead we just revert to system Git 2.43.0 since we don't need any of the newer
+          # features. This should allow the cherry-picking flow to work consistently. When Git
+          # 2.55.0 (which contains a fix) is available and packaged in the GitHub ubuntu 2404
+          # runners, this step should be dropped.
+          # See: https://lore.kernel.org/git/CANOh7gEEw+6146NN3JV8EYxQarj0KkyA7r3RZ6v-DxeqQZLrCA@mail.gmail.com/
+          sudo apt-get update
+          mkdir -p /tmp/git-downgrade
+          cd /tmp/git-downgrade
+          apt-get download git=1:2.43.0* git-man=1:2.43.0*
+          sudo dpkg -i *.deb
+          sudo apt-get -f install || true
+          sudo apt-mark hold git git-man
+          git --version
+
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Obtain token to create PR
+        id: pr_token
+        run: |
+          # Obtain OIDC token from GitHub
+          ID_TOKEN=$(curl -sSf -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://ca.lowrisc.org" | jq -r .value)
+          echo "::add-mask::$ID_TOKEN"
+          # Exchange for a token to create PR
+          PR_TOKEN=$(curl -sSf -X POST -H "Authorization: Bearer $ID_TOKEN" "https://ca.lowrisc.org/api/github/repos/${{ github.repository }}/token")
+          echo "::add-mask::$PR_TOKEN"
+          echo "pr_token=$PR_TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Create backport PRs
+        id: backport
+        uses: korthout/backport-action@66065406958f46e82238fd59546f5a99e69e22aa # v4.5.2
+        with:
+          label_pattern: "^CherryPick:([^ ]+)$"
+          pull_title: "Cherry-pick to ${target_branch}: ${pull_title}"
+          github_token: ${{ steps.pr_token.outputs.pr_token }}
+          pull_description: |
+            This is an automatic cherry-pick of #${pull_number} to branch `${target_branch}`.
+
+      - name: Apply label for manually cherry picking
+        if: ${{ steps.backport.outputs.was_successful == 'false' }}
+        env:
+          GH_TOKEN: ${{ steps.pr_token.outputs.pr_token }}
+        run: |
+          gh pr edit ${{ github.event.pull_request.number }} --add-label 'Manually CherryPick'

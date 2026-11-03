@@ -1,0 +1,10 @@
+--- correct.v
++++ buggy.v
+@@ -12,6 +12,6 @@
+   always @(posedge clk_i or negedge rst_ni)
+     if (!rst_ni) valid_pipe <= 3'b000;
+     else if (ready_i) valid_pipe <= {valid_pipe[1:0],s_valid_i};
+-  assign q_o = valid_pipe[2];
++  assign q_o = valid_pipe[1];
+   assign state_o = {5'b0,valid_pipe};
+ endmodule

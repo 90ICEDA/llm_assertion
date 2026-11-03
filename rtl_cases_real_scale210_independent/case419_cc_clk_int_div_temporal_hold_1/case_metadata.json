@@ -1,0 +1,90 @@
+{
+  "name": "case419_cc_clk_int_div_temporal_hold_1",
+  "parent_bug_id": "case419_cc_clk_int_div_temporal_hold_1",
+  "source_project": "common_cells",
+  "source_url": "https://github.com/pulp-platform/common_cells.git",
+  "source_commit": "03d98106aa19952a10360d2230def85144a0008b",
+  "source_module": "cc_clk_int_div",
+  "source_files": [
+    "external/common_cells/src/cc_clk_int_div.sv"
+  ],
+  "top_file": "external/common_cells/src/cc_clk_int_div.sv",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "gate_is_open_q state update is suppressed",
+  "spec": "Reset closes the integral-divider output gate. At a sampled clk_i edge with reset asserted, the exposed gate-open state and clk_o are low.",
+  "mutation_edits": [
+    {
+      "line": 365,
+      "search": "      gate_is_open_q <= 1'b0;",
+      "replace": "      gate_is_open_q <= gate_is_open_q; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "gate_is_open_q",
+  "relevant_signals": [
+    "clk_i",
+    "rst_ni",
+    "en_i",
+    "test_mode_en_i",
+    "div_i[3:0]",
+    "div_valid_i",
+    "div_ready_o",
+    "gate_en_q",
+    "gate_is_open_q",
+    "clk_o",
+    "cycl_count_o[3:0]"
+  ],
+  "temporal_type": "cross-cycle sequential state transition",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "e637e9a59f5651261853105b73d8c801146ae691618c4d490b593bd6d902ddf4",
+  "buggy_sha256": "f42338710829507306f027789bf9306d4fd055cd257e2604cdfd3737ccd08c29",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk_i) !rst_ni |-> (!gate_is_open_q && !clk_o));",
+    "temporal_type": "cross-cycle sequential state transition"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "gate_is_open_q"
+      ],
+      "good": {
+        "gate_is_open_q": "0"
+      },
+      "bad": {
+        "gate_is_open_q": "x"
+      }
+    },
+    "heldout": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "gate_is_open_q"
+      ],
+      "good": {
+        "gate_is_open_q": "0"
+      },
+      "bad": {
+        "gate_is_open_q": "x"
+      }
+    },
+    "decoy": {
+      "time_ps": 0,
+      "observation_index": 0,
+      "signals": [
+        "gate_is_open_q"
+      ],
+      "good": {
+        "gate_is_open_q": "0"
+      },
+      "bad": {
+        "gate_is_open_q": "x"
+      }
+    }
+  },
+  "contract_status": "formal_complete"
+}

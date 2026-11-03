@@ -1,0 +1,67 @@
+{
+  "assertions": [
+    {
+      "property": "mvalid && mready && ref_count > 0 |-> mdata == ref_expected",
+      "reason": "Ensures that at an accepted output, with an outstanding input, the output payload equals the oldest accepted input payload at that same sample.",
+      "obligations": [
+        "order_payload"
+      ],
+      "id": "a0",
+      "derived_antecedent": "mvalid && mready && ref_count > 0",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "mdata == ref_expected"
+    },
+    {
+      "property": "drain_due && ref_count > 0 |-> $past(mvalid && mready && ref_count > 0) && mdata == ref_expected",
+      "reason": "Ensures that at a fair-drain checkpoint, if there are outstanding accepted inputs, the last output must match the oldest outstanding input. This complements the existing property by focusing on the condition where the drain is due and there are outstanding inputs.",
+      "obligations": [
+        "drain_no_loss"
+      ],
+      "id": "a1",
+      "derived_antecedent": "drain_due && ref_count > 0",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "$past(mvalid && mready && ref_count > 0) && mdata == ref_expected"
+    },
+    {
+      "property": "((mvalid && (!(mready)) && (!(rst)))) |=> (($stable(mvalid) && $stable(mdata)))",
+      "obligations": [
+        "stall_stability"
+      ],
+      "reason": "Ensures mvalid and mdata remain stable during backpressure, except during reset.",
+      "id": "a2",
+      "derived_antecedent": "((mvalid && (!(mready)) && (!(rst))))",
+      "implication": "|=>",
+      "derived_delay": 1,
+      "consequent": "(($stable(mvalid) && $stable(mdata)))"
+    },
+    {
+      "property": "mready && mvalid |-> (ref_count > 0 && mdata == ref_expected)",
+      "obligations": [
+        "no_unsolicited_output",
+        "reset_cancellation"
+      ],
+      "reason": "The new assertion checks that every accepted output corresponds to the current oldest accepted, uncancelled input. It ensures that reset cancels all pending inputs and that a cancelled payload does not reappear. The assertion is triggered on the output acceptance edge and checks the existence and identity of the output.",
+      "id": "a3",
+      "derived_antecedent": "mready && mvalid",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "(ref_count > 0 && mdata == ref_expected)"
+    },
+    {
+      "property": "(mvalid && !mready) |=> mdata == $past(mdata)",
+      "reason": "The existing property checks that if an output is valid but not accepted at sample t, it must still be valid with the same payload at t+1, regardless of ready at t+1. However, it does not account for the possibility that the output might be valid and not accepted due to backpressure, which can cause the output to remain valid with the same payload until the next edge.",
+      "obligations": [
+        "stall_stability"
+      ],
+      "id": "a4",
+      "derived_antecedent": "(mvalid && !mready)",
+      "implication": "|=>",
+      "derived_delay": 1,
+      "consequent": "mdata == $past(mdata)"
+    }
+  ],
+  "syntax_profile": "qualified_sampled_reset_v3",
+  "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+}

@@ -1,0 +1,27 @@
+// Task-4 weak candidates; NOT semantic-validation results.
+// Every property must be checked on correct/buggy primary and held-out traces.
+
+// W1_single_cycle_implication
+// antecedent_nonempty: true
+// expected weakness: Samples only one bit and accepts multi-hot combinations containing it.
+W1_single_cycle_implication: assert property (@(oh_i or rst_ni) disable iff (!rst_ni) oh_i[0] |-> !err_o);
+
+// W2_final_output_only
+// antecedent_nonempty: true
+// expected weakness: Checks only that the error output is known, not deasserted.
+W2_final_output_only: assert property (@(oh_i or rst_ni) disable iff (!rst_ni) $onehot(oh_i) |-> !$isunknown(err_o));
+
+// W3_delay_removed
+// antecedent_nonempty: true
+// expected weakness: Introduces a delayed endpoint and can miss a same-cycle protocol error.
+W3_delay_removed: assert property (@(oh_i or rst_ni) disable iff (!rst_ni) $onehot(oh_i) |=> !err_o);
+
+// W4_antecedent_removed
+// antecedent_nonempty: false
+// expected weakness: Drops the valid-code condition and reduces the assertion to an output level.
+W4_antecedent_removed: assert property (@(oh_i or rst_ni) disable iff (!rst_ni) !err_o);
+
+// W5_simple_invariant
+// antecedent_nonempty: false
+// expected weakness: A Boolean range invariant carries no one-hot semantics.
+W5_simple_invariant: assert property (@(oh_i or rst_ni) disable iff (!rst_ni) err_o == 1'b0 || err_o == 1'b1);

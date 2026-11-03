@@ -1,0 +1,5 @@
+assert property (@(posedge clk) disable iff (rst) ((!rst && sync_out) |-> sync_out));
+assert property (@(posedge clk) disable iff (rst) (sync_out |-> !$isunknown(sync_out)));
+assert property (@(posedge clk) disable iff (rst) (!rst |-> !$isunknown(rst)));
+assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(sync_out)));
+assert property (@(posedge clk) disable iff (rst) (1'b1 |-> !$isunknown(clk)));

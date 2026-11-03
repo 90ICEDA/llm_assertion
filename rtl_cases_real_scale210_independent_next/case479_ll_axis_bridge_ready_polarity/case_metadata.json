@@ -1,0 +1,104 @@
+{
+  "name": "case479_ll_axis_bridge_ready_polarity",
+  "parent_bug_id": "case479_ll_axis_bridge_ready_polarity",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "ll_axis_bridge",
+  "source_files": [
+    "external/verilog-axis/rtl/ll_axis_bridge.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/ll_axis_bridge.v",
+  "bug_class": "combination_protocol",
+  "bug_family": "active_low_ready_polarity",
+  "bug_type": "LocalLink destination-ready is active low and is exactly the inverse of AXIS m_axis_tready.",
+  "spec": "LocalLink destination-ready is active low and is exactly the inverse of AXIS m_axis_tready.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (1'b1 |-> (ll_dst_rdy_n == !m_ready)));",
+    "temporal_type": "exact sampled protocol relation"
+  },
+  "mutation_edits": [
+    {
+      "search": "assign ll_dst_rdy_out_n = !m_axis_tready;",
+      "replace": "// ASSERTIONFORGE_MUTATION: active-low ready polarity inverted\nassign ll_dst_rdy_out_n = m_axis_tready;"
+    }
+  ],
+  "mutation_signal": "protocol state or polarity",
+  "relevant_signals": [
+    "m_ready",
+    "ll_dst_rdy_n",
+    "m_valid",
+    "m_data"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 0,
+      "sample_index": 0,
+      "good_row_index": 0,
+      "bad_row_index": 0,
+      "signals": [
+        "ll_dst_rdy_n"
+      ],
+      "good_values": {
+        "ll_dst_rdy_n": "1"
+      },
+      "bad_values": {
+        "ll_dst_rdy_n": "0"
+      },
+      "good_trace_sha256": "2933f5a6532a23987ab99b39dbf78b75ed03ca9c229f74dc9c2559af5e28c32e",
+      "bad_trace_sha256": "d9045ea7d779cb17baa1b88fe7ce800b0a9e9b360bd9bd86d08d2ef4aec6a026",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 0,
+      "sample_index": 0,
+      "good_row_index": 0,
+      "bad_row_index": 0,
+      "signals": [
+        "ll_dst_rdy_n"
+      ],
+      "good_values": {
+        "ll_dst_rdy_n": "1"
+      },
+      "bad_values": {
+        "ll_dst_rdy_n": "0"
+      },
+      "good_trace_sha256": "df4cd4442eb276397d7a88584adeba4d94256487d2b936eec7818ed4309c37de",
+      "bad_trace_sha256": "021b1e7290b3c82ae55c3381f226691823bf72ce4c6a8026da11d33955ef25c6",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 0,
+      "sample_index": 0,
+      "good_row_index": 0,
+      "bad_row_index": 0,
+      "signals": [
+        "ll_dst_rdy_n"
+      ],
+      "good_values": {
+        "ll_dst_rdy_n": "1"
+      },
+      "bad_values": {
+        "ll_dst_rdy_n": "0"
+      },
+      "good_trace_sha256": "b9b51f5c6951dc2e2845ef4ec286680bcab3a5e64ab07bc5e741efc9c41a7103",
+      "bad_trace_sha256": "3a666f54cf5ccce2254b85c8e969cfa3dc45dc5fffab8afad28e01119091bb59",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "combinational protocol relation",
+  "mutation_kind": "real_rtl_mutation",
+  "correct_sha256": "dca9ea8b547142568baa94066ad0c5e37dcb157ed39069802b0f9391a19c791d",
+  "buggy_sha256": "3d8bde46951722955e99a1d6a297e3a7cf92a4b68c50060da4f57761780637f9",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_admitted",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

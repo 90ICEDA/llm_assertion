@@ -1,0 +1,22 @@
+{
+  "parent_run": "/mnt/d/AssertionForge-main1/deliverables/research_native_20261014_r01/closed_loop",
+  "extra_model_call_budget": 1,
+  "total_attempts_including_parent": 3,
+  "options": {
+    "seed": 2026101431,
+    "temperature": 0,
+    "num_predict": 640,
+    "num_ctx": 16384,
+    "num_gpu": 0,
+    "num_thread": 8
+  },
+  "development_seed": 2026101431,
+  "independent_seed": 2026101497,
+  "independent_parameters": {
+    "depth": 4,
+    "pipeline": 2
+  },
+  "purpose": "repair initial false positives with compact actual feedback, then native replay and frozen independent test",
+  "trigger_scope": "Initial model diagnostic trigger mismatches unconditional SVA. Metadata diagnostics cannot establish trigger preservation; gate must retain this unknown.",
+  "sampling": "same model, options, RTL and development evidence as parent; only feedback selection is compacted. Additional attempt/cost explicitly separate."
+}

@@ -1,0 +1,22 @@
+// Weak assertion candidates for case442_cc_stream_mux_protocol_suppress_2
+// STATUS: PENDING FORMAL VALIDATION; this file makes no admission claim.
+
+// weak_01_single_cycle_implication [single_cycle_implication]
+// nonempty_antecedent=true
+assert property (@(*) inp_data_i |-> !$isunknown(oup_valid_o));
+
+// weak_02_final_output_only [final_output_only]
+// nonempty_antecedent=false
+assert property (@(*) !$isunknown(oup_valid_o));
+
+// weak_03_delay_removed [delay_removed]
+// nonempty_antecedent=true
+assert property (@(*) inp_data_i |-> oup_valid_o);
+
+// weak_04_antecedent_removed [antecedent_removed]
+// nonempty_antecedent=false
+assert property (@(*) !$isunknown(oup_valid_o));
+
+// weak_05_simple_invariant [simple_invariant]
+// nonempty_antecedent=false
+assert property (@(*) !$isunknown(inp_data_i) && !$isunknown(oup_valid_o));

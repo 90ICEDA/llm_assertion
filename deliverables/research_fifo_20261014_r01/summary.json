@@ -1,0 +1,90 @@
+{
+  "runs": 96,
+  "paired_witnesses": 72,
+  "unique_artificial_obligation_gaps": [
+    [
+      "corrupt",
+      "order_payload"
+    ],
+    [
+      "drop",
+      "drain_no_loss"
+    ],
+    [
+      "drop",
+      "order_payload"
+    ],
+    [
+      "duplicate_payload",
+      "order_payload"
+    ]
+  ],
+  "illegal_runs": 0,
+  "native_sva_runs": 0,
+  "model_calls": 0,
+  "formal_runs": 0,
+  "coverage": {
+    "reset_with_pending": 48,
+    "simultaneous_accept_output": 1062,
+    "idle": 824,
+    "backpressure": 941,
+    "multi_cycle_response": 1463
+  },
+  "counts": [
+    {
+      "split": "development",
+      "mutation": "correct",
+      "verdict": "no_violation_in_execution",
+      "count": 12
+    },
+    {
+      "split": "development",
+      "mutation": "corrupt",
+      "verdict": "violation",
+      "count": 12
+    },
+    {
+      "split": "development",
+      "mutation": "drop",
+      "verdict": "violation",
+      "count": 12
+    },
+    {
+      "split": "development",
+      "mutation": "duplicate_payload",
+      "verdict": "violation",
+      "count": 12
+    },
+    {
+      "split": "independent_test",
+      "mutation": "correct",
+      "verdict": "no_violation_in_execution",
+      "count": 12
+    },
+    {
+      "split": "independent_test",
+      "mutation": "corrupt",
+      "verdict": "violation",
+      "count": 12
+    },
+    {
+      "split": "independent_test",
+      "mutation": "drop",
+      "verdict": "violation",
+      "count": 12
+    },
+    {
+      "split": "independent_test",
+      "mutation": "duplicate_payload",
+      "verdict": "violation",
+      "count": 12
+    }
+  ],
+  "limitations": [
+    "No real LLM generation/refinement in this experiment.",
+    "Concurrent native SVA unsupported by installed Icarus; auxiliary predicate diagnostics are not native assertion results.",
+    "No original historical FIFO defect validated.",
+    "No formal proof.",
+    "Independent engineering test uses fresh seeds after freeze but same generator family."
+  ]
+}

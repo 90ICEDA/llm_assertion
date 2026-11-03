@@ -1,0 +1,5 @@
+﻿# Independent blind review workspace
+
+Frozen source frame: 30 unique parents from `sources/selected_train_parents.csv`; seven natural model candidate slots per parent (210 total). Slot 8 is excluded because its rendered assertion is a synthetic control. Candidate files contain only request, prompt, raw response, and rendered SVA. Bug folders contain RTL, specification, patch, hardness and waveform/trace evidence where present. For legacy scale120 cases without an original patch, `derived_mutation.diff` is generated from the selected source RTL pair; its source RTL hashes are in `SOURCE_HASHES.csv`. An absent hardness file means no per-case hardness evaluation was available at that source path.
+
+`SOURCE_HASHES.csv` records byte hashes of every copied source. `SEAL_SHA256.csv` hashes every workspace file except itself; recheck with `scripts/verify_independent_blind_workspace.ps1` from the repository root. No old probe results, failure counts, chosen/rejected labels, or feedback files are included. This seal precedes any new review judgment.

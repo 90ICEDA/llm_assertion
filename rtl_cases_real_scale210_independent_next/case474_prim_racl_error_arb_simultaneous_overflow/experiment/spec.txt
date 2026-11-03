@@ -1,0 +1,1 @@
+The lowest-index valid RACL error supplies the output payload. If two or more errors are valid in the same cycle, the selected record remains valid and `error_overflow_o` must assert to report every valid but ungranted error, even when no input overflow bit was already set.

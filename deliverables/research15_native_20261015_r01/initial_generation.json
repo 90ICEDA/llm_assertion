@@ -1,0 +1,38 @@
+{
+  "result": {
+    "status": "response_received",
+    "model": "qwen2.5-coder:7b-instruct",
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "prompt_tokens": 7311,
+    "completion_tokens": 70,
+    "model_calls": 1,
+    "retries": 0,
+    "service_total_ns": 281814460697,
+    "done_reason": "stop",
+    "wall_seconds": 281.816728541,
+    "partial_response_characters": 290,
+    "candidate_status": "parsed",
+    "context_budget": {
+      "estimated_prompt_tokens": 12187,
+      "context_tokens": 16384,
+      "estimate_not_exact_tokenization": true
+    }
+  },
+  "candidate": {
+    "assertions": [
+      {
+        "property": "mvalid && mready |-> sdata == ref_expected",
+        "obligations": [
+          "order_payload"
+        ],
+        "reason": "At every accepted OUTPUT with an outstanding reference item, its full output payload must equal the oldest accepted input payload.",
+        "id": "a0",
+        "derived_antecedent": "mvalid && mready",
+        "implication": "|->",
+        "derived_delay": 0,
+        "consequent": "sdata == ref_expected"
+      }
+    ],
+    "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+  }
+}

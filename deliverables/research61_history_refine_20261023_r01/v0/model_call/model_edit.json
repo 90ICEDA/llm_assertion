@@ -1,0 +1,34 @@
+{
+  "operation": "replace_op",
+  "reason": "The original model incorrectly allowed illegal instructions with bit28 set. The new property ensures that such instructions are always flagged as illegal.",
+  "assertions": [
+    {
+      "antecedent": {
+        "op": "==",
+        "args": [
+          {
+            "signal": "instr[28]"
+          },
+          {
+            "int": 1
+          }
+        ]
+      },
+      "consequent": {
+        "op": "==",
+        "args": [
+          {
+            "signal": "illegal_insn"
+          },
+          {
+            "int": 1
+          }
+        ]
+      },
+      "timing": "same_sample",
+      "obligations": [
+        "op_bit28_illegal"
+      ]
+    }
+  ]
+}

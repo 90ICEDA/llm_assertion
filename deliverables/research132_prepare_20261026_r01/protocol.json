@@ -1,0 +1,54 @@
+{
+  "candidate_sha256": "ef3974b9ac0dd7a79f008564d7af4a43b77e9befdc1da93bfb4ba79543bca3da",
+  "parameters": [
+    [
+      2,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      8,
+      2
+    ]
+  ],
+  "families": [
+    "corrupt",
+    "duplicate_payload",
+    "reset_residue",
+    "stall_glitch",
+    "valid_withdraw_stalled",
+    "valid_withdraw_release",
+    "long_valid_withdraw_stalled",
+    "long_valid_withdraw_release",
+    "isolated_tail",
+    "continuous_tail",
+    "parked_tail",
+    "reset_then_tail",
+    "legal_three",
+    "reset_cancels_tail",
+    "legal_reset_cancel",
+    "legal_burst"
+  ],
+  "seed_count": 2,
+  "cases": 128,
+  "maximum_compiles": 4,
+  "maximum_experiment_replays": 240,
+  "maximum_compile_smoke_runs": 4,
+  "model_calls": 0,
+  "formal_calls": 0,
+  "randomization": "Draw two 63-bit seeds ONCE after protocol seal. Within each parameter/family generate schedules and unique 32-bit values. Reject only exact-input or timing-only collisions with old/new inputs, at most 100 draws per cell; no execution outcomes available.",
+  "acceptance": "All 128 prespecified cases healthy and legal, controls no failures, every target detected with native trigger and confirmed attribution; all 20 parameter/obligation cells exposed with zero missed target/false positive/critical unknown. Actual reset cancellation, stalls/release, paired transactions and >=18 fair drain cycles checked from native records.",
+  "unknown": "Later events after first violation in same reset epoch remain attribution unknown, excluded from confirmed target denominator; any such event forbids full-trajectory completeness claim.",
+  "stop": "No model, edits, retries, replacement cases or candidate selection. Complete all prespecified cases; infrastructure errors stop with incomplete status. Failed/no-exposure cases stay failed; no resampling. Later refinement requires promoting entire batch to development.",
+  "scope": "Original axis_fifo module plus pre-existing artificial boundary faults; same known mechanisms, newly sampled inputs. Finite first-attributed targets only; no global/full-trace/formal/historical-bug claim.",
+  "split": "independent_test",
+  "frozen_before_inputs": true,
+  "git_commit": null
+}

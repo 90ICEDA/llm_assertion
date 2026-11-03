@@ -1,0 +1,65 @@
+{
+  "schema_version": "weak-assertions-v1",
+  "case_id": "case483_cc_stream_filter_drop_backpressured",
+  "parent_bug_id": "case483_cc_stream_filter_drop_backpressured",
+  "source_project": "common_cells",
+  "admission_rule": "At least two non-vacuous weak assertions must miss the RTL bug.",
+  "overall_validation_status": "pending",
+  "assertions": [
+    {
+      "id": "W1_single_cycle_implication",
+      "weakness_class": "single_cycle_implication",
+      "property": "!drop_i && valid_i |-> valid_o",
+      "antecedent": "!drop_i && valid_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Pass path is unchanged.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W2_final_output_only",
+      "weakness_class": "final_output_only",
+      "property": "drop_i |-> !valid_o",
+      "antecedent": "drop_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Only checks suppression, not acceptance.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W3_delay_removed",
+      "weakness_class": "delay_removed",
+      "property": "ready_i |-> ready_o",
+      "antecedent": "ready_i",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Only sufficient ready condition.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W4_antecedent_removed",
+      "weakness_class": "antecedent_removed",
+      "property": "!valid_o || valid_i",
+      "antecedent": null,
+      "antecedent_nonempty": false,
+      "expected_weakness": "No drop/backpressure relationship.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    },
+    {
+      "id": "W5_simple_invariant",
+      "weakness_class": "simple_invariant",
+      "property": "valid_o |-> valid_i",
+      "antecedent": "valid_o",
+      "antecedent_nonempty": true,
+      "expected_weakness": "Validity implication survives mutation.",
+      "validation_status": "pending",
+      "catches_bug": null,
+      "nonvacuity_verified": false
+    }
+  ]
+}

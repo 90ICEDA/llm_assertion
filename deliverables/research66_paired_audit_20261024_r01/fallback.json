@@ -1,0 +1,35 @@
+{
+  "candidate_sha256": "f2d36c160f7b655067e3010b6c9b62180208d9e7def89836809ac3a37923b8b1",
+  "source": "deliverables/research59_prepare_20261023_r01/shared_initial.json",
+  "whole_set_accepted": false,
+  "partial_usable": true,
+  "protection": {
+    "counts": {
+      "rows": 3996,
+      "triggers": 696,
+      "detections": 270,
+      "misses": 420,
+      "false_positives": 0,
+      "unknown": 0
+    },
+    "required_untriggered": 840,
+    "per_obligation": {
+      "illegal_branch_persists": {
+        "detected": 270,
+        "missed": 0
+      },
+      "op_bit28_illegal": {
+        "detected": 0,
+        "missed": 420
+      }
+    }
+  },
+  "branch_component": {
+    "detected": 270,
+    "trigger_rows": 696,
+    "false_alarms": 0,
+    "unknown": 0
+  },
+  "persistent_active_version_pointer": "unavailable: no explicit active candidate/rollback journal in original run",
+  "evidence": "Original sealed baseline file unchanged, runner initializes current from it and only publishes on acceptance; every new run reloads it. Rejection leaves original source available. This is not an operational rollback test or a fully accepted fallback."
+}

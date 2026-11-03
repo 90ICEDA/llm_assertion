@@ -1,0 +1,619 @@
+{
+  "actual_pairs": [
+    {
+      "case": "onehot",
+      "parent_bug_id": "case101_prim_onehot_multihot_suppressed",
+      "status": "found",
+      "allowed_signals": [
+        "oh_i",
+        "addr_i",
+        "en_i",
+        "rst_n"
+      ],
+      "initialization": "reset asserted for first two samples",
+      "history": "complete trace from reset through H=24",
+      "full_history_equal": true,
+      "labels": [
+        false,
+        true
+      ],
+      "execution_a": "deliverables/repair_contract_20261009/runs/e12/hold_24/onehot/correct/result.json",
+      "execution_b": "deliverables/repair_contract_20261009/runs/e12/hold_24/onehot/buggy/result.json",
+      "after_add_signals": [
+        "err_o"
+      ],
+      "after_add_signals_equal": false,
+      "history_only_refinement": "cannot separate identical full input histories",
+      "cost_bits": 1,
+      "unsat_scope": "any deterministic classifier of identical observed history on THIS pair only; no claim about untested executions"
+    },
+    {
+      "case": "filter",
+      "parent_bug_id": "case122_prim_filter_ctr_streak_reset_ignored",
+      "status": "found",
+      "allowed_signals": [
+        "enable_i",
+        "filter_i",
+        "thresh_i",
+        "rst_n"
+      ],
+      "initialization": "reset asserted for first two samples",
+      "history": "complete trace from reset through H=24",
+      "full_history_equal": true,
+      "labels": [
+        false,
+        true
+      ],
+      "execution_a": "deliverables/repair_contract_20261009/runs/e12/hold_24/filter/correct/result.json",
+      "execution_b": "deliverables/repair_contract_20261009/runs/e12/hold_24/filter/buggy/result.json",
+      "after_add_signals": [
+        "filter_o"
+      ],
+      "after_add_signals_equal": false,
+      "history_only_refinement": "cannot separate identical full input histories",
+      "cost_bits": 1,
+      "unsat_scope": "any deterministic classifier of identical observed history on THIS pair only; no claim about untested executions"
+    },
+    {
+      "case": "fifo",
+      "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+      "status": "found",
+      "allowed_signals": [
+        "clr_i",
+        "flush_i",
+        "push_i",
+        "pop_i",
+        "data_i",
+        "rst_ni"
+      ],
+      "initialization": "reset asserted for first two samples",
+      "history": "complete trace from reset through H=24",
+      "full_history_equal": true,
+      "labels": [
+        false,
+        true
+      ],
+      "execution_a": "deliverables/repair_contract_20261009/runs/e12/hold_24/fifo/correct/result.json",
+      "execution_b": "deliverables/repair_contract_20261009/runs/e12/hold_24/fifo/buggy/result.json",
+      "after_add_signals": [
+        "full_o",
+        "empty_o",
+        "usage_o",
+        "data_o"
+      ],
+      "after_add_signals_equal": false,
+      "history_only_refinement": "cannot separate identical full input histories",
+      "cost_bits": 11,
+      "unsat_scope": "any deterministic classifier of identical observed history on THIS pair only; no claim about untested executions"
+    },
+    {
+      "case": "spill",
+      "parent_bug_id": "case510_cc_spill_register_flush_push_priority",
+      "status": "found",
+      "allowed_signals": [
+        "flush_i",
+        "push_i",
+        "data_i",
+        "rst_ni"
+      ],
+      "initialization": "reset asserted for first two samples",
+      "history": "complete trace from reset through H=24",
+      "full_history_equal": true,
+      "labels": [
+        false,
+        true
+      ],
+      "execution_a": "deliverables/repair_contract_20261009/runs/e12/hold_24/spill/correct/result.json",
+      "execution_b": "deliverables/repair_contract_20261009/runs/e12/hold_24/spill/buggy/result.json",
+      "after_add_signals": [
+        "valid_o",
+        "data_o"
+      ],
+      "after_add_signals_equal": false,
+      "history_only_refinement": "cannot separate identical full input histories",
+      "cost_bits": 9,
+      "unsat_scope": "any deterministic classifier of identical observed history on THIS pair only; no claim about untested executions"
+    },
+    {
+      "case": "stat",
+      "parent_bug_id": "case505_axis_stat_counter_frame_pulse_early",
+      "status": "found",
+      "allowed_signals": [
+        "frame_done_i",
+        "frame_len_i",
+        "rst_ni"
+      ],
+      "initialization": "reset asserted for first two samples",
+      "history": "complete trace from reset through H=24",
+      "full_history_equal": true,
+      "labels": [
+        false,
+        true
+      ],
+      "execution_a": "deliverables/repair_contract_20261009/runs/e12/hold_24/stat/correct/result.json",
+      "execution_b": "deliverables/repair_contract_20261009/runs/e12/hold_24/stat/buggy/result.json",
+      "after_add_signals": [
+        "stat_valid_o",
+        "stat_len_o"
+      ],
+      "after_add_signals_equal": false,
+      "history_only_refinement": "cannot separate identical full input histories",
+      "cost_bits": 9,
+      "unsat_scope": "any deterministic classifier of identical observed history on THIS pair only; no claim about untested executions"
+    },
+    {
+      "case": "intr",
+      "parent_bug_id": "case135_prim_intr_enable_mask_ignored",
+      "status": "found",
+      "allowed_signals": [
+        "event_intr_i",
+        "reg2hw_intr_enable_q_i",
+        "reg2hw_intr_test_q_i",
+        "reg2hw_intr_test_qe_i",
+        "sw_clear",
+        "rst_n"
+      ],
+      "initialization": "reset asserted for first two samples",
+      "history": "complete trace from reset through H=24",
+      "full_history_equal": true,
+      "labels": [
+        false,
+        true
+      ],
+      "execution_a": "deliverables/repair_contract_20261009/runs/e12/hold_24/intr/correct/result.json",
+      "execution_b": "deliverables/repair_contract_20261009/runs/e12/hold_24/intr/buggy/result.json",
+      "after_add_signals": [
+        "reg2hw_intr_state_q_i",
+        "hw2reg_intr_state_de_o",
+        "hw2reg_intr_state_d_o",
+        "intr_o"
+      ],
+      "after_add_signals_equal": false,
+      "history_only_refinement": "cannot separate identical full input histories",
+      "cost_bits": 4,
+      "unsat_scope": "any deterministic classifier of identical observed history on THIS pair only; no claim about untested executions"
+    }
+  ],
+  "controlled_abstraction": {
+    "provenance": "controlled_observation_abstraction_of_natural_RTL",
+    "signals": [
+      "boolean(oh_i)",
+      "err_o"
+    ],
+    "history": 0,
+    "samples": [
+      {
+        "oh": 0,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 2
+      },
+      {
+        "oh": 1,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 3
+      },
+      {
+        "oh": 2,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 4
+      },
+      {
+        "oh": 3,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 5
+      },
+      {
+        "oh": 4,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 6
+      },
+      {
+        "oh": 5,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 7
+      },
+      {
+        "oh": 6,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 8
+      },
+      {
+        "oh": 7,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 9
+      },
+      {
+        "oh": 8,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 10
+      },
+      {
+        "oh": 9,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 11
+      },
+      {
+        "oh": 10,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 12
+      },
+      {
+        "oh": 11,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 13
+      },
+      {
+        "oh": 12,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 14
+      },
+      {
+        "oh": 13,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 15
+      },
+      {
+        "oh": 14,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 16
+      },
+      {
+        "oh": 15,
+        "err": 1,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+        "cycle": 17
+      },
+      {
+        "oh": 0,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 2
+      },
+      {
+        "oh": 1,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 3
+      },
+      {
+        "oh": 2,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 4
+      },
+      {
+        "oh": 3,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 5
+      },
+      {
+        "oh": 4,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 6
+      },
+      {
+        "oh": 5,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 7
+      },
+      {
+        "oh": 6,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 8
+      },
+      {
+        "oh": 7,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 9
+      },
+      {
+        "oh": 8,
+        "err": 0,
+        "violation": false,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 10
+      },
+      {
+        "oh": 9,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 11
+      },
+      {
+        "oh": 10,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 12
+      },
+      {
+        "oh": 11,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 13
+      },
+      {
+        "oh": 12,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 14
+      },
+      {
+        "oh": 13,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 15
+      },
+      {
+        "oh": 14,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 16
+      },
+      {
+        "oh": 15,
+        "err": 0,
+        "violation": true,
+        "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+        "cycle": 17
+      }
+    ],
+    "conflicts": [
+      [
+        {
+          "oh": 1,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+          "cycle": 3
+        },
+        {
+          "oh": 2,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+          "cycle": 4
+        },
+        {
+          "oh": 4,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+          "cycle": 6
+        },
+        {
+          "oh": 8,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/correct",
+          "cycle": 10
+        },
+        {
+          "oh": 1,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 3
+        },
+        {
+          "oh": 2,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 4
+        },
+        {
+          "oh": 3,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 5
+        },
+        {
+          "oh": 4,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 6
+        },
+        {
+          "oh": 5,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 7
+        },
+        {
+          "oh": 6,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 8
+        },
+        {
+          "oh": 7,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 9
+        },
+        {
+          "oh": 8,
+          "err": 0,
+          "violation": false,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 10
+        },
+        {
+          "oh": 9,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 11
+        },
+        {
+          "oh": 10,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 12
+        },
+        {
+          "oh": 11,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 13
+        },
+        {
+          "oh": 12,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 14
+        },
+        {
+          "oh": 13,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 15
+        },
+        {
+          "oh": 14,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 16
+        },
+        {
+          "oh": 15,
+          "err": 0,
+          "violation": true,
+          "run": "deliverables/repair_contract_20261009/runs/e3_exhaustive/onehot/buggy",
+          "cycle": 17
+        }
+      ]
+    ],
+    "grammar_checked": [
+      {
+        "mask": 0,
+        "errors": 11
+      },
+      {
+        "mask": 1,
+        "errors": 13
+      },
+      {
+        "mask": 2,
+        "errors": 11
+      },
+      {
+        "mask": 3,
+        "errors": 13
+      },
+      {
+        "mask": 4,
+        "errors": 8
+      },
+      {
+        "mask": 5,
+        "errors": 10
+      },
+      {
+        "mask": 6,
+        "errors": 8
+      },
+      {
+        "mask": 7,
+        "errors": 10
+      },
+      {
+        "mask": 8,
+        "errors": 22
+      },
+      {
+        "mask": 9,
+        "errors": 24
+      },
+      {
+        "mask": 10,
+        "errors": 22
+      },
+      {
+        "mask": 11,
+        "errors": 24
+      },
+      {
+        "mask": 12,
+        "errors": 19
+      },
+      {
+        "mask": 13,
+        "errors": 21
+      },
+      {
+        "mask": 14,
+        "errors": 19
+      },
+      {
+        "mask": 15,
+        "errors": 21
+      }
+    ],
+    "status": "finite_grammar_unsat",
+    "refinement": "observe full 4-bit oh_i; rule popcount(oh_i)>1 && !err_o labels all checked rows",
+    "refinement_errors": 0,
+    "additional_observation_bits": 3
+  },
+  "global_expressibility": "unknown"
+}

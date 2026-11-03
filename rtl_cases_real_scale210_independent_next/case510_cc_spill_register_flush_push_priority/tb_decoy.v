@@ -1,0 +1,9 @@
+`timescale 1ns/1ps
+module tb;
+  reg clk_i=0; always #5 clk_i=~clk_i; reg rst_ni=0,flush_i=0,push_i=0; reg [7:0] data_i=0; wire valid_o; wire [7:0] data_o; wire q_o=valid_o; cc_spill_register_flushable dut(.*);
+  initial begin
+    $dumpfile("wave.vcd");
+    $dumpvars(0,tb);
+    #12 rst_ni=1; #18 push_i=1;data_i=8'h11; #10 flush_i=1;data_i=8'hEF; #10 flush_i=0;push_i=0; #40 $finish;
+  end
+endmodule

@@ -1,0 +1,105 @@
+{
+  "name": "case478_axis_srl_register_ready_recovery",
+  "parent_bug_id": "case478_axis_srl_register_ready_recovery",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_srl_register",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_srl_register.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_srl_register.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "backpressure_ready_recovery",
+  "bug_type": "An accepted downstream transfer frees register capacity and restores source ready on the next cycle.",
+  "spec": "An accepted downstream transfer frees register capacity and restores source ready on the next cycle.",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) ((m_valid && m_ready) |=> s_ready));",
+    "temporal_type": "exact sampled protocol relation"
+  },
+  "mutation_edits": [
+    {
+      "search": "    full_reg <= !m_axis_tready && m_axis_tvalid;",
+      "replace": "    // ASSERTIONFORGE_MUTATION: ready transfer cannot clear full state\n    full_reg <= !m_axis_tready || m_axis_tvalid;"
+    }
+  ],
+  "mutation_signal": "protocol state or polarity",
+  "relevant_signals": [
+    "s_valid",
+    "s_ready",
+    "m_valid",
+    "m_ready",
+    "m_data"
+  ],
+  "first_divergence": {
+    "primary": {
+      "time_ps": 55000,
+      "sample_index": 11,
+      "good_row_index": 11,
+      "bad_row_index": 11,
+      "signals": [
+        "s_ready"
+      ],
+      "good_values": {
+        "s_ready": "1"
+      },
+      "bad_values": {
+        "s_ready": "0"
+      },
+      "good_trace_sha256": "757e1aa2832f7bdf11820479cdf7e33b46e9ca0e98248f75e2507066e8e89b11",
+      "bad_trace_sha256": "0bb1bd359bd1a95966b40e8175674700a907ced340e6fa93f30d421d2992834a",
+      "derived_from_final_wsl_rerun": true
+    },
+    "heldout": {
+      "time_ps": 55000,
+      "sample_index": 11,
+      "good_row_index": 11,
+      "bad_row_index": 11,
+      "signals": [
+        "s_ready"
+      ],
+      "good_values": {
+        "s_ready": "1"
+      },
+      "bad_values": {
+        "s_ready": "0"
+      },
+      "good_trace_sha256": "c93a18ed723a6e83d198fb9a63bc0605cefb2afba50c5c980933dea56c01eb44",
+      "bad_trace_sha256": "c1b7c183b76a0d9fae95c6444a1c5d33bd409af62b4256799a93414f94bb52ba",
+      "derived_from_final_wsl_rerun": true
+    },
+    "decoy": {
+      "time_ps": 55000,
+      "sample_index": 11,
+      "good_row_index": 11,
+      "bad_row_index": 11,
+      "signals": [
+        "s_ready"
+      ],
+      "good_values": {
+        "s_ready": "1"
+      },
+      "bad_values": {
+        "s_ready": "0"
+      },
+      "good_trace_sha256": "88e4fdaf3a68276791ff5ed4ba145768e5c13aa4e2b271ed7f79a489616075b4",
+      "bad_trace_sha256": "870aa4b311b7d2310fac89a66c01c6e3896676af3ce9a84aacade10281e9e170",
+      "derived_from_final_wsl_rerun": true
+    }
+  },
+  "temporal_type": "cross-cycle protocol relation",
+  "mutation_kind": "real_rtl_mutation",
+  "correct_sha256": "a58e93479a93be4bea064046d588156b58a2ef36437d6a10215f3c0b22d78f58",
+  "buggy_sha256": "1b35f751387b72464c7bb63feb1d3707a63e75bd49fa3e5f20b8cd57432b22c9",
+  "dataset_phase": "next_independent_candidates",
+  "status": "final_verified_admitted",
+  "trace_variants": {
+    "relationship": "stimulus_variants_of_one_parent_bug",
+    "count_as_independent_bugs": false,
+    "variants": [
+      "primary",
+      "heldout",
+      "decoy"
+    ]
+  }
+}

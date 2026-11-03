@@ -1,0 +1,1264 @@
+{
+  "passed": true,
+  "cohort": "hand_constructed_monitor_QA_not_natural_search",
+  "tests": [
+    {
+      "case": "onehot",
+      "passed": true,
+      "actual": [
+        [
+          2,
+          "multihot_detect"
+        ]
+      ],
+      "expected": [
+        [
+          2,
+          "multihot_detect"
+        ]
+      ],
+      "trace": [
+        {
+          "oh_i": 0,
+          "addr_i": 0,
+          "en_i": 0,
+          "err_o": 0,
+          "rst_n": 0,
+          "cycle": 0
+        },
+        {
+          "oh_i": 2,
+          "addr_i": 0,
+          "en_i": 0,
+          "err_o": 0,
+          "rst_n": 1,
+          "cycle": 1
+        },
+        {
+          "oh_i": 6,
+          "addr_i": 0,
+          "en_i": 0,
+          "err_o": 0,
+          "rst_n": 1,
+          "cycle": 2
+        },
+        {
+          "oh_i": 9,
+          "addr_i": 0,
+          "en_i": 0,
+          "err_o": 1,
+          "rst_n": 1,
+          "cycle": 3
+        }
+      ],
+      "oracle": {
+        "events": [
+          {
+            "cycle": 1,
+            "checks": [],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 2,
+            "checks": [
+              {
+                "obligation": "multihot_detect",
+                "expected": 1,
+                "actual": 0,
+                "trigger_cycle": 2,
+                "due_cycle": 2,
+                "transaction_id": "onehot:e1:t2",
+                "branch": "multihot",
+                "conditional": false,
+                "passed": false
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": true,
+            "classification": "target_violation"
+          },
+          {
+            "cycle": 3,
+            "checks": [
+              {
+                "obligation": "multihot_detect",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 3,
+                "due_cycle": 3,
+                "transaction_id": "onehot:e1:t3",
+                "branch": "multihot",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          }
+        ],
+        "pending": [],
+        "cancelled": [],
+        "scope": "repair obligations only; legal prefix since latest reset",
+        "full_spec_resolved": true
+      }
+    },
+    {
+      "case": "fifo",
+      "passed": true,
+      "actual": [
+        [
+          3,
+          "nonempty_when_present"
+        ]
+      ],
+      "expected": [
+        [
+          3,
+          "nonempty_when_present"
+        ]
+      ],
+      "trace": [
+        {
+          "clr_i": 0,
+          "flush_i": 0,
+          "push_i": 0,
+          "pop_i": 0,
+          "data_i": 0,
+          "full_o": 0,
+          "empty_o": 0,
+          "usage_o": 0,
+          "data_o": 0,
+          "rst_ni": 0,
+          "cycle": 0
+        },
+        {
+          "clr_i": 0,
+          "flush_i": 0,
+          "push_i": 0,
+          "pop_i": 0,
+          "data_i": 0,
+          "full_o": 0,
+          "empty_o": 1,
+          "usage_o": 0,
+          "data_o": 0,
+          "rst_ni": 1,
+          "cycle": 1
+        },
+        {
+          "clr_i": 0,
+          "flush_i": 0,
+          "push_i": 1,
+          "pop_i": 0,
+          "data_i": 0,
+          "full_o": 0,
+          "empty_o": 0,
+          "usage_o": 0,
+          "data_o": 0,
+          "rst_ni": 1,
+          "cycle": 2
+        },
+        {
+          "clr_i": 0,
+          "flush_i": 0,
+          "push_i": 1,
+          "pop_i": 1,
+          "data_i": 0,
+          "full_o": 0,
+          "empty_o": 1,
+          "usage_o": 0,
+          "data_o": 0,
+          "rst_ni": 1,
+          "cycle": 3
+        }
+      ],
+      "oracle": {
+        "events": [
+          {
+            "cycle": 1,
+            "checks": [
+              {
+                "obligation": "empty_when_idle",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 1,
+                "due_cycle": 1,
+                "transaction_id": "fifo:e1:t1",
+                "branch": "idle",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 2,
+            "checks": [
+              {
+                "obligation": "nonempty_when_present",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 2,
+                "due_cycle": 2,
+                "transaction_id": "fifo:e1:t2",
+                "branch": "stalled",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 3,
+            "checks": [
+              {
+                "obligation": "nonempty_when_present",
+                "expected": 0,
+                "actual": 1,
+                "trigger_cycle": 3,
+                "due_cycle": 3,
+                "transaction_id": "fifo:e1:t3",
+                "branch": "accepted",
+                "conditional": false,
+                "passed": false
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": true,
+            "classification": "target_violation"
+          }
+        ],
+        "pending": [],
+        "cancelled": [],
+        "scope": "repair obligations only; legal prefix since latest reset",
+        "full_spec_resolved": true
+      }
+    },
+    {
+      "case": "stat",
+      "passed": true,
+      "actual": [],
+      "expected": [],
+      "trace": [
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 0,
+          "cycle": 0
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 19,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 1
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 73,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 2
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 1,
+          "stat_len_o": 19,
+          "rst_ni": 1,
+          "cycle": 3
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 1,
+          "stat_len_o": 73,
+          "rst_ni": 1,
+          "cycle": 4
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 99,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 5
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 0,
+          "cycle": 6
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 7
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 8
+        }
+      ],
+      "oracle": {
+        "events": [
+          {
+            "cycle": 1,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 1,
+                "due_cycle": 1,
+                "transaction_id": "stat:e1:t1",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 2,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 2,
+                "due_cycle": 2,
+                "transaction_id": "stat:e1:t2",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 3,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 1,
+                "due_cycle": 3,
+                "transaction_id": "stat:e1:t1",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              },
+              {
+                "obligation": "captured_length",
+                "expected": 19,
+                "actual": 19,
+                "trigger_cycle": 1,
+                "due_cycle": 3,
+                "transaction_id": "stat:e1:t1",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 4,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 2,
+                "due_cycle": 4,
+                "transaction_id": "stat:e1:t2",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              },
+              {
+                "obligation": "captured_length",
+                "expected": 73,
+                "actual": 73,
+                "trigger_cycle": 2,
+                "due_cycle": 4,
+                "transaction_id": "stat:e1:t2",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 5,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 5,
+                "due_cycle": 5,
+                "transaction_id": "stat:e1:t5",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 7,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 7,
+                "due_cycle": 7,
+                "transaction_id": "stat:e2:t7",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 8,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 8,
+                "due_cycle": 8,
+                "transaction_id": "stat:e2:t8",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          }
+        ],
+        "pending": [],
+        "cancelled": [
+          {
+            "trigger_cycle": 5,
+            "payload": 99
+          }
+        ],
+        "scope": "repair obligations only; legal prefix since latest reset",
+        "full_spec_resolved": true
+      }
+    },
+    {
+      "case": "stat",
+      "passed": true,
+      "actual": [
+        [
+          3,
+          "captured_length"
+        ]
+      ],
+      "expected": [
+        [
+          3,
+          "captured_length"
+        ]
+      ],
+      "trace": [
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 0,
+          "cycle": 0
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 19,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 1
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 73,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 2
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 1,
+          "stat_len_o": 73,
+          "rst_ni": 1,
+          "cycle": 3
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 1,
+          "stat_len_o": 73,
+          "rst_ni": 1,
+          "cycle": 4
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 99,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 5
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 0,
+          "cycle": 6
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 7
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 8
+        }
+      ],
+      "oracle": {
+        "events": [
+          {
+            "cycle": 1,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 1,
+                "due_cycle": 1,
+                "transaction_id": "stat:e1:t1",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 2,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 2,
+                "due_cycle": 2,
+                "transaction_id": "stat:e1:t2",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 3,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 1,
+                "due_cycle": 3,
+                "transaction_id": "stat:e1:t1",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              },
+              {
+                "obligation": "captured_length",
+                "expected": 19,
+                "actual": 73,
+                "trigger_cycle": 1,
+                "due_cycle": 3,
+                "transaction_id": "stat:e1:t1",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": false
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": true,
+            "classification": "target_violation"
+          },
+          {
+            "cycle": 4,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 2,
+                "due_cycle": 4,
+                "transaction_id": "stat:e1:t2",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              },
+              {
+                "obligation": "captured_length",
+                "expected": 73,
+                "actual": 73,
+                "trigger_cycle": 2,
+                "due_cycle": 4,
+                "transaction_id": "stat:e1:t2",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 5,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 5,
+                "due_cycle": 5,
+                "transaction_id": "stat:e1:t5",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 7,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 7,
+                "due_cycle": 7,
+                "transaction_id": "stat:e2:t7",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 8,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 8,
+                "due_cycle": 8,
+                "transaction_id": "stat:e2:t8",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          }
+        ],
+        "pending": [],
+        "cancelled": [
+          {
+            "trigger_cycle": 5,
+            "payload": 99
+          }
+        ],
+        "scope": "repair obligations only; legal prefix since latest reset",
+        "full_spec_resolved": true
+      }
+    },
+    {
+      "case": "stat",
+      "passed": true,
+      "actual": [
+        [
+          2,
+          "valid_latency"
+        ]
+      ],
+      "expected": [
+        [
+          2,
+          "valid_latency"
+        ]
+      ],
+      "trace": [
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 0,
+          "cycle": 0
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 19,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 1
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 73,
+          "stat_valid_o": 1,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 2
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 1,
+          "stat_len_o": 19,
+          "rst_ni": 1,
+          "cycle": 3
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 1,
+          "stat_len_o": 73,
+          "rst_ni": 1,
+          "cycle": 4
+        },
+        {
+          "frame_done_i": 1,
+          "frame_len_i": 99,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 5
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 0,
+          "cycle": 6
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 7
+        },
+        {
+          "frame_done_i": 0,
+          "frame_len_i": 0,
+          "stat_valid_o": 0,
+          "stat_len_o": 0,
+          "rst_ni": 1,
+          "cycle": 8
+        }
+      ],
+      "oracle": {
+        "events": [
+          {
+            "cycle": 1,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 1,
+                "due_cycle": 1,
+                "transaction_id": "stat:e1:t1",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 2,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 1,
+                "trigger_cycle": 2,
+                "due_cycle": 2,
+                "transaction_id": "stat:e1:t2",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": false
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": true,
+            "classification": "target_violation"
+          },
+          {
+            "cycle": 3,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 1,
+                "due_cycle": 3,
+                "transaction_id": "stat:e1:t1",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              },
+              {
+                "obligation": "captured_length",
+                "expected": 19,
+                "actual": 19,
+                "trigger_cycle": 1,
+                "due_cycle": 3,
+                "transaction_id": "stat:e1:t1",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 4,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 2,
+                "due_cycle": 4,
+                "transaction_id": "stat:e1:t2",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              },
+              {
+                "obligation": "captured_length",
+                "expected": 73,
+                "actual": 73,
+                "trigger_cycle": 2,
+                "due_cycle": 4,
+                "transaction_id": "stat:e1:t2",
+                "branch": "event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 5,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 5,
+                "due_cycle": 5,
+                "transaction_id": "stat:e1:t5",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": false,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 7,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 7,
+                "due_cycle": 7,
+                "transaction_id": "stat:e2:t7",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 8,
+            "checks": [
+              {
+                "obligation": "valid_latency",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 8,
+                "due_cycle": 8,
+                "transaction_id": "stat:e2:t8",
+                "branch": "no_event_due",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          }
+        ],
+        "pending": [],
+        "cancelled": [
+          {
+            "trigger_cycle": 5,
+            "payload": 99
+          }
+        ],
+        "scope": "repair obligations only; legal prefix since latest reset",
+        "full_spec_resolved": true
+      }
+    },
+    {
+      "case": "spill",
+      "passed": true,
+      "actual": [],
+      "expected": [],
+      "trace": [
+        {
+          "flush_i": 0,
+          "push_i": 0,
+          "data_i": 0,
+          "valid_o": 0,
+          "data_o": 0,
+          "rst_ni": 0,
+          "cycle": 0
+        },
+        {
+          "flush_i": 1,
+          "push_i": 1,
+          "data_i": 0,
+          "valid_o": 0,
+          "data_o": 0,
+          "rst_ni": 1,
+          "cycle": 1
+        },
+        {
+          "flush_i": 0,
+          "push_i": 0,
+          "data_i": 0,
+          "valid_o": 0,
+          "data_o": 0,
+          "rst_ni": 1,
+          "cycle": 2
+        },
+        {
+          "flush_i": 1,
+          "push_i": 1,
+          "data_i": 7,
+          "valid_o": 0,
+          "data_o": 0,
+          "rst_ni": 1,
+          "cycle": 3
+        },
+        {
+          "flush_i": 0,
+          "push_i": 0,
+          "data_i": 0,
+          "valid_o": 0,
+          "data_o": 0,
+          "rst_ni": 0,
+          "cycle": 4
+        },
+        {
+          "flush_i": 0,
+          "push_i": 0,
+          "data_i": 0,
+          "valid_o": 0,
+          "data_o": 0,
+          "rst_ni": 1,
+          "cycle": 5
+        }
+      ],
+      "oracle": {
+        "events": [
+          {
+            "cycle": 1,
+            "checks": [],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 2,
+            "checks": [
+              {
+                "obligation": "collision_empty",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 1,
+                "due_cycle": 2,
+                "transaction_id": "spill:e1:t1",
+                "branch": "flush_push",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 3,
+            "checks": [],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 5,
+            "checks": [],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          }
+        ],
+        "pending": [],
+        "cancelled": [
+          {
+            "trigger_cycle": 3,
+            "payload": 7
+          }
+        ],
+        "scope": "repair obligations only; legal prefix since latest reset",
+        "full_spec_resolved": false
+      }
+    },
+    {
+      "case": "filter",
+      "passed": true,
+      "actual": [],
+      "expected": [],
+      "trace": [
+        {
+          "enable_i": 0,
+          "filter_i": 0,
+          "thresh_i": 0,
+          "filter_o": 0,
+          "second_new_sample_dbg": 0,
+          "rst_n": 0,
+          "cycle": 0
+        },
+        {
+          "enable_i": 1,
+          "filter_i": 1,
+          "thresh_i": 2,
+          "filter_o": 0,
+          "second_new_sample_dbg": 0,
+          "rst_n": 1,
+          "cycle": 1
+        },
+        {
+          "enable_i": 1,
+          "filter_i": 1,
+          "thresh_i": 2,
+          "filter_o": 0,
+          "second_new_sample_dbg": 0,
+          "rst_n": 1,
+          "cycle": 2
+        },
+        {
+          "enable_i": 1,
+          "filter_i": 1,
+          "thresh_i": 2,
+          "filter_o": 0,
+          "second_new_sample_dbg": 0,
+          "rst_n": 1,
+          "cycle": 3
+        },
+        {
+          "enable_i": 1,
+          "filter_i": 1,
+          "thresh_i": 2,
+          "filter_o": 1,
+          "second_new_sample_dbg": 0,
+          "rst_n": 1,
+          "cycle": 4
+        }
+      ],
+      "oracle": {
+        "events": [
+          {
+            "cycle": 1,
+            "checks": [
+              {
+                "obligation": "qualified_value",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 1,
+                "due_cycle": 1,
+                "transaction_id": "filter:e1:t1",
+                "branch": "qualification",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 2,
+            "checks": [
+              {
+                "obligation": "qualified_value",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 2,
+                "due_cycle": 2,
+                "transaction_id": "filter:e1:t2",
+                "branch": "qualification",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 3,
+            "checks": [
+              {
+                "obligation": "qualified_value",
+                "expected": 0,
+                "actual": 0,
+                "trigger_cycle": 3,
+                "due_cycle": 3,
+                "transaction_id": "filter:e1:t3",
+                "branch": "qualification",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          },
+          {
+            "cycle": 4,
+            "checks": [
+              {
+                "obligation": "qualified_value",
+                "expected": 1,
+                "actual": 1,
+                "trigger_cycle": 4,
+                "due_cycle": 4,
+                "transaction_id": "filter:e1:t4",
+                "branch": "qualification",
+                "conditional": false,
+                "passed": true
+              }
+            ],
+            "legal_prefix": true,
+            "first_violation": false,
+            "classification": "scoped_legal_sample"
+          }
+        ],
+        "pending": [],
+        "cancelled": [],
+        "scope": "repair obligations only; legal prefix since latest reset",
+        "full_spec_resolved": true
+      }
+    }
+  ],
+  "limitations": [
+    "sampled reset semantics; asynchronous between-edge reset independently checked in SV qualification",
+    "independent specification monitor, not whole-design verification"
+  ]
+}

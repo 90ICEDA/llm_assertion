@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "RefinementAttempt"
+    },
+    "attempt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "old_set_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "proposal_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "feedback": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "old_replay": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposal_replay": {
+      "type": "string",
+      "minLength": 1
+    },
+    "diff": {
+      "type": "string",
+      "minLength": 1
+    },
+    "accepted": {
+      "type": "boolean"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "attempt_id",
+    "case_id",
+    "snapshot_hash",
+    "old_set_hash",
+    "proposal_hash",
+    "source",
+    "feedback",
+    "old_replay",
+    "proposal_replay",
+    "diff",
+    "accepted",
+    "reasons"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,33 @@
+You are a formal verification engineer.
+
+Generate SystemVerilog assertions using @(posedge clk_i) disable iff (!rst_ni).
+
+Use only allowed signals. Output assertion lines only.
+
+Allowed signals:
+
+clk_i, rst_ni, data_i, enable_i, q_o, state_o
+
+Specification:
+
+With enable asserted, serial data traverses all three shift stages. A newly asserted input bit must not reach q_o after only two enabled sampling edges.
+
+RTL:
+
+`timescale 1ns/1ps
+module cc_shift_register_gated(
+  input wire clk_i,
+  input wire rst_ni,
+  input wire data_i,
+  input wire enable_i,
+  
+  output wire q_o,
+  output wire [7:0] state_o
+);
+  reg [2:0] shift_reg;
+  always @(posedge clk_i or negedge rst_ni)
+    if (!rst_ni) shift_reg <= 3'b000;
+    else if (enable_i) shift_reg <= {shift_reg[1:0],data_i};
+  assign q_o = shift_reg[2];
+  assign state_o = {5'b0,shift_reg};
+endmodule

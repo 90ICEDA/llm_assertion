@@ -1,0 +1,17 @@
+{
+  "assertions": [
+    {
+      "property": "(mvalid && mready) |-> (ref_expected == mdata)",
+      "obligations": [
+        "order_payload"
+      ],
+      "reason": "When an output handshake occurs, the full output payload must match the oldest queued input at that same sample.",
+      "id": "a0",
+      "derived_antecedent": "(mvalid && mready)",
+      "implication": "|->",
+      "derived_delay": 0,
+      "consequent": "(ref_expected == mdata)"
+    }
+  ],
+  "trigger_source": "Antecedent parsed from exact native property, observed with native cover property action"
+}

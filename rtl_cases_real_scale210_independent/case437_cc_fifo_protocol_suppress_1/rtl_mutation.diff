@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -52,7 +52,7 @@
+     // actual memory
+     data_t [FifoDepth - 1:0] mem_n, mem_q;
+ 
+-    assign usage_o = status_cnt_q;
++    assign usage_o = '0; // ASSERTIONFORGE_MUTATION: combinational/protocol output suppressed
+ 
+     if (Depth == 0) begin : gen_pass_through
+         assign empty_o     = ~push_i;

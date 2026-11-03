@@ -1,0 +1,11 @@
+--- correct.v
++++ buggy.v
+@@ -8,7 +8,7 @@
+  wire [Width-1:0] cnt_sat=uflow?'0:oflow?{Width{1'b1}}:ext_cnt[Width-1:0];
+  assign cnt_en=(incr_en_i ^ decr_en_i)&&((incr_en_i&&!(&cnt_q))||(decr_en_i&&cnt_q!='0));
+  assign cnt_d=clr_i?'0:set_i?set_cnt_i:cnt_en?cnt_sat:cnt_q;
+- assign cnt_d_committed = commit_i ? cnt_d : cnt_q;
++ assign cnt_d_committed = commit_i ? cnt_q : cnt_d;
+  always_ff @(posedge clk_i or negedge rst_ni) if(!rst_ni) cnt_q<='0; else cnt_q<=cnt_d_committed;
+  assign cnt_o=cnt_q; assign cnt_after_commit_o=cnt_d; assign err_o=0;
+ endmodule

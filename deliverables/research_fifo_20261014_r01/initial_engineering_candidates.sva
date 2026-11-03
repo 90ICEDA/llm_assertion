@@ -1,0 +1,4 @@
+// ENGINEERING CONTROLS ONLY; no LLM provenance.
+// Native support is probed separately; Python results are auxiliary only.
+ap_valid_only: assert property (@(posedge clk) disable iff (rst) (svalid && sready) |=> mvalid);
+ap_stable: assert property (@(posedge clk) disable iff (rst) (mvalid && !mready) |=> (mvalid && $stable(mdata)));

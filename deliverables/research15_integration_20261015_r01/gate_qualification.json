@@ -1,0 +1,735 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "complementary_set_repairs_gap",
+      "passed": true,
+      "decision": {
+        "accepted": true,
+        "reasons": [],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "6d8037bdae31d0fe85a53e658f05e3a608a3ce191246f6a08e1f5b9bd2389628",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "legal",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "deleting_historical_legal_row_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "missing_historical_replay",
+            "evidence_keys": [
+              "legal"
+            ]
+          },
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "legal"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "cac9322e856b5ff0da4db150c52e6693853157d6dffdae0f68681e3862aa7d92",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 2,
+            "unknown": 0,
+            "triggers": 2,
+            "false_positives": 0,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "new_false_positive_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "new_legal_false_positive",
+            "evidence_keys": [
+              "legal"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "db73a91ffbac6ecd75a6bf5526e27f0a0b9e106521fa9d1079cd3d225a41425d",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 1,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "legal",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": [
+              "legal"
+            ]
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "historical_detection_loss_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "lost_target_detection",
+            "evidence_keys": [
+              "historical_bug"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "da0fac249fadcfcea16a88e8a98b4027dd06389bc844dd678e599a513e366fdb",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "legal",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": [
+              "historical_bug"
+            ]
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "antecedent_masking_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "legal"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "9c008314f94ced7489f5be806724315e2e30bbd827cd41c5612dc116343ea91e",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 2,
+            "false_positives": 0,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "model_claim_not_native_cover",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "unconfirmed_replay",
+            "side": "after",
+            "evidence_keys": [
+              "legal"
+            ]
+          },
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "legal"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "aa2f695ef396ad3e298bd982cd9f2487e97d0605fcfc07968156e6e61193dfcd",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 1,
+            "triggers": 2,
+            "false_positives": 0,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "relabeling_target_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "changed_evidence_identity",
+            "evidence_keys": [
+              "historical_bug"
+            ]
+          },
+          {
+            "kind": "new_legal_false_positive",
+            "evidence_keys": [
+              "historical_bug"
+            ]
+          },
+          {
+            "kind": "lost_target_detection",
+            "evidence_keys": [
+              "historical_bug"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "fb62b3ab8c92eb259bb479219e7cd619cced962989b8bb1fe3a6241ceaf8a17f",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 1,
+            "detections": 1,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "legal",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "historical_bug",
+              "legal"
+            ],
+            "gaps": [
+              "historical_bug"
+            ]
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "attribution_unknown_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "unconfirmed_replay",
+            "side": "after",
+            "evidence_keys": [
+              "historical_bug"
+            ]
+          },
+          {
+            "kind": "lost_target_detection",
+            "evidence_keys": [
+              "historical_bug"
+            ]
+          },
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "historical_bug"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "86c22bad1aa4599cbe900d39b305b13fe43d68a847be5e6a4b90bcd6eb151dc5",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 1,
+            "triggers": 2,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "legal",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "unsupported_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "unconfirmed_replay",
+            "side": "after",
+            "evidence_keys": [
+              "legal"
+            ]
+          },
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "legal"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "ed3618c9251453e9a91dc9eec363a2438f8ed5121b249815fabc6da63509121b",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 1,
+            "triggers": 2,
+            "false_positives": 0,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "duplicate_evidence_id_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "malformed_ledger",
+            "side": "after",
+            "errors": [
+              {
+                "kind": "missing_or_duplicate_evidence_id",
+                "evidence_id": "legal"
+              }
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "231ed79a6abc53e238248fa63f373cee709858f814398c3dc8daadcea14c9b50",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a",
+              "complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "legal",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "vacant_current_target_rejected",
+      "passed": true,
+      "decision": {
+        "accepted": false,
+        "reasons": [
+          {
+            "kind": "lost_obligation_trigger",
+            "evidence_keys": [
+              "new_gap"
+            ]
+          },
+          {
+            "kind": "current_gap_not_confirmed_repaired",
+            "evidence_keys": [
+              "new_gap"
+            ]
+          }
+        ],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "d1386535af6fdb2a2bf781de9c35fa460c76c9a052128ec2fbac9567afa00340",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 2,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "a"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "legal"
+            ],
+            "violation_evidence": [
+              "historical_bug"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": [
+              "new_gap"
+            ]
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    },
+    {
+      "name": "assertion_id_is_not_evidence_identity",
+      "passed": true,
+      "decision": {
+        "accepted": true,
+        "reasons": [],
+        "prior_unknown_evidence": [],
+        "before_sha256": "c4b1451d870dcf688ad0847e2dbe542df1c6f220553fe0687e3d06b8a359a77d",
+        "after_sha256": "0db88125c35c9188bce9f4512818fa3717f7d9f7d3a161719024fdf974482cdc",
+        "counts": {
+          "before": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 1,
+            "misses": 1
+          },
+          "after": {
+            "rows": 3,
+            "unknown": 0,
+            "triggers": 3,
+            "false_positives": 0,
+            "detections": 2,
+            "misses": 0
+          }
+        },
+        "obligation_assertion_evidence_mapping": {
+          "order_payload": {
+            "assertions": [
+              "renamed_a",
+              "renamed_complementary"
+            ],
+            "trigger_evidence": [
+              "historical_bug",
+              "legal",
+              "new_gap"
+            ],
+            "violation_evidence": [
+              "historical_bug",
+              "new_gap"
+            ],
+            "legal_evidence": [
+              "legal"
+            ],
+            "gaps": []
+          }
+        },
+        "scope": "Only identical replayed evidence; antecedent cover does not prove logical relevance or global non-regression."
+      }
+    }
+  ],
+  "scope": "Synthetic admission unit qualification only; no model or RTL claims."
+}

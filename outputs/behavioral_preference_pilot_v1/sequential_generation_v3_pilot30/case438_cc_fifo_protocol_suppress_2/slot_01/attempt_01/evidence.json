@@ -1,0 +1,102 @@
+{
+  "parent_bug_id": "case438_cc_fifo_protocol_suppress_2",
+  "project": "common_cells",
+  "slot": 1,
+  "attempt": 1,
+  "signals": [
+    "clk_i",
+    "rst_ni",
+    "clr_i",
+    "flush_i",
+    "full_o",
+    "empty_o",
+    "push_i",
+    "pop_i",
+    "usage_o",
+    "data_i",
+    "data_o"
+  ],
+  "clock": "clk_i",
+  "reset": "rst_ni",
+  "request_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/request.json",
+  "request_sha256": "a1edb5595f19ee5b9b4f2f43144192ef5d076defd26b7fd8cffd915a14765a3b",
+  "prompt_sha256": "9d72d719b41d08832e697686c0e39573a3c97f39ec32e9f4dbe84c0db6739b13",
+  "response_path": "outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/raw_response.json",
+  "json_schema_ok": true,
+  "ast": {
+    "antecedent_polarity": "high",
+    "antecedent_signal": "push_i",
+    "consequent_signal": "empty_o",
+    "implication": "|->",
+    "relation": "high"
+  },
+  "sva": "assert property (@(posedge clk_i) disable iff (!rst_ni) (push_i) |-> (empty_o));",
+  "signal_legal": true,
+  "pyslang_ok": true,
+  "pyslang_diagnostics": [],
+  "compatibility_adapter": {
+    "reason": "Icarus 12 lacks parameter type / package feature; exact instantiated behavior and mutation retained",
+    "original_correct_sha256": "630c118b2e513b78456b47f6b0334601679a722ee9dc3a23b5971478441d565c",
+    "original_buggy_sha256": "379348a1c8cd585b85bdc4df98b246c0c7d73282308b6a10d8d1b417c78d08d7",
+    "derived_sha256": {
+      "correct.v": "e85a94142f68b5b9e654325a88e8681368c07ad4b8cef01092b5248eb57d1ba5",
+      "buggy.v": "611f58dce6de3f204d7879fd9ed1dfad31dac1fff7159946f28c5359f8e722a1"
+    }
+  },
+  "icarus_compile_ok": true,
+  "fixed_safe": false,
+  "target_detect": true,
+  "antecedent_hit": true,
+  "non_vacuous": true,
+  "runs": {
+    "correct": {
+      "command": [
+        "iverilog",
+        "-g2012",
+        "-I",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2",
+        "-I",
+        "/mnt/d/AssertionForge-main1/external/common_cells/include",
+        "-o",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/correct.out",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_correct.v",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb.v",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/checker.sv"
+      ],
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "sim_returncode": 0,
+      "sim_stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb.v:1: $finish called at 58 (1s)\nV3_METRIC ant_hits=3 fail_hits=3\n",
+      "sim_stderr": "",
+      "ant_hits": 3,
+      "fail_hits": 3
+    },
+    "buggy": {
+      "command": [
+        "iverilog",
+        "-g2012",
+        "-I",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2",
+        "-I",
+        "/mnt/d/AssertionForge-main1/external/common_cells/include",
+        "-o",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/buggy.out",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/compat_buggy.v",
+        "/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb.v",
+        "/mnt/d/AssertionForge-main1/outputs/behavioral_preference_pilot_v1/sequential_generation_v3_pilot30/case438_cc_fifo_protocol_suppress_2/slot_01/attempt_01/checker.sv"
+      ],
+      "compile_returncode": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "sim_returncode": 0,
+      "sim_stdout": "VCD info: dumpfile wave.vcd opened for output.\n/mnt/d/AssertionForge-main1/rtl_cases_real_scale210_independent/case438_cc_fifo_protocol_suppress_2/tb.v:1: $finish called at 58 (1s)\nV3_METRIC ant_hits=3 fail_hits=3\n",
+      "sim_stderr": "",
+      "ant_hits": 3,
+      "fail_hits": 3
+    }
+  },
+  "sva_sha256": "c82cac1ad8e8c16dc8539f64ecd33d4537383eaa72c32f46bd7ac4a932207503",
+  "raw_response_sha256": "0357c2afb9b99d187c8e2b50aa7de94452f1a4aa33c35fa7220d8ab98762a243",
+  "validation_seconds": 0.16846936600000006
+}

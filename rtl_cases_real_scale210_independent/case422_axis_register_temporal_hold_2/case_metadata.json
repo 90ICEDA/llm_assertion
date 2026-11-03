@@ -1,0 +1,71 @@
+{
+  "name": "case422_axis_register_temporal_hold_2",
+  "parent_bug_id": "case422_axis_register_temporal_hold_2",
+  "source_project": "verilog_axis",
+  "source_url": "https://github.com/alexforencich/verilog-axis.git",
+  "source_commit": "48ff7a7e2ef782cf778d47910cf85835c64b1bce",
+  "source_module": "axis_register",
+  "source_files": [
+    "external/verilog-axis/rtl/axis_register.v"
+  ],
+  "top_file": "external/verilog-axis/rtl/axis_register.v",
+  "bug_class": "temporal_cross_cycle",
+  "bug_family": "sequential_state_update_suppressed",
+  "bug_type": "m_axis_tvalid_reg state update is suppressed",
+  "spec": "A source beat accepted while the output path can advance must make output valid on the following clock and preserve the accepted payload until the downstream handshake.",
+  "mutation_edits": [
+    {
+      "line": 161,
+      "search": "        m_axis_tvalid_reg <= m_axis_tvalid_next;",
+      "replace": "        m_axis_tvalid_reg <= m_axis_tvalid_reg; // ASSERTIONFORGE_MUTATION: state update suppressed"
+    }
+  ],
+  "mutation_signal": "m_axis_tvalid_reg",
+  "relevant_signals": [
+    "clk",
+    "rst",
+    "s_axis_tvalid",
+    "s_axis_tready",
+    "s_axis_tdata",
+    "m_axis_tvalid",
+    "m_axis_tready",
+    "m_axis_tdata"
+  ],
+  "temporal_type": "one-cycle valid propagation",
+  "mutation_kind": "sequential_hold",
+  "iverilog_compatibility_edits": [],
+  "correct_sha256": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+  "buggy_sha256": "9a297403bf83dfc069bb3be67c49f8b58263b5d6d3357ffb41085f6f5f93af43",
+  "dataset_phase": "scale210_independent_multproject",
+  "status": "rtl_mutation_materialized_validation_pending",
+  "golden_sva": {
+    "sva": "assert property (@(posedge clk) disable iff (rst) (s_axis_tvalid && s_axis_tready && m_axis_tready) |=> m_axis_tvalid);",
+    "temporal_type": "one-cycle valid propagation"
+  },
+  "first_divergence": {
+    "primary": {
+      "time_ps": 35000,
+      "sample_index": 9,
+      "signals": [
+        "m_axis_tvalid"
+      ],
+      "clock_cycle": 4
+    },
+    "heldout": {
+      "time_ps": 45000,
+      "sample_index": 11,
+      "signals": [
+        "m_axis_tvalid"
+      ],
+      "clock_cycle": 5
+    },
+    "decoy": {
+      "time_ps": 55000,
+      "sample_index": 13,
+      "signals": [
+        "m_axis_tvalid"
+      ],
+      "clock_cycle": 6
+    }
+  }
+}
