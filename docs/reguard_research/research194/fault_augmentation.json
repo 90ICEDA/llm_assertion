@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "projection_count": 108,
+  "checks": 235794,
+  "failures": 0,
+  "parent_rollup": [
+    {
+      "parent_bug": "arbiter/artificial",
+      "historical_fix_confirmed": false,
+      "paired_seeds": 2,
+      "clean_seeds": 0,
+      "benefit_seeds": 0,
+      "regression_seeds": 0,
+      "benefit_consistent_across_seeds": false,
+      "regression_in_any_seed": false
+    },
+    {
+      "parent_bug": "counter/artificial",
+      "historical_fix_confirmed": false,
+      "paired_seeds": 2,
+      "clean_seeds": 2,
+      "benefit_seeds": 1,
+      "regression_seeds": 1,
+      "benefit_consistent_across_seeds": false,
+      "regression_in_any_seed": true
+    },
+    {
+      "parent_bug": "lowRISC/ibex#2374/flush_subfix",
+      "historical_fix_confirmed": true,
+      "paired_seeds": 2,
+      "clean_seeds": 2,
+      "benefit_seeds": 0,
+      "regression_seeds": 0,
+      "benefit_consistent_across_seeds": false,
+      "regression_in_any_seed": false
+    },
+    {
+      "parent_bug": "uart/artificial",
+      "historical_fix_confirmed": false,
+      "paired_seeds": 2,
+      "clean_seeds": 0,
+      "benefit_seeds": 0,
+      "regression_seeds": 0,
+      "benefit_consistent_across_seeds": false,
+      "regression_in_any_seed": false
+    }
+  ],
+  "paired_parent_seeds": 8,
+  "clean_parent_seeds": 4,
+  "strict_unseen_benefit_parent_seeds": 1,
+  "regression_parent_seeds": 1,
+  "new_native_queries": 0,
+  "new_model_calls": 0,
+  "wall_seconds": 34.653823012999965,
+  "audit_script_sha256": "4e680f1caedbe2e03c2421a34a8b1a3666136a0106054e949580604a69ea8f3b",
+  "false_positive_comparison": "Set differences of (fault, query_id, variant, cycle, obligation), ignoring assertion labels. Equal FP counts may hide replaced legal objects. No-new-FP benefit requires the added set to be empty.",
+  "interpretation": "Only reserved-fault clean paired results support augmentation benefit. Unknown trajectories remain in denominators. Seeds are paired repetitions, not independent parent Bugs. Timely and any-cycle detection are separate; no-exposure is never a pass."
+}

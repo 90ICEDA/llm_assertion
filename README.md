@@ -1,5 +1,12 @@
 # AssertionForge
 
+## REGuard 最新研究更新（2026-11-04）
+
+已加入 research192–199 的主动时序证据选择、定位与局部修改、组件触发保护、自动回退和在线对照代码。结果、版本范围及复现限制见 [研究更新说明](docs/reguard_research/README.md)，最新正反案例见 [案例卡](docs/reguard_research/research199/cards.html)。研究结果包含无收益和失败情况；实验完成不等于断言全部通过验收。
+
+本次更新的离线检查：`python -B scripts/check_reguard_release.py`。完整历史续跑需要未随仓库发布的原始归档。原有 `LOCAL_COPY_REPORT.md` 和 `COPY_MANIFEST.sha256` 描述上次整理，本次增量见 [发布清单](docs/reguard_research/manifest.json)。
+
+
 ## 本地整理副本：安装与运行
 
 此副本保留当前源代码和基准输入，不包含 Git 历史、安装环境、模型权重或完整历史实验目录。下文原始说明及 `docs/` 中的历史结果是原项目记录，**不是本次整理重新验证的结果**。整理范围及本次验证见 [LOCAL_COPY_REPORT.md](LOCAL_COPY_REPORT.md)。
@@ -38,7 +45,7 @@ python main.py
 在项目根目录执行已有测试：
 
 ```bash
-python -B -m unittest discover -s scripts -p 'test_*.py' -v
+python -B scripts/check_reguard_release.py
 ```
 
 安装 Icarus Verilog 后，可在任意临时工作目录运行一个基准案例；将下面 `REPO` 改成本副本的绝对路径：

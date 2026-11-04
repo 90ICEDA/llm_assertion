@@ -1,0 +1,55 @@
+{
+  "parent_bug": "pulp-platform/common_cells#190",
+  "before": "534340f6166ce0370222e40741ec5729dc34770e",
+  "after": "66b3934d6478f255a668a8d6de026730c25f52c5",
+  "title": "stream_delay: Allow larger counts",
+  "intent": "Allow larger counts for `stream_delay`. Based on #185.",
+  "sources": [
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\534340f6166ce0370222e40741ec5729dc34770e\\stream_delay.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/534340f6166ce0370222e40741ec5729dc34770e/src/stream_delay.sv",
+      "sha256": "0f2f987caa8e576a6e50c39ae8dd258867e42bca0222ad94d50b72c5a7b17623"
+    },
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\534340f6166ce0370222e40741ec5729dc34770e\\counter.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/534340f6166ce0370222e40741ec5729dc34770e/src/counter.sv",
+      "sha256": "b7a9b5fc11ce4def51133f27ec0470a18ae7c8c6b1161f21c948ae848b693f58"
+    },
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\534340f6166ce0370222e40741ec5729dc34770e\\lfsr_16bit.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/534340f6166ce0370222e40741ec5729dc34770e/src/lfsr_16bit.sv",
+      "sha256": "fa80fd316d2cdff5905c24972065792f1bdd3be635df8763748e85dff4405f29"
+    },
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\66b3934d6478f255a668a8d6de026730c25f52c5\\stream_delay.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/66b3934d6478f255a668a8d6de026730c25f52c5/src/stream_delay.sv",
+      "sha256": "b04e8a490f98dd6e553c8a9466fe63d07352eb6ce093a38433412485011655e2"
+    },
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\66b3934d6478f255a668a8d6de026730c25f52c5\\counter.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/66b3934d6478f255a668a8d6de026730c25f52c5/src/counter.sv",
+      "sha256": "b7a9b5fc11ce4def51133f27ec0470a18ae7c8c6b1161f21c948ae848b693f58"
+    },
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\66b3934d6478f255a668a8d6de026730c25f52c5\\lfsr_16bit.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/66b3934d6478f255a668a8d6de026730c25f52c5/src/lfsr_16bit.sv",
+      "sha256": "fa80fd316d2cdff5905c24972065792f1bdd3be635df8763748e85dff4405f29"
+    },
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\534340f6166ce0370222e40741ec5729dc34770e\\delta_counter.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/534340f6166ce0370222e40741ec5729dc34770e/src/delta_counter.sv",
+      "sha256": "698851a015f2b093d5688faa02ae60f0b3ed4324a7584846a99726e1c93732f7"
+    },
+    {
+      "path": "deliverables\\research197_history_sources_20261104_r01\\66b3934d6478f255a668a8d6de026730c25f52c5\\delta_counter.sv",
+      "url": "https://raw.githubusercontent.com/pulp-platform/common_cells/66b3934d6478f255a668a8d6de026730c25f52c5/src/delta_counter.sv",
+      "sha256": "698851a015f2b093d5688faa02ae60f0b3ed4324a7584846a99726e1c93732f7"
+    }
+  ],
+  "patch": [
+    {
+      "filename": "src/stream_delay.sv",
+      "patch": "@@ -35,7 +35,7 @@ module stream_delay #(\n         assign payload_o = payload_i;\n     end else begin : gen_delay\n \n-        localparam int unsigned CounterBits = 4;\n+        localparam int unsigned CounterBits = 32;\n \n         typedef enum logic [1:0] {\n             Idle, Valid, Ready\n@@ -44,7 +44,7 @@ module stream_delay #(\n         state_e state_d, state_q;\n \n         logic       load;\n-        logic [3:0] count_out;\n+        logic [CounterBits-1:0] count_out;\n         logic       en;\n \n         logic [CounterBits-1:0] counter_load;"
+    }
+  ]
+}
